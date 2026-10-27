@@ -1,0 +1,1699 @@
+{
+  "revision": "ea2bc36dae31c97060f7f2cddad8df5518afad7b",
+  "vectors": [
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "",
+        "rounds": 1
+      },
+      "error": "参数 n 不能为空（十进制大整数）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "",
+        "rounds": 13
+      },
+      "error": "参数 n 不能为空（十进制大整数）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "",
+        "rounds": 24
+      },
+      "error": "参数 n 不能为空（十进制大整数）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "",
+        "rounds": 64
+      },
+      "error": "参数 n 不能为空（十进制大整数）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "中文🙂",
+        "rounds": 1
+      },
+      "error": "n 不是合法十进制整数：中文🙂"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "中文🙂",
+        "rounds": 13
+      },
+      "error": "n 不是合法十进制整数：中文🙂"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "中文🙂",
+        "rounds": 24
+      },
+      "error": "n 不是合法十进制整数：中文🙂"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "中文🙂",
+        "rounds": 64
+      },
+      "error": "n 不是合法十进制整数：中文🙂"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "0x17",
+        "rounds": 1
+      },
+      "error": "n 不是合法十进制整数：0x17"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "0x17",
+        "rounds": 13
+      },
+      "error": "n 不是合法十进制整数：0x17"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "0x17",
+        "rounds": 24
+      },
+      "error": "n 不是合法十进制整数：0x17"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "0x17",
+        "rounds": 64
+      },
+      "error": "n 不是合法十进制整数：0x17"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "1.5",
+        "rounds": 1
+      },
+      "error": "n 不是合法十进制整数：1.5"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "1.5",
+        "rounds": 13
+      },
+      "error": "n 不是合法十进制整数：1.5"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "1.5",
+        "rounds": 24
+      },
+      "error": "n 不是合法十进制整数：1.5"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "1.5",
+        "rounds": 64
+      },
+      "error": "n 不是合法十进制整数：1.5"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "2e3",
+        "rounds": 1
+      },
+      "error": "n 不是合法十进制整数：2e3"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "2e3",
+        "rounds": 13
+      },
+      "error": "n 不是合法十进制整数：2e3"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "2e3",
+        "rounds": 24
+      },
+      "error": "n 不是合法十进制整数：2e3"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "2e3",
+        "rounds": 64
+      },
+      "error": "n 不是合法十进制整数：2e3"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "--2",
+        "rounds": 1
+      },
+      "error": "n 不是合法十进制整数：--2"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "--2",
+        "rounds": 13
+      },
+      "error": "n 不是合法十进制整数：--2"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "--2",
+        "rounds": 24
+      },
+      "error": "n 不是合法十进制整数：--2"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "--2",
+        "rounds": 64
+      },
+      "error": "n 不是合法十进制整数：--2"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "-17",
+        "rounds": 1
+      },
+      "text": "判定：非素数（负数）\n位长：5 位（二进制，负数按 |n| 计）\n方法：定义直接判定（素数需 n >= 2，此处不涉及 Miller-Rabin）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "-17",
+        "rounds": 13
+      },
+      "text": "判定：非素数（负数）\n位长：5 位（二进制，负数按 |n| 计）\n方法：定义直接判定（素数需 n >= 2，此处不涉及 Miller-Rabin）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "-17",
+        "rounds": 24
+      },
+      "text": "判定：非素数（负数）\n位长：5 位（二进制，负数按 |n| 计）\n方法：定义直接判定（素数需 n >= 2，此处不涉及 Miller-Rabin）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "-17",
+        "rounds": 64
+      },
+      "text": "判定：非素数（负数）\n位长：5 位（二进制，负数按 |n| 计）\n方法：定义直接判定（素数需 n >= 2，此处不涉及 Miller-Rabin）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "-1",
+        "rounds": 1
+      },
+      "text": "判定：非素数（负数）\n位长：1 位（二进制，负数按 |n| 计）\n方法：定义直接判定（素数需 n >= 2，此处不涉及 Miller-Rabin）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "-1",
+        "rounds": 13
+      },
+      "text": "判定：非素数（负数）\n位长：1 位（二进制，负数按 |n| 计）\n方法：定义直接判定（素数需 n >= 2，此处不涉及 Miller-Rabin）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "-1",
+        "rounds": 24
+      },
+      "text": "判定：非素数（负数）\n位长：1 位（二进制，负数按 |n| 计）\n方法：定义直接判定（素数需 n >= 2，此处不涉及 Miller-Rabin）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "-1",
+        "rounds": 64
+      },
+      "text": "判定：非素数（负数）\n位长：1 位（二进制，负数按 |n| 计）\n方法：定义直接判定（素数需 n >= 2，此处不涉及 Miller-Rabin）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "0",
+        "rounds": 1
+      },
+      "text": "判定：非素数（n < 2）\n位长：0 位（二进制）\n方法：定义直接判定（素数需 n >= 2，此处不涉及 Miller-Rabin）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "0",
+        "rounds": 13
+      },
+      "text": "判定：非素数（n < 2）\n位长：0 位（二进制）\n方法：定义直接判定（素数需 n >= 2，此处不涉及 Miller-Rabin）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "0",
+        "rounds": 24
+      },
+      "text": "判定：非素数（n < 2）\n位长：0 位（二进制）\n方法：定义直接判定（素数需 n >= 2，此处不涉及 Miller-Rabin）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "0",
+        "rounds": 64
+      },
+      "text": "判定：非素数（n < 2）\n位长：0 位（二进制）\n方法：定义直接判定（素数需 n >= 2，此处不涉及 Miller-Rabin）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "1",
+        "rounds": 1
+      },
+      "text": "判定：非素数（n < 2）\n位长：1 位（二进制）\n方法：定义直接判定（素数需 n >= 2，此处不涉及 Miller-Rabin）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "1",
+        "rounds": 13
+      },
+      "text": "判定：非素数（n < 2）\n位长：1 位（二进制）\n方法：定义直接判定（素数需 n >= 2，此处不涉及 Miller-Rabin）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "1",
+        "rounds": 24
+      },
+      "text": "判定：非素数（n < 2）\n位长：1 位（二进制）\n方法：定义直接判定（素数需 n >= 2，此处不涉及 Miller-Rabin）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "1",
+        "rounds": 64
+      },
+      "text": "判定：非素数（n < 2）\n位长：1 位（二进制）\n方法：定义直接判定（素数需 n >= 2，此处不涉及 Miller-Rabin）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "2",
+        "rounds": 1
+      },
+      "text": "判定：素数\n位长：2 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "2",
+        "rounds": 13
+      },
+      "text": "判定：素数\n位长：2 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "2",
+        "rounds": 24
+      },
+      "text": "判定：素数\n位长：2 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "2",
+        "rounds": 64
+      },
+      "text": "判定：素数\n位长：2 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3",
+        "rounds": 1
+      },
+      "text": "判定：素数\n位长：2 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3",
+        "rounds": 13
+      },
+      "text": "判定：素数\n位长：2 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3",
+        "rounds": 24
+      },
+      "text": "判定：素数\n位长：2 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3",
+        "rounds": 64
+      },
+      "text": "判定：素数\n位长：2 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "4",
+        "rounds": 1
+      },
+      "text": "判定：合数\n位长：3 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "4",
+        "rounds": 13
+      },
+      "text": "判定：合数\n位长：3 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "4",
+        "rounds": 24
+      },
+      "text": "判定：合数\n位长：3 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "4",
+        "rounds": 64
+      },
+      "text": "判定：合数\n位长：3 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "5",
+        "rounds": 1
+      },
+      "text": "判定：素数\n位长：3 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "5",
+        "rounds": 13
+      },
+      "text": "判定：素数\n位长：3 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "5",
+        "rounds": 24
+      },
+      "text": "判定：素数\n位长：3 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "5",
+        "rounds": 64
+      },
+      "text": "判定：素数\n位长：3 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "9",
+        "rounds": 1
+      },
+      "text": "判定：合数\n位长：4 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "9",
+        "rounds": 13
+      },
+      "text": "判定：合数\n位长：4 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "9",
+        "rounds": 24
+      },
+      "text": "判定：合数\n位长：4 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "9",
+        "rounds": 64
+      },
+      "text": "判定：合数\n位长：4 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "25",
+        "rounds": 1
+      },
+      "text": "判定：合数\n位长：5 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "25",
+        "rounds": 13
+      },
+      "text": "判定：合数\n位长：5 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "25",
+        "rounds": 24
+      },
+      "text": "判定：合数\n位长：5 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "25",
+        "rounds": 64
+      },
+      "text": "判定：合数\n位长：5 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "97",
+        "rounds": 1
+      },
+      "text": "判定：素数\n位长：7 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "97",
+        "rounds": 13
+      },
+      "text": "判定：素数\n位长：7 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "97",
+        "rounds": 24
+      },
+      "text": "判定：素数\n位长：7 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "97",
+        "rounds": 64
+      },
+      "text": "判定：素数\n位长：7 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "561",
+        "rounds": 1
+      },
+      "text": "判定：合数\n位长：10 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "561",
+        "rounds": 13
+      },
+      "text": "判定：合数\n位长：10 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "561",
+        "rounds": 24
+      },
+      "text": "判定：合数\n位长：10 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "561",
+        "rounds": 64
+      },
+      "text": "判定：合数\n位长：10 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "1105",
+        "rounds": 1
+      },
+      "text": "判定：合数\n位长：11 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "1105",
+        "rounds": 13
+      },
+      "text": "判定：合数\n位长：11 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "1105",
+        "rounds": 24
+      },
+      "text": "判定：合数\n位长：11 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "1105",
+        "rounds": 64
+      },
+      "text": "判定：合数\n位长：11 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "1729",
+        "rounds": 1
+      },
+      "text": "判定：合数\n位长：11 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "1729",
+        "rounds": 13
+      },
+      "text": "判定：合数\n位长：11 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "1729",
+        "rounds": 24
+      },
+      "text": "判定：合数\n位长：11 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "1729",
+        "rounds": 64
+      },
+      "text": "判定：合数\n位长：11 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "2047",
+        "rounds": 1
+      },
+      "text": "判定：合数\n位长：11 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "2047",
+        "rounds": 13
+      },
+      "text": "判定：合数\n位长：11 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "2047",
+        "rounds": 24
+      },
+      "text": "判定：合数\n位长：11 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "2047",
+        "rounds": 64
+      },
+      "text": "判定：合数\n位长：11 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3215031751",
+        "rounds": 1
+      },
+      "text": "判定：合数\n位长：32 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3215031751",
+        "rounds": 13
+      },
+      "text": "判定：合数\n位长：32 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3215031751",
+        "rounds": 24
+      },
+      "text": "判定：合数\n位长：32 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3215031751",
+        "rounds": 64
+      },
+      "text": "判定：合数\n位长：32 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "341550071728321",
+        "rounds": 1
+      },
+      "text": "判定：合数\n位长：49 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "341550071728321",
+        "rounds": 13
+      },
+      "text": "判定：合数\n位长：49 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "341550071728321",
+        "rounds": 24
+      },
+      "text": "判定：合数\n位长：49 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "341550071728321",
+        "rounds": 64
+      },
+      "text": "判定：合数\n位长：49 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3825123056546413051",
+        "rounds": 1
+      },
+      "text": "判定：合数\n位长：62 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3825123056546413051",
+        "rounds": 13
+      },
+      "text": "判定：合数\n位长：62 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3825123056546413051",
+        "rounds": 24
+      },
+      "text": "判定：合数\n位长：62 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3825123056546413051",
+        "rounds": 64
+      },
+      "text": "判定：合数\n位长：62 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "2305843009213693951",
+        "rounds": 1
+      },
+      "text": "判定：素数\n位长：61 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "2305843009213693951",
+        "rounds": 13
+      },
+      "text": "判定：素数\n位长：61 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "2305843009213693951",
+        "rounds": 24
+      },
+      "text": "判定：素数\n位长：61 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "2305843009213693951",
+        "rounds": 64
+      },
+      "text": "判定：素数\n位长：61 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "18446744073709551557",
+        "rounds": 1
+      },
+      "text": "判定：素数\n位长：64 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "18446744073709551557",
+        "rounds": 13
+      },
+      "text": "判定：素数\n位长：64 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "18446744073709551557",
+        "rounds": 24
+      },
+      "text": "判定：素数\n位长：64 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "18446744073709551557",
+        "rounds": 64
+      },
+      "text": "判定：素数\n位长：64 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "18446744073709551615",
+        "rounds": 1
+      },
+      "text": "判定：合数\n位长：64 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "18446744073709551615",
+        "rounds": 13
+      },
+      "text": "判定：合数\n位长：64 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "18446744073709551615",
+        "rounds": 24
+      },
+      "text": "判定：合数\n位长：64 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "18446744073709551615",
+        "rounds": 64
+      },
+      "text": "判定：合数\n位长：64 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "318665857834031151167461",
+        "rounds": 1
+      },
+      "text": "判定：合数\n位长：79 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "318665857834031151167461",
+        "rounds": 13
+      },
+      "text": "判定：合数\n位长：79 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "318665857834031151167461",
+        "rounds": 24
+      },
+      "text": "判定：合数\n位长：79 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "318665857834031151167461",
+        "rounds": 64
+      },
+      "text": "判定：合数\n位长：79 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961980",
+        "rounds": 1
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961980",
+        "rounds": 13
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961980",
+        "rounds": 24
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961980",
+        "rounds": 64
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 1
+      },
+      "text": "判定：素数\n位长：82 位（二进制）\n方法：Miller-Rabin 1 轮（随机基误判概率 < 4^-1，FIPS 186-5 App. B；本实现取前 1 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 13
+      },
+      "text": "判定：素数\n位长：82 位（二进制）\n方法：Miller-Rabin 13 轮（随机基误判概率 < 4^-13，FIPS 186-5 App. B；本实现取前 13 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 24
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 24 轮（随机基误判概率 < 4^-24，FIPS 186-5 App. B；本实现取前 24 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 64
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 64 轮（随机基误判概率 < 4^-64，FIPS 186-5 App. B；本实现取前 64 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961982",
+        "rounds": 1
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 1 轮（随机基误判概率 < 4^-1，FIPS 186-5 App. B；本实现取前 1 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961982",
+        "rounds": 13
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 13 轮（随机基误判概率 < 4^-13，FIPS 186-5 App. B；本实现取前 13 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961982",
+        "rounds": 24
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 24 轮（随机基误判概率 < 4^-24，FIPS 186-5 App. B；本实现取前 24 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961982",
+        "rounds": 64
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 64 轮（随机基误判概率 < 4^-64，FIPS 186-5 App. B；本实现取前 64 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "170141183460469231731687303715884105727",
+        "rounds": 1
+      },
+      "text": "判定：素数\n位长：127 位（二进制）\n方法：Miller-Rabin 1 轮（随机基误判概率 < 4^-1，FIPS 186-5 App. B；本实现取前 1 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "170141183460469231731687303715884105727",
+        "rounds": 13
+      },
+      "text": "判定：素数\n位长：127 位（二进制）\n方法：Miller-Rabin 13 轮（随机基误判概率 < 4^-13，FIPS 186-5 App. B；本实现取前 13 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "170141183460469231731687303715884105727",
+        "rounds": 24
+      },
+      "text": "判定：素数\n位长：127 位（二进制）\n方法：Miller-Rabin 24 轮（随机基误判概率 < 4^-24，FIPS 186-5 App. B；本实现取前 24 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "170141183460469231731687303715884105727",
+        "rounds": 64
+      },
+      "text": "判定：素数\n位长：127 位（二进制）\n方法：Miller-Rabin 64 轮（随机基误判概率 < 4^-64，FIPS 186-5 App. B；本实现取前 64 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "6864797660130609714981900799081393217269435300143305409394463459185543183397656052122559640661454554977296311391480858037121987999716643812574028291115057151",
+        "rounds": 1
+      },
+      "text": "判定：素数\n位长：521 位（二进制）\n方法：Miller-Rabin 1 轮（随机基误判概率 < 4^-1，FIPS 186-5 App. B；本实现取前 1 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "6864797660130609714981900799081393217269435300143305409394463459185543183397656052122559640661454554977296311391480858037121987999716643812574028291115057151",
+        "rounds": 13
+      },
+      "text": "判定：素数\n位长：521 位（二进制）\n方法：Miller-Rabin 13 轮（随机基误判概率 < 4^-13，FIPS 186-5 App. B；本实现取前 13 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "6864797660130609714981900799081393217269435300143305409394463459185543183397656052122559640661454554977296311391480858037121987999716643812574028291115057151",
+        "rounds": 24
+      },
+      "text": "判定：素数\n位长：521 位（二进制）\n方法：Miller-Rabin 24 轮（随机基误判概率 < 4^-24，FIPS 186-5 App. B；本实现取前 24 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "6864797660130609714981900799081393217269435300143305409394463459185543183397656052122559640661454554977296311391480858037121987999716643812574028291115057151",
+        "rounds": 64
+      },
+      "text": "判定：素数\n位长：521 位（二进制）\n方法：Miller-Rabin 64 轮（随机基误判概率 < 4^-64，FIPS 186-5 App. B；本实现取前 64 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "340282366920938463463374607431768211457",
+        "rounds": 1
+      },
+      "text": "判定：素数\n位长：129 位（二进制）\n方法：Miller-Rabin 1 轮（随机基误判概率 < 4^-1，FIPS 186-5 App. B；本实现取前 1 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "340282366920938463463374607431768211457",
+        "rounds": 13
+      },
+      "text": "判定：合数\n位长：129 位（二进制）\n方法：Miller-Rabin 13 轮（随机基误判概率 < 4^-13，FIPS 186-5 App. B；本实现取前 13 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "340282366920938463463374607431768211457",
+        "rounds": 24
+      },
+      "text": "判定：合数\n位长：129 位（二进制）\n方法：Miller-Rabin 24 轮（随机基误判概率 < 4^-24，FIPS 186-5 App. B；本实现取前 24 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "340282366920938463463374607431768211457",
+        "rounds": 64
+      },
+      "text": "判定：合数\n位长：129 位（二进制）\n方法：Miller-Rabin 64 轮（随机基误判概率 < 4^-64，FIPS 186-5 App. B；本实现取前 64 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "+2,305_843 009213693951",
+        "rounds": 1
+      },
+      "text": "判定：素数\n位长：61 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "+2,305_843 009213693951",
+        "rounds": 13
+      },
+      "text": "判定：素数\n位长：61 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "+2,305_843 009213693951",
+        "rounds": 24
+      },
+      "text": "判定：素数\n位长：61 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "+2,305_843 009213693951",
+        "rounds": 64
+      },
+      "text": "判定：素数\n位长：61 位（二进制）\n方法：Miller-Rabin 13 轮确定性判定（n < 3,317,044,064,679,887,385,961,981 时 13 个固定质数 witness 足以确定，FIPS 186-4 Table C.2）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 1
+      },
+      "text": "判定：素数\n位长：82 位（二进制）\n方法：Miller-Rabin 1 轮（随机基误判概率 < 4^-1，FIPS 186-5 App. B；本实现取前 1 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 2
+      },
+      "text": "判定：素数\n位长：82 位（二进制）\n方法：Miller-Rabin 2 轮（随机基误判概率 < 4^-2，FIPS 186-5 App. B；本实现取前 2 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 3
+      },
+      "text": "判定：素数\n位长：82 位（二进制）\n方法：Miller-Rabin 3 轮（随机基误判概率 < 4^-3，FIPS 186-5 App. B；本实现取前 3 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 4
+      },
+      "text": "判定：素数\n位长：82 位（二进制）\n方法：Miller-Rabin 4 轮（随机基误判概率 < 4^-4，FIPS 186-5 App. B；本实现取前 4 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 5
+      },
+      "text": "判定：素数\n位长：82 位（二进制）\n方法：Miller-Rabin 5 轮（随机基误判概率 < 4^-5，FIPS 186-5 App. B；本实现取前 5 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 6
+      },
+      "text": "判定：素数\n位长：82 位（二进制）\n方法：Miller-Rabin 6 轮（随机基误判概率 < 4^-6，FIPS 186-5 App. B；本实现取前 6 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 7
+      },
+      "text": "判定：素数\n位长：82 位（二进制）\n方法：Miller-Rabin 7 轮（随机基误判概率 < 4^-7，FIPS 186-5 App. B；本实现取前 7 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 8
+      },
+      "text": "判定：素数\n位长：82 位（二进制）\n方法：Miller-Rabin 8 轮（随机基误判概率 < 4^-8，FIPS 186-5 App. B；本实现取前 8 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 9
+      },
+      "text": "判定：素数\n位长：82 位（二进制）\n方法：Miller-Rabin 9 轮（随机基误判概率 < 4^-9，FIPS 186-5 App. B；本实现取前 9 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 10
+      },
+      "text": "判定：素数\n位长：82 位（二进制）\n方法：Miller-Rabin 10 轮（随机基误判概率 < 4^-10，FIPS 186-5 App. B；本实现取前 10 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 11
+      },
+      "text": "判定：素数\n位长：82 位（二进制）\n方法：Miller-Rabin 11 轮（随机基误判概率 < 4^-11，FIPS 186-5 App. B；本实现取前 11 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 12
+      },
+      "text": "判定：素数\n位长：82 位（二进制）\n方法：Miller-Rabin 12 轮（随机基误判概率 < 4^-12，FIPS 186-5 App. B；本实现取前 12 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 13
+      },
+      "text": "判定：素数\n位长：82 位（二进制）\n方法：Miller-Rabin 13 轮（随机基误判概率 < 4^-13，FIPS 186-5 App. B；本实现取前 13 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 14
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 14 轮（随机基误判概率 < 4^-14，FIPS 186-5 App. B；本实现取前 14 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 15
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 15 轮（随机基误判概率 < 4^-15，FIPS 186-5 App. B；本实现取前 15 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 16
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 16 轮（随机基误判概率 < 4^-16，FIPS 186-5 App. B；本实现取前 16 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 17
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 17 轮（随机基误判概率 < 4^-17，FIPS 186-5 App. B；本实现取前 17 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 18
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 18 轮（随机基误判概率 < 4^-18，FIPS 186-5 App. B；本实现取前 18 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 19
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 19 轮（随机基误判概率 < 4^-19，FIPS 186-5 App. B；本实现取前 19 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 20
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 20 轮（随机基误判概率 < 4^-20，FIPS 186-5 App. B；本实现取前 20 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 21
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 21 轮（随机基误判概率 < 4^-21，FIPS 186-5 App. B；本实现取前 21 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 22
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 22 轮（随机基误判概率 < 4^-22，FIPS 186-5 App. B；本实现取前 22 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 23
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 23 轮（随机基误判概率 < 4^-23，FIPS 186-5 App. B；本实现取前 23 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 24
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 24 轮（随机基误判概率 < 4^-24，FIPS 186-5 App. B；本实现取前 24 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 25
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 25 轮（随机基误判概率 < 4^-25，FIPS 186-5 App. B；本实现取前 25 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 26
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 26 轮（随机基误判概率 < 4^-26，FIPS 186-5 App. B；本实现取前 26 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 27
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 27 轮（随机基误判概率 < 4^-27，FIPS 186-5 App. B；本实现取前 27 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 28
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 28 轮（随机基误判概率 < 4^-28，FIPS 186-5 App. B；本实现取前 28 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 29
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 29 轮（随机基误判概率 < 4^-29，FIPS 186-5 App. B；本实现取前 29 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 30
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 30 轮（随机基误判概率 < 4^-30，FIPS 186-5 App. B；本实现取前 30 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 31
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 31 轮（随机基误判概率 < 4^-31，FIPS 186-5 App. B；本实现取前 31 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 32
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 32 轮（随机基误判概率 < 4^-32，FIPS 186-5 App. B；本实现取前 32 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 33
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 33 轮（随机基误判概率 < 4^-33，FIPS 186-5 App. B；本实现取前 33 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 34
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 34 轮（随机基误判概率 < 4^-34，FIPS 186-5 App. B；本实现取前 34 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 35
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 35 轮（随机基误判概率 < 4^-35，FIPS 186-5 App. B；本实现取前 35 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 36
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 36 轮（随机基误判概率 < 4^-36，FIPS 186-5 App. B；本实现取前 36 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 37
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 37 轮（随机基误判概率 < 4^-37，FIPS 186-5 App. B；本实现取前 37 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 38
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 38 轮（随机基误判概率 < 4^-38，FIPS 186-5 App. B；本实现取前 38 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 39
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 39 轮（随机基误判概率 < 4^-39，FIPS 186-5 App. B；本实现取前 39 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 40
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 40 轮（随机基误判概率 < 4^-40，FIPS 186-5 App. B；本实现取前 40 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 41
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 41 轮（随机基误判概率 < 4^-41，FIPS 186-5 App. B；本实现取前 41 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 42
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 42 轮（随机基误判概率 < 4^-42，FIPS 186-5 App. B；本实现取前 42 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 43
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 43 轮（随机基误判概率 < 4^-43，FIPS 186-5 App. B；本实现取前 43 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 44
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 44 轮（随机基误判概率 < 4^-44，FIPS 186-5 App. B；本实现取前 44 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 45
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 45 轮（随机基误判概率 < 4^-45，FIPS 186-5 App. B；本实现取前 45 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 46
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 46 轮（随机基误判概率 < 4^-46，FIPS 186-5 App. B；本实现取前 46 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 47
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 47 轮（随机基误判概率 < 4^-47，FIPS 186-5 App. B；本实现取前 47 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 48
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 48 轮（随机基误判概率 < 4^-48，FIPS 186-5 App. B；本实现取前 48 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 49
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 49 轮（随机基误判概率 < 4^-49，FIPS 186-5 App. B；本实现取前 49 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 50
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 50 轮（随机基误判概率 < 4^-50，FIPS 186-5 App. B；本实现取前 50 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 51
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 51 轮（随机基误判概率 < 4^-51，FIPS 186-5 App. B；本实现取前 51 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 52
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 52 轮（随机基误判概率 < 4^-52，FIPS 186-5 App. B；本实现取前 52 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 53
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 53 轮（随机基误判概率 < 4^-53，FIPS 186-5 App. B；本实现取前 53 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 54
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 54 轮（随机基误判概率 < 4^-54，FIPS 186-5 App. B；本实现取前 54 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 55
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 55 轮（随机基误判概率 < 4^-55，FIPS 186-5 App. B；本实现取前 55 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 56
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 56 轮（随机基误判概率 < 4^-56，FIPS 186-5 App. B；本实现取前 56 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 57
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 57 轮（随机基误判概率 < 4^-57，FIPS 186-5 App. B；本实现取前 57 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 58
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 58 轮（随机基误判概率 < 4^-58，FIPS 186-5 App. B；本实现取前 58 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 59
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 59 轮（随机基误判概率 < 4^-59，FIPS 186-5 App. B；本实现取前 59 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 60
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 60 轮（随机基误判概率 < 4^-60，FIPS 186-5 App. B；本实现取前 60 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 61
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 61 轮（随机基误判概率 < 4^-61，FIPS 186-5 App. B；本实现取前 61 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 62
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 62 轮（随机基误判概率 < 4^-62，FIPS 186-5 App. B；本实现取前 62 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 63
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 63 轮（随机基误判概率 < 4^-63，FIPS 186-5 App. B；本实现取前 63 个小质数为固定基）"
+    },
+    {
+      "operation": "primeTest",
+      "params": {
+        "n": "3317044064679887385961981",
+        "rounds": 64
+      },
+      "text": "判定：合数\n位长：82 位（二进制）\n方法：Miller-Rabin 64 轮（随机基误判概率 < 4^-64，FIPS 186-5 App. B；本实现取前 64 个小质数为固定基）"
+    },
+    {
+      "operation": "primeGen",
+      "params": {
+        "bits": 2,
+        "count": 1
+      },
+      "text": "3"
+    },
+    {
+      "operation": "primeGen",
+      "params": {
+        "bits": 2,
+        "count": 2
+      },
+      "text": "3\n3"
+    },
+    {
+      "operation": "primeGen",
+      "params": {
+        "bits": 2,
+        "count": 100
+      },
+      "text": "3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3"
+    }
+  ],
+  "generated": [
+    {
+      "bits": 3,
+      "n": "5"
+    },
+    {
+      "bits": 8,
+      "n": "163"
+    },
+    {
+      "bits": 16,
+      "n": "41077"
+    },
+    {
+      "bits": 32,
+      "n": "2690916721"
+    },
+    {
+      "bits": 64,
+      "n": "11557399287602839417"
+    },
+    {
+      "bits": 128,
+      "n": "213196386816082671711604899349401769903"
+    },
+    {
+      "bits": 256,
+      "n": "72546971124768571271972616221599002120216581561501974228273902028449227534317"
+    },
+    {
+      "bits": 512,
+      "n": "8400365354376203685960835991660149832598430739325312276740102626416145734379569132486681933038281776230202841835522101625304684417348279926070524642877721"
+    },
+    {
+      "bits": 1024,
+      "n": "112630485212820318647941859048943578121886341335081538663018455665881467623438648821693147294613228952452254896177090718685442867429172446108414694175831207324251900459146636893346932284877021643609020347255957731074650528982563891676315877769052617751592081967122271865566353417975405747958122591509370494703"
+    }
+  ]
+}

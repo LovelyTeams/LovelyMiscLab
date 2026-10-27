@@ -37,3 +37,5 @@
 第十五批参考 geo.js、hamming.js、huffman.js（同一 Apache-2.0 固定版本）。保留上游对 geohash.org、Google Open Location Code、IARU Maidenhead、Snyder/USGS WGS84 投影、Richard Hamming 偶校验 SEC 及 RFC 1951 风格 canonical Huffman 分配的来源说明。全部运行实现为 Rust，未新增依赖；上游第四字母对网格扩展、普通 UTM 分区和修正边界均记录在验收源。capture-upstream-geo-coding-vectors.mjs 仅维护固定测试数据。
 
 第十六批参考 color.js；css_named_colors.json 保留固定上游的 W3C CSS Color Module Level 3 / HTML4 147 命名色及表顺序。颜色运行实现全部为 Rust，复用已有 ECMAScript 数字格式化逻辑，没有新增依赖。capture-upstream-color-vectors.mjs 仅用于维护固定参考向量和静态色表；与完整 CSS 解析的差异及严格数值校验记录在验收源。
+
+第十七批参考 primeGen.js；修正固定上游静态目录中 primeGen/primeTest 错指 jwtsign.js 的来源映射。Miller–Rabin 模幂/固定基、奇数候选递增和系统随机均在 Rust 实现，复用 num-bigint/num-integer/num-traits/getrandom，无新依赖。确定性界引用 Sorenson/Webster 的 [Strong Pseudoprimes to Twelve Prime Bases, Theorem 1.1](https://arxiv.org/abs/1509.00864)，不沿用上游错误的 FIPS 表引用和固定基随机误判界文案。capture-upstream-prime-vectors.mjs 仅用于维护对照数据及跨实现候选检验。

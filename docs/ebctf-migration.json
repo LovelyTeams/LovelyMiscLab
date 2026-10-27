@@ -4,11 +4,11 @@
   "license": "Apache-2.0",
   "total": 820,
   "counts": {
-    "migrated": 152,
+    "migrated": 154,
     "partial": 0,
     "blocked": 0,
     "existing-review": 49,
-    "pending": 619
+    "pending": 617
   },
   "operations": [
     {
@@ -7731,14 +7731,58 @@
       "name": "大素数生成",
       "family": "",
       "familyLabel": "",
-      "sourceFile": "src/core/jwtsign.js",
-      "sourceUrl": "https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/jwtsign.js",
-      "status": "pending",
-      "targetNodes": [],
-      "batch": null,
-      "validation": [],
-      "note": "待用 Rust 实现或核验现有节点组合。",
-      "categories": []
+      "sourceFile": "src/core/primeGen.js",
+      "sourceUrl": "https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/primeGen.js",
+      "status": "migrated",
+      "targetNodes": [
+        "prime_generate"
+      ],
+      "batch": 17,
+      "validation": [
+        "crates/misclab-core/tests/migration_primes.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-prime-batch17.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "207 条固定上游样例比较判定与位长，9 个上游生成候选交叉验证；0–999 独立试除、已知强伪素数及因子、所有 64 轮数、2–1024 位生成、18 个 Rust 生成候选上游互通、取消、错误输入、图/独立调用与真实 MCP HTTP 回归通过。",
+      "acceptedAt": "2026-10-27",
+      "directions": [
+        "run"
+      ],
+      "parameterMapping": {
+        "bits": "2–1024 整数，默认 64；系统 CSPRNG，置最高位/最低位，候选 +2，越界重取；2 位固定返回 3。",
+        "count": "1–100 整数，默认 1；允许重复；每项至多 bits×50+1 次候选检验。",
+        "primality": "前 13 个固定小质数基；小于 3317044064679887385961981 为确定性范围，较大通过者为可能素数。"
+      },
+      "knownDifferences": [
+        "固定上游 lazyTables 的源文件映射误指向 jwtsign.js，人工核对并改记实际实现 primeGen.js。",
+        "修正上游把固定基成功标作已证明素数、套用随机基 4^-t 概率界及误引 FIPS 来源的文案；确定性界来自 Sorenson/Webster, Strong Pseudoprimes to Twelve Prime Bases, Theorem 1.1（https://arxiv.org/abs/1509.00864）。",
+        "参数越界/非整数明确报错，代替静默夹取/截断；检验输入最多 16384 字节且数值最多 4096 位；模幂循环支持进度和取消。",
+        "生成使用系统 CSPRNG，不复现上游可配置伪随机源；保留精确位长/数量/检验基规则，JSON 标注每项确定性范围，列表可接续下游。"
+      ],
+      "nodeMappings": [
+        {
+          "nodeId": "prime_generate",
+          "direction": "run",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.math",
+          "params": [
+            {
+              "name": "bits",
+              "default": 64
+            },
+            {
+              "name": "count",
+              "default": 1
+            }
+          ]
+        }
+      ],
+      "categories": [
+        "numeric.math"
+      ]
     },
     {
       "id": "primeTest",
@@ -7746,14 +7790,58 @@
       "name": "素性检验（Miller-Rabin）",
       "family": "",
       "familyLabel": "",
-      "sourceFile": "src/core/jwtsign.js",
-      "sourceUrl": "https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/jwtsign.js",
-      "status": "pending",
-      "targetNodes": [],
-      "batch": null,
-      "validation": [],
-      "note": "待用 Rust 实现或核验现有节点组合。",
-      "categories": []
+      "sourceFile": "src/core/primeGen.js",
+      "sourceUrl": "https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/primeGen.js",
+      "status": "migrated",
+      "targetNodes": [
+        "prime_test"
+      ],
+      "batch": 17,
+      "validation": [
+        "crates/misclab-core/tests/migration_primes.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-prime-batch17.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "207 条固定上游样例比较判定与位长，9 个上游生成候选交叉验证；0–999 独立试除、已知强伪素数及因子、所有 64 轮数、2–1024 位生成、18 个 Rust 生成候选上游互通、取消、错误输入、图/独立调用与真实 MCP HTTP 回归通过。",
+      "acceptedAt": "2026-10-27",
+      "directions": [
+        "run"
+      ],
+      "parameterMapping": {
+        "n": "十进制，可含符号/空格/逗号/下划线；新增可选 text 输入并优先于 n 参数。",
+        "rounds": "1–64 整数，默认 24；小于确定性界固定前 13 基；更大时取前 rounds 个小质数固定基。",
+        "output": "兼容判定和位长含义；修正大数报告为可能素数并给出固定基限制，提供 probable 布尔、bits 数值和依据 JSON。"
+      },
+      "knownDifferences": [
+        "固定上游 lazyTables 的源文件映射误指向 jwtsign.js，人工核对并改记实际实现 primeGen.js。",
+        "修正上游把固定基成功标作已证明素数、套用随机基 4^-t 概率界及误引 FIPS 来源的文案；确定性界来自 Sorenson/Webster, Strong Pseudoprimes to Twelve Prime Bases, Theorem 1.1（https://arxiv.org/abs/1509.00864）。",
+        "参数越界/非整数明确报错，代替静默夹取/截断；检验输入最多 16384 字节且数值最多 4096 位；模幂循环支持进度和取消。",
+        "生成使用系统 CSPRNG，不复现上游可配置伪随机源；保留精确位长/数量/检验基规则，JSON 标注每项确定性范围，列表可接续下游。"
+      ],
+      "nodeMappings": [
+        {
+          "nodeId": "prime_test",
+          "direction": "run",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.math",
+          "params": [
+            {
+              "name": "n",
+              "default": ""
+            },
+            {
+              "name": "rounds",
+              "default": 24
+            }
+          ]
+        }
+      ],
+      "categories": [
+        "numeric.math"
+      ]
     },
     {
       "id": "ecdsaKeyGen",

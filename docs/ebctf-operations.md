@@ -2,7 +2,7 @@
 
 由 `pnpm generate:migration` 生成。来源提交：`ea2bc36dae31c97060f7f2cddad8df5518afad7b`。人工验收源：[ebctf-acceptance.json](ebctf-acceptance.json)，生成器不会覆盖它。
 
-总计 820 项：已迁入 152，部分完成 0，待解决 0，现有候选待核验 49，待迁入 619。
+总计 820 项：已迁入 154，部分完成 0，待解决 0，现有候选待核验 49，待迁入 617。
 
 `existing-review` 仅表示名称匹配，不表示算法、参数或文件处理能力等价。验收范围和批次见 [迁移说明](ebctf-migration.md)；机器可读清单见 [JSON](ebctf-migration.json)。
 
@@ -291,8 +291,8 @@
 | `seed` | SEED（RFC 4269） | block | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/cmacMore.js) |
 | `cmacExt` | CMAC 扩展 | hash | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/cmacMore.js) |
 | `ecdsaReuseK` | ECDSA nonce 重用攻击 | crypto | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/jwtsign.js) |
-| `primeGen` | 大素数生成 | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/jwtsign.js) |
-| `primeTest` | 素性检验（Miller-Rabin） | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/jwtsign.js) |
+| `primeGen` | 大素数生成 | radix | migrated | `prime_generate` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/primeGen.js) |
+| `primeTest` | 素性检验（Miller-Rabin） | radix | migrated | `prime_test` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/primeGen.js) |
 | `ecdsaKeyGen` | ECDSA 密钥对生成 | asym | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/jwtsign.js) |
 | `ecdsaSign` | ECDSA 签名 | asym | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/jwtsign.js) |
 | `ecdsaVerify` | ECDSA 验签 | asym | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/jwtsign.js) |

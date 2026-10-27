@@ -71,6 +71,8 @@ test("foundation migration nodes expose searchable categories and typed previews
     ["huffmanCodec", "huffman_encode", "archive.compression"],
     ["color", "color_convert_encode", "numeric.address"],
     ["colorInfo", "color_info", "numeric.address"],
+    ["primeGen", "prime_generate", "numeric.math"],
+    ["primeTest", "prime_test", "numeric.math"],
   ];
   for (const [upstream, id, category] of expected) {
     const d = D.getState().byId[id];
@@ -86,6 +88,23 @@ test("foundation migration nodes expose searchable categories and typed previews
       if (port.type === "bytes") assert.equal(d.presentation.previews[port.name], "hex");
     }
   }
+});
+
+test("prime generator needs no text input and feeds a configured primality node", async () => {
+  const generator = add("prime_generate"), check = add("prime_test"); connect(generator, check);
+  assert.equal(g().edges.length, 1); g().setParam(generator, "bits", 128);
+  g().undo(); assert.equal(node(generator).data.params.bits, 64); g().redo();
+  const d = D.getState().byId.prime_generate; assert.deepEqual(parseInputs(d.inputs, {}), {});
+  assert.ok(!inlineParams(D.getState().byId.prime_test).some((p) => p.name === "n"));
+  const before = JSON.stringify(g());
+  api.runNodeStreamed = async (id, _nodeId, inputs, params, emit) => {
+    assert.equal(id, "prime_generate"); assert.deepEqual(inputs, {}); assert.equal(params.bits, 2);
+    emit({ kind: "jobStarted", job: "prime-standalone" });
+    return { primes: { type: "stringList", value: ["3", "3", "3"] } };
+  };
+  const result = await executeStandalone(d, {}, d.examples[0].params, () => {});
+  assert.equal(result.status, "success"); assert.equal(result.outputs.primes.value.length, 3);
+  assert.equal(JSON.stringify(g()), before);
 });
 
 test("color conversion direction and RGB outputs remain usable in canvas and standalone", async () => {

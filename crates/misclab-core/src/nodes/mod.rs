@@ -69,6 +69,7 @@ mod numeric_support;
 mod padding_stego;
 mod php_serial;
 mod prelude;
+mod prime_tools;
 mod protobuf_wire;
 mod punycode;
 mod radix64;
@@ -309,6 +310,7 @@ pub fn register_builtins(reg: &mut NodeRegistry) {
     hamming_code::register(reg);
     huffman_codec::register(reg);
     color_codes::register(reg);
+    prime_tools::register(reg);
     numeral_systems::register(reg);
     numeric_bytes::register(reg);
     numeric_reports::register(reg);

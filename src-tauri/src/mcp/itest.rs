@@ -202,6 +202,13 @@ fn server_end_to_end_over_http() {
         "Color analysis failed: {color_resp}"
     );
 
+    let prime = r#"{"jsonrpc":"2.0","id":9,"method":"tools/call","params":{"name":"run_node","arguments":{"descriptorId":"prime_test","inputs":{"text":"2305843009213693951"},"params":{"n":"4"}}}}"#;
+    let (prime_resp, _) = post(addr, TOKEN, Some(&sid), prime);
+    assert!(
+        prime_resp.contains("61") && prime_resp.contains("素数"),
+        "Prime test failed: {prime_resp}"
+    );
+
     // --- tools/call add_node emits a canvas update --------------------------
     let add = r#"{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"add_node","arguments":{"descriptorId":"text_input"}}}"#;
     let (add_resp, _) = post(addr, TOKEN, Some(&sid), add);

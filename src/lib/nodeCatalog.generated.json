@@ -18934,6 +18934,97 @@
     "cost": "heavy"
   },
   {
+    "id": "prime_generate",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.math",
+    "legacyCategories": [
+      "numeric.math"
+    ],
+    "aliases": [
+      "primeGen",
+      "prime generation",
+      "素数生成",
+      "prime_generate"
+    ],
+    "upstreamIds": [
+      "primeGen"
+    ],
+    "family": "prime generation",
+    "presentation": {
+      "inlineParams": [
+        "bits",
+        "count"
+      ],
+      "previews": {
+        "json": "json",
+        "primes": "text",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "2 位候选（可复现）",
+        "inputs": {},
+        "params": {
+          "bits": 2,
+          "count": 3
+        }
+      }
+    ],
+    "displayName": "大素数候选生成",
+    "description": "本地系统 CSPRNG 生成指定位数的奇数，经 Miller–Rabin 前 13 个固定基筛选；超过 3317044064679887385961981 的候选未证明素性，JSON 标出依据。支持进度/取消，每个候选最多 bits×50+1 次尝试。",
+    "color": "#06b6d4",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "primes",
+        "label": "候选列表",
+        "type": "stringList",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "生成依据",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "bits",
+        "label": "位数",
+        "widget": {
+          "kind": "number",
+          "min": 2,
+          "max": 1024,
+          "step": 1
+        },
+        "default": 64,
+        "description": "2–1024 位；系统随机奇数逐个 +2，越界重新取随机数。2 位固定返回 3。"
+      },
+      {
+        "name": "count",
+        "label": "数量",
+        "widget": {
+          "kind": "number",
+          "min": 1,
+          "max": 100,
+          "step": 1
+        },
+        "default": 1,
+        "description": "1–100 个；允许重复，与上游一致。每个候选用 13 个固定质数基检验。"
+      }
+    ],
+    "cost": "heavy"
+  },
+  {
     "id": "number_theory",
     "category": "进制与数值",
     "categoryId": "numeric",
@@ -19152,6 +19243,112 @@
       }
     ],
     "cost": "heavy"
+  },
+  {
+    "id": "prime_test",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.math",
+    "legacyCategories": [
+      "numeric.math"
+    ],
+    "aliases": [
+      "primeTest",
+      "primeTest",
+      "primality",
+      "Miller Rabin",
+      "素数判断",
+      "prime_test"
+    ],
+    "upstreamIds": [
+      "primeTest"
+    ],
+    "family": "primeTest",
+    "presentation": {
+      "inlineParams": [
+        "rounds"
+      ],
+      "previews": {
+        "bits": "text",
+        "json": "json",
+        "probable": "text",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "2305843009213693951"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "素性检验 Miller–Rabin",
+    "description": "检验十进制大整数，text 连线优先于 n 参数；报告确定性范围与可能素数的区别。大数使用固定基，不宣称随机基误判概率。模幂中可取消。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "十进制整数（优先）",
+        "type": "text",
+        "required": false
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "probable",
+        "label": "通过素性检验",
+        "type": "bool",
+        "required": true
+      },
+      {
+        "name": "bits",
+        "label": "位长",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "检验依据",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "n",
+        "label": "待检整数 n",
+        "widget": {
+          "kind": "text",
+          "multiline": true
+        },
+        "default": "",
+        "description": "未连接 text 时使用；十进制，可含空格、逗号和下划线；最多 4096 位。"
+      },
+      {
+        "name": "rounds",
+        "label": "检验轮数",
+        "widget": {
+          "kind": "number",
+          "min": 1,
+          "max": 64,
+          "step": 1
+        },
+        "default": 24,
+        "description": "小于确定性界时固定用前 13 个质数基；更大整数用前 rounds 个质数固定基。通过时仅报告可能素数。"
+      }
+    ],
+    "cost": "medium"
   },
   {
     "id": "roman_numeral",
