@@ -18332,6 +18332,170 @@
     "cost": "cheap"
   },
   {
+    "id": "hamming_code_decode",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.bits",
+    "legacyCategories": [
+      "numeric.bits"
+    ],
+    "aliases": [
+      "hammingCode",
+      "Hamming Code",
+      "汉明码",
+      "单比特纠错",
+      "SEC",
+      "hamming_code"
+    ],
+    "upstreamIds": [
+      "hammingCode"
+    ],
+    "family": "hammingCode",
+    "presentation": {
+      "inlineParams": [
+        "k"
+      ],
+      "previews": {
+        "json": "json",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "0110011"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "海明码 Hamming 纠错解码",
+    "description": "通用偶校验单比特纠错海明码（SEC）；输入剔除非 0/1 字符。每块仅保证纠正 1 位错误，多位错误可能误纠正；不具备 SECDED 双错检测。输入最多 1 MiB。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "分块与纠错详情",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "k",
+        "label": "每块数据位 k",
+        "widget": {
+          "kind": "number",
+          "min": 1,
+          "max": 65536,
+          "step": 1
+        },
+        "default": 4,
+        "description": "4 为 (7,4)，11 为 (15,11)；编码末块补 0，解码忽略不足一块的尾位，详情记录数量。"
+      }
+    ],
+    "cost": "cheap"
+  },
+  {
+    "id": "hamming_code_encode",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.bits",
+    "legacyCategories": [
+      "numeric.bits"
+    ],
+    "aliases": [
+      "hammingCode",
+      "Hamming Code",
+      "汉明码",
+      "单比特纠错",
+      "SEC",
+      "hamming_code"
+    ],
+    "upstreamIds": [
+      "hammingCode"
+    ],
+    "family": "hammingCode",
+    "presentation": {
+      "inlineParams": [
+        "k"
+      ],
+      "previews": {
+        "json": "json",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "1011"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "海明码 Hamming 编码",
+    "description": "通用偶校验单比特纠错海明码（SEC）；输入剔除非 0/1 字符。每块仅保证纠正 1 位错误，多位错误可能误纠正；不具备 SECDED 双错检测。输入最多 1 MiB。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "分块与纠错详情",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "k",
+        "label": "每块数据位 k",
+        "widget": {
+          "kind": "number",
+          "min": 1,
+          "max": 65536,
+          "step": 1
+        },
+        "default": 4,
+        "description": "4 为 (7,4)，11 为 (15,11)；编码末块补 0，解码忽略不足一块的尾位，详情记录数量。"
+      }
+    ],
+    "cost": "cheap"
+  },
+  {
     "id": "to_hexdump",
     "category": "进制与数值",
     "categoryId": "numeric",
@@ -21231,6 +21395,160 @@
     "cost": "cheap"
   },
   {
+    "id": "geo_hash_encode",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.address",
+    "legacyCategories": [
+      "numeric.address"
+    ],
+    "aliases": [
+      "geoHash",
+      "GPS",
+      "地理坐标",
+      "geoHash",
+      "geo_hash"
+    ],
+    "upstreamIds": [
+      "geoHash"
+    ],
+    "family": "geographic coordinates",
+    "presentation": {
+      "inlineParams": [
+        "precision"
+      ],
+      "previews": {
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "57.649,10.407"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "Geohash 编码",
+    "description": "地理 Base32 交替二分；解码返回格子中心点及边界，文本保留 6 位小数。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "precision",
+        "label": "编码长度",
+        "widget": {
+          "kind": "number",
+          "min": 1,
+          "max": 12,
+          "step": 1
+        },
+        "default": 11,
+        "description": "1–12 个字符；越长精度越高。解码以输入自身长度为准。"
+      }
+    ],
+    "cost": "cheap"
+  },
+  {
+    "id": "geo_hash_decode",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.address",
+    "legacyCategories": [
+      "numeric.address"
+    ],
+    "aliases": [
+      "geoHash",
+      "GPS",
+      "地理坐标",
+      "geoHash",
+      "geo_hash"
+    ],
+    "upstreamIds": [
+      "geoHash"
+    ],
+    "family": "geographic coordinates",
+    "presentation": {
+      "inlineParams": [],
+      "previews": {
+        "json": "json",
+        "latitude": "text",
+        "longitude": "text",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "u4pruydqqvj"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "Geohash 解码",
+    "description": "地理 Base32 交替二分；解码返回格子中心点及边界，文本保留 6 位小数。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "latitude",
+        "label": "纬度",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "longitude",
+        "label": "经度",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "坐标详情",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [],
+    "cost": "cheap"
+  },
+  {
     "id": "ipv4_integer_encode",
     "category": "进制与数值",
     "categoryId": "numeric",
@@ -21635,6 +21953,603 @@
         "description": "colon 冒号；hyphen 连字符；dot 点分；int 十进制整数。"
       }
     ],
+    "cost": "cheap"
+  },
+  {
+    "id": "geo_maidenhead_encode",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.address",
+    "legacyCategories": [
+      "numeric.address"
+    ],
+    "aliases": [
+      "geoMaidenhead",
+      "GPS",
+      "地理坐标",
+      "geoMaidenhead",
+      "geo_maidenhead"
+    ],
+    "upstreamIds": [
+      "geoMaidenhead"
+    ],
+    "family": "geographic coordinates",
+    "presentation": {
+      "inlineParams": [
+        "pairs"
+      ],
+      "previews": {
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "57.649,10.407"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "Maidenhead 网格 编码",
+    "description": "业余无线电网格编码；2/3 对兼容常用网格，4 对保留 EBCTF 字母扩展（24×24），不是十进制扩展。解码输出格子中心。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "pairs",
+        "label": "精度对数",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "2",
+            "3",
+            "4"
+          ]
+        },
+        "default": "3",
+        "description": "2 对=4 字符，3 对=6 字符；第 4 对按上游使用 a–x 字母扩展。"
+      }
+    ],
+    "cost": "cheap"
+  },
+  {
+    "id": "geo_maidenhead_decode",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.address",
+    "legacyCategories": [
+      "numeric.address"
+    ],
+    "aliases": [
+      "geoMaidenhead",
+      "GPS",
+      "地理坐标",
+      "geoMaidenhead",
+      "geo_maidenhead"
+    ],
+    "upstreamIds": [
+      "geoMaidenhead"
+    ],
+    "family": "geographic coordinates",
+    "presentation": {
+      "inlineParams": [],
+      "previews": {
+        "json": "json",
+        "latitude": "text",
+        "longitude": "text",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "JO57fp"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "Maidenhead 网格 解码",
+    "description": "业余无线电网格编码；2/3 对兼容常用网格，4 对保留 EBCTF 字母扩展（24×24），不是十进制扩展。解码输出格子中心。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "latitude",
+        "label": "纬度",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "longitude",
+        "label": "经度",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "坐标详情",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [],
+    "cost": "cheap"
+  },
+  {
+    "id": "geo_plus_code_encode",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.address",
+    "legacyCategories": [
+      "numeric.address"
+    ],
+    "aliases": [
+      "geoPlusCode",
+      "GPS",
+      "地理坐标",
+      "geoPlusCode",
+      "geo_plus_code"
+    ],
+    "upstreamIds": [
+      "geoPlusCode"
+    ],
+    "family": "geographic coordinates",
+    "presentation": {
+      "inlineParams": [
+        "codeLength"
+      ],
+      "previews": {
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "57.649,10.407"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "Plus Code / OLC 编码",
+    "description": "Open Location Code 全码；支持填充及 4×5 网格细分，解码输出中心点；短码需参考点，不能独立解码。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "codeLength",
+        "label": "显著位数",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "2",
+            "4",
+            "6",
+            "8",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15"
+          ]
+        },
+        "default": "10",
+        "description": "不含 +；2/4/6 位用 0 填充，11–15 位增加细分。"
+      }
+    ],
+    "cost": "cheap"
+  },
+  {
+    "id": "geo_plus_code_decode",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.address",
+    "legacyCategories": [
+      "numeric.address"
+    ],
+    "aliases": [
+      "geoPlusCode",
+      "GPS",
+      "地理坐标",
+      "geoPlusCode",
+      "geo_plus_code"
+    ],
+    "upstreamIds": [
+      "geoPlusCode"
+    ],
+    "family": "geographic coordinates",
+    "presentation": {
+      "inlineParams": [],
+      "previews": {
+        "json": "json",
+        "latitude": "text",
+        "longitude": "text",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "9F9GJCX4+JR"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "Plus Code / OLC 解码",
+    "description": "Open Location Code 全码；支持填充及 4×5 网格细分，解码输出中心点；短码需参考点，不能独立解码。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "latitude",
+        "label": "纬度",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "longitude",
+        "label": "经度",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "坐标详情",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [],
+    "cost": "cheap"
+  },
+  {
+    "id": "geo_utm_encode",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.address",
+    "legacyCategories": [
+      "numeric.address"
+    ],
+    "aliases": [
+      "geoUtm",
+      "GPS",
+      "地理坐标",
+      "geoUtm",
+      "geo_utm"
+    ],
+    "upstreamIds": [
+      "geoUtm"
+    ],
+    "family": "geographic coordinates",
+    "presentation": {
+      "inlineParams": [],
+      "previews": {
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "57.649,10.407"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "UTM 坐标 编码",
+    "description": "WGS84 / Snyder 投影，按上游每 6° 分区（无挪威/斯瓦尔巴特殊分区）；纬度 -80 至 84°，东距/北距按米取整。180° 经线归第 60 区。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "params": [],
+    "cost": "cheap"
+  },
+  {
+    "id": "geo_utm_decode",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.address",
+    "legacyCategories": [
+      "numeric.address"
+    ],
+    "aliases": [
+      "geoUtm",
+      "GPS",
+      "地理坐标",
+      "geoUtm",
+      "geo_utm"
+    ],
+    "upstreamIds": [
+      "geoUtm"
+    ],
+    "family": "geographic coordinates",
+    "presentation": {
+      "inlineParams": [],
+      "previews": {
+        "json": "json",
+        "latitude": "text",
+        "longitude": "text",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "32V 583245 6397615"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "UTM 坐标 解码",
+    "description": "WGS84 / Snyder 投影，按上游每 6° 分区（无挪威/斯瓦尔巴特殊分区）；纬度 -80 至 84°，东距/北距按米取整。180° 经线归第 60 区。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "latitude",
+        "label": "纬度",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "longitude",
+        "label": "经度",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "坐标详情",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [],
+    "cost": "cheap"
+  },
+  {
+    "id": "geo_dms_encode",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.address",
+    "legacyCategories": [
+      "numeric.address"
+    ],
+    "aliases": [
+      "geoDms",
+      "GPS",
+      "地理坐标",
+      "geoDms",
+      "geo_dms"
+    ],
+    "upstreamIds": [
+      "geoDms"
+    ],
+    "family": "geographic coordinates",
+    "presentation": {
+      "inlineParams": [],
+      "previews": {
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "57.649,10.407"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "度分秒 DMS 编码",
+    "description": "纬度,经度与度分秒互转；输出秒保留 3 位，解码文本保留 6 位小数，数值端口保留精度。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "params": [],
+    "cost": "cheap"
+  },
+  {
+    "id": "geo_dms_decode",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.address",
+    "legacyCategories": [
+      "numeric.address"
+    ],
+    "aliases": [
+      "geoDms",
+      "GPS",
+      "地理坐标",
+      "geoDms",
+      "geo_dms"
+    ],
+    "upstreamIds": [
+      "geoDms"
+    ],
+    "family": "geographic coordinates",
+    "presentation": {
+      "inlineParams": [],
+      "previews": {
+        "json": "json",
+        "latitude": "text",
+        "longitude": "text",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "57°38'56.4\"N, 10°24'25.2\"E"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "度分秒 DMS 解码",
+    "description": "纬度,经度与度分秒互转；输出秒保留 3 位，解码文本保留 6 位小数，数值端口保留精度。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "latitude",
+        "label": "纬度",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "longitude",
+        "label": "经度",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "坐标详情",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [],
     "cost": "cheap"
   },
   {
@@ -27353,6 +28268,282 @@
       }
     ],
     "cost": "heavy"
+  },
+  {
+    "id": "huffman_encode",
+    "category": "压缩与归档",
+    "categoryId": "archive",
+    "subcategoryId": "archive.compression",
+    "legacyCategories": [
+      "archive.compression"
+    ],
+    "aliases": [
+      "huffmanCodec",
+      "Huffman",
+      "哈夫曼",
+      "前缀码",
+      "canonical",
+      "huffman"
+    ],
+    "upstreamIds": [
+      "huffmanCodec"
+    ],
+    "family": "huffmanCodec",
+    "presentation": {
+      "inlineParams": [
+        "mode"
+      ],
+      "previews": {
+        "bit_length": "text",
+        "bytes": "hex",
+        "code_table": "text",
+        "hex": "text",
+        "packet": "json",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "data": {
+            "type": "text",
+            "value": "ABBA"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "Huffman 哈夫曼编码",
+    "description": "通用 MSB-first Huffman，不是 DEFLATE 文件格式。报告兼容上游，独立端口保留完整数据；packet 可直接接解码 data，或同时连接 bytes / code_table / bit_length。权重/码表在侧栏编辑。编码最多 1 MiB，位流/解码结果最多 8 MiB。",
+    "color": "#f59e0b",
+    "inputs": [
+      {
+        "name": "data",
+        "label": "文本或原始字节",
+        "type": "any",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "bytes",
+        "label": "MSB 位流",
+        "type": "bytes",
+        "required": true
+      },
+      {
+        "name": "hex",
+        "label": "完整 Hex",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "bit_length",
+        "label": "真实位数",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "code_table",
+        "label": "可复用码表",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "packet",
+        "label": "位流及码表数据包",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "mode",
+        "label": "码表来源",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "freq",
+            "table"
+          ]
+        },
+        "default": "freq",
+        "description": "freq 为确定性 canonical 编码，按 (频率, 最小字节) 合树；table 使用前缀码表。数据包或码表连线优先。"
+      },
+      {
+        "name": "weights",
+        "label": "权重表",
+        "widget": {
+          "kind": "text",
+          "multiline": true
+        },
+        "default": "",
+        "description": "每行 符号 频率，例如 a 5；支持 \\xNN/0xNN。编码留空自动统计 UTF-8/原始字节，解码需与编码一致。"
+      },
+      {
+        "name": "table",
+        "label": "用户码表",
+        "widget": {
+          "kind": "text",
+          "multiline": true
+        },
+        "default": "",
+        "description": "每行 符号 01码字；例如 a 0、b 10、c 11。拒绝重复、非前缀表；字节符号可写 \\xNN。# 开头是注释。"
+      }
+    ],
+    "cost": "medium"
+  },
+  {
+    "id": "huffman_decode",
+    "category": "压缩与归档",
+    "categoryId": "archive",
+    "subcategoryId": "archive.compression",
+    "legacyCategories": [
+      "archive.compression"
+    ],
+    "aliases": [
+      "huffmanCodec",
+      "Huffman",
+      "哈夫曼",
+      "前缀码",
+      "canonical",
+      "huffman"
+    ],
+    "upstreamIds": [
+      "huffmanCodec"
+    ],
+    "family": "huffmanCodec",
+    "presentation": {
+      "inlineParams": [
+        "mode",
+        "bitLen"
+      ],
+      "previews": {
+        "bytes": "hex",
+        "decoded": "text",
+        "json": "json",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "data": {
+            "type": "text",
+            "value": "60"
+          }
+        },
+        "params": {
+          "weights": "A 2\nB 2",
+          "bitLen": 4
+        }
+      }
+    ],
+    "displayName": "Huffman 哈夫曼解码",
+    "description": "通用 MSB-first Huffman，不是 DEFLATE 文件格式。报告兼容上游，独立端口保留完整数据；packet 可直接接解码 data，或同时连接 bytes / code_table / bit_length。权重/码表在侧栏编辑。编码最多 1 MiB，位流/解码结果最多 8 MiB。",
+    "color": "#f59e0b",
+    "inputs": [
+      {
+        "name": "data",
+        "label": "Hex / 字节 / 数据包",
+        "type": "any",
+        "required": true
+      },
+      {
+        "name": "code_table",
+        "label": "码表（可选）",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "bit_length",
+        "label": "真实位数（可选）",
+        "type": "number",
+        "required": false
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "bytes",
+        "label": "完整解码字节",
+        "type": "bytes",
+        "required": true
+      },
+      {
+        "name": "decoded",
+        "label": "解码文本",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "解码详情",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "mode",
+        "label": "码表来源",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "freq",
+            "table"
+          ]
+        },
+        "default": "freq",
+        "description": "freq 为确定性 canonical 编码，按 (频率, 最小字节) 合树；table 使用前缀码表。数据包或码表连线优先。"
+      },
+      {
+        "name": "weights",
+        "label": "权重表",
+        "widget": {
+          "kind": "text",
+          "multiline": true
+        },
+        "default": "",
+        "description": "每行 符号 频率，例如 a 5；支持 \\xNN/0xNN。编码留空自动统计 UTF-8/原始字节，解码需与编码一致。"
+      },
+      {
+        "name": "table",
+        "label": "用户码表",
+        "widget": {
+          "kind": "text",
+          "multiline": true
+        },
+        "default": "",
+        "description": "每行 符号 01码字；例如 a 0、b 10、c 11。拒绝重复、非前缀表；字节符号可写 \\xNN。# 开头是注释。"
+      },
+      {
+        "name": "bitLen",
+        "label": "真实位数",
+        "widget": {
+          "kind": "number",
+          "min": 0,
+          "max": 67108864,
+          "step": 1
+        },
+        "default": 0,
+        "description": "0 表示使用全部字节的位数（含末尾填充）；正确还原应使用编码输出 bit_length 或直接连接 packet。"
+      }
+    ],
+    "cost": "medium"
   },
   {
     "id": "compress",

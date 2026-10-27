@@ -187,6 +187,14 @@ fn server_end_to_end_over_http() {
         "typed hex_range failed: {range_resp}"
     );
 
+    // A structured Huffman packet remains JSON through the real MCP adapter.
+    let packet = r#"{"jsonrpc":"2.0","id":7,"method":"tools/call","params":{"name":"run_node","arguments":{"descriptorId":"huffman_decode","inputs":{"data":{"type":"json","value":{"format":"huffman-msb","hex":"60","bitLen":4,"table":"\\x41 0\n\\x42 1"}}}}}}"#;
+    let (packet_resp, _) = post(addr, TOKEN, Some(&sid), packet);
+    assert!(
+        packet_resp.contains("ABBA"),
+        "Huffman packet failed: {packet_resp}"
+    );
+
     // --- tools/call add_node emits a canvas update --------------------------
     let add = r#"{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"add_node","arguments":{"descriptorId":"text_input"}}}"#;
     let (add_resp, _) = post(addr, TOKEN, Some(&sid), add);

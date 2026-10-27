@@ -2,7 +2,7 @@
 
 由 `pnpm generate:migration` 生成。来源提交：`ea2bc36dae31c97060f7f2cddad8df5518afad7b`。人工验收源：[ebctf-acceptance.json](ebctf-acceptance.json)，生成器不会覆盖它。
 
-总计 820 项：已迁入 143，部分完成 0，待解决 0，现有候选待核验 49，待迁入 628。
+总计 820 项：已迁入 150，部分完成 0，待解决 0，现有候选待核验 49，待迁入 621。
 
 `existing-review` 仅表示名称匹配，不表示算法、参数或文件处理能力等价。验收范围和批次见 [迁移说明](ebctf-migration.md)；机器可读清单见 [JSON](ebctf-migration.json)。
 
@@ -394,11 +394,11 @@
 | `miller` | 密勒码 | fancy | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/signal.js) |
 | `fourB5B` | 4B5B 编码 | fancy | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/signal.js) |
 | `pwmPpm` | PWM/PPM 脉冲调制 | fancy | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/signal.js) |
-| `geoDms` | 度分秒 ↔ 十进制 | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/geo.js) |
-| `geoHash` | Geohash 编码 | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/geo.js) |
-| `geoPlusCode` | Plus Code / OLC | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/geo.js) |
-| `geoMaidenhead` | Maidenhead 网格 | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/geo.js) |
-| `geoUtm` | UTM 坐标 | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/geo.js) |
+| `geoDms` | 度分秒 ↔ 十进制 | radix | migrated | `geo_dms_encode`, `geo_dms_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/geo.js) |
+| `geoHash` | Geohash 编码 | radix | migrated | `geo_hash_encode`, `geo_hash_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/geo.js) |
+| `geoPlusCode` | Plus Code / OLC | radix | migrated | `geo_plus_code_encode`, `geo_plus_code_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/geo.js) |
+| `geoMaidenhead` | Maidenhead 网格 | radix | migrated | `geo_maidenhead_encode`, `geo_maidenhead_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/geo.js) |
+| `geoUtm` | UTM 坐标 | radix | migrated | `geo_utm_encode`, `geo_utm_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/geo.js) |
 | `color` | 颜色编码互转 | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/color.js) |
 | `colorInfo` | 颜色全息信息 | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/color.js) |
 | `musicNotation` | 音乐记号互转 | fancy | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/music.js) |
@@ -479,7 +479,7 @@
 | `lz4Dec` | LZ4 解压 | archive | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/compressExt2.js) |
 | `bzip2Dec` | bzip2 解压 | archive | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/compressExt2.js) |
 | `fracmorse` | 分数摩斯 FracMorse | fancy | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/fracmorse.js) |
-| `hammingCode` | 海明码 Hamming Code | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/hamming.js) |
+| `hammingCode` | 海明码 Hamming Code | radix | migrated | `hamming_code_encode`, `hamming_code_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/hamming.js) |
 | `snow` | SNOW 空白隐写 | stegoText | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/snow.js) |
 | `bazeries` | Bazeries 密码 | classic | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/bazeries.js) |
 | `fenham` | Fenham 密码 | classic | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/fenham.js) |
@@ -701,7 +701,7 @@
 | `img2bits` | 图片转二进制点阵 | image | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/bin2img.js) |
 | `imageToData` | 图片还原数值数据 | image | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/dataToImage.js) |
 | `dataToImage` | 数值数据渲染成图 | image | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/dataToImage.js) |
-| `huffmanCodec` | 哈夫曼编解码（通用） | data | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/huffman.js) |
+| `huffmanCodec` | 哈夫曼编解码（通用） | data | migrated | `huffman_encode`, `huffman_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/huffman.js) |
 | `imgFft` | 图像 2D FFT 幅度谱 | stegoFile | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/imgFft.js) |
 | `mcNbtView` | Minecraft NBT 树查看器 | forensic | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/mcNbt.js) |
 | `formatSniff` | 格式嗅探 | analysis | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/formatSniff.js) |

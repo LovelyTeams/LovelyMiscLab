@@ -62,6 +62,13 @@ test("foundation migration nodes expose searchable categories and typed previews
     ["hexRange", "hex_range", "numeric.bits"],
     ["hexStats", "hex_stats", "analysis.statistics"],
     ["bitPlaneExtract", "bit_plane_extract", "numeric.bits"],
+    ["geoDms", "geo_dms_encode", "numeric.address"],
+    ["geoHash", "geo_hash_decode", "numeric.address"],
+    ["geoPlusCode", "geo_plus_code_encode", "numeric.address"],
+    ["geoMaidenhead", "geo_maidenhead_decode", "numeric.address"],
+    ["geoUtm", "geo_utm_encode", "numeric.address"],
+    ["hammingCode", "hamming_code_decode", "numeric.bits"],
+    ["huffmanCodec", "huffman_encode", "archive.compression"],
   ];
   for (const [upstream, id, category] of expected) {
     const d = D.getState().byId[id];
@@ -77,6 +84,48 @@ test("foundation migration nodes expose searchable categories and typed previews
       if (port.type === "bytes") assert.equal(d.presentation.previews[port.name], "hex");
     }
   }
+});
+
+test("Huffman packets connect with optional ports, preserve configuration and run independently", async () => {
+  const encode = add("huffman_encode"), decode = add("huffman_decode"), stats = add("hex_stats");
+  connect(encode, decode, "packet", "data"); connect(decode, stats, "bytes", "data");
+  assert.equal(g().edges.length, 2);
+  g().setParam(encode, "mode", "table"); g().setParam(encode, "table", "a 0\nb 10\nc 11");
+  g().undo(); assert.equal(node(encode).data.params.table, ""); g().redo();
+  assert.equal(node(encode).data.params.table, "a 0\nb 10\nc 11");
+  const d = D.getState().byId.huffman_decode;
+  assert.ok(!inlineParams(d).some((p) => p.name === "weights" || p.name === "table"));
+  const packet = { format: "huffman-msb", hex: "60", bitLen: 4, table: "\\x41 0\n\\x42 1" };
+  const inputs = parseInputs(d.inputs, { data: { format: "json", text: JSON.stringify(packet) } });
+  assert.deepEqual(inputs, { data: { type: "json", value: packet } });
+  const before = JSON.stringify(g());
+  api.runNodeStreamed = async (id, _nodeId, input, _params, emit) => {
+    assert.equal(id, "huffman_decode"); assert.deepEqual(input, inputs);
+    emit({ kind: "jobStarted", job: "huffman-standalone" });
+    return { bytes: { type: "bytes", value: [65, 66, 66, 65] } };
+  };
+  const result = await executeStandalone(d, inputs, {}, () => {});
+  assert.equal(result.status, "success"); assert.deepEqual(result.outputs.bytes.value, [65, 66, 66, 65]);
+  assert.equal(JSON.stringify(g()), before);
+  g().selectAll(); g().deleteSelection(); assert.equal(g().nodes.length, 0);
+  g().undo(); assert.equal(g().nodes.length, 3); assert.equal(g().edges.length, 2);
+});
+
+test("geographic and Hamming parameters are validated and can be planned with typed output ports", () => {
+  const plan = { notes: "decode then encode coordinates", nodes: [
+    { key: "input", descriptorId: "text_input", params: { text: "u4pruydqqvj" }, position: { x: 0, y: 0 } },
+    { key: "decode", descriptorId: "geo_hash_decode", params: {}, position: { x: 250, y: 0 } },
+    { key: "encode", descriptorId: "geo_plus_code_encode", params: { codeLength: "15" }, position: { x: 500, y: 0 } },
+  ], edges: [
+    { from: { node: "input", port: "text" }, to: { node: "decode", port: "text" } },
+    { from: { node: "decode", port: "text" }, to: { node: "encode", port: "text" } },
+  ] };
+  assert.equal(preparePlan(plan, D.getState().byId).nodes.length, 3);
+  const hamming = add("hamming_code_encode"); g().setParam(hamming, "k", 11);
+  assert.equal(node(hamming).data.params.k, 11); g().undo(); assert.equal(node(hamming).data.params.k, 4);
+  assert.equal(D.getState().byId.geo_hash_decode.outputs.find((p) => p.name === "latitude").type, "number");
+  plan.nodes[2].params.codeLength = "3";
+  assert.throws(() => preparePlan(plan, D.getState().byId), /参数|选项/);
 });
 
 test("foundation nodes wire binary results, edit parameters, undo and invoke independently", async () => {

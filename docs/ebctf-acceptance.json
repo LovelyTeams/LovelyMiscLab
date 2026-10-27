@@ -6906,6 +6906,378 @@
           ]
         }
       ]
+    },
+    "geoDms": {
+      "status": "migrated",
+      "batch": 15,
+      "acceptedAt": "2026-10-27",
+      "targetNodes": [
+        "geo_dms_encode",
+        "geo_dms_decode"
+      ],
+      "directions": [
+        "encode",
+        "decode"
+      ],
+      "parameterMapping": {
+        "input": "text=纬度,经度 / 度分秒；encode 秒保留 3 位，decode 文本保留 6 位，latitude/longitude 保留数值精度。"
+      },
+      "knownDifferences": [
+        "新增数值及 JSON 端口；严格拒绝带数值垃圾后缀/非有限数的 DMS；输入限制 4096 字节。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_geo_coding.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-geo-coding-batch15.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "820 条固定上游对照向量覆盖 7 项操作，全部声明方向/选项；另验逐位海明纠错、坐标边界、Huffman 全字节/Unicode/深树、取消、错误/资源限制、图与独立调用一致，以及真实 MCP HTTP JSON 数据包。",
+      "nodeMappings": [
+        {
+          "nodeId": "geo_dms_encode",
+          "direction": "encode",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.address",
+          "params": []
+        },
+        {
+          "nodeId": "geo_dms_decode",
+          "direction": "decode",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.address",
+          "params": []
+        }
+      ]
+    },
+    "geoHash": {
+      "status": "migrated",
+      "batch": 15,
+      "acceptedAt": "2026-10-27",
+      "targetNodes": [
+        "geo_hash_encode",
+        "geo_hash_decode"
+      ],
+      "directions": [
+        "encode",
+        "decode"
+      ],
+      "parameterMapping": {
+        "precision": "encode 1–12 整数，默认 11，兼容上游数值字符串；decode 以输入码长为准。"
+      },
+      "knownDifferences": [
+        "新增中心点数值及 JSON 边界；拒绝越界精度，代替上游静默夹取；解码允许 1–64 字符，输入限制 4096 字节。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_geo_coding.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-geo-coding-batch15.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "820 条固定上游对照向量覆盖 7 项操作，全部声明方向/选项；另验逐位海明纠错、坐标边界、Huffman 全字节/Unicode/深树、取消、错误/资源限制、图与独立调用一致，以及真实 MCP HTTP JSON 数据包。",
+      "nodeMappings": [
+        {
+          "nodeId": "geo_hash_encode",
+          "direction": "encode",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.address",
+          "params": [
+            {
+              "name": "precision",
+              "default": 11
+            }
+          ]
+        },
+        {
+          "nodeId": "geo_hash_decode",
+          "direction": "decode",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.address",
+          "params": []
+        }
+      ]
+    },
+    "geoPlusCode": {
+      "status": "migrated",
+      "batch": 15,
+      "acceptedAt": "2026-10-27",
+      "targetNodes": [
+        "geo_plus_code_encode",
+        "geo_plus_code_decode"
+      ],
+      "directions": [
+        "encode",
+        "decode"
+      ],
+      "parameterMapping": {
+        "codeLength": "encode 显著位数 2/4/6/8/10/11–15，默认 10，不含 +；decode 仅完整全码，无参考点时拒绝短码。"
+      },
+      "knownDifferences": [
+        "新增中心点数值与 JSON；超出 15 的编码长度报错，代替静默截断；解码仍按上游最多解释 15 显著位。输入限制 4096 字节。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_geo_coding.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-geo-coding-batch15.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "820 条固定上游对照向量覆盖 7 项操作，全部声明方向/选项；另验逐位海明纠错、坐标边界、Huffman 全字节/Unicode/深树、取消、错误/资源限制、图与独立调用一致，以及真实 MCP HTTP JSON 数据包。",
+      "nodeMappings": [
+        {
+          "nodeId": "geo_plus_code_encode",
+          "direction": "encode",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.address",
+          "params": [
+            {
+              "name": "codeLength",
+              "default": "10"
+            }
+          ]
+        },
+        {
+          "nodeId": "geo_plus_code_decode",
+          "direction": "decode",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.address",
+          "params": []
+        }
+      ]
+    },
+    "geoMaidenhead": {
+      "status": "migrated",
+      "batch": 15,
+      "acceptedAt": "2026-10-27",
+      "targetNodes": [
+        "geo_maidenhead_encode",
+        "geo_maidenhead_decode"
+      ],
+      "directions": [
+        "encode",
+        "decode"
+      ],
+      "parameterMapping": {
+        "pairs": "encode 2/3/4 对，默认 3；第 4 对按固定上游采用 a–x 的 24×24 字母扩展，非十进制扩展；decode 按输入自身长度。"
+      },
+      "knownDifferences": [
+        "经纬度上界 90/180 归最后有效格，修复上游输出 S 字段后无法反解的问题；新增中心点数值/JSON。",
+        "拒绝越界精度，代替上游静默取 3 对；输入限制 4096 字节。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_geo_coding.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-geo-coding-batch15.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "820 条固定上游对照向量覆盖 7 项操作，全部声明方向/选项；另验逐位海明纠错、坐标边界、Huffman 全字节/Unicode/深树、取消、错误/资源限制、图与独立调用一致，以及真实 MCP HTTP JSON 数据包。",
+      "nodeMappings": [
+        {
+          "nodeId": "geo_maidenhead_encode",
+          "direction": "encode",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.address",
+          "params": [
+            {
+              "name": "pairs",
+              "default": "3"
+            }
+          ]
+        },
+        {
+          "nodeId": "geo_maidenhead_decode",
+          "direction": "decode",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.address",
+          "params": []
+        }
+      ]
+    },
+    "geoUtm": {
+      "status": "migrated",
+      "batch": 15,
+      "acceptedAt": "2026-10-27",
+      "targetNodes": [
+        "geo_utm_encode",
+        "geo_utm_decode"
+      ],
+      "directions": [
+        "encode",
+        "decode"
+      ],
+      "parameterMapping": {
+        "projection": "无参数；WGS84/Snyder 级数与每 6° 普通分区，保留上游不采用挪威/斯瓦尔巴特殊分区的口径；encode 按米取整；decode 按带区判断南北半球。"
+      },
+      "knownDifferences": [
+        "180° 经线归第 60 区，修复上游第 61 区非法结果；反解只允许因米取整产生的 0.00001° 经度边界误差并夹至 ±180。",
+        "东距限制 0–1000000 米，北距 0–10000000 米，拒绝非有限/越界反解；新增数值/JSON 端口，输入限制 4096 字节。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_geo_coding.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-geo-coding-batch15.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "820 条固定上游对照向量覆盖 7 项操作，全部声明方向/选项；另验逐位海明纠错、坐标边界、Huffman 全字节/Unicode/深树、取消、错误/资源限制、图与独立调用一致，以及真实 MCP HTTP JSON 数据包。",
+      "nodeMappings": [
+        {
+          "nodeId": "geo_utm_encode",
+          "direction": "encode",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.address",
+          "params": []
+        },
+        {
+          "nodeId": "geo_utm_decode",
+          "direction": "decode",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.address",
+          "params": []
+        }
+      ]
+    },
+    "hammingCode": {
+      "status": "migrated",
+      "batch": 15,
+      "acceptedAt": "2026-10-27",
+      "targetNodes": [
+        "hamming_code_encode",
+        "hamming_code_decode"
+      ],
+      "directions": [
+        "encode",
+        "decode"
+      ],
+      "parameterMapping": {
+        "k": "每块数据位，默认 4，1–65536 整数；偶校验位放在 2 的幂位置。编码末块补零，解码剔除非二进制字符、忽略不足一块的尾位，与上游一致。"
+      },
+      "knownDifferences": [
+        "新增分块/补零/忽略尾位/纠正位置 JSON；SEC 仅保证每块单错纠正，不能保证检测多位错误，明确展示该限制。",
+        "输入最多 1 MiB，k 上限防止分块内存失控；循环支持进度和取消。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_geo_coding.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-geo-coding-batch15.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "820 条固定上游对照向量覆盖 7 项操作，全部声明方向/选项；另验逐位海明纠错、坐标边界、Huffman 全字节/Unicode/深树、取消、错误/资源限制、图与独立调用一致，以及真实 MCP HTTP JSON 数据包。",
+      "nodeMappings": [
+        {
+          "nodeId": "hamming_code_encode",
+          "direction": "encode",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.bits",
+          "params": [
+            {
+              "name": "k",
+              "default": 4
+            }
+          ]
+        },
+        {
+          "nodeId": "hamming_code_decode",
+          "direction": "decode",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.bits",
+          "params": [
+            {
+              "name": "k",
+              "default": 4
+            }
+          ]
+        }
+      ]
+    },
+    "huffmanCodec": {
+      "status": "migrated",
+      "batch": 15,
+      "acceptedAt": "2026-10-27",
+      "targetNodes": [
+        "huffman_encode",
+        "huffman_decode"
+      ],
+      "directions": [
+        "encode",
+        "decode"
+      ],
+      "parameterMapping": {
+        "mode": "freq/table，默认 freq；freq 按 (频率,minByte) 建树，再按 (码长,字节) canonical 分配；单符号 0，MSB-first。",
+        "weights": "每行字节符号与非负权重，支持空格/:/,/=；重复权重采用最后一行；encode 留空自动按 UTF-8/原始字节统计，decode 需提供相同权重。",
+        "table": "每行字节符号与 01 码字，支持空格/=，拒绝重复和前缀冲突；长表在侧栏。",
+        "bitLen": "decode 默认 0 表示全部字节位数；输入端口 bit_length 优先于 packet.bitLen，packet 优先于参数。",
+        "ports": "encode data Text/Bytes → text 报告、完整 bytes/hex/bit_length/code_table/packet；decode data Text Hex/Bytes/Json packet，code_table 和 bit_length 可选连线 → text 报告、完整 bytes/decoded/json。packet 自带码表；码表端口优先。"
+      },
+      "knownDifferences": [
+        "扩展原始字节与 JSON 数据包互通；不引入私有二进制文件格式。text 报告保留上游截断策略，其他端口提供完整数据。",
+        "使用任意码长的位串 canonical 分配，修复 JS 深树移位和双精度整数溢出；256 个零权重符号的 255 层树完整往返。",
+        "拒绝非字节符号、非有限/溢出权重、负数或小数 bitLen，非法前缀即时失败。编码最多 1 MiB，位流/解码结果最多 8 MiB，权重/码表 64 KiB，单码字 4096 位；支持进度与取消。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_geo_coding.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-geo-coding-batch15.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "820 条固定上游对照向量覆盖 7 项操作，全部声明方向/选项；另验逐位海明纠错、坐标边界、Huffman 全字节/Unicode/深树、取消、错误/资源限制、图与独立调用一致，以及真实 MCP HTTP JSON 数据包。",
+      "nodeMappings": [
+        {
+          "nodeId": "huffman_encode",
+          "direction": "encode",
+          "categoryId": "archive",
+          "subcategoryId": "archive.compression",
+          "params": [
+            {
+              "name": "mode",
+              "default": "freq"
+            },
+            {
+              "name": "weights",
+              "default": ""
+            },
+            {
+              "name": "table",
+              "default": ""
+            }
+          ]
+        },
+        {
+          "nodeId": "huffman_decode",
+          "direction": "decode",
+          "categoryId": "archive",
+          "subcategoryId": "archive.compression",
+          "params": [
+            {
+              "name": "mode",
+              "default": "freq"
+            },
+            {
+              "name": "weights",
+              "default": ""
+            },
+            {
+              "name": "table",
+              "default": ""
+            },
+            {
+              "name": "bitLen",
+              "default": 0
+            }
+          ]
+        }
+      ]
     }
   }
 }

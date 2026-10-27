@@ -10,7 +10,7 @@
 手动搭图，也可以让 AI 根据真实结果查找模块、修改配置、继续拼接。
 
 ![Version](https://img.shields.io/badge/version-0.3.1-8b5cf6)
-![Nodes](https://img.shields.io/badge/源码内置节点-499-0ea5e9)
+![Nodes](https://img.shields.io/badge/源码内置节点-513-0ea5e9)
 ![Rust](https://img.shields.io/badge/引擎-Rust-f97316?logo=rust&logoColor=white)
 ![Tauri](https://img.shields.io/badge/桌面-Tauri%202-24c8db?logo=tauri&logoColor=white)
 ![License](https://img.shields.io/badge/license-GPL--3.0-blue)
@@ -23,9 +23,9 @@
 
 > **v0.3.1 · 2026-10-27**
 >
-> 当前源码包含 **499 个内置节点、18 个一级分类、48 个二级分组**。自主解题一键启动，规划直接展示在画布；AI 网络重试与真实模块检索支持持续解题。
+> 当前源码包含 **513 个内置节点、18 个一级分类、48 个二级分组**。自主解题一键启动，规划直接展示在画布；AI 网络重试与真实模块检索支持持续解题。
 >
-> EBCTFCodeBox 的 **820 项操作已验收 143 项**。稳定版 [v0.3.1 Release](https://github.com/LovelyTeams/LovelyMiscLab/releases/tag/v0.3.1) 提供 Windows、Linux、macOS 下载，包含 489 个节点、135 项已验收操作；发布后的第 14 批增量已进入源码。
+> EBCTFCodeBox 的 **820 项操作已验收 150 项**。稳定版 [v0.3.1 Release](https://github.com/LovelyTeams/LovelyMiscLab/releases/tag/v0.3.1) 提供 Windows、Linux、macOS 下载，包含 489 个节点、135 项已验收操作；发布后的第 14–15 批增量已进入源码。
 
 ## 这是什么
 
@@ -184,7 +184,7 @@ macOS 上可使用对应的 `Cmd` 组合键。文本框内保留正常文字编�
 目录由 Rust 注册表统一定义，模块侧栏、模块页面、搜索菜单、帮助、AI 与 MCP 共用。编码与解码通常使用独立节点，同方向的算法变体通过参数选择。
 
 <details>
-<summary><b>展开当前源码的 499 个内置节点分类概览</b></summary>
+<summary><b>展开当前源码的 513 个内置节点分类概览</b></summary>
 
 数量核对日期：2026-10-27。一级分类共 18 个，含用于本地扩展的「自定义」。
 
@@ -193,12 +193,12 @@ macOS 上可使用对应的 `Cmd` 组合键。文本框内保留正常文字编�
 | 输入输出 | 9 | 文本、文件、图片输入输出；文件产物保存与读取 |
 | 编码解码 | 132 | Base 家族（含 DXBase64）、传输编码、字符集、花式编码 |
 | 文本与数据 | 31 | 文本处理、URL Query/Cookie、JSON ↔ Base64url、Data URI、Rison |
-| 进制与数值 | 119 | 进制、位与字节、Varint、数论、时间日期、地址与单位、UUID/ObjectID、UNIX 权限 |
+| 进制与数值 | 131 | 进制、位与字节、Varint、数论、时间日期、地址与单位、UUID/ObjectID、UNIX 权限、地理编码、海明码 |
 | 古典密码 | 21 | ROT、凯撒、仿射、Playfair、Polybius、栅栏、Enigma |
 | 现代密码 | 14 | AES、DES、Blowfish、RC4、ChaCha、Salsa、RSA、PGP、HMAC |
 | 哈希与校验 | 14 | MD5、SHA、SHA3、RIPEMD、BLAKE2、SM3、CRC、bcrypt |
 | 分析与破解 | 18 | 熵、字频、字节分布统计、自动识别、古典密码分析、口令与归档破解 |
-| 压缩与归档 | 10 | Zlib、ZIP、7z、TAR、GZIP、RAR；归档创建与修复 |
+| 压缩与归档 | 12 | Zlib、ZIP、7z、TAR、GZIP、RAR、Huffman；归档创建与修复 |
 | 文件与取证 | 25 | 文件结构、Office/APK、ELF/PE/Mach-O、文件雕刻 |
 | 隐写与水印 | 37 | 零宽字符、StegCloak、SNOW、图像与音频隐写、文件载体 |
 | 图像与二维码 | 38 | 通道、滤镜、几何与色彩、FFT、GIF、宽高修复、二维码 |
@@ -231,15 +231,15 @@ macOS 上可使用对应的 `Cmd` 组合键。文本框内保留正常文字编�
 
 迁移基线固定为 [EBCTFCodeBox · ea2bc36](https://github.com/Henglie/EBCTFCodeBox/tree/ea2bc36dae31c97060f7f2cddad8df5518afad7b)，共 **820 项操作**。内置算法按实际功能用 Rust 实现，保留来源、参数映射、测试与兼容差异。
 
-**v0.3.1 已发布，迁移已恢复。第 14 批新增 8 项操作、10 个节点，仍按每批最多 20 项验收。** 截至 2026-10-27 的源码进度：
+**v0.3.1 已发布，迁移已恢复。第 15 批新增 7 项操作、14 个节点，仍按每批最多 20 项验收。** 截至 2026-10-27 的源码进度：
 
 | 状态 | 数量 | 含义 |
 |---|---:|---|
-| 已验收 | 143 | 有真实节点或参数组合映射，并完成相应测试 |
+| 已验收 | 150 | 有真实节点或参数组合映射，并完成相应测试 |
 | 现有候选待核验 | 49 | 已找到可能对应的能力，尚未完成兼容验收 |
-| 待迁入 | 628 | 后续批次需要实现或确认覆盖方式 |
+| 待迁入 | 621 | 后续批次需要实现或确认覆盖方式 |
 
-**499 个节点不等于 499 项上游操作已迁移。** 一个操作可能拆成多个方向节点，也可能由某个节点的参数模式覆盖；名称相似不计完成。当前自主解题闭环的实测，也不代表上游所有“一把梭”或组合分析能力已完成迁移。
+**513 个节点不等于 513 项上游操作已迁移。** 一个操作可能拆成多个方向节点，也可能由某个节点的参数模式覆盖；名称相似不计完成。当前自主解题闭环的实测，也不代表上游所有“一把梭”或组合分析能力已完成迁移。
 
 [迁移说明](docs/ebctf-migration.md) · [完整操作清单](docs/ebctf-operations.md) · [机器可读清单](docs/ebctf-migration.json) · [人工验收记录](docs/ebctf-acceptance.json)
 

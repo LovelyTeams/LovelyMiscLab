@@ -33,3 +33,5 @@
 第十三批参考 fullwidth.js、jsEscape.js、bubblebabble.js、yenc.js、bech32.js 与 engEncoding.js；保留 BubbleBabble（Antti Huima）、yEnc（Jürgen Helbing）和BIP173的来源。参考向量仅在维护时运行上游，所有新运行算法仍为Rust。
 
 第十四批参考 fengCodec.js、engEncoding.js、byteTools.js、objectIdTime.js、hexview.js、bitops.js 与 compress.js。保留上游对 DXBase64（© 2025 风之暇想，52pojie uid=243467、thread-2058510）及 Rison（Nanonid/rison）的来源说明；以纯 Rust 重新实现数据格式与报告。压缩复用 flate2，随机盐复用 getrandom，未新增运行依赖。capture-upstream-foundation-vectors.mjs 只在维护时捕获固定版本参考数据及校验 Rust 帧，不随应用运行；行为差异逐项保存在验收记录。
+
+第十五批参考 geo.js、hamming.js、huffman.js（同一 Apache-2.0 固定版本）。保留上游对 geohash.org、Google Open Location Code、IARU Maidenhead、Snyder/USGS WGS84 投影、Richard Hamming 偶校验 SEC 及 RFC 1951 风格 canonical Huffman 分配的来源说明。全部运行实现为 Rust，未新增依赖；上游第四字母对网格扩展、普通 UTM 分区和修正边界均记录在验收源。capture-upstream-geo-coding-vectors.mjs 仅维护固定测试数据。

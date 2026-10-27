@@ -945,6 +945,13 @@ mod tests {
             ("hexRange", "hex_range", "numeric.bits"),
             ("hexStats", "hex_stats", "analysis.statistics"),
             ("bitPlaneExtract", "bit_plane_extract", "numeric.bits"),
+            ("geoDms", "geo_dms_encode", "numeric.address"),
+            ("geoHash", "geo_hash_decode", "numeric.address"),
+            ("geoPlusCode", "geo_plus_code_encode", "numeric.address"),
+            ("geoMaidenhead", "geo_maidenhead_decode", "numeric.address"),
+            ("geoUtm", "geo_utm_encode", "numeric.address"),
+            ("hammingCode", "hamming_code_decode", "numeric.bits"),
+            ("huffmanCodec", "huffman_encode", "archive.compression"),
         ] {
             let result = list_nodes_value(&reg, Some(category), Some(query), true, true);
             assert!(
