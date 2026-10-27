@@ -223,6 +223,14 @@ fn server_end_to_end_over_http() {
         "BigInt precision failed: {big_resp}"
     );
 
+    let programmer = r#"{"jsonrpc":"2.0","id":12,"method":"tools/call","params":{"name":"run_node","arguments":{"descriptorId":"programmer_calc","inputs":{"text":"1 << 63"},"params":{"width":64,"signed":false}}}}"#;
+    let (programmer_resp, _) = post(addr, TOKEN, Some(&sid), programmer);
+    assert!(
+        programmer_resp.contains("结果：9223372036854775808")
+            && programmer_resp.contains("0x8000000000000000"),
+        "Programmer calculation failed: {programmer_resp}"
+    );
+
     // --- tools/call add_node emits a canvas update --------------------------
     let add = r#"{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"add_node","arguments":{"descriptorId":"text_input"}}}"#;
     let (add_resp, _) = post(addr, TOKEN, Some(&sid), add);

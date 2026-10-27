@@ -43,3 +43,5 @@
 第十八批参考 difftool.js；纯 Rust 重写逐位置、经典 LCS 回溯、共同前后缀回退和报告聚合，保留固定上游的策略选择及上下文口径。新增原始字节双输入、区间 JSON、有界报告、严格 Hex 校验和取消，无新依赖。capture-upstream-diff-vectors.mjs 仅用于维护固定参考向量。
 
 第十九批参考 bigmath.js；以既有 num-bigint/num-integer 和系统 getrandom 纯 Rust 实现精确整数运算、扩展欧几里得、整数牛顿法和 Pollard–Brent 分解，复用第十七批可取消模幂及固定基 Miller–Rabin。分解预算与不确定性说明见人工验收记录，无新增依赖。capture-upstream-big-integer-vectors.mjs 仅用于维护固定参考向量。
+
+第二十批参考 progCalc.js；以纯 Rust 词法/Pratt 表达式解析和既有 num-bigint 实现固定宽度整数语义，复用可取消模幂；新增结构化结果、精确十进制/大端字节输出和解析资源边界。capture-upstream-programmer-vectors.mjs 仅用于维护固定上游测试向量，异常 UTF-16 诊断以转义文本保存；无 JavaScript 运行时算法依赖。

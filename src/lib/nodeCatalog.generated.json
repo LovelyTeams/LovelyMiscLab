@@ -18650,6 +18650,129 @@
     "cost": "cheap"
   },
   {
+    "id": "programmer_calc",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.bits",
+    "legacyCategories": [
+      "numeric.bits"
+    ],
+    "aliases": [
+      "progCalc",
+      "progCalc",
+      "programmer calculator",
+      "rotl",
+      "rotr",
+      "位运算",
+      "补码计算",
+      "循环移位",
+      "programmer_calc"
+    ],
+    "upstreamIds": [
+      "progCalc"
+    ],
+    "family": "fixed width integer bitwise arithmetic",
+    "presentation": {
+      "inlineParams": [
+        "width",
+        "signed"
+      ],
+      "previews": {
+        "bytes": "hex",
+        "json": "json",
+        "signed": "text",
+        "text": "text",
+        "unsigned": "text",
+        "value": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "rotl(0x80000000, 1) | 0xA0"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "程序员计算器",
+    "description": "本地表达式求值：& | ^ ~ << >> >>> + - * / % **、括号和 rotl/rotr；支持十进制、0x/0b/0o。优先级从低到高为 |、^、&、移位、加减、乘除余、幂、一元；幂右结合。最多 1024 字符，32 层括号/函数和 128 层运算递归，不执行任意代码。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "value",
+        "label": "当前模式十进制",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "signed",
+        "label": "有符号十进制",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "unsigned",
+        "label": "无符号十进制",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "bytes",
+        "label": "大端字节（左侧补零）",
+        "type": "bytes",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "进制视图与位统计",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "width",
+        "label": "字宽",
+        "widget": {
+          "kind": "number",
+          "min": 1,
+          "max": 512,
+          "step": 1
+        },
+        "default": 32,
+        "description": "1–512 位（常用 8/16/32/64）；字面量和每步结果立即按 2^width 回绕。字节输出按 ceil(width/8) 大端排列，高位不足一字节时补零。"
+      },
+      {
+        "name": "signed",
+        "label": "有符号解读",
+        "widget": {
+          "kind": "toggle"
+        },
+        "default": true,
+        "description": "影响结果显示、除法/余数和移位数/指数的符号解读。>> 始终算术右移，>>> 始终逻辑右移；移位数按字宽取模，rotl/rotr 支持负计数。"
+      }
+    ],
+    "cost": "cheap"
+  },
+  {
     "id": "to_hexdump",
     "category": "进制与数值",
     "categoryId": "numeric",

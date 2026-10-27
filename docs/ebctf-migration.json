@@ -4,11 +4,11 @@
   "license": "Apache-2.0",
   "total": 820,
   "counts": {
-    "migrated": 156,
+    "migrated": 157,
     "partial": 0,
     "blocked": 0,
     "existing-review": 49,
-    "pending": 615
+    "pending": 614
   },
   "operations": [
     {
@@ -18842,12 +18842,56 @@
       "familyLabel": "",
       "sourceFile": "src/core/progCalc.js",
       "sourceUrl": "https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/progCalc.js",
-      "status": "pending",
-      "targetNodes": [],
-      "batch": null,
-      "validation": [],
-      "note": "待用 Rust 实现或核验现有节点组合。",
-      "categories": []
+      "status": "migrated",
+      "targetNodes": [
+        "programmer_calc"
+      ],
+      "batch": 20,
+      "validation": [
+        "crates/misclab-core/tests/migration_programmer.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-programmer-batch20.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "867 条固定上游向量覆盖所有运算符、旋转、优先级、左右结合、字面量、10 种位宽、有/无符号和错误；额外遍历 1–512 全位宽的零/全一输出、320 个原生 u64 运算对照、512 项平表达式、深度/输入限制、解析/模幂中途取消、>2^53 图/独立调用和大端字节下游。前端参数撤销与双端口连线，真实 MCP HTTP 无符号 64 位结果通过。",
+      "acceptedAt": "2026-10-27",
+      "directions": [
+        "run"
+      ],
+      "parameterMapping": {
+        "width": "默认 32，参数改为 1–512 整数控件，覆盖上游 UI 的 8/16/32/64 与纯函数已有任意位宽能力。每个字面量、一元/二元结果按字宽回绕。",
+        "signed": "默认 true；控制选定十进制输出、除法/余数、移位数/指数的符号解读。>> 恒为算术，>>> 恒为逻辑；移位按字宽取模，负旋转计数数学等价。",
+        "input": "text 表达式，支持十进制/0x/0b/0o、全部上游运算符、括号和 rotl/rotr；保持一元高于幂、幂右结合及其余上游优先级。无 eval/解释器。",
+        "output": "text 多进制报告；value/signed/unsigned 为精确十进制 Text 可接下游；bytes 为 ceil(width/8) 大端位模式，高位不足一字节补零；json 含各进制、补码值、popcount、前导零和尾随零。"
+      },
+      "knownDifferences": [
+        "修复上游 signed=false 时报告首行仍显示 signed 负数的问题，当前模式报告/数值端口显示 unsigned；详细行始终同时保留有符号/无符号值。",
+        "上游只有普通括号深度限制；Rust 将函数括号也计入 32 层并限制运算递归 128 层，防嵌套函数、连续一元和右结合幂耗尽栈。表达式仍最多 1024 UTF-16 单位，原始输入另限 16384 UTF-8 字节。",
+        "宽度 0/null/空值与非布尔 signed 明确报错，不沿用上游真值回退；未知字符/函数不会执行代码。循环及模幂支持取消，无新依赖。"
+      ],
+      "nodeMappings": [
+        {
+          "nodeId": "programmer_calc",
+          "direction": "run",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.bits",
+          "params": [
+            {
+              "name": "width",
+              "default": 32
+            },
+            {
+              "name": "signed",
+              "default": true
+            }
+          ]
+        }
+      ],
+      "categories": [
+        "numeric.bits"
+      ]
     },
     {
       "id": "unitConv",

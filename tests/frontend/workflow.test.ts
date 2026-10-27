@@ -75,6 +75,7 @@ test("foundation migration nodes expose searchable categories and typed previews
     ["primeTest", "prime_test", "numeric.math"],
     ["diffTool", "diff_tool", "data.text"],
     ["bigCalc", "big_integer_calc", "numeric.math"],
+    ["progCalc", "programmer_calc", "numeric.bits"],
   ];
   for (const [upstream, id, category] of expected) {
     const d = D.getState().byId[id];
@@ -90,6 +91,24 @@ test("foundation migration nodes expose searchable categories and typed previews
       if (port.type === "bytes") assert.equal(d.presentation.previews[port.name], "hex");
     }
   }
+});
+
+test("programmer calculator exposes width controls and precision-preserving downstream ports", async () => {
+  const calc = add("programmer_calc"), sum = add("big_integer_calc"), stats = add("hex_stats");
+  connect(calc, sum, "value", "a"); connect(calc, stats, "bytes", "data"); assert.equal(g().edges.length, 2);
+  g().setParam(calc, "width", 64); g().setParam(calc, "signed", false); g().undo();
+  assert.equal(node(calc).data.params.signed, true); g().redo();
+  const d = D.getState().byId.programmer_calc;
+  assert.deepEqual(inlineParams(d).map((p) => p.name), ["width", "signed"]);
+  const inputs = parseInputs(d.inputs, { text: { text: "1 << 63" } }); const before = JSON.stringify(g());
+  api.runNodeStreamed = async (id, _nodeId, input, params, emit) => {
+    assert.equal(id, "programmer_calc"); assert.deepEqual(input, inputs); assert.equal(params.width, 64);
+    emit({ kind: "jobStarted", job: "programmer-standalone" });
+    return { value: { type: "text", value: "9223372036854775808" } };
+  };
+  const result = await executeStandalone(d, inputs, { width: 64, signed: false }, () => {});
+  assert.equal(result.status, "success"); assert.equal(result.outputs.value.value, "9223372036854775808");
+  assert.equal(JSON.stringify(g()), before);
 });
 
 test("big integers keep operands as text, connect modular arithmetic and undo operation changes", async () => {

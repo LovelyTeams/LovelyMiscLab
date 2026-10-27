@@ -72,6 +72,7 @@ mod padding_stego;
 mod php_serial;
 mod prelude;
 mod prime_tools;
+mod programmer_calc;
 mod protobuf_wire;
 mod punycode;
 mod radix64;
@@ -315,6 +316,7 @@ pub fn register_builtins(reg: &mut NodeRegistry) {
     prime_tools::register(reg);
     diff_tool::register(reg);
     big_integer_calc::register(reg);
+    programmer_calc::register(reg);
     numeral_systems::register(reg);
     numeric_bytes::register(reg);
     numeric_reports::register(reg);
