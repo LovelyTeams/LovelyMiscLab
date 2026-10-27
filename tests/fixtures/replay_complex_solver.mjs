@@ -4,8 +4,10 @@ import { spawn } from 'node:child_process';
 import { createInterface } from 'node:readline';
 import assert from 'node:assert/strict';
 
-const project = JSON.parse(fs.readFileSync('.git/complex-solver-final-ui.json', 'utf8')).project;
-const oracle = JSON.parse(fs.readFileSync('.git/solver-fixtures/complex/cases.json', 'utf8'));
+const [projectPath = '.git/complex-solver-final-ui.json', oraclePath = '.git/solver-fixtures/complex/cases.json', evidencePath = '.git/complex-solver-replay.json'] = process.argv.slice(2);
+const exported = JSON.parse(fs.readFileSync(projectPath, 'utf8'));
+const project = exported.project ?? exported;
+const oracle = JSON.parse(fs.readFileSync(oraclePath, 'utf8'));
 const build = fs.readFileSync('.git/live-ai-build.jsonl', 'utf8').trim().split('\n').map(JSON.parse)
   .findLast((r) => r.reason === 'compiler-artifact' && r.profile.test && r.executable);
 const graph = {
@@ -13,6 +15,8 @@ const graph = {
   edges: project.edges.map((e) => ({ from: { node: e.source, port: e.sourceHandle }, to: { node: e.target, port: e.targetHandle } })),
 };
 assert.ok(!graph.nodes.some((n) => JSON.stringify(n.params).includes(oracle.answer)), 'Answer must not be a graph constant');
+for (const secret of [oracle.keyHex, oracle.ivHex].filter(Boolean))
+  assert.ok(!graph.nodes.some((n) => JSON.stringify(n.params).includes(secret)), 'Key and IV must come from the original fixture');
 const child = spawn(build.executable, ['live_agent_bridge', '--ignored', '--nocapture', '--test-threads=1'], {
   env: { ...process.env, MISCLAB_LIVE_AI: '1' }, windowsHide: true, stdio: ['pipe', 'pipe', 'pipe'],
 });
@@ -43,6 +47,6 @@ lines.on('line', (line) => {
   assert.equal(actual, oracle.answer);
   const evidence = { date: new Date().toISOString(), nodes: graph.nodes.length, edges: graph.edges.length,
     completed: completed.size, failures, finalNode: finalNode.id, actual, expectedMatch: true, modelCalls: 0, answerInParameters: false };
-  fs.writeFileSync('.git/complex-solver-replay.json', JSON.stringify(evidence, null, 2));
+  fs.writeFileSync(evidencePath, JSON.stringify(evidence, null, 2));
   console.log(JSON.stringify(evidence));
 });

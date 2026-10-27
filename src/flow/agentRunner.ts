@@ -2,16 +2,16 @@ import { useAgentStore } from "@/store/agent";
 import { useDescriptorStore } from "@/store/descriptors";
 import { useGraphStore } from "@/store/graph";
 import { useRunStore } from "@/store/run";
-import { preparePlan, type ReviewedPlan } from "./agentPlan";
+import { preparePlan, type AgentRequest } from "./agentPlan";
 import { checkAgentResults } from "./agentChecks";
 import { executeNodeSet } from "./runner";
 import { applyAgentPlan } from "./applyAgentPlan";
 import { runSolver } from "./agentSolveRunner";
 
-/** Ordinary plans execute their reviewed steps. Solve mode uses the separately
- * reviewed input scope and budget for a bounded feedback loop. */
-export async function runAgent(reviewed: ReviewedPlan): Promise<void> {
-  if (reviewed.solve) return runSolver(reviewed);
+/** Ordinary plans execute reviewed steps; Start Solve approves the input scope
+ * and budget, with planning and execution both visible on the canvas. */
+export async function runAgent(reviewed: AgentRequest): Promise<void> {
+  if (!("graph" in reviewed) || reviewed.solve) return runSolver(reviewed);
   const agent = useAgentStore.getState();
   if (agent.running) return;
   agent.start();

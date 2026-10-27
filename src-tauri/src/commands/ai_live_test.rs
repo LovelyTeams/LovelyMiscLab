@@ -79,13 +79,31 @@ fn live_agent_bridge() {
             let cancel = CancellationToken::new();
             let job = jobs.start(cancel.clone());
             send(&id, "event", json!({"kind":"jobStarted","job":job}));
+            // Test-only one-shot HTTP faults exercise the production transport.
+            // The fixture config has no saved key; user settings stay untouched.
+            let cfg = if ["decide", "generate"].contains(&op.as_str()) {
+                match request["fault"].as_str() {
+                    Some(kind @ ("truncated" | "interrupted" | "http503")) => {
+                        send(&id, "event", json!({"kind":"log","level":"info","message":format!("测试注入 HTTP 故障：{kind}（本次未请求 DeepSeek）")}));
+                        super::super::ai_request::tests::server_with_response(
+                            vec!["{\"choices\":".into()], std::time::Duration::ZERO,
+                            if kind == "http503" { 503 } else { 200 }, true,
+                            if kind == "interrupted" { 128 } else { 0 },
+                        ).0
+                    }
+                    _ => {
+                        send(&id, "event", json!({"kind":"log","level":"info","message":format!("真实模型请求：{}", env.ai.llm.model)}));
+                        env.ai.llm.clone()
+                    }
+                }
+            } else { env.ai.llm.clone() };
             let result: Result<Value, AppError> = if op == "decide" {
-                super::super::ai_solver::decide_cancellable(&env.ai.llm, request["prompt"].as_str().unwrap_or_default(), &cancel)
+                super::super::ai_solver::decide_cancellable(&cfg, request["prompt"].as_str().unwrap_or_default(), &cancel)
                     .await.and_then(|decision| serde_json::to_value(decision).map_err(|e| AppError::new("serialize", e.to_string())))
             } else if op == "generate" {
                 let prompt = request["prompt"].as_str().unwrap_or_default();
                 let only: Option<Vec<String>> = request.get("catalogIds").and_then(|v| serde_json::from_value(v.clone()).ok());
-                super::generate_filtered_cancellable(&registry, &env.ai.llm, prompt, &cancel, |message| {
+                super::generate_filtered_cancellable(&registry, &cfg, prompt, &cancel, |message| {
                     send(
                         &id,
                         "event",
@@ -139,7 +157,7 @@ fn live_agent_bridge() {
             jobs.finish(&job);
             match result {
                 Ok(value) => send(&id, "result", value),
-                Err(error) => send(&id, "error", json!(error.message)),
+                Err(error) => send(&id, "error", json!(error)),
             }
         });
     }

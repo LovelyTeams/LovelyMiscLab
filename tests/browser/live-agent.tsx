@@ -1,4 +1,5 @@
 import { createRoot } from "react-dom/client";
+import { create } from "zustand";
 import { ReactFlowProvider } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import "@/index.css";
@@ -15,6 +16,13 @@ import { useRunStore as R } from "@/store/run";
 import { useDescriptorStore as D } from "@/store/descriptors";
 import catalog from "@/lib/nodeCatalog.generated.json";
 D.getState().setDescriptors(catalog as never);
+const useFaults = create<{ kind: string; remaining: number }>(() => ({ kind: "", remaining: 0 }));
+function nextFault(): string | undefined {
+  const fault = useFaults.getState();
+  if (!fault.remaining) return undefined;
+  useFaults.setState({ remaining: fault.remaining - 1 });
+  return fault.kind;
+}
 async function call<T>(body: object, emit?: (event: ProgressMsg) => void): Promise<T> {
   const response = await fetch("/__live_agent", { method: "POST", headers: { "Content-Type": "application/json", "X-Agent-Test": "live" }, body: JSON.stringify(body) });
   if (!response.ok || !response.body) throw new Error(`测试传输失败：${response.status}`);
@@ -29,14 +37,14 @@ async function call<T>(body: object, emit?: (event: ProgressMsg) => void): Promi
         const line = buffer.slice(0, end); buffer = buffer.slice(end + 1); if (!line) continue;
         const item = JSON.parse(line);
         if (item.kind === "event") emit?.(item.value);
-        else if (item.kind === "error") throw new Error(item.value);
+        else if (item.kind === "error") throw typeof item.value === "string" ? new Error(item.value) : item.value;
         else return item.value as T;
       }
     }
   } finally { reader.releaseLock(); }
 }
 api.decideSolverStep = (prompt, emit) => call({ op: "decide", prompt }, emit);
-api.generateWorkflow = (prompt, emit, catalogIds) => call({ op: "generate", prompt, catalogIds }, emit);
+api.generateWorkflow = (prompt, emit, catalogIds) => call({ op: "generate", prompt, catalogIds, fault: nextFault() }, emit);
 const artifactMetadata = new Map<string, ArtifactMetadata>();
 api.runGraph = async (graph, emit) => {
   const outputs = await call<Record<string, Record<string, PortValue>>>({ op: "run", graph }, emit);
@@ -59,12 +67,16 @@ api.cancelJob = (job) => call({ op: "cancel", job });
 api.resetRun = async () => {}; // Isolated executor has no cross-run cache.
 function LiveHarness() {
   const nodes = G((s) => s.nodes), edges = G((s) => s.edges), history = R((s) => s.history);
+  const remaining = useFaults((s) => s.remaining);
   return <ReactFlowProvider><main className="flex h-screen flex-col bg-background text-foreground">
     <div className="flex items-center gap-4 border-b p-3 text-xs">
       <strong>真实模型联调 · 已保存模型 + Rust 执行器</strong>
       <button onClick={() => AI.getState().setOpen(true)}>AI 助手</button>
       <button onClick={() => G.getState().undo()}>撤销搭建</button>
       <button onClick={() => { G.getState().loadFlow([], []); A.getState().reset(); }}>清空测试画布</button>
+      <button onClick={() => useFaults.setState({ kind: "http503", remaining: 1 })}>下次规划注入 1 次 503</button>
+      <button onClick={() => useFaults.setState({ kind: "interrupted", remaining: 3 })}>下次规划注入 3 次响应中断</button>
+      <span>待注入 {remaining} 次</span>
       <span>节点 {nodes.length} · 连线 {edges.length} · 运行 {history[0]?.status ?? "无"}</span>
       <details className="relative"><summary className="cursor-pointer">导出测试流程</summary>
         <textarea aria-label="测试流程 JSON" readOnly className="absolute right-0 z-50 h-80 w-96 border bg-background p-2 font-mono"

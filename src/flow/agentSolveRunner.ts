@@ -3,18 +3,19 @@ import { useAgentStore as A } from "@/store/agent";
 import { useDescriptorStore as D } from "@/store/descriptors";
 import { useGraphStore as G } from "@/store/graph";
 import { useRunStore as R } from "@/store/run";
-import type { ReviewedPlan } from "./agentPlan";
+import type { AgentRequest } from "./agentPlan";
 import { applyAgentPlan, applyAgentRevision } from "./applyAgentPlan";
 import { planSolveRound } from "./agentSolvePlanner";
+import { waitForAgentRetry } from "./agentRetry";
 import { solveChanges, solveRepairChecks } from "./agentSolveChanges";
 import { checkAgentResults } from "./agentChecks";
 import { acquireForeground, executeNodeSet, stopRun } from "./runner";
-import { prepareSolvePlan, solveCandidates, solveEvidence, solveFingerprint, solveGraphSummary,
-  type SolveAttempt, type SolveCandidate, type SolveResults } from "./agentSolve";
+import { prepareSolvePlan, validateSolveOptions, solveCandidates, solveEvidence, solveFingerprint, solveGraphSummary,
+  type SolveAttempt, type SolveCandidate, type SolvePlanning, type SolveProgress, type SolveResults } from "./agentSolve";
 
 /** A bounded, explicitly approved observe → plan → execute loop. It uses the
  * same node executor/undo/history as ordinary plans, with ownership across gaps. */
-export async function runSolver(reviewed: ReviewedPlan): Promise<void> {
+export async function runSolver(reviewed: AgentRequest): Promise<void> {
   if (!reviewed.solve || A.getState().running) return;
   const options = structuredClone(reviewed.solve);
   const abort = new AbortController();
@@ -25,6 +26,25 @@ export async function runSolver(reviewed: ReviewedPlan): Promise<void> {
   const agent = A.getState();
   agent.start();
   agent.setSolveResult("working");
+  const progress = (round: number, stage: SolveProgress["stage"], message: string, extra: Partial<SolveProgress> = {}) => {
+    if (!abort.signal.aborted) agent.setSolveProgress({ ...A.getState().solveProgress, round, maxRounds: options.maxRounds, stage, message, ...extra });
+  };
+  const nextPlan = async (round: number, previous?: GeneratedGraph) => {
+    progress(round, "analyzing", round === 1 ? "分析题目和原始输入…" : "分析本轮输出，判断下一步…", { planning: undefined, plan: undefined });
+    return planSolveRound(options, attempts, previous, D.getState().byId, abort.signal,
+      (text) => {
+        if (abort.signal.aborted) return;
+        agent.pushStep({ kind: text.startsWith("查找") ? "search" : "plan", text });
+        progress(round, A.getState().solveProgress?.stage ?? "analyzing", text);
+      },
+      (planning) => {
+        if (abort.signal.aborted) return;
+        progress(round, "planning", "已检索模块，正在配置参数和连线…", { planning });
+        agent.pushStep({ kind: "diagnose", text: "下一步判断", detail: planning.decision.observation });
+        for (const repair of planning.decision.repairs) agent.pushStep({ kind: "diagnose", text: `发现 ${repair.node} 需要修改`, detail: `${repair.problem}\n修改：${repair.change}\n复测：${repair.verify}` });
+        agent.pushStep({ kind: "plan", text: "接下来需要的能力", detail: planning.decision.nextGoal });
+      }, { onRetryExhausted: (issue) => waitForAgentRetry(issue, abort.signal) });
+  };
   const cancel = () => { abort.abort(); if (!A.getState().cancelling) agent.requestCancel(); };
   const offGraph = G.subscribe((s) => {
     if (!applying && s.runRevision !== revision && !abort.signal.aborted) {
@@ -35,17 +55,28 @@ export async function runSolver(reviewed: ReviewedPlan): Promise<void> {
   const offAgent = A.subscribe((s) => { if (s.cancelling && !abort.signal.aborted) { abort.abort(); void stopRun(); } });
   let timer: ReturnType<typeof setTimeout> | undefined;
   try {
-    if (revision !== G.getState().runRevision) throw new Error("画布已变化，请重新预览并确认计划");
-    let plan = prepareSolvePlan(reviewed.graph, D.getState().byId, options);
-    let planning = reviewed.solvePlanning, previous: GeneratedGraph | undefined, ids = new Map<string, string>();
+    if (revision !== G.getState().runRevision) throw new Error("画布已变化，请重新开始解题");
+    validateSolveOptions(options);
     lease = acquireForeground(cancel);
     R.getState().setMode("idle");
-    timer = setTimeout(() => { reason = "达到已确认的总时限，已停止尝试"; cancel(); void stopRun(); }, options.maxMinutes * 60000);
+    timer = setTimeout(() => { reason = "达到设定的总时限，已停止尝试"; cancel(); void stopRun(); }, options.maxMinutes * 60000);
+    let plan: GeneratedGraph, planning: SolvePlanning | undefined;
+    let previous: GeneratedGraph | undefined, ids = new Map<string, string>();
+    if ("graph" in reviewed) {
+      plan = prepareSolvePlan(reviewed.graph, D.getState().byId, options);
+      planning = reviewed.solvePlanning;
+    } else {
+      const first = await nextPlan(1);
+      plan = first.graph; planning = first.planning;
+    }
     for (let round = 1; round <= options.maxRounds; round++) {
       if (abort.signal.aborted) break;
       const fingerprint = solveFingerprint(plan);
       if (seen.has(fingerprint)) { reason = "模型重复了已经执行的计划，停止重复尝试；请补充线索或调整范围"; break; }
       seen.add(fingerprint);
+      progress(round, "building", `正在将 ${plan.nodes.length} 个节点和 ${plan.edges.length} 条连线放入画布…`, {
+        planning, plan: { notes: plan.notes, nodes: plan.nodes.map((n) => ({ key: n.key, name: D.getState().byId[n.descriptorId]?.displayName ?? n.descriptorId })), edges: plan.edges.length },
+      });
       agent.pushStep({ kind: "plan", text: `第 ${round}/${options.maxRounds} 轮：${plan.nodes.length} 个节点`, detail: plan.notes });
       const changes = solveChanges(previous, plan, D.getState().byId);
       for (const change of changes) agent.pushStep({ kind: "change", text: change });
@@ -53,8 +84,10 @@ export async function runSolver(reviewed: ReviewedPlan): Promise<void> {
       try { ids = previous ? applyAgentRevision(plan, previous, ids) : applyAgentPlan(plan, reviewed.replace); }
       finally { revision = G.getState().runRevision; applying = false; }
       agent.pushStep({ kind: "run", text: `运行第 ${round} 轮并检查真实输出` });
+      progress(round, "running", `正在执行第 ${round} 轮，结果直接显示在节点中`);
       const outcome = await executeNodeSet(new Set(ids.values()), `AI 解题 · 第 ${round} 轮`, lease.owner);
       if (outcome.status === "cancelled" || abort.signal.aborted) { abort.abort(); break; }
+      progress(round, "checking", "检查节点输出、测试条件和候选答案…");
       const nodes = G.getState().nodes;
       const results: SolveResults = Object.fromEntries([...ids].map(([key, id]) => {
         const node = nodes.find((n) => n.id === id);
@@ -97,13 +130,7 @@ export async function runSolver(reviewed: ReviewedPlan): Promise<void> {
       if (round === options.maxRounds) { reason = `已用完 ${options.maxRounds} 轮尝试，尚未确认答案；可检查已有输出并补充线索`; break; }
       agent.pushStep({ kind: "plan", text: "读取本轮证据，自动调整下一轮节点和参数…" });
       previous = plan;
-      const next = await planSolveRound(options, attempts, previous, D.getState().byId, abort.signal,
-        (text) => agent.pushStep({ kind: text.startsWith("查找") ? "search" : "plan", text }),
-        (nextPlanning) => {
-          agent.pushStep({ kind: "diagnose", text: "下一步判断", detail: nextPlanning.decision.observation });
-          for (const repair of nextPlanning.decision.repairs) agent.pushStep({ kind: "diagnose", text: `发现 ${repair.node} 需要修改`, detail: `${repair.problem}\n修改：${repair.change}\n复测：${repair.verify}` });
-          agent.pushStep({ kind: "plan", text: "接下来需要的能力", detail: nextPlanning.decision.nextGoal });
-        });
+      const next = await nextPlan(round + 1, previous);
       plan = next.graph; planning = next.planning;
     }
     const cancelled = abort.signal.aborted && !reason.startsWith("达到");
@@ -114,7 +141,7 @@ export async function runSolver(reviewed: ReviewedPlan): Promise<void> {
     const cancelled = abort.signal.aborted && !reason.startsWith("达到");
     agent.setSolveResult(cancelled ? "cancelled" : "unresolved", candidates);
     if (!abort.signal.aborted) agent.pushStep({ kind: "error", text: `尝试中止：${message}` });
-    agent.finish(reason || (cancelled ? "已取消自主解题，已完成结果保留。" : `未解决：${message}。已保留实际输出，可调整线索后重新规划。`), cancelled);
+    agent.finish(reason || (cancelled ? "已取消自主解题，已完成结果保留。" : `未解决：${message.replace(/[。.!！；;\s]+$/, "")}。已保留实际输出，可调整线索后重新规划。`), cancelled);
   } finally {
     if (timer) clearTimeout(timer);
     offGraph(); offAgent(); lease?.release();

@@ -15,7 +15,12 @@ pub(super) async fn chat(
 ) -> Result<String, AppError> {
     misclab_core::ai::chat_cancellable(cfg, system, user, cancel)
         .await
-        .map_err(|error| AppError::new(error.code, error.message))
+        .map_err(|error| {
+            let mut result = AppError::new(error.code, error.message);
+            result.retryable = Some(error.retryable);
+            result.retry_after_ms = error.retry_after_ms;
+            result
+        })
 }
 
 #[cfg(test)]
@@ -44,6 +49,20 @@ pub(super) mod tests {
         replies: Vec<String>,
         delay: Duration,
         status: u16,
+    ) -> (
+        ModelConfig,
+        tokio::sync::oneshot::Receiver<()>,
+        thread::JoinHandle<Vec<Value>>,
+    ) {
+        server_with_response(replies, delay, status, false, 0)
+    }
+
+    pub(crate) fn server_with_response(
+        replies: Vec<String>,
+        delay: Duration,
+        status: u16,
+        raw_body: bool,
+        declared_extra: usize,
     ) -> (
         ModelConfig,
         tokio::sync::oneshot::Receiver<()>,
@@ -103,8 +122,12 @@ pub(super) mod tests {
                     let _ = sender.send(());
                 }
                 thread::sleep(delay);
-                let body = json!({"choices":[{"message":{"content":reply}}]}).to_string();
-                let response = format!("HTTP/1.1 {status} Test\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{body}", body.len());
+                let body = if raw_body {
+                    reply
+                } else {
+                    json!({"choices":[{"message":{"content":reply}}]}).to_string()
+                };
+                let response = format!("HTTP/1.1 {status} Test\r\nContent-Type: application/json\r\nRetry-After: 2\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{body}", body.len() + declared_extra);
                 let _ = stream.write_all(response.as_bytes());
             }
             bodies
@@ -159,7 +182,7 @@ pub(super) mod tests {
 
     #[tokio::test]
     async fn reports_http_status_without_echoing_url_key_or_provider_body() {
-        for status in [401, 403, 404, 429] {
+        for status in [400, 401, 403, 404, 408, 429, 500, 502, 503, 504] {
             let (mut cfg, _, server) =
                 server_with_status(vec!["secret-provider-body".into()], Duration::ZERO, status);
             cfg.api_key = "secret-test-key".into();
@@ -167,12 +190,47 @@ pub(super) mod tests {
                 .await
                 .unwrap_err();
             assert_eq!(error.code, "ai_http");
-            assert!(error.message.contains(&format!("HTTP {status}")));
+            assert!(error.message.contains(&status.to_string()));
+            assert_eq!(
+                error.retryable,
+                Some(status == 408 || status == 429 || status >= 500)
+            );
+            assert_eq!(error.retry_after_ms, Some(2000));
+            assert_eq!(serde_json::to_value(&error).unwrap()["retryAfterMs"], 2000);
             for secret in [&cfg.api_key, &cfg.base_url, "secret-provider-body"] {
                 assert!(!error.message.contains(secret));
             }
             server.join().unwrap();
         }
+    }
+
+    #[tokio::test]
+    async fn provider_envelope_failures_are_retryable_without_leaking_response_content() {
+        for body in ["{\"choices\":", "<html>secret-proxy-diagnostic</html>", ""] {
+            let (cfg, _, server) =
+                server_with_response(vec![body.into()], Duration::ZERO, 200, true, 0);
+            let error = chat(&cfg, "system", "user", &CancellationToken::new())
+                .await
+                .unwrap_err();
+            assert_eq!(error.code, "ai_response");
+            assert_eq!(error.retryable, Some(true));
+            assert!(!error.message.contains("secret-proxy-diagnostic"));
+            assert!(!error.message.contains(&cfg.base_url));
+            server.join().unwrap();
+        }
+    }
+
+    #[tokio::test]
+    async fn interrupted_http_response_body_is_a_retryable_transport_failure() {
+        let (cfg, _, server) =
+            server_with_response(vec!["{}".into()], Duration::ZERO, 200, true, 32);
+        let error = chat(&cfg, "system", "user", &CancellationToken::new())
+            .await
+            .unwrap_err();
+        assert_eq!(error.code, "ai_http");
+        assert_eq!(error.retryable, Some(true));
+        assert!(!error.message.contains(&cfg.base_url));
+        server.join().unwrap();
     }
 
     #[test]

@@ -7,8 +7,7 @@ import { inTauri } from "@/lib/devMocks";
 import { cn } from "@/lib/utils";
 import { preparePlan, withExpectedText, type ReviewedPlan } from "@/flow/agentPlan";
 import { agentRequest } from "@/flow/agentRequest";
-import { prepareSolvePlan, validateSolveOptions, type SolveOptions } from "@/flow/agentSolve";
-import { planSolveRound } from "@/flow/agentSolvePlanner";
+import { validateSolveOptions, type SolveOptions } from "@/flow/agentSolve";
 import { WidgetRenderer } from "@/flow/WidgetRenderer";
 import { buildGraph } from "@/flow/runner";
 import { useAgentStore } from "@/store/agent";
@@ -67,6 +66,19 @@ export function AiGenerateDialog() {
     if (loading || agentRunning || running) return;
     if (!inTauri) { setError("请在桌面应用中配置 AI 模型后生成计划。浏览器预览不调用模型。"); return; }
     if ((mode === "generate" || mode === "solve") && !prompt.trim()) return;
+    if (mode === "solve") {
+      try {
+        const solve: SolveOptions = { task: prompt.trim(), data, expected, prefix,
+          files: [...new Set(files.split(/\r?\n/).map((f) => f.trim()).filter(Boolean))], maxRounds, maxMinutes };
+        validateSolveOptions(solve);
+        if (!useAgentStore.getState().launchSolve({ solve, replace, revision: useGraphStore.getState().runRevision }))
+          throw new Error("已有 AI 任务，请先停止当前任务");
+        useRunStore.getState().setMode("idle");
+        useViewStore.getState().setView("canvas");
+        close();
+      } catch (e) { setError(e instanceof Error ? e.message : String(e)); }
+      return;
+    }
     const ticket = ++request.current;
     const abort = new AbortController();
     controller.current = abort;
@@ -78,12 +90,6 @@ export function AiGenerateDialog() {
       if (mode === "explain") {
         const result = await agentRequest((emit) => api.explainWorkflow(buildGraph(), prompt.trim(), emit), abort.signal, report);
         if (ticket === request.current) setAnswer(result.text);
-      } else if (mode === "solve") {
-        const solve: SolveOptions = { task: prompt.trim(), data, expected, prefix,
-          files: [...new Set(files.split(/\r?\n/).map((f) => f.trim()).filter(Boolean))], maxRounds, maxMinutes };
-        validateSolveOptions(solve);
-        const next = await planSolveRound(solve, [], undefined, descriptors, abort.signal, report);
-        if (ticket === request.current) setPlan({ graph: next.graph, solve, solvePlanning: next.planning, replace, revision: initialRevision });
       } else {
         const instructions = [
           prompt.trim(),
@@ -103,8 +109,7 @@ export function AiGenerateDialog() {
     if (!plan || loading || running || agentRunning) return;
     if (plan.revision !== useGraphStore.getState().runRevision) { setError("画布已修改，请重新生成计划后确认"); return; }
     try {
-      const graph = plan.solve ? prepareSolvePlan(plan.graph, useDescriptorStore.getState().byId, plan.solve) :
-        preparePlan(plan.graph, useDescriptorStore.getState().byId);
+      const graph = preparePlan(plan.graph, useDescriptorStore.getState().byId);
       useRunStore.getState().setMode("idle");
       useAgentStore.getState().launch({ ...plan, graph, replace });
     } catch (e) { setError(e instanceof Error ? e.message : String(e)); return; }
@@ -118,13 +123,13 @@ export function AiGenerateDialog() {
         className="flex max-h-[90vh] w-[760px] max-w-[95vw] flex-col rounded-xl border border-border bg-card shadow-2xl"
         onClick={(e) => e.stopPropagation()} onKeyDown={(e) => {
           if (e.key === "Escape") close();
-          // Shortcut generates a preview only; approval always requires its own click.
+          // Solve starts within the displayed scope; other modes generate a preview.
           if ((e.ctrlKey || e.metaKey) && e.key === "Enter") { e.preventDefault(); void run(); }
         }}>
         <div className="flex items-center gap-3 border-b border-border p-4">
           <Sparkles className="h-6 w-6 text-primary" />
           <div className="flex-1"><h2 id="agent-dialog-title" className="font-semibold">AI 工作流助手</h2>
-            <p className="mt-1 text-xs text-muted-foreground">确认后自动选节点、配参数、搭图并测试；自主解题会根据实际结果继续尝试。</p></div>
+            <p className="mt-1 text-xs text-muted-foreground">{mode === "solve" ? "点一次开始，规划、检索、搭图和复测直接显示在画布上，随时可停止。" : "生成计划并审核确认后，自动选节点、配参数、搭图和测试。"}</p></div>
           <button aria-label="关闭 AI 助手" onClick={close}><X className="h-5 w-5" /></button>
         </div>
         <div className="flex gap-2 border-b border-border px-4 py-3">
@@ -166,6 +171,8 @@ export function AiGenerateDialog() {
                 className="mt-1 w-full rounded border border-input bg-background p-2" /></label>
             </div>
             <p className="text-[11px] text-muted-foreground">适用现有文本、密码、文件、压缩包、图像和音频模块。模型接收题目描述、文件路径及运行摘要；大文件内容由本机节点处理。以答案前缀与右花括号识别候选，格式命中需人工核验。</p>
+            <label className="flex items-center gap-2 text-xs"><input type="checkbox" checked={replace} onChange={(e) => setReplace(e.target.checked)} />替换当前画布（默认追加到旁边）</label>
+            <p className="rounded bg-primary/5 p-2 text-xs leading-relaxed">点击“开始解题”后，自动使用本次文本、选定文件和内置本地处理模块，最多 {maxRounds} 轮、{maxMinutes} 分钟，每轮最多 20 个节点。计划生成后直接搭图执行，无需再次确认；每轮修改可撤销。</p>
           </div>}
           {mode !== "explain" && <label className="block text-xs font-medium">{mode === "solve" ? "标准答案（可选，仅本地验收，不交给模型）" : "预期文本（可选，精确匹配最终文本输出）"}
             <textarea value={expected} disabled={loading} maxLength={4096} rows={2}
@@ -179,26 +186,15 @@ export function AiGenerateDialog() {
             <div className="flex items-center gap-2 font-medium"><Check className="h-4 w-4 text-primary" />待确认计划
               <span className="ml-auto text-xs text-muted-foreground">{plan.graph.nodes.length} 个节点 · {plan.graph.edges.length} 条连线</span></div>
             <p className="whitespace-pre-wrap text-sm">{plan.graph.notes || "按以下步骤处理数据。"}</p>
-            {plan.solvePlanning && <div className="space-y-1 rounded border border-border p-2 text-xs">
-              <p>观察：{plan.solvePlanning.decision.observation}</p>
-              <p>下一步：{plan.solvePlanning.decision.nextGoal}</p>
-              {plan.solvePlanning.searches.map((s) => <p key={s.query}>已检索「{s.query}」：{s.matches.length ? s.matches.map((m) => `${m.name} (${m.id})`).join("、") : "未找到对应模块"}</p>)}
-            </div>}
-            {plan.solve && <p className="rounded bg-background p-2 text-xs leading-relaxed">
-              确认范围：执行下方首轮计划，然后根据实际证据自动调整后续轮次。最多 {plan.solve.maxRounds} 轮、每轮 20 个节点、总时限 {plan.solve.maxMinutes} 分钟。
-              使用本次文本及 {plan.solve.files.length} 个题目文件和内置本地处理模块。根据证据诊断、查找模块，在同一张图上修改参数和继续拼接，再执行复测；每轮修改可撤销，证据与变更记录保留，随时可停止。
-            </p>}
             <ol className="space-y-2">{plan.graph.nodes.map((node, index) => <li key={node.key} className="rounded border border-border bg-background p-2 text-xs">
               <div className="font-medium">{index + 1}. {descriptors[node.descriptorId]?.displayName} <span className="text-muted-foreground">({node.key})</span></div>
               <details className="mt-1"><summary className="cursor-pointer text-muted-foreground">查看 / 调整参数</summary>
                 <div className="mt-2 space-y-2">{descriptors[node.descriptorId]?.params.map((spec) => <div key={spec.name}>
                   <div className="mb-1 text-muted-foreground">{spec.label}</div>
-                  {plan.solve && ["text_input", "file_import", "image_input"].includes(node.descriptorId) ?
-                    <div className="max-h-24 overflow-auto whitespace-pre-wrap break-all rounded border border-border p-2 font-mono text-[11px]">{String(node.params[spec.name]).slice(0, 2000)}<p className="mt-1 font-sans text-muted-foreground">已绑定原始输入；请在上方修改题目数据或文件后重新规划。</p></div> :
                   <WidgetRenderer spec={spec} value={node.params[spec.name]} onChange={(value) => {
                     setError(""); setPlan((current) => current && ({ ...current, graph: { ...current.graph,
                       nodes: current.graph.nodes.map((n) => n.key === node.key ? { ...n, params: { ...n.params, [spec.name]: value } } : n) } }));
-                  }} />}
+                  }} />
                 </div>)}</div></details>
             </li>)}</ol>
             <div className="space-y-1 text-xs" aria-label="自动测试条件">
@@ -212,7 +208,7 @@ export function AiGenerateDialog() {
               <ul className="mt-2 space-y-1 font-mono text-[11px]">{plan.graph.edges.map((edge, i) =>
                 <li key={i}>{edge.from.node}.{edge.from.port} → {edge.to.node}.{edge.to.port}</li>)}</ul></details>
             <label className="flex items-center gap-2 text-xs"><input type="checkbox" checked={replace} onChange={(e) => setReplace(e.target.checked)} />替换当前画布（默认追加到旁边）</label>
-            <p className="text-xs text-muted-foreground">{plan.solve ? "每轮执行状态和候选答案分别检查；未命中时报告未解决，并保留处理步骤和证据。" : "确认后执行上述节点；文件读写、网络请求等行为由所列节点及参数决定。"}</p>
+            <p className="text-xs text-muted-foreground">确认后执行上述节点；文件读写、网络请求等行为由所列节点及参数决定。</p>
           </section>}
           {stale && <p role="alert" className="text-xs text-destructive">画布已修改，该计划已过期。请重新生成并检查。</p>}
           {error && <p role="alert" className="whitespace-pre-wrap rounded bg-destructive/10 p-3 text-xs text-destructive">{error}</p>}
@@ -220,16 +216,16 @@ export function AiGenerateDialog() {
           {answer && <pre className="whitespace-pre-wrap rounded border border-border p-3 text-sm">{answer}</pre>}
         </div>
         <div className="flex flex-wrap items-center justify-between gap-2 border-t border-border p-4">
-          <span className="text-[11px] text-muted-foreground">Ctrl + Enter 生成预览</span>
+          <span className="text-[11px] text-muted-foreground">Ctrl + Enter {mode === "solve" ? "开始解题" : "生成预览"}</span>
           <div className="flex gap-2">
             {loading && <Button variant="outline" size="sm" onClick={() => { invalidate(); setAnswer("已取消规划，可修改任务后重新生成。"); }}>停止规划</Button>}
             <Button variant="outline" size="sm" onClick={close}>取消</Button>
             <Button variant={plan ? "outline" : "default"} size="sm" onClick={() => void run()}
               disabled={loading || agentRunning || running || ((mode === "generate" || mode === "solve") && !prompt.trim())}>
               {loading && <Loader2 className="mr-1 h-3.5 w-3.5 animate-spin" />}
-              {loading ? "正在规划…" : mode === "explain" ? "解释流程" : plan ? "重新生成计划" : "生成计划"}
+              {loading ? "正在规划…" : mode === "solve" ? "开始解题" : mode === "explain" ? "解释流程" : plan ? "重新生成计划" : "生成计划"}
             </Button>
-            {plan && <Button size="sm" disabled={!!stale || loading || running || agentRunning} onClick={confirmPlan}>{plan.solve ? "确认方案并开始解题" : "确认搭建并运行"}</Button>}
+            {plan && <Button size="sm" disabled={!!stale || loading || running || agentRunning} onClick={confirmPlan}>确认搭建并运行</Button>}
           </div>
         </div>
       </div>

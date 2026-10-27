@@ -11,6 +11,15 @@ export interface ReviewedPlan {
   solvePlanning?: SolvePlanning;
 }
 
+/** Clicking Start authorizes the bounded input scope before the first plan. */
+export interface SolveRequest {
+  solve: SolveOptions;
+  replace: boolean;
+  revision: number;
+}
+
+export type AgentRequest = ReviewedPlan | SolveRequest;
+
 /** Prepare the exact values shown for review and later used for execution. */
 export function preparePlan(generated: GeneratedGraph, descriptors: Record<string, NodeDescriptor>, data = ""): GeneratedGraph {
   const plan = structuredClone(generated);

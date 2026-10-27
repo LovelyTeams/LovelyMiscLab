@@ -30,10 +30,24 @@ export interface SolveAttempt {
   changes?: string[];
   repairChecks?: { node: string; status: "passed" | "failed" | "removed" | "executed"; detail: string }[];
 }
+export interface ModuleSearch {
+  query: string;
+  matches: { id: string; name: string }[];
+  suggestions?: { id: string; name: string }[];
+}
 export interface SolvePlanning {
   decision: SolverDecision;
-  searches: { query: string; matches: { id: string; name: string }[] }[];
+  searches: ModuleSearch[];
+  searchHistory?: ModuleSearch[];
   catalogIds: string[];
+}
+export interface SolveProgress {
+  round: number;
+  maxRounds: number;
+  stage: "analyzing" | "planning" | "building" | "running" | "checking" | "finished";
+  message: string;
+  planning?: SolvePlanning;
+  plan?: { notes: string; nodes: { key: string; name: string }[]; edges: number };
 }
 export type SolveResults = Record<string, { status: string; error?: string; outputs?: Record<string, PortValue> }>;
 

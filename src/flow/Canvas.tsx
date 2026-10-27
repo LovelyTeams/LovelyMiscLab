@@ -73,9 +73,9 @@ export function Canvas() {
   const selectedCount = nodes.filter((n) => n.selected).length;
   const selectedEdges = edges.filter((e) => e.selected).length;
 
-  // Consume the confirmed plan once; Canvas owns the viewport used after building.
+  // Consume a reviewed plan or a one-click solve request exactly once.
   useEffect(() => {
-    if (!pendingPlan) return;
+    if (!pendingPlan || useAgentStore.getState().pendingPlan !== pendingPlan) return;
     useAgentStore.getState().clearPending();
     void runAgent(pendingPlan);
   }, [pendingPlan]);
@@ -189,7 +189,7 @@ export function Canvas() {
   };
 
   return (
-    <div className="relative h-full w-full outline-none" tabIndex={0} data-testid="canvas-surface"
+    <div className="relative flex h-full w-full outline-none" tabIndex={0} data-testid="canvas-surface"
       onPointerDownCapture={(e) => {
         const graph = useGraphStore.getState();
         selectionBeforePointer.current = {
@@ -204,6 +204,7 @@ export function Canvas() {
         if ((e.target as HTMLElement).classList.contains("react-flow__pane")) e.currentTarget.focus({ preventScroll: true });
       }}
       onDoubleClick={onDoubleClick}>
+      <div className="relative min-h-0 min-w-0 flex-1">
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -327,6 +328,7 @@ export function Canvas() {
         />
       )}
       {suggestCtx && <PortSuggest />}
+      </div>
       <AgentPanel />
     </div>
   );

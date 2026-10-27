@@ -8,6 +8,10 @@ use serde::Serialize;
 pub struct AppError {
     pub code: String,
     pub message: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub retryable: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub retry_after_ms: Option<u64>,
 }
 
 impl AppError {
@@ -15,6 +19,8 @@ impl AppError {
         Self {
             code: code.to_string(),
             message: message.into(),
+            retryable: None,
+            retry_after_ms: None,
         }
     }
 }
