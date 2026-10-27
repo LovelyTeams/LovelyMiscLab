@@ -195,6 +195,13 @@ fn server_end_to_end_over_http() {
         "Huffman packet failed: {packet_resp}"
     );
 
+    let color = r##"{"jsonrpc":"2.0","id":8,"method":"tools/call","params":{"name":"run_node","arguments":{"descriptorId":"color_info","inputs":{"text":"#FF0000"}}}}"##;
+    let (color_resp, _) = post(addr, TOKEN, Some(&sid), color);
+    assert!(
+        color_resp.contains("16711680") && color_resp.contains("red"),
+        "Color analysis failed: {color_resp}"
+    );
+
     // --- tools/call add_node emits a canvas update --------------------------
     let add = r#"{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"add_node","arguments":{"descriptorId":"text_input"}}}"#;
     let (add_resp, _) = post(addr, TOKEN, Some(&sid), add);

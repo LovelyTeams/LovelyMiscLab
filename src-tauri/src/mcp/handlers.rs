@@ -952,6 +952,8 @@ mod tests {
             ("geoUtm", "geo_utm_encode", "numeric.address"),
             ("hammingCode", "hamming_code_decode", "numeric.bits"),
             ("huffmanCodec", "huffman_encode", "archive.compression"),
+            ("color", "color_convert_encode", "numeric.address"),
+            ("colorInfo", "color_info", "numeric.address"),
         ] {
             let result = list_nodes_value(&reg, Some(category), Some(query), true, true);
             assert!(

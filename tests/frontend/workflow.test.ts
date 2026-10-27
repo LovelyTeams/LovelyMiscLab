@@ -69,6 +69,8 @@ test("foundation migration nodes expose searchable categories and typed previews
     ["geoUtm", "geo_utm_encode", "numeric.address"],
     ["hammingCode", "hamming_code_decode", "numeric.bits"],
     ["huffmanCodec", "huffman_encode", "archive.compression"],
+    ["color", "color_convert_encode", "numeric.address"],
+    ["colorInfo", "color_info", "numeric.address"],
   ];
   for (const [upstream, id, category] of expected) {
     const d = D.getState().byId[id];
@@ -84,6 +86,24 @@ test("foundation migration nodes expose searchable categories and typed previews
       if (port.type === "bytes") assert.equal(d.presentation.previews[port.name], "hex");
     }
   }
+});
+
+test("color conversion direction and RGB outputs remain usable in canvas and standalone", async () => {
+  const convert = add("color_convert_encode"), info = add("color_info"), stats = add("hex_stats");
+  connect(convert, info); connect(info, stats, "bytes", "data"); assert.equal(g().edges.length, 2);
+  g().setParam(convert, "from", "hsl"); g().setParam(convert, "to", "hex");
+  g().setParam(convert, "upper", false); g().undo(); assert.equal(node(convert).data.params.upper, true);
+  const d = D.getState().byId.color_convert_decode;
+  assert.deepEqual(inlineParams(d).map((p) => p.name), ["from", "to", "upper"]);
+  const example = d.examples[0]; const before = JSON.stringify(g());
+  api.runNodeStreamed = async (id, _nodeId, input, _params, emit) => {
+    assert.equal(id, "color_convert_decode"); assert.deepEqual(input, example.inputs);
+    emit({ kind: "jobStarted", job: "color-standalone" });
+    return { bytes: { type: "bytes", value: [255, 0, 0] }, red: { type: "number", value: 255 } };
+  };
+  const result = await executeStandalone(d, example.inputs, example.params, () => {});
+  assert.equal(result.status, "success"); assert.equal(result.outputs.red.value, 255);
+  assert.equal(JSON.stringify(g()), before);
 });
 
 test("Huffman packets connect with optional ports, preserve configuration and run independently", async () => {

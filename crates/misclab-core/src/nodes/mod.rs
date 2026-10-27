@@ -20,6 +20,7 @@ mod charset_repair;
 mod check_digits;
 mod citrix_ctx1;
 mod codec_support;
+mod color_codes;
 mod crockford32;
 mod dx_base64;
 mod float_codecs;
@@ -307,6 +308,7 @@ pub fn register_builtins(reg: &mut NodeRegistry) {
     geo_codes::register(reg);
     hamming_code::register(reg);
     huffman_codec::register(reg);
+    color_codes::register(reg);
     numeral_systems::register(reg);
     numeric_bytes::register(reg);
     numeric_reports::register(reg);

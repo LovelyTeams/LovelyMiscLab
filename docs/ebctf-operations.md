@@ -2,7 +2,7 @@
 
 由 `pnpm generate:migration` 生成。来源提交：`ea2bc36dae31c97060f7f2cddad8df5518afad7b`。人工验收源：[ebctf-acceptance.json](ebctf-acceptance.json)，生成器不会覆盖它。
 
-总计 820 项：已迁入 150，部分完成 0，待解决 0，现有候选待核验 49，待迁入 621。
+总计 820 项：已迁入 152，部分完成 0，待解决 0，现有候选待核验 49，待迁入 619。
 
 `existing-review` 仅表示名称匹配，不表示算法、参数或文件处理能力等价。验收范围和批次见 [迁移说明](ebctf-migration.md)；机器可读清单见 [JSON](ebctf-migration.json)。
 
@@ -399,8 +399,8 @@
 | `geoPlusCode` | Plus Code / OLC | radix | migrated | `geo_plus_code_encode`, `geo_plus_code_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/geo.js) |
 | `geoMaidenhead` | Maidenhead 网格 | radix | migrated | `geo_maidenhead_encode`, `geo_maidenhead_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/geo.js) |
 | `geoUtm` | UTM 坐标 | radix | migrated | `geo_utm_encode`, `geo_utm_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/geo.js) |
-| `color` | 颜色编码互转 | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/color.js) |
-| `colorInfo` | 颜色全息信息 | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/color.js) |
+| `color` | 颜色编码互转 | radix | migrated | `color_convert_encode`, `color_convert_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/color.js) |
+| `colorInfo` | 颜色全息信息 | radix | migrated | `color_info` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/color.js) |
 | `musicNotation` | 音乐记号互转 | fancy | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/music.js) |
 | `musicInfo` | 音符全息信息 | fancy | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/music.js) |
 | `crcGeneric` | 通用 CRC（参数化） | hash | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/checksumExt.js) |

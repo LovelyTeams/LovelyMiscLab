@@ -38,7 +38,7 @@ fn shown(n: f64) -> String {
     ryu_js::Buffer::new().format(n).into()
 }
 /// ECMAScript toFixed rounds exact binary64 rational values, ties away from zero.
-fn fixed(n: f64, precision: u32) -> String {
+pub(super) fn fixed(n: f64, precision: u32) -> String {
     if n.abs() >= 1e21 {
         return shown(n);
     }

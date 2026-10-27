@@ -4,11 +4,11 @@
   "license": "Apache-2.0",
   "total": 820,
   "counts": {
-    "migrated": 150,
+    "migrated": 152,
     "partial": 0,
     "blocked": 0,
     "existing-review": 49,
-    "pending": 621
+    "pending": 619
   },
   "operations": [
     {
@@ -10842,12 +10842,81 @@
       "familyLabel": "",
       "sourceFile": "src/core/color.js",
       "sourceUrl": "https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/color.js",
-      "status": "pending",
-      "targetNodes": [],
-      "batch": null,
-      "validation": [],
-      "note": "待用 Rust 实现或核验现有节点组合。",
-      "categories": []
+      "status": "migrated",
+      "targetNodes": [
+        "color_convert_encode",
+        "color_convert_decode"
+      ],
+      "batch": 16,
+      "validation": [
+        "crates/misclab-core/tests/migration_colors.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-color-batch16.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "3932 条固定上游向量覆盖 147 命名色、七种格式、所有方向、源格式与 Hex 大小写；另验空/Unicode/非法数值/边界、重复命名顺序、图接续和独立调用一致、取消、前端参数/撤销、真实 MCP HTTP 颜色分析。",
+      "acceptedAt": "2026-10-27",
+      "directions": [
+        "encode",
+        "decode"
+      ],
+      "parameterMapping": {
+        "from": "auto/hex/rgb/hsl/hsv/cmyk/int/cssname，默认 auto；encode from→to，decode to→from，decode 的 from=auto 时输出 Hex。",
+        "to": "hex/rgb/hsl/hsv/cmyk/int/cssname，默认 hex；支持全部目标格式。",
+        "upper": "默认 true；只控制文本 Hex 大小写。",
+        "parsing": "按上游 RGB 启发式（非 CSS 浏览器解析器）：裸三元组全 ≤1 则按归一化值，否则 0–255；rgb() 中 ≤1 的分量单独归一化。百分号剥离；HSL/HSV/CMYK ≤1 按比例、>1 除以 100。auto 优先把 3/6 位数字视为 Hex，明确选择 int 可消除歧义。"
+      },
+      "knownDifferences": [
+        "新增完整 RGB 三字节、三个数值分量及 JSON 输出，保留上游报告/转换文本。无透明度通道；不冒充完整 CSS Color 解析器。",
+        "严格拒绝 NaN/Infinity、数值垃圾后缀和非法混入字段，代替上游部分情况下输出 NaN 或丢弃字段。输入上限 4096 字节；数字格式采用已有 Rust ECMAScript 舍入实现。"
+      ],
+      "nodeMappings": [
+        {
+          "nodeId": "color_convert_encode",
+          "direction": "encode",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.address",
+          "params": [
+            {
+              "name": "from",
+              "default": "auto"
+            },
+            {
+              "name": "to",
+              "default": "hex"
+            },
+            {
+              "name": "upper",
+              "default": true
+            }
+          ]
+        },
+        {
+          "nodeId": "color_convert_decode",
+          "direction": "decode",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.address",
+          "params": [
+            {
+              "name": "from",
+              "default": "auto"
+            },
+            {
+              "name": "to",
+              "default": "hex"
+            },
+            {
+              "name": "upper",
+              "default": true
+            }
+          ]
+        }
+      ],
+      "categories": [
+        "numeric.address"
+      ]
     },
     {
       "id": "colorInfo",
@@ -10857,12 +10926,45 @@
       "familyLabel": "",
       "sourceFile": "src/core/color.js",
       "sourceUrl": "https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/color.js",
-      "status": "pending",
-      "targetNodes": [],
-      "batch": null,
-      "validation": [],
-      "note": "待用 Rust 实现或核验现有节点组合。",
-      "categories": []
+      "status": "migrated",
+      "targetNodes": [
+        "color_info"
+      ],
+      "batch": 16,
+      "validation": [
+        "crates/misclab-core/tests/migration_colors.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-color-batch16.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "3932 条固定上游向量覆盖 147 命名色、七种格式、所有方向、源格式与 Hex 大小写；另验空/Unicode/非法数值/边界、重复命名顺序、图接续和独立调用一致、取消、前端参数/撤销、真实 MCP HTTP 颜色分析。",
+      "acceptedAt": "2026-10-27",
+      "directions": [
+        "run"
+      ],
+      "parameterMapping": {
+        "input": "自动识别，与上游 parseAnyToRgb 一致。",
+        "output": "text 原报告 + bytes 三字节 R/G/B + red/green/blue 数值 + json RGB/Hex/int/HSL/HSV/CMYK/精确和最近命名色。",
+        "naming": "147 个 CSS3 命名色按固定上游表顺序；重复色返回首个名称，最近色按 RGB 欧氏距离及表顺序确定。"
+      },
+      "knownDifferences": [
+        "新增完整 RGB 三字节、三个数值分量及 JSON 输出，保留上游报告/转换文本。无透明度通道；不冒充完整 CSS Color 解析器。",
+        "严格拒绝 NaN/Infinity、数值垃圾后缀和非法混入字段，代替上游部分情况下输出 NaN 或丢弃字段。输入上限 4096 字节；数字格式采用已有 Rust ECMAScript 舍入实现。"
+      ],
+      "nodeMappings": [
+        {
+          "nodeId": "color_info",
+          "direction": "run",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.address",
+          "params": []
+        }
+      ],
+      "categories": [
+        "numeric.address"
+      ]
     },
     {
       "id": "musicNotation",

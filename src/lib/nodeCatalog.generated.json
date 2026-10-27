@@ -22702,6 +22702,399 @@
     "cost": "cheap"
   },
   {
+    "id": "color_info",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.address",
+    "legacyCategories": [
+      "numeric.address"
+    ],
+    "aliases": [
+      "colorInfo",
+      "RGB",
+      "HSL",
+      "HSV",
+      "CMYK",
+      "颜色",
+      "CSS color",
+      "color_info"
+    ],
+    "upstreamIds": [
+      "colorInfo"
+    ],
+    "family": "color conversion",
+    "presentation": {
+      "inlineParams": [],
+      "previews": {
+        "blue": "text",
+        "bytes": "hex",
+        "green": "text",
+        "json": "json",
+        "red": "text",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "red"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "颜色全息分析",
+    "description": "RGB/HSL/HSV/CMYK/Hex/24 位整数/CSS3 147 命名色互转；按上游 RGB 数值启发式。JSON 提供完整分量及最近命名色（RGB 欧氏距离），bytes 固定为 R/G/B 三字节，无透明度。输入最多 4096 字节。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "bytes",
+        "label": "RGB 三字节",
+        "type": "bytes",
+        "required": true
+      },
+      {
+        "name": "red",
+        "label": "红 R",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "green",
+        "label": "绿 G",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "blue",
+        "label": "蓝 B",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "颜色详情",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [],
+    "cost": "cheap"
+  },
+  {
+    "id": "color_convert_decode",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.address",
+    "legacyCategories": [
+      "numeric.address"
+    ],
+    "aliases": [
+      "color",
+      "RGB",
+      "HSL",
+      "HSV",
+      "CMYK",
+      "颜色",
+      "CSS color",
+      "color_convert"
+    ],
+    "upstreamIds": [
+      "color"
+    ],
+    "family": "color conversion",
+    "presentation": {
+      "inlineParams": [
+        "from",
+        "to",
+        "upper"
+      ],
+      "previews": {
+        "blue": "text",
+        "bytes": "hex",
+        "green": "text",
+        "json": "json",
+        "red": "text",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "#FF0000"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "颜色编码反向转换",
+    "description": "RGB/HSL/HSV/CMYK/Hex/24 位整数/CSS3 147 命名色互转；按上游 RGB 数值启发式。JSON 提供完整分量及最近命名色（RGB 欧氏距离），bytes 固定为 R/G/B 三字节，无透明度。输入最多 4096 字节。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "bytes",
+        "label": "RGB 三字节",
+        "type": "bytes",
+        "required": true
+      },
+      {
+        "name": "red",
+        "label": "红 R",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "green",
+        "label": "绿 G",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "blue",
+        "label": "蓝 B",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "颜色详情",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "from",
+        "label": "源格式",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "auto",
+            "hex",
+            "rgb",
+            "hsl",
+            "hsv",
+            "cmyk",
+            "int",
+            "cssname"
+          ]
+        },
+        "default": "auto",
+        "description": "正向输入格式；反向时变为目标，auto 反向输出 Hex。保留上游 RGB 启发式：裸三元组全 ≤1 时归一化，rgb() 分量 ≤1 单独归一化。百分号按上游剥离，非浏览器 CSS 解析器。"
+      },
+      {
+        "name": "to",
+        "label": "目标格式",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "hex",
+            "rgb",
+            "hsl",
+            "hsv",
+            "cmyk",
+            "int",
+            "cssname"
+          ]
+        },
+        "default": "hex",
+        "description": "正向目标，反向输入格式。cssname 只接受精确命名色；最近色在分析/JSON 输出查看。"
+      },
+      {
+        "name": "upper",
+        "label": "Hex 大写",
+        "widget": {
+          "kind": "toggle"
+        },
+        "default": true,
+        "description": "只影响转换文本的 Hex 大小写；JSON 的规范 Hex 保持大写。"
+      }
+    ],
+    "cost": "cheap"
+  },
+  {
+    "id": "color_convert_encode",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.address",
+    "legacyCategories": [
+      "numeric.address"
+    ],
+    "aliases": [
+      "color",
+      "RGB",
+      "HSL",
+      "HSV",
+      "CMYK",
+      "颜色",
+      "CSS color",
+      "color_convert"
+    ],
+    "upstreamIds": [
+      "color"
+    ],
+    "family": "color conversion",
+    "presentation": {
+      "inlineParams": [
+        "from",
+        "to",
+        "upper"
+      ],
+      "previews": {
+        "blue": "text",
+        "bytes": "hex",
+        "green": "text",
+        "json": "json",
+        "red": "text",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "red"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "颜色编码正向转换",
+    "description": "RGB/HSL/HSV/CMYK/Hex/24 位整数/CSS3 147 命名色互转；按上游 RGB 数值启发式。JSON 提供完整分量及最近命名色（RGB 欧氏距离），bytes 固定为 R/G/B 三字节，无透明度。输入最多 4096 字节。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "bytes",
+        "label": "RGB 三字节",
+        "type": "bytes",
+        "required": true
+      },
+      {
+        "name": "red",
+        "label": "红 R",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "green",
+        "label": "绿 G",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "blue",
+        "label": "蓝 B",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "颜色详情",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "from",
+        "label": "源格式",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "auto",
+            "hex",
+            "rgb",
+            "hsl",
+            "hsv",
+            "cmyk",
+            "int",
+            "cssname"
+          ]
+        },
+        "default": "auto",
+        "description": "正向输入格式；反向时变为目标，auto 反向输出 Hex。保留上游 RGB 启发式：裸三元组全 ≤1 时归一化，rgb() 分量 ≤1 单独归一化。百分号按上游剥离，非浏览器 CSS 解析器。"
+      },
+      {
+        "name": "to",
+        "label": "目标格式",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "hex",
+            "rgb",
+            "hsl",
+            "hsv",
+            "cmyk",
+            "int",
+            "cssname"
+          ]
+        },
+        "default": "hex",
+        "description": "正向目标，反向输入格式。cssname 只接受精确命名色；最近色在分析/JSON 输出查看。"
+      },
+      {
+        "name": "upper",
+        "label": "Hex 大写",
+        "widget": {
+          "kind": "toggle"
+        },
+        "default": true,
+        "description": "只影响转换文本的 Hex 大小写；JSON 的规范 Hex 保持大写。"
+      }
+    ],
+    "cost": "cheap"
+  },
+  {
     "id": "atbash",
     "category": "古典密码",
     "categoryId": "classical",
