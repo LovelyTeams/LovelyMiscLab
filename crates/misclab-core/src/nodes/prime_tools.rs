@@ -18,9 +18,9 @@ const BASES: [u32; 64] = [
     197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307,
     311,
 ];
-static BOUND: LazyLock<BigUint> =
+pub(super) static BOUND: LazyLock<BigUint> =
     LazyLock::new(|| BigUint::parse_bytes(b"3317044064679887385961981", 10).unwrap());
-fn modpow(
+pub(super) fn modpow(
     mut base: BigUint,
     exp: &BigUint,
     n: &BigUint,
@@ -43,7 +43,7 @@ fn modpow(
     ctx.cancel.check()?;
     Ok(out)
 }
-fn probable(
+pub(super) fn probable(
     n: &BigUint,
     rounds: usize,
     ctx: &NodeCtx,

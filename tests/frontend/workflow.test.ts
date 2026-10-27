@@ -74,6 +74,7 @@ test("foundation migration nodes expose searchable categories and typed previews
     ["primeGen", "prime_generate", "numeric.math"],
     ["primeTest", "prime_test", "numeric.math"],
     ["diffTool", "diff_tool", "data.text"],
+    ["bigCalc", "big_integer_calc", "numeric.math"],
   ];
   for (const [upstream, id, category] of expected) {
     const d = D.getState().byId[id];
@@ -89,6 +90,26 @@ test("foundation migration nodes expose searchable categories and typed previews
       if (port.type === "bytes") assert.equal(d.presentation.previews[port.name], "hex");
     }
   }
+});
+
+test("big integers keep operands as text, connect modular arithmetic and undo operation changes", async () => {
+  const input = add("text_input"), inverse = add("big_integer_calc"), power = add("big_integer_calc");
+  connect(input, inverse, "text", "a"); connect(inverse, power, "text", "a");
+  assert.equal(g().edges.length, 2);
+  g().setParam(inverse, "op", "modinv"); g().undo(); assert.equal(node(inverse).data.params.op, "add"); g().redo();
+  const d = D.getState().byId.big_integer_calc;
+  assert.deepEqual(inlineParams(d).map((p) => p.name), ["op"]);
+  const operands = parseInputs(d.inputs, { a: { enabled: true, text: "9007199254740993" } });
+  assert.deepEqual(operands, { a: { type: "text", value: "9007199254740993" } });
+  const before = JSON.stringify(g());
+  api.runNodeStreamed = async (id, _nodeId, input, params, emit) => {
+    assert.equal(id, "big_integer_calc"); assert.deepEqual(input, operands); assert.equal(params.b, "2");
+    emit({ kind: "jobStarted", job: "big-integer-standalone" });
+    return { text: { type: "text", value: "9007199254740995" } };
+  };
+  const out = await executeStandalone(d, operands, { op: "add", b: "2" }, () => {});
+  assert.equal(out.status, "success"); assert.equal(out.outputs.text.value, "9007199254740995");
+  assert.equal(JSON.stringify(g()), before);
 });
 
 test("diff accepts two typed inputs, edits context with undo and runs without changing the canvas", async () => {

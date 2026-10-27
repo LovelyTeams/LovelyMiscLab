@@ -2,7 +2,7 @@
 
 由 `pnpm generate:migration` 生成。来源提交：`ea2bc36dae31c97060f7f2cddad8df5518afad7b`。人工验收源：[ebctf-acceptance.json](ebctf-acceptance.json)，生成器不会覆盖它。
 
-总计 820 项：已迁入 155，部分完成 0，待解决 0，现有候选待核验 49，待迁入 616。
+总计 820 项：已迁入 156，部分完成 0，待解决 0，现有候选待核验 49，待迁入 615。
 
 `existing-review` 仅表示名称匹配，不表示算法、参数或文件处理能力等价。验收范围和批次见 [迁移说明](ebctf-migration.md)；机器可读清单见 [JSON](ebctf-migration.json)。
 
@@ -643,7 +643,7 @@
 | `tlsDecrypt` | TLS1.2 已知密钥还原 | forensic | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/tlsDecrypt.js) |
 | `wpaDecrypt` | WPA2 握手校验/CCMP 解密 | forensic | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/wpaDecrypt.js) |
 | `dlp` | 离散对数求解（DLP） | modern | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/dlp.js) |
-| `bigCalc` | 大数计算器（BigInt） | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/bigmath.js) |
+| `bigCalc` | 大数计算器（BigInt） | radix | migrated | `big_integer_calc` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/bigmath.js) |
 | `primeInspector` | 素数判定与筛选 | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/primeInspector.js) |
 | `randomSeed` | 随机种子生成 | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/randomSeed.js) |
 | `randomSecure` | 增强随机安全 | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/randomSecure.js) |

@@ -19088,6 +19088,165 @@
     "cost": "heavy"
   },
   {
+    "id": "big_integer_calc",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.math",
+    "legacyCategories": [
+      "numeric.math"
+    ],
+    "aliases": [
+      "bigCalc",
+      "bigCalc",
+      "BigInt",
+      "Bézout",
+      "Pollard rho",
+      "大数计算",
+      "模逆",
+      "整数开方",
+      "素因子分解",
+      "big_integer_calc"
+    ],
+    "upstreamIds": [
+      "bigCalc"
+    ],
+    "family": "big integer number theory",
+    "presentation": {
+      "inlineParams": [
+        "op"
+      ],
+      "previews": {
+        "json": "json",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "a": {
+            "type": "text",
+            "value": "42"
+          }
+        },
+        "params": {
+          "op": "modinv",
+          "m": "101"
+        }
+      }
+    ],
+    "displayName": "大整数计算器 BigInt",
+    "description": "纯 Rust 精确大整数计算与数论；a/b/m 连线优先于侧栏参数，十进制文本和 JSON 均不经浮点。素性采用固定基：小于 3317044064679887385961981 为确定性范围，更大通过者仅为可能素数。分解保留未完成部分并支持进度/取消。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "a",
+        "label": "操作数 a（优先）",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "b",
+        "label": "操作数 b（优先）",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "m",
+        "label": "模数 m（优先）",
+        "type": "text",
+        "required": false
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "精确结果与计算依据",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "op",
+        "label": "运算",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "add",
+            "sub",
+            "mul",
+            "pow",
+            "div",
+            "mod",
+            "modpow",
+            "modinv",
+            "gcd",
+            "extgcd",
+            "lcm",
+            "isPrime",
+            "nextPrime",
+            "prevPrime",
+            "factor",
+            "sqrtInt",
+            "bitLen"
+          ]
+        },
+        "default": "add",
+        "description": "17 种运算：四则/余数/幂/模幂/模逆/gcd/extgcd/lcm/素性/邻素数/分解/整数开方/位长。div 向零截断，mod 符号随 a。"
+      },
+      {
+        "name": "a",
+        "label": "十进制 a",
+        "widget": {
+          "kind": "text",
+          "multiline": true
+        },
+        "default": "42",
+        "description": "可连接 a 覆盖；支持正负号、空白、逗号、下划线。每个操作数上限 4096 位二进制；必须用文本保留精度。"
+      },
+      {
+        "name": "b",
+        "label": "十进制 b / 指数",
+        "widget": {
+          "kind": "text",
+          "multiline": true
+        },
+        "default": "17",
+        "description": "二元运算使用，连接 b 优先。pow 指数 0–10000000、结果估计不超过 100 万位；modpow 指数非负。"
+      },
+      {
+        "name": "m",
+        "label": "十进制模数 m",
+        "widget": {
+          "kind": "text",
+          "multiline": true
+        },
+        "default": "101",
+        "description": "modpow/modinv 使用，连接 m 优先；模数至少为 1。模逆不存在时报错并报告 gcd。"
+      },
+      {
+        "name": "factorBudget",
+        "label": "分解迭代预算",
+        "widget": {
+          "kind": "number",
+          "min": 0,
+          "max": 3145728,
+          "step": 1
+        },
+        "default": 3145728,
+        "description": "factor 的全部 Pollard–Brent 正向/回退迭代共用预算；0 仅小素数试除和素性检验。耗尽时保留未分解项，支持取消。"
+      }
+    ],
+    "cost": "heavy"
+  },
+  {
     "id": "prime_generate",
     "category": "进制与数值",
     "categoryId": "numeric",

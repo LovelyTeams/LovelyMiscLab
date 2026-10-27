@@ -41,3 +41,5 @@
 第十七批参考 primeGen.js；修正固定上游静态目录中 primeGen/primeTest 错指 jwtsign.js 的来源映射。Miller–Rabin 模幂/固定基、奇数候选递增和系统随机均在 Rust 实现，复用 num-bigint/num-integer/num-traits/getrandom，无新依赖。确定性界引用 Sorenson/Webster 的 [Strong Pseudoprimes to Twelve Prime Bases, Theorem 1.1](https://arxiv.org/abs/1509.00864)，不沿用上游错误的 FIPS 表引用和固定基随机误判界文案。capture-upstream-prime-vectors.mjs 仅用于维护对照数据及跨实现候选检验。
 
 第十八批参考 difftool.js；纯 Rust 重写逐位置、经典 LCS 回溯、共同前后缀回退和报告聚合，保留固定上游的策略选择及上下文口径。新增原始字节双输入、区间 JSON、有界报告、严格 Hex 校验和取消，无新依赖。capture-upstream-diff-vectors.mjs 仅用于维护固定参考向量。
+
+第十九批参考 bigmath.js；以既有 num-bigint/num-integer 和系统 getrandom 纯 Rust 实现精确整数运算、扩展欧几里得、整数牛顿法和 Pollard–Brent 分解，复用第十七批可取消模幂及固定基 Miller–Rabin。分解预算与不确定性说明见人工验收记录，无新增依赖。capture-upstream-big-integer-vectors.mjs 仅用于维护固定参考向量。

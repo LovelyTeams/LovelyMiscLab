@@ -11,6 +11,7 @@ mod base58check;
 mod base91;
 mod base_custom;
 mod bech32_codec;
+mod big_integer_calc;
 mod bson_inspect;
 mod byte_inspection;
 mod byte_text_codecs;
@@ -313,6 +314,7 @@ pub fn register_builtins(reg: &mut NodeRegistry) {
     color_codes::register(reg);
     prime_tools::register(reg);
     diff_tool::register(reg);
+    big_integer_calc::register(reg);
     numeral_systems::register(reg);
     numeric_bytes::register(reg);
     numeric_reports::register(reg);

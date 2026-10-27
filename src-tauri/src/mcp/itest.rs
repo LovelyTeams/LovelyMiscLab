@@ -216,6 +216,13 @@ fn server_end_to_end_over_http() {
         "Diff typed inputs failed: {diff_resp}"
     );
 
+    let big = r#"{"jsonrpc":"2.0","id":11,"method":"tools/call","params":{"name":"run_node","arguments":{"descriptorId":"big_integer_calc","inputs":{"a":{"type":"text","value":"9007199254740993"}},"params":{"op":"add","b":"2"}}}}"#;
+    let (big_resp, _) = post(addr, TOKEN, Some(&sid), big);
+    assert!(
+        big_resp.contains("9007199254740995"),
+        "BigInt precision failed: {big_resp}"
+    );
+
     // --- tools/call add_node emits a canvas update --------------------------
     let add = r#"{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"add_node","arguments":{"descriptorId":"text_input"}}}"#;
     let (add_resp, _) = post(addr, TOKEN, Some(&sid), add);

@@ -7550,6 +7550,70 @@
           ]
         }
       ]
+    },
+    "bigCalc": {
+      "status": "migrated",
+      "batch": 19,
+      "acceptedAt": "2026-10-27",
+      "targetNodes": [
+        "big_integer_calc"
+      ],
+      "directions": [
+        "run"
+      ],
+      "parameterMapping": {
+        "op": "17 种模式全部迁入：add/sub/mul/pow/div/mod/modpow/modinv/gcd/extgcd/lcm/isPrime/nextPrime/prevPrime/factor/sqrtInt/bitLen；默认 add。div 向零截断，mod 符号随 a；0^0=1。",
+        "a": "十进制文本，可含正负号、JS 空白、逗号和下划线；可选 a 输入优先于参数。默认 42（上游空），让默认节点可运行。",
+        "b": "同样为精确十进制文本，可选 b 输入优先；二元运算使用，默认 17（上游空）。",
+        "m": "modpow/modinv 使用，可选 m 输入优先，至少为 1；默认 101（上游空）。未使用的 b/m 不解析。",
+        "factorBudget": "新增统一 Pollard–Brent 正向/回退迭代预算，默认/上限 3145728；0 只做小素数试除及素性检验。耗尽保留未分解项。",
+        "output": "text 数值或兼容报告；json 保留原操作、精确十进制操作数、结果/扩展 gcd 系数、素性依据、重复因子、剩余未分解项和迭代数。所有大整数均为字符串，避免浮点精度损失。"
+      },
+      "knownDifferences": [
+        "单个操作数输入上限 16384 UTF-8 字节、数值上限 4096 二进制位；pow 兼容上游指数 0–10000000 和估算结果上限 100 万二进制位。非法参数类型不静默回退。",
+        "13 个固定质数基的确定性界沿用 Sorenson/Webster；超过该界使用前 32 个质数固定基，报告为可能素数，不沿用上游把固定基当随机基的 4^-t 概率声明。分解结果同时区分 splitComplete 和 provenComplete。",
+        "分解每次尝试仍最多 2^20 步、最多三次，所有递归分支共用预算；上游无限回退也纳入计数。超预算保留部分结果，未冒充素数；prevPrime 与 nextPrime 均限制最多 5000000 候选。",
+        "内置系统 CSPRNG 选择 rho 初值；随机分解路径/迭代次数可不同，但已分解因子和未完成项乘积必须等于输入。未引入外部程序或新依赖。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_big_integer.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-big-integer-batch19.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "338 条上游向量覆盖全部 17 模式及错误；额外验证有符号除法/余数、525 组 Bézout 恒等式、4096 位整数开方边界、>2^53 精度、默认参数、分解乘积与预算耗尽、确定性界反例、各重计算中途取消、连线覆盖参数及图/独立调用一致。前端连线/参数撤销/独立运行，真实 MCP HTTP 大数精度通过。",
+      "nodeMappings": [
+        {
+          "nodeId": "big_integer_calc",
+          "direction": "run",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.math",
+          "params": [
+            {
+              "name": "op",
+              "default": "add"
+            },
+            {
+              "name": "a",
+              "default": "42"
+            },
+            {
+              "name": "b",
+              "default": "17"
+            },
+            {
+              "name": "m",
+              "default": "101"
+            },
+            {
+              "name": "factorBudget",
+              "default": 3145728
+            }
+          ]
+        }
+      ]
     }
   }
 }
