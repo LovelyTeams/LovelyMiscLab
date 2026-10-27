@@ -4,7 +4,7 @@
 固定参考提交：`ea2bc36dae31c97060f7f2cddad8df5518afad7b`。
 上游采用 Apache License 2.0，完整文本保留在 [licenses/EBCTFCodeBox-Apache-2.0.txt](licenses/EBCTFCodeBox-Apache-2.0.txt)。
 
-累计覆盖 135 项操作：首批 13 项、第二批 20 项原生 Rust 实现，加上 8 项既有 Base 操作核验与补齐、10 项文本传输操作、20 项数值操作、20 项地址/时间/数值报告、7 项 Base 扩展与补位隐写、5 项浮点/字符集/时间戳操作、6 项结构/对象序列化检查、11 项校验与记数操作、9 项字符集操作、6 项文本/字节传输操作。第六批参考 netcodec.js、netcodecExt.js、timecodec.js、timecodecExt.js、radixAll.js 和 radixExt.js；日期边界与数论资源限制差异已记录。第五批还参考 radix.js、radixExt.js 的数值契约；修正最小负数、超范围 Zeckendorf 和路径截断，差异逐项记录。没有将上游 JavaScript、WASM、本地桥或外部可执行程序加入应用运行时。算法参数改为 LovelyMiscLab 的 descriptor，原始字节经独立输出端口保留。完整操作名称、分类及来源文件映射源自上游 `src/core/lazyTables.generated.js`。
+累计覆盖 143 项操作：首批 13 项、第二批 20 项原生 Rust 实现，加上 8 项既有 Base 操作核验与补齐、10 项文本传输操作、20 项数值操作、20 项地址/时间/数值报告、7 项 Base 扩展与补位隐写、5 项浮点/字符集/时间戳操作、6 项结构/对象序列化检查、11 项校验与记数操作、9 项字符集操作、6 项文本/字节传输操作，以及第十四批 8 项基础编码和字节/标识符分析操作。第六批参考 netcodec.js、netcodecExt.js、timecodec.js、timecodecExt.js、radixAll.js 和 radixExt.js；日期边界与数论资源限制差异已记录。第五批还参考 radix.js、radixExt.js 的数值契约；修正最小负数、超范围 Zeckendorf 和路径截断，差异逐项记录。没有将上游 JavaScript、WASM、本地桥或外部可执行程序加入应用运行时。算法参数改为 LovelyMiscLab 的 descriptor，原始字节经独立输出端口保留。完整操作名称、分类及来源文件映射源自上游 `src/core/lazyTables.generated.js`。
 
 参考模块包括 `base.js`、`baseExt.js`、`text.js`、`fancy.js`、`engEncoding.js`、`encodingExt3.js`；每项的精确路径见 [完整清单](docs/ebctf-migration.json)。上游 `baseExt.js` 标注 Base58Check / Radix64 的码表来源为 WhatsInYourClipboard（ISC），并鸣谢 Leon406/ToolsFx；`engEncoding.js` 标注 Citrix CTX1 的行为参考 CyberChef（Apache-2.0）。这些来源说明在此保留。SHA-256 使用项目已有的 RustCrypto `sha2` crate。
 
@@ -31,3 +31,5 @@
 第十二批参考 charset.js，charset_tables.json 保留上游 EBCDIC ASCII 子集与乱码预设。测试向量捕获额外使用 text-encoding@0.7.0（Joshua Bell，Unlicense OR Apache-2.0，https://github.com/inexorabletash/text-encoding），其文件 SHA256 记录在向量中；码表和算法源自 WHATWG Encoding Standard。此独立参考仅用于维护者捕获，不随运行时或普通测试加载。Rust实现使用现有 encoding_rs；兼容策略、Node ICU差异与旧参考EUC-KR恢复差异均显式记录。
 
 第十三批参考 fullwidth.js、jsEscape.js、bubblebabble.js、yenc.js、bech32.js 与 engEncoding.js；保留 BubbleBabble（Antti Huima）、yEnc（Jürgen Helbing）和BIP173的来源。参考向量仅在维护时运行上游，所有新运行算法仍为Rust。
+
+第十四批参考 fengCodec.js、engEncoding.js、byteTools.js、objectIdTime.js、hexview.js、bitops.js 与 compress.js。保留上游对 DXBase64（© 2025 风之暇想，52pojie uid=243467、thread-2058510）及 Rison（Nanonid/rison）的来源说明；以纯 Rust 重新实现数据格式与报告。压缩复用 flate2，随机盐复用 getrandom，未新增运行依赖。capture-upstream-foundation-vectors.mjs 只在维护时捕获固定版本参考数据及校验 Rust 帧，不随应用运行；行为差异逐项保存在验收记录。

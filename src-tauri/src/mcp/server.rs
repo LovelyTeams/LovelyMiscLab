@@ -70,7 +70,7 @@ pub struct RunNodeArgs {
     /// Node type id, e.g. "base64_decode" (see `list_nodes`).
     pub descriptor_id: String,
     /// Port name → value. Values: a bare string/number/bool, or {type,value}.
-    /// Bytes: {"type":"bytes","value":{"base64":"..."}} or {"path":"..."}.
+    /// Bytes: {"type":"bytes","value":[0,255]}, or value {"base64":"..."}/{"path":"..."}.
     #[serde(default)]
     pub inputs: serde_json::Value,
     /// The node's parameter object (see the node's `params`).

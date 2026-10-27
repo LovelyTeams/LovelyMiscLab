@@ -2,7 +2,7 @@
 
 由 `pnpm generate:migration` 生成。来源提交：`ea2bc36dae31c97060f7f2cddad8df5518afad7b`。人工验收源：[ebctf-acceptance.json](ebctf-acceptance.json)，生成器不会覆盖它。
 
-总计 820 项：已迁入 135，部分完成 0，待解决 0，现有候选待核验 49，待迁入 636。
+总计 820 项：已迁入 143，部分完成 0，待解决 0，现有候选待核验 49，待迁入 628。
 
 `existing-review` 仅表示名称匹配，不表示算法、参数或文件处理能力等价。验收范围和批次见 [迁移说明](ebctf-migration.md)；机器可读清单见 [JSON](ebctf-migration.json)。
 
@@ -414,7 +414,7 @@
 | `bitReverse` | 位反转 | radix | migrated | `bit_reverse_encode`, `bit_reverse_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/bitops.js) |
 | `bitRotate` | 位循环移位 | radix | migrated | `bit_rotate_encode`, `bit_rotate_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/bitops.js) |
 | `byteSwap` | 字节序反转 | radix | migrated | `byte_swap_encode`, `byte_swap_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/bitops.js) |
-| `bitPlaneExtract` | 位平面提取 | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/bitops.js) |
+| `bitPlaneExtract` | 位平面提取 | radix | migrated | `bit_plane_extract` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/bitops.js) |
 | `ror13Hash` | ROR13 API 哈希 | modern | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/bitops.js) |
 | `byteArith` | 字节算术 (mod 256) | modern | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/bitops.js) |
 | `byteReverse` | 整串字节倒序 | radix | migrated | `byte_reverse_encode`, `byte_reverse_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/bitops.js) |
@@ -433,8 +433,8 @@
 | `excelDate` | Excel 序列日期 ↔ ISO8601 | radix | migrated | `excel_date_encode`, `excel_date_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/timecodecExt.js) |
 | `chromeTime` | Chrome 时间 ↔ ISO8601 | radix | migrated | `chrome_time_encode`, `chrome_time_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/timecodecExt.js) |
 | `snowflakeId` | 雪花 ID 解析 | radix | migrated | `snowflake_parse` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/timecodecExt.js) |
-| `hexRange` | Hex 区间提取 | data | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/hexview.js) |
-| `hexStats` | 字节分布统计 | data | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/hexview.js) |
+| `hexRange` | Hex 区间提取 | data | migrated | `hex_range` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/hexview.js) |
+| `hexStats` | 字节分布统计 | data | migrated | `hex_stats` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/hexview.js) |
 | `wavHeader` | WAV 头解析 | audio | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/audiostego.js) |
 | `audioLsb` | 音频 LSB 提取 | stegoFile | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/audiostego.js) |
 | `audioLsbEmbed` | 音频 LSB 嵌入（出题） | stegoFile | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/audiostego.js) |
@@ -463,8 +463,8 @@
 | `modhex` | Modhex（YubiKey） | base | migrated | `modhex_encode`, `modhex_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/engEncoding.js) |
 | `citrixCtx1` | Citrix CTX1 | base | migrated | `citrix_ctx1_encode`, `citrix_ctx1_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/engEncoding.js) |
 | `scriptDecoder` | MS 脚本解码（.vbe/.jse） | filefmt | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/engEncoding.js) |
-| `rison` | Rison | data | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/engEncoding.js) |
-| `unixPerms` | UNIX 文件权限 | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/engEncoding.js) |
+| `rison` | Rison | data | migrated | `rison_encode`, `rison_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/engEncoding.js) |
+| `unixPerms` | UNIX 文件权限 | radix | migrated | `unix_permissions` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/engEncoding.js) |
 | `crockford32` | Crockford Base32 | base | migrated | `crockford32_encode`, `crockford32_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/encodingExt3.js) |
 | `alienAlphabet` | 外星字母 | fancy | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/encodingExt3.js) |
 | `futhark` | 卢恩符文 Futhark | fancy | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/encodingExt3.js) |
@@ -504,7 +504,7 @@
 | `bwt` | BWT 块排序变换 | modern | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/bwt.js) |
 | `clockCipher` | 表盘码 / 时钟码 | fancy | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/clockcipher.js) |
 | `bech32` | Bech32 编码 | radix | migrated | `bech32_encode`, `bech32_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/bech32.js) |
-| `uuidParse` | UUID 解析 | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/byteTools.js) |
+| `uuidParse` | UUID 解析 | radix | migrated | `uuid_parse` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/byteTools.js) |
 | `varint` | VarInt (LEB128) | radix | migrated | `varint_encode`, `varint_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/byteTools.js) |
 | `lzstring` | LZString 压缩 (LZW) | archive | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/lzcodec.js) |
 | `flashSwirl` | FlashSwirl 闪旋 | stream | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/flashswirl.js) |
@@ -795,7 +795,7 @@
 | `trivium` | Trivium 流密码 | stream | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/lightweightStream.js) |
 | `grainV1` | Grain v1 流密码 | stream | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/lightweightStream.js) |
 | `grain128aead` | Grain-128AEAD 认证加密 | stream | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/lightweightStream.js) |
-| `dxBase64` | DXBase64 | base | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/fengCodec.js) |
+| `dxBase64` | DXBase64 | base | migrated | `dx_base64_encode`, `dx_base64_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/fengCodec.js) |
 | `yueChang` | 曰唱 | cn | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/fengCodec.js) |
 | `radixAll` | 一键多进制转换 | radix | migrated | `radix_all` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/radixAll.js) |
 | `progCalc` | 程序员计算器 | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/progCalc.js) |
@@ -817,7 +817,7 @@
 | `deepsoundExtract` | DeepSound 提取 | stegoFile | existing-review | `deepsound_extract` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/deepsoundExtract.js) |
 | `beaufortVariant` | 变体 Beaufort | classic | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/beaufortVariant.js) |
 | `redefence` | Redefence 栅栏 | classic | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/redefence.js) |
-| `objectIdTime` | ObjectID 时间戳解析 | radix | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/objectIdTime.js) |
+| `objectIdTime` | ObjectID 时间戳解析 | radix | migrated | `object_id_time` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/objectIdTime.js) |
 | `rc4Drop` | RC4-drop / CipherSaber-2 | stream | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/rc4Drop.js) |
 | `xsalsa20` | XSalsa20 | stream | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/xsalsa20.js) |
 | `imageCompress` | 图片压缩 | image | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/imageToolbox.js) |

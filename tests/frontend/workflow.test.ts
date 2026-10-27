@@ -52,6 +52,59 @@ test("shared search ranks aliases, IDs and old categories and limits inline fiel
   for (const d of list) if (d.inputs.length) assert.ok(inlineParams(d).length <= 3);
 });
 
+test("foundation migration nodes expose searchable categories and typed previews", () => {
+  const expected = [
+    ["dxBase64", "dx_base64_encode", "encoding.base"],
+    ["rison", "rison_decode", "data.serialization"],
+    ["unixPerms", "unix_permissions", "numeric.bits"],
+    ["uuidParse", "uuid_parse", "numeric.time"],
+    ["objectIdTime", "object_id_time", "numeric.time"],
+    ["hexRange", "hex_range", "numeric.bits"],
+    ["hexStats", "hex_stats", "analysis.statistics"],
+    ["bitPlaneExtract", "bit_plane_extract", "numeric.bits"],
+  ];
+  for (const [upstream, id, category] of expected) {
+    const d = D.getState().byId[id];
+    assert.ok(searchNodes(D.getState().list, upstream).some((node) => node.id === id));
+    assert.ok(searchNodes(D.getState().list, d.displayName).some((node) => node.id === id));
+    for (const alias of d.aliases) assert.ok(searchNodes(D.getState().list, alias).some((node) => node.id === id));
+    assert.equal(d.subcategoryId, category);
+    assert.ok(matchesCategory(d, category));
+    assert.ok(inlineParams(d).length <= 3);
+    for (const p of d.params) assert.ok(p.description.length);
+    for (const port of d.outputs) {
+      if (port.type === "json") assert.equal(d.presentation.previews[port.name], "json");
+      if (port.type === "bytes") assert.equal(d.presentation.previews[port.name], "hex");
+    }
+  }
+});
+
+test("foundation nodes wire binary results, edit parameters, undo and invoke independently", async () => {
+  const range = add("hex_range"), encode = add("dx_base64_encode"), decode = add("dx_base64_decode"), stats = add("hex_stats");
+  connect(range, encode, "bytes", "data"); connect(encode, decode); connect(decode, stats, "bytes", "data");
+  assert.equal(g().edges.length, 3);
+  [range, encode, decode, stats].forEach(done);
+  g().setParam(range, "start", "1");
+  assert.equal(node(range).data.params.start, "1");
+  assert.equal(node(stats).data.outputs, undefined);
+  g().undo(); assert.equal(node(range).data.params.start, "0");
+  g().redo(); assert.equal(node(range).data.params.start, "1");
+  const before = JSON.stringify(g());
+  api.runNodeStreamed = async (id, _nodeId, input, params, emit) => {
+    assert.equal(id, "hex_range");
+    assert.deepEqual(input, { data: { type: "bytes", value: [0, 255, 65] } });
+    assert.deepEqual(params, { start: "1", end: "2" });
+    emit({ kind: "jobStarted", job: "foundation-standalone" });
+    return { bytes: { type: "bytes", value: [255, 65] } };
+  };
+  const d = D.getState().byId.hex_range;
+  const input = parseInputs(d.inputs, { data: { format: "hex", text: "00 ff 41" } });
+  const result = await executeStandalone(d, input, { start: "1", end: "2" }, () => {});
+  assert.equal(result.status, "success");
+  assert.deepEqual(result.outputs.bytes, { type: "bytes", value: [255, 65] });
+  assert.equal(JSON.stringify(g()), before);
+});
+
 test("standalone streams typed inputs, holds foreground lock and leaves canvas untouched", async () => {
   const a = add(); done(a); const before = JSON.stringify(g());
   const wait = deferred(); const events = [];

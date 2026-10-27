@@ -6543,6 +6543,369 @@
           ]
         }
       ]
+    },
+    "dxBase64": {
+      "status": "migrated",
+      "batch": 14,
+      "acceptedAt": "2026-10-27",
+      "targetNodes": [
+        "dx_base64_encode",
+        "dx_base64_decode"
+      ],
+      "directions": [
+        "encode",
+        "decode"
+      ],
+      "parameterMapping": {
+        "contract": "UTF-8/Bytes → raw deflate → 2 字节随机盐循环 XOR → DX CRC16 → Base64；反向验证 CRC 并还原原始字节。",
+        "salt": "编码新增可选 4 个 Hex 字符，默认空串使用系统随机；固定盐用于可复现测试。"
+      },
+      "knownDifferences": [
+        "不同 deflate 实现和随机盐可产生不同合法帧；已用上游解码器与独立 zlib 验证真实 Rust 编码帧。",
+        "解码 text 匹配上游 UTF-8 替换预览（去 BOM），新增 bytes 保留全部二进制与 BOM。空 Text 编码为空串，空 Bytes 编码为有效空流帧。",
+        "输入/解压结果限制 8 MiB；拒绝截断、CRC 错误和 deflate 后附加数据；支持进度与运行中取消。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_foundation.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-foundation-batch14.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "576 条固定上游向量覆盖 8 项；另测 4096 权限往返、16 个 Rust DX 帧的上游/zlib 互通、全字节保真、资源上限/解压膨胀/取消、图与独立调用一致性，以及 MCP 真实 HTTP 字节输入。",
+      "nodeMappings": [
+        {
+          "nodeId": "dx_base64_encode",
+          "direction": "encode",
+          "categoryId": "encoding",
+          "subcategoryId": "encoding.base",
+          "params": [
+            {
+              "name": "salt",
+              "default": ""
+            }
+          ]
+        },
+        {
+          "nodeId": "dx_base64_decode",
+          "direction": "decode",
+          "categoryId": "encoding",
+          "subcategoryId": "encoding.base",
+          "params": []
+        }
+      ]
+    },
+    "rison": {
+      "status": "migrated",
+      "batch": 14,
+      "acceptedAt": "2026-10-27",
+      "targetNodes": [
+        "rison_encode",
+        "rison_decode"
+      ],
+      "directions": [
+        "encode",
+        "decode"
+      ],
+      "parameterMapping": {
+        "mode": "value/object/array/uri 原名与默认 value；对象按 UTF-16 键序，数字按 ECMAScript 双精度，URI 空格为 +，连续 %XX 按 UTF-8/Latin1 回落。"
+      },
+      "knownDifferences": [
+        "__proto__ 等键作为普通数据保留，避免上游 JS 原型赋值副作用。",
+        "输入最多 1 MiB，嵌套 64 层，解码最多 20000 值；拒绝孤立 UTF-16 代理。空输入保留空文本并在 data 输出 null。",
+        "解码增加结构化 JSON 输出；支持运行中取消。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_foundation.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-foundation-batch14.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "576 条固定上游向量覆盖 8 项；另测 4096 权限往返、16 个 Rust DX 帧的上游/zlib 互通、全字节保真、资源上限/解压膨胀/取消、图与独立调用一致性，以及 MCP 真实 HTTP 字节输入。",
+      "nodeMappings": [
+        {
+          "nodeId": "rison_encode",
+          "direction": "encode",
+          "categoryId": "data",
+          "subcategoryId": "data.serialization",
+          "params": [
+            {
+              "name": "mode",
+              "default": "value"
+            }
+          ]
+        },
+        {
+          "nodeId": "rison_decode",
+          "direction": "decode",
+          "categoryId": "data",
+          "subcategoryId": "data.serialization",
+          "params": [
+            {
+              "name": "mode",
+              "default": "value"
+            }
+          ]
+        }
+      ]
+    },
+    "unixPerms": {
+      "status": "migrated",
+      "batch": 14,
+      "acceptedAt": "2026-10-27",
+      "targetNodes": [
+        "unix_permissions"
+      ],
+      "directions": [
+        "run"
+      ],
+      "parameterMapping": {
+        "contract": "3–4 位八进制或 9–10 位符号形 → 权限报告；覆盖八种特殊位及文件类型，报告格式与上游一致。"
+      },
+      "knownDifferences": [
+        "新增 JSON 输出（octal/symbolic/type/owner/group/other/special/chmod），不执行 chmod。",
+        "输入最多 4096 字节；4096 种八进制权限均通过符号往返。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_foundation.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-foundation-batch14.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "576 条固定上游向量覆盖 8 项；另测 4096 权限往返、16 个 Rust DX 帧的上游/zlib 互通、全字节保真、资源上限/解压膨胀/取消、图与独立调用一致性，以及 MCP 真实 HTTP 字节输入。",
+      "nodeMappings": [
+        {
+          "nodeId": "unix_permissions",
+          "direction": "run",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.bits",
+          "params": []
+        }
+      ]
+    },
+    "uuidParse": {
+      "status": "migrated",
+      "batch": 14,
+      "acceptedAt": "2026-10-27",
+      "targetNodes": [
+        "uuid_parse"
+      ],
+      "directions": [
+        "run"
+      ],
+      "parameterMapping": {
+        "contract": "按上游滤除非 Hex 分隔符、标准化 UUID，标注 0–15 版本与 4 种变体；v1 提取 100ns/MAC/时钟序列，v7 提取 Unix 毫秒。"
+      },
+      "knownDifferences": [
+        "v2/v6/v8 维持上游说明范围，不伪称能逆推命名空间；新增结构化字段，60 位时间值保存十进制字符串。",
+        "输入最多 4096 字节，UTC 格式含扩展年份；保留上游分隔符容错。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_foundation.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-foundation-batch14.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "576 条固定上游向量覆盖 8 项；另测 4096 权限往返、16 个 Rust DX 帧的上游/zlib 互通、全字节保真、资源上限/解压膨胀/取消、图与独立调用一致性，以及 MCP 真实 HTTP 字节输入。",
+      "nodeMappings": [
+        {
+          "nodeId": "uuid_parse",
+          "direction": "run",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.time",
+          "params": []
+        }
+      ]
+    },
+    "objectIdTime": {
+      "status": "migrated",
+      "batch": 14,
+      "acceptedAt": "2026-10-27",
+      "targetNodes": [
+        "object_id_time"
+      ],
+      "directions": [
+        "run"
+      ],
+      "parameterMapping": {
+        "contract": "24 位 Hex ObjectID → 大端 4 字节 Unix 秒、5 字节随机值、3 字节计数器及 UTC 报告；空输入保留上游提示。"
+      },
+      "knownDifferences": [
+        "新增 JSON 字段；输入最多 4096 字节。上游辅助构造函数不是注册操作方向，本项只映射 run。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_foundation.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-foundation-batch14.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "576 条固定上游向量覆盖 8 项；另测 4096 权限往返、16 个 Rust DX 帧的上游/zlib 互通、全字节保真、资源上限/解压膨胀/取消、图与独立调用一致性，以及 MCP 真实 HTTP 字节输入。",
+      "nodeMappings": [
+        {
+          "nodeId": "object_id_time",
+          "direction": "run",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.time",
+          "params": []
+        }
+      ]
+    },
+    "hexRange": {
+      "status": "migrated",
+      "batch": 14,
+      "acceptedAt": "2026-10-27",
+      "targetNodes": [
+        "hex_range"
+      ],
+      "directions": [
+        "run"
+      ],
+      "parameterMapping": {
+        "inputEnc": "auto/hex/base64/utf8，默认 auto；自动顺序 Hex → Base64/Base64url → UTF-8。Bytes 端口绕过文本解析。",
+        "start": "默认 0，十进制或 0x 前缀 Hex，负数夹到 0。",
+        "end": "默认空串到末尾，包含末字节；超界夹到末尾，反向区间输出空。"
+      },
+      "knownDifferences": [
+        "增加 bytes 与 JSON 区间输出；显式拒绝非法偏移，避免上游 NaN 静默行为。",
+        "解析输入最多 1 MiB（编码文本最多 4 MiB）；原始空 Bytes 不被占位文本替代。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_foundation.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-foundation-batch14.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "576 条固定上游向量覆盖 8 项；另测 4096 权限往返、16 个 Rust DX 帧的上游/zlib 互通、全字节保真、资源上限/解压膨胀/取消、图与独立调用一致性，以及 MCP 真实 HTTP 字节输入。",
+      "nodeMappings": [
+        {
+          "nodeId": "hex_range",
+          "direction": "run",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.bits",
+          "params": [
+            {
+              "name": "inputEnc",
+              "default": "auto"
+            },
+            {
+              "name": "start",
+              "default": "0"
+            },
+            {
+              "name": "end",
+              "default": ""
+            }
+          ]
+        }
+      ]
+    },
+    "hexStats": {
+      "status": "migrated",
+      "batch": 14,
+      "acceptedAt": "2026-10-27",
+      "targetNodes": [
+        "hex_stats"
+      ],
+      "directions": [
+        "run"
+      ],
+      "parameterMapping": {
+        "inputEnc": "auto/hex/base64/utf8，默认 auto；Bytes 直接处理。",
+        "window": "默认 256，按 floor 后夹到 16–65536；非有效正数回退 256。",
+        "showCurve": "默认 true；分块熵文本曲线与 JSON 窗口序列。",
+        "showHist": "默认 true；16×16 对数密度网格。"
+      },
+      "knownDifferences": [
+        "新增 JSON 提供全部 256 桶、3 类桶、频率前 16 与全窗口熵序列；文本曲线保持上游最多 2048 段。",
+        "解析输入最多 1 MiB（编码文本最多 4 MiB），支持统计期间进度与取消。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_foundation.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-foundation-batch14.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "576 条固定上游向量覆盖 8 项；另测 4096 权限往返、16 个 Rust DX 帧的上游/zlib 互通、全字节保真、资源上限/解压膨胀/取消、图与独立调用一致性，以及 MCP 真实 HTTP 字节输入。",
+      "nodeMappings": [
+        {
+          "nodeId": "hex_stats",
+          "direction": "run",
+          "categoryId": "analysis",
+          "subcategoryId": "analysis.statistics",
+          "params": [
+            {
+              "name": "inputEnc",
+              "default": "auto"
+            },
+            {
+              "name": "window",
+              "default": 256
+            },
+            {
+              "name": "showCurve",
+              "default": true
+            },
+            {
+              "name": "showHist",
+              "default": true
+            }
+          ]
+        }
+      ]
+    },
+    "bitPlaneExtract": {
+      "status": "migrated",
+      "batch": 14,
+      "acceptedAt": "2026-10-27",
+      "targetNodes": [
+        "bit_plane_extract"
+      ],
+      "directions": [
+        "run"
+      ],
+      "parameterMapping": {
+        "plane": "all/7/6/5/4/3/2/1/0，默认 all；全部模式从 MSB 到 LSB 输出，每输入字节贡献一个比特。"
+      },
+      "knownDifferences": [
+        "文本始终按 UTF-8，新增 Bytes 直接输入与 JSON 每平面结果，提取单向有损。",
+        "输入最多 1 MiB；拒绝非法平面，支持运行中进度与取消。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_foundation.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-foundation-batch14.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "576 条固定上游向量覆盖 8 项；另测 4096 权限往返、16 个 Rust DX 帧的上游/zlib 互通、全字节保真、资源上限/解压膨胀/取消、图与独立调用一致性，以及 MCP 真实 HTTP 字节输入。",
+      "nodeMappings": [
+        {
+          "nodeId": "bit_plane_extract",
+          "direction": "run",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.bits",
+          "params": [
+            {
+              "name": "plane",
+              "default": "all"
+            }
+          ]
+        }
+      ]
     }
   }
 }

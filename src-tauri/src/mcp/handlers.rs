@@ -934,6 +934,31 @@ mod tests {
     }
 
     #[test]
+    fn foundation_nodes_are_discoverable_by_upstream_id_and_category() {
+        let reg = default_registry();
+        for (query, id, category) in [
+            ("dxBase64", "dx_base64_decode", "encoding.base"),
+            ("rison", "rison_encode", "data.serialization"),
+            ("unixPerms", "unix_permissions", "numeric.bits"),
+            ("uuidParse", "uuid_parse", "numeric.time"),
+            ("objectIdTime", "object_id_time", "numeric.time"),
+            ("hexRange", "hex_range", "numeric.bits"),
+            ("hexStats", "hex_stats", "analysis.statistics"),
+            ("bitPlaneExtract", "bit_plane_extract", "numeric.bits"),
+        ] {
+            let result = list_nodes_value(&reg, Some(category), Some(query), true, true);
+            assert!(
+                result["nodes"]
+                    .as_array()
+                    .unwrap()
+                    .iter()
+                    .any(|d| d["id"] == id),
+                "{query}: {result}"
+            );
+        }
+    }
+
+    #[test]
     fn canvas_ops_add_connect_remove() {
         let reg = default_registry();
         let mut cv = CanvasSnapshot::default();

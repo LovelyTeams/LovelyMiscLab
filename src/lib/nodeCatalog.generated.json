@@ -3231,6 +3231,144 @@
     "cost": "cheap"
   },
   {
+    "id": "dx_base64_encode",
+    "category": "编码解码",
+    "categoryId": "encoding",
+    "subcategoryId": "encoding.base",
+    "legacyCategories": [
+      "encoding.base"
+    ],
+    "aliases": [
+      "dxBase64",
+      "DXBase64",
+      "风之暇想",
+      "dx_base64"
+    ],
+    "upstreamIds": [
+      "dxBase64"
+    ],
+    "family": "dxBase64",
+    "presentation": {
+      "inlineParams": [
+        "salt"
+      ],
+      "previews": {
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "data": {
+            "type": "text",
+            "value": "Hello, 中文🙂!"
+          }
+        },
+        "params": {
+          "salt": "1234"
+        }
+      }
+    ],
+    "displayName": "DXBase64 编码",
+    "description": "raw deflate + 2 字节盐循环 XOR + DX CRC16 + Base64。支持原始字节；输入/解压结果最多 8 MiB，解码保留完整 bytes，文本仅为预览。",
+    "color": "#22c55e",
+    "inputs": [
+      {
+        "name": "data",
+        "label": "文本或原始字节",
+        "type": "any",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "salt",
+        "label": "固定盐（Hex）",
+        "widget": {
+          "kind": "text",
+          "multiline": false
+        },
+        "default": "",
+        "description": "留空使用 2 字节随机盐；填写 4 个 Hex 字符可重复测试。盐不是密钥。"
+      }
+    ],
+    "cost": "medium"
+  },
+  {
+    "id": "dx_base64_decode",
+    "category": "编码解码",
+    "categoryId": "encoding",
+    "subcategoryId": "encoding.base",
+    "legacyCategories": [
+      "encoding.base"
+    ],
+    "aliases": [
+      "dxBase64",
+      "DXBase64",
+      "风之暇想",
+      "dx_base64"
+    ],
+    "upstreamIds": [
+      "dxBase64"
+    ],
+    "family": "dxBase64",
+    "presentation": {
+      "inlineParams": [],
+      "previews": {
+        "bytes": "hex",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "Bl23oUTpemh+dubZBcJaEt5MqEd4zeWltw=="
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "DXBase64 解码",
+    "description": "raw deflate + 2 字节盐循环 XOR + DX CRC16 + Base64。支持原始字节；输入/解压结果最多 8 MiB，解码保留完整 bytes，文本仅为预览。",
+    "color": "#22c55e",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "bytes",
+        "label": "完整字节",
+        "type": "bytes",
+        "required": true
+      }
+    ],
+    "params": [],
+    "cost": "medium"
+  },
+  {
     "id": "ecoji_encode",
     "category": "编码解码",
     "categoryId": "encoding",
@@ -12395,6 +12533,165 @@
     "cost": "heavy"
   },
   {
+    "id": "rison_encode",
+    "category": "文本与数据",
+    "categoryId": "data",
+    "subcategoryId": "data.serialization",
+    "legacyCategories": [
+      "data.serialization"
+    ],
+    "aliases": [
+      "rison",
+      "O-Rison",
+      "A-Rison",
+      "URI JSON"
+    ],
+    "upstreamIds": [
+      "rison"
+    ],
+    "family": "rison",
+    "presentation": {
+      "inlineParams": [
+        "mode"
+      ],
+      "previews": {
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "{\"message\":\"中文\",\"values\":[1,true,null]}"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "Rison 编码",
+    "description": "JSON ↔ Rison；对象键按 UTF-16 排序，数值遵循双精度。输入最多 1 MiB，嵌套最多 64 层。解码提供 JSON 输出；不接受孤立 UTF-16 代理。",
+    "color": "#14b8a6",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "mode",
+        "label": "模式",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "value",
+            "object",
+            "array",
+            "uri"
+          ]
+        },
+        "default": "value",
+        "description": "value 完整值；object 省略对象括号；array 省略数组 !()；uri 对完整值做宽松 URL 引用。"
+      }
+    ],
+    "cost": "cheap"
+  },
+  {
+    "id": "rison_decode",
+    "category": "文本与数据",
+    "categoryId": "data",
+    "subcategoryId": "data.serialization",
+    "legacyCategories": [
+      "data.serialization"
+    ],
+    "aliases": [
+      "rison",
+      "O-Rison",
+      "A-Rison",
+      "URI JSON"
+    ],
+    "upstreamIds": [
+      "rison"
+    ],
+    "family": "rison",
+    "presentation": {
+      "inlineParams": [
+        "mode"
+      ],
+      "previews": {
+        "data": "json",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "(message:中文,values:!(1,!t,!n))"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "Rison 解码",
+    "description": "JSON ↔ Rison；对象键按 UTF-16 排序，数值遵循双精度。输入最多 1 MiB，嵌套最多 64 层。解码提供 JSON 输出；不接受孤立 UTF-16 代理。",
+    "color": "#14b8a6",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "data",
+        "label": "JSON 数据",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "mode",
+        "label": "模式",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "value",
+            "object",
+            "array",
+            "uri"
+          ]
+        },
+        "default": "value",
+        "description": "value 完整值；object 省略对象括号；array 省略数组 !()；uri 对完整值做宽松 URL 引用。"
+      }
+    ],
+    "cost": "cheap"
+  },
+  {
     "id": "cookie_parse",
     "category": "文本与数据",
     "categoryId": "data",
@@ -16102,6 +16399,118 @@
     "cost": "cheap"
   },
   {
+    "id": "hex_range",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.bits",
+    "legacyCategories": [
+      "numeric.bits"
+    ],
+    "aliases": [
+      "hexRange",
+      "byte range",
+      "字节切片",
+      "hex_range"
+    ],
+    "upstreamIds": [
+      "hexRange"
+    ],
+    "family": "hexRange",
+    "presentation": {
+      "inlineParams": [
+        "inputEnc",
+        "start",
+        "end"
+      ],
+      "previews": {
+        "bytes": "hex",
+        "data": "json",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "data": {
+            "type": "text",
+            "value": "00 ff e4 b8 ad"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "Hex 区间提取",
+    "description": "按包含结束偏移的区间提取字节，展示 Hex/Dec/Oct/Bin/ASCII/UTF-8，bytes 可继续连线。偏移越界夹到边界；解析输入最多 1 MiB。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "data",
+        "label": "文本或原始字节",
+        "type": "any",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "data",
+        "label": "结构化结果",
+        "type": "json",
+        "required": true
+      },
+      {
+        "name": "bytes",
+        "label": "区间字节",
+        "type": "bytes",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "inputEnc",
+        "label": "输入编码",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "auto",
+            "hex",
+            "base64",
+            "utf8"
+          ]
+        },
+        "default": "auto",
+        "description": "文本 auto 优先 Hex，再 Base64/URL-safe，最后 UTF-8；原始 Bytes 直接使用，忽略此参数。"
+      },
+      {
+        "name": "start",
+        "label": "起始偏移",
+        "widget": {
+          "kind": "text",
+          "multiline": false
+        },
+        "default": "0",
+        "description": "十进制或 0x Hex 偏移，负值按 0。"
+      },
+      {
+        "name": "end",
+        "label": "结束偏移（含）",
+        "widget": {
+          "kind": "text",
+          "multiline": false
+        },
+        "default": "",
+        "description": "包含结束位置，留空到末尾。超出范围夹到末尾；起点在终点之后输出空区间。"
+      }
+    ],
+    "cost": "medium"
+  },
+  {
     "id": "hex_reverse_encode",
     "category": "进制与数值",
     "categoryId": "numeric",
@@ -16316,6 +16725,72 @@
     "cost": "heavy"
   },
   {
+    "id": "unix_permissions",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.bits",
+    "legacyCategories": [
+      "numeric.bits"
+    ],
+    "aliases": [
+      "unixPerms",
+      "chmod",
+      "POSIX permissions",
+      "rwx",
+      "unix_permissions"
+    ],
+    "upstreamIds": [
+      "unixPerms"
+    ],
+    "family": "unixPerms",
+    "presentation": {
+      "inlineParams": [],
+      "previews": {
+        "data": "json",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "4755"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "UNIX 文件权限",
+    "description": "解析八进制或符号形 UNIX 权限，包含文件类型、setuid/setgid/sticky、二进制与 chmod 文本。仅生成说明，不修改文件权限。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "data",
+        "label": "权限明细",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [],
+    "cost": "cheap"
+  },
+  {
     "id": "varint_encode",
     "category": "进制与数值",
     "categoryId": "numeric",
@@ -16469,6 +16944,95 @@
       }
     ],
     "cost": "cheap"
+  },
+  {
+    "id": "bit_plane_extract",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.bits",
+    "legacyCategories": [
+      "numeric.bits"
+    ],
+    "aliases": [
+      "bitPlaneExtract",
+      "bit plane",
+      "LSB",
+      "MSB",
+      "bit_plane_extract"
+    ],
+    "upstreamIds": [
+      "bitPlaneExtract"
+    ],
+    "family": "bitPlaneExtract",
+    "presentation": {
+      "inlineParams": [
+        "plane"
+      ],
+      "previews": {
+        "data": "json",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "data": {
+            "type": "text",
+            "value": "Hello, 中文!"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "位平面提取",
+    "description": "按每字节第 0–7 位输出比特串，all 从 MSB 到 LSB 展示全部平面。文本按 UTF-8，也接受原始字节；有损单向，输入最多 1 MiB。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "data",
+        "label": "文本或原始字节",
+        "type": "any",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "data",
+        "label": "结构化结果",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "plane",
+        "label": "位平面",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "all",
+            "7",
+            "6",
+            "5",
+            "4",
+            "3",
+            "2",
+            "1",
+            "0"
+          ]
+        },
+        "default": "all",
+        "description": "all 展示全部 8 位；0 是 LSB，7 是 MSB。每个输入字节贡献一个比特。"
+      }
+    ],
+    "cost": "medium"
   },
   {
     "id": "rotate_bytes",
@@ -19319,6 +19883,134 @@
       {
         "name": "data",
         "label": "时间明细",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [],
+    "cost": "cheap"
+  },
+  {
+    "id": "object_id_time",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.time",
+    "legacyCategories": [
+      "numeric.time"
+    ],
+    "aliases": [
+      "objectIdTime",
+      "MongoDB ObjectID",
+      "object_id_time"
+    ],
+    "upstreamIds": [
+      "objectIdTime"
+    ],
+    "family": "objectIdTime",
+    "presentation": {
+      "inlineParams": [],
+      "previews": {
+        "data": "json",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "507c7f79bcf86cd7994f6c0e"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "ObjectID 时间戳解析",
+    "description": "解析 MongoDB ObjectID 的大端 Unix 秒、5 字节随机值和 3 字节计数器。输入 24 个 Hex 字符，UTC 时间及结构化字段可接续。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "data",
+        "label": "标识符明细",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [],
+    "cost": "cheap"
+  },
+  {
+    "id": "uuid_parse",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.time",
+    "legacyCategories": [
+      "numeric.time"
+    ],
+    "aliases": [
+      "uuidParse",
+      "GUID",
+      "uuid_parse"
+    ],
+    "upstreamIds": [
+      "uuidParse"
+    ],
+    "family": "uuidParse",
+    "presentation": {
+      "inlineParams": [],
+      "previews": {
+        "data": "json",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "f81d4fae-7dec-11d0-a765-00a0c91e6bf6"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "UUID 解析",
+    "description": "解析 UUID 版本与变体；v1 提取时间、MAC 和时钟序列，v7 提取 Unix 毫秒。v3/v5 提供命名空间哈希说明，不能逆推名字；兼容上游分隔符。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "data",
+        "label": "标识符明细",
         "type": "json",
         "required": true
       }
@@ -24987,6 +25679,122 @@
     ],
     "params": [],
     "cost": "cheap"
+  },
+  {
+    "id": "hex_stats",
+    "category": "分析与破解",
+    "categoryId": "analysis",
+    "subcategoryId": "analysis.statistics",
+    "legacyCategories": [
+      "analysis.statistics"
+    ],
+    "aliases": [
+      "hexStats",
+      "byte histogram",
+      "entropy curve",
+      "熵曲线",
+      "hex_stats"
+    ],
+    "upstreamIds": [
+      "hexStats"
+    ],
+    "family": "hexStats",
+    "presentation": {
+      "inlineParams": [
+        "inputEnc",
+        "window",
+        "showCurve"
+      ],
+      "previews": {
+        "data": "json",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "data": {
+            "type": "text",
+            "value": "00 00 01 41 42 43"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "字节分布统计",
+    "description": "256 桶频数、可打印率、全局/分块香农熵、16×16 密度图及 top 16。文本曲线最多显示 2048 段，JSON 保留全部窗口；输入最多 1 MiB。",
+    "color": "#d946ef",
+    "inputs": [
+      {
+        "name": "data",
+        "label": "文本或原始字节",
+        "type": "any",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "data",
+        "label": "结构化结果",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "inputEnc",
+        "label": "输入编码",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "auto",
+            "hex",
+            "base64",
+            "utf8"
+          ]
+        },
+        "default": "auto",
+        "description": "文本 auto 优先 Hex，再 Base64/URL-safe，最后 UTF-8；原始 Bytes 直接使用，忽略此参数。"
+      },
+      {
+        "name": "window",
+        "label": "熵窗口（字节）",
+        "widget": {
+          "kind": "number",
+          "min": 16,
+          "max": 65536,
+          "step": 1
+        },
+        "default": 256,
+        "description": "不重叠分块窗口，尾部不足一窗仍计算；有效范围 16–65536。"
+      },
+      {
+        "name": "showCurve",
+        "label": "显示熵曲线",
+        "widget": {
+          "kind": "toggle"
+        },
+        "default": true,
+        "description": "生成分块熵曲线与完整 JSON 窗口序列。"
+      },
+      {
+        "name": "showHist",
+        "label": "显示密度图",
+        "widget": {
+          "kind": "toggle"
+        },
+        "default": true,
+        "description": "16×16 对数密度文本图；关闭不影响 JSON 中的 256 桶原始计数。"
+      }
+    ],
+    "cost": "medium"
   },
   {
     "id": "text_score",

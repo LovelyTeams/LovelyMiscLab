@@ -432,7 +432,7 @@ fn data_uri_decode(text: &str, ctx: &mut NodeCtx) -> Result<PortMap, CoreError> 
 }
 // Match JSON.stringify: IEEE-754 number formatting and integer property keys
 // first, while preserving insertion order for the remaining keys. Pure Rust.
-fn ecma_json(v: &Value, pretty: bool, depth: usize) -> String {
+pub(super) fn ecma_json(v: &Value, pretty: bool, depth: usize) -> String {
     let (open, close, items) = match v {
         Value::Number(n) => {
             return n
