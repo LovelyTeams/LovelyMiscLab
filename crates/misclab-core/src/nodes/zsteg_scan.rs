@@ -58,8 +58,9 @@ impl Node for N {
         &self,
         i: &PortMap,
         p: &serde_json::Value,
-        _c: &mut NodeCtx,
+        ctx: &mut NodeCtx,
     ) -> Result<PortMap, CoreError> {
+        ctx.check_cancel()?;
         let img = load_image(i, "data")?;
         let max_bit = (pnum(p, "maxBit", 0.0).max(0.0) as u8).min(7);
         let col = pbool(p, "columnMajor", false);
@@ -68,17 +69,22 @@ impl Node for N {
             if pat.is_empty() {
                 None
             } else {
-                regex::Regex::new(pat).ok()
+                Some(
+                    regex::Regex::new(pat)
+                        .map_err(|e| CoreError::Parse(format!("flag 正则无效: {e}")))?,
+                )
             }
         };
         let max_bytes = 2048usize;
         let traversals: &[bool] = if col { &[false, true] } else { &[false] };
 
         let mut cands: Vec<ScoredString> = Vec::new();
+        let total = (max_bit as usize + 1) * CHANNEL_COMBOS.len() * 2 * traversals.len();
         for bit in 0..=max_bit {
             for (cname, chans) in CHANNEL_COMBOS {
                 for &msb in &[true, false] {
                     for &cm in traversals {
+                        ctx.check_cancel()?;
                         let bytes = extract(&img, bit, chans, msb, cm, max_bytes);
                         let text = String::from_utf8_lossy(&bytes).into_owned();
                         let mut score = english_score(&text);
@@ -97,6 +103,7 @@ impl Node for N {
                             score,
                             note: Some(note),
                         });
+                        ctx.progress(cands.len() as f32 / total as f32);
                     }
                 }
             }

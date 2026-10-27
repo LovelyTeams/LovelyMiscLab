@@ -1,4 +1,4 @@
-import { type ChangeEvent, useRef } from "react";
+import { type ChangeEvent, useEffect, useRef, useState } from "react";
 import { open } from "@tauri-apps/plugin-dialog";
 
 import type { ParamSpec } from "@/lib/types";
@@ -9,11 +9,13 @@ interface Props {
   spec: ParamSpec;
   value: unknown;
   onChange: (value: unknown) => void;
+  onEditStart?: () => void;
+  onEditEnd?: () => void;
 }
 
 // `nodrag`/`nowheel`/`nopan` keep interactions from panning/zooming the canvas.
 const base =
-  "nodrag nowheel w-full rounded border border-input bg-background px-1.5 py-0.5 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-ring";
+  "nodrag nowheel nopan w-full rounded border border-input bg-background px-1.5 py-0.5 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-ring";
 
 function FileField({
   value,
@@ -93,12 +95,41 @@ function ImageField({
   );
 }
 
-export function WidgetRenderer({ spec, value, onChange }: Props) {
+function NumberField({ spec, value, onChange }: Props) {
+  const w = spec.widget;
+  const [draft, setDraft] = useState(String(value ?? 0));
+  const [invalid, setInvalid] = useState(false);
+  useEffect(() => { setDraft(String(value ?? 0)); setInvalid(false); }, [value]);
+  if (w.kind !== "number") return null;
+  return <>
+    <input type="number" aria-label={spec.label} aria-invalid={invalid || undefined}
+      className={base} min={w.min} max={w.max} step={w.step} value={draft}
+      onChange={(e) => {
+        setDraft(e.target.value);
+        const valid = e.target.value !== "" && Number.isFinite(e.target.valueAsNumber) && e.target.validity.valid;
+        setInvalid(!valid);
+        if (valid) onChange(e.target.valueAsNumber);
+      }}
+      onBlur={() => { setDraft(String(value ?? 0)); setInvalid(false); }} />
+    {invalid && <div className="mt-0.5 text-[10px] text-destructive">请输入有效数值；离开时恢复上次有效值</div>}
+  </>;
+}
+
+export function WidgetRenderer(props: Props) {
+  const continuous = ["text", "number", "slider"].includes(props.spec.widget.kind);
+  return <div className="nodrag nowheel nopan" onFocusCapture={continuous ? props.onEditStart : undefined}
+    onBlurCapture={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node | null)) props.onEditEnd?.(); }}>
+    <WidgetInput {...props} />
+  </div>;
+}
+
+function WidgetInput({ spec, value, onChange }: Props) {
   const w = spec.widget;
   switch (w.kind) {
     case "text":
       return w.multiline ? (
         <textarea
+          aria-label={spec.label}
           className={`${base} nopan resize-none`}
           rows={3}
           value={String(value ?? "")}
@@ -106,28 +137,20 @@ export function WidgetRenderer({ spec, value, onChange }: Props) {
         />
       ) : (
         <input
+          aria-label={spec.label}
           className={base}
           value={String(value ?? "")}
           onChange={(e) => onChange(e.target.value)}
         />
       );
     case "number":
-      return (
-        <input
-          type="number"
-          className={base}
-          min={w.min}
-          max={w.max}
-          step={w.step}
-          value={Number(value ?? 0)}
-          onChange={(e) => onChange(parseFloat(e.target.value))}
-        />
-      );
+      return <NumberField spec={spec} value={value} onChange={onChange} />;
     case "slider":
       return (
         <input
           type="range"
-          className="nodrag w-full"
+          aria-label={spec.label}
+          className="nodrag nowheel nopan w-full"
           min={w.min}
           max={w.max}
           step={w.step}
@@ -138,6 +161,7 @@ export function WidgetRenderer({ spec, value, onChange }: Props) {
     case "select":
       return (
         <select
+          aria-label={spec.label}
           className={base}
           value={String(value ?? "")}
           onChange={(e) => onChange(e.target.value)}
@@ -153,7 +177,8 @@ export function WidgetRenderer({ spec, value, onChange }: Props) {
       return (
         <input
           type="checkbox"
-          className="nodrag h-4 w-4"
+          aria-label={spec.label}
+          className="nodrag nowheel nopan h-4 w-4"
           checked={Boolean(value)}
           onChange={(e) => onChange(e.target.checked)}
         />

@@ -4,7 +4,77 @@
 //! `mod <id>;` and `<id>::register(reg);` below — it appears in the palette
 //! automatically.
 
+mod artifact_io;
+mod base100;
+mod base36;
+mod base58check;
+mod base91;
+mod base_custom;
+mod bech32_codec;
+mod bson_inspect;
+mod byte_text_codecs;
+mod charset_codecs;
+mod charset_probe;
+mod charset_repair;
+mod check_digits;
+mod citrix_ctx1;
+mod codec_support;
+mod crockford32;
+mod float_codecs;
+mod hexdump_xxd;
+mod historic_numerals;
+mod java_serial;
+mod js_escape_codec;
+#[cfg(test)]
+mod migrated_codec_tests;
+#[cfg(test)]
+mod migration_address_time_tests;
+#[cfg(test)]
+mod migration_base_tests;
+#[cfg(test)]
+mod migration_batch2_tests;
+#[cfg(test)]
+mod migration_byte_text_tests;
+#[cfg(test)]
+mod migration_charset_tests;
+#[cfg(test)]
+mod migration_check_numeral_tests;
+#[cfg(test)]
+mod migration_float_charset_tests;
+#[cfg(test)]
+mod migration_numeric_tests;
+#[cfg(test)]
+mod migration_object_serial_tests;
+#[cfg(test)]
+mod migration_serial_tests;
+#[cfg(test)]
+mod migration_text_tests;
+#[cfg(test)]
+mod migration_unicode_base_tests;
+mod modhex;
+mod network_codecs;
+mod numeral_systems;
+mod numeric_analysis;
+mod numeric_bytes;
+mod numeric_reports;
+mod numeric_support;
+mod padding_stego;
+mod php_serial;
 mod prelude;
+mod protobuf_wire;
+mod punycode;
+mod radix64;
+mod rot_digits;
+mod serial_binary;
+mod serial_support;
+mod structured_text;
+mod text_extras;
+mod time_codecs;
+mod timestamp_report;
+mod transport_codecs;
+mod unicode_bases;
+mod utf7;
+mod uu_xxencode;
 
 mod basex;
 mod xform;
@@ -22,9 +92,6 @@ mod atbash;
 mod audio_info;
 mod audio_spectrogram;
 mod audio_util;
-mod deepsound_extract;
-mod dtmf_decode;
-mod wav_lsb;
 mod base32;
 mod base45;
 mod base58;
@@ -43,7 +110,9 @@ mod compare;
 mod concat;
 mod crypto_analysis;
 mod decimal;
+mod deepsound_extract;
 mod document_forensics;
+mod dtmf_decode;
 mod enigma;
 mod exif_meta;
 mod extract;
@@ -107,6 +176,7 @@ mod text_view;
 mod timestamp;
 mod url;
 mod vigenere;
+mod wav_lsb;
 mod xor;
 mod xor_bruteforce;
 mod zero_width;
@@ -118,21 +188,22 @@ mod bits_image;
 mod blind_watermark;
 mod blind_watermark_bwm;
 mod blind_watermark_dual;
-mod cpython_random;
-mod bmp_padding;
 mod blowfish;
+mod bmp_padding;
 mod braille;
 mod braintools;
 mod caesar;
 mod chacha;
 mod change_case;
 mod char_freq;
+mod cpython_random;
 mod defang;
 mod deflate;
 mod des;
 mod entropy;
 mod hexdump;
 mod html_entity;
+mod jpg_fix;
 mod morse;
 mod octal;
 mod pad_lines;
@@ -141,10 +212,9 @@ mod pgp_armor;
 mod pgp_decrypt;
 mod pixel_image;
 mod pixeljihad;
-mod psimage;
-mod jpg_fix;
 mod playfair;
 mod png_fix;
+mod psimage;
 mod quoted_printable;
 mod rail_fence;
 mod regex_replace;
@@ -218,6 +288,46 @@ use crate::node::registry::NodeRegistry;
 
 /// Register every built-in node.
 pub fn register_builtins(reg: &mut NodeRegistry) {
+    artifact_io::register(reg);
+    transport_codecs::register(reg);
+    numeral_systems::register(reg);
+    numeric_bytes::register(reg);
+    numeric_reports::register(reg);
+    network_codecs::register(reg);
+    time_codecs::register(reg);
+    numeric_analysis::register(reg);
+    unicode_bases::register(reg);
+    float_codecs::register(reg);
+    check_digits::register(reg);
+    historic_numerals::register(reg);
+    charset_codecs::register(reg);
+    charset_repair::register(reg);
+    bech32_codec::register(reg);
+    byte_text_codecs::register(reg);
+    js_escape_codec::register(reg);
+    bson_inspect::register(reg);
+    php_serial::register(reg);
+    java_serial::register(reg);
+    protobuf_wire::register(reg);
+    serial_binary::register(reg);
+    charset_probe::register(reg);
+    timestamp_report::register(reg);
+    padding_stego::register(reg);
+    text_extras::register(reg);
+    utf7::register(reg);
+    punycode::register(reg);
+    structured_text::register(reg);
+    base36::register(reg);
+    base91::register(reg);
+    base100::register(reg);
+    base58check::register(reg);
+    base_custom::register(reg);
+    radix64::register(reg);
+    modhex::register(reg);
+    crockford32::register(reg);
+    citrix_ctx1::register(reg);
+    uu_xxencode::register(reg);
+    rot_digits::register(reg);
     // input / output
     text_input::register(reg);
     text_output::register(reg);

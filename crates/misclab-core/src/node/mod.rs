@@ -3,6 +3,7 @@
 //! A [`Node`] is a pure operation: `run(inputs, params) -> outputs`. The same
 //! method powers both graph execution and standalone "quick tool" use.
 
+pub mod catalog;
 pub mod descriptor;
 pub mod registry;
 

@@ -1,0 +1,6353 @@
+{
+  "revision": "ea2bc36dae31c97060f7f2cddad8df5518afad7b",
+  "vectors": [
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.0.0.0"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": false
+      },
+      "text": "0"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": false
+      },
+      "text": "0.0.0.0"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "192.168.1.1"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": false
+      },
+      "text": "3232235777"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3232235777"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": false
+      },
+      "text": "192.168.1.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "255.255.255.255"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": false
+      },
+      "text": "4294967295"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "4294967295"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": false
+      },
+      "text": "255.255.255.255"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "127.1"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": false
+      },
+      "text": "2130706433"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2130706433"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": false
+      },
+      "text": "127.0.0.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.256"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": false
+      },
+      "text": "167772416"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "167772416"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": false
+      },
+      "text": "10.0.1.0"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.0.65535"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": false
+      },
+      "text": "167837695"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "167837695"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": false
+      },
+      "text": "10.0.255.255"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x7f.01.0b1.1"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": false
+      },
+      "text": "2130772225"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2130772225"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": false
+      },
+      "text": "127.1.1.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2130706433"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": false
+      },
+      "text": "2130706433"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2130706433"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": false
+      },
+      "text": "127.0.0.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.0.0.0"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": true
+      },
+      "text": "0"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": true
+      },
+      "text": "0.0.0.0"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "192.168.1.1"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": true
+      },
+      "text": "3232235777"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3232235777"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": true
+      },
+      "text": "192.168.1.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "255.255.255.255"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": true
+      },
+      "text": "4294967295"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "4294967295"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": true
+      },
+      "text": "255.255.255.255"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "127.1"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": true
+      },
+      "text": "2130706433"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2130706433"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": true
+      },
+      "text": "127.0.0.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.256"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": true
+      },
+      "text": "167772416"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "167772416"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": true
+      },
+      "text": "10.0.1.0"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.0.65535"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": true
+      },
+      "text": "167837695"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "167837695"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": true
+      },
+      "text": "10.0.255.255"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x7f.01.0b1.1"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": true
+      },
+      "text": "2130772225"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2130772225"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": true
+      },
+      "text": "127.1.1.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2130706433"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": true
+      },
+      "text": "2130706433"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2130706433"
+        }
+      },
+      "params": {
+        "format": "dec",
+        "compat": true
+      },
+      "text": "127.0.0.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.0.0.0"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": false
+      },
+      "text": "0x00000000"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x00000000"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": false
+      },
+      "text": "0.0.0.0"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "192.168.1.1"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": false
+      },
+      "text": "0xC0A80101"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0xC0A80101"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": false
+      },
+      "text": "192.168.1.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "255.255.255.255"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": false
+      },
+      "text": "0xFFFFFFFF"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0xFFFFFFFF"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": false
+      },
+      "text": "255.255.255.255"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "127.1"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": false
+      },
+      "text": "0x7F000001"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x7F000001"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": false
+      },
+      "text": "127.0.0.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.256"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": false
+      },
+      "text": "0x0A000100"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x0A000100"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": false
+      },
+      "text": "10.0.1.0"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.0.65535"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": false
+      },
+      "text": "0x0A00FFFF"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x0A00FFFF"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": false
+      },
+      "text": "10.0.255.255"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x7f.01.0b1.1"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": false
+      },
+      "text": "0x7F010101"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x7F010101"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": false
+      },
+      "text": "127.1.1.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2130706433"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": false
+      },
+      "text": "0x7F000001"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x7F000001"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": false
+      },
+      "text": "127.0.0.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.0.0.0"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": true
+      },
+      "text": "00000000"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00000000"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": true
+      },
+      "text": "0.0.0.0"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "192.168.1.1"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": true
+      },
+      "text": "c0a80101"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "c0a80101"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": true
+      },
+      "text": "192.168.1.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "255.255.255.255"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": true
+      },
+      "text": "ffffffff"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ffffffff"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": true
+      },
+      "text": "255.255.255.255"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "127.1"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": true
+      },
+      "text": "7f000001"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "7f000001"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": true
+      },
+      "text": "127.0.0.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.256"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": true
+      },
+      "text": "0a000100"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0a000100"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": true
+      },
+      "text": "10.0.1.0"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.0.65535"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": true
+      },
+      "text": "0a00ffff"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0a00ffff"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": true
+      },
+      "text": "10.0.255.255"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x7f.01.0b1.1"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": true
+      },
+      "text": "7f010101"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "7f010101"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": true
+      },
+      "text": "127.1.1.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2130706433"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": true
+      },
+      "text": "7f000001"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "7f000001"
+        }
+      },
+      "params": {
+        "format": "hex",
+        "compat": true
+      },
+      "text": "127.0.0.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.0.0.0"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": false
+      },
+      "text": "000000000000"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "000000000000"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": false
+      },
+      "text": "0.0.0.0"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "192.168.1.1"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": false
+      },
+      "text": "030052000401"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "030052000401"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": false
+      },
+      "text": "192.168.1.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "255.255.255.255"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": false
+      },
+      "text": "037777777777"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "037777777777"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": false
+      },
+      "text": "255.255.255.255"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "127.1"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": false
+      },
+      "text": "017700000001"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "017700000001"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": false
+      },
+      "text": "127.0.0.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.256"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": false
+      },
+      "text": "001200000400"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "001200000400"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": false
+      },
+      "text": "10.0.1.0"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.0.65535"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": false
+      },
+      "text": "001200177777"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "001200177777"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": false
+      },
+      "text": "10.0.255.255"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x7f.01.0b1.1"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": false
+      },
+      "text": "017700200401"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "017700200401"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": false
+      },
+      "text": "127.1.1.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2130706433"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": false
+      },
+      "text": "017700000001"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "017700000001"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": false
+      },
+      "text": "127.0.0.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.0.0.0"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": true
+      },
+      "text": "00000000000"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00000000000"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": true
+      },
+      "text": "0.0.0.0"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "192.168.1.1"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": true
+      },
+      "text": "30052000401"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "30052000401"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": true
+      },
+      "text": "192.168.1.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "255.255.255.255"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": true
+      },
+      "text": "37777777777"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "37777777777"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": true
+      },
+      "text": "255.255.255.255"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "127.1"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": true
+      },
+      "text": "17700000001"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "17700000001"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": true
+      },
+      "text": "127.0.0.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.256"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": true
+      },
+      "text": "01200000400"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "01200000400"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": true
+      },
+      "text": "10.0.1.0"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.0.65535"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": true
+      },
+      "text": "01200177777"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "01200177777"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": true
+      },
+      "text": "10.0.255.255"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x7f.01.0b1.1"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": true
+      },
+      "text": "17700200401"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "17700200401"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": true
+      },
+      "text": "127.1.1.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2130706433"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": true
+      },
+      "text": "17700000001"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "17700000001"
+        }
+      },
+      "params": {
+        "format": "oct",
+        "compat": true
+      },
+      "text": "127.0.0.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.0.0.0"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": false
+      },
+      "text": "0b00000000000000000000000000000000"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0b00000000000000000000000000000000"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": false
+      },
+      "text": "0.0.0.0"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "192.168.1.1"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": false
+      },
+      "text": "0b11000000101010000000000100000001"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0b11000000101010000000000100000001"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": false
+      },
+      "text": "192.168.1.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "255.255.255.255"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": false
+      },
+      "text": "0b11111111111111111111111111111111"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0b11111111111111111111111111111111"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": false
+      },
+      "text": "255.255.255.255"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "127.1"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": false
+      },
+      "text": "0b01111111000000000000000000000001"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0b01111111000000000000000000000001"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": false
+      },
+      "text": "127.0.0.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.256"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": false
+      },
+      "text": "0b00001010000000000000000100000000"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0b00001010000000000000000100000000"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": false
+      },
+      "text": "10.0.1.0"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.0.65535"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": false
+      },
+      "text": "0b00001010000000001111111111111111"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0b00001010000000001111111111111111"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": false
+      },
+      "text": "10.0.255.255"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x7f.01.0b1.1"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": false
+      },
+      "text": "0b01111111000000010000000100000001"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0b01111111000000010000000100000001"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": false
+      },
+      "text": "127.1.1.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2130706433"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": false
+      },
+      "text": "0b01111111000000000000000000000001"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0b01111111000000000000000000000001"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": false
+      },
+      "text": "127.0.0.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.0.0.0"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": true
+      },
+      "text": "00000000000000000000000000000000"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00000000000000000000000000000000"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": true
+      },
+      "text": "0.0.0.0"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "192.168.1.1"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": true
+      },
+      "text": "11000000101010000000000100000001"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "11000000101010000000000100000001"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": true
+      },
+      "text": "192.168.1.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "255.255.255.255"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": true
+      },
+      "text": "11111111111111111111111111111111"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "11111111111111111111111111111111"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": true
+      },
+      "text": "255.255.255.255"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "127.1"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": true
+      },
+      "text": "01111111000000000000000000000001"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "01111111000000000000000000000001"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": true
+      },
+      "text": "127.0.0.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.256"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": true
+      },
+      "text": "00001010000000000000000100000000"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00001010000000000000000100000000"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": true
+      },
+      "text": "10.0.1.0"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.0.65535"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": true
+      },
+      "text": "00001010000000001111111111111111"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00001010000000001111111111111111"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": true
+      },
+      "text": "10.0.255.255"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x7f.01.0b1.1"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": true
+      },
+      "text": "01111111000000010000000100000001"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "01111111000000010000000100000001"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": true
+      },
+      "text": "127.1.1.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2130706433"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": true
+      },
+      "text": "01111111000000000000000000000001"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "01111111000000000000000000000001"
+        }
+      },
+      "params": {
+        "format": "bin",
+        "compat": true
+      },
+      "text": "127.0.0.1"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_compress",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "::"
+        }
+      },
+      "params": {},
+      "text": "::"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_expand",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "::"
+        }
+      },
+      "params": {},
+      "text": "0000:0000:0000:0000:0000:0000:0000:0000"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_compress",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "::1"
+        }
+      },
+      "params": {},
+      "text": "::1"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_expand",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "::1"
+        }
+      },
+      "params": {},
+      "text": "0000:0000:0000:0000:0000:0000:0000:0001"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_compress",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2001:db8::1"
+        }
+      },
+      "params": {},
+      "text": "2001:db8::1"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_expand",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2001:db8::1"
+        }
+      },
+      "params": {},
+      "text": "2001:0db8:0000:0000:0000:0000:0000:0001"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_compress",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2001:db8:0:1:0:0:0:1"
+        }
+      },
+      "params": {},
+      "text": "2001:db8:0:1::1"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_expand",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2001:db8:0:1::1"
+        }
+      },
+      "params": {},
+      "text": "2001:0db8:0000:0001:0000:0000:0000:0001"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_compress",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1:0:0:2:0:0:3:4"
+        }
+      },
+      "params": {},
+      "text": "1::2:0:0:3:4"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_expand",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1::2:0:0:3:4"
+        }
+      },
+      "params": {},
+      "text": "0001:0000:0000:0002:0000:0000:0003:0004"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_compress",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1:0:2:3:4:5:6:7"
+        }
+      },
+      "params": {},
+      "text": "1:0:2:3:4:5:6:7"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_expand",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1:0:2:3:4:5:6:7"
+        }
+      },
+      "params": {},
+      "text": "0001:0000:0002:0003:0004:0005:0006:0007"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_compress",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "::ffff:192.168.1.1"
+        }
+      },
+      "params": {},
+      "text": "::ffff:c0a8:101"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_expand",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "::ffff:c0a8:101"
+        }
+      },
+      "params": {},
+      "text": "0000:0000:0000:0000:0000:ffff:c0a8:0101"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_compress",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "FE80::1234"
+        }
+      },
+      "params": {},
+      "text": "fe80::1234"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_expand",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "fe80::1234"
+        }
+      },
+      "params": {},
+      "text": "fe80:0000:0000:0000:0000:0000:0000:1234"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_compress",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "::ffff:127.1"
+        }
+      },
+      "params": {},
+      "text": "::ffff:7f00:1"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_expand",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "::ffff:7f00:1"
+        }
+      },
+      "params": {},
+      "text": "0000:0000:0000:0000:0000:ffff:7f00:0001"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "aa:bb:cc:dd:ee:ff"
+        }
+      },
+      "params": {
+        "format": "colon"
+      },
+      "text": "aa:bb:cc:dd:ee:ff"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "aa:bb:cc:dd:ee:ff"
+        }
+      },
+      "params": {
+        "format": "colon"
+      },
+      "text": "aa:bb:cc:dd:ee:ff"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00:00:00:00:00:00"
+        }
+      },
+      "params": {
+        "format": "colon"
+      },
+      "text": "00:00:00:00:00:00"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00:00:00:00:00:00"
+        }
+      },
+      "params": {
+        "format": "colon"
+      },
+      "text": "00:00:00:00:00:00"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ff-ff-ff-ff-ff-ff"
+        }
+      },
+      "params": {
+        "format": "colon"
+      },
+      "text": "ff:ff:ff:ff:ff:ff"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ff:ff:ff:ff:ff:ff"
+        }
+      },
+      "params": {
+        "format": "colon"
+      },
+      "text": "ff:ff:ff:ff:ff:ff"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0011.2233.4455"
+        }
+      },
+      "params": {
+        "format": "colon"
+      },
+      "text": "00:11:22:33:44:55"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00:11:22:33:44:55"
+        }
+      },
+      "params": {
+        "format": "colon"
+      },
+      "text": "00:11:22:33:44:55"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "187723572702975"
+        }
+      },
+      "params": {
+        "format": "colon"
+      },
+      "text": "aa:bb:cc:dd:ee:ff"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "aa:bb:cc:dd:ee:ff"
+        }
+      },
+      "params": {
+        "format": "colon"
+      },
+      "text": "aa:bb:cc:dd:ee:ff"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0xabcdef123456"
+        }
+      },
+      "params": {
+        "format": "colon"
+      },
+      "text": "ab:cd:ef:12:34:56"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ab:cd:ef:12:34:56"
+        }
+      },
+      "params": {
+        "format": "colon"
+      },
+      "text": "ab:cd:ef:12:34:56"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "aa:bb:cc:dd:ee:ff"
+        }
+      },
+      "params": {
+        "format": "hyphen"
+      },
+      "text": "aa-bb-cc-dd-ee-ff"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "aa-bb-cc-dd-ee-ff"
+        }
+      },
+      "params": {
+        "format": "hyphen"
+      },
+      "text": "aa-bb-cc-dd-ee-ff"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00:00:00:00:00:00"
+        }
+      },
+      "params": {
+        "format": "hyphen"
+      },
+      "text": "00-00-00-00-00-00"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00-00-00-00-00-00"
+        }
+      },
+      "params": {
+        "format": "hyphen"
+      },
+      "text": "00-00-00-00-00-00"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ff-ff-ff-ff-ff-ff"
+        }
+      },
+      "params": {
+        "format": "hyphen"
+      },
+      "text": "ff-ff-ff-ff-ff-ff"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ff-ff-ff-ff-ff-ff"
+        }
+      },
+      "params": {
+        "format": "hyphen"
+      },
+      "text": "ff-ff-ff-ff-ff-ff"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0011.2233.4455"
+        }
+      },
+      "params": {
+        "format": "hyphen"
+      },
+      "text": "00-11-22-33-44-55"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00-11-22-33-44-55"
+        }
+      },
+      "params": {
+        "format": "hyphen"
+      },
+      "text": "00-11-22-33-44-55"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "187723572702975"
+        }
+      },
+      "params": {
+        "format": "hyphen"
+      },
+      "text": "aa-bb-cc-dd-ee-ff"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "aa-bb-cc-dd-ee-ff"
+        }
+      },
+      "params": {
+        "format": "hyphen"
+      },
+      "text": "aa-bb-cc-dd-ee-ff"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0xabcdef123456"
+        }
+      },
+      "params": {
+        "format": "hyphen"
+      },
+      "text": "ab-cd-ef-12-34-56"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ab-cd-ef-12-34-56"
+        }
+      },
+      "params": {
+        "format": "hyphen"
+      },
+      "text": "ab-cd-ef-12-34-56"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "aa:bb:cc:dd:ee:ff"
+        }
+      },
+      "params": {
+        "format": "dot"
+      },
+      "text": "aabb.ccdd.eeff"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "aabb.ccdd.eeff"
+        }
+      },
+      "params": {
+        "format": "dot"
+      },
+      "text": "aabb.ccdd.eeff"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00:00:00:00:00:00"
+        }
+      },
+      "params": {
+        "format": "dot"
+      },
+      "text": "0000.0000.0000"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0000.0000.0000"
+        }
+      },
+      "params": {
+        "format": "dot"
+      },
+      "text": "0000.0000.0000"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ff-ff-ff-ff-ff-ff"
+        }
+      },
+      "params": {
+        "format": "dot"
+      },
+      "text": "ffff.ffff.ffff"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ffff.ffff.ffff"
+        }
+      },
+      "params": {
+        "format": "dot"
+      },
+      "text": "ffff.ffff.ffff"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0011.2233.4455"
+        }
+      },
+      "params": {
+        "format": "dot"
+      },
+      "text": "0011.2233.4455"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0011.2233.4455"
+        }
+      },
+      "params": {
+        "format": "dot"
+      },
+      "text": "0011.2233.4455"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "187723572702975"
+        }
+      },
+      "params": {
+        "format": "dot"
+      },
+      "text": "aabb.ccdd.eeff"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "aabb.ccdd.eeff"
+        }
+      },
+      "params": {
+        "format": "dot"
+      },
+      "text": "aabb.ccdd.eeff"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0xabcdef123456"
+        }
+      },
+      "params": {
+        "format": "dot"
+      },
+      "text": "abcd.ef12.3456"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "abcd.ef12.3456"
+        }
+      },
+      "params": {
+        "format": "dot"
+      },
+      "text": "abcd.ef12.3456"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "aa:bb:cc:dd:ee:ff"
+        }
+      },
+      "params": {
+        "format": "int"
+      },
+      "text": "187723572702975"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "187723572702975"
+        }
+      },
+      "params": {
+        "format": "int"
+      },
+      "text": "187723572702975"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00:00:00:00:00:00"
+        }
+      },
+      "params": {
+        "format": "int"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "format": "int"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ff-ff-ff-ff-ff-ff"
+        }
+      },
+      "params": {
+        "format": "int"
+      },
+      "text": "281474976710655"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "281474976710655"
+        }
+      },
+      "params": {
+        "format": "int"
+      },
+      "text": "281474976710655"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0011.2233.4455"
+        }
+      },
+      "params": {
+        "format": "int"
+      },
+      "text": "73588229205"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "73588229205"
+        }
+      },
+      "params": {
+        "format": "int"
+      },
+      "text": "73588229205"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "187723572702975"
+        }
+      },
+      "params": {
+        "format": "int"
+      },
+      "text": "187723572702975"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "187723572702975"
+        }
+      },
+      "params": {
+        "format": "int"
+      },
+      "text": "187723572702975"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0xabcdef123456"
+        }
+      },
+      "params": {
+        "format": "int"
+      },
+      "text": "188900967593046"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "188900967593046"
+        }
+      },
+      "params": {
+        "format": "int"
+      },
+      "text": "188900967593046"
+    },
+    {
+      "operation": "cidrCalc",
+      "node": "cidr_calculate",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.0.0.0/0"
+        }
+      },
+      "params": {},
+      "text": "CIDR:        0.0.0.0/0\nIP 地址:     0.0.0.0  (A 类，公共)\n前缀长度:    /0\n子网掩码:    0.0.0.0  (0x00000000)\n反掩码:      255.255.255.255\n网络地址:    0.0.0.0\n广播地址:    255.255.255.255\n主机最小:    0.0.0.1\n主机最大:    255.255.255.254\n主机数量:    4294967294\nIP 整数:     0  (0x00000000)"
+    },
+    {
+      "operation": "cidrCalc",
+      "node": "cidr_calculate",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "192.168.1.99/24"
+        }
+      },
+      "params": {},
+      "text": "CIDR:        192.168.1.99/24\nIP 地址:     192.168.1.99  (C 类，私有)\n前缀长度:    /24\n子网掩码:    255.255.255.0  (0xFFFFFF00)\n反掩码:      0.0.0.255\n网络地址:    192.168.1.0\n广播地址:    192.168.1.255\n主机最小:    192.168.1.1\n主机最大:    192.168.1.254\n主机数量:    254\nIP 整数:     3232235875  (0xC0A80163)"
+    },
+    {
+      "operation": "cidrCalc",
+      "node": "cidr_calculate",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.0.0.1/31"
+        }
+      },
+      "params": {},
+      "text": "CIDR:        10.0.0.1/31\nIP 地址:     10.0.0.1  (A 类，私有)\n前缀长度:    /31\n子网掩码:    255.255.255.254  (0xFFFFFFFE)\n反掩码:      0.0.0.1\n网络地址:    10.0.0.0\n广播地址:    10.0.0.1\n主机最小:    10.0.0.0\n主机最大:    10.0.0.1\n主机数量:    2\nIP 整数:     167772161  (0x0A000001)"
+    },
+    {
+      "operation": "cidrCalc",
+      "node": "cidr_calculate",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.0.0.1/32"
+        }
+      },
+      "params": {},
+      "text": "CIDR:        10.0.0.1/32\nIP 地址:     10.0.0.1  (A 类，私有)\n前缀长度:    /32\n子网掩码:    255.255.255.255  (0xFFFFFFFF)\n反掩码:      0.0.0.0\n网络地址:    10.0.0.1\n广播地址:    10.0.0.1\n主机最小:    10.0.0.1\n主机最大:    10.0.0.1\n主机数量:    1\nIP 整数:     167772161  (0x0A000001)"
+    },
+    {
+      "operation": "cidrCalc",
+      "node": "cidr_calculate",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "172.16.0.1/16"
+        }
+      },
+      "params": {},
+      "text": "CIDR:        172.16.0.1/16\nIP 地址:     172.16.0.1  (B 类，私有)\n前缀长度:    /16\n子网掩码:    255.255.0.0  (0xFFFF0000)\n反掩码:      0.0.255.255\n网络地址:    172.16.0.0\n广播地址:    172.16.255.255\n主机最小:    172.16.0.1\n主机最大:    172.16.255.254\n主机数量:    65534\nIP 整数:     2886729729  (0xAC100001)"
+    },
+    {
+      "operation": "cidrCalc",
+      "node": "cidr_calculate",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "172.32.0.1/16"
+        }
+      },
+      "params": {},
+      "text": "CIDR:        172.32.0.1/16\nIP 地址:     172.32.0.1  (B 类，公共)\n前缀长度:    /16\n子网掩码:    255.255.0.0  (0xFFFF0000)\n反掩码:      0.0.255.255\n网络地址:    172.32.0.0\n广播地址:    172.32.255.255\n主机最小:    172.32.0.1\n主机最大:    172.32.255.254\n主机数量:    65534\nIP 整数:     2887778305  (0xAC200001)"
+    },
+    {
+      "operation": "cidrCalc",
+      "node": "cidr_calculate",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "224.1.1.1/4"
+        }
+      },
+      "params": {},
+      "text": "CIDR:        224.1.1.1/4\nIP 地址:     224.1.1.1  (D 类（组播），公共)\n前缀长度:    /4\n子网掩码:    240.0.0.0  (0xF0000000)\n反掩码:      15.255.255.255\n网络地址:    224.0.0.0\n广播地址:    239.255.255.255\n主机最小:    224.0.0.1\n主机最大:    239.255.255.254\n主机数量:    268435454\nIP 整数:     3758162177  (0xE0010101)"
+    },
+    {
+      "operation": "cidrCalc",
+      "node": "cidr_calculate",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "240.0.0.1/4"
+        }
+      },
+      "params": {},
+      "text": "CIDR:        240.0.0.1/4\nIP 地址:     240.0.0.1  (E 类（保留），公共)\n前缀长度:    /4\n子网掩码:    240.0.0.0  (0xF0000000)\n反掩码:      15.255.255.255\n网络地址:    240.0.0.0\n广播地址:    255.255.255.255\n主机最小:    240.0.0.1\n主机最大:    255.255.255.254\n主机数量:    268435454\nIP 整数:     4026531841  (0xF0000001)"
+    },
+    {
+      "operation": "cidrCalc",
+      "node": "cidr_calculate",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "127.1/8"
+        }
+      },
+      "params": {},
+      "text": "CIDR:        127.0.0.1/8\nIP 地址:     127.0.0.1  (A 类，公共)\n前缀长度:    /8\n子网掩码:    255.0.0.0  (0xFF000000)\n反掩码:      0.255.255.255\n网络地址:    127.0.0.0\n广播地址:    127.255.255.255\n主机最小:    127.0.0.1\n主机最大:    127.255.255.254\n主机数量:    16777214\nIP 整数:     2130706433  (0x7F000001)"
+    },
+    {
+      "operation": "userAgentParse",
+      "node": "user_agent_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0 Safari/537.36 Edg/120.0"
+        }
+      },
+      "params": {},
+      "text": "原始 UA:    Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0 Safari …\n浏览器:     Microsoft Edge 120.0\n引擎:       Blink 120.0\n操作系统:   Windows 10/11\n设备类型:   桌面"
+    },
+    {
+      "operation": "userAgentParse",
+      "node": "user_agent_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko"
+        }
+      },
+      "params": {},
+      "text": "原始 UA:    Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko\n浏览器:     Internet Explorer 11.0\n引擎:       Trident 7.0\n操作系统:   Windows 7\n设备类型:   桌面"
+    },
+    {
+      "operation": "userAgentParse",
+      "node": "user_agent_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Mozilla/5.0 (Windows NT 5.1) MSIE 8.0"
+        }
+      },
+      "params": {},
+      "text": "原始 UA:    Mozilla/5.0 (Windows NT 5.1) MSIE 8.0\n浏览器:     Internet Explorer 8.0\n引擎:       未知\n操作系统:   Windows XP\n设备类型:   桌面"
+    },
+    {
+      "operation": "userAgentParse",
+      "node": "user_agent_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 Chrome/120.0 Mobile Safari/537.36"
+        }
+      },
+      "params": {},
+      "text": "原始 UA:    Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 Chrome/120.0 Mobile  …\n浏览器:     Chrome 120.0\n引擎:       Blink 120.0\n操作系统:   Android 13\n设备类型:   手机\n设备型号:   Pixel 7"
+    },
+    {
+      "operation": "userAgentParse",
+      "node": "user_agent_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_1 like Mac OS X) Version/17.0 Mobile Safari/605.1"
+        }
+      },
+      "params": {},
+      "text": "原始 UA:    Mozilla/5.0 (iPhone; CPU iPhone OS 17_1 like Mac OS X) Version/17.0 Mobile Safar …\n浏览器:     Safari 17.0\n引擎:       未知\n操作系统:   iOS 17.1\n设备类型:   手机\n设备型号:   CPU iPhone OS 17_1 like Mac OS X"
+    },
+    {
+      "operation": "userAgentParse",
+      "node": "user_agent_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Mozilla/5.0 (iPad; CPU OS 16_0 like Mac OS X) Version/16.0 Safari/605.1"
+        }
+      },
+      "params": {},
+      "text": "原始 UA:    Mozilla/5.0 (iPad; CPU OS 16_0 like Mac OS X) Version/16.0 Safari/605.1\n浏览器:     Safari 16.0\n引擎:       未知\n操作系统:   iPadOS 16.0\n设备类型:   平板"
+    },
+    {
+      "operation": "userAgentParse",
+      "node": "user_agent_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1 Version/17.0 Safari/605.1"
+        }
+      },
+      "params": {},
+      "text": "原始 UA:    Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1 Version/17.0 S …\n浏览器:     Safari 17.0\n引擎:       WebKit 605.1\n操作系统:   macOS 10.15.7\n设备类型:   桌面"
+    },
+    {
+      "operation": "userAgentParse",
+      "node": "user_agent_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Mozilla/5.0 (Linux; rv:123.0) Gecko/20100101 Firefox/123.0"
+        }
+      },
+      "params": {},
+      "text": "原始 UA:    Mozilla/5.0 (Linux; rv:123.0) Gecko/20100101 Firefox/123.0\n浏览器:     Firefox 123.0\n引擎:       Gecko 123.0\n操作系统:   Linux\n设备类型:   桌面"
+    },
+    {
+      "operation": "userAgentParse",
+      "node": "user_agent_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "CrOS Chrome/99.0 OPR/88.0"
+        }
+      },
+      "params": {},
+      "text": "原始 UA:    CrOS Chrome/99.0 OPR/88.0\n浏览器:     Opera 88.0\n引擎:       Blink 99.0\n操作系统:   Chrome OS\n设备类型:   桌面"
+    },
+    {
+      "operation": "userAgentParse",
+      "node": "user_agent_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Linux"
+        }
+      },
+      "params": {},
+      "text": "原始 UA:    Linux\n浏览器:     未知\n引擎:       未知\n操作系统:   Linux\n设备类型:   桌面"
+    },
+    {
+      "operation": "userAgentParse",
+      "node": "user_agent_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "未知🙂"
+        }
+      },
+      "params": {},
+      "text": "原始 UA:    未知🙂\n浏览器:     未知\n引擎:       未知\n操作系统:   未知\n设备类型:   桌面"
+    },
+    {
+      "operation": "userAgentParse",
+      "node": "user_agent_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "error": "UA: 空输入"
+    },
+    {
+      "operation": "magnetParse",
+      "node": "magnet_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "magnet:?xt=urn:btih:abcdef0123&dn=a+b&tr=udp%3A%2F%2Fexample&tr.1=second"
+        }
+      },
+      "params": {},
+      "text": "精确主题 (xt): urn:btih:abcdef0123\n  ↳ BTIH 哈希: abcdef0123\n显示名 (dn): a b\n--- Tracker 列表 (2) ---\n  udp://example\n  second"
+    },
+    {
+      "operation": "magnetParse",
+      "node": "magnet_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "MAGNET:?xt.1=urn:btih:ABCD&xt.2=urn:sha1:000&xl=100&ws=http://example&as=foo&xs=bar&kt=k&mt=m&x=v"
+        }
+      },
+      "params": {},
+      "text": "精确主题 (xt): urn:btih:ABCD\n  ↳ BTIH 哈希: ABCD\n精确主题 (xt): urn:sha1:000\n文件大小 (xl): 100\nWeb Seed (ws): http://example\n备用源 (as): foo\n精确源 (xs): bar\n关键词 (kt): k\n清单主题 (mt): m\nx 参数: v"
+    },
+    {
+      "operation": "magnetParse",
+      "node": "magnet_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "magnet:?xt=urn:btih:abc&dn=%E4%B8%AD%F0%9F%99%82"
+        }
+      },
+      "params": {},
+      "text": "精确主题 (xt): urn:btih:abc\n  ↳ BTIH 哈希: abc\n显示名 (dn): 中🙂"
+    },
+    {
+      "operation": "magnetParse",
+      "node": "magnet_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "magnet:?xt=unknown&dn=%ZZ"
+        }
+      },
+      "params": {},
+      "text": "精确主题 (xt): unknown\n显示名 (dn): %ZZ"
+    },
+    {
+      "operation": "magnetParse",
+      "node": "magnet_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "magnet:?xt=unknown&dn=%FF"
+        }
+      },
+      "params": {},
+      "text": "精确主题 (xt): unknown\n显示名 (dn): %FF"
+    },
+    {
+      "operation": "magnetParse",
+      "node": "magnet_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "magnet:?xt=urn:btih:abc"
+        }
+      },
+      "params": {},
+      "text": "精确主题 (xt): urn:btih:abc\n  ↳ BTIH 哈希: abc"
+    },
+    {
+      "operation": "magnetParse",
+      "node": "magnet_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "magnet:?dn=only"
+        }
+      },
+      "params": {},
+      "error": "非法 magnet 链接：缺少必需字段 xt（BEP-005 规定 xt 为精确主题 URI，如 urn:btih:<40 位哈希>，必填）"
+    },
+    {
+      "operation": "magnetParse",
+      "node": "magnet_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "magnet:?xt="
+        }
+      },
+      "params": {},
+      "error": "非法 magnet 链接：缺少必需字段 xt（BEP-005 规定 xt 为精确主题 URI，如 urn:btih:<40 位哈希>，必填）"
+    },
+    {
+      "operation": "magnetParse",
+      "node": "magnet_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "error": "非法 magnet 链接（需 magnet:?...）"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1970-01-01T00:00:00Z"
+        }
+      },
+      "params": {
+        "unit": "auto"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "unit": "auto"
+      },
+      "text": "1970-01-01T00:00:00Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1969-12-31T23:59:59.123Z"
+        }
+      },
+      "params": {
+        "unit": "auto"
+      },
+      "text": "-1"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {
+        "unit": "auto"
+      },
+      "text": "1969-12-31T23:59:59Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T12:34:56.789Z"
+        }
+      },
+      "params": {
+        "unit": "auto"
+      },
+      "text": "1793104496"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1793104496"
+        }
+      },
+      "params": {
+        "unit": "auto"
+      },
+      "text": "2026-10-27T12:34:56Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2000-02-29T12:34:56+08:00"
+        }
+      },
+      "params": {
+        "unit": "auto"
+      },
+      "text": "951798896"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "951798896"
+        }
+      },
+      "params": {
+        "unit": "auto"
+      },
+      "text": "2000-02-29T04:34:56Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0001-01-01T00:00:00Z"
+        }
+      },
+      "params": {
+        "unit": "auto"
+      },
+      "text": "-62135596800"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-62135596800"
+        }
+      },
+      "params": {
+        "unit": "auto"
+      },
+      "text": "1968-01-12T20:06:43Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1970-01-01T00:00:00Z"
+        }
+      },
+      "params": {
+        "unit": "sec"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "unit": "sec"
+      },
+      "text": "1970-01-01T00:00:00Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1969-12-31T23:59:59.123Z"
+        }
+      },
+      "params": {
+        "unit": "sec"
+      },
+      "text": "-1"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {
+        "unit": "sec"
+      },
+      "text": "1969-12-31T23:59:59Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T12:34:56.789Z"
+        }
+      },
+      "params": {
+        "unit": "sec"
+      },
+      "text": "1793104496"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1793104496"
+        }
+      },
+      "params": {
+        "unit": "sec"
+      },
+      "text": "2026-10-27T12:34:56Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2000-02-29T12:34:56+08:00"
+        }
+      },
+      "params": {
+        "unit": "sec"
+      },
+      "text": "951798896"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "951798896"
+        }
+      },
+      "params": {
+        "unit": "sec"
+      },
+      "text": "2000-02-29T04:34:56Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0001-01-01T00:00:00Z"
+        }
+      },
+      "params": {
+        "unit": "sec"
+      },
+      "text": "-62135596800"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-62135596800"
+        }
+      },
+      "params": {
+        "unit": "sec"
+      },
+      "text": "0001-01-01T00:00:00Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1970-01-01T00:00:00Z"
+        }
+      },
+      "params": {
+        "unit": "ms"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "unit": "ms"
+      },
+      "text": "1970-01-01T00:00:00Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1969-12-31T23:59:59.123Z"
+        }
+      },
+      "params": {
+        "unit": "ms"
+      },
+      "text": "-877"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-877"
+        }
+      },
+      "params": {
+        "unit": "ms"
+      },
+      "text": "1969-12-31T23:59:59Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T12:34:56.789Z"
+        }
+      },
+      "params": {
+        "unit": "ms"
+      },
+      "text": "1793104496789"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1793104496789"
+        }
+      },
+      "params": {
+        "unit": "ms"
+      },
+      "text": "2026-10-27T12:34:56Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2000-02-29T12:34:56+08:00"
+        }
+      },
+      "params": {
+        "unit": "ms"
+      },
+      "text": "951798896000"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "951798896000"
+        }
+      },
+      "params": {
+        "unit": "ms"
+      },
+      "text": "2000-02-29T04:34:56Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0001-01-01T00:00:00Z"
+        }
+      },
+      "params": {
+        "unit": "ms"
+      },
+      "text": "-62135596800000"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-62135596800000"
+        }
+      },
+      "params": {
+        "unit": "ms"
+      },
+      "text": "0001-01-01T00:00:00Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1970-01-01T00:00:00Z"
+        }
+      },
+      "params": {
+        "unit": "us"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "unit": "us"
+      },
+      "text": "1970-01-01T00:00:00Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1969-12-31T23:59:59.123Z"
+        }
+      },
+      "params": {
+        "unit": "us"
+      },
+      "text": "-877000"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-877000"
+        }
+      },
+      "params": {
+        "unit": "us"
+      },
+      "text": "1969-12-31T23:59:59Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T12:34:56.789Z"
+        }
+      },
+      "params": {
+        "unit": "us"
+      },
+      "text": "1793104496789000"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1793104496789000"
+        }
+      },
+      "params": {
+        "unit": "us"
+      },
+      "text": "2026-10-27T12:34:56Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2000-02-29T12:34:56+08:00"
+        }
+      },
+      "params": {
+        "unit": "us"
+      },
+      "text": "951798896000000"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "951798896000000"
+        }
+      },
+      "params": {
+        "unit": "us"
+      },
+      "text": "2000-02-29T04:34:56Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0001-01-01T00:00:00Z"
+        }
+      },
+      "params": {
+        "unit": "us"
+      },
+      "text": "-62135596800000000"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-62135596800000000"
+        }
+      },
+      "params": {
+        "unit": "us"
+      },
+      "text": "0001-01-01T00:00:00Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1000"
+        }
+      },
+      "params": {
+        "unit": "auto"
+      },
+      "text": "1969-12-31T23:43:20Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "unit": "auto"
+      },
+      "text": "1970-01-01T00:00:00Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1793059200"
+        }
+      },
+      "params": {
+        "unit": "auto"
+      },
+      "text": "2026-10-27T00:00:00Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1793059200123"
+        }
+      },
+      "params": {
+        "unit": "auto"
+      },
+      "text": "2026-10-27T00:00:00Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1793059200123456"
+        }
+      },
+      "params": {
+        "unit": "auto"
+      },
+      "text": "2026-10-27T00:00:00Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1793059200123456"
+        }
+      },
+      "params": {
+        "unit": "auto"
+      },
+      "text": "1913-03-07T23:59:59Z"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1.25"
+        }
+      },
+      "params": {
+        "unit": "auto"
+      },
+      "text": "1970-01-01T00:00:01Z"
+    },
+    {
+      "operation": "filetime",
+      "node": "windows_filetime_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1601-01-01"
+        }
+      },
+      "params": {},
+      "text": "0"
+    },
+    {
+      "operation": "filetime",
+      "node": "windows_filetime_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {},
+      "text": "1601-01-01T00:00:00Z"
+    },
+    {
+      "operation": "filetime",
+      "node": "windows_filetime_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1904-01-01"
+        }
+      },
+      "params": {},
+      "text": "95616288000000000"
+    },
+    {
+      "operation": "filetime",
+      "node": "windows_filetime_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "95616288000000000"
+        }
+      },
+      "params": {},
+      "text": "1904-01-01T00:00:00Z"
+    },
+    {
+      "operation": "filetime",
+      "node": "windows_filetime_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1970-01-01"
+        }
+      },
+      "params": {},
+      "text": "116444736000000000"
+    },
+    {
+      "operation": "filetime",
+      "node": "windows_filetime_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "116444736000000000"
+        }
+      },
+      "params": {},
+      "text": "1970-01-01T00:00:00Z"
+    },
+    {
+      "operation": "filetime",
+      "node": "windows_filetime_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2001-01-01"
+        }
+      },
+      "params": {},
+      "text": "126227808000000000"
+    },
+    {
+      "operation": "filetime",
+      "node": "windows_filetime_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "126227808000000000"
+        }
+      },
+      "params": {},
+      "text": "2001-01-01T00:00:00Z"
+    },
+    {
+      "operation": "filetime",
+      "node": "windows_filetime_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T12:34:56.789Z"
+        }
+      },
+      "params": {},
+      "text": "134375780967890000"
+    },
+    {
+      "operation": "filetime",
+      "node": "windows_filetime_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "134375780967890000"
+        }
+      },
+      "params": {},
+      "text": "2026-10-27T12:34:56Z"
+    },
+    {
+      "operation": "filetime",
+      "node": "windows_filetime_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2040-02-06T06:28:15Z"
+        }
+      },
+      "params": {},
+      "text": "138565960950000000"
+    },
+    {
+      "operation": "filetime",
+      "node": "windows_filetime_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "138565960950000000"
+        }
+      },
+      "params": {},
+      "text": "2040-02-06T06:28:15Z"
+    },
+    {
+      "operation": "hfsTime",
+      "node": "hfs_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1601-01-01"
+        }
+      },
+      "params": {},
+      "error": "HFS+ 时间早于 1904-01-01 纪元: -11644473600000"
+    },
+    {
+      "operation": "hfsTime",
+      "node": "hfs_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1904-01-01"
+        }
+      },
+      "params": {},
+      "text": "0"
+    },
+    {
+      "operation": "hfsTime",
+      "node": "hfs_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {},
+      "text": "1904-01-01T00:00:00Z"
+    },
+    {
+      "operation": "hfsTime",
+      "node": "hfs_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1970-01-01"
+        }
+      },
+      "params": {},
+      "text": "2082844800"
+    },
+    {
+      "operation": "hfsTime",
+      "node": "hfs_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2082844800"
+        }
+      },
+      "params": {},
+      "text": "1970-01-01T00:00:00Z"
+    },
+    {
+      "operation": "hfsTime",
+      "node": "hfs_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2001-01-01"
+        }
+      },
+      "params": {},
+      "text": "3061152000"
+    },
+    {
+      "operation": "hfsTime",
+      "node": "hfs_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3061152000"
+        }
+      },
+      "params": {},
+      "text": "2001-01-01T00:00:00Z"
+    },
+    {
+      "operation": "hfsTime",
+      "node": "hfs_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T12:34:56.789Z"
+        }
+      },
+      "params": {},
+      "text": "3875949296"
+    },
+    {
+      "operation": "hfsTime",
+      "node": "hfs_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3875949296"
+        }
+      },
+      "params": {},
+      "text": "2026-10-27T12:34:56Z"
+    },
+    {
+      "operation": "hfsTime",
+      "node": "hfs_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2040-02-06T06:28:15Z"
+        }
+      },
+      "params": {},
+      "text": "4294967295"
+    },
+    {
+      "operation": "hfsTime",
+      "node": "hfs_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "4294967295"
+        }
+      },
+      "params": {},
+      "text": "2040-02-06T06:28:15Z"
+    },
+    {
+      "operation": "cocoaTime",
+      "node": "cocoa_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1601-01-01"
+        }
+      },
+      "params": {},
+      "text": "-12622780800"
+    },
+    {
+      "operation": "cocoaTime",
+      "node": "cocoa_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-12622780800"
+        }
+      },
+      "params": {},
+      "text": "1601-01-01T00:00:00Z"
+    },
+    {
+      "operation": "cocoaTime",
+      "node": "cocoa_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1904-01-01"
+        }
+      },
+      "params": {},
+      "text": "-3061152000"
+    },
+    {
+      "operation": "cocoaTime",
+      "node": "cocoa_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-3061152000"
+        }
+      },
+      "params": {},
+      "text": "1904-01-01T00:00:00Z"
+    },
+    {
+      "operation": "cocoaTime",
+      "node": "cocoa_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1970-01-01"
+        }
+      },
+      "params": {},
+      "text": "-978307200"
+    },
+    {
+      "operation": "cocoaTime",
+      "node": "cocoa_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-978307200"
+        }
+      },
+      "params": {},
+      "text": "1970-01-01T00:00:00Z"
+    },
+    {
+      "operation": "cocoaTime",
+      "node": "cocoa_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2001-01-01"
+        }
+      },
+      "params": {},
+      "text": "0"
+    },
+    {
+      "operation": "cocoaTime",
+      "node": "cocoa_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {},
+      "text": "2001-01-01T00:00:00Z"
+    },
+    {
+      "operation": "cocoaTime",
+      "node": "cocoa_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T12:34:56.789Z"
+        }
+      },
+      "params": {},
+      "text": "814797296"
+    },
+    {
+      "operation": "cocoaTime",
+      "node": "cocoa_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "814797296"
+        }
+      },
+      "params": {},
+      "text": "2026-10-27T12:34:56Z"
+    },
+    {
+      "operation": "cocoaTime",
+      "node": "cocoa_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2040-02-06T06:28:15Z"
+        }
+      },
+      "params": {},
+      "text": "1233815295"
+    },
+    {
+      "operation": "cocoaTime",
+      "node": "cocoa_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1233815295"
+        }
+      },
+      "params": {},
+      "text": "2040-02-06T06:28:15Z"
+    },
+    {
+      "operation": "chromeTime",
+      "node": "chrome_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1601-01-01"
+        }
+      },
+      "params": {},
+      "text": "0"
+    },
+    {
+      "operation": "chromeTime",
+      "node": "chrome_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {},
+      "text": "1601-01-01T00:00:00Z"
+    },
+    {
+      "operation": "chromeTime",
+      "node": "chrome_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1904-01-01"
+        }
+      },
+      "params": {},
+      "text": "9561628800000000"
+    },
+    {
+      "operation": "chromeTime",
+      "node": "chrome_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "9561628800000000"
+        }
+      },
+      "params": {},
+      "text": "1904-01-01T00:00:00Z"
+    },
+    {
+      "operation": "chromeTime",
+      "node": "chrome_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1970-01-01"
+        }
+      },
+      "params": {},
+      "text": "11644473600000000"
+    },
+    {
+      "operation": "chromeTime",
+      "node": "chrome_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "11644473600000000"
+        }
+      },
+      "params": {},
+      "text": "1970-01-01T00:00:00Z"
+    },
+    {
+      "operation": "chromeTime",
+      "node": "chrome_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2001-01-01"
+        }
+      },
+      "params": {},
+      "text": "12622780800000000"
+    },
+    {
+      "operation": "chromeTime",
+      "node": "chrome_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "12622780800000000"
+        }
+      },
+      "params": {},
+      "text": "2001-01-01T00:00:00Z"
+    },
+    {
+      "operation": "chromeTime",
+      "node": "chrome_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T12:34:56.789Z"
+        }
+      },
+      "params": {},
+      "text": "13437578096789000"
+    },
+    {
+      "operation": "chromeTime",
+      "node": "chrome_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "13437578096789000"
+        }
+      },
+      "params": {},
+      "text": "2026-10-27T12:34:56Z"
+    },
+    {
+      "operation": "chromeTime",
+      "node": "chrome_time_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2040-02-06T06:28:15Z"
+        }
+      },
+      "params": {},
+      "text": "13856596095000000"
+    },
+    {
+      "operation": "chromeTime",
+      "node": "chrome_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "13856596095000000"
+        }
+      },
+      "params": {},
+      "text": "2040-02-06T06:28:15Z"
+    },
+    {
+      "operation": "filetime",
+      "node": "windows_filetime_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "18446744073709551615"
+        }
+      },
+      "params": {},
+      "text": "60056-05-28T05:36:10Z"
+    },
+    {
+      "operation": "filetime",
+      "node": "windows_filetime_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x19DB1DED53E8000"
+        }
+      },
+      "params": {},
+      "text": "1970-01-01T00:00:00Z"
+    },
+    {
+      "operation": "hfsTime",
+      "node": "hfs_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "4294967295"
+        }
+      },
+      "params": {},
+      "text": "2040-02-06T06:28:15Z"
+    },
+    {
+      "operation": "cocoaTime",
+      "node": "cocoa_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1.5"
+        }
+      },
+      "params": {},
+      "text": "2000-12-31T23:59:58Z"
+    },
+    {
+      "operation": "chromeTime",
+      "node": "chrome_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1001"
+        }
+      },
+      "params": {},
+      "text": "1600-12-31T23:59:59Z"
+    },
+    {
+      "operation": "dosDateTime",
+      "node": "dos_datetime_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1980-01-01"
+        }
+      },
+      "params": {},
+      "text": "2162688"
+    },
+    {
+      "operation": "dosDateTime",
+      "node": "dos_datetime_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2162688"
+        }
+      },
+      "params": {},
+      "text": "1980-01-01T00:00:00Z"
+    },
+    {
+      "operation": "dosDateTime",
+      "node": "dos_datetime_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T12:34:57Z"
+        }
+      },
+      "params": {},
+      "text": "1566270556"
+    },
+    {
+      "operation": "dosDateTime",
+      "node": "dos_datetime_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1566270556"
+        }
+      },
+      "params": {},
+      "text": "2026-10-27T12:34:56Z"
+    },
+    {
+      "operation": "dosDateTime",
+      "node": "dos_datetime_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2000-02-29T00:00:00Z"
+        }
+      },
+      "params": {},
+      "text": "677183488"
+    },
+    {
+      "operation": "dosDateTime",
+      "node": "dos_datetime_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "677183488"
+        }
+      },
+      "params": {},
+      "text": "2000-02-29T00:00:00Z"
+    },
+    {
+      "operation": "dosDateTime",
+      "node": "dos_datetime_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2107-12-31T23:59:58Z"
+        }
+      },
+      "params": {},
+      "text": "4288659325"
+    },
+    {
+      "operation": "dosDateTime",
+      "node": "dos_datetime_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "4288659325"
+        }
+      },
+      "params": {},
+      "text": "2107-12-31T23:59:58Z"
+    },
+    {
+      "operation": "chineseDate",
+      "node": "chinese_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0000-01-01T00:00:00Z"
+        }
+      },
+      "params": {},
+      "text": "〇年一月一日"
+    },
+    {
+      "operation": "chineseDate",
+      "node": "chinese_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "〇年一月一日"
+        }
+      },
+      "params": {},
+      "text": "0000-01-01T00:00:00Z"
+    },
+    {
+      "operation": "chineseDate",
+      "node": "chinese_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0099-02-28T00:00:00Z"
+        }
+      },
+      "params": {},
+      "text": "九九年二月二十八日"
+    },
+    {
+      "operation": "chineseDate",
+      "node": "chinese_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "九九年二月二十八日"
+        }
+      },
+      "params": {},
+      "text": "0099-02-28T00:00:00Z"
+    },
+    {
+      "operation": "chineseDate",
+      "node": "chinese_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2000-02-29"
+        }
+      },
+      "params": {},
+      "text": "二〇〇〇年二月二十九日"
+    },
+    {
+      "operation": "chineseDate",
+      "node": "chinese_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "二〇〇〇年二月二十九日"
+        }
+      },
+      "params": {},
+      "text": "2000-02-29T00:00:00Z"
+    },
+    {
+      "operation": "chineseDate",
+      "node": "chinese_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27"
+        }
+      },
+      "params": {},
+      "text": "二〇二六年十月二十七日"
+    },
+    {
+      "operation": "chineseDate",
+      "node": "chinese_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "二〇二六年十月二十七日"
+        }
+      },
+      "params": {},
+      "text": "2026-10-27T00:00:00Z"
+    },
+    {
+      "operation": "chineseDate",
+      "node": "chinese_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-12-31"
+        }
+      },
+      "params": {},
+      "text": "二〇二六年十二月三十一日"
+    },
+    {
+      "operation": "chineseDate",
+      "node": "chinese_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "二〇二六年十二月三十一日"
+        }
+      },
+      "params": {},
+      "text": "2026-12-31T00:00:00Z"
+    },
+    {
+      "operation": "chineseDate",
+      "node": "chinese_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-01-10"
+        }
+      },
+      "params": {},
+      "text": "二〇二六年一月十日"
+    },
+    {
+      "operation": "chineseDate",
+      "node": "chinese_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "二〇二六年一月十日"
+        }
+      },
+      "params": {},
+      "text": "2026-01-10T00:00:00Z"
+    },
+    {
+      "operation": "chineseDate",
+      "node": "chinese_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-11-20"
+        }
+      },
+      "params": {},
+      "text": "二〇二六年十一月二十日"
+    },
+    {
+      "operation": "chineseDate",
+      "node": "chinese_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "二〇二六年十一月二十日"
+        }
+      },
+      "params": {},
+      "text": "2026-11-20T00:00:00Z"
+    },
+    {
+      "operation": "chineseDate",
+      "node": "chinese_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-03-30"
+        }
+      },
+      "params": {},
+      "text": "二〇二六年三月三十日"
+    },
+    {
+      "operation": "chineseDate",
+      "node": "chinese_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "二〇二六年三月三十日"
+        }
+      },
+      "params": {},
+      "text": "2026-03-30T00:00:00Z"
+    },
+    {
+      "operation": "tzConvert",
+      "node": "timezone_convert",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T01:00:00"
+        }
+      },
+      "params": {
+        "fromTz": "UTC",
+        "toTz": "UTC"
+      },
+      "text": "2026-10-27T01:00:00+00:00"
+    },
+    {
+      "operation": "tzConvert",
+      "node": "timezone_convert",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T01:00:00+02:00"
+        }
+      },
+      "params": {
+        "fromTz": "UTC",
+        "toTz": "UTC"
+      },
+      "text": "2026-10-26T23:00:00+00:00"
+    },
+    {
+      "operation": "tzConvert",
+      "node": "timezone_convert",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T01:00:00"
+        }
+      },
+      "params": {
+        "fromTz": "UTC",
+        "toTz": "+08:00"
+      },
+      "text": "2026-10-27T09:00:00+08:00"
+    },
+    {
+      "operation": "tzConvert",
+      "node": "timezone_convert",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T01:00:00+02:00"
+        }
+      },
+      "params": {
+        "fromTz": "UTC",
+        "toTz": "+08:00"
+      },
+      "text": "2026-10-27T07:00:00+08:00"
+    },
+    {
+      "operation": "tzConvert",
+      "node": "timezone_convert",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T01:00:00"
+        }
+      },
+      "params": {
+        "fromTz": "UTC",
+        "toTz": "-0430"
+      },
+      "text": "2026-10-26T20:30:00-04:30"
+    },
+    {
+      "operation": "tzConvert",
+      "node": "timezone_convert",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T01:00:00+02:00"
+        }
+      },
+      "params": {
+        "fromTz": "UTC",
+        "toTz": "-0430"
+      },
+      "text": "2026-10-26T18:30:00-04:30"
+    },
+    {
+      "operation": "tzConvert",
+      "node": "timezone_convert",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T01:00:00"
+        }
+      },
+      "params": {
+        "fromTz": "+8",
+        "toTz": "UTC"
+      },
+      "text": "2026-10-26T17:00:00+00:00"
+    },
+    {
+      "operation": "tzConvert",
+      "node": "timezone_convert",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T01:00:00+02:00"
+        }
+      },
+      "params": {
+        "fromTz": "+8",
+        "toTz": "UTC"
+      },
+      "text": "2026-10-26T23:00:00+00:00"
+    },
+    {
+      "operation": "tzConvert",
+      "node": "timezone_convert",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T01:00:00"
+        }
+      },
+      "params": {
+        "fromTz": "+8",
+        "toTz": "+08:00"
+      },
+      "text": "2026-10-27T01:00:00+08:00"
+    },
+    {
+      "operation": "tzConvert",
+      "node": "timezone_convert",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T01:00:00+02:00"
+        }
+      },
+      "params": {
+        "fromTz": "+8",
+        "toTz": "+08:00"
+      },
+      "text": "2026-10-27T07:00:00+08:00"
+    },
+    {
+      "operation": "tzConvert",
+      "node": "timezone_convert",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T01:00:00"
+        }
+      },
+      "params": {
+        "fromTz": "+8",
+        "toTz": "-0430"
+      },
+      "text": "2026-10-26T12:30:00-04:30"
+    },
+    {
+      "operation": "tzConvert",
+      "node": "timezone_convert",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T01:00:00+02:00"
+        }
+      },
+      "params": {
+        "fromTz": "+8",
+        "toTz": "-0430"
+      },
+      "text": "2026-10-26T18:30:00-04:30"
+    },
+    {
+      "operation": "tzConvert",
+      "node": "timezone_convert",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T01:00:00"
+        }
+      },
+      "params": {
+        "fromTz": "-05:30",
+        "toTz": "UTC"
+      },
+      "text": "2026-10-27T06:30:00+00:00"
+    },
+    {
+      "operation": "tzConvert",
+      "node": "timezone_convert",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T01:00:00+02:00"
+        }
+      },
+      "params": {
+        "fromTz": "-05:30",
+        "toTz": "UTC"
+      },
+      "text": "2026-10-26T23:00:00+00:00"
+    },
+    {
+      "operation": "tzConvert",
+      "node": "timezone_convert",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T01:00:00"
+        }
+      },
+      "params": {
+        "fromTz": "-05:30",
+        "toTz": "+08:00"
+      },
+      "text": "2026-10-27T14:30:00+08:00"
+    },
+    {
+      "operation": "tzConvert",
+      "node": "timezone_convert",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T01:00:00+02:00"
+        }
+      },
+      "params": {
+        "fromTz": "-05:30",
+        "toTz": "+08:00"
+      },
+      "text": "2026-10-27T07:00:00+08:00"
+    },
+    {
+      "operation": "tzConvert",
+      "node": "timezone_convert",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T01:00:00"
+        }
+      },
+      "params": {
+        "fromTz": "-05:30",
+        "toTz": "-0430"
+      },
+      "text": "2026-10-27T02:00:00-04:30"
+    },
+    {
+      "operation": "tzConvert",
+      "node": "timezone_convert",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T01:00:00+02:00"
+        }
+      },
+      "params": {
+        "fromTz": "-05:30",
+        "toTz": "-0430"
+      },
+      "text": "2026-10-26T18:30:00-04:30"
+    },
+    {
+      "operation": "julianDate",
+      "node": "julian_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2000-01-01T12:00:00Z"
+        }
+      },
+      "params": {},
+      "text": "2451545"
+    },
+    {
+      "operation": "julianDate",
+      "node": "julian_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2451545"
+        }
+      },
+      "params": {},
+      "text": "2000-01-01T12:00:00Z"
+    },
+    {
+      "operation": "julianDate",
+      "node": "julian_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1970-01-01"
+        }
+      },
+      "params": {},
+      "text": "2440587.5"
+    },
+    {
+      "operation": "julianDate",
+      "node": "julian_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2440587.5"
+        }
+      },
+      "params": {},
+      "text": "1970-01-01T00:00:00Z"
+    },
+    {
+      "operation": "julianDate",
+      "node": "julian_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T12:34:56Z"
+        }
+      },
+      "params": {},
+      "text": "2461341.024259"
+    },
+    {
+      "operation": "julianDate",
+      "node": "julian_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2461341.024259"
+        }
+      },
+      "params": {},
+      "text": "2026-10-27T12:34:55Z"
+    },
+    {
+      "operation": "julianDate",
+      "node": "julian_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1582-10-15"
+        }
+      },
+      "params": {},
+      "text": "2299160.5"
+    },
+    {
+      "operation": "julianDate",
+      "node": "julian_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2299160.5"
+        }
+      },
+      "params": {},
+      "text": "1582-10-15T00:00:00Z"
+    },
+    {
+      "operation": "julianDate",
+      "node": "julian_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1500-01-01"
+        }
+      },
+      "params": {},
+      "text": "2268923.5"
+    },
+    {
+      "operation": "julianDate",
+      "node": "julian_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2268923.5"
+        }
+      },
+      "params": {},
+      "text": "1499-12-23T00:00:00Z"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1899-12-31"
+        }
+      },
+      "params": {
+        "system": "1900"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "system": "1900"
+      },
+      "text": "1899-12-31T00:00:00Z"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1900-01-01"
+        }
+      },
+      "params": {
+        "system": "1900"
+      },
+      "text": "1"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "system": "1900"
+      },
+      "text": "1900-01-01T00:00:00Z"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1900-02-28"
+        }
+      },
+      "params": {
+        "system": "1900"
+      },
+      "text": "59"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "59"
+        }
+      },
+      "params": {
+        "system": "1900"
+      },
+      "text": "1900-02-28T00:00:00Z"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1900-03-01"
+        }
+      },
+      "params": {
+        "system": "1900"
+      },
+      "text": "61"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "61"
+        }
+      },
+      "params": {
+        "system": "1900"
+      },
+      "text": "1900-03-01T00:00:00Z"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1904-01-01"
+        }
+      },
+      "params": {
+        "system": "1900"
+      },
+      "text": "1462"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1462"
+        }
+      },
+      "params": {
+        "system": "1900"
+      },
+      "text": "1904-01-01T00:00:00Z"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1970-01-01T12:00:00Z"
+        }
+      },
+      "params": {
+        "system": "1900"
+      },
+      "text": "25569.5"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "25569.5"
+        }
+      },
+      "params": {
+        "system": "1900"
+      },
+      "text": "1970-01-01T12:00:00Z"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T12:34:56Z"
+        }
+      },
+      "params": {
+        "system": "1900"
+      },
+      "text": "46322.524259"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "46322.524259"
+        }
+      },
+      "params": {
+        "system": "1900"
+      },
+      "text": "2026-10-27T12:34:55Z"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1899-12-31"
+        }
+      },
+      "params": {
+        "system": "1904"
+      },
+      "text": "-1461"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1461"
+        }
+      },
+      "params": {
+        "system": "1904"
+      },
+      "text": "1899-12-31T00:00:00Z"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1900-01-01"
+        }
+      },
+      "params": {
+        "system": "1904"
+      },
+      "text": "-1460"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1460"
+        }
+      },
+      "params": {
+        "system": "1904"
+      },
+      "text": "1900-01-01T00:00:00Z"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1900-02-28"
+        }
+      },
+      "params": {
+        "system": "1904"
+      },
+      "text": "-1402"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1402"
+        }
+      },
+      "params": {
+        "system": "1904"
+      },
+      "text": "1900-02-28T00:00:00Z"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1900-03-01"
+        }
+      },
+      "params": {
+        "system": "1904"
+      },
+      "text": "-1401"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1401"
+        }
+      },
+      "params": {
+        "system": "1904"
+      },
+      "text": "1900-03-01T00:00:00Z"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1904-01-01"
+        }
+      },
+      "params": {
+        "system": "1904"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "system": "1904"
+      },
+      "text": "1904-01-01T00:00:00Z"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1970-01-01T12:00:00Z"
+        }
+      },
+      "params": {
+        "system": "1904"
+      },
+      "text": "24107.5"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "24107.5"
+        }
+      },
+      "params": {
+        "system": "1904"
+      },
+      "text": "1970-01-01T12:00:00Z"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T12:34:56Z"
+        }
+      },
+      "params": {
+        "system": "1904"
+      },
+      "text": "44860.524259"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "44860.524259"
+        }
+      },
+      "params": {
+        "system": "1904"
+      },
+      "text": "2026-10-27T12:34:55Z"
+    },
+    {
+      "operation": "snowflakeId",
+      "node": "snowflake_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "epoch": "twitter",
+        "customEpoch": "0"
+      },
+      "text": "=== 雪花 ID 解析 ===\n输入: 0\nID (hex): 0x0\n--- 字段分解 ---\n时间戳偏移 (ms): 0\n纪元: Twitter (1288834974657)\n生成时间 (UTC): 2010-11-04T01:42:54Z\n数据中心 ID: 0\n工作节点 ID: 0\n序列号: 0\n--- 位拆分 ---\nbits 63-22 (timestamp): 0\nbits 21-17 (datacenter): 0\nbits 16-12 (worker): 0\nbits 11-0  (sequence): 0"
+    },
+    {
+      "operation": "snowflakeId",
+      "node": "snowflake_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "175928847299117063"
+        }
+      },
+      "params": {
+        "epoch": "twitter",
+        "customEpoch": "0"
+      },
+      "text": "=== 雪花 ID 解析 ===\n输入: 175928847299117063\nID (hex): 0x271065AC1020007\n--- 字段分解 ---\n时间戳偏移 (ms): 41944705796\n纪元: Twitter (1288834974657)\n生成时间 (UTC): 2012-03-03T13:01:20Z\n数据中心 ID: 1\n工作节点 ID: 0\n序列号: 7\n--- 位拆分 ---\nbits 63-22 (timestamp): 41944705796\nbits 21-17 (datacenter): 1\nbits 16-12 (worker): 0\nbits 11-0  (sequence): 7"
+    },
+    {
+      "operation": "snowflakeId",
+      "node": "snowflake_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "9223372036854775807"
+        }
+      },
+      "params": {
+        "epoch": "twitter",
+        "customEpoch": "0"
+      },
+      "text": "=== 雪花 ID 解析 ===\n输入: 9223372036854775807\nID (hex): 0x7FFFFFFFFFFFFFFF\n--- 字段分解 ---\n时间戳偏移 (ms): 2199023255551\n纪元: Twitter (1288834974657)\n生成时间 (UTC): 2080-07-10T17:30:30Z\n数据中心 ID: 31\n工作节点 ID: 31\n序列号: 4095\n--- 位拆分 ---\nbits 63-22 (timestamp): 2199023255551\nbits 21-17 (datacenter): 31\nbits 16-12 (worker): 31\nbits 11-0  (sequence): 4095"
+    },
+    {
+      "operation": "snowflakeId",
+      "node": "snowflake_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "epoch": "twitter",
+        "customEpoch": "0"
+      },
+      "text": "（空输入）"
+    },
+    {
+      "operation": "snowflakeId",
+      "node": "snowflake_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "epoch": "discord",
+        "customEpoch": "0"
+      },
+      "text": "=== 雪花 ID 解析 ===\n输入: 0\nID (hex): 0x0\n--- 字段分解 ---\n时间戳偏移 (ms): 0\n纪元: Discord (1420070400000)\n生成时间 (UTC): 2015-01-01T00:00:00Z\n数据中心 ID: 0\n工作节点 ID: 0\n序列号: 0\n--- 位拆分 ---\nbits 63-22 (timestamp): 0\nbits 21-17 (datacenter): 0\nbits 16-12 (worker): 0\nbits 11-0  (sequence): 0"
+    },
+    {
+      "operation": "snowflakeId",
+      "node": "snowflake_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "175928847299117063"
+        }
+      },
+      "params": {
+        "epoch": "discord",
+        "customEpoch": "0"
+      },
+      "text": "=== 雪花 ID 解析 ===\n输入: 175928847299117063\nID (hex): 0x271065AC1020007\n--- 字段分解 ---\n时间戳偏移 (ms): 41944705796\n纪元: Discord (1420070400000)\n生成时间 (UTC): 2016-04-30T11:18:25Z\n数据中心 ID: 1\n工作节点 ID: 0\n序列号: 7\n--- 位拆分 ---\nbits 63-22 (timestamp): 41944705796\nbits 21-17 (datacenter): 1\nbits 16-12 (worker): 0\nbits 11-0  (sequence): 7"
+    },
+    {
+      "operation": "snowflakeId",
+      "node": "snowflake_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "9223372036854775807"
+        }
+      },
+      "params": {
+        "epoch": "discord",
+        "customEpoch": "0"
+      },
+      "text": "=== 雪花 ID 解析 ===\n输入: 9223372036854775807\nID (hex): 0x7FFFFFFFFFFFFFFF\n--- 字段分解 ---\n时间戳偏移 (ms): 2199023255551\n纪元: Discord (1420070400000)\n生成时间 (UTC): 2084-09-06T15:47:35Z\n数据中心 ID: 31\n工作节点 ID: 31\n序列号: 4095\n--- 位拆分 ---\nbits 63-22 (timestamp): 2199023255551\nbits 21-17 (datacenter): 31\nbits 16-12 (worker): 31\nbits 11-0  (sequence): 4095"
+    },
+    {
+      "operation": "snowflakeId",
+      "node": "snowflake_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "epoch": "discord",
+        "customEpoch": "0"
+      },
+      "text": "（空输入）"
+    },
+    {
+      "operation": "snowflakeId",
+      "node": "snowflake_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "epoch": "custom",
+        "customEpoch": "0"
+      },
+      "text": "=== 雪花 ID 解析 ===\n输入: 0\nID (hex): 0x0\n--- 字段分解 ---\n时间戳偏移 (ms): 0\n纪元: 自定义 (0)\n生成时间 (UTC): 1970-01-01T00:00:00Z\n数据中心 ID: 0\n工作节点 ID: 0\n序列号: 0\n--- 位拆分 ---\nbits 63-22 (timestamp): 0\nbits 21-17 (datacenter): 0\nbits 16-12 (worker): 0\nbits 11-0  (sequence): 0"
+    },
+    {
+      "operation": "snowflakeId",
+      "node": "snowflake_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "175928847299117063"
+        }
+      },
+      "params": {
+        "epoch": "custom",
+        "customEpoch": "0"
+      },
+      "text": "=== 雪花 ID 解析 ===\n输入: 175928847299117063\nID (hex): 0x271065AC1020007\n--- 字段分解 ---\n时间戳偏移 (ms): 41944705796\n纪元: 自定义 (0)\n生成时间 (UTC): 1971-05-01T11:18:25Z\n数据中心 ID: 1\n工作节点 ID: 0\n序列号: 7\n--- 位拆分 ---\nbits 63-22 (timestamp): 41944705796\nbits 21-17 (datacenter): 1\nbits 16-12 (worker): 0\nbits 11-0  (sequence): 7"
+    },
+    {
+      "operation": "snowflakeId",
+      "node": "snowflake_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "9223372036854775807"
+        }
+      },
+      "params": {
+        "epoch": "custom",
+        "customEpoch": "0"
+      },
+      "text": "=== 雪花 ID 解析 ===\n输入: 9223372036854775807\nID (hex): 0x7FFFFFFFFFFFFFFF\n--- 字段分解 ---\n时间戳偏移 (ms): 2199023255551\n纪元: 自定义 (0)\n生成时间 (UTC): 2039-09-07T15:47:35Z\n数据中心 ID: 31\n工作节点 ID: 31\n序列号: 4095\n--- 位拆分 ---\nbits 63-22 (timestamp): 2199023255551\nbits 21-17 (datacenter): 31\nbits 16-12 (worker): 31\nbits 11-0  (sequence): 4095"
+    },
+    {
+      "operation": "snowflakeId",
+      "node": "snowflake_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "epoch": "custom",
+        "customEpoch": "0"
+      },
+      "text": "（空输入）"
+    },
+    {
+      "operation": "primeFactor",
+      "node": "prime_factorization",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {},
+      "text": "0 = 0（< 2，无分解）"
+    },
+    {
+      "operation": "primeFactor",
+      "node": "prime_factorization",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {},
+      "text": "1 = 1（< 2，无分解）"
+    },
+    {
+      "operation": "primeFactor",
+      "node": "prime_factorization",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2"
+        }
+      },
+      "params": {},
+      "text": "2 = 2"
+    },
+    {
+      "operation": "primeFactor",
+      "node": "prime_factorization",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "360"
+        }
+      },
+      "params": {},
+      "text": "360 = 2^3 × 3^2 × 5"
+    },
+    {
+      "operation": "primeFactor",
+      "node": "prime_factorization",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "65537"
+        }
+      },
+      "params": {},
+      "text": "65537 = 65537"
+    },
+    {
+      "operation": "primeFactor",
+      "node": "prime_factorization",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1000036000099"
+        }
+      },
+      "params": {},
+      "text": "1000036000099 = 1000003 × 1000033"
+    },
+    {
+      "operation": "primeFactor",
+      "node": "prime_factorization",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "000360"
+        }
+      },
+      "params": {},
+      "text": "000360 = 2^3 × 3^2 × 5"
+    },
+    {
+      "operation": "primeFactor",
+      "node": "prime_factorization",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "params": {},
+      "text": "请输入非负整数（仅数字）"
+    },
+    {
+      "operation": "primeFactor",
+      "node": "prime_factorization",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {},
+      "text": "请输入非负整数（仅数字）"
+    },
+    {
+      "operation": "primeFactor",
+      "node": "prime_factorization",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": "请输入非负整数（仅数字）"
+    },
+    {
+      "operation": "collatz",
+      "node": "collatz_sequence",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {},
+      "text": "起始: 1\n步数: 0\n峰值: 1\n序列(1 项): 1"
+    },
+    {
+      "operation": "collatz",
+      "node": "collatz_sequence",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2"
+        }
+      },
+      "params": {},
+      "text": "起始: 2\n步数: 1\n峰值: 2\n序列(2 项): 2 → 1"
+    },
+    {
+      "operation": "collatz",
+      "node": "collatz_sequence",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "27"
+        }
+      },
+      "params": {},
+      "text": "起始: 27\n步数: 111\n峰值: 9232\n序列(112 项): 27 → 82 → 41 → 124 → 62 → 31 → 94 → 47 → 142 → 71 → 214 → 107 → 322 → 161 → 484 → 242 → 121 → 364 → 182 → 91 → 274 → 137 → 412 → 206 → 103 → 310 → 155 → 466 → 233 → 700 → 350 → 175 → 526 → 263 → 790 → 395 → 1186 → 593 → 1780 → 890 → 445 → 1336 → 668 → 334 → 167 → 502 → 251 → 754 → 377 → 1132 → 566 → 283 → 850 → 425 → 1276 → 638 → 319 → 958 → 479 → 1438 → 719 → 2158 → 1079 → 3238 → 1619 → 4858 → 2429 → 7288 → 3644 → 1822 → 911 → 2734 → 1367 → 4102 → 2051 → 6154 → 3077 → 9232 → 4616 → 2308 → 1154 → 577 → 1732 → 866 → 433 → 1300 → 650 → 325 → 976 → 488 → 244 → 122 → 61 → 184 → 92 → 46 → 23 → 70 → 35 → 106 → 53 → 160 → 80 → 40 → 20 → 10 → 5 → 16 → 8 → 4 → 2 → 1"
+    },
+    {
+      "operation": "collatz",
+      "node": "collatz_sequence",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "123456789"
+        }
+      },
+      "params": {},
+      "text": "起始: 123456789\n步数: 177\n峰值: 370370368\n序列(178 项): 123456789 → 370370368 → 185185184 → 92592592 → 46296296 → 23148148 → 11574074 → 5787037 → 17361112 → 8680556 → 4340278 → 2170139 → 6510418 → 3255209 → 9765628 → 4882814 → 2441407 → 7324222 → 3662111 → 10986334 → 5493167 → 16479502 → 8239751 → 24719254 → 12359627 → 37078882 → 18539441 → 55618324 → 27809162 → 13904581 → 41713744 → 20856872 → 10428436 → 5214218 → 2607109 → 7821328 → 3910664 → 1955332 → 977666 → 488833 → 1466500 → 733250 → 366625 → 1099876 → 549938 → 274969 → 824908 → 412454 → 206227 → 618682 → 309341 → 928024 → 464012 → 232006 → 116003 → 348010 → 174005 → 522016 → 261008 → 130504 → 65252 → 32626 → 16313 → 48940 → 24470 → 12235 → 36706 → 18353 → 55060 → 27530 → 13765 → 41296 → 20648 → 10324 → 5162 → 2581 → 7744 → 3872 → 1936 → 968 → 484 → 242 → 121 → 364 → 182 → 91 → 274 → 137 → 412 → 206 → 103 → 310 → 155 → 466 → 233 → 700 → 350 → 175 → 526 → 263 → 790 → 395 → 1186 → 593 → 1780 → 890 → 445 → 1336 → 668 → 334 → 167 → 502 → 251 → 754 → 377 → 1132 → 566 → 283 → 850 → 425 → 1276 → 638 → 319 → 958 → 479 → 1438 → 719 → 2158 → 1079 → 3238 → 1619 → 4858 → 2429 → 7288 → 3644 → 1822 → 911 → 2734 → 1367 → 4102 → 2051 → 6154 → 3077 → 9232 → 4616 → 2308 → 1154 → 577 → 1732 → 866 → 433 → 1300 → 650 → 325 → 976 → 488 → 244 → 122 → 61 → 184 → 92 → 46 → 23 → 70 → 35 → 106 → 53 → 160 → 80 → 40 → 20 → 10 → 5 → 16 → 8 → 4 → 2 → 1"
+    },
+    {
+      "operation": "collatz",
+      "node": "collatz_sequence",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {},
+      "error": "collatz: 需正整数"
+    },
+    {
+      "operation": "collatz",
+      "node": "collatz_sequence",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {},
+      "error": "collatz: 需正整数"
+    },
+    {
+      "operation": "collatz",
+      "node": "collatz_sequence",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "error": "collatz: 需正整数"
+    },
+    {
+      "operation": "radixAll",
+      "node": "radix_all",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {},
+      "text": "数值：0（按十进制读入）\n  进制对照（数值的 N 进制数字表示）：\n    2  进制 : 0\n    8  进制 : 0\n    10 进制 : 0\n    16 进制 : 0\n    32 进制 : 0（数字表示，非 RFC 4648 Base32 编码）\n    36 进制 : 0\n    62 进制 : 0\n  Base64     : AA==（按最小大端字节 RFC 4648 编码，非 64 进制数字表示）\n  字节 / 字符视图：\n    数值字节 hex（最小大端）  : 00\n    UTF-16 码元 (BE)         : 0000（1 个码元）\n    Unicode 码位             : U+0000 = \"\u0000\"（控制字符，显示可能不可见）\n    该码位的 UTF-8 编码      : 00\n    位宽                     : 0 bit"
+    },
+    {
+      "operation": "radixAll",
+      "node": "radix_all",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00"
+        }
+      },
+      "params": {},
+      "text": "数值：0（按十进制读入）\n  进制对照（数值的 N 进制数字表示）：\n    2  进制 : 0\n    8  进制 : 0\n    10 进制 : 0\n    16 进制 : 0\n    32 进制 : 0（数字表示，非 RFC 4648 Base32 编码）\n    36 进制 : 0\n    62 进制 : 0\n  Base64     : AA==（按最小大端字节 RFC 4648 编码，非 64 进制数字表示）\n  字节 / 字符视图：\n    数值字节 hex（最小大端）  : 00\n    UTF-16 码元 (BE)         : 0000（1 个码元）\n    Unicode 码位             : U+0000 = \"\u0000\"（控制字符，显示可能不可见）\n    该码位的 UTF-8 编码      : 00\n    位宽                     : 0 bit"
+    },
+    {
+      "operation": "radixAll",
+      "node": "radix_all",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "255"
+        }
+      },
+      "params": {},
+      "text": "数值：255（按十进制读入）\n  进制对照（数值的 N 进制数字表示）：\n    2  进制 : 11111111\n    8  进制 : 377\n    10 进制 : 255\n    16 进制 : ff\n    32 进制 : 7v（数字表示，非 RFC 4648 Base32 编码）\n    36 进制 : 73\n    62 进制 : 47\n  Base64     : /w==（按最小大端字节 RFC 4648 编码，非 64 进制数字表示）\n  字节 / 字符视图：\n    数值字节 hex（最小大端）  : FF\n    UTF-16 码元 (BE)         : 00FF（1 个码元）\n    Unicode 码位             : U+00FF = \"ÿ\"\n    该码位的 UTF-8 编码      : C3 BF\n    位宽                     : 8 bit"
+    },
+    {
+      "operation": "radixAll",
+      "node": "radix_all",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1010"
+        }
+      },
+      "params": {},
+      "text": "输入 \"1010\" 无法唯一确定进制，列出全部 2 种解读：\n\n[解读 1/2] 按十进制：\n数值：1010（按十进制读入）\n  进制对照（数值的 N 进制数字表示）：\n    2  进制 : 1111110010\n    8  进制 : 1762\n    10 进制 : 1010\n    16 进制 : 3f2\n    32 进制 : vi（数字表示，非 RFC 4648 Base32 编码）\n    36 进制 : s2\n    62 进制 : gi\n  Base64     : A/I=（按最小大端字节 RFC 4648 编码，非 64 进制数字表示）\n  字节 / 字符视图：\n    数值字节 hex（最小大端）  : 03F2\n    UTF-16 码元 (BE)         : 03F2（1 个码元）\n    Unicode 码位             : U+03F2 = \"ϲ\"\n    该码位的 UTF-8 编码      : CF B2\n    位宽                     : 10 bit\n\n[解读 2/2] 按二进制：\n数值：10（按二进制读入）\n  进制对照（数值的 N 进制数字表示）：\n    2  进制 : 1010\n    8  进制 : 12\n    10 进制 : 10\n    16 进制 : a\n    32 进制 : a（数字表示，非 RFC 4648 Base32 编码）\n    36 进制 : a\n    62 进制 : a\n  Base64     : Cg==（按最小大端字节 RFC 4648 编码，非 64 进制数字表示）\n  字节 / 字符视图：\n    数值字节 hex（最小大端）  : 0A\n    UTF-16 码元 (BE)         : 000A（1 个码元）\n    Unicode 码位             : U+000A = \"\n\"（控制字符，显示可能不可见）\n    该码位的 UTF-8 编码      : 0A\n    位宽                     : 4 bit"
+    },
+    {
+      "operation": "radixAll",
+      "node": "radix_all",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1010"
+        }
+      },
+      "params": {},
+      "text": "输入 \"-1010\" 无法唯一确定进制，列出全部 2 种解读：\n\n[解读 1/2] 按-（负数，按十进制）：\n数值：-1010（按-（负数，按十进制）读入）\n  进制对照（数值的 N 进制数字表示）：\n    2  进制 : -1111110010\n    8  进制 : -1762\n    10 进制 : -1010\n    16 进制 : -3f2\n    32 进制 : -vi（数字表示，非 RFC 4648 Base32 编码）\n    36 进制 : -s2\n    62 进制 : -gi\n  补码表示（绝对值位宽 10 bit）：\n     8 位补码 : 0x0E\n    16 位补码 : 0xFC0E\n    32 位补码 : 0xFFFFFC0E\n    64 位补码 : 0xFFFFFFFFFFFFFC0E\n  注：负数的 Base64 / 字节 / 字符视图依赖字宽，见上方补码各宽度后自行截取\n\n[解读 2/2] 按-（负数，按二进制）：\n数值：-10（按-（负数，按二进制）读入）\n  进制对照（数值的 N 进制数字表示）：\n    2  进制 : -1010\n    8  进制 : -12\n    10 进制 : -10\n    16 进制 : -a\n    32 进制 : -a（数字表示，非 RFC 4648 Base32 编码）\n    36 进制 : -a\n    62 进制 : -a\n  补码表示（绝对值位宽 4 bit）：\n     8 位补码 : 0xF6\n    16 位补码 : 0xFFF6\n    32 位补码 : 0xFFFFFFF6\n    64 位补码 : 0xFFFFFFFFFFFFFFF6\n  注：负数的 Base64 / 字节 / 字符视图依赖字宽，见上方补码各宽度后自行截取"
+    },
+    {
+      "operation": "radixAll",
+      "node": "radix_all",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1_000_000"
+        }
+      },
+      "params": {},
+      "text": "数值：1000000（按十进制读入）\n  进制对照（数值的 N 进制数字表示）：\n    2  进制 : 11110100001001000000\n    8  进制 : 3641100\n    10 进制 : 1000000\n    16 进制 : f4240\n    32 进制 : ugi0（数字表示，非 RFC 4648 Base32 编码）\n    36 进制 : lfls\n    62 进制 : 4c92\n  Base64     : D0JA（按最小大端字节 RFC 4648 编码，非 64 进制数字表示）\n  字节 / 字符视图：\n    数值字节 hex（最小大端）  : 0F4240\n    UTF-16 码元 (BE)         : DB90 DE40（2 个码元）\n    Unicode 码位             : U+F4240 = \"󴉀\"\n    该码位的 UTF-8 编码      : F3 B4 89 80\n    位宽                     : 20 bit"
+    },
+    {
+      "operation": "radixAll",
+      "node": "radix_all",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1,000,000"
+        }
+      },
+      "params": {},
+      "text": "数值：1000000（按十进制读入）\n  进制对照（数值的 N 进制数字表示）：\n    2  进制 : 11110100001001000000\n    8  进制 : 3641100\n    10 进制 : 1000000\n    16 进制 : f4240\n    32 进制 : ugi0（数字表示，非 RFC 4648 Base32 编码）\n    36 进制 : lfls\n    62 进制 : 4c92\n  Base64     : D0JA（按最小大端字节 RFC 4648 编码，非 64 进制数字表示）\n  字节 / 字符视图：\n    数值字节 hex（最小大端）  : 0F4240\n    UTF-16 码元 (BE)         : DB90 DE40（2 个码元）\n    Unicode 码位             : U+F4240 = \"󴉀\"\n    该码位的 UTF-8 编码      : F3 B4 89 80\n    位宽                     : 20 bit"
+    },
+    {
+      "operation": "radixAll",
+      "node": "radix_all",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x1F600"
+        }
+      },
+      "params": {},
+      "text": "数值：128512（按十六进制读入）\n  进制对照（数值的 N 进制数字表示）：\n    2  进制 : 11111011000000000\n    8  进制 : 373000\n    10 进制 : 128512\n    16 进制 : 1f600\n    32 进制 : 3tg0（数字表示，非 RFC 4648 Base32 编码）\n    36 进制 : 2r5s\n    62 进制 : xqM\n  Base64     : AfYA（按最小大端字节 RFC 4648 编码，非 64 进制数字表示）\n  字节 / 字符视图：\n    数值字节 hex（最小大端）  : 01F600\n    UTF-16 码元 (BE)         : D83D DE00（2 个码元）\n    Unicode 码位             : U+1F600 = \"😀\"\n    该码位的 UTF-8 编码      : F0 9F 98 80\n    位宽                     : 17 bit"
+    },
+    {
+      "operation": "radixAll",
+      "node": "radix_all",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0xd800"
+        }
+      },
+      "params": {},
+      "text": "数值：55296（按十六进制读入）\n  进制对照（数值的 N 进制数字表示）：\n    2  进制 : 1101100000000000\n    8  进制 : 154000\n    10 进制 : 55296\n    16 进制 : d800\n    32 进制 : 1m00（数字表示，非 RFC 4648 Base32 编码）\n    36 进制 : 16o0\n    62 进制 : enS\n  Base64     : 2AA=（按最小大端字节 RFC 4648 编码，非 64 进制数字表示）\n  字节 / 字符视图：\n    数值字节 hex（最小大端）  : D800\n    UTF-16 码元 / Unicode 码位: 不适用（落在代理区 U+D800–U+DFFF（非字符））\n    位宽                     : 16 bit"
+    },
+    {
+      "operation": "radixAll",
+      "node": "radix_all",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x110000"
+        }
+      },
+      "params": {},
+      "text": "数值：1114112（按十六进制读入）\n  进制对照（数值的 N 进制数字表示）：\n    2  进制 : 100010000000000000000\n    8  进制 : 4200000\n    10 进制 : 1114112\n    16 进制 : 110000\n    32 进制 : 12000（数字表示，非 RFC 4648 Base32 编码）\n    36 进制 : nvnk\n    62 进制 : 4FPy\n  Base64     : EQAA（按最小大端字节 RFC 4648 编码，非 64 进制数字表示）\n  字节 / 字符视图：\n    数值字节 hex（最小大端）  : 110000\n    UTF-16 码元 / Unicode 码位: 不适用（超出 Unicode 上限 U+10FFFF）\n    位宽                     : 21 bit"
+    },
+    {
+      "operation": "radixAll",
+      "node": "radix_all",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0xff"
+        }
+      },
+      "params": {},
+      "text": "数值：-255（按十六进制读入）\n  进制对照（数值的 N 进制数字表示）：\n    2  进制 : -11111111\n    8  进制 : -377\n    10 进制 : -255\n    16 进制 : -ff\n    32 进制 : -7v（数字表示，非 RFC 4648 Base32 编码）\n    36 进制 : -73\n    62 进制 : -47\n  补码表示（绝对值位宽 8 bit）：\n     8 位补码 : 0x01\n    16 位补码 : 0xFF01\n    32 位补码 : 0xFFFFFF01\n    64 位补码 : 0xFFFFFFFFFFFFFF01\n  注：负数的 Base64 / 字节 / 字符视图依赖字宽，见上方补码各宽度后自行截取"
+    },
+    {
+      "operation": "radixAll",
+      "node": "radix_all",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {},
+      "text": "数值：-1（按十进制读入）\n  进制对照（数值的 N 进制数字表示）：\n    2  进制 : -1\n    8  进制 : -1\n    10 进制 : -1\n    16 进制 : -1\n    32 进制 : -1（数字表示，非 RFC 4648 Base32 编码）\n    36 进制 : -1\n    62 进制 : -1\n  补码表示（绝对值位宽 1 bit）：\n     8 位补码 : 0xFF\n    16 位补码 : 0xFFFF\n    32 位补码 : 0xFFFFFFFF\n    64 位补码 : 0xFFFFFFFFFFFFFFFF\n  注：负数的 Base64 / 字节 / 字符视图依赖字宽，见上方补码各宽度后自行截取"
+    },
+    {
+      "operation": "radixAll",
+      "node": "radix_all",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0b1010"
+        }
+      },
+      "params": {},
+      "text": "数值：10（按二进制读入）\n  进制对照（数值的 N 进制数字表示）：\n    2  进制 : 1010\n    8  进制 : 12\n    10 进制 : 10\n    16 进制 : a\n    32 进制 : a（数字表示，非 RFC 4648 Base32 编码）\n    36 进制 : a\n    62 进制 : a\n  Base64     : Cg==（按最小大端字节 RFC 4648 编码，非 64 进制数字表示）\n  字节 / 字符视图：\n    数值字节 hex（最小大端）  : 0A\n    UTF-16 码元 (BE)         : 000A（1 个码元）\n    Unicode 码位             : U+000A = \"\n\"（控制字符，显示可能不可见）\n    该码位的 UTF-8 编码      : 0A\n    位宽                     : 4 bit"
+    },
+    {
+      "operation": "radixAll",
+      "node": "radix_all",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0o777"
+        }
+      },
+      "params": {},
+      "text": "数值：511（按八进制读入）\n  进制对照（数值的 N 进制数字表示）：\n    2  进制 : 111111111\n    8  进制 : 777\n    10 进制 : 511\n    16 进制 : 1ff\n    32 进制 : fv（数字表示，非 RFC 4648 Base32 编码）\n    36 进制 : e7\n    62 进制 : 8f\n  Base64     : Af8=（按最小大端字节 RFC 4648 编码，非 64 进制数字表示）\n  字节 / 字符视图：\n    数值字节 hex（最小大端）  : 01FF\n    UTF-16 码元 (BE)         : 01FF（1 个码元）\n    Unicode 码位             : U+01FF = \"ǿ\"\n    该码位的 UTF-8 编码      : C7 BF\n    位宽                     : 9 bit"
+    },
+    {
+      "operation": "radixAll",
+      "node": "radix_all",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x10000000000000000000000000000000000000000000000000000000000000000"
+        }
+      },
+      "params": {},
+      "text": "数值：115792089237316195423570985008687907853269984665640564039457584007913129639936（按十六进制读入）\n  进制对照（数值的 N 进制数字表示）：\n    2  进制 : 10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\n    8  进制 : 20000000000000000000000000000000000000000000000000000000000000000000000000000000000000\n    10 进制 : 115792089237316195423570985008687907853269984665640564039457584007913129639936\n    16 进制 : 10000000000000000000000000000000000000000000000000000000000000000\n    32 进制 : 2000000000000000000000000000000000000000000000000000（数字表示，非 RFC 4648 Base32 编码）\n    36 进制 : 6dp5qcb22im238nr3wvp0ic7q99w035jmy2iw7i6n43d37jtog\n    62 进制 : YHJSKWDa6oz1al1yMhwzwM8llg7hJNUca2J5RoW8xP2\n  Base64     : AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（按最小大端字节 RFC 4648 编码，非 64 进制数字表示）\n  字节 / 字符视图：\n    数值字节 hex（最小大端）  : 010000000000000000000000000000000000000000000000000000000000000000\n    UTF-16 码元 / Unicode 码位: 不适用（超出 Unicode 上限 U+10FFFF）\n    位宽                     : 257 bit"
+    },
+    {
+      "operation": "radixAll",
+      "node": "radix_all",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "error": "空输入：请输入一个数（支持 0x/0b/0o 前缀、十进制、分隔符）"
+    },
+    {
+      "operation": "radixAll",
+      "node": "radix_all",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ff"
+        }
+      },
+      "params": {},
+      "error": "无法唯一嗅探含字母的输入 \"ff\"：请加前缀（0x=十六进制 / 0b=二进制 / 0o=八进制）"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "256.0.0.1"
+        }
+      },
+      "params": {},
+      "error": "IPv4 段 > 255: 256.0.0.1"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1.16777216"
+        }
+      },
+      "params": {},
+      "error": "IPv4 末段 > 16777215: 1.16777216"
+    },
+    {
+      "operation": "ipv4Int",
+      "node": "ipv4_integer_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "4294967296"
+        }
+      },
+      "params": {},
+      "error": "IPv4 整数超出 32 位: 4294967296"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_compress",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1::2::3"
+        }
+      },
+      "params": {},
+      "error": "IPv6: 多个 :: 非法: 1::2::3"
+    },
+    {
+      "operation": "ipv6Format",
+      "node": "ipv6_compress",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1:2:3"
+        }
+      },
+      "params": {},
+      "error": "IPv6: 非压缩形式须 8 组，实际 3: 1:2:3"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "aa:bb"
+        }
+      },
+      "params": {},
+      "error": "MAC 冒号/连字符格式须 6 段: aa:bb"
+    },
+    {
+      "operation": "macFormat",
+      "node": "mac_format_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "281474976710656"
+        }
+      },
+      "params": {},
+      "error": "MAC 整数超出 48 位: 281474976710656"
+    },
+    {
+      "operation": "cidrCalc",
+      "node": "cidr_calculate",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1.2.3.4/33"
+        }
+      },
+      "params": {},
+      "error": "CIDR 前缀须 0-32: 33"
+    },
+    {
+      "operation": "unixTime",
+      "node": "unix_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "error": "时间戳: 空输入"
+    },
+    {
+      "operation": "filetime",
+      "node": "windows_filetime_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {},
+      "error": "FILETIME: 不能为负（64 位无符号）: -1"
+    },
+    {
+      "operation": "filetime",
+      "node": "windows_filetime_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "18446744073709551616"
+        }
+      },
+      "params": {},
+      "error": "FILETIME: 超出 64 位无符号上限: 18446744073709551616"
+    },
+    {
+      "operation": "hfsTime",
+      "node": "hfs_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {},
+      "error": "HFS+ 时间不能为负（32 位无符号）: -1"
+    },
+    {
+      "operation": "hfsTime",
+      "node": "hfs_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "4294967296"
+        }
+      },
+      "params": {},
+      "error": "HFS+ 时间超出 32 位无符号上限（2040-02-06）: 4294967296"
+    },
+    {
+      "operation": "cocoaTime",
+      "node": "cocoa_time_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "error": "Cocoa 时间: 空输入"
+    },
+    {
+      "operation": "dosDateTime",
+      "node": "dos_datetime_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1979-12-31"
+        }
+      },
+      "params": {},
+      "error": "DOS 不支持 1980 年前: 1979"
+    },
+    {
+      "operation": "chineseDate",
+      "node": "chinese_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026年一月一日"
+        }
+      },
+      "params": {},
+      "error": "无效汉字年份: 2026"
+    },
+    {
+      "operation": "tzConvert",
+      "node": "timezone_convert",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "x"
+        }
+      },
+      "params": {},
+      "error": "无效 ISO8601: xZ"
+    },
+    {
+      "operation": "excelDate",
+      "node": "excel_date_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "60"
+        }
+      },
+      "params": {},
+      "error": "Excel serial 60 = 1900-02-29（1900 闰年 bug 幻影日，实际不存在）"
+    },
+    {
+      "operation": "snowflakeId",
+      "node": "snowflake_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "9223372036854775808"
+        }
+      },
+      "params": {},
+      "error": "雪花 ID 解析失败（需 64 位整数）: 雪花 ID 须为非负 64 位整数（最高位为符号位，恒 0），得到 9223372036854775808"
+    },
+    {
+      "operation": "snowflakeId",
+      "node": "snowflake_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {},
+      "error": "雪花 ID 解析失败（需 64 位整数）: 雪花 ID 须为非负 64 位整数（最高位为符号位，恒 0），得到 -1"
+    }
+  ]
+}

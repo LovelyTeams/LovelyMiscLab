@@ -198,10 +198,21 @@ export function SettingsView() {
   const [s, setS] = useState<AppSettings>(EMPTY);
   const [status, setStatus] = useState<Record<string, ToolStatus | "checking">>({});
   const [saved, setSaved] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState("");
+  const [savedAt, setSavedAt] = useState("");
   const [tab, setTab] = useState<Tab>("ai");
 
   useEffect(() => {
-    if (inTauri) api.getSettings().then(setS).catch(() => {});
+    if (!inTauri) return;
+    let disposed = false;
+    api.getSettings().then((settings) => {
+      if (!disposed) { setS(settings); setLoaded(true); }
+    }).catch(() => {
+      if (!disposed) setError("读取设置失败，已阻止保存，避免覆盖原有配置。请重新打开设置页面后重试。");
+    });
+    return () => { disposed = true; };
   }, []);
 
   const setAi = (g: "llm" | "vision", field: keyof ModelConfig, v: string) =>
@@ -210,15 +221,18 @@ export function SettingsView() {
     setS((c) => ({ ...c, tools: { ...c.tools, [k]: v } }));
 
   const save = async () => {
-    if (inTauri) {
-      try {
-        await api.setSettings(s);
-      } catch (e) {
-        console.error("setSettings failed", e);
-      }
+    if (!inTauri || !loaded || saving) return;
+    setSaving(true); setSaved(false); setError("");
+    try {
+      await api.setSettings(s);
+      setSaved(true);
+      setSavedAt(new Date().toLocaleTimeString());
+    } catch (reason) {
+      const detail = typeof reason === "string" ? reason : reason && typeof reason === "object" && "message" in reason ? String(reason.message) : "请检查应用配置目录的写入权限后重试。";
+      setError(`保存失败，原有配置继续保留：${detail}`);
+    } finally {
+      setSaving(false);
     }
-    setSaved(true);
-    setTimeout(() => setSaved(false), 1500);
   };
 
   const pickDir = async () => {
@@ -248,21 +262,29 @@ export function SettingsView() {
         <div>
           <h1 className="text-lg font-semibold">设置</h1>
           <p className="text-xs text-muted-foreground">配置 AI 模型、输出目录、外部工具与 MCP 服务。</p>
+          {saved && <p role="status" className="mt-1 text-xs text-green-600">设置已写入本机 · {savedAt}</p>}
         </div>
         {tab !== "mcp" && tab !== "update" && (
-          <Button size="sm" onClick={save}>
-            {saved ? (
+          <Button size="sm" onClick={save} disabled={!inTauri || !loaded || saving}>
+            {saving ? <><Loader2 className="mr-1 h-3.5 w-3.5 animate-spin" /> 保存中</> : saved ? (
               <>
-                <Check className="mr-1 h-3.5 w-3.5" /> 已保存
+                <Check className="mr-1 h-3.5 w-3.5" /> 已保存设置
               </>
             ) : (
               <>
-                <Save className="mr-1 h-3.5 w-3.5" /> 保存
+                <Save className="mr-1 h-3.5 w-3.5" /> 保存设置
               </>
             )}
           </Button>
         )}
       </div>
+
+      {!inTauri && (
+        <p role="status" className="border-b border-border bg-muted px-6 py-3 text-sm">
+          当前是浏览器预览，无法保存 AI 密钥或调用真实模型。请打开 Windows 桌面测试版，在设置中配置并保存。
+        </p>
+      )}
+      {error && <p role="alert" className="border-b border-border px-6 py-3 text-sm text-destructive">{error}</p>}
 
       <div className="flex min-h-0 flex-1">
         {/* category sub-nav */}
@@ -284,7 +306,7 @@ export function SettingsView() {
         </nav>
 
         {/* active category */}
-        <div className="flex-1 space-y-6 overflow-y-auto p-6">
+        <fieldset disabled={!inTauri || !loaded || saving} onChange={() => setSaved(false)} className="min-w-0 flex-1 space-y-6 overflow-y-auto p-6">
           {tab === "ai" && (
             <section>
               <h2 className="mb-2 text-sm font-semibold">AI 模型</h2>
@@ -388,7 +410,7 @@ export function SettingsView() {
               浏览器预览下设置不会保存，请在应用内配置。
             </p>
           )}
-        </div>
+        </fieldset>
       </div>
     </div>
   );

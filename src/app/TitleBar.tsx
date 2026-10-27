@@ -24,7 +24,7 @@ import {
   X,
 } from "lucide-react";
 
-import logo from "@/assets/logo.svg";
+import logo from "@/assets/logo.png";
 import { cn } from "@/lib/utils";
 import { inTauri } from "@/lib/devMocks";
 import { newFlow, openFlow, saveFlow } from "@/lib/project";
@@ -68,6 +68,7 @@ export function TitleBar() {
   const theme = useThemeStore((s) => s.theme);
   const toggleTheme = useThemeStore((s) => s.toggle);
   const mode = useRunStore((s) => s.mode);
+  const running = useRunStore((s) => s.running);
   const setMode = useRunStore((s) => s.setMode);
   const clear = useGraphStore((s) => s.clear);
   const undo = useGraphStore((s) => s.undo);
@@ -96,7 +97,9 @@ export function TitleBar() {
   }, []);
 
   const status =
-    mode === "live"
+    running
+      ? { text: "执行中", color: "#3b82f6" }
+      : mode === "live"
       ? { text: "实时运行中", color: "#22c55e" }
       : mode === "paused"
         ? { text: "已暂停", color: "#f59e0b" }
@@ -109,7 +112,7 @@ export function TitleBar() {
     <div className="flex h-11 shrink-0 items-center gap-2 border-b border-border bg-card pl-3 pr-1">
       {/* brand + file actions */}
       <div className="flex items-center gap-2">
-        <img src={logo} alt="LovelyMiscLab" className="h-6 w-6 rounded-md" />
+        <img src={logo} alt="LovelyMiscLab" className="h-6 w-6 object-contain" />
         <span className="text-sm font-semibold">LovelyMiscLab</span>
       </div>
       <div className="mx-1 h-4 w-px bg-border" />
@@ -156,21 +159,21 @@ export function TitleBar() {
         <div className="flex items-center gap-1 rounded-lg border border-border bg-background p-0.5">
           <button
             onClick={() => setMode("live")}
-            disabled={mode === "live"}
+            disabled={mode === "live" || running}
             className="flex items-center gap-1 rounded-md bg-primary px-3 py-1 text-xs font-medium text-primary-foreground transition hover:bg-primary/90 disabled:opacity-50"
           >
             <Play className="h-3.5 w-3.5" /> 运行
           </button>
           <button
             onClick={() => void pauseRun()}
-            disabled={mode !== "live"}
+            disabled={mode !== "live" && !running}
             className="flex items-center gap-1 rounded-md px-2.5 py-1 text-xs text-muted-foreground hover:bg-accent hover:text-foreground disabled:opacity-40"
           >
             <Pause className="h-3.5 w-3.5" /> 暂停
           </button>
           <button
             onClick={() => void stopRun()}
-            disabled={mode === "idle"}
+            disabled={mode === "idle" && !running}
             className="flex items-center gap-1 rounded-md px-2.5 py-1 text-xs text-muted-foreground hover:bg-destructive/10 hover:text-destructive disabled:opacity-40"
           >
             <Square className="h-3.5 w-3.5" /> 停止
@@ -207,9 +210,9 @@ export function TitleBar() {
       <button
         onClick={() => useAiStore.getState().setOpen(true)}
         className="flex items-center gap-1 rounded-md bg-primary/10 px-2.5 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/15"
-        title="AI 一键生成流程"
+        title="AI 规划流程，确认后执行"
       >
-        <Sparkles className="h-3.5 w-3.5" /> AI 生成
+        <Sparkles className="h-3.5 w-3.5" /> AI 助手
       </button>
 
       {/* right utilities */}

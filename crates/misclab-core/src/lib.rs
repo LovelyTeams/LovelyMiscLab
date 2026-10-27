@@ -16,6 +16,7 @@
 //! + register it.** It then appears in the frontend palette automatically.
 
 pub mod ai;
+pub mod artifacts;
 pub mod cancel;
 pub mod error;
 pub mod graph;

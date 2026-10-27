@@ -143,6 +143,11 @@ jobs:
           path: artifacts
           merge-multiple: true
 
+      - name: Generate SHA-256 checksums
+        shell: bash
+        working-directory: artifacts
+        run: sha256sum LovelyMiscLab-* > SHA256SUMS.txt
+
       # Release body: per-platform run notes + the latest CHANGELOG section.
       - name: Build release notes
         shell: bash
@@ -150,7 +155,7 @@ jobs:
           {
             echo "多平台绿色版，免安装。"
             echo ""
-            echo "- **Windows** —— 下载 \`*-windows-x64.exe\`，双击运行（系统自带 WebView2，Win10/11 已内置；已用 UPX 压缩）。"
+            echo "- **Windows** —— 下载 \`*-windows-x64.exe\`，双击运行；需要 WebView2 Runtime（已用 UPX 压缩）。"
             echo "- **Linux** —— 下载 \`*-linux-x64\`，\`chmod +x\` 后运行；需要 WebKitGTK 4.1（Debian/Ubuntu：\`sudo apt install libwebkit2gtk-4.1-0\`）。"
             echo "- **macOS** —— 下载 \`*-macos-universal.dmg\`（Intel + Apple Silicon 通用），拖入「应用程序」。未签名，首次打开若被拦截：右键 → 打开，或终端执行 \`xattr -cr /Applications/LovelyMiscLab.app\`。"
             echo ""

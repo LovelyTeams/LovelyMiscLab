@@ -1,12 +1,16 @@
 {
   "name": "tauri-app",
   "private": true,
-  "version": "0.2.9",
+  "version": "0.3.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "check:utf8": "node scripts/check-utf8.mjs",
+    "generate:catalog": "node scripts/generate-catalog.mjs",
+    "check:catalog": "node scripts/generate-catalog.mjs --check",
+    "generate:migration": "node scripts/generate-migration.mjs",
+    "test:frontend": "node scripts/test-frontend.mjs",
     "preview": "vite preview",
     "tauri": "tauri"
   },

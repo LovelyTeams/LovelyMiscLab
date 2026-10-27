@@ -1,0 +1,553 @@
+{
+  "version": 1,
+  "name": "AI 自主解题：未知文件三轮分析",
+  "nodes": [
+    {
+      "id": "file_import_0",
+      "descriptorId": "file_import",
+      "label": "文件导入",
+      "color": "#64748b",
+      "params": {
+        "path": "D:/Lovelymisclab/examples/ai-autonomous-archive.dat"
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 40,
+        "y": 60
+      }
+    },
+    {
+      "id": "detect_file_type_1",
+      "descriptorId": "detect_file_type",
+      "label": "文件类型识别",
+      "color": "#3b82f6",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 320,
+        "y": 60
+      }
+    },
+    {
+      "id": "strings_2",
+      "descriptorId": "strings",
+      "label": "字符串提取",
+      "color": "#3b82f6",
+      "params": {
+        "minLen": 4,
+        "encoding": "ASCII",
+        "showOffset": false
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 320,
+        "y": 419
+      }
+    },
+    {
+      "id": "text_output_3",
+      "descriptorId": "text_output",
+      "label": "文本输出",
+      "color": "#64748b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 600,
+        "y": 60
+      }
+    },
+    {
+      "id": "text_output_4",
+      "descriptorId": "text_output",
+      "label": "文本输出",
+      "color": "#64748b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 600,
+        "y": 267
+      }
+    },
+    {
+      "id": "file_import_5",
+      "descriptorId": "file_import",
+      "label": "文件导入",
+      "color": "#64748b",
+      "params": {
+        "path": "D:/Lovelymisclab/examples/ai-autonomous-archive.dat"
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 940,
+        "y": 60
+      }
+    },
+    {
+      "id": "archive_list_6",
+      "descriptorId": "archive_list",
+      "label": "压缩包文件列表",
+      "color": "#f59e0b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1220,
+        "y": 60
+      }
+    },
+    {
+      "id": "archive_extract_7",
+      "descriptorId": "archive_extract",
+      "label": "解压",
+      "color": "#f59e0b",
+      "params": {
+        "format": "自动",
+        "password": "",
+        "entry": ""
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1220,
+        "y": 554
+      }
+    },
+    {
+      "id": "archive_get_file_8",
+      "descriptorId": "archive_get_file",
+      "label": "取解压文件",
+      "color": "#f59e0b",
+      "params": {
+        "entry": "readme.txt",
+        "match": "精确",
+        "index": 0
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1500,
+        "y": 60
+      }
+    },
+    {
+      "id": "archive_get_file_9",
+      "descriptorId": "archive_get_file",
+      "label": "取解压文件",
+      "color": "#f59e0b",
+      "params": {
+        "entry": "records/payload.txt",
+        "match": "精确",
+        "index": 0
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1500,
+        "y": 629
+      }
+    },
+    {
+      "id": "archive_get_file_10",
+      "descriptorId": "archive_get_file",
+      "label": "取解压文件",
+      "color": "#f59e0b",
+      "params": {
+        "entry": "records/noise.txt",
+        "match": "精确",
+        "index": 0
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1500,
+        "y": 1212
+      }
+    },
+    {
+      "id": "detect_file_type_11",
+      "descriptorId": "detect_file_type",
+      "label": "文件类型识别",
+      "color": "#3b82f6",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1780,
+        "y": 60
+      }
+    },
+    {
+      "id": "strings_12",
+      "descriptorId": "strings",
+      "label": "字符串提取",
+      "color": "#3b82f6",
+      "params": {
+        "minLen": 4,
+        "encoding": "ASCII",
+        "showOffset": false
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1780,
+        "y": 419
+      }
+    },
+    {
+      "id": "text_output_13",
+      "descriptorId": "text_output",
+      "label": "文本输出",
+      "color": "#64748b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1500,
+        "y": 1781
+      }
+    },
+    {
+      "id": "text_output_14",
+      "descriptorId": "text_output",
+      "label": "文本输出",
+      "color": "#64748b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1780,
+        "y": 951
+      }
+    },
+    {
+      "id": "text_output_15",
+      "descriptorId": "text_output",
+      "label": "文本输出",
+      "color": "#64748b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1780,
+        "y": 1145
+      }
+    },
+    {
+      "id": "text_output_16",
+      "descriptorId": "text_output",
+      "label": "文本输出",
+      "color": "#64748b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1780,
+        "y": 1352
+      }
+    },
+    {
+      "id": "text_output_17",
+      "descriptorId": "text_output",
+      "label": "文本输出",
+      "color": "#64748b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 2060,
+        "y": 60
+      }
+    },
+    {
+      "id": "text_output_18",
+      "descriptorId": "text_output",
+      "label": "文本输出",
+      "color": "#64748b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 2060,
+        "y": 267
+      }
+    },
+    {
+      "id": "file_import_19",
+      "descriptorId": "file_import",
+      "label": "文件导入",
+      "color": "#64748b",
+      "params": {
+        "path": "D:/Lovelymisclab/examples/ai-autonomous-archive.dat"
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 2400,
+        "y": 60
+      }
+    },
+    {
+      "id": "archive_extract_20",
+      "descriptorId": "archive_extract",
+      "label": "解压",
+      "color": "#f59e0b",
+      "params": {
+        "format": "自动",
+        "password": "",
+        "entry": ""
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 2680,
+        "y": 60
+      }
+    },
+    {
+      "id": "archive_get_file_21",
+      "descriptorId": "archive_get_file",
+      "label": "取解压文件",
+      "color": "#f59e0b",
+      "params": {
+        "entry": "records/payload.txt",
+        "match": "精确",
+        "index": 0
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 2960,
+        "y": 60
+      }
+    },
+    {
+      "id": "base64_decode_22",
+      "descriptorId": "base64_decode",
+      "label": "Base64 解码",
+      "color": "#22c55e",
+      "params": {
+        "variant": "标准",
+        "alphabet": "",
+        "padding": true,
+        "urlsafe": false
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 3240,
+        "y": 60
+      }
+    },
+    {
+      "id": "hex_decode_23",
+      "descriptorId": "hex_decode",
+      "label": "Hex 解码",
+      "color": "#22c55e",
+      "params": {
+        "alphabet": "0123456789abcdef",
+        "strip": false
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 3520,
+        "y": 60
+      }
+    },
+    {
+      "id": "rot13_24",
+      "descriptorId": "rot13",
+      "label": "ROT13",
+      "color": "#a855f7",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 3800,
+        "y": 60
+      }
+    },
+    {
+      "id": "text_output_25",
+      "descriptorId": "text_output",
+      "label": "文本输出",
+      "color": "#64748b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 4080,
+        "y": 60
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "xy-edge__file_import_0bytes-detect_file_type_1data",
+      "source": "file_import_0",
+      "sourceHandle": "bytes",
+      "target": "detect_file_type_1",
+      "targetHandle": "data"
+    },
+    {
+      "id": "xy-edge__file_import_0bytes-strings_2data",
+      "source": "file_import_0",
+      "sourceHandle": "bytes",
+      "target": "strings_2",
+      "targetHandle": "data"
+    },
+    {
+      "id": "xy-edge__detect_file_type_1text-text_output_3text",
+      "source": "detect_file_type_1",
+      "sourceHandle": "text",
+      "target": "text_output_3",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__strings_2text-text_output_4text",
+      "source": "strings_2",
+      "sourceHandle": "text",
+      "target": "text_output_4",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__file_import_5bytes-archive_list_6archive",
+      "source": "file_import_5",
+      "sourceHandle": "bytes",
+      "target": "archive_list_6",
+      "targetHandle": "archive"
+    },
+    {
+      "id": "xy-edge__file_import_5bytes-archive_extract_7archive",
+      "source": "file_import_5",
+      "sourceHandle": "bytes",
+      "target": "archive_extract_7",
+      "targetHandle": "archive"
+    },
+    {
+      "id": "xy-edge__archive_extract_7entries-archive_get_file_8entries",
+      "source": "archive_extract_7",
+      "sourceHandle": "entries",
+      "target": "archive_get_file_8",
+      "targetHandle": "entries"
+    },
+    {
+      "id": "xy-edge__archive_extract_7entries-archive_get_file_9entries",
+      "source": "archive_extract_7",
+      "sourceHandle": "entries",
+      "target": "archive_get_file_9",
+      "targetHandle": "entries"
+    },
+    {
+      "id": "xy-edge__archive_extract_7entries-archive_get_file_10entries",
+      "source": "archive_extract_7",
+      "sourceHandle": "entries",
+      "target": "archive_get_file_10",
+      "targetHandle": "entries"
+    },
+    {
+      "id": "xy-edge__archive_get_file_9bytes-detect_file_type_11data",
+      "source": "archive_get_file_9",
+      "sourceHandle": "bytes",
+      "target": "detect_file_type_11",
+      "targetHandle": "data"
+    },
+    {
+      "id": "xy-edge__archive_get_file_9bytes-strings_12data",
+      "source": "archive_get_file_9",
+      "sourceHandle": "bytes",
+      "target": "strings_12",
+      "targetHandle": "data"
+    },
+    {
+      "id": "xy-edge__archive_list_6text-text_output_13text",
+      "source": "archive_list_6",
+      "sourceHandle": "text",
+      "target": "text_output_13",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__archive_get_file_8text-text_output_14text",
+      "source": "archive_get_file_8",
+      "sourceHandle": "text",
+      "target": "text_output_14",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__archive_get_file_9text-text_output_15text",
+      "source": "archive_get_file_9",
+      "sourceHandle": "text",
+      "target": "text_output_15",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__archive_get_file_10text-text_output_16text",
+      "source": "archive_get_file_10",
+      "sourceHandle": "text",
+      "target": "text_output_16",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__detect_file_type_11text-text_output_17text",
+      "source": "detect_file_type_11",
+      "sourceHandle": "text",
+      "target": "text_output_17",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__strings_12text-text_output_18text",
+      "source": "strings_12",
+      "sourceHandle": "text",
+      "target": "text_output_18",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__file_import_19bytes-archive_extract_20archive",
+      "source": "file_import_19",
+      "sourceHandle": "bytes",
+      "target": "archive_extract_20",
+      "targetHandle": "archive"
+    },
+    {
+      "id": "xy-edge__archive_extract_20entries-archive_get_file_21entries",
+      "source": "archive_extract_20",
+      "sourceHandle": "entries",
+      "target": "archive_get_file_21",
+      "targetHandle": "entries"
+    },
+    {
+      "id": "xy-edge__archive_get_file_21text-base64_decode_22text",
+      "source": "archive_get_file_21",
+      "sourceHandle": "text",
+      "target": "base64_decode_22",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__base64_decode_22text-hex_decode_23text",
+      "source": "base64_decode_22",
+      "sourceHandle": "text",
+      "target": "hex_decode_23",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__hex_decode_23text-rot13_24text",
+      "source": "hex_decode_23",
+      "sourceHandle": "text",
+      "target": "rot13_24",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__rot13_24text-text_output_25text",
+      "source": "rot13_24",
+      "sourceHandle": "text",
+      "target": "text_output_25",
+      "targetHandle": "text"
+    }
+  ]
+}

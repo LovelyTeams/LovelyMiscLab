@@ -1,0 +1,7460 @@
+{
+  "revision": "ea2bc36dae31c97060f7f2cddad8df5518afad7b",
+  "vectors": [
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "text": "请输入 protobuf 二进制数据（hex 或 base64）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "error": "输入不是合法 hex（偶数长度 0-9a-f）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "text": "请输入 protobuf 二进制数据（hex 或 base64）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": []
+        }
+      },
+      "text": "请输入 protobuf 二进制数据（hex 或 base64）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0800"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 2 字节\n\nfield 1 (Varint): 0  [zigzag→0]  0x0  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0800"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 2 字节\n\nfield 1 (Varint): 0  [zigzag→0]  0x0  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "CAA="
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 2 字节\n\nfield 1 (Varint): 0  [zigzag→0]  0x0  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            8,
+            0
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 2 字节\n\nfield 1 (Varint): 0  [zigzag→0]  0x0  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "089601"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 3 字节\n\nfield 1 (Varint): 150  [zigzag→75]  0x96  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "089601"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 3 字节\n\nfield 1 (Varint): 150  [zigzag→75]  0x96  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "CJYB"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 3 字节\n\nfield 1 (Varint): 150  [zigzag→75]  0x96  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            8,
+            150,
+            1
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 3 字节\n\nfield 1 (Varint): 150  [zigzag→75]  0x96  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "08ffffffffffffffffff01"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 11 字节\n\nfield 1 (Varint): 18446744073709551615  0xFFFFFFFFFFFFFFFF  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "08ffffffffffffffffff01"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 11 字节\n\nfield 1 (Varint): 18446744073709551615  0xFFFFFFFFFFFFFFFF  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "CP///////////wE="
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 11 字节\n\nfield 1 (Varint): 18446744073709551615  0xFFFFFFFFFFFFFFFF  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            8,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            1
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 11 字节\n\nfield 1 (Varint): 18446744073709551615  0xFFFFFFFFFFFFFFFF  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "09ffffffffffffffff"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 9 字节\n\nfield 1 (64-bit): int64(LE)=-1, double(LE)=NaN  0xFFFFFFFFFFFFFFFF  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "09ffffffffffffffff"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 9 字节\n\nfield 1 (64-bit): int64(LE)=-1, double(LE)=NaN  0xFFFFFFFFFFFFFFFF  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Cf//////////"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 9 字节\n\nfield 1 (64-bit): int64(LE)=-1, double(LE)=NaN  0xFFFFFFFFFFFFFFFF  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            9,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 9 字节\n\nfield 1 (64-bit): int64(LE)=-1, double(LE)=NaN  0xFFFFFFFFFFFFFFFF  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0d0000803f"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 5 字节\n\nfield 1 (32-bit): int32(LE)=1065353216, float(LE)=1  0x0000803F  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0d0000803f"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 5 字节\n\nfield 1 (32-bit): int32(LE)=1065353216, float(LE)=1  0x0000803F  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "DQAAgD8="
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 5 字节\n\nfield 1 (32-bit): int32(LE)=1065353216, float(LE)=1  0x0000803F  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            13,
+            0,
+            0,
+            128,
+            63
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 5 字节\n\nfield 1 (32-bit): int32(LE)=1065353216, float(LE)=1  0x0000803F  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "120548656c6c6f"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 7 字节\n\nfield 2 (Length-delimited): string=\"Hello\"  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "120548656c6c6f"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 7 字节\n\nfield 2 (Length-delimited): string=\"Hello\"  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EgVIZWxsbw=="
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 7 字节\n\nfield 2 (Length-delimited): string=\"Hello\"  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            18,
+            5,
+            72,
+            101,
+            108,
+            108,
+            111
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 7 字节\n\nfield 2 (Length-delimited): string=\"Hello\"  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1206e4b8ade69687"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 8 字节\n\nfield 2 (Length-delimited): string=\"中文\"  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1206e4b8ade69687"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 8 字节\n\nfield 2 (Length-delimited): string=\"中文\"  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EgbkuK3mloc="
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 8 字节\n\nfield 2 (Length-delimited): string=\"中文\"  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            18,
+            6,
+            228,
+            184,
+            173,
+            230,
+            150,
+            135
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 8 字节\n\nfield 2 (Length-delimited): string=\"中文\"  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1207efbbbf41f09f9880"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 10 字节\n\nfield 2 (Length-delimited): bytes[7]=efbbbf41f09f98  @off=0\n\n⚠ 解析中断: key varint: varint 读取越界\n\n⚠ 仅消费 9/10 字节，剩余 1 字节未解析"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1207efbbbf41f09f9880"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 10 字节\n\nfield 2 (Length-delimited): bytes[7]=efbbbf41f09f98  @off=0\n\n⚠ 解析中断: key varint: varint 读取越界\n\n⚠ 仅消费 9/10 字节，剩余 1 字节未解析"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Egfvu79B8J+YgA=="
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 10 字节\n\nfield 2 (Length-delimited): bytes[7]=efbbbf41f09f98  @off=0\n\n⚠ 解析中断: key varint: varint 读取越界\n\n⚠ 仅消费 9/10 字节，剩余 1 字节未解析"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            18,
+            7,
+            239,
+            187,
+            191,
+            65,
+            240,
+            159,
+            152,
+            128
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 10 字节\n\nfield 2 (Length-delimited): bytes[7]=efbbbf41f09f98  @off=0\n\n⚠ 解析中断: key varint: varint 读取越界\n\n⚠ 仅消费 9/10 字节，剩余 1 字节未解析"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "12020801"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 4 字节\n\nfield 2 (Length-delimited): message(1 fields)  @off=0\n  field 1 (Varint): 1  [zigzag→-1]  0x1  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "12020801"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 4 字节\n\nfield 2 (Length-delimited): message(1 fields)  @off=0\n  field 1 (Varint): 1  [zigzag→-1]  0x1  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EgIIAQ=="
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 4 字节\n\nfield 2 (Length-delimited): message(1 fields)  @off=0\n  field 1 (Varint): 1  [zigzag→-1]  0x1  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            18,
+            2,
+            8,
+            1
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 4 字节\n\nfield 2 (Length-delimited): message(1 fields)  @off=0\n  field 1 (Varint): 1  [zigzag→-1]  0x1  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "12021200"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 4 字节\n\nfield 2 (Length-delimited): message(1 fields)  @off=0\n  field 2 (Length-delimited): bytes[0]=  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "12021200"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 4 字节\n\nfield 2 (Length-delimited): message(1 fields)  @off=0\n  field 2 (Length-delimited): bytes[0]=  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EgISAA=="
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 4 字节\n\nfield 2 (Length-delimited): message(1 fields)  @off=0\n  field 2 (Length-delimited): bytes[0]=  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            18,
+            2,
+            18,
+            0
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 4 字节\n\nfield 2 (Length-delimited): message(1 fields)  @off=0\n  field 2 (Length-delimited): bytes[0]=  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1200"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 2 字节\n\nfield 2 (Length-delimited): bytes[0]=  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1200"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 2 字节\n\nfield 2 (Length-delimited): bytes[0]=  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EgA="
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 2 字节\n\nfield 2 (Length-delimited): bytes[0]=  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            18,
+            0
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 2 字节\n\nfield 2 (Length-delimited): bytes[0]=  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1203ff00ff"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 5 字节\n\nfield 2 (Length-delimited): bytes[3]=ff00ff  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1203ff00ff"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 5 字节\n\nfield 2 (Length-delimited): bytes[3]=ff00ff  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EgP/AP8="
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 5 字节\n\nfield 2 (Length-delimited): bytes[3]=ff00ff  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            18,
+            3,
+            255,
+            0,
+            255
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 5 字节\n\nfield 2 (Length-delimited): bytes[3]=ff00ff  @off=0"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1b08011c"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 4 字节\n\nfield 3 (Start group): （start group，已弃用）  @off=0\nfield 1 (Varint): 1  [zigzag→-1]  0x1  @off=1\nfield 3 (End group): （end group，已弃用）  @off=3"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1b08011c"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 4 字节\n\nfield 3 (Start group): （start group，已弃用）  @off=0\nfield 1 (Varint): 1  [zigzag→-1]  0x1  @off=1\nfield 3 (End group): （end group，已弃用）  @off=3"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "GwgBHA=="
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 4 字节\n\nfield 3 (Start group): （start group，已弃用）  @off=0\nfield 1 (Varint): 1  [zigzag→-1]  0x1  @off=1\nfield 3 (End group): （end group，已弃用）  @off=3"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            27,
+            8,
+            1,
+            28
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 4 字节\n\nfield 3 (Start group): （start group，已弃用）  @off=0\nfield 1 (Varint): 1  [zigzag→-1]  0x1  @off=1\nfield 3 (End group): （end group，已弃用）  @off=3"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "080112030801ff"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 7 字节\n\nfield 1 (Varint): 1  [zigzag→-1]  0x1  @off=0\nfield 2 (Length-delimited): bytes[3]=0801ff  @off=2"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "080112030801ff"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 7 字节\n\nfield 1 (Varint): 1  [zigzag→-1]  0x1  @off=0\nfield 2 (Length-delimited): bytes[3]=0801ff  @off=2"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "CAESAwgB/w=="
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 7 字节\n\nfield 1 (Varint): 1  [zigzag→-1]  0x1  @off=0\nfield 2 (Length-delimited): bytes[3]=0801ff  @off=2"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            8,
+            1,
+            18,
+            3,
+            8,
+            1,
+            255
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 7 字节\n\nfield 1 (Varint): 1  [zigzag→-1]  0x1  @off=0\nfield 2 (Length-delimited): bytes[3]=0801ff  @off=2"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0801120208ff"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 6 字节\n\nfield 1 (Varint): 1  [zigzag→-1]  0x1  @off=0\nfield 2 (Length-delimited): bytes[2]=08ff  @off=2"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0801120208ff"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 6 字节\n\nfield 1 (Varint): 1  [zigzag→-1]  0x1  @off=0\nfield 2 (Length-delimited): bytes[2]=08ff  @off=2"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "CAESAgj/"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 6 字节\n\nfield 1 (Varint): 1  [zigzag→-1]  0x1  @off=0\nfield 2 (Length-delimited): bytes[2]=08ff  @off=2"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            8,
+            1,
+            18,
+            2,
+            8,
+            255
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 6 字节\n\nfield 1 (Varint): 1  [zigzag→-1]  0x1  @off=0\nfield 2 (Length-delimited): bytes[2]=08ff  @off=2"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "08011500"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 4 字节\n\nfield 1 (Varint): 1  [zigzag→-1]  0x1  @off=0\n\n⚠ 解析中断: 32-bit 数据不足\n\n⚠ 仅消费 3/4 字节，剩余 1 字节未解析"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "08011500"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 4 字节\n\nfield 1 (Varint): 1  [zigzag→-1]  0x1  @off=0\n\n⚠ 解析中断: 32-bit 数据不足\n\n⚠ 仅消费 3/4 字节，剩余 1 字节未解析"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "CAEVAA=="
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 4 字节\n\nfield 1 (Varint): 1  [zigzag→-1]  0x1  @off=0\n\n⚠ 解析中断: 32-bit 数据不足\n\n⚠ 仅消费 3/4 字节，剩余 1 字节未解析"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            8,
+            1,
+            21,
+            0
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 4 字节\n\nfield 1 (Varint): 1  [zigzag→-1]  0x1  @off=0\n\n⚠ 解析中断: 32-bit 数据不足\n\n⚠ 仅消费 3/4 字节，剩余 1 字节未解析"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0001"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 2 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0001"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 2 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "AAE="
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 2 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            1
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 2 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0e"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 1 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0e"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 1 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Dg=="
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 1 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            14
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 1 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "08"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 1 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "08"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 1 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "CA=="
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 1 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            8
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 1 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "80"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 1 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "80"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 1 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "gA=="
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 1 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            128
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 1 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "120aff"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 3 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "120aff"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 3 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Egr/"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 3 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            18,
+            10,
+            255
+          ]
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 3 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "text": "请输入 MessagePack 二进制数据（hex 或 base64）"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "error": "输入不是合法 hex（偶数长度 0-9a-f）"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "text": "请输入 MessagePack 二进制数据（hex 或 base64）"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": []
+        }
+      },
+      "text": "请输入 MessagePack 二进制数据（hex 或 base64）"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "00"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nuint8: 0"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "00"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nuint8: 0"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "AA=="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nuint8: 0"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nuint8: 0"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "7f"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nuint8: 127"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "7f"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nuint8: 127"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "fw=="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nuint8: 127"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            127
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nuint8: 127"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "e0"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nint8: -32"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "e0"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nint8: -32"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "4A=="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nint8: -32"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            224
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nint8: -32"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ff"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nint8: -1"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ff"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nint8: -1"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "/w=="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nint8: -1"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            255
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nint8: -1"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c0"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nnil"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c0"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nnil"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "wA=="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nnil"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            192
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nnil"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c2"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nfalse"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c2"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nfalse"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "wg=="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nfalse"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            194
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nfalse"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c3"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\ntrue"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c3"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\ntrue"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ww=="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\ntrue"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            195
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\ntrue"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ccff"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 2 字节\n\nuint8: 255"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ccff"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 2 字节\n\nuint8: 255"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "zP8="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 2 字节\n\nuint8: 255"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            204,
+            255
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 2 字节\n\nuint8: 255"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "cd1234"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\nuint16: 4660"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "cd1234"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\nuint16: 4660"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "zRI0"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\nuint16: 4660"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            205,
+            18,
+            52
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\nuint16: 4660"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ceffffffff"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nuint32: 4294967295"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ceffffffff"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nuint32: 4294967295"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "zv////8="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nuint32: 4294967295"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            206,
+            255,
+            255,
+            255,
+            255
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nuint32: 4294967295"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "cfffffffffffffffff"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\nuint64: 18446744073709551615"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "cfffffffffffffffff"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\nuint64: 18446744073709551615"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "z///////////"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\nuint64: 18446744073709551615"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            207,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\nuint64: 18446744073709551615"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d080"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 2 字节\n\nint8: -128"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d080"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 2 字节\n\nint8: -128"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0IA="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 2 字节\n\nint8: -128"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            208,
+            128
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 2 字节\n\nint8: -128"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d18000"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\nint16: -32768"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d18000"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\nint16: -32768"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0YAA"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\nint16: -32768"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            209,
+            128,
+            0
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\nint16: -32768"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d280000000"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nint32: -2147483648"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d280000000"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nint32: -2147483648"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0oAAAAA="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nint32: -2147483648"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            210,
+            128,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nint32: -2147483648"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d38000000000000000"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\nint64: -9223372036854775808"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d38000000000000000"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\nint64: -9223372036854775808"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "04AAAAAAAAAA"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\nint64: -9223372036854775808"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            211,
+            128,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\nint64: -9223372036854775808"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ca3fc00000"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nfloat32: 1.5"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ca3fc00000"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nfloat32: 1.5"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "yj/AAAA="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nfloat32: 1.5"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            202,
+            63,
+            192,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nfloat32: 1.5"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "cb400921fb54442d18"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\nfloat64: 3.141592653589793"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "cb400921fb54442d18"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\nfloat64: 3.141592653589793"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "y0AJIftURC0Y"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\nfloat64: 3.141592653589793"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            203,
+            64,
+            9,
+            33,
+            251,
+            84,
+            68,
+            45,
+            24
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\nfloat64: 3.141592653589793"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ca7f800000"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nfloat32: Infinity"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ca7f800000"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nfloat32: Infinity"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "yn+AAAA="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nfloat32: Infinity"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            202,
+            127,
+            128,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nfloat32: Infinity"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "cb7ff8000000000000"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\nfloat64: NaN"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "cb7ff8000000000000"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\nfloat64: NaN"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "y3/4AAAAAAAA"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\nfloat64: NaN"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            203,
+            127,
+            248,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\nfloat64: NaN"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a0"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nstr: \"\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a0"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nstr: \"\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "oA=="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nstr: \"\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            160
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nstr: \"\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a548656c6c6f"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\nstr: \"Hello\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a548656c6c6f"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\nstr: \"Hello\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "pUhlbGxv"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\nstr: \"Hello\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            165,
+            72,
+            101,
+            108,
+            108,
+            111
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\nstr: \"Hello\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a6e4b8ade69687"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\nstr: \"中文\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a6e4b8ade69687"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\nstr: \"中文\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "puS4reaWhw=="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\nstr: \"中文\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            166,
+            228,
+            184,
+            173,
+            230,
+            150,
+            135
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\nstr: \"中文\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a4efbbbf41"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nstr: \"A\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a4efbbbf41"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nstr: \"A\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "pO+7v0E="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nstr: \"A\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            164,
+            239,
+            187,
+            191,
+            65
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nstr: \"A\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a2ff00"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\nstr: \"\uFFFD\u0000\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a2ff00"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\nstr: \"\uFFFD\u0000\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ov8A"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\nstr: \"\uFFFD\u0000\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            162,
+            255,
+            0
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\nstr: \"\uFFFD\u0000\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d903616263"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nstr: \"abc\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d903616263"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nstr: \"abc\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "2QNhYmM="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nstr: \"abc\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            217,
+            3,
+            97,
+            98,
+            99
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nstr: \"abc\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "da0003616263"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\nstr: \"abc\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "da0003616263"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\nstr: \"abc\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "2gADYWJj"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\nstr: \"abc\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            218,
+            0,
+            3,
+            97,
+            98,
+            99
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\nstr: \"abc\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "db00000003616263"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 8 字节\n\nstr: \"abc\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "db00000003616263"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 8 字节\n\nstr: \"abc\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "2wAAAANhYmM="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 8 字节\n\nstr: \"abc\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            219,
+            0,
+            0,
+            0,
+            3,
+            97,
+            98,
+            99
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 8 字节\n\nstr: \"abc\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c40300ff80"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nbin[3]: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c40300ff80"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nbin[3]: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "xAMA/4A="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nbin[3]: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            196,
+            3,
+            0,
+            255,
+            128
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\nbin[3]: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c5000300ff80"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\nbin[3]: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c5000300ff80"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\nbin[3]: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "xQADAP+A"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\nbin[3]: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            197,
+            0,
+            3,
+            0,
+            255,
+            128
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\nbin[3]: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c60000000300ff80"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 8 字节\n\nbin[3]: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c60000000300ff80"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 8 字节\n\nbin[3]: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "xgAAAAMA/4A="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 8 字节\n\nbin[3]: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            198,
+            0,
+            0,
+            0,
+            3,
+            0,
+            255,
+            128
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 8 字节\n\nbin[3]: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c703ff00ff80"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\next[3] type=255: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c703ff00ff80"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\next[3] type=255: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "xwP/AP+A"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\next[3] type=255: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            199,
+            3,
+            255,
+            0,
+            255,
+            128
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\next[3] type=255: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c800030100ff80"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\next[3] type=1: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c800030100ff80"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\next[3] type=1: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "yAADAQD/gA=="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\next[3] type=1: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            200,
+            0,
+            3,
+            1,
+            0,
+            255,
+            128
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\next[3] type=1: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c9000000030200ff80"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\next[3] type=2: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c9000000030200ff80"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\next[3] type=2: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "yQAAAAMCAP+A"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\next[3] type=2: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            201,
+            0,
+            0,
+            0,
+            3,
+            2,
+            0,
+            255,
+            128
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 9 字节\n\next[3] type=2: 00ff80"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d4ff41"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\next[1] type=255: 41"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d4ff41"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\next[1] type=255: 41"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1P9B"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\next[1] type=255: 41"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            212,
+            255,
+            65
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\next[1] type=255: 41"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d5014142"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 4 字节\n\next[2] type=1: 4142"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d5014142"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 4 字节\n\next[2] type=1: 4142"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1QFBQg=="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 4 字节\n\next[2] type=1: 4142"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            213,
+            1,
+            65,
+            66
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 4 字节\n\next[2] type=1: 4142"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d60241424344"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\next[4] type=2: 41424344"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d60241424344"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\next[4] type=2: 41424344"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1gJBQkNE"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\next[4] type=2: 41424344"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            214,
+            2,
+            65,
+            66,
+            67,
+            68
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\next[4] type=2: 41424344"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d7030001020304050607"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 10 字节\n\next[8] type=3: 0001020304050607"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d7030001020304050607"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 10 字节\n\next[8] type=3: 0001020304050607"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1wMAAQIDBAUGBw=="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 10 字节\n\next[8] type=3: 0001020304050607"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            215,
+            3,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 10 字节\n\next[8] type=3: 0001020304050607"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d804000102030405060708090a0b0c0d0e0f"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 18 字节\n\next[16] type=4: 000102030405060708090a0b0c0d0e0f"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d804000102030405060708090a0b0c0d0e0f"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 18 字节\n\next[16] type=4: 000102030405060708090a0b0c0d0e0f"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "2AQAAQIDBAUGBwgJCgsMDQ4P"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 18 字节\n\next[16] type=4: 000102030405060708090a0b0c0d0e0f"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            216,
+            4,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 18 字节\n\next[16] type=4: 000102030405060708090a0b0c0d0e0f"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "90"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\narray[0]:"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "90"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\narray[0]:"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "kA=="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\narray[0]:"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            144
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\narray[0]:"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "9301a161c3"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\narray[3]:\n  uint8: 1\n  str: \"a\"\n  true"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "9301a161c3"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\narray[3]:\n  uint8: 1\n  str: \"a\"\n  true"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "kwGhYcM="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\narray[3]:\n  uint8: 1\n  str: \"a\"\n  true"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            147,
+            1,
+            161,
+            97,
+            195
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\narray[3]:\n  uint8: 1\n  str: \"a\"\n  true"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "dc00020102"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\narray[2]:\n  uint8: 1\n  uint8: 2"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "dc00020102"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\narray[2]:\n  uint8: 1\n  uint8: 2"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "3AACAQI="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\narray[2]:\n  uint8: 1\n  uint8: 2"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            220,
+            0,
+            2,
+            1,
+            2
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\narray[2]:\n  uint8: 1\n  uint8: 2"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "dd000000020102"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\narray[2]:\n  uint8: 1\n  uint8: 2"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "dd000000020102"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\narray[2]:\n  uint8: 1\n  uint8: 2"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "3QAAAAIBAg=="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\narray[2]:\n  uint8: 1\n  uint8: 2"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            221,
+            0,
+            0,
+            0,
+            2,
+            1,
+            2
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\narray[2]:\n  uint8: 1\n  uint8: 2"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "80"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nmap[0]:"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "80"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nmap[0]:"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "gA=="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nmap[0]:"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            128
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nmap[0]:"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "82a16101a162c3"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\nmap[2]:\n  \"a\":\n    uint8: 1\n  \"b\":\n    true"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "82a16101a162c3"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\nmap[2]:\n  \"a\":\n    uint8: 1\n  \"b\":\n    true"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "gqFhAaFiww=="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\nmap[2]:\n  \"a\":\n    uint8: 1\n  \"b\":\n    true"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            130,
+            161,
+            97,
+            1,
+            161,
+            98,
+            195
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\nmap[2]:\n  \"a\":\n    uint8: 1\n  \"b\":\n    true"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "de000101a161"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\nmap[1]:\n  1:\n    str: \"a\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "de000101a161"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\nmap[1]:\n  1:\n    str: \"a\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "3gABAaFh"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\nmap[1]:\n  1:\n    str: \"a\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            222,
+            0,
+            1,
+            1,
+            161,
+            97
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\nmap[1]:\n  1:\n    str: \"a\""
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "df00000001c001"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\nmap[1]:\n  null:\n    uint8: 1"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "df00000001c001"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\nmap[1]:\n  null:\n    uint8: 1"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "3wAAAAHAAQ=="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\nmap[1]:\n  null:\n    uint8: 1"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            223,
+            0,
+            0,
+            0,
+            1,
+            192,
+            1
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 7 字节\n\nmap[1]:\n  null:\n    uint8: 1"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "81c2c3"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\nmap[1]:\n  false:\n    true"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "81c2c3"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\nmap[1]:\n  false:\n    true"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "gcLD"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\nmap[1]:\n  false:\n    true"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            129,
+            194,
+            195
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 3 字节\n\nmap[1]:\n  false:\n    true"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "9181a16e2a"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\narray[1]:\n  map[1]:\n    \"n\":\n      uint8: 42"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "9181a16e2a"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\narray[1]:\n  map[1]:\n    \"n\":\n      uint8: 42"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "kYGhbio="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\narray[1]:\n  map[1]:\n    \"n\":\n      uint8: 42"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            145,
+            129,
+            161,
+            110,
+            42
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 5 字节\n\narray[1]:\n  map[1]:\n    \"n\":\n      uint8: 42"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0102"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 2 字节\n\nuint8: 1\n\n⚠ 仅消费 1/2 字节，剩余 1 字节"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0102"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 2 字节\n\nuint8: 1\n\n⚠ 仅消费 1/2 字节，剩余 1 字节"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "AQI="
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 2 字节\n\nuint8: 1\n\n⚠ 仅消费 1/2 字节，剩余 1 字节"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            1,
+            2
+          ]
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 2 字节\n\nuint8: 1\n\n⚠ 仅消费 1/2 字节，剩余 1 字节"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "text": "请输入 CBOR 二进制数据（hex 或 base64）"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "error": "输入不是合法 hex（偶数长度 0-9a-f）"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "text": "请输入 CBOR 二进制数据（hex 或 base64）"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": []
+        }
+      },
+      "text": "请输入 CBOR 二进制数据（hex 或 base64）"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "00"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nuint: 0"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "00"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nuint: 0"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "AA=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nuint: 0"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nuint: 0"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "17"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nuint: 23"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "17"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nuint: 23"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Fw=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nuint: 23"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            23
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nuint: 23"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1818"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 2 字节\n\nuint: 24"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1818"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 2 字节\n\nuint: 24"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "GBg="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 2 字节\n\nuint: 24"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            24,
+            24
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 2 字节\n\nuint: 24"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "190100"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nuint: 256"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "190100"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nuint: 256"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "GQEA"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nuint: 256"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            25,
+            1,
+            0
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nuint: 256"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1a00010000"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\nuint: 65536"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1a00010000"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\nuint: 65536"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "GgABAAA="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\nuint: 65536"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            26,
+            0,
+            1,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\nuint: 65536"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1bffffffffffffffff"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 9 字节\n\nuint: 18446744073709551615"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1bffffffffffffffff"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 9 字节\n\nuint: 18446744073709551615"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "G///////////"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 9 字节\n\nuint: 18446744073709551615"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            27,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 9 字节\n\nuint: 18446744073709551615"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "20"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nnint: -1"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "20"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nnint: -1"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "IA=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nnint: -1"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            32
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nnint: -1"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "37"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nnint: -24"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "37"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nnint: -24"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Nw=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nnint: -24"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            55
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nnint: -24"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "3818"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 2 字节\n\nnint: -25"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "3818"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 2 字节\n\nnint: -25"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "OBg="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 2 字节\n\nnint: -25"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            56,
+            24
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 2 字节\n\nnint: -25"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "39ffff"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nnint: -65536"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "39ffff"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nnint: -65536"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Of//"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nnint: -65536"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            57,
+            255,
+            255
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nnint: -65536"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "3bffffffffffffffff"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 9 字节\n\nnint: -18446744073709551616"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "3bffffffffffffffff"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 9 字节\n\nnint: -18446744073709551616"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "O///////////"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 9 字节\n\nnint: -18446744073709551616"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            59,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 9 字节\n\nnint: -18446744073709551616"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "40"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nbstr[0]: "
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "40"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nbstr[0]: "
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "QA=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nbstr[0]: "
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            64
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nbstr[0]: "
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "4300ff80"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 4 字节\n\nbstr[3]: 00ff80"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "4300ff80"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 4 字节\n\nbstr[3]: 00ff80"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "QwD/gA=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 4 字节\n\nbstr[3]: 00ff80"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            67,
+            0,
+            255,
+            128
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 4 字节\n\nbstr[3]: 00ff80"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "580300ff80"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\nbstr[3]: 00ff80"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "580300ff80"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\nbstr[3]: 00ff80"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "WAMA/4A="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\nbstr[3]: 00ff80"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            88,
+            3,
+            0,
+            255,
+            128
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\nbstr[3]: 00ff80"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "59000300ff80"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 6 字节\n\nbstr[3]: 00ff80"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "59000300ff80"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 6 字节\n\nbstr[3]: 00ff80"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "WQADAP+A"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 6 字节\n\nbstr[3]: 00ff80"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            89,
+            0,
+            3,
+            0,
+            255,
+            128
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 6 字节\n\nbstr[3]: 00ff80"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "6000"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 2 字节\n\ntstr: \"\"\n\n⚠ 仅消费 1/2 字节，剩余 1 字节"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "6000"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 2 字节\n\ntstr: \"\"\n\n⚠ 仅消费 1/2 字节，剩余 1 字节"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "YAA="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 2 字节\n\ntstr: \"\"\n\n⚠ 仅消费 1/2 字节，剩余 1 字节"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            96,
+            0
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 2 字节\n\ntstr: \"\"\n\n⚠ 仅消费 1/2 字节，剩余 1 字节"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "63616263"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 4 字节\n\ntstr: \"abc\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "63616263"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 4 字节\n\ntstr: \"abc\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Y2FiYw=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 4 字节\n\ntstr: \"abc\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            99,
+            97,
+            98,
+            99
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 4 字节\n\ntstr: \"abc\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "66e4b8ade69687"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 7 字节\n\ntstr: \"中文\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "66e4b8ade69687"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 7 字节\n\ntstr: \"中文\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ZuS4reaWhw=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 7 字节\n\ntstr: \"中文\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            102,
+            228,
+            184,
+            173,
+            230,
+            150,
+            135
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 7 字节\n\ntstr: \"中文\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "64efbbbf41"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\ntstr: \"A\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "64efbbbf41"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\ntstr: \"A\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ZO+7v0E="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\ntstr: \"A\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            100,
+            239,
+            187,
+            191,
+            65
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\ntstr: \"A\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "62ff00"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\ntstr: \"\uFFFD\u0000\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "62ff00"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\ntstr: \"\uFFFD\u0000\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Yv8A"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\ntstr: \"\uFFFD\u0000\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            98,
+            255,
+            0
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\ntstr: \"\uFFFD\u0000\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "78186162636465666768696a6b6c6d6e6f707172737475767778"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 26 字节\n\ntstr: \"abcdefghijklmnopqrstuvwx\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "78186162636465666768696a6b6c6d6e6f707172737475767778"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 26 字节\n\ntstr: \"abcdefghijklmnopqrstuvwx\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "eBhhYmNkZWZnaGlqa2xtbm9wcXJzdHV2d3g="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 26 字节\n\ntstr: \"abcdefghijklmnopqrstuvwx\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            120,
+            24,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 26 字节\n\ntstr: \"abcdefghijklmnopqrstuvwx\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "790003616263"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 6 字节\n\ntstr: \"abc\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "790003616263"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 6 字节\n\ntstr: \"abc\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "eQADYWJj"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 6 字节\n\ntstr: \"abc\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            121,
+            0,
+            3,
+            97,
+            98,
+            99
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 6 字节\n\ntstr: \"abc\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "5f4201024103ff"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 7 字节\n\nbstr[?]: 010203 (indefinite)"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "5f4201024103ff"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 7 字节\n\nbstr[?]: 010203 (indefinite)"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "X0IBAkED/w=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 7 字节\n\nbstr[?]: 010203 (indefinite)"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            95,
+            66,
+            1,
+            2,
+            65,
+            3,
+            255
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 7 字节\n\nbstr[?]: 010203 (indefinite)"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "7f61616162ff"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 6 字节\n\ntstr: \"ab\" (indefinite)"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "7f61616162ff"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 6 字节\n\ntstr: \"ab\" (indefinite)"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f2FhYWL/"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 6 字节\n\ntstr: \"ab\" (indefinite)"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            127,
+            97,
+            97,
+            97,
+            98,
+            255
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 6 字节\n\ntstr: \"ab\" (indefinite)"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "80"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\narray[0]:"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "80"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\narray[0]:"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "gA=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\narray[0]:"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            128
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\narray[0]:"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "83016161f5"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\narray[3]:\n  uint: 1\n  tstr: \"a\"\n  true"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "83016161f5"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\narray[3]:\n  uint: 1\n  tstr: \"a\"\n  true"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "gwFhYfU="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\narray[3]:\n  uint: 1\n  tstr: \"a\"\n  true"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            131,
+            1,
+            97,
+            97,
+            245
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\narray[3]:\n  uint: 1\n  tstr: \"a\"\n  true"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "98020102"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 4 字节\n\narray[2]:\n  uint: 1\n  uint: 2"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "98020102"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 4 字节\n\narray[2]:\n  uint: 1\n  uint: 2"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "mAIBAg=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 4 字节\n\narray[2]:\n  uint: 1\n  uint: 2"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            152,
+            2,
+            1,
+            2
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 4 字节\n\narray[2]:\n  uint: 1\n  uint: 2"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "9900020102"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\narray[2]:\n  uint: 1\n  uint: 2"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "9900020102"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\narray[2]:\n  uint: 1\n  uint: 2"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "mQACAQI="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\narray[2]:\n  uint: 1\n  uint: 2"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            153,
+            0,
+            2,
+            1,
+            2
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\narray[2]:\n  uint: 1\n  uint: 2"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "9f018202039f0405ffff"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 10 字节\n\narray[?]: (indefinite)\n  uint: 1\n  array[2]:\n    uint: 2\n    uint: 3\n  array[?]: (indefinite)\n    uint: 4\n    uint: 5"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "9f018202039f0405ffff"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 10 字节\n\narray[?]: (indefinite)\n  uint: 1\n  array[2]:\n    uint: 2\n    uint: 3\n  array[?]: (indefinite)\n    uint: 4\n    uint: 5"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "nwGCAgOfBAX//w=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 10 字节\n\narray[?]: (indefinite)\n  uint: 1\n  array[2]:\n    uint: 2\n    uint: 3\n  array[?]: (indefinite)\n    uint: 4\n    uint: 5"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            159,
+            1,
+            130,
+            2,
+            3,
+            159,
+            4,
+            5,
+            255,
+            255
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 10 字节\n\narray[?]: (indefinite)\n  uint: 1\n  array[2]:\n    uint: 2\n    uint: 3\n  array[?]: (indefinite)\n    uint: 4\n    uint: 5"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a0"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nmap[0]:"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a0"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nmap[0]:"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "oA=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nmap[0]:"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            160
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nmap[0]:"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a26161016162f5"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 7 字节\n\nmap[2]:\n  \"a\":\n    uint: 1\n  \"b\":\n    true"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a26161016162f5"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 7 字节\n\nmap[2]:\n  \"a\":\n    uint: 1\n  \"b\":\n    true"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "omFhAWFi9Q=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 7 字节\n\nmap[2]:\n  \"a\":\n    uint: 1\n  \"b\":\n    true"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            162,
+            97,
+            97,
+            1,
+            97,
+            98,
+            245
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 7 字节\n\nmap[2]:\n  \"a\":\n    uint: 1\n  \"b\":\n    true"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "b801016161"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\nmap[1]:\n  1:\n    tstr: \"a\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "b801016161"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\nmap[1]:\n  1:\n    tstr: \"a\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "uAEBYWE="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\nmap[1]:\n  1:\n    tstr: \"a\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            184,
+            1,
+            1,
+            97,
+            97
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\nmap[1]:\n  1:\n    tstr: \"a\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "bf6161016162f6ff"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 8 字节\n\nmap[?]: (indefinite)\n  \"a\":\n    uint: 1\n  \"b\":\n    null"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "bf6161016162f6ff"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 8 字节\n\nmap[?]: (indefinite)\n  \"a\":\n    uint: 1\n  \"b\":\n    null"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "v2FhAWFi9v8="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 8 字节\n\nmap[?]: (indefinite)\n  \"a\":\n    uint: 1\n  \"b\":\n    null"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            191,
+            97,
+            97,
+            1,
+            97,
+            98,
+            246,
+            255
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 8 字节\n\nmap[?]: (indefinite)\n  \"a\":\n    uint: 1\n  \"b\":\n    null"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c074323031332d30332d32315432303a30343a30305a"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 22 字节\n\ntag(0):\n  tstr: \"2013-03-21T20:04:00Z\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c074323031332d30332d32315432303a30343a30305a"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 22 字节\n\ntag(0):\n  tstr: \"2013-03-21T20:04:00Z\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "wHQyMDEzLTAzLTIxVDIwOjA0OjAwWg=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 22 字节\n\ntag(0):\n  tstr: \"2013-03-21T20:04:00Z\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            192,
+            116,
+            50,
+            48,
+            49,
+            51,
+            45,
+            48,
+            51,
+            45,
+            50,
+            49,
+            84,
+            50,
+            48,
+            58,
+            48,
+            52,
+            58,
+            48,
+            48,
+            90
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 22 字节\n\ntag(0):\n  tstr: \"2013-03-21T20:04:00Z\""
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d86401"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\ntag(100):\n  uint: 1"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d86401"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\ntag(100):\n  uint: 1"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "2GQB"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\ntag(100):\n  uint: 1"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            216,
+            100,
+            1
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\ntag(100):\n  uint: 1"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "dbffffffffffffffff01"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 10 字节\n\ntag(18446744073709551615):\n  uint: 1"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "dbffffffffffffffff01"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 10 字节\n\ntag(18446744073709551615):\n  uint: 1"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "2///////////AQ=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 10 字节\n\ntag(18446744073709551615):\n  uint: 1"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            219,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            1
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 10 字节\n\ntag(18446744073709551615):\n  uint: 1"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f4"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nfalse"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f4"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nfalse"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "9A=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nfalse"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            244
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nfalse"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f5"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\ntrue"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f5"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\ntrue"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "9Q=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\ntrue"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            245
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\ntrue"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f6"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nnull"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f6"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nnull"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "9g=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nnull"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            246
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nnull"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f7"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nundefined"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f7"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nundefined"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "9w=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nundefined"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            247
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nundefined"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f0"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nsimple: 16"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f0"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nsimple: 16"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "8A=="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nsimple: 16"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            240
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\nsimple: 16"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f93c00"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: 1"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f93c00"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: 1"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "+TwA"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: 1"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            249,
+            60,
+            0
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: 1"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f90001"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: 5.960464477539063e-8"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f90001"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: 5.960464477539063e-8"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "+QAB"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: 5.960464477539063e-8"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            249,
+            0,
+            1
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: 5.960464477539063e-8"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f98000"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: 0"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f98000"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: 0"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "+YAA"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: 0"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            249,
+            128,
+            0
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: 0"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f97c00"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: Infinity"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f97c00"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: Infinity"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "+XwA"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: Infinity"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            249,
+            124,
+            0
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: Infinity"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f97e00"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: NaN"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "f97e00"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: NaN"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "+X4A"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: NaN"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            249,
+            126,
+            0
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 3 字节\n\nfloat16: NaN"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "fa3fc00000"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\nfloat32: 1.5"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "fa3fc00000"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\nfloat32: 1.5"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "+j/AAAA="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\nfloat32: 1.5"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            250,
+            63,
+            192,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 5 字节\n\nfloat32: 1.5"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "fb400921fb54442d18"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 9 字节\n\nfloat64: 3.141592653589793"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "fb400921fb54442d18"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 9 字节\n\nfloat64: 3.141592653589793"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "+0AJIftURC0Y"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 9 字节\n\nfloat64: 3.141592653589793"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            251,
+            64,
+            9,
+            33,
+            251,
+            84,
+            68,
+            45,
+            24
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 9 字节\n\nfloat64: 3.141592653589793"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0102"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 2 字节\n\nuint: 1\n\n⚠ 仅消费 1/2 字节，剩余 1 字节"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0102"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 2 字节\n\nuint: 1\n\n⚠ 仅消费 1/2 字节，剩余 1 字节"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "AQI="
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 2 字节\n\nuint: 1\n\n⚠ 仅消费 1/2 字节，剩余 1 字节"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            1,
+            2
+          ]
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 2 字节\n\nuint: 1\n\n⚠ 仅消费 1/2 字节，剩余 1 字节"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "text": "请输入 protobuf 二进制数据（hex 或 base64）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "A"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 1 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 6 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "protobufParse",
+      "node": "protobuf_wire_parse",
+      "params": {
+        "inputEnc": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "🙂"
+        }
+      },
+      "text": "=== Protobuf Wire 解析 ===\n输入: 4 字节\n\n未解析出任何字段（输入可能不是合法 protobuf wire 格式）"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "text": "请输入 MessagePack 二进制数据（hex 或 base64）"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "A"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 1 字节\n\nuint8: 65"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 6 字节\n\nint8: -28\n\n⚠ 仅消费 1/6 字节，剩余 5 字节"
+    },
+    {
+      "operation": "msgpackParse",
+      "node": "msgpack_parse",
+      "params": {
+        "inputEnc": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "🙂"
+        }
+      },
+      "text": "=== MessagePack 解析 ===\n输入: 4 字节\n\nint8: -16\n\n⚠ 仅消费 1/4 字节，剩余 3 字节"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "text": "请输入 CBOR 二进制数据（hex 或 base64）"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "A"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 1 字节\n\n⚠ 解析失败: cbor bstr 越界"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 6 字节\n\nsimple: 4\n\n⚠ 仅消费 1/6 字节，剩余 5 字节"
+    },
+    {
+      "operation": "cborParse",
+      "node": "cbor_parse",
+      "params": {
+        "inputEnc": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "🙂"
+        }
+      },
+      "text": "=== CBOR 解析（RFC 8949） ===\n输入: 4 字节\n\nsimple: 16\n\n⚠ 仅消费 1/4 字节，剩余 3 字节"
+    }
+  ]
+}

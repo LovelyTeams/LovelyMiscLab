@@ -1,0 +1,4073 @@
+{
+  "revision": "ea2bc36dae31c97060f7f2cddad8df5518afad7b",
+  "source": "EBCTFCodeBox",
+  "vectors": [
+    {
+      "operation": "url",
+      "node": "url_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "mode": "standard"
+      },
+      "text": ""
+    },
+    {
+      "operation": "url",
+      "node": "url_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "plus": true,
+        "trim": true,
+        "strict": true
+      },
+      "text": ""
+    },
+    {
+      "operation": "url",
+      "node": "url_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {
+        "mode": "standard"
+      },
+      "text": "Hello%2C%20CTF!"
+    },
+    {
+      "operation": "url",
+      "node": "url_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hello%2C%20CTF!"
+        }
+      },
+      "params": {
+        "plus": true,
+        "trim": true,
+        "strict": true
+      },
+      "text": "Hello, CTF!"
+    },
+    {
+      "operation": "url",
+      "node": "url_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {
+        "mode": "standard"
+      },
+      "text": "%E4%B8%AD%E6%96%87%F0%9F%99%82%0A"
+    },
+    {
+      "operation": "url",
+      "node": "url_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "%E4%B8%AD%E6%96%87%F0%9F%99%82%0A"
+        }
+      },
+      "params": {
+        "plus": true,
+        "trim": true,
+        "strict": true
+      },
+      "text": "中文🙂\n"
+    },
+    {
+      "operation": "url",
+      "node": "url_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A\u0000B\r\n\t"
+        }
+      },
+      "params": {
+        "mode": "standard"
+      },
+      "text": "A%00B%0D%0A%09"
+    },
+    {
+      "operation": "url",
+      "node": "url_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A%00B%0D%0A%09"
+        }
+      },
+      "params": {
+        "plus": true,
+        "trim": true,
+        "strict": true
+      },
+      "text": "A\u0000B\r\n\t"
+    },
+    {
+      "operation": "url",
+      "node": "url_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "&< >\"' +%\\x41"
+        }
+      },
+      "params": {
+        "mode": "standard"
+      },
+      "text": "%26%3C%20%3E%22'%20%2B%25%5Cx41"
+    },
+    {
+      "operation": "url",
+      "node": "url_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "%26%3C%20%3E%22'%20%2B%25%5Cx41"
+        }
+      },
+      "params": {
+        "plus": true,
+        "trim": true,
+        "strict": true
+      },
+      "text": "&< >\"' +%\\x41"
+    },
+    {
+      "operation": "url",
+      "node": "url_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " ABC xyz 019 "
+        }
+      },
+      "params": {
+        "mode": "standard"
+      },
+      "text": "%20ABC%20xyz%20019%20"
+    },
+    {
+      "operation": "url",
+      "node": "url_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "%20ABC%20xyz%20019%20"
+        }
+      },
+      "params": {
+        "plus": true,
+        "trim": true,
+        "strict": true
+      },
+      "text": " ABC xyz 019 "
+    },
+    {
+      "operation": "url",
+      "node": "url_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "﻿BOM"
+        }
+      },
+      "params": {
+        "mode": "standard"
+      },
+      "text": "%EF%BB%BFBOM"
+    },
+    {
+      "operation": "url",
+      "node": "url_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "%EF%BB%BFBOM"
+        }
+      },
+      "params": {
+        "plus": true,
+        "trim": true,
+        "strict": true
+      },
+      "text": "﻿BOM"
+    },
+    {
+      "operation": "htmlEntity",
+      "node": "html_entity_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "namedApostrophe": true
+      },
+      "text": ""
+    },
+    {
+      "operation": "htmlEntity",
+      "node": "html_entity_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "htmlEntity",
+      "node": "html_entity_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {
+        "namedApostrophe": true
+      },
+      "text": "Hello, CTF!"
+    },
+    {
+      "operation": "htmlEntity",
+      "node": "html_entity_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {},
+      "text": "Hello, CTF!"
+    },
+    {
+      "operation": "htmlEntity",
+      "node": "html_entity_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {
+        "namedApostrophe": true
+      },
+      "text": "中文🙂\n"
+    },
+    {
+      "operation": "htmlEntity",
+      "node": "html_entity_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {},
+      "text": "中文🙂\n"
+    },
+    {
+      "operation": "htmlEntity",
+      "node": "html_entity_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A\u0000B\r\n\t"
+        }
+      },
+      "params": {
+        "namedApostrophe": true
+      },
+      "text": "A\u0000B\r\n\t"
+    },
+    {
+      "operation": "htmlEntity",
+      "node": "html_entity_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A\u0000B\r\n\t"
+        }
+      },
+      "params": {},
+      "text": "A\u0000B\r\n\t"
+    },
+    {
+      "operation": "htmlEntity",
+      "node": "html_entity_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "&< >\"' +%\\x41"
+        }
+      },
+      "params": {
+        "namedApostrophe": true
+      },
+      "text": "&amp;&lt; &gt;&quot;&apos; +%\\x41"
+    },
+    {
+      "operation": "htmlEntity",
+      "node": "html_entity_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "&amp;&lt; &gt;&quot;&apos; +%\\x41"
+        }
+      },
+      "params": {},
+      "text": "&< >\"' +%\\x41"
+    },
+    {
+      "operation": "htmlEntity",
+      "node": "html_entity_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " ABC xyz 019 "
+        }
+      },
+      "params": {
+        "namedApostrophe": true
+      },
+      "text": " ABC xyz 019 "
+    },
+    {
+      "operation": "htmlEntity",
+      "node": "html_entity_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " ABC xyz 019 "
+        }
+      },
+      "params": {},
+      "text": " ABC xyz 019 "
+    },
+    {
+      "operation": "htmlEntity",
+      "node": "html_entity_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "﻿BOM"
+        }
+      },
+      "params": {
+        "namedApostrophe": true
+      },
+      "text": "﻿BOM"
+    },
+    {
+      "operation": "htmlEntity",
+      "node": "html_entity_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "﻿BOM"
+        }
+      },
+      "params": {},
+      "text": "﻿BOM"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_escape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "mode": "全部",
+        "upper": true
+      },
+      "text": ""
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_unescape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_escape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {
+        "mode": "全部",
+        "upper": true
+      },
+      "text": "\\u0048\\u0065\\u006C\\u006C\\u006F\\u002C\\u0020\\u0043\\u0054\\u0046\\u0021"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_unescape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\\u0048\\u0065\\u006C\\u006C\\u006F\\u002C\\u0020\\u0043\\u0054\\u0046\\u0021"
+        }
+      },
+      "params": {},
+      "text": "Hello, CTF!"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_escape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {
+        "mode": "全部",
+        "upper": true
+      },
+      "text": "\\u4E2D\\u6587\\uD83D\\uDE42\\u000A"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_unescape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\\u4E2D\\u6587\\uD83D\\uDE42\\u000A"
+        }
+      },
+      "params": {},
+      "text": "中文🙂\n"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_escape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A\u0000B\r\n\t"
+        }
+      },
+      "params": {
+        "mode": "全部",
+        "upper": true
+      },
+      "text": "\\u0041\\u0000\\u0042\\u000D\\u000A\\u0009"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_unescape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\\u0041\\u0000\\u0042\\u000D\\u000A\\u0009"
+        }
+      },
+      "params": {},
+      "text": "A\u0000B\r\n\t"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_escape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "&< >\"' +%\\x41"
+        }
+      },
+      "params": {
+        "mode": "全部",
+        "upper": true
+      },
+      "text": "\\u0026\\u003C\\u0020\\u003E\\u0022\\u0027\\u0020\\u002B\\u0025\\u005C\\u0078\\u0034\\u0031"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_unescape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\\u0026\\u003C\\u0020\\u003E\\u0022\\u0027\\u0020\\u002B\\u0025\\u005C\\u0078\\u0034\\u0031"
+        }
+      },
+      "params": {},
+      "text": "&< >\"' +%\\x41"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_escape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " ABC xyz 019 "
+        }
+      },
+      "params": {
+        "mode": "全部",
+        "upper": true
+      },
+      "text": "\\u0020\\u0041\\u0042\\u0043\\u0020\\u0078\\u0079\\u007A\\u0020\\u0030\\u0031\\u0039\\u0020"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_unescape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\\u0020\\u0041\\u0042\\u0043\\u0020\\u0078\\u0079\\u007A\\u0020\\u0030\\u0031\\u0039\\u0020"
+        }
+      },
+      "params": {},
+      "text": " ABC xyz 019 "
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_escape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "﻿BOM"
+        }
+      },
+      "params": {
+        "mode": "全部",
+        "upper": true
+      },
+      "text": "\\uFEFF\\u0042\\u004F\\u004D"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_unescape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\\uFEFF\\u0042\\u004F\\u004D"
+        }
+      },
+      "params": {},
+      "text": "﻿BOM"
+    },
+    {
+      "operation": "quotedPrintable",
+      "node": "quoted_printable_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "mode": "原始字节"
+      },
+      "text": ""
+    },
+    {
+      "operation": "quotedPrintable",
+      "node": "quoted_printable_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "quotedPrintable",
+      "node": "quoted_printable_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {
+        "mode": "原始字节"
+      },
+      "text": "Hello, CTF!"
+    },
+    {
+      "operation": "quotedPrintable",
+      "node": "quoted_printable_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {},
+      "text": "Hello, CTF!"
+    },
+    {
+      "operation": "quotedPrintable",
+      "node": "quoted_printable_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {
+        "mode": "原始字节"
+      },
+      "text": "=E4=B8=AD=E6=96=87=F0=9F=99=82=0A"
+    },
+    {
+      "operation": "quotedPrintable",
+      "node": "quoted_printable_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "=E4=B8=AD=E6=96=87=F0=9F=99=82=0A"
+        }
+      },
+      "params": {},
+      "text": "中文🙂\n"
+    },
+    {
+      "operation": "quotedPrintable",
+      "node": "quoted_printable_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "A\u0000B\r\n\t"
+        }
+      },
+      "params": {
+        "mode": "原始字节"
+      },
+      "text": "A=00B=0D=0A\t"
+    },
+    {
+      "operation": "quotedPrintable",
+      "node": "quoted_printable_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A=00B=0D=0A\t"
+        }
+      },
+      "params": {},
+      "text": "A\u0000B\r\n\t"
+    },
+    {
+      "operation": "quotedPrintable",
+      "node": "quoted_printable_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "&< >\"' +%\\x41"
+        }
+      },
+      "params": {
+        "mode": "原始字节"
+      },
+      "text": "&< >\"' +%\\x41"
+    },
+    {
+      "operation": "quotedPrintable",
+      "node": "quoted_printable_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "&< >\"' +%\\x41"
+        }
+      },
+      "params": {},
+      "text": "&< >\"' +%\\x41"
+    },
+    {
+      "operation": "quotedPrintable",
+      "node": "quoted_printable_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": " ABC xyz 019 "
+        }
+      },
+      "params": {
+        "mode": "原始字节"
+      },
+      "text": " ABC xyz 019 "
+    },
+    {
+      "operation": "quotedPrintable",
+      "node": "quoted_printable_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " ABC xyz 019 "
+        }
+      },
+      "params": {},
+      "text": " ABC xyz 019 "
+    },
+    {
+      "operation": "quotedPrintable",
+      "node": "quoted_printable_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "﻿BOM"
+        }
+      },
+      "params": {
+        "mode": "原始字节"
+      },
+      "text": "=EF=BB=BFBOM"
+    },
+    {
+      "operation": "quotedPrintable",
+      "node": "quoted_printable_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "=EF=BB=BFBOM"
+        }
+      },
+      "params": {},
+      "text": "﻿BOM"
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {},
+      "text": "Hello, CTF!"
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {},
+      "text": "Hello, CTF!"
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {},
+      "text": "+Ti1lh9g93kI-\n"
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "+Ti1lh9g93kI-\n"
+        }
+      },
+      "params": {},
+      "text": "中文🙂\n"
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A\u0000B\r\n\t"
+        }
+      },
+      "params": {},
+      "text": "A+AAA-B\r\n\t"
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A+AAA-B\r\n\t"
+        }
+      },
+      "params": {},
+      "text": "A\u0000B\r\n\t"
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "&< >\"' +%\\x41"
+        }
+      },
+      "params": {},
+      "text": "&< >\"' +-%\\x41"
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "&< >\"' +-%\\x41"
+        }
+      },
+      "params": {},
+      "text": "&< >\"' +%\\x41"
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " ABC xyz 019 "
+        }
+      },
+      "params": {},
+      "text": " ABC xyz 019 "
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " ABC xyz 019 "
+        }
+      },
+      "params": {},
+      "text": " ABC xyz 019 "
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "﻿BOM"
+        }
+      },
+      "params": {},
+      "text": "+/v8-BOM"
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "+/v8-BOM"
+        }
+      },
+      "params": {},
+      "text": "﻿BOM"
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {},
+      "text": "Hello, CTF!"
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {},
+      "text": "Hello, CTF!"
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {},
+      "text": "\\xe4\\xb8\\xad\\xe6\\x96\\x87\\xf0\\x9f\\x99\\x82\\x0a"
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\\xe4\\xb8\\xad\\xe6\\x96\\x87\\xf0\\x9f\\x99\\x82\\x0a"
+        }
+      },
+      "params": {},
+      "text": "中文🙂\n"
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "A\u0000B\r\n\t"
+        }
+      },
+      "params": {},
+      "text": "A\\x00B\\x0d\\x0a\\x09"
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A\\x00B\\x0d\\x0a\\x09"
+        }
+      },
+      "params": {},
+      "text": "A\u0000B\r\n\t"
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "&< >\"' +%\\x41"
+        }
+      },
+      "params": {},
+      "text": "&< >\"' +%\\x5cx41"
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "&< >\"' +%\\x5cx41"
+        }
+      },
+      "params": {},
+      "text": "&< >\"' +%\\x41"
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": " ABC xyz 019 "
+        }
+      },
+      "params": {},
+      "text": " ABC xyz 019 "
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " ABC xyz 019 "
+        }
+      },
+      "params": {},
+      "text": " ABC xyz 019 "
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "﻿BOM"
+        }
+      },
+      "params": {},
+      "text": "\\xef\\xbb\\xbfBOM"
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\\xef\\xbb\\xbfBOM"
+        }
+      },
+      "params": {},
+      "text": "﻿BOM"
+    },
+    {
+      "operation": "leetSpeak",
+      "node": "leet_speak_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "leetSpeak",
+      "node": "leet_speak_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "leetSpeak",
+      "node": "leet_speak_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {},
+      "text": "#3110, (7F!"
+    },
+    {
+      "operation": "leetSpeak",
+      "node": "leet_speak_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "#3110, (7F!"
+        }
+      },
+      "params": {},
+      "text": "heiio, ctF!"
+    },
+    {
+      "operation": "leetSpeak",
+      "node": "leet_speak_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {},
+      "text": "中文🙂\n"
+    },
+    {
+      "operation": "leetSpeak",
+      "node": "leet_speak_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {},
+      "text": "中文🙂\n"
+    },
+    {
+      "operation": "leetSpeak",
+      "node": "leet_speak_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A\u0000B\r\n\t"
+        }
+      },
+      "params": {},
+      "text": "4\u00008\r\n\t"
+    },
+    {
+      "operation": "leetSpeak",
+      "node": "leet_speak_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "4\u00008\r\n\t"
+        }
+      },
+      "params": {},
+      "text": "a\u0000b\r\n\t"
+    },
+    {
+      "operation": "leetSpeak",
+      "node": "leet_speak_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "&< >\"' +%\\x41"
+        }
+      },
+      "params": {},
+      "text": "&< >\"' +%\\><41"
+    },
+    {
+      "operation": "leetSpeak",
+      "node": "leet_speak_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "&< >\"' +%\\><41"
+        }
+      },
+      "params": {},
+      "text": "&< >\"' +%\\xai"
+    },
+    {
+      "operation": "leetSpeak",
+      "node": "leet_speak_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " ABC xyz 019 "
+        }
+      },
+      "params": {},
+      "text": " 48( ><`/2 019 "
+    },
+    {
+      "operation": "leetSpeak",
+      "node": "leet_speak_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " 48( ><`/2 019 "
+        }
+      },
+      "params": {},
+      "text": " abc xyz oiq "
+    },
+    {
+      "operation": "leetSpeak",
+      "node": "leet_speak_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "﻿BOM"
+        }
+      },
+      "params": {},
+      "text": "﻿80/\\/\\"
+    },
+    {
+      "operation": "leetSpeak",
+      "node": "leet_speak_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "﻿80/\\/\\"
+        }
+      },
+      "params": {},
+      "text": "﻿bom"
+    },
+    {
+      "operation": "natoAlphabet",
+      "node": "nato_alphabet_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "natoAlphabet",
+      "node": "nato_alphabet_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "natoAlphabet",
+      "node": "nato_alphabet_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {},
+      "text": "Hotel Echo Lima Lima Oscar , (space) Charlie Tango Foxtrot !"
+    },
+    {
+      "operation": "natoAlphabet",
+      "node": "nato_alphabet_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hotel Echo Lima Lima Oscar , (space) Charlie Tango Foxtrot !"
+        }
+      },
+      "params": {},
+      "text": "HELLO CTF!"
+    },
+    {
+      "operation": "natoAlphabet",
+      "node": "nato_alphabet_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {},
+      "text": "中 文 🙂 \n"
+    },
+    {
+      "operation": "natoAlphabet",
+      "node": "nato_alphabet_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中 文 🙂 \n"
+        }
+      },
+      "params": {},
+      "text": "中文🙂"
+    },
+    {
+      "operation": "natoAlphabet",
+      "node": "nato_alphabet_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A\u0000B\r\n\t"
+        }
+      },
+      "params": {},
+      "text": "Alpha \u0000 Bravo \r \n \t"
+    },
+    {
+      "operation": "natoAlphabet",
+      "node": "nato_alphabet_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Alpha \u0000 Bravo \r \n \t"
+        }
+      },
+      "params": {},
+      "text": "A\u0000B"
+    },
+    {
+      "operation": "natoAlphabet",
+      "node": "nato_alphabet_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "&< >\"' +%\\x41"
+        }
+      },
+      "params": {},
+      "text": "& < (space) > \" ' (space) + % \\ X-ray Four One"
+    },
+    {
+      "operation": "natoAlphabet",
+      "node": "nato_alphabet_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "& < (space) > \" ' (space) + % \\ X-ray Four One"
+        }
+      },
+      "params": {},
+      "text": "&< >\"' +%\\X41"
+    },
+    {
+      "operation": "natoAlphabet",
+      "node": "nato_alphabet_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " ABC xyz 019 "
+        }
+      },
+      "params": {},
+      "text": "(space) Alpha Bravo Charlie (space) X-ray Yankee Zulu (space) Zero One Niner (space)"
+    },
+    {
+      "operation": "natoAlphabet",
+      "node": "nato_alphabet_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "(space) Alpha Bravo Charlie (space) X-ray Yankee Zulu (space) Zero One Niner (space)"
+        }
+      },
+      "params": {},
+      "text": " ABC XYZ 019 "
+    },
+    {
+      "operation": "natoAlphabet",
+      "node": "nato_alphabet_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "﻿BOM"
+        }
+      },
+      "params": {},
+      "text": "﻿ Bravo Oscar Mike"
+    },
+    {
+      "operation": "natoAlphabet",
+      "node": "nato_alphabet_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "﻿ Bravo Oscar Mike"
+        }
+      },
+      "params": {},
+      "text": "BOM"
+    },
+    {
+      "operation": "url",
+      "node": "url_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "!*'()~ +-_/"
+        }
+      },
+      "params": {
+        "mode": "standard"
+      },
+      "text": "!*'()~%20%2B-_%2F"
+    },
+    {
+      "operation": "url",
+      "node": "url_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " !*'()~%20%2B-_%2F "
+        }
+      },
+      "params": {
+        "plus": true,
+        "trim": true,
+        "strict": true
+      },
+      "text": "!*'()~ +-_/"
+    },
+    {
+      "operation": "url",
+      "node": "url_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " a b 中文 "
+        }
+      },
+      "params": {
+        "mode": "standard"
+      },
+      "text": "%20a%20b%20%E4%B8%AD%E6%96%87%20"
+    },
+    {
+      "operation": "url",
+      "node": "url_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " %20a%20b%20%E4%B8%AD%E6%96%87%20 "
+        }
+      },
+      "params": {
+        "plus": true,
+        "trim": true,
+        "strict": true
+      },
+      "text": " a b 中文 "
+    },
+    {
+      "operation": "url",
+      "node": "url_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "!*'()~ +-_/"
+        }
+      },
+      "params": {
+        "mode": "full"
+      },
+      "text": "%21%2A%27%28%29~%20%2B-_%2F"
+    },
+    {
+      "operation": "url",
+      "node": "url_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " %21%2A%27%28%29~%20%2B-_%2F "
+        }
+      },
+      "params": {
+        "plus": true,
+        "trim": true,
+        "strict": true
+      },
+      "text": "!*'()~ +-_/"
+    },
+    {
+      "operation": "url",
+      "node": "url_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " a b 中文 "
+        }
+      },
+      "params": {
+        "mode": "full"
+      },
+      "text": "%20a%20b%20%E4%B8%AD%E6%96%87%20"
+    },
+    {
+      "operation": "url",
+      "node": "url_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " %20a%20b%20%E4%B8%AD%E6%96%87%20 "
+        }
+      },
+      "params": {
+        "plus": true,
+        "trim": true,
+        "strict": true
+      },
+      "text": " a b 中文 "
+    },
+    {
+      "operation": "url",
+      "node": "url_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "!*'()~ +-_/"
+        }
+      },
+      "params": {
+        "mode": "plus"
+      },
+      "text": "%21%2A%27%28%29~+%2B-_%2F"
+    },
+    {
+      "operation": "url",
+      "node": "url_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " %21%2A%27%28%29~+%2B-_%2F "
+        }
+      },
+      "params": {
+        "plus": true,
+        "trim": true,
+        "strict": true
+      },
+      "text": "!*'()~ +-_/"
+    },
+    {
+      "operation": "url",
+      "node": "url_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " a b 中文 "
+        }
+      },
+      "params": {
+        "mode": "plus"
+      },
+      "text": "+a+b+%E4%B8%AD%E6%96%87+"
+    },
+    {
+      "operation": "url",
+      "node": "url_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " +a+b+%E4%B8%AD%E6%96%87+ "
+        }
+      },
+      "params": {
+        "plus": true,
+        "trim": true,
+        "strict": true
+      },
+      "text": " a b 中文 "
+    },
+    {
+      "operation": "url",
+      "node": "url_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "%"
+        }
+      },
+      "params": {
+        "plus": true,
+        "trim": true,
+        "strict": true
+      },
+      "error": "URI malformed"
+    },
+    {
+      "operation": "url",
+      "node": "url_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "%0"
+        }
+      },
+      "params": {
+        "plus": true,
+        "trim": true,
+        "strict": true
+      },
+      "error": "URI malformed"
+    },
+    {
+      "operation": "url",
+      "node": "url_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "%ZZ"
+        }
+      },
+      "params": {
+        "plus": true,
+        "trim": true,
+        "strict": true
+      },
+      "error": "URI malformed"
+    },
+    {
+      "operation": "url",
+      "node": "url_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "%ff"
+        }
+      },
+      "params": {
+        "plus": true,
+        "trim": true,
+        "strict": true
+      },
+      "error": "URI malformed"
+    },
+    {
+      "operation": "url",
+      "node": "url_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "%E4%B8"
+        }
+      },
+      "params": {
+        "plus": true,
+        "trim": true,
+        "strict": true
+      },
+      "error": "URI malformed"
+    },
+    {
+      "operation": "url",
+      "node": "url_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "a+b%2Bc"
+        }
+      },
+      "params": {
+        "plus": true,
+        "trim": true,
+        "strict": true
+      },
+      "text": "a b+c"
+    },
+    {
+      "operation": "htmlEntity",
+      "node": "html_entity_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "&amp; &lt; &gt; &quot; &apos; &nbsp; &copy; &reg; &trade; &hellip; &mdash; &ndash; &lsquo; &rsquo; &ldquo; &rdquo; &deg; &plusmn; &times; &divide; &euro; &pound; &yen; &cent; &sect; &para; &middot; &bull; &dagger; &Dagger; &permil; &laquo; &raquo; &iexcl; &iquest; &frac12; &frac14; &frac34; &alpha; &beta; &gamma; &delta; &Alpha; &Beta; &Gamma; &Delta; &pi; &Pi; &sigma; &Sigma; &omega; &Omega; &mu; &lambda; &infin; &ne; &le; &ge; &sum; &prod; &radic; &part; &nabla; &forall; &exist; &isin; &notin; &sub; &sup; &cup; &cap; &empty; &alefsym; &rarr; &larr; &uarr; &darr; &harr; &lArr; &rArr; &uArr; &dArr; &hArr; &spades; &clubs; &hearts; &diams; &loz; &oline; &frasl; &lowast; &weierp; &real; &image; &lang; &rang;"
+        }
+      },
+      "params": {},
+      "text": "& < > \" '   © ® ™ … — – ‘ ’ “ ” ° ± × ÷ € £ ¥ ¢ § ¶ · • † ‡ ‰ « » ¡ ¿ ½ ¼ ¾ α β γ δ Α Β Γ Δ π Π σ Σ ω Ω μ λ ∞ ≠ ≤ ≥ ∑ ∏ √ ∂ ∇ ∀ ∃ ∈ ∉ ⊂ ⊃ ∪ ∩ ∅ ℵ → ← ↑ ↓ ↔ ⇐ ⇒ ⇑ ⇓ ⇔ ♠ ♣ ♥ ♦ ◊ ‾ ⁄ ∗ ℘ ℜ ℑ 〈 〉"
+    },
+    {
+      "operation": "htmlEntity",
+      "node": "html_entity_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "&#65; &#x1F642; &#x0000; &#1114111; &amp;lt; &unknown;"
+        }
+      },
+      "params": {},
+      "text": "A 🙂 \u0000 􏿿 &lt; &unknown;"
+    },
+    {
+      "operation": "htmlEntity",
+      "node": "html_entity_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "&#1114112; &#x110000; "
+        }
+      },
+      "params": {},
+      "text": "&#1114112; &#x110000; "
+    },
+    {
+      "operation": "htmlEntity",
+      "node": "html_entity_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "& &no_semicolon"
+        }
+      },
+      "params": {},
+      "text": "& &no_semicolon"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_escape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A中🙂Z"
+        }
+      },
+      "params": {
+        "mode": "全部",
+        "upper": true,
+        "fmt": "uXXXX"
+      },
+      "text": "\\u0041\\u4E2D\\uD83D\\uDE42\\u005A"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_unescape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\\u0041\\u4E2D\\uD83D\\uDE42\\u005A"
+        }
+      },
+      "params": {},
+      "text": "A中🙂Z"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_escape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\u0000￿􏿿"
+        }
+      },
+      "params": {
+        "mode": "全部",
+        "upper": true,
+        "fmt": "uXXXX"
+      },
+      "text": "\\u0000\\uFFFF\\uDBFF\\uDFFF"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_unescape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\\u0000\\uFFFF\\uDBFF\\uDFFF"
+        }
+      },
+      "params": {},
+      "text": "\u0000￿􏿿"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_escape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A中🙂Z"
+        }
+      },
+      "params": {
+        "mode": "全部",
+        "upper": true,
+        "fmt": "U+"
+      },
+      "text": "U+0041U+4E2DU+1F642U+005A"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_unescape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "U+0041U+4E2DU+1F642U+005A"
+        }
+      },
+      "params": {},
+      "text": "A中🙂Z"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_escape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\u0000￿􏿿"
+        }
+      },
+      "params": {
+        "mode": "全部",
+        "upper": true,
+        "fmt": "U+"
+      },
+      "text": "U+0000U+FFFFU+10FFFF"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_unescape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "U+0000U+FFFFU+10FFFF"
+        }
+      },
+      "params": {},
+      "text": "\u0000￿􏿿"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_escape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A中🙂Z"
+        }
+      },
+      "params": {
+        "mode": "全部",
+        "upper": true,
+        "fmt": "hex"
+      },
+      "text": "&#x41;&#x4E2D;&#x1F642;&#x5A;"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_unescape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "&#x41;&#x4E2D;&#x1F642;&#x5A;"
+        }
+      },
+      "params": {},
+      "text": "A中🙂Z"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_escape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\u0000￿􏿿"
+        }
+      },
+      "params": {
+        "mode": "全部",
+        "upper": true,
+        "fmt": "hex"
+      },
+      "text": "&#x0;&#xFFFF;&#x10FFFF;"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_unescape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "&#x0;&#xFFFF;&#x10FFFF;"
+        }
+      },
+      "params": {},
+      "text": "\u0000￿􏿿"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_unescape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\\u0041\\uD83D\\uDE42\\u0042"
+        }
+      },
+      "params": {},
+      "text": "A🙂B"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_unescape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\\u4e2d U+6587 &#x1F642;"
+        }
+      },
+      "params": {},
+      "text": "中 文 🙂"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_unescape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "U+110000 &#x110000; \\uZZZZ"
+        }
+      },
+      "params": {},
+      "text": "U+110000 &#x110000; \\uZZZZ"
+    },
+    {
+      "operation": "unicodeEscape",
+      "node": "unicode_unescape",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\\u0055+0041"
+        }
+      },
+      "params": {},
+      "text": "A"
+    },
+    {
+      "operation": "quotedPrintable",
+      "node": "quoted_printable_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "=48=69=21=\r\n!"
+        }
+      },
+      "params": {},
+      "text": "Hi!!"
+    },
+    {
+      "operation": "quotedPrintable",
+      "node": "quoted_printable_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "=00=FF=80=0D=0A"
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        255,
+        128,
+        13,
+        10
+      ]
+    },
+    {
+      "operation": "quotedPrintable",
+      "node": "quoted_printable_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "a=\nb=\r\nc"
+        }
+      },
+      "params": {},
+      "text": "abc"
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "+ImIDkQ. B-C"
+        }
+      },
+      "params": {},
+      "text": "≢Α. B-C"
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "+ZeVnLIqe-"
+        }
+      },
+      "params": {},
+      "text": "日本語"
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "+2D3eQg-"
+        }
+      },
+      "params": {},
+      "text": "🙂"
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hi +- +Ti0!"
+        }
+      },
+      "params": {},
+      "text": "Hi + 中!"
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "+Ti0"
+        }
+      },
+      "params": {},
+      "text": "中"
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "+-"
+        }
+      },
+      "params": {},
+      "text": "+"
+    },
+    {
+      "operation": "utf7",
+      "node": "utf7_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "["
+        }
+      },
+      "params": {},
+      "text": "["
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "example.com"
+        }
+      },
+      "params": {},
+      "text": "example.com"
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "example.com"
+        }
+      },
+      "params": {},
+      "text": "example.com"
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文.例子"
+        }
+      },
+      "params": {},
+      "text": "xn--fiq228c.xn--fsqu00a"
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "xn--fiq228c.xn--fsqu00a"
+        }
+      },
+      "params": {},
+      "text": "中文.例子"
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "bücher.example."
+        }
+      },
+      "params": {},
+      "text": "xn--bcher-kva.example."
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "xn--bcher-kva.example."
+        }
+      },
+      "params": {},
+      "text": "bücher.example."
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "mañana.com"
+        }
+      },
+      "params": {},
+      "text": "xn--maana-pta.com"
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "xn--maana-pta.com"
+        }
+      },
+      "params": {},
+      "text": "mañana.com"
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Bücher.Example"
+        }
+      },
+      "params": {},
+      "text": "xn--Bcher-kva.Example"
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "xn--Bcher-kva.Example"
+        }
+      },
+      "params": {},
+      "text": "Bücher.Example"
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "☃-⌘.emoji🙂"
+        }
+      },
+      "params": {},
+      "text": "xn----dqo34k.xn--emoji-ff34d"
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "xn----dqo34k.xn--emoji-ff34d"
+        }
+      },
+      "params": {},
+      "text": "☃-⌘.emoji🙂"
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "日本語"
+        }
+      },
+      "params": {},
+      "text": "xn--wgv71a119e"
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "xn--wgv71a119e"
+        }
+      },
+      "params": {},
+      "text": "日本語"
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "موقع.اختبار"
+        }
+      },
+      "params": {},
+      "text": "xn--4gbrim.xn--mgbachtv"
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "xn--4gbrim.xn--mgbachtv"
+        }
+      },
+      "params": {},
+      "text": "موقع.اختبار"
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ".a..中."
+        }
+      },
+      "params": {},
+      "text": ".a..xn--fiq."
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ".a..xn--fiq."
+        }
+      },
+      "params": {},
+      "text": ".a..中."
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "他们为什么不说中文"
+        }
+      },
+      "params": {},
+      "text": "xn--ihqwcrb4cv8a8dqg056pqjye"
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "xn--ihqwcrb4cv8a8dqg056pqjye"
+        }
+      },
+      "params": {},
+      "text": "他们为什么不说中文"
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "XN--BCHER-KVA.Example"
+        }
+      },
+      "params": {},
+      "text": "BüCHER.Example"
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "xn--"
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "xn--abc-"
+        }
+      },
+      "params": {},
+      "text": "abc"
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "xn--z"
+        }
+      },
+      "params": {},
+      "error": "punycode: 输入截断"
+    },
+    {
+      "operation": "punycode",
+      "node": "punycode_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "xn--!"
+        }
+      },
+      "params": {},
+      "error": "punycode: 非法字符 !"
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "\\x41 中文🙂\t"
+        }
+      },
+      "params": {
+        "mode": "all"
+      },
+      "text": "\\x5c\\x78\\x34\\x31\\x20\\xe4\\xb8\\xad\\xe6\\x96\\x87\\xf0\\x9f\\x99\\x82\\x09"
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\\x5c\\x78\\x34\\x31\\x20\\xe4\\xb8\\xad\\xe6\\x96\\x87\\xf0\\x9f\\x99\\x82\\x09"
+        }
+      },
+      "params": {},
+      "text": "\\x41 中文🙂\t"
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "\\x41 中文🙂\t"
+        }
+      },
+      "params": {
+        "mode": "nonascii"
+      },
+      "text": "\\x5cx41 \\xe4\\xb8\\xad\\xe6\\x96\\x87\\xf0\\x9f\\x99\\x82\\x09"
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\\x5cx41 \\xe4\\xb8\\xad\\xe6\\x96\\x87\\xf0\\x9f\\x99\\x82\\x09"
+        }
+      },
+      "params": {},
+      "text": "\\x41 中文🙂\t"
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文🙂"
+        }
+      },
+      "params": {},
+      "bytes": [
+        45,
+        135,
+        61,
+        66
+      ]
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\\x00\\xff\\x80"
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        255,
+        128
+      ]
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\\x4\\xZZ"
+        }
+      },
+      "params": {},
+      "text": "\\x4\\xZZ"
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\\x41\\x42中"
+        }
+      },
+      "params": {},
+      "text": "AB-"
+    },
+    {
+      "operation": "url",
+      "node": "url_encode",
+      "input": {
+        "text": {
+          "type": "bytes",
+          "value": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157,
+            158,
+            159,
+            160,
+            161,
+            162,
+            163,
+            164,
+            165,
+            166,
+            167,
+            168,
+            169,
+            170,
+            171,
+            172,
+            173,
+            174,
+            175,
+            176,
+            177,
+            178,
+            179,
+            180,
+            181,
+            182,
+            183,
+            184,
+            185,
+            186,
+            187,
+            188,
+            189,
+            190,
+            191,
+            192,
+            193,
+            194,
+            195,
+            196,
+            197,
+            198,
+            199,
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229,
+            230,
+            231,
+            232,
+            233,
+            234,
+            235,
+            236,
+            237,
+            238,
+            239,
+            240,
+            241,
+            242,
+            243,
+            244,
+            245,
+            246,
+            247,
+            248,
+            249,
+            250,
+            251,
+            252,
+            253,
+            254,
+            255
+          ]
+        }
+      },
+      "params": {
+        "mode": "standard"
+      },
+      "text": "%00%01%02%03%04%05%06%07%08%09%0A%0B%0C%0D%0E%0F%10%11%12%13%14%15%16%17%18%19%1A%1B%1C%1D%1E%1F%20!%22%23%24%25%26'()*%2B%2C-.%2F0123456789%3A%3B%3C%3D%3E%3F%40ABCDEFGHIJKLMNOPQRSTUVWXYZ%5B%5C%5D%5E_%60abcdefghijklmnopqrstuvwxyz%7B%7C%7D~%7F%80%81%82%83%84%85%86%87%88%89%8A%8B%8C%8D%8E%8F%90%91%92%93%94%95%96%97%98%99%9A%9B%9C%9D%9E%9F%A0%A1%A2%A3%A4%A5%A6%A7%A8%A9%AA%AB%AC%AD%AE%AF%B0%B1%B2%B3%B4%B5%B6%B7%B8%B9%BA%BB%BC%BD%BE%BF%C0%C1%C2%C3%C4%C5%C6%C7%C8%C9%CA%CB%CC%CD%CE%CF%D0%D1%D2%D3%D4%D5%D6%D7%D8%D9%DA%DB%DC%DD%DE%DF%E0%E1%E2%E3%E4%E5%E6%E7%E8%E9%EA%EB%EC%ED%EE%EF%F0%F1%F2%F3%F4%F5%F6%F7%F8%F9%FA%FB%FC%FD%FE%FF"
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157,
+            158,
+            159,
+            160,
+            161,
+            162,
+            163,
+            164,
+            165,
+            166,
+            167,
+            168,
+            169,
+            170,
+            171,
+            172,
+            173,
+            174,
+            175,
+            176,
+            177,
+            178,
+            179,
+            180,
+            181,
+            182,
+            183,
+            184,
+            185,
+            186,
+            187,
+            188,
+            189,
+            190,
+            191,
+            192,
+            193,
+            194,
+            195,
+            196,
+            197,
+            198,
+            199,
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229,
+            230,
+            231,
+            232,
+            233,
+            234,
+            235,
+            236,
+            237,
+            238,
+            239,
+            240,
+            241,
+            242,
+            243,
+            244,
+            245,
+            246,
+            247,
+            248,
+            249,
+            250,
+            251,
+            252,
+            253,
+            254,
+            255
+          ]
+        }
+      },
+      "params": {},
+      "text": "\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\x09\\x0a\\x0b\\x0c\\x0d\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\x5c]^_`abcdefghijklmnopqrstuvwxyz{|}~\\x7f\\x80\\x81\\x82\\x83\\x84\\x85\\x86\\x87\\x88\\x89\\x8a\\x8b\\x8c\\x8d\\x8e\\x8f\\x90\\x91\\x92\\x93\\x94\\x95\\x96\\x97\\x98\\x99\\x9a\\x9b\\x9c\\x9d\\x9e\\x9f\\xa0\\xa1\\xa2\\xa3\\xa4\\xa5\\xa6\\xa7\\xa8\\xa9\\xaa\\xab\\xac\\xad\\xae\\xaf\\xb0\\xb1\\xb2\\xb3\\xb4\\xb5\\xb6\\xb7\\xb8\\xb9\\xba\\xbb\\xbc\\xbd\\xbe\\xbf\\xc0\\xc1\\xc2\\xc3\\xc4\\xc5\\xc6\\xc7\\xc8\\xc9\\xca\\xcb\\xcc\\xcd\\xce\\xcf\\xd0\\xd1\\xd2\\xd3\\xd4\\xd5\\xd6\\xd7\\xd8\\xd9\\xda\\xdb\\xdc\\xdd\\xde\\xdf\\xe0\\xe1\\xe2\\xe3\\xe4\\xe5\\xe6\\xe7\\xe8\\xe9\\xea\\xeb\\xec\\xed\\xee\\xef\\xf0\\xf1\\xf2\\xf3\\xf4\\xf5\\xf6\\xf7\\xf8\\xf9\\xfa\\xfb\\xfc\\xfd\\xfe\\xff"
+    },
+    {
+      "operation": "jsHex",
+      "node": "js_hex_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\x09\\x0a\\x0b\\x0c\\x0d\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\x5c]^_`abcdefghijklmnopqrstuvwxyz{|}~\\x7f\\x80\\x81\\x82\\x83\\x84\\x85\\x86\\x87\\x88\\x89\\x8a\\x8b\\x8c\\x8d\\x8e\\x8f\\x90\\x91\\x92\\x93\\x94\\x95\\x96\\x97\\x98\\x99\\x9a\\x9b\\x9c\\x9d\\x9e\\x9f\\xa0\\xa1\\xa2\\xa3\\xa4\\xa5\\xa6\\xa7\\xa8\\xa9\\xaa\\xab\\xac\\xad\\xae\\xaf\\xb0\\xb1\\xb2\\xb3\\xb4\\xb5\\xb6\\xb7\\xb8\\xb9\\xba\\xbb\\xbc\\xbd\\xbe\\xbf\\xc0\\xc1\\xc2\\xc3\\xc4\\xc5\\xc6\\xc7\\xc8\\xc9\\xca\\xcb\\xcc\\xcd\\xce\\xcf\\xd0\\xd1\\xd2\\xd3\\xd4\\xd5\\xd6\\xd7\\xd8\\xd9\\xda\\xdb\\xdc\\xdd\\xde\\xdf\\xe0\\xe1\\xe2\\xe3\\xe4\\xe5\\xe6\\xe7\\xe8\\xe9\\xea\\xeb\\xec\\xed\\xee\\xef\\xf0\\xf1\\xf2\\xf3\\xf4\\xf5\\xf6\\xf7\\xf8\\xf9\\xfa\\xfb\\xfc\\xfd\\xfe\\xff"
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255
+      ]
+    },
+    {
+      "operation": "quotedPrintable",
+      "node": "quoted_printable_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157,
+            158,
+            159,
+            160,
+            161,
+            162,
+            163,
+            164,
+            165,
+            166,
+            167,
+            168,
+            169,
+            170,
+            171,
+            172,
+            173,
+            174,
+            175,
+            176,
+            177,
+            178,
+            179,
+            180,
+            181,
+            182,
+            183,
+            184,
+            185,
+            186,
+            187,
+            188,
+            189,
+            190,
+            191,
+            192,
+            193,
+            194,
+            195,
+            196,
+            197,
+            198,
+            199,
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229,
+            230,
+            231,
+            232,
+            233,
+            234,
+            235,
+            236,
+            237,
+            238,
+            239,
+            240,
+            241,
+            242,
+            243,
+            244,
+            245,
+            246,
+            247,
+            248,
+            249,
+            250,
+            251,
+            252,
+            253,
+            254,
+            255
+          ]
+        }
+      },
+      "params": {
+        "mode": "原始字节"
+      },
+      "text": "=00=01=02=03=04=05=06=07=08\t=0A=0B=0C=0D=0E=0F=10=11=12=13=14=15=16=17=18=19=1A=1B=1C=1D=1E=1F !\"#$%&'()*+,-./0123456789:;<=3D>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~=7F=80=81=82=83=84=85=86=87=88=89=8A=8B=8C=8D=8E=8F=90=91=92=93=94=95=96=97=98=99=9A=9B=9C=9D=9E=9F=A0=A1=A2=A3=A4=A5=A6=A7=A8=A9=AA=AB=AC=AD=AE=AF=B0=B1=B2=B3=B4=B5=B6=B7=B8=B9=BA=BB=BC=BD=BE=BF=C0=C1=C2=C3=C4=C5=C6=C7=C8=C9=CA=CB=CC=CD=CE=CF=D0=D1=D2=D3=D4=D5=D6=D7=D8=D9=DA=DB=DC=DD=DE=DF=E0=E1=E2=E3=E4=E5=E6=E7=E8=E9=EA=EB=EC=ED=EE=EF=F0=F1=F2=F3=F4=F5=F6=F7=F8=F9=FA=FB=FC=FD=FE=FF"
+    },
+    {
+      "operation": "quotedPrintable",
+      "node": "quoted_printable_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "=00=01=02=03=04=05=06=07=08\t=0A=0B=0C=0D=0E=0F=10=11=12=13=14=15=16=17=18=19=1A=1B=1C=1D=1E=1F !\"#$%&'()*+,-./0123456789:;<=3D>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~=7F=80=81=82=83=84=85=86=87=88=89=8A=8B=8C=8D=8E=8F=90=91=92=93=94=95=96=97=98=99=9A=9B=9C=9D=9E=9F=A0=A1=A2=A3=A4=A5=A6=A7=A8=A9=AA=AB=AC=AD=AE=AF=B0=B1=B2=B3=B4=B5=B6=B7=B8=B9=BA=BB=BC=BD=BE=BF=C0=C1=C2=C3=C4=C5=C6=C7=C8=C9=CA=CB=CC=CD=CE=CF=D0=D1=D2=D3=D4=D5=D6=D7=D8=D9=DA=DB=DC=DD=DE=DF=E0=E1=E2=E3=E4=E5=E6=E7=E8=E9=EA=EB=EC=ED=EE=EF=F0=F1=F2=F3=F4=F5=F6=F7=F8=F9=FA=FB=FC=FD=FE=FF"
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255
+      ]
+    },
+    {
+      "operation": "leetSpeak",
+      "node": "leet_speak_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789中🙂!?\\"
+        }
+      },
+      "params": {},
+      "text": "48(|)3F6#1_||<1/\\/\\|\\|0|D9|257|_|\\/\\/\\/><`/248(|)3f6#1_||<1/\\/\\|\\|0|D9|257|_|\\/\\/\\/><`/2 0123456789中🙂!?\\"
+    },
+    {
+      "operation": "leetSpeak",
+      "node": "leet_speak_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "48(|)3F6#1_||<1/\\/\\|\\|0|D9|257|_|\\/\\/\\/><`/248(|)3f6#1_||<1/\\/\\|\\|0|D9|257|_|\\/\\/\\/><`/2 0123456789中🙂!?\\"
+        }
+      },
+      "params": {},
+      "text": "abcdeFghijkimnopqrstuwvxyzabcdefghijkimnopqrstuwvxyz oizeasgtbq中🙂!?\\"
+    },
+    {
+      "operation": "natoAlphabet",
+      "node": "nato_alphabet_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789中🙂!?\\"
+        }
+      },
+      "params": {},
+      "text": "Alpha Bravo Charlie Delta Echo Foxtrot Golf Hotel India Juliet Kilo Lima Mike November Oscar Papa Quebec Romeo Sierra Tango Uniform Victor Whiskey X-ray Yankee Zulu Alpha Bravo Charlie Delta Echo Foxtrot Golf Hotel India Juliet Kilo Lima Mike November Oscar Papa Quebec Romeo Sierra Tango Uniform Victor Whiskey X-ray Yankee Zulu (space) Zero One Two Three Four Five Six Seven Eight Niner 中 🙂 ! ? \\"
+    },
+    {
+      "operation": "natoAlphabet",
+      "node": "nato_alphabet_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Alpha Bravo Charlie Delta Echo Foxtrot Golf Hotel India Juliet Kilo Lima Mike November Oscar Papa Quebec Romeo Sierra Tango Uniform Victor Whiskey X-ray Yankee Zulu Alpha Bravo Charlie Delta Echo Foxtrot Golf Hotel India Juliet Kilo Lima Mike November Oscar Papa Quebec Romeo Sierra Tango Uniform Victor Whiskey X-ray Yankee Zulu (space) Zero One Two Three Four Five Six Seven Eight Niner 中 🙂 ! ? \\"
+        }
+      },
+      "params": {},
+      "text": "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789中🙂!?\\"
+    },
+    {
+      "operation": "natoAlphabet",
+      "node": "nato_alphabet_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "alpha,BRAVO;Juliet x-ray (space) Niner ?未知"
+        }
+      },
+      "params": {},
+      "text": "ABJX 9?未知"
+    },
+    {
+      "operation": "natoAlphabet",
+      "node": "nato_alphabet_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "unknown;unknown"
+        }
+      },
+      "params": {},
+      "text": "unknownunknown"
+    },
+    {
+      "operation": "mixHexOctBin",
+      "node": "mixed_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "strict": false
+      },
+      "text": "（空输入）"
+    },
+    {
+      "operation": "mixHexOctBin",
+      "node": "mixed_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x480o151;0b100001"
+        }
+      },
+      "params": {
+        "strict": false
+      },
+      "text": "逐字符解码:\n0x48\t(16 进制 = 72)\t→ H\n0o151\t(8 进制 = 105)\t→ i\n0b100001\t(2 进制 = 33)\t→ !\n\n拼接结果: Hi!"
+    },
+    {
+      "operation": "mixHexOctBin",
+      "node": "mixed_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x680o1450b11011000x6c0d111"
+        }
+      },
+      "params": {
+        "strict": false
+      },
+      "text": "逐字符解码:\n0x68\t(16 进制 = 104)\t→ h\n0o145\t(8 进制 = 101)\t→ e\n0b1101100\t(2 进制 = 108)\t→ l\n0x6c\t(16 进制 = 108)\t→ l\n0d111\t(10 进制 = 111)\t→ o\n\n拼接结果: hello"
+    },
+    {
+      "operation": "mixHexOctBin",
+      "node": "mixed_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0X4E2D,0d128578;33"
+        }
+      },
+      "params": {
+        "strict": false
+      },
+      "text": "逐字符解码:\n0X4E2D\t(16 进制 = 20013)\t→ 中\n0d128578\t(10 进制 = 128578)\t→ 🙂\n33\t(10 进制 = 33)\t→ !\n\n拼接结果: 中🙂!"
+    },
+    {
+      "operation": "mixHexOctBin",
+      "node": "mixed_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "65 066 0x00"
+        }
+      },
+      "params": {
+        "strict": false
+      },
+      "text": "逐字符解码:\n65\t(10 进制 = 65)\t→ A\n066\t(10 进制 = 66)\t→ B\n0x00\t(16 进制 = 0)\t→ \u0000\n\n拼接结果: AB\u0000"
+    },
+    {
+      "operation": "mixHexOctBin",
+      "node": "mixed_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "bad 0b2 0x41zz"
+        }
+      },
+      "params": {
+        "strict": false
+      },
+      "text": "逐字符解码:\n0x41zz\t(16 进制 = 65)\t→ A\n\n拼接结果: A\n无法识别 token: bad 0b2"
+    },
+    {
+      "operation": "mixHexOctBin",
+      "node": "mixed_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x0d 0x0b"
+        }
+      },
+      "params": {
+        "strict": false
+      },
+      "text": "逐字符解码:\n0x0d\t(16 进制 = 13)\t→ \r\n0x0b\t(16 进制 = 11)\t→ \u000b\n\n拼接结果: \r\u000b"
+    },
+    {
+      "operation": "mixHexOctBin",
+      "node": "mixed_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x410x420x43"
+        }
+      },
+      "params": {
+        "strict": false
+      },
+      "text": "逐字符解码:\n0x41\t(16 进制 = 65)\t→ A\n0x42\t(16 进制 = 66)\t→ B\n0x43\t(16 进制 = 67)\t→ C\n\n拼接结果: ABC"
+    }
+  ]
+}

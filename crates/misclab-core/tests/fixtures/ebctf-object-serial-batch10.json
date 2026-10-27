@@ -1,0 +1,4628 @@
+{
+  "revision": "ea2bc36dae31c97060f7f2cddad8df5518afad7b",
+  "vectors": [
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "text": "请输入 BSON 二进制数据（hex 或 base64）"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "error": "输入不是合法 hex（偶数长度 0-9a-f）"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "text": "请输入 BSON 二进制数据（hex 或 base64）"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": []
+        }
+      },
+      "text": "请输入 BSON 二进制数据（hex 或 base64）"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0500000000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 5 字节\n\n\n⚠ 仅消费 4/5 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0500000000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 5 字节\n\n\n⚠ 仅消费 4/5 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "BQAAAAA="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 5 字节\n\n\n⚠ 仅消费 4/5 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            5,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 5 字节\n\n\n⚠ 仅消费 4/5 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0c000000106e002a00000000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 12 字节\n\n\"n\" (int32): 42\n\n⚠ 仅消费 11/12 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0c000000106e002a00000000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 12 字节\n\n\"n\" (int32): 42\n\n⚠ 仅消费 11/12 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "DAAAABBuACoAAAAA"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 12 字节\n\n\"n\" (int32): 42\n\n⚠ 仅消费 11/12 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            12,
+            0,
+            0,
+            0,
+            16,
+            110,
+            0,
+            42,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 12 字节\n\n\"n\" (int32): 42\n\n⚠ 仅消费 11/12 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1c00000002e4b8ade69687000b000000e4b8ade69687f09f99820000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 28 字节\n\n\"中文\" (string): \"中文🙂\"\n\n⚠ 仅消费 27/28 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1c00000002e4b8ade69687000b000000e4b8ade69687f09f99820000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 28 字节\n\n\"中文\" (string): \"中文🙂\"\n\n⚠ 仅消费 27/28 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "HAAAAALkuK3mlocACwAAAOS4reaWh/CfmYIAAA=="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 28 字节\n\n\"中文\" (string): \"中文🙂\"\n\n⚠ 仅消费 27/28 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            28,
+            0,
+            0,
+            0,
+            2,
+            228,
+            184,
+            173,
+            230,
+            150,
+            135,
+            0,
+            11,
+            0,
+            0,
+            0,
+            228,
+            184,
+            173,
+            230,
+            150,
+            135,
+            240,
+            159,
+            153,
+            130,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 28 字节\n\n\"中文\" (string): \"中文🙂\"\n\n⚠ 仅消费 27/28 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1100000002620005000000efbbbf410000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 17 字节\n\n\"b\" (string): \"A\"\n\n⚠ 仅消费 16/17 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1100000002620005000000efbbbf410000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 17 字节\n\n\"b\" (string): \"A\"\n\n⚠ 仅消费 16/17 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EQAAAAJiAAUAAADvu79BAAA="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 17 字节\n\n\"b\" (string): \"A\"\n\n⚠ 仅消费 16/17 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            17,
+            0,
+            0,
+            0,
+            2,
+            98,
+            0,
+            5,
+            0,
+            0,
+            0,
+            239,
+            187,
+            191,
+            65,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 17 字节\n\n\"b\" (string): \"A\"\n\n⚠ 仅消费 16/17 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1100000002656d70747900010000000000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 17 字节\n\n\"empty\" (string): \"\"\n\n⚠ 仅消费 16/17 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1100000002656d70747900010000000000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 17 字节\n\n\"empty\" (string): \"\"\n\n⚠ 仅消费 16/17 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EQAAAAJlbXB0eQABAAAAAAA="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 17 字节\n\n\"empty\" (string): \"\"\n\n⚠ 仅消费 16/17 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            17,
+            0,
+            0,
+            0,
+            2,
+            101,
+            109,
+            112,
+            116,
+            121,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 17 字节\n\n\"empty\" (string): \"\"\n\n⚠ 仅消费 16/17 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "12000000026e756c00040000006100620000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 18 字节\n\n\"nul\" (string): \"a\u0000b\"\n\n⚠ 仅消费 17/18 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "12000000026e756c00040000006100620000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 18 字节\n\n\"nul\" (string): \"a\u0000b\"\n\n⚠ 仅消费 17/18 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EgAAAAJudWwABAAAAGEAYgAA"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 18 字节\n\n\"nul\" (string): \"a\u0000b\"\n\n⚠ 仅消费 17/18 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            18,
+            0,
+            0,
+            0,
+            2,
+            110,
+            117,
+            108,
+            0,
+            4,
+            0,
+            0,
+            0,
+            97,
+            0,
+            98,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 18 字节\n\n\"nul\" (string): \"a\u0000b\"\n\n⚠ 仅消费 17/18 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "14000000126c6172676500ffffffffffffff7f00"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"large\" (int64): \"9223372036854775807\"\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "14000000126c6172676500ffffffffffffff7f00"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"large\" (int64): \"9223372036854775807\"\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "FAAAABJsYXJnZQD/////////fwA="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"large\" (int64): \"9223372036854775807\"\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            20,
+            0,
+            0,
+            0,
+            18,
+            108,
+            97,
+            114,
+            103,
+            101,
+            0,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            127,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"large\" (int64): \"9223372036854775807\"\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "17000000126e6567617469766500000000000000008000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 23 字节\n\n\"negative\" (int64): \"-9223372036854775808\"\n\n⚠ 仅消费 22/23 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "17000000126e6567617469766500000000000000008000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 23 字节\n\n\"negative\" (int64): \"-9223372036854775808\"\n\n⚠ 仅消费 22/23 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "FwAAABJuZWdhdGl2ZQAAAAAAAAAAgAA="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 23 字节\n\n\"negative\" (int64): \"-9223372036854775808\"\n\n⚠ 仅消费 22/23 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            23,
+            0,
+            0,
+            0,
+            18,
+            110,
+            101,
+            103,
+            97,
+            116,
+            105,
+            118,
+            101,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            128,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 23 字节\n\n\"negative\" (int64): \"-9223372036854775808\"\n\n⚠ 仅消费 22/23 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "13000000096461746500001ca87aa101000000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"date\" (datetime): \"1793059200000 ms\"\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "13000000096461746500001ca87aa101000000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"date\" (datetime): \"1793059200000 ms\"\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EwAAAAlkYXRlAAAcqHqhAQAAAA=="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"date\" (datetime): \"1793059200000 ms\"\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            19,
+            0,
+            0,
+            0,
+            9,
+            100,
+            97,
+            116,
+            101,
+            0,
+            0,
+            28,
+            168,
+            122,
+            161,
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"date\" (datetime): \"1793059200000 ms\"\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "11000000117473000c00000080e9df6a00"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 17 字节\n\n\"ts\" (timestamp): \"T:1793059200 I:12\"\n\n⚠ 仅消费 16/17 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "11000000117473000c00000080e9df6a00"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 17 字节\n\n\"ts\" (timestamp): \"T:1793059200 I:12\"\n\n⚠ 仅消费 16/17 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EQAAABF0cwAMAAAAgOnfagA="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 17 字节\n\n\"ts\" (timestamp): \"T:1793059200 I:12\"\n\n⚠ 仅消费 16/17 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            17,
+            0,
+            0,
+            0,
+            17,
+            116,
+            115,
+            0,
+            12,
+            0,
+            0,
+            0,
+            128,
+            233,
+            223,
+            106,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 17 字节\n\n\"ts\" (timestamp): \"T:1793059200 I:12\"\n\n⚠ 仅消费 16/17 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "16000000076f69640000112233445566778899aabb00"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 22 字节\n\n\"oid\" (ObjectId): \"00112233445566778899aabb\"\n\n⚠ 仅消费 21/22 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "16000000076f69640000112233445566778899aabb00"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 22 字节\n\n\"oid\" (ObjectId): \"00112233445566778899aabb\"\n\n⚠ 仅消费 21/22 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "FgAAAAdvaWQAABEiM0RVZneImaq7AA=="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 22 字节\n\n\"oid\" (ObjectId): \"00112233445566778899aabb\"\n\n⚠ 仅消费 21/22 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            22,
+            0,
+            0,
+            0,
+            7,
+            111,
+            105,
+            100,
+            0,
+            0,
+            17,
+            34,
+            51,
+            68,
+            85,
+            102,
+            119,
+            136,
+            153,
+            170,
+            187,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 22 字节\n\n\"oid\" (ObjectId): \"00112233445566778899aabb\"\n\n⚠ 仅消费 21/22 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "17000000087965730001086e6f00000a656d7074790000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 23 字节\n\n\"yes\" (bool): true\n\"no\" (bool): false\n\"empty\" (null): null\n\n⚠ 仅消费 22/23 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "17000000087965730001086e6f00000a656d7074790000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 23 字节\n\n\"yes\" (bool): true\n\"no\" (bool): false\n\"empty\" (null): null\n\n⚠ 仅消费 22/23 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "FwAAAAh5ZXMAAQhubwAACmVtcHR5AAA="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 23 字节\n\n\"yes\" (bool): true\n\"no\" (bool): false\n\"empty\" (null): null\n\n⚠ 仅消费 22/23 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            23,
+            0,
+            0,
+            0,
+            8,
+            121,
+            101,
+            115,
+            0,
+            1,
+            8,
+            110,
+            111,
+            0,
+            0,
+            10,
+            101,
+            109,
+            112,
+            116,
+            121,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 23 字节\n\n\"yes\" (bool): true\n\"no\" (bool): false\n\"empty\" (null): null\n\n⚠ 仅消费 22/23 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "130000000b726567657800612e2a00696d0000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"regex\" (regex): \"/a.*/im\"\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "130000000b726567657800612e2a00696d0000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"regex\" (regex): \"/a.*/im\"\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EwAAAAtyZWdleABhLioAaW0AAA=="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"regex\" (regex): \"/a.*/im\"\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            19,
+            0,
+            0,
+            0,
+            11,
+            114,
+            101,
+            103,
+            101,
+            120,
+            0,
+            97,
+            46,
+            42,
+            0,
+            105,
+            109,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"regex\" (regex): \"/a.*/im\"\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0f000000ff6d696e007f6d61780000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 15 字节\n\n\"min\" (minKey): \"minKey\"\n\"max\" (maxKey): \"maxKey\"\n\n⚠ 仅消费 14/15 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0f000000ff6d696e007f6d61780000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 15 字节\n\n\"min\" (minKey): \"minKey\"\n\"max\" (maxKey): \"maxKey\"\n\n⚠ 仅消费 14/15 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "DwAAAP9taW4Af21heAAA"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 15 字节\n\n\"min\" (minKey): \"minKey\"\n\"max\" (maxKey): \"maxKey\"\n\n⚠ 仅消费 14/15 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            15,
+            0,
+            0,
+            0,
+            255,
+            109,
+            105,
+            110,
+            0,
+            127,
+            109,
+            97,
+            120,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 15 字节\n\n\"min\" (minKey): \"minKey\"\n\"max\" (maxKey): \"maxKey\"\n\n⚠ 仅消费 14/15 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "18000000036368696c64000c000000106e00010000000000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 24 字节\n\n\"child\" (document): {1 fields}\n  \"n\" (int32): 1\n\n⚠ 仅消费 23/24 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "18000000036368696c64000c000000106e00010000000000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 24 字节\n\n\"child\" (document): {1 fields}\n  \"n\" (int32): 1\n\n⚠ 仅消费 23/24 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "GAAAAANjaGlsZAAMAAAAEG4AAQAAAAAA"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 24 字节\n\n\"child\" (document): {1 fields}\n  \"n\" (int32): 1\n\n⚠ 仅消费 23/24 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            24,
+            0,
+            0,
+            0,
+            3,
+            99,
+            104,
+            105,
+            108,
+            100,
+            0,
+            12,
+            0,
+            0,
+            0,
+            16,
+            110,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 24 字节\n\n\"child\" (document): {1 fields}\n  \"n\" (int32): 1\n\n⚠ 仅消费 23/24 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "2300000004617272617900170000000230000200000041000231000200000042000000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 35 字节\n\n\"array\" (array): [2 items]\n  \"0\" (string): \"A\"\n  \"1\" (string): \"B\"\n\n⚠ 仅消费 34/35 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "2300000004617272617900170000000230000200000041000231000200000042000000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 35 字节\n\n\"array\" (array): [2 items]\n  \"0\" (string): \"A\"\n  \"1\" (string): \"B\"\n\n⚠ 仅消费 34/35 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "IwAAAARhcnJheQAXAAAAAjAAAgAAAEEAAjEAAgAAAEIAAAA="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 35 字节\n\n\"array\" (array): [2 items]\n  \"0\" (string): \"A\"\n  \"1\" (string): \"B\"\n\n⚠ 仅消费 34/35 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            35,
+            0,
+            0,
+            0,
+            4,
+            97,
+            114,
+            114,
+            97,
+            121,
+            0,
+            23,
+            0,
+            0,
+            0,
+            2,
+            48,
+            0,
+            2,
+            0,
+            0,
+            0,
+            65,
+            0,
+            2,
+            49,
+            0,
+            2,
+            0,
+            0,
+            0,
+            66,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 35 字节\n\n\"array\" (array): [2 items]\n  \"0\" (string): \"A\"\n  \"1\" (string): \"B\"\n\n⚠ 仅消费 34/35 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "23000000106475706c69636174650001000000106475706c6963617465000200000000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 35 字节\n\n\"duplicate\" (int32): 1\n\"duplicate\" (int32): 2\n\n⚠ 仅消费 34/35 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "23000000106475706c69636174650001000000106475706c6963617465000200000000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 35 字节\n\n\"duplicate\" (int32): 1\n\"duplicate\" (int32): 2\n\n⚠ 仅消费 34/35 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "IwAAABBkdXBsaWNhdGUAAQAAABBkdXBsaWNhdGUAAgAAAAA="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 35 字节\n\n\"duplicate\" (int32): 1\n\"duplicate\" (int32): 2\n\n⚠ 仅消费 34/35 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            35,
+            0,
+            0,
+            0,
+            16,
+            100,
+            117,
+            112,
+            108,
+            105,
+            99,
+            97,
+            116,
+            101,
+            0,
+            1,
+            0,
+            0,
+            0,
+            16,
+            100,
+            117,
+            112,
+            108,
+            105,
+            99,
+            97,
+            116,
+            101,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 35 字节\n\n\"duplicate\" (int32): 1\n\"duplicate\" (int32): 2\n\n⚠ 仅消费 34/35 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1400000001666c6f617400000000000000000000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): 0\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1400000001666c6f617400000000000000000000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): 0\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "FAAAAAFmbG9hdAAAAAAAAAAAAAA="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): 0\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            20,
+            0,
+            0,
+            0,
+            1,
+            102,
+            108,
+            111,
+            97,
+            116,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): 0\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1400000001666c6f617400000000000000f83f00"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): 1.5\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1400000001666c6f617400000000000000f83f00"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): 1.5\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "FAAAAAFmbG9hdAAAAAAAAAD4PwA="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): 1.5\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            20,
+            0,
+            0,
+            0,
+            1,
+            102,
+            108,
+            111,
+            97,
+            116,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            248,
+            63,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): 1.5\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1400000001666c6f617400000000000000008000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): 0\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1400000001666c6f617400000000000000008000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): 0\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "FAAAAAFmbG9hdAAAAAAAAAAAgAA="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): 0\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            20,
+            0,
+            0,
+            0,
+            1,
+            102,
+            108,
+            111,
+            97,
+            116,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            128,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): 0\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1400000001666c6f617400000000000000f07f00"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): Infinity\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1400000001666c6f617400000000000000f07f00"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): Infinity\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "FAAAAAFmbG9hdAAAAAAAAADwfwA="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): Infinity\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            20,
+            0,
+            0,
+            0,
+            1,
+            102,
+            108,
+            111,
+            97,
+            116,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            240,
+            127,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): Infinity\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1400000001666c6f617400000000000000f87f00"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): NaN\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1400000001666c6f617400000000000000f87f00"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): NaN\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "FAAAAAFmbG9hdAAAAAAAAAD4fwA="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): NaN\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            20,
+            0,
+            0,
+            0,
+            1,
+            102,
+            108,
+            111,
+            97,
+            116,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            248,
+            127,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 20 字节\n\n\"float\" (double): NaN\n\n⚠ 仅消费 19/20 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "13000000056461746100030000000000ff8000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](generic): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "13000000056461746100030000000000ff8000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](generic): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EwAAAAVkYXRhAAMAAAAAAP+AAA=="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](generic): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            19,
+            0,
+            0,
+            0,
+            5,
+            100,
+            97,
+            116,
+            97,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            255,
+            128,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](generic): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "13000000056461746100030000000100ff8000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](function): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "13000000056461746100030000000100ff8000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](function): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EwAAAAVkYXRhAAMAAAABAP+AAA=="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](function): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            19,
+            0,
+            0,
+            0,
+            5,
+            100,
+            97,
+            116,
+            97,
+            0,
+            3,
+            0,
+            0,
+            0,
+            1,
+            0,
+            255,
+            128,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](function): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1700000005646174610007000000020300000000ff8000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 23 字节\n\n\"data\" (binary): bin[7](old binary): 0300000000ff80\n\n⚠ 仅消费 22/23 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1700000005646174610007000000020300000000ff8000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 23 字节\n\n\"data\" (binary): bin[7](old binary): 0300000000ff80\n\n⚠ 仅消费 22/23 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "FwAAAAVkYXRhAAcAAAACAwAAAAD/gAA="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 23 字节\n\n\"data\" (binary): bin[7](old binary): 0300000000ff80\n\n⚠ 仅消费 22/23 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            23,
+            0,
+            0,
+            0,
+            5,
+            100,
+            97,
+            116,
+            97,
+            0,
+            7,
+            0,
+            0,
+            0,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0,
+            255,
+            128,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 23 字节\n\n\"data\" (binary): bin[7](old binary): 0300000000ff80\n\n⚠ 仅消费 22/23 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "13000000056461746100030000000300ff8000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](old UUID): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "13000000056461746100030000000300ff8000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](old UUID): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EwAAAAVkYXRhAAMAAAADAP+AAA=="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](old UUID): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            19,
+            0,
+            0,
+            0,
+            5,
+            100,
+            97,
+            116,
+            97,
+            0,
+            3,
+            0,
+            0,
+            0,
+            3,
+            0,
+            255,
+            128,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](old UUID): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "13000000056461746100030000000400ff8000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](UUID): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "13000000056461746100030000000400ff8000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](UUID): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EwAAAAVkYXRhAAMAAAAEAP+AAA=="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](UUID): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            19,
+            0,
+            0,
+            0,
+            5,
+            100,
+            97,
+            116,
+            97,
+            0,
+            3,
+            0,
+            0,
+            0,
+            4,
+            0,
+            255,
+            128,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](UUID): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "13000000056461746100030000000500ff8000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](MD5): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "13000000056461746100030000000500ff8000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](MD5): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EwAAAAVkYXRhAAMAAAAFAP+AAA=="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](MD5): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            19,
+            0,
+            0,
+            0,
+            5,
+            100,
+            97,
+            116,
+            97,
+            0,
+            3,
+            0,
+            0,
+            0,
+            5,
+            0,
+            255,
+            128,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](MD5): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "13000000056461746100030000000600ff8000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](encrypted): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "13000000056461746100030000000600ff8000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](encrypted): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EwAAAAVkYXRhAAMAAAAGAP+AAA=="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](encrypted): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            19,
+            0,
+            0,
+            0,
+            5,
+            100,
+            97,
+            116,
+            97,
+            0,
+            3,
+            0,
+            0,
+            0,
+            6,
+            0,
+            255,
+            128,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](encrypted): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "13000000056461746100030000000700ff8000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](column): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "13000000056461746100030000000700ff8000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](column): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EwAAAAVkYXRhAAMAAAAHAP+AAA=="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](column): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            19,
+            0,
+            0,
+            0,
+            5,
+            100,
+            97,
+            116,
+            97,
+            0,
+            3,
+            0,
+            0,
+            0,
+            7,
+            0,
+            255,
+            128,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](column): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "auto"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "13000000056461746100030000008000ff8000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](0x80): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "hex"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "13000000056461746100030000008000ff8000"
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](0x80): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {
+        "inputEnc": "base64"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EwAAAAVkYXRhAAMAAACAAP+AAA=="
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](0x80): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "bsonParse",
+      "node": "bson_parse",
+      "params": {},
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            19,
+            0,
+            0,
+            0,
+            5,
+            100,
+            97,
+            116,
+            97,
+            0,
+            3,
+            0,
+            0,
+            0,
+            128,
+            0,
+            255,
+            128,
+            0
+          ]
+        }
+      },
+      "text": "=== BSON 文档解析 ===\n输入: 19 字节\n\n\"data\" (binary): bin[3](0x80): 00ff80\n\n⚠ 仅消费 18/19 字节"
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "text": "请输入 PHP serialize() 字符串"
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "N;"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 2 字符\n\nnull"
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "b:0;"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 4 字符\n\nbool: false"
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "b:1;"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 4 字符\n\nbool: true"
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "i:0;"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 4 字符\n\nint: 0"
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "i:-1;"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 5 字符\n\nint: -1"
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "i:2147483648;"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 13 字符\n\nint: 2147483648"
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d:1.5;"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 6 字符\n\nfloat: 1.5"
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d:-0.125;"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 9 字符\n\nfloat: -0.125"
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d:1e20;"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 7 字符\n\nfloat: 100000000000000000000"
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "s:0:\"\";"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 7 字符\n\nstring[0]: \"\""
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "s:5:\"Hello\";"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 12 字符\n\nstring[5]: \"Hello\""
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "s:3:\"a\u0000b\";"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 10 字符\n\nstring[3]: \"a\u0000b\""
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a:0:{}"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 6 字符\n\narray[0]:"
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a:2:{i:0;s:1:\"A\";i:1;s:1:\"B\";}"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 30 字符\n\narray[2]:\n  [0] (int):\n    string[undefined]: \"A\"\n  [1] (int):\n    string[undefined]: \"B\""
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a:1:{s:3:\"obj\";O:3:\"Foo\":1:{s:1:\"n\";i:42;}}"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 43 字符\n\narray[1]:\n  [obj] (string):\n    object(undefined)[undefined]:\n      n (string):\n        int: 42"
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "O:3:\"Foo\":2:{s:1:\"n\";i:42;s:4:\"text\";s:2:\"hi\";}"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 47 字符\n\nobject(Foo)[2]:\n  n (string):\n    int: 42\n  text (string):\n    string[undefined]: \"hi\""
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "C:3:\"Foo\":3:{abc}"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 17 字符\n\nserializable(Foo)[3]: \"abc\""
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a:1:{i:0;C:3:\"Foo\":3:{abc}}"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 27 字符\n\narray[1]:\n  [0] (int):\n    serializable(undefined)[undefined]: \"abc\""
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a:1:{i:0;a:1:{i:1;N;}}"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 22 字符\n\narray[1]:\n  [0] (int):\n    array[undefined]:\n      [1] (int):\n        null"
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "r:1;"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 4 字符\n\n&1 (reference)"
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "R:42;"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 5 字符\n\n&42 (object reference)"
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "i:1;i:2;"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 8 字符\n\nint: 1\n\n⚠ 仅消费 4/8 字符，剩余: \"i:2;\""
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "  N;  "
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 2 字符\n\nnull"
+    },
+    {
+      "operation": "phpSerializeParse",
+      "node": "php_serialize_parse",
+      "params": {
+        "legacyReport": true
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "a:1:{s:4:\"\u0000*\u0000x\";N;}"
+        }
+      },
+      "text": "=== PHP serialize 解析 ===\n输入: 19 字符\n\narray[1]:\n  [\u0000*\u0000x] (string):\n    null"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "text": "请输入 Java 序列化二进制数据（hex 或 base64）"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "error": "输入不是合法 hex（偶数长度 0-9a-f）"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "text": "请输入 Java 序列化二进制数据（hex 或 base64）"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": []
+        }
+      },
+      "text": "请输入 Java 序列化二进制数据（hex 或 base64）"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "00"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 1 字节\n\n⚠ 输入不足 4 字节，无法识别 Java magic"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "00"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 1 字节\n\n⚠ 输入不足 4 字节，无法识别 Java magic"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "AA=="
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 1 字节\n\n⚠ 输入不足 4 字节，无法识别 Java magic"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 1 字节\n\n⚠ 输入不足 4 字节，无法识别 Java magic"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "00000005"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 4 字节\n\n⚠ magic 不匹配: 期望 0xACED，得到 0x0\n  （Java 序列化流必须以 0xACED 0x0005 开头）"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "00000005"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 4 字节\n\n⚠ magic 不匹配: 期望 0xACED，得到 0x0\n  （Java 序列化流必须以 0xACED 0x0005 开头）"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "AAAABQ=="
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 4 字节\n\n⚠ magic 不匹配: 期望 0xACED，得到 0x0\n  （Java 序列化流必须以 0xACED 0x0005 开头）"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            0,
+            0,
+            5
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 4 字节\n\n⚠ magic 不匹配: 期望 0xACED，得到 0x0\n  （Java 序列化流必须以 0xACED 0x0005 开头）"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 4 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  （无顶层内容标记）\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 4 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  （无顶层内容标记）\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABQ=="
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 4 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  （无顶层内容标记）\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 4 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  （无顶层内容标记）\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0004"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 4 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x4 (非标准，期望 0x0005)\n\n--- 顶层结构 ---\n  （无顶层内容标记）\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0004"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 4 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x4 (非标准，期望 0x0005)\n\n--- 顶层结构 ---\n  （无顶层内容标记）\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABA=="
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 4 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x4 (非标准，期望 0x0005)\n\n--- 顶层结构 ---\n  （无顶层内容标记）\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            4
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 4 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x4 (非标准，期望 0x0005)\n\n--- 顶层结构 ---\n  （无顶层内容标记）\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced000570"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 5 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_NULL\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced000570"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 5 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_NULL\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABXA="
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 5 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_NULL\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5,
+            112
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 5 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_NULL\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced000574000548656c6c6f"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 12 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_STRING (handle #0): \"Hello\"\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced000574000548656c6c6f"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 12 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_STRING (handle #0): \"Hello\"\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABXQABUhlbGxv"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 12 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_STRING (handle #0): \"Hello\"\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5,
+            116,
+            0,
+            5,
+            72,
+            101,
+            108,
+            108,
+            111
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 12 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_STRING (handle #0): \"Hello\"\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005740006e4b8ade69687"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 13 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_STRING (handle #0): \"中文\"\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005740006e4b8ade69687"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 13 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_STRING (handle #0): \"中文\"\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABXQABuS4reaWhw=="
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 13 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_STRING (handle #0): \"中文\"\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5,
+            116,
+            0,
+            6,
+            228,
+            184,
+            173,
+            230,
+            150,
+            135
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 13 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_STRING (handle #0): \"中文\"\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005740007efbbbf41f09f9880"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 15 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_STRING (handle #0): \"A\uFFFD\"\n  @14: 0x80 (未深入解析)\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005740007efbbbf41f09f9880"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 15 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_STRING (handle #0): \"A\uFFFD\"\n  @14: 0x80 (未深入解析)\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABXQAB++7v0Hwn5iA"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 15 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_STRING (handle #0): \"A\uFFFD\"\n  @14: 0x80 (未深入解析)\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5,
+            116,
+            0,
+            7,
+            239,
+            187,
+            191,
+            65,
+            240,
+            159,
+            152,
+            128
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 15 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_STRING (handle #0): \"A\uFFFD\"\n  @14: 0x80 (未深入解析)\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced00057c000000000000000548656c6c6f"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 18 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_LONGSTRING (handle #0): \"Hello\"\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced00057c000000000000000548656c6c6f"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 18 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_LONGSTRING (handle #0): \"Hello\"\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABXwAAAAAAAAABUhlbGxv"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 18 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_LONGSTRING (handle #0): \"Hello\"\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5,
+            124,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            5,
+            72,
+            101,
+            108,
+            108,
+            111
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 18 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_LONGSTRING (handle #0): \"Hello\"\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005770300ff80"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 9 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_BLOCKDATA (3 bytes): 00ff80\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005770300ff80"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 9 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_BLOCKDATA (3 bytes): 00ff80\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABXcDAP+A"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 9 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_BLOCKDATA (3 bytes): 00ff80\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5,
+            119,
+            3,
+            0,
+            255,
+            128
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 9 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_BLOCKDATA (3 bytes): 00ff80\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced00057a0000000300ff80"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 12 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_BLOCKDATALONG (3 bytes): 00ff80\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced00057a0000000300ff80"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 12 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_BLOCKDATALONG (3 bytes): 00ff80\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABXoAAAADAP+A"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 12 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_BLOCKDATALONG (3 bytes): 00ff80\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5,
+            122,
+            0,
+            0,
+            0,
+            3,
+            0,
+            255,
+            128
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 12 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_BLOCKDATALONG (3 bytes): 00ff80\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced000571007e0000"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 9 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_REFERENCE → handle 0x7E0000 (#0)\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced000571007e0000"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 9 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_REFERENCE → handle 0x7E0000 (#0)\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABXEAfgAA"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 9 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_REFERENCE → handle 0x7E0000 (#0)\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5,
+            113,
+            0,
+            126,
+            0,
+            0
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 9 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_REFERENCE → handle 0x7E0000 (#0)\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced000579787073"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 8 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_RESET\n  @5: TC_ENDBLOCKDATA\n  @6: TC_NULL\n  @7: TC_OBJECT\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced000579787073"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 8 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_RESET\n  @5: TC_ENDBLOCKDATA\n  @6: TC_NULL\n  @7: TC_OBJECT\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABXl4cHM="
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 8 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_RESET\n  @5: TC_ENDBLOCKDATA\n  @6: TC_NULL\n  @7: TC_OBJECT\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5,
+            121,
+            120,
+            112,
+            115
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 8 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_RESET\n  @5: TC_ENDBLOCKDATA\n  @6: TC_NULL\n  @7: TC_OBJECT\n\n句柄数: 1\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced000575767b7d7e00"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 10 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_ARRAY (未深入解析)\n  @5: TC_CLASS (未深入解析)\n  @6: TC_EXCEPTION (未深入解析)\n  @7: TC_PROXYCLASSDESC (未深入解析)\n  @8: TC_ENUM (未深入解析)\n  @9: 0x00 (未深入解析)\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced000575767b7d7e00"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 10 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_ARRAY (未深入解析)\n  @5: TC_CLASS (未深入解析)\n  @6: TC_EXCEPTION (未深入解析)\n  @7: TC_PROXYCLASSDESC (未深入解析)\n  @8: TC_ENUM (未深入解析)\n  @9: 0x00 (未深入解析)\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABXV2e31+AA=="
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 10 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_ARRAY (未深入解析)\n  @5: TC_CLASS (未深入解析)\n  @6: TC_EXCEPTION (未深入解析)\n  @7: TC_PROXYCLASSDESC (未深入解析)\n  @8: TC_ENUM (未深入解析)\n  @9: 0x00 (未深入解析)\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5,
+            117,
+            118,
+            123,
+            125,
+            126,
+            0
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 10 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_ARRAY (未深入解析)\n  @5: TC_CLASS (未深入解析)\n  @6: TC_EXCEPTION (未深入解析)\n  @7: TC_PROXYCLASSDESC (未深入解析)\n  @8: TC_ENUM (未深入解析)\n  @9: 0x00 (未深入解析)\n\n句柄数: 0\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced00057400014171007e00007974000142"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 18 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_STRING (handle #0): \"A\"\n  @8: TC_REFERENCE → handle 0x7E0000 (#0)\n  @13: TC_RESET\n  @14: TC_STRING (handle #1): \"B\"\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced00057400014171007e00007974000142"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 18 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_STRING (handle #0): \"A\"\n  @8: TC_REFERENCE → handle 0x7E0000 (#0)\n  @13: TC_RESET\n  @14: TC_STRING (handle #1): \"B\"\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABXQAAUFxAH4AAHl0AAFC"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 18 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_STRING (handle #0): \"A\"\n  @8: TC_REFERENCE → handle 0x7E0000 (#0)\n  @13: TC_RESET\n  @14: TC_STRING (handle #1): \"B\"\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5,
+            116,
+            0,
+            1,
+            65,
+            113,
+            0,
+            126,
+            0,
+            0,
+            121,
+            116,
+            0,
+            1,
+            66
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 18 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_STRING (handle #0): \"A\"\n  @8: TC_REFERENCE → handle 0x7E0000 (#0)\n  @13: TC_RESET\n  @14: TC_STRING (handle #1): \"B\"\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005720003466f6f00000000000000010000007870"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: (none)\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005720003466f6f00000000000000010000007870"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: (none)\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABXIAA0ZvbwAAAAAAAAABAAAAeHA="
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: (none)\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5,
+            114,
+            0,
+            3,
+            70,
+            111,
+            111,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            120,
+            112
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: (none)\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005720003466f6f00000000000000010100007870"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_WRITE_METHOD\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005720003466f6f00000000000000010100007870"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_WRITE_METHOD\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABXIAA0ZvbwAAAAAAAAABAQAAeHA="
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_WRITE_METHOD\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5,
+            114,
+            0,
+            3,
+            70,
+            111,
+            111,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            120,
+            112
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_WRITE_METHOD\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005720003466f6f00000000000000010200007870"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_BLOCK_DATA\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005720003466f6f00000000000000010200007870"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_BLOCK_DATA\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABXIAA0ZvbwAAAAAAAAABAgAAeHA="
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_BLOCK_DATA\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5,
+            114,
+            0,
+            3,
+            70,
+            111,
+            111,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            2,
+            0,
+            0,
+            120,
+            112
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_BLOCK_DATA\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005720003466f6f00000000000000010400007870"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_SERIALIZABLE\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005720003466f6f00000000000000010400007870"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_SERIALIZABLE\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABXIAA0ZvbwAAAAAAAAABBAAAeHA="
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_SERIALIZABLE\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5,
+            114,
+            0,
+            3,
+            70,
+            111,
+            111,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            4,
+            0,
+            0,
+            120,
+            112
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_SERIALIZABLE\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005720003466f6f00000000000000010800007870"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_EXTERNALIZABLE\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005720003466f6f00000000000000010800007870"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_EXTERNALIZABLE\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABXIAA0ZvbwAAAAAAAAABCAAAeHA="
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_EXTERNALIZABLE\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5,
+            114,
+            0,
+            3,
+            70,
+            111,
+            111,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            8,
+            0,
+            0,
+            120,
+            112
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_EXTERNALIZABLE\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005720003466f6f00000000000000011000007870"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_ENUM\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005720003466f6f00000000000000011000007870"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_ENUM\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABXIAA0ZvbwAAAAAAAAABEAAAeHA="
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_ENUM\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5,
+            114,
+            0,
+            3,
+            70,
+            111,
+            111,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            16,
+            0,
+            0,
+            120,
+            112
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_ENUM\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005720003466f6f00000000000000011f00007870"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_WRITE_METHOD | SC_BLOCK_DATA | SC_SERIALIZABLE | SC_EXTERNALIZABLE | SC_ENUM\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005720003466f6f00000000000000011f00007870"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_WRITE_METHOD | SC_BLOCK_DATA | SC_SERIALIZABLE | SC_EXTERNALIZABLE | SC_ENUM\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABXIAA0ZvbwAAAAAAAAABHwAAeHA="
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_WRITE_METHOD | SC_BLOCK_DATA | SC_SERIALIZABLE | SC_EXTERNALIZABLE | SC_ENUM\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5,
+            114,
+            0,
+            3,
+            70,
+            111,
+            111,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            31,
+            0,
+            0,
+            120,
+            112
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 23 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_WRITE_METHOD | SC_BLOCK_DATA | SC_SERIALIZABLE | SC_EXTERNALIZABLE | SC_ENUM\n    fields (0):\n  @21: TC_ENDBLOCKDATA\n  @22: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "auto",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005720003466f6f00000000000000010200024900016e4c0001737400124c6a6176612f6c616e672f537472696e673b7870"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 52 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_BLOCK_DATA\n    fields (2):\n      I n\n      L s : Ljava/lang/String;\n  @50: TC_ENDBLOCKDATA\n  @51: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "hex",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "aced0005720003466f6f00000000000000010200024900016e4c0001737400124c6a6176612f6c616e672f537472696e673b7870"
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 52 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_BLOCK_DATA\n    fields (2):\n      I n\n      L s : Ljava/lang/String;\n  @50: TC_ENDBLOCKDATA\n  @51: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "inputEnc": "base64",
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "rO0ABXIAA0ZvbwAAAAAAAAABAgACSQABbkwAAXN0ABJMamF2YS9sYW5nL1N0cmluZzt4cA=="
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 52 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_BLOCK_DATA\n    fields (2):\n      I n\n      L s : Ljava/lang/String;\n  @50: TC_ENDBLOCKDATA\n  @51: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    },
+    {
+      "operation": "javaSerializeIdent",
+      "node": "java_serialize_identify",
+      "params": {
+        "legacyReport": true,
+        "stringEncoding": "utf8"
+      },
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            172,
+            237,
+            0,
+            5,
+            114,
+            0,
+            3,
+            70,
+            111,
+            111,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            2,
+            0,
+            2,
+            73,
+            0,
+            1,
+            110,
+            76,
+            0,
+            1,
+            115,
+            116,
+            0,
+            18,
+            76,
+            106,
+            97,
+            118,
+            97,
+            47,
+            108,
+            97,
+            110,
+            103,
+            47,
+            83,
+            116,
+            114,
+            105,
+            110,
+            103,
+            59,
+            120,
+            112
+          ]
+        }
+      },
+      "text": "=== Java 序列化识别 ===\n输入: 52 字节\n\n✓ Magic: 0xACED (Java Object Serialization)\n✓ Version: 0x5 (正确)\n\n--- 顶层结构 ---\n  @4: TC_CLASSDESC (handle #0):\n    className: Foo\n    serialVersionUID: 0000000000000001\n    flags: SC_BLOCK_DATA\n    fields (2):\n      I n\n      L s : Ljava/lang/String;\n  @50: TC_ENDBLOCKDATA\n  @51: TC_NULL\n\n句柄数: 2\n说明: 完整 Java 序列化解析复杂，此处识别 magic + 扫描顶层 TC_* 标记（TC_STRING/TC_CLASSDESC/TC_BLOCKDATA 等提取关键信息）。"
+    }
+  ]
+}

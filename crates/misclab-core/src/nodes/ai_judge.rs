@@ -25,7 +25,7 @@ impl Node for N {
             ));
         }
 
-        let answer = ai::chat(&ctx.env.ai.llm, system, &user)?;
+        let answer = ai::chat_with_cancel(&ctx.env.ai.llm, system, &user, ctx.cancel)?;
         Ok(out_text(answer))
     }
 }

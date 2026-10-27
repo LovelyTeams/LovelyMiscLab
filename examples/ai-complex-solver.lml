@@ -1,0 +1,435 @@
+{
+  "version": 1,
+  "name": "AI 自主解题：诊断、检索与持续拼接",
+  "nodes": [
+    {
+      "id": "file_import_0",
+      "descriptorId": "file_import",
+      "label": "文件导入",
+      "color": "#64748b",
+      "params": {
+        "path": "D:/Lovelymisclab/examples/ai-complex-solver.dat"
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 40,
+        "y": 60
+      }
+    },
+    {
+      "id": "detect_file_type_1",
+      "descriptorId": "detect_file_type",
+      "label": "文件类型识别",
+      "color": "#3b82f6",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 320,
+        "y": 60
+      }
+    },
+    {
+      "id": "text_output_3",
+      "descriptorId": "text_output",
+      "label": "文本输出",
+      "color": "#64748b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 600,
+        "y": 60
+      }
+    },
+    {
+      "id": "archive_list_6",
+      "descriptorId": "archive_list",
+      "label": "压缩包文件列表",
+      "color": "#f59e0b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 320,
+        "y": 419
+      }
+    },
+    {
+      "id": "text_output_7",
+      "descriptorId": "text_output",
+      "label": "文本输出",
+      "color": "#64748b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 600,
+        "y": 267
+      }
+    },
+    {
+      "id": "archive_extract_8",
+      "descriptorId": "archive_extract",
+      "label": "解压",
+      "color": "#f59e0b",
+      "params": {
+        "format": "自动",
+        "password": "",
+        "entry": ""
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 320,
+        "y": 922
+      }
+    },
+    {
+      "id": "archive_get_file_9",
+      "descriptorId": "archive_get_file",
+      "label": "取解压文件",
+      "color": "#f59e0b",
+      "params": {
+        "entry": "brief.txt",
+        "match": "精确",
+        "index": 0
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 600,
+        "y": 557
+      }
+    },
+    {
+      "id": "archive_get_file_10",
+      "descriptorId": "archive_get_file",
+      "label": "取解压文件",
+      "color": "#f59e0b",
+      "params": {
+        "entry": "dispatch/packet.json",
+        "match": "精确",
+        "index": 0
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 600,
+        "y": 1227
+      }
+    },
+    {
+      "id": "archive_get_file_11",
+      "descriptorId": "archive_get_file",
+      "label": "取解压文件",
+      "color": "#f59e0b",
+      "params": {
+        "entry": "assets/photograph.png",
+        "match": "精确",
+        "index": 0
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 600,
+        "y": 1897
+      }
+    },
+    {
+      "id": "text_output_14",
+      "descriptorId": "text_output",
+      "label": "文本输出",
+      "color": "#64748b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 880,
+        "y": 60
+      }
+    },
+    {
+      "id": "lsb_extract_18",
+      "descriptorId": "lsb_extract",
+      "label": "LSB 提取",
+      "color": "#a855f7",
+      "params": {
+        "channels": "G",
+        "bit": 0,
+        "msbFirst": true
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 880,
+        "y": 354
+      }
+    },
+    {
+      "id": "text_output_19",
+      "descriptorId": "text_output",
+      "label": "文本输出",
+      "color": "#64748b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1160,
+        "y": 60
+      }
+    },
+    {
+      "id": "aes_23",
+      "descriptorId": "aes",
+      "label": "AES",
+      "color": "#6366f1",
+      "params": {
+        "operation": "解密",
+        "mode": "CBC",
+        "key": "",
+        "keyFormat": "Hex",
+        "iv": "2a031841c4d27aaf0c1d40b0c5e6eb48",
+        "ivFormat": "Hex",
+        "inputFormat": "Base64",
+        "outputFormat": "UTF8"
+      },
+      "inputParams": [
+        "key"
+      ],
+      "disabled": false,
+      "position": {
+        "x": 1440,
+        "y": 60
+      }
+    },
+    {
+      "id": "regex_extract_25",
+      "descriptorId": "regex_extract",
+      "label": "正则提取",
+      "color": "#14b8a6",
+      "params": {
+        "preset": "自定义",
+        "pattern": "[0-9a-fA-F]{32}"
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1160,
+        "y": 282
+      }
+    },
+    {
+      "id": "regex_extract_26",
+      "descriptorId": "regex_extract",
+      "label": "正则提取",
+      "color": "#14b8a6",
+      "params": {
+        "preset": "自定义",
+        "pattern": "[A-Za-z0-9+/]{60,}={0,2}"
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 880,
+        "y": 928
+      }
+    },
+    {
+      "id": "base64_decode_27",
+      "descriptorId": "base64_decode",
+      "label": "Base64 解码",
+      "color": "#22c55e",
+      "params": {
+        "variant": "标准",
+        "alphabet": "",
+        "padding": true,
+        "urlsafe": false
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1720,
+        "y": 60
+      }
+    },
+    {
+      "id": "hex_decode_28",
+      "descriptorId": "hex_decode",
+      "label": "Hex 解码",
+      "color": "#22c55e",
+      "params": {
+        "alphabet": "0123456789ABCDEF",
+        "strip": false
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 2000,
+        "y": 60
+      }
+    },
+    {
+      "id": "rot13_29",
+      "descriptorId": "rot13",
+      "label": "ROT13",
+      "color": "#a855f7",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 2280,
+        "y": 60
+      }
+    },
+    {
+      "id": "text_output_30",
+      "descriptorId": "text_output",
+      "label": "文本输出",
+      "color": "#64748b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 2560,
+        "y": 60
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "xy-edge__file_import_0bytes-detect_file_type_1data",
+      "source": "file_import_0",
+      "sourceHandle": "bytes",
+      "target": "detect_file_type_1",
+      "targetHandle": "data"
+    },
+    {
+      "id": "xy-edge__detect_file_type_1text-text_output_3text",
+      "source": "detect_file_type_1",
+      "sourceHandle": "text",
+      "target": "text_output_3",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__file_import_0bytes-archive_list_6archive",
+      "source": "file_import_0",
+      "sourceHandle": "bytes",
+      "target": "archive_list_6",
+      "targetHandle": "archive"
+    },
+    {
+      "id": "xy-edge__archive_list_6text-text_output_7text",
+      "source": "archive_list_6",
+      "sourceHandle": "text",
+      "target": "text_output_7",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__file_import_0bytes-archive_extract_8archive",
+      "source": "file_import_0",
+      "sourceHandle": "bytes",
+      "target": "archive_extract_8",
+      "targetHandle": "archive"
+    },
+    {
+      "id": "xy-edge__archive_extract_8entries-archive_get_file_9entries",
+      "source": "archive_extract_8",
+      "sourceHandle": "entries",
+      "target": "archive_get_file_9",
+      "targetHandle": "entries"
+    },
+    {
+      "id": "xy-edge__archive_get_file_9text-text_output_14text",
+      "source": "archive_get_file_9",
+      "sourceHandle": "text",
+      "target": "text_output_14",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__archive_extract_8entries-archive_get_file_10entries",
+      "source": "archive_extract_8",
+      "sourceHandle": "entries",
+      "target": "archive_get_file_10",
+      "targetHandle": "entries"
+    },
+    {
+      "id": "xy-edge__archive_extract_8entries-archive_get_file_11entries",
+      "source": "archive_extract_8",
+      "sourceHandle": "entries",
+      "target": "archive_get_file_11",
+      "targetHandle": "entries"
+    },
+    {
+      "id": "xy-edge__archive_get_file_11bytes-lsb_extract_18data",
+      "source": "archive_get_file_11",
+      "sourceHandle": "bytes",
+      "target": "lsb_extract_18",
+      "targetHandle": "data"
+    },
+    {
+      "id": "xy-edge__lsb_extract_18text-text_output_19text",
+      "source": "lsb_extract_18",
+      "sourceHandle": "text",
+      "target": "text_output_19",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__lsb_extract_18text-regex_extract_25text",
+      "source": "lsb_extract_18",
+      "sourceHandle": "text",
+      "target": "regex_extract_25",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__archive_get_file_10text-regex_extract_26text",
+      "source": "archive_get_file_10",
+      "sourceHandle": "text",
+      "target": "regex_extract_26",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__regex_extract_25text-aes_23key",
+      "source": "regex_extract_25",
+      "sourceHandle": "text",
+      "target": "aes_23",
+      "targetHandle": "key"
+    },
+    {
+      "id": "xy-edge__regex_extract_26text-aes_23text",
+      "source": "regex_extract_26",
+      "sourceHandle": "text",
+      "target": "aes_23",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__aes_23text-base64_decode_27text",
+      "source": "aes_23",
+      "sourceHandle": "text",
+      "target": "base64_decode_27",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__base64_decode_27text-hex_decode_28text",
+      "source": "base64_decode_27",
+      "sourceHandle": "text",
+      "target": "hex_decode_28",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__hex_decode_28text-rot13_29text",
+      "source": "hex_decode_28",
+      "sourceHandle": "text",
+      "target": "rot13_29",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__rot13_29text-text_output_30text",
+      "source": "rot13_29",
+      "sourceHandle": "text",
+      "target": "text_output_30",
+      "targetHandle": "text"
+    }
+  ]
+}

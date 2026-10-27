@@ -1,13 +1,12 @@
 //! AI model configuration and OpenAI-compatible chat/vision calls used by AI
 //! nodes. Kept small and synchronous (nodes run on `spawn_blocking`).
 
-use std::time::Duration;
-
 use serde::{Deserialize, Serialize};
 
-use crate::error::CoreError;
+use crate::{cancel::CancellationToken, error::CoreError};
 
-const AI_HTTP_TIMEOUT: Duration = Duration::from_secs(90);
+mod transport;
+pub use transport::AiRequestError;
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -36,55 +35,94 @@ impl ModelConfig {
     }
 }
 
-fn content_of(v: &serde_json::Value) -> String {
+fn content_of(v: &serde_json::Value) -> Result<String, AiRequestError> {
     v["choices"][0]["message"]["content"]
         .as_str()
-        .unwrap_or_default()
-        .to_string()
+        .filter(|text| !text.trim().is_empty())
+        .map(str::to_owned)
+        .ok_or_else(|| AiRequestError::new("ai_empty", "AI 返回了空内容"))
 }
 
-fn post(cfg: &ModelConfig, body: serde_json::Value) -> Result<String, CoreError> {
-    let resp = ureq::post(&cfg.endpoint())
-        .timeout(AI_HTTP_TIMEOUT)
-        .set("Authorization", &format!("Bearer {}", cfg.api_key))
-        .set("Content-Type", "application/json")
-        .send_json(body)
-        .map_err(|e| CoreError::Other(format!("AI 请求失败: {e}")))?;
-    let json: serde_json::Value = resp
-        .into_json()
-        .map_err(|e| CoreError::Other(format!("AI 响应解析失败: {e}")))?;
-    Ok(content_of(&json))
+fn blocking<T>(
+    future: impl std::future::Future<Output = Result<T, AiRequestError>>,
+) -> Result<T, CoreError> {
+    // Node execution and synchronous MCP helpers already run on blocking workers.
+    // Dropping the HTTP future on cancellation closes the request, with no detached worker.
+    let runtime = tokio::runtime::Builder::new_current_thread()
+        .enable_all()
+        .build()?;
+    runtime.block_on(future).map_err(Into::into)
 }
 
 /// A single-turn chat completion.
 pub fn chat(cfg: &ModelConfig, system: &str, user: &str) -> Result<String, CoreError> {
+    chat_with_cancel(cfg, system, user, &CancellationToken::new())
+}
+
+pub fn chat_with_cancel(
+    cfg: &ModelConfig,
+    system: &str,
+    user: &str,
+    cancel: &CancellationToken,
+) -> Result<String, CoreError> {
+    blocking(chat_cancellable(cfg, system, user, cancel))
+}
+
+/// Shared transport for workflow planning and the synchronous AI text node.
+pub async fn chat_cancellable(
+    cfg: &ModelConfig,
+    system: &str,
+    user: &str,
+    cancel: &CancellationToken,
+) -> Result<String, AiRequestError> {
+    transport::check_cancel(cancel)?;
     if !cfg.is_configured() {
-        return Err(CoreError::Other("AI 文本模型未配置（请在设置中填写）".into()));
+        return Err(AiRequestError::new(
+            "ai_config",
+            "AI 文本模型未配置（请在设置中填写）",
+        ));
     }
     let mut messages = Vec::new();
     if !system.trim().is_empty() {
         messages.push(serde_json::json!({ "role": "system", "content": system }));
     }
     messages.push(serde_json::json!({ "role": "user", "content": user }));
-    post(
+    let response = transport::post(
         cfg,
         serde_json::json!({ "model": cfg.model, "messages": messages, "temperature": 0 }),
+        cancel,
     )
+    .await?;
+    content_of(&response)
 }
 
 /// A vision completion — `image_url` may be an http(s) URL or a data URL.
 pub fn vision(cfg: &ModelConfig, prompt: &str, image_url: &str) -> Result<String, CoreError> {
+    vision_with_cancel(cfg, prompt, image_url, &CancellationToken::new())
+}
+
+pub fn vision_with_cancel(
+    cfg: &ModelConfig,
+    prompt: &str,
+    image_url: &str,
+    cancel: &CancellationToken,
+) -> Result<String, CoreError> {
+    cancel.check()?;
     if !cfg.is_configured() {
-        return Err(CoreError::Other("AI 识图模型未配置（请在设置中填写）".into()));
+        return Err(CoreError::Other(
+            "AI 识图模型未配置（请在设置中填写）".into(),
+        ));
     }
     let content = serde_json::json!([
         { "type": "text", "text": prompt },
         { "type": "image_url", "image_url": { "url": image_url } },
     ]);
-    post(
+    let response = blocking(transport::post(
         cfg,
         serde_json::json!({ "model": cfg.model, "messages": [{ "role": "user", "content": content }] }),
-    )
+        cancel,
+    ))?;
+    content_of(&response).map_err(Into::into)
 }
 
 // ---- multi-turn tool-calling (agent loop) ----------------------------------
@@ -140,7 +178,11 @@ fn parse_tool_call(tc: &serde_json::Value) -> Option<ToolCall> {
         obj @ serde_json::Value::Object(_) => obj.clone(),
         _ => serde_json::Value::Null,
     };
-    Some(ToolCall { id, name, arguments })
+    Some(ToolCall {
+        id,
+        name,
+        arguments,
+    })
 }
 
 /// One step of a tool-calling conversation. `messages` is the running transcript
@@ -151,7 +193,9 @@ pub fn chat_step(
     tools: &[ToolDef],
 ) -> Result<(AssistantTurn, Usage), CoreError> {
     if !cfg.is_configured() {
-        return Err(CoreError::Other("AI 文本模型未配置（请在设置中填写）".into()));
+        return Err(CoreError::Other(
+            "AI 文本模型未配置（请在设置中填写）".into(),
+        ));
     }
     let tools_json: Vec<serde_json::Value> = tools
         .iter()
@@ -173,17 +217,7 @@ pub fn chat_step(
         "messages": messages,
         "tools": tools_json,
     });
-    // We need the full message object (not just `content`), so we can't reuse
-    // `post()` here.
-    let resp = ureq::post(&cfg.endpoint())
-        .timeout(AI_HTTP_TIMEOUT)
-        .set("Authorization", &format!("Bearer {}", cfg.api_key))
-        .set("Content-Type", "application/json")
-        .send_json(body)
-        .map_err(|e| CoreError::Other(format!("AI 请求失败: {e}")))?;
-    let json: serde_json::Value = resp
-        .into_json()
-        .map_err(|e| CoreError::Other(format!("AI 响应解析失败: {e}")))?;
+    let json = blocking(transport::post(cfg, body, &CancellationToken::new()))?;
     let usage = Usage {
         prompt_tokens: json["usage"]["prompt_tokens"].as_u64().unwrap_or(0),
         completion_tokens: json["usage"]["completion_tokens"].as_u64().unwrap_or(0),

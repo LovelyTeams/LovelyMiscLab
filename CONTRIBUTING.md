@@ -111,6 +111,12 @@ hash::register(reg); // 注册
 
 保存后节点**自动出现在前端调色板**，无需改任何前端代码。
 
+浏览器开发预览使用 Rust 注册表导出的静态目录。新增或修改 descriptor 后运行 `pnpm generate:catalog`，提交 `src/lib/nodeCatalog.generated.json` 与 `src/lib/categories.generated.json`；用 `pnpm check:catalog` 检查一致性。桌面应用始终读取实际注册表。
+
+分类目录集中在 `node/catalog.rs`，新节点应填写二级分类 ID、上游 ID/别名/算法家族、说明、参数帮助和可运行示例。`presentation` 控制内联参数与输出预览；普通处理节点最多 3 个常用参数，长码表/密钥与多行配置进入侧栏。保留既有节点 ID、端口名和默认参数，新增参数提供有效默认值。
+
+EBCTFCodeBox 的人工验收记录维护在 `docs/ebctf-acceptance.json`；每项需要方向、参数映射、真实目标节点、分类、测试路径和兼容差异。每批最多 20 项，核验后再改状态。`pnpm generate:migration` 只生成派生清单，不能覆盖验收源；名称相似不代表迁移完成。
+
 **必须写测试**（`crates/misclab-core/tests/` 或节点文件内 `#[cfg(test)]`）：
 
 ```rust
@@ -152,6 +158,7 @@ assert_eq!(out["text"].as_text().unwrap(), "5d41402abc4b2a76b9719d911017c592");
 - `cargo test -p misclab-core` 全绿；新节点带测试（编码/解密必须有对照向量）。
 - `pnpm check:utf8` 通过（源码统一 UTF-8，无 BOM）。
 - 若动了应用层/前端：`cargo test -p misclab-app --features mcp`、`pnpm build` 也要过。
+- 改动节点交互、AI 计划或运行协调时运行 `pnpm test:frontend`（使用模拟 Tauri 传输，检查真实 store/runner；不调用模型）。
 
 ## Python → Rust 依赖对照
 

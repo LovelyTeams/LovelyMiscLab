@@ -1,0 +1,2440 @@
+{
+  "revision": "ea2bc36dae31c97060f7f2cddad8df5518afad7b",
+  "source": "EBCTFCodeBox",
+  "vectors": [
+    {
+      "node": "z85_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {},
+      "text": "nm=QNz.91#r7n2"
+    },
+    {
+      "node": "z85_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "nm=QNz.91#r7n2"
+        }
+      },
+      "params": {},
+      "text": "Hello, CTF!"
+    },
+    {
+      "node": "z85_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {},
+      "text": "<HztOMws$4NsU+"
+    },
+    {
+      "node": "z85_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "<HztOMws$4NsU+"
+        }
+      },
+      "params": {},
+      "text": "中文🙂\n"
+    },
+    {
+      "node": "z85_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "node": "z85_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "node": "base64_dict_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {},
+      "text": "SGVsbG8sIENURiE="
+    },
+    {
+      "node": "base64_dict_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "SGVsbG8sIENURiE="
+        }
+      },
+      "params": {},
+      "text": "Hello, CTF!"
+    },
+    {
+      "node": "base64_dict_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {},
+      "text": "5Lit5paH8J+Zggo="
+    },
+    {
+      "node": "base64_dict_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "5Lit5paH8J+Zggo="
+        }
+      },
+      "params": {},
+      "text": "中文🙂\n"
+    },
+    {
+      "node": "base64_dict_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "node": "base64_dict_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "node": "multiline_base64_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {},
+      "text": "SGVsbG8sIENURiE="
+    },
+    {
+      "node": "multiline_base64_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "SGVsbG8sIENURiE="
+        }
+      },
+      "params": {},
+      "text": "Hello, CTF!"
+    },
+    {
+      "node": "multiline_base64_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {},
+      "text": "5Lit5paH8J+Zggo="
+    },
+    {
+      "node": "multiline_base64_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "5Lit5paH8J+Zggo="
+        }
+      },
+      "params": {},
+      "text": "中文🙂\n"
+    },
+    {
+      "node": "multiline_base64_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "node": "multiline_base64_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "node": "base64_zlib_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {},
+      "zlibRoundtrip": [
+        72,
+        101,
+        108,
+        108,
+        111,
+        44,
+        32,
+        67,
+        84,
+        70,
+        33
+      ]
+    },
+    {
+      "node": "base64_zlib_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "eJzzSM3JyddRcA5xUwQAFacDPw=="
+        }
+      },
+      "params": {},
+      "text": "Hello, CTF!"
+    },
+    {
+      "node": "base64_zlib_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {},
+      "zlibRoundtrip": [
+        228,
+        184,
+        173,
+        230,
+        150,
+        135,
+        240,
+        159,
+        153,
+        130,
+        10
+      ]
+    },
+    {
+      "node": "base64_zlib_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "eJx7smPts2ntH+bPbOICAC+VBwE="
+        }
+      },
+      "params": {},
+      "text": "中文🙂\n"
+    },
+    {
+      "node": "base64_zlib_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "zlibRoundtrip": []
+    },
+    {
+      "node": "base64_zlib_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "eJwDAAAAAAE="
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "node": "netbios_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {},
+      "text": "EIGFGMGMGPCMCAEDFEEGCB"
+    },
+    {
+      "node": "netbios_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "EIGFGMGMGPCMCAEDFEEGCB"
+        }
+      },
+      "params": {},
+      "text": "Hello, CTF!"
+    },
+    {
+      "node": "netbios_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {},
+      "text": "OELIKNOGJGIHPAJPJJICAK"
+    },
+    {
+      "node": "netbios_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "OELIKNOGJGIHPAJPJJICAK"
+        }
+      },
+      "params": {},
+      "text": "中文🙂\n"
+    },
+    {
+      "node": "http_basic_auth_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {},
+      "text": "Basic SGVsbG8sIENURiE="
+    },
+    {
+      "node": "http_basic_auth_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Basic SGVsbG8sIENURiE="
+        }
+      },
+      "params": {},
+      "text": "Hello, CTF!"
+    },
+    {
+      "node": "http_basic_auth_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {},
+      "text": "Basic 5Lit5paH8J+Zggo="
+    },
+    {
+      "node": "http_basic_auth_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Basic 5Lit5paH8J+Zggo="
+        }
+      },
+      "params": {},
+      "text": "中文🙂\n"
+    },
+    {
+      "node": "http_basic_auth_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": "Basic "
+    },
+    {
+      "node": "http_basic_auth_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Basic "
+        }
+      },
+      "params": {},
+      "error": "The string to be decoded is not correctly encoded."
+    },
+    {
+      "node": "bit_reverse_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {},
+      "text": "12A63636F63404C22A6284"
+    },
+    {
+      "node": "bit_reverse_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "12A63636F63404C22A6284"
+        }
+      },
+      "params": {},
+      "text": "Hello, CTF!"
+    },
+    {
+      "node": "bit_reverse_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {},
+      "text": "271DB56769E10FF9994150"
+    },
+    {
+      "node": "bit_reverse_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "271DB56769E10FF9994150"
+        }
+      },
+      "params": {},
+      "text": "中文🙂\n"
+    },
+    {
+      "node": "bit_reverse_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "node": "bit_reverse_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "node": "bit_rotate_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {},
+      "text": "90CAD8D8DE584086A88C42"
+    },
+    {
+      "node": "bit_rotate_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "90CAD8D8DE584086A88C42"
+        }
+      },
+      "params": {},
+      "text": "Hello, CTF!"
+    },
+    {
+      "node": "bit_rotate_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {},
+      "text": "C9715BCD2D0FE13F330514"
+    },
+    {
+      "node": "bit_rotate_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "C9715BCD2D0FE13F330514"
+        }
+      },
+      "params": {},
+      "text": "中文🙂\n"
+    },
+    {
+      "node": "bit_rotate_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "node": "bit_rotate_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "node": "byte_swap_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {},
+      "text": "65486C6C2C6F4320465421"
+    },
+    {
+      "node": "byte_swap_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "65486C6C2C6F4320465421"
+        }
+      },
+      "params": {},
+      "text": "Hello, CTF!"
+    },
+    {
+      "node": "byte_swap_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {},
+      "text": "B8E4E6AD87969FF082990A"
+    },
+    {
+      "node": "byte_swap_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "B8E4E6AD87969FF082990A"
+        }
+      },
+      "params": {},
+      "text": "中文🙂\n"
+    },
+    {
+      "node": "byte_swap_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "node": "byte_swap_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "node": "byte_reverse_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, CTF!"
+        }
+      },
+      "params": {},
+      "text": "21465443202C6F6C6C6548"
+    },
+    {
+      "node": "byte_reverse_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "21465443202C6F6C6C6548"
+        }
+      },
+      "params": {},
+      "text": "Hello, CTF!"
+    },
+    {
+      "node": "byte_reverse_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂\n"
+        }
+      },
+      "params": {},
+      "text": "0A82999FF08796E6ADB8E4"
+    },
+    {
+      "node": "byte_reverse_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0A82999FF08796E6ADB8E4"
+        }
+      },
+      "params": {},
+      "text": "中文🙂\n"
+    },
+    {
+      "node": "byte_reverse_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "node": "byte_reverse_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "node": "z85_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            255,
+            1,
+            128,
+            65,
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "0ri7Ik(Z"
+    },
+    {
+      "node": "z85_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0ri7Ik(Z"
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        255,
+        1,
+        128,
+        65,
+        0
+      ]
+    },
+    {
+      "node": "base64_dict_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            255,
+            1,
+            128,
+            65,
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "AP8BgEEA"
+    },
+    {
+      "node": "base64_dict_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "AP8BgEEA"
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        255,
+        1,
+        128,
+        65,
+        0
+      ]
+    },
+    {
+      "node": "multiline_base64_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            255,
+            1,
+            128,
+            65,
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "AP8BgEEA"
+    },
+    {
+      "node": "multiline_base64_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "AP8BgEEA"
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        255,
+        1,
+        128,
+        65,
+        0
+      ]
+    },
+    {
+      "node": "base64_zlib_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            255,
+            1,
+            128,
+            65,
+            0
+          ]
+        }
+      },
+      "params": {},
+      "zlibRoundtrip": [
+        0,
+        255,
+        1,
+        128,
+        65,
+        0
+      ]
+    },
+    {
+      "node": "base64_zlib_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "eJxj+M/Y4MgAAAcHAcI="
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        255,
+        1,
+        128,
+        65,
+        0
+      ]
+    },
+    {
+      "node": "netbios_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            255,
+            1,
+            128,
+            65,
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "AAPPABIAEBAA"
+    },
+    {
+      "node": "netbios_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "AAPPABIAEBAA"
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        255,
+        1,
+        128,
+        65,
+        0
+      ]
+    },
+    {
+      "node": "base85ipv6_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "0"
+    },
+    {
+      "node": "base85ipv6_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {},
+      "text": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
+    },
+    {
+      "node": "base85ipv6_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            16,
+            128,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            8,
+            8,
+            0,
+            32,
+            12,
+            65,
+            122
+          ]
+        }
+      },
+      "params": {},
+      "text": "4)+k&C#VzJ4br>0wv%Yp"
+    },
+    {
+      "node": "base85ipv6_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "4)+k&C#VzJ4br>0wv%Yp"
+        }
+      },
+      "params": {},
+      "bytes": [
+        16,
+        128,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        8,
+        0,
+        32,
+        12,
+        65,
+        122
+      ]
+    },
+    {
+      "node": "base85ipv6_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        }
+      },
+      "params": {},
+      "text": "=r54lj&NUUO~Hi%c2ym0"
+    },
+    {
+      "node": "base85ipv6_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "=r54lj&NUUO~Hi%c2ym0"
+        }
+      },
+      "params": {},
+      "bytes": [
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "node": "multiline_base64_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂跨行测试"
+        }
+      },
+      "params": {
+        "lineLen": 1
+      },
+      "text": "5Lit\n5paH\n8J+Z\ngui3\nqOih\njOa1\ni+iv\nlQ=="
+    },
+    {
+      "node": "multiline_base64_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "5Lit\n5paH\n8J+Z\ngui3\nqOih\njOa1\ni+iv\nlQ=="
+        }
+      },
+      "params": {
+        "lineLen": 1
+      },
+      "text": "中文🙂跨行测试"
+    },
+    {
+      "node": "multiline_base64_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂跨行测试"
+        }
+      },
+      "params": {
+        "lineLen": 13
+      },
+      "text": "5Lit5paH8J+Z\ngui3qOihjOa1\ni+ivlQ=="
+    },
+    {
+      "node": "multiline_base64_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "5Lit5paH8J+Z\ngui3qOihjOa1\ni+ivlQ=="
+        }
+      },
+      "params": {
+        "lineLen": 13
+      },
+      "text": "中文🙂跨行测试"
+    },
+    {
+      "node": "multiline_base64_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂跨行测试"
+        }
+      },
+      "params": {
+        "lineLen": 76
+      },
+      "text": "5Lit5paH8J+Zgui3qOihjOa1i+ivlQ=="
+    },
+    {
+      "node": "multiline_base64_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "5Lit5paH8J+Zgui3qOihjOa1i+ivlQ=="
+        }
+      },
+      "params": {
+        "lineLen": 76
+      },
+      "text": "中文🙂跨行测试"
+    },
+    {
+      "node": "multiline_base64_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "SGk=\n!!\n5Lit\n5paH"
+        }
+      },
+      "params": {},
+      "text": "Hi中文"
+    },
+    {
+      "node": "base64_dict_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "字典🙂"
+        }
+      },
+      "params": {
+        "key": "/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "GlJoGnpHD2Bmff=="
+    },
+    {
+      "node": "base64_dict_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "!GlJoGnpHD2Bmff== "
+        }
+      },
+      "params": {
+        "key": "/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "字典🙂"
+    },
+    {
+      "node": "bit_rotate_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ABC中文"
+        }
+      },
+      "params": {
+        "dir": "left",
+        "bits": 1
+      },
+      "text": "828486C9715BCD2D0F"
+    },
+    {
+      "node": "bit_rotate_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "828486C9715BCD2D0F"
+        }
+      },
+      "params": {
+        "dir": "left",
+        "bits": 1
+      },
+      "text": "ABC中文"
+    },
+    {
+      "node": "bit_rotate_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ABC中文"
+        }
+      },
+      "params": {
+        "dir": "left",
+        "bits": 3
+      },
+      "text": "0A121A27C56D37B43C"
+    },
+    {
+      "node": "bit_rotate_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0A121A27C56D37B43C"
+        }
+      },
+      "params": {
+        "dir": "left",
+        "bits": 3
+      },
+      "text": "ABC中文"
+    },
+    {
+      "node": "bit_rotate_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ABC中文"
+        }
+      },
+      "params": {
+        "dir": "left",
+        "bits": 7
+      },
+      "text": "A021A1725CD6734BC3"
+    },
+    {
+      "node": "bit_rotate_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A021A1725CD6734BC3"
+        }
+      },
+      "params": {
+        "dir": "left",
+        "bits": 7
+      },
+      "text": "ABC中文"
+    },
+    {
+      "node": "bit_rotate_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ABC中文"
+        }
+      },
+      "params": {
+        "dir": "right",
+        "bits": 1
+      },
+      "text": "A021A1725CD6734BC3"
+    },
+    {
+      "node": "bit_rotate_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A021A1725CD6734BC3"
+        }
+      },
+      "params": {
+        "dir": "right",
+        "bits": 1
+      },
+      "text": "ABC中文"
+    },
+    {
+      "node": "bit_rotate_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ABC中文"
+        }
+      },
+      "params": {
+        "dir": "right",
+        "bits": 3
+      },
+      "text": "2848689C17B5DCD2F0"
+    },
+    {
+      "node": "bit_rotate_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2848689C17B5DCD2F0"
+        }
+      },
+      "params": {
+        "dir": "right",
+        "bits": 3
+      },
+      "text": "ABC中文"
+    },
+    {
+      "node": "bit_rotate_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ABC中文"
+        }
+      },
+      "params": {
+        "dir": "right",
+        "bits": 7
+      },
+      "text": "828486C9715BCD2D0F"
+    },
+    {
+      "node": "bit_rotate_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "828486C9715BCD2D0F"
+        }
+      },
+      "params": {
+        "dir": "right",
+        "bits": 7
+      },
+      "text": "ABC中文"
+    },
+    {
+      "node": "byte_swap_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcde"
+        }
+      },
+      "params": {
+        "group": "2",
+        "mode": "text"
+      },
+      "text": "6261646365"
+    },
+    {
+      "node": "byte_swap_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "6261646365"
+        }
+      },
+      "params": {
+        "group": "2",
+        "mode": "text"
+      },
+      "text": "abcde"
+    },
+    {
+      "node": "byte_swap_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0011223344556677"
+        }
+      },
+      "params": {
+        "group": "2",
+        "mode": "hex"
+      },
+      "text": "1100332255447766"
+    },
+    {
+      "node": "byte_swap_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1100332255447766"
+        }
+      },
+      "params": {
+        "group": "2",
+        "mode": "hex"
+      },
+      "text": "0011223344556677"
+    },
+    {
+      "node": "byte_swap_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcde"
+        }
+      },
+      "params": {
+        "group": "4",
+        "mode": "text"
+      },
+      "text": "6463626165"
+    },
+    {
+      "node": "byte_swap_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "6463626165"
+        }
+      },
+      "params": {
+        "group": "4",
+        "mode": "text"
+      },
+      "text": "abcde"
+    },
+    {
+      "node": "byte_swap_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0011223344556677"
+        }
+      },
+      "params": {
+        "group": "4",
+        "mode": "hex"
+      },
+      "text": "3322110077665544"
+    },
+    {
+      "node": "byte_swap_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3322110077665544"
+        }
+      },
+      "params": {
+        "group": "4",
+        "mode": "hex"
+      },
+      "text": "0011223344556677"
+    },
+    {
+      "node": "byte_swap_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcde"
+        }
+      },
+      "params": {
+        "group": "8",
+        "mode": "text"
+      },
+      "text": "6564636261"
+    },
+    {
+      "node": "byte_swap_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "6564636261"
+        }
+      },
+      "params": {
+        "group": "8",
+        "mode": "text"
+      },
+      "text": "abcde"
+    },
+    {
+      "node": "byte_swap_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0011223344556677"
+        }
+      },
+      "params": {
+        "group": "8",
+        "mode": "hex"
+      },
+      "text": "7766554433221100"
+    },
+    {
+      "node": "byte_swap_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "7766554433221100"
+        }
+      },
+      "params": {
+        "group": "8",
+        "mode": "hex"
+      },
+      "text": "0011223344556677"
+    },
+    {
+      "node": "byte_reverse_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "0x00 ff 80 42"
+        }
+      },
+      "params": {
+        "mode": "hex"
+      },
+      "text": "4280FF00"
+    },
+    {
+      "node": "byte_reverse_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "4280FF00"
+        }
+      },
+      "params": {
+        "mode": "hex"
+      },
+      "text": "00FF8042"
+    },
+    {
+      "node": "caret_m_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            13,
+            10,
+            127,
+            128,
+            255,
+            65
+          ]
+        }
+      },
+      "params": {},
+      "text": "^@^M^J^?M-^@M-^?A"
+    },
+    {
+      "node": "caret_m_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "^@^M^J^?M-^@M-^?A"
+        }
+      },
+      "params": {},
+      "text": "\u0000\r\nÿA",
+      "bytes": [
+        0,
+        13,
+        10,
+        127,
+        128,
+        255,
+        65
+      ]
+    },
+    {
+      "node": "caret_m_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ÿ中文"
+        }
+      },
+      "params": {},
+      "text": "M-^?-M-^G"
+    },
+    {
+      "node": "caret_m_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "^[^\\^]^^^_"
+        }
+      },
+      "params": {},
+      "text": "\u001b\u001c\u001d\u001e\u001f",
+      "bytes": [
+        27,
+        28,
+        29,
+        30,
+        31
+      ]
+    },
+    {
+      "node": "hex_reverse_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x1a 2B"
+        }
+      },
+      "params": {},
+      "text": "a1B2"
+    },
+    {
+      "node": "hex_reverse_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "a1B2"
+        }
+      },
+      "params": {},
+      "text": "1a2B"
+    },
+    {
+      "node": "varint_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "signed": false
+      },
+      "text": "00"
+    },
+    {
+      "node": "varint_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00ff"
+        }
+      },
+      "params": {
+        "signed": false
+      },
+      "text": "0"
+    },
+    {
+      "node": "varint_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "127"
+        }
+      },
+      "params": {
+        "signed": false
+      },
+      "text": "7f"
+    },
+    {
+      "node": "varint_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "7fff"
+        }
+      },
+      "params": {
+        "signed": false
+      },
+      "text": "127"
+    },
+    {
+      "node": "varint_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "128"
+        }
+      },
+      "params": {
+        "signed": false
+      },
+      "text": "8001"
+    },
+    {
+      "node": "varint_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "8001ff"
+        }
+      },
+      "params": {
+        "signed": false
+      },
+      "text": "128"
+    },
+    {
+      "node": "varint_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "300"
+        }
+      },
+      "params": {
+        "signed": false
+      },
+      "text": "ac02"
+    },
+    {
+      "node": "varint_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ac02ff"
+        }
+      },
+      "params": {
+        "signed": false
+      },
+      "text": "300"
+    },
+    {
+      "node": "varint_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "18446744073709551616"
+        }
+      },
+      "params": {
+        "signed": false
+      },
+      "text": "80808080808080808002"
+    },
+    {
+      "node": "varint_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "80808080808080808002ff"
+        }
+      },
+      "params": {
+        "signed": false
+      },
+      "text": "18446744073709551616"
+    },
+    {
+      "node": "varint_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "signed": true
+      },
+      "text": "00"
+    },
+    {
+      "node": "varint_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00ff"
+        }
+      },
+      "params": {
+        "signed": true
+      },
+      "text": "0"
+    },
+    {
+      "node": "varint_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "127"
+        }
+      },
+      "params": {
+        "signed": true
+      },
+      "text": "fe01"
+    },
+    {
+      "node": "varint_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "fe01ff"
+        }
+      },
+      "params": {
+        "signed": true
+      },
+      "text": "127"
+    },
+    {
+      "node": "varint_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "128"
+        }
+      },
+      "params": {
+        "signed": true
+      },
+      "text": "8002"
+    },
+    {
+      "node": "varint_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "8002ff"
+        }
+      },
+      "params": {
+        "signed": true
+      },
+      "text": "128"
+    },
+    {
+      "node": "varint_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "300"
+        }
+      },
+      "params": {
+        "signed": true
+      },
+      "text": "d804"
+    },
+    {
+      "node": "varint_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "d804ff"
+        }
+      },
+      "params": {
+        "signed": true
+      },
+      "text": "300"
+    },
+    {
+      "node": "varint_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "18446744073709551616"
+        }
+      },
+      "params": {
+        "signed": true
+      },
+      "text": "80808080808080808004"
+    },
+    {
+      "node": "varint_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "80808080808080808004ff"
+        }
+      },
+      "params": {
+        "signed": true
+      },
+      "text": "18446744073709551616"
+    },
+    {
+      "node": "varint_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {
+        "signed": true
+      },
+      "text": "01"
+    },
+    {
+      "node": "varint_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "01ff"
+        }
+      },
+      "params": {
+        "signed": true
+      },
+      "text": "-1"
+    },
+    {
+      "node": "varint_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-9223372036854775808"
+        }
+      },
+      "params": {
+        "signed": true
+      },
+      "text": "ffffffffffffffffff01"
+    },
+    {
+      "node": "varint_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ffffffffffffffffff01ff"
+        }
+      },
+      "params": {
+        "signed": true
+      },
+      "text": "-9223372036854775808"
+    },
+    {
+      "node": "b64url_json_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "{ \"z\": 1, \"a\": [1.0, 1000] }"
+        }
+      },
+      "params": {},
+      "text": "eyJ6IjoxLCJhIjpbMSwxMDAwXX0"
+    },
+    {
+      "node": "b64url_json_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "eyJ6IjoxLCJhIjpbMSwxMDAwXX0"
+        }
+      },
+      "params": {},
+      "text": "{\n  \"z\": 1,\n  \"a\": [\n    1,\n    1000\n  ]\n}"
+    },
+    {
+      "node": "b64url_json_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "非 JSON"
+        }
+      },
+      "params": {},
+      "text": "6Z2eIEpTT04"
+    },
+    {
+      "node": "b64url_json_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "6Z2eIEpTT04"
+        }
+      },
+      "params": {},
+      "text": "非 JSON"
+    },
+    {
+      "node": "b64url_json_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "node": "b64url_json_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "node": "b64url_json_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "{\"2\":\"b\",\"1\":\"a\",\"x\":1,\"01\":0,\"4294967295\":1,\"0\":2}"
+        }
+      },
+      "params": {},
+      "text": "eyIwIjoyLCIxIjoiYSIsIjIiOiJiIiwieCI6MSwiMDEiOjAsIjQyOTQ5NjcyOTUiOjF9"
+    },
+    {
+      "node": "b64url_json_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "eyIwIjoyLCIxIjoiYSIsIjIiOiJiIiwieCI6MSwiMDEiOjAsIjQyOTQ5NjcyOTUiOjF9"
+        }
+      },
+      "params": {},
+      "text": "{\n  \"0\": 2,\n  \"1\": \"a\",\n  \"2\": \"b\",\n  \"x\": 1,\n  \"01\": 0,\n  \"4294967295\": 1\n}"
+    },
+    {
+      "node": "b64url_json_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "[9007199254740993,1e21,1e-7,1e-6,-0,1e400,1e-400]"
+        }
+      },
+      "params": {},
+      "text": "WzkwMDcxOTkyNTQ3NDA5OTIsMWUrMjEsMWUtNywwLjAwMDAwMSwwLG51bGwsMF0"
+    },
+    {
+      "node": "b64url_json_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "WzkwMDcxOTkyNTQ3NDA5OTIsMWUrMjEsMWUtNywwLjAwMDAwMSwwLG51bGwsMF0"
+        }
+      },
+      "params": {},
+      "text": "[\n  9007199254740992,\n  1e+21,\n  1e-7,\n  0.000001,\n  0,\n  null,\n  0\n]"
+    },
+    {
+      "node": "b64url_json_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "{\"nested\":[{\"4\":4,\"2\":2},[],{}]}"
+        }
+      },
+      "params": {},
+      "text": "eyJuZXN0ZWQiOlt7IjIiOjIsIjQiOjR9LFtdLHt9XX0"
+    },
+    {
+      "node": "b64url_json_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "eyJuZXN0ZWQiOlt7IjIiOjIsIjQiOjR9LFtdLHt9XX0"
+        }
+      },
+      "params": {},
+      "text": "{\n  \"nested\": [\n    {\n      \"2\": 2,\n      \"4\": 4\n    },\n    [],\n    {}\n  ]\n}"
+    },
+    {
+      "node": "url_query_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "https://x.test/p?a=1&a=2&k=%E4%B8%AD+%E6%96%87#hash"
+        }
+      },
+      "params": {},
+      "text": "a = 1\na = 2\nk = 中 文"
+    },
+    {
+      "node": "url_query_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "?a=%FF&b=%XX&empty&eq=x=y"
+        }
+      },
+      "params": {},
+      "text": "a = %FF\nb = %XX\nempty = \neq = x=y"
+    },
+    {
+      "node": "url_query_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "?"
+        }
+      },
+      "params": {},
+      "text": "(无 query 参数)"
+    },
+    {
+      "node": "cookie_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Cookie: a=1; a=2; token=a=b"
+        }
+      },
+      "params": {},
+      "text": "a = 1\na = 2\ntoken = a=b"
+    },
+    {
+      "node": "cookie_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Set-Cookie: sid=abc; Expires=Wed, 21 Oct 2030 07:28:00 GMT; Path=/; HttpOnly"
+        }
+      },
+      "params": {},
+      "text": "Cookie 名:   sid\nCookie 值:   abc\n--- 属性 ---\nExpires: Wed, 21 Oct 2030 07:28:00 GMT\nPath: /\nHttpOnly: (标志)"
+    },
+    {
+      "node": "cookie_parse",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " ; "
+        }
+      },
+      "params": {},
+      "text": "(无 Cookie)"
+    },
+    {
+      "node": "ascii_control",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "NUL, LF DEL SP 中"
+        }
+      },
+      "params": {
+        "mode": "name"
+      },
+      "text": "ASCII 值: 0, 名称: NUL, 符号: ␀\nASCII 值: 10, 名称: LF, 符号: ␊\nASCII 值: 127, 名称: DEL, 符号: ␡\nASCII 值: 32, 名称: SP, 符号: ␠\nASCII 值: 20013, 名称: 中, 符号: 中"
+    },
+    {
+      "node": "ascii_control",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A\u0000B\tC\nD"
+        }
+      },
+      "params": {
+        "mode": "name"
+      },
+      "text": "ASCII 值: 65 0 66, 名称: A\u0000B, 符号: A\u0000B\nASCII 值: 67, 名称: C, 符号: C\nASCII 值: 68, 名称: D, 符号: D"
+    },
+    {
+      "node": "ascii_control",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "mode": "name"
+      },
+      "text": "（空输入）"
+    },
+    {
+      "node": "ascii_control",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "NUL, LF DEL SP 中"
+        }
+      },
+      "params": {
+        "mode": "char"
+      },
+      "text": "NUL,[SP]LF[SP]DEL[SP]SP[SP]中"
+    },
+    {
+      "node": "ascii_control",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A\u0000B\tC\nD"
+        }
+      },
+      "params": {
+        "mode": "char"
+      },
+      "text": "A[NUL]B[HT]C[LF]D"
+    },
+    {
+      "node": "ascii_control",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "mode": "char"
+      },
+      "text": "（空输入）"
+    },
+    {
+      "node": "split_hex",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "12 3456789abcdef"
+        }
+      },
+      "params": {},
+      "text": "2 位分割：12 34 56 78 9a bc de f\n4 位分割：1234 5678 9abc def\n8 位分割：12345678 9abcdef"
+    },
+    {
+      "node": "split_hex",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": "（空输入）"
+    },
+    {
+      "node": "split_hex",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "a"
+        }
+      },
+      "params": {},
+      "text": "2 位分割：a\n4 位分割：a\n8 位分割：a"
+    },
+    {
+      "node": "data_uri_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, 世界🙂"
+        }
+      },
+      "params": {
+        "mime": "text/plain;charset=utf-8",
+        "base64": false
+      },
+      "text": "data:text/plain;charset=utf-8,Hello%2C%20%E4%B8%96%E7%95%8C%F0%9F%99%82"
+    },
+    {
+      "node": "data_uri_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "data:text/plain;charset=utf-8,Hello%2C%20%E4%B8%96%E7%95%8C%F0%9F%99%82"
+        }
+      },
+      "params": {},
+      "bytes": [
+        72,
+        101,
+        108,
+        108,
+        111,
+        44,
+        32,
+        228,
+        184,
+        150,
+        231,
+        149,
+        140,
+        240,
+        159,
+        153,
+        130
+      ],
+      "metadata": {
+        "mime": "text/plain",
+        "base64": false,
+        "attrs": [
+          "charset=utf-8"
+        ]
+      }
+    },
+    {
+      "node": "data_uri_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            255,
+            128,
+            65
+          ]
+        }
+      },
+      "params": {
+        "mime": "application/octet-stream",
+        "base64": false
+      },
+      "text": "data:application/octet-stream,%00%FF%80%41"
+    },
+    {
+      "node": "data_uri_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "data:application/octet-stream,%00%FF%80%41"
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        255,
+        128,
+        65
+      ],
+      "metadata": {
+        "mime": "application/octet-stream",
+        "base64": false,
+        "attrs": []
+      }
+    },
+    {
+      "node": "data_uri_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, 世界🙂"
+        }
+      },
+      "params": {
+        "mime": "text/plain;charset=utf-8",
+        "base64": true
+      },
+      "text": "data:text/plain;charset=utf-8;base64,SGVsbG8sIOS4lueVjPCfmYI="
+    },
+    {
+      "node": "data_uri_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "data:text/plain;charset=utf-8;base64,SGVsbG8sIOS4lueVjPCfmYI="
+        }
+      },
+      "params": {},
+      "bytes": [
+        72,
+        101,
+        108,
+        108,
+        111,
+        44,
+        32,
+        228,
+        184,
+        150,
+        231,
+        149,
+        140,
+        240,
+        159,
+        153,
+        130
+      ],
+      "metadata": {
+        "mime": "text/plain",
+        "base64": true,
+        "attrs": [
+          "charset=utf-8"
+        ]
+      }
+    },
+    {
+      "node": "data_uri_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            255,
+            128,
+            65
+          ]
+        }
+      },
+      "params": {
+        "mime": "application/octet-stream",
+        "base64": true
+      },
+      "text": "data:application/octet-stream;base64,AP+AQQ=="
+    },
+    {
+      "node": "data_uri_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "data:application/octet-stream;base64,AP+AQQ=="
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        255,
+        128,
+        65
+      ],
+      "metadata": {
+        "mime": "application/octet-stream",
+        "base64": true,
+        "attrs": []
+      }
+    },
+    {
+      "node": "data_uri_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "data:,%FF%00%41"
+        }
+      },
+      "params": {},
+      "bytes": [
+        255,
+        0,
+        65
+      ],
+      "metadata": {
+        "mime": "text/plain",
+        "base64": false,
+        "attrs": []
+      }
+    },
+    {
+      "node": "data_uri_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "DATA:;charset=utf-8;base64,SGk%3D"
+        }
+      },
+      "params": {},
+      "bytes": [
+        72,
+        105
+      ],
+      "metadata": {
+        "mime": "text/plain",
+        "base64": true,
+        "attrs": [
+          "charset=utf-8"
+        ]
+      }
+    },
+    {
+      "node": "data_uri_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "data:text/plain;base64,iVBORw0KGgo="
+        }
+      },
+      "params": {},
+      "bytes": [
+        137,
+        80,
+        78,
+        71,
+        13,
+        10,
+        26,
+        10
+      ],
+      "metadata": {
+        "mime": "text/plain",
+        "base64": true,
+        "attrs": []
+      }
+    }
+  ]
+}

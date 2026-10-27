@@ -201,6 +201,7 @@ export function CreateScriptNodeDialog() {
     <div className="fixed inset-0 z-[75] flex items-center justify-center bg-black/50 p-4" onClick={close}>
       <div
         className="flex max-h-[92vh] w-[720px] max-w-[97vw] flex-col rounded-xl border border-border bg-card shadow-2xl"
+        role="dialog" aria-modal="true" aria-label="脚本节点"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center gap-2 border-b border-border p-4">

@@ -633,33 +633,31 @@ fn parse_axml(data: &[u8]) -> Result<AxmlReport, CoreError> {
                     strings = pool;
                 }
             }
-            0x0102 => {
-                if !strings.is_empty() && chunk_size >= header_size + 20 {
-                    let ext = offset + header_size;
-                    let name_idx = le32(data, ext + 4).unwrap_or(u32::MAX);
-                    let name =
-                        axml_string(&strings, name_idx).unwrap_or_else(|| format!("#{name_idx}"));
-                    let attr_start = le16(data, ext + 8).unwrap_or(20) as usize;
-                    let attr_size = le16(data, ext + 10).unwrap_or(20).max(20) as usize;
-                    let attr_count = le16(data, ext + 12).unwrap_or(0) as usize;
-                    let attrs_base = ext + attr_start;
-                    let mut attrs = Vec::new();
-                    for n in 0..attr_count {
-                        let a = attrs_base + n * attr_size;
-                        if a + 20 > offset + chunk_size {
-                            break;
-                        }
-                        let attr_name_idx = le32(data, a + 4).unwrap_or(u32::MAX);
-                        let raw_value_idx = le32(data, a + 8).unwrap_or(u32::MAX);
-                        let data_type = *data.get(a + 15).unwrap_or(&0);
-                        let data_value = le32(data, a + 16).unwrap_or(0);
-                        let attr_name = axml_string(&strings, attr_name_idx)
-                            .unwrap_or_else(|| format!("#{attr_name_idx}"));
-                        let value = axml_value(&strings, raw_value_idx, data_type, data_value);
-                        attrs.push((attr_name, value));
+            0x0102 if !strings.is_empty() && chunk_size >= header_size + 20 => {
+                let ext = offset + header_size;
+                let name_idx = le32(data, ext + 4).unwrap_or(u32::MAX);
+                let name =
+                    axml_string(&strings, name_idx).unwrap_or_else(|| format!("#{name_idx}"));
+                let attr_start = le16(data, ext + 8).unwrap_or(20) as usize;
+                let attr_size = le16(data, ext + 10).unwrap_or(20).max(20) as usize;
+                let attr_count = le16(data, ext + 12).unwrap_or(0) as usize;
+                let attrs_base = ext + attr_start;
+                let mut attrs = Vec::new();
+                for n in 0..attr_count {
+                    let a = attrs_base + n * attr_size;
+                    if a + 20 > offset + chunk_size {
+                        break;
                     }
-                    elements.push(AxmlElement { name, attrs });
+                    let attr_name_idx = le32(data, a + 4).unwrap_or(u32::MAX);
+                    let raw_value_idx = le32(data, a + 8).unwrap_or(u32::MAX);
+                    let data_type = *data.get(a + 15).unwrap_or(&0);
+                    let data_value = le32(data, a + 16).unwrap_or(0);
+                    let attr_name = axml_string(&strings, attr_name_idx)
+                        .unwrap_or_else(|| format!("#{attr_name_idx}"));
+                    let value = axml_value(&strings, raw_value_idx, data_type, data_value);
+                    attrs.push((attr_name, value));
                 }
+                elements.push(AxmlElement { name, attrs });
             }
             _ => {}
         }

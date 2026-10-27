@@ -1,254 +1,332 @@
 <div align="center">
 
-<br />
+<img src="src-tauri/icons/128x128@2x.png" width="128" height="128" alt="LovelyMiscLab 图标" />
 
-<img src="assets/banner.svg" alt="LovelyMiscLab" width="800" />
+# LovelyMiscLab
 
-<br />
-<br />
+**把解题过程，变成可复跑的节点工作流。**
 
-面向取证的节点式可视化工作台 —— 像 ComfyUI 一样搭工作流，专为编码解密、隐写取证、图像分析、密码学而生。
+面向 CTF Misc、编码解密、隐写分析与文件取证的桌面工作台。<br />
+手动搭图，也可以让 AI 根据真实结果查找模块、修改配置、继续拼接。
 
-<br />
+![Version](https://img.shields.io/badge/version-0.3.0-8b5cf6)
+![Nodes](https://img.shields.io/badge/内置节点-489-0ea5e9)
+![Rust](https://img.shields.io/badge/引擎-Rust-f97316?logo=rust&logoColor=white)
+![Tauri](https://img.shields.io/badge/桌面-Tauri%202-24c8db?logo=tauri&logoColor=white)
+![License](https://img.shields.io/badge/license-GPL--3.0-blue)
 
-![Version](https://img.shields.io/badge/version-0.2.9-8b5cf6)
-![Platforms](https://img.shields.io/badge/Windows_·_Linux_·_macOS-portable-2ea44f)
-![Nodes](https://img.shields.io/badge/内置节点-270-8b5cf6)
-![Tauri](https://img.shields.io/badge/Tauri-2-24C8DB?logo=tauri&logoColor=white)
-![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
-![Rust](https://img.shields.io/badge/Rust-2021-000000?logo=rust&logoColor=white)
-![MCP](https://img.shields.io/badge/MCP-rmcp_2.0-000000?logo=anthropic&logoColor=white)
-![QQ群](https://img.shields.io/badge/QQ群-668600249-0099ff?logo=qq&logoColor=white)
-![License](https://img.shields.io/badge/License-GPLv3-blue)
-
-<br />
-
-[主要特性](#主要特性) · [MCP 与 AI 调用](#mcp-与-ai-调用) · [工作区](#工作区) · [节点分类](#节点分类) · [架构](#架构) · [下载](#下载--安装) · [贡献](#贡献)
-
-<br />
+[快速开始](#快速开始) · [AI 自主解题](#ai-工作流助手) · [画布操作](#画布操作) · [节点分类](#节点分类) · [MCP](#mcp-与-ai-调用) · [开发](#开发)
 
 </div>
 
 ---
 
-> [!NOTE]
-> **✨ 0.2.9 新特性** —— 常见 CTF 小技巧补齐 · 二进制分析（ELF / PE / Mach-O / DEX / PE 深度检查）· 文件格式与文档/APK 取证 · 古典密码自动分析/爆破 · 可视化分析（字节直方图 / 熵曲线 / 字节分布图）· 控制/逻辑闭环 · 270 个内置节点。
+> **v0.3.0 · 2026-10-27**
+>
+> 本版本包含 **489 个内置节点、18 个一级分类、48 个二级分组**。AI 已支持“诊断 → 检索模块 → 修改或续接 → 执行复测”的闭环。
+>
+> EBCTFCodeBox 的 **820 项操作已验收 135 项**。迁移当前暂停，重点验证画布操作与 AI 解题流程。完整发布内容见 [v0.3.0 Release](https://github.com/LovelyTeams/LovelyMiscLab/releases/tag/v0.3.0)。
 
 ## 这是什么
 
-LovelyMiscLab 是一个桌面应用，核心是一个**类型化的节点图引擎（typed node-graph engine）**，专为编码解密、隐写取证、图像分析、密码学等场景打造。
+LovelyMiscLab 用节点和连线表达数据处理过程：导入一份文件或文本，选择处理模块，配置参数，再把输出连接到下一步。Rust 引擎按依赖顺序执行，画布显示结果预览，完整内容可以在侧栏或独立调用窗口中查看。
 
-设计上**做的是类似 ComfyUI 的节点式工作流**——你在画布上拖拽「节点」（Base64 解码、XOR、LSB 隐写提取、二维码解码、AES 解密、图像滤镜……），用连线把它们组成一条数据流 DAG，后端按拓扑序执行，并把每个节点的结果实时回显到画布上。同样是数据驱动、可视化编排、节点自由扩展，只是把「生成图像」换成了「Misc 分析」。
+从一次 Base64 解码，到“识别压缩包 → 提取图片 → 隐写取密钥 → AES 解密 → 多层解码”，每一步都能检查、修改、重跑，并保存为 `.lml` 流程。
 
-它可以当作：
-
-- 🧰 **快捷工具箱** —— 单节点执行，把任意一个节点当独立小工具用
-- 🔗 **流程编排器** —— 整图执行，带内容寻址的增量缓存（改哪算哪的「实时模式」）
-- 🤖 **AI 工作台** —— 自然语言让 **AI Agent** 一步步在画布上搭流程，或让外部 AI 客户端**经 MCP 直接调用引擎、与你的画布实时协作**
-- 🧱 **可扩展平台** —— 把选中子图封装为「复合模块」，或把外部脚本 / 程序接入为本地自定义节点
-- 🎯 **出题工作台** —— 用 LSB 嵌入、ZIP 创建 / 伪加密等「出题」节点，反向造一道 misc 题
-
-<img width="1920" height="1080" alt="canvas" src="https://github.com/user-attachments/assets/7af12c9e-05dd-4e87-ad4d-31f0fe836df6" />
-<img width="1920" height="1080" alt="workflow" src="https://github.com/user-attachments/assets/ea5ddf9d-e176-4527-89a3-0ee942943567" />
+<p align="center">
+  <img src="assets/screenshots/ai-complex-solver.png" width="1000" alt="真实模型联调：19 个节点的复杂题流程与答案校验报告" />
+  <br />
+  <sub>真实模型联调记录：5 轮诊断与续接，最终 19 个节点、19 条连线，答案通过本地精确校验。</sub>
+</p>
 
 ## 主要特性
 
-- 🧩 **270 个内置节点 · 16 大类** —— 从 Base 家族、经典/现代密码、哈希，到隐写、图像/音频/二进制分析、文件格式/文档/APK 取证、压缩包解包与「出题」节点，开箱即用（[分类见下](#节点分类)）。
-- 🔌 **类型化端口** —— 连线携带强类型值（Text / Number / Bool / Json / Bytes / Image / Fingerprint…），连接时自动做类型校验与必要的隐式转换。
-- 🤖 **AI Agent 建图** —— 一句话描述任务，AI **逐步**在画布上加节点 / 连线 / 设参、运行中间结果并据此自适应，你实时看着流程长出来；模型不支持工具调用时自动回退一次性生成。
-- 🪄 **端口 AI 预测** —— 悬停任意输入 / 输出端口弹出 ✨，推荐类型兼容的下一个节点（离线可用）并支持手动筛选，确认即建即连、自动避让不重叠。
-- 🧹 **一键整理节点** —— 右键「整理节点」，按当前视口宽高比把图竖向优先打包成多列并缩放适配，整张图一屏可见。
-- 🛰️ **MCP 服务** —— 内嵌 MCP 服务器，让 Claude Code / Cursor / Codex 等 AI 客户端**直接驱动引擎、读写你正在编辑的画布**（[详见下节](#mcp-与-ai-调用)）。
-- ⚡ **增量执行** —— 内容寻址缓存，改动后只重算受影响的节点（「实时模式」）。
-- 🧱 **自定义扩展** —— 复合模块（子图打包成一个节点，防递归深度 16 层）+ 脚本节点（外部进程接入，支持 stdin / argv / 临时文件三种投递方式）。
-- 🔒 **本地优先** —— 所有计算在本机完成，数据不出设备。
-
-## MCP 与 AI 调用
-
-**v0.2.0 起**，应用内嵌了一个 **MCP（[Model Context Protocol](https://modelcontextprotocol.io/)）服务器**：外部 AI 客户端可以直接发现节点、运行单节点或整条流水线，并**与你当前正在编辑的画布实时协作**——AI 增删改的节点会即时出现在你的屏幕上。
-
-- 基于 **rmcp 2.0 + axum** 的 streamable-HTTP 服务，绑定 `127.0.0.1`、Bearer 令牌鉴权、跑在独立线程。
-- **默认关闭**，在 **设置 → MCP 服务** 一键启停；令牌首次启用时自动生成，面板内置各客户端的一键复制配置。
-- 22 个通用元工具，按**渐进式发现**设计以节省 token：
-
-| 类别 | 工具 |
+| 能力 | 可以做什么 |
 |---|---|
-| 发现 | `list_categories` → `list_nodes`（精简）→ `describe_node` · `list_modules` |
-| 执行 | `run_node` · `run_graph`（不带参数即运行当前画布） |
-| 画布 | `get_canvas` · `set_canvas` · `add_node` · `connect` · `set_param` · `remove_node` · `move_node`… |
-| 持久化与 AI | `save_workflow` · `load_workflow` · `save_composite_module` · `generate_workflow` |
-| 其他 | `get_settings`（脱敏）· `detect_tool` · `ping` |
+| **节点式工作流** | 类型化端口、参数驱动、实时结果预览；支持整图执行、运行到节点和增量重算。 |
+| **统一模块库** | 按中英文名称、节点 ID、上游操作 ID、别名、说明和算法家族搜索；分类折叠、分段加载，模块页面每页 50 项。 |
+| **AI 自主解题** | 先展示计划并确认范围；执行后根据证据诊断问题，实际查找模块，在同一张图上修改或继续拼接，再复测。 |
+| **独立调用** | 把单个模块作为工具使用，支持文本、Hex/Base64、文件、数值、布尔、JSON、列表和图片等输入；结果保留在调用窗口。 |
+| **文件产物** | 通过 `artifact_store` 保存产物，查询名称、大小、MIME 与 SHA-256；用 `artifact_read` 显式读回字节，继续处理或导出。 |
+| **画布编辑** | 框选、多选、批量删除、剪切复制粘贴、撤销重做、重新连线和自动整理；兼容常见 Windows 快捷键。 |
+| **MCP 接入** | 外部 AI 客户端可以发现模块、运行节点、读写画布和保存流程，与桌面工作区协作。 |
+| **本地扩展** | 将子图封装为复合模块，或把本地脚本、外部程序接入为自定义节点。 |
 
-> [!TIP]
-> 画布内的 **AI Agent** 与 **端口 AI 预测** 是应用**自带**的功能（用你在「设置 → AI 模型」里配置的 OpenAI 兼容模型），开箱即用、无需 MCP；MCP 则是给**外部** AI 客户端接管引擎用的另一条通道。
+内置分析与编解码由 Rust 引擎在本机执行。使用 AI 功能时，题目描述、文件路径及有界运行摘要会发送到你配置的模型服务；摘要可能包含题目内容和中间结果。联网节点、自定义脚本的行为由相应模块与配置决定。
 
-<details>
-<summary><b>在 AI 客户端中连接（点击展开）</b></summary>
+## 快速开始
 
-启用后复制面板里的端点与令牌，然后：
+### 1. 启动桌面版
 
-**Claude Code**
+安装包与发布信息见 [本仓库 Releases](https://github.com/LovelyTeams/LovelyMiscLab/releases)。也可以从源码启动：
+
 ```bash
-claude mcp add --transport http lovelymisclab http://127.0.0.1:8765/mcp \
-  --header "Authorization: Bearer <令牌>"
+git clone https://github.com/LovelyTeams/LovelyMiscLab.git
+cd LovelyMiscLab
+pnpm install
+pnpm tauri dev
 ```
 
-**Cursor** —— `~/.cursor/mcp.json`
-```json
-{ "mcpServers": { "lovelymisclab": {
-  "url": "http://127.0.0.1:8765/mcp",
-  "headers": { "Authorization": "Bearer <令牌>" }
-} } }
+源码运行需要 Node.js、pnpm、Rust 和 [Tauri 系统依赖](https://tauri.app/start/prerequisites/)，详见 [开发](#开发)。`pnpm dev` 仅打开浏览器前端预览；实际 Rust 节点执行和模型调用请使用桌面版。
+
+### 2. 手动跑一条流程
+
+1. 从模块库加入「文本输入」「Base64 解码」「文本输出」。
+2. 在文本输入中填写 `SGVsbG8=`，将三个节点的文本端口依次连接。
+3. 执行流程，检查最终输出是否为 `Hello`。
+4. 按 `Ctrl+S` 保存为 `.lml`，以后可以重新打开、修改和复跑。
+
+处理二进制文件时，使用文件导入节点的 **bytes 端口**连接后续模块；文本预览用于阅读，完整字节用于继续处理。
+
+### 3. 让 AI 根据题目搭图
+
+1. 在 **设置 → AI 模型 → 文本模型**中填写模型名、Base URL 和 API Key。
+2. 点击右上角 **保存设置**，确认出现“设置已写入本机 · 时间”。
+3. 打开 **AI 工作流助手 → 自主解题**，填写题目描述，并提供文本或选择题目文件。
+4. 点击 **生成计划**，查看首轮节点、参数、连线、检索结果与执行范围。
+5. 点击 **确认方案并开始解题**，观察后续诊断、修改和复测记录；需要中止时点击 **停止**。
+
+模型配置使用 OpenAI 兼容接口。文本模型用于规划和诊断；视觉模型是单独配置的能力。
+
+## AI 工作流助手
+
+### 从“搭一次图”到持续解题
+
+自主解题会先判断当前证据意味着什么，再到真实模块库检索所需能力。检索命中后，规划器获取对应模块的端口、参数和默认值，生成可执行的图；下一轮根据实际结果继续调整。
+
+```mermaid
+flowchart LR
+    A[题目与原始输入] --> B[首轮计划与用户确认]
+    B --> C[搭图并执行]
+    C --> D[检查输出与目标]
+    D -->|需要修复或继续处理| E[定位问题与下一步需求]
+    E --> F[检索真实模块库]
+    F --> G[修改参数和连线 或追加节点]
+    G --> C
+    D -->|候选命中| H[核验答案与保留证据]
 ```
 
-**Codex / 其他仅 stdio 的客户端** —— 经 `mcp-remote` 桥接
-```toml
-[mcp_servers.lovelymisclab]
-command = "npx"
-args = ["-y", "mcp-remote", "http://127.0.0.1:8765/mcp", "--header", "Authorization: Bearer <令牌>"]
+例如，一次解题过程中可以出现这样的动作：
+
+- **“LSB 扫描结果与题目提示不符。”** 查找专用 LSB 提取模块，改为绿色通道、最低位和 MSB 位序，再检查提取结果。
+- **“AES 的密钥输入不正确。”** 检索正则提取模块，从上游输出中提取密钥和密文字段，重新接入 AES 并执行复测。
+- **“解密成功，但明文仍有编码包装。”** 查找 Base64、Hex、ROT13 等模块，继续连接到现有处理链。
+
+后续轮次复用同一张图中的有效节点，记录实际参数变化、模块替换和连线调整；每轮修改可以撤销。修复对象包括节点选择、参数和连接方式，判断依据来自运行结果。
+
+### 四种工作模式
+
+| 模式 | 行为 |
+|---|---|
+| **自主解题** | 首轮确认后，在已确认范围内持续诊断、检索、修改、执行与复测。 |
+| **规划流程** | 生成完整计划，确认后自动配置、搭图并执行该计划。 |
+| **解释画布** | 解释当前流程的数据流、关键参数与可能的失败点。 |
+| **规划修复** | 根据当前图和错误提出修复计划，审核确认后执行。 |
+
+### 执行范围与结果判定
+
+- 自主解题默认 **5 轮、8 分钟**，可设置为 **1–8 轮、1–15 分钟**；每轮最多 20 个节点，最多选择 8 个题目文件。
+- 首次确认覆盖后续自动尝试的范围。自动解题使用内置本地处理模块和本次选定输入，遇到无可用能力、重复计划或预算耗尽时保留记录并停止。
+- **节点执行成功**、**结果断言通过**、**找到候选答案**分别记录。移除失败节点或得到非空输出，不会直接判定整题已解决。
+- 可填写“标准答案（可选，仅本地验收，不交给模型）”。该字段用于实际输出的精确比较，不加入模型提示词；未填写时，符合前缀的结果显示为候选，仍需核验。
+- 报告保留每轮观察、模块检索结果、实际修改、错误、复测结论和候选来源，可导出解题记录。
+
+“停止规划”、关闭规划窗口或按 Esc 会取消本地请求并丢弃迟到回复。执行阶段可在 AI 报告中停止，已完成的图和证据保留。模型服务端已接受的计算是否终止，由服务端决定。
+
+### 复杂题实测与示例
+
+**2026-10-27 的一次真实模型测试**只向 Agent 提供题目描述与未知格式附件，随机标准答案单独保留在本地。处理链覆盖：
+
+```text
+未知文件 → ZIP 识别与解压 → 图片绿色通道 LSB → 密钥提取
+        → AES-CBC 解密 → Base64 解码 → Hex 解码 → ROT13 → 答案
 ```
-</details>
 
-> [!WARNING]
-> **安全**：默认关闭、仅监听本机、强制 Bearer 令牌；`get_settings` 对 AI 隐藏 API Key。启用即意味着持令牌的 AI 可运行节点/脚本、读写画布，请勿泄露令牌。
+5 轮内经历了分支替换、密钥输入修复和后续解码，最终形成 **19 个节点、19 条连线**。实际答案通过本地精确校验；导出图又经 Rust 执行器独立复跑，19 个节点全部成功。
 
-## 工作区
+| 示例 | 文件 | 用途 |
+|---|---|---|
+| 诊断、检索与持续拼接 | [流程](examples/ai-complex-solver.lml) · [附件](examples/ai-complex-solver.dat) · [完整记录](examples/ai-complex-solver-validation.json) | 查看复杂题如何跨轮修复并继续处理。 |
+| 未知归档的逐轮分析 | [流程](examples/ai-autonomous-archive.lml) · [附件](examples/ai-autonomous-archive.dat) | 查看文件识别、归档内容分析和多层解码。 |
+| 固定计划与结果断言 | [流程](examples/ai-complex-ctf.lml) · [预期结果](examples/ai-complex-ctf.expected.json) | 验证预先审核的复杂流程及输出条件。 |
 
-- **命令面板**（`Ctrl / Cmd + K`）—— 快速跳转视图、执行动作
-- **整理节点**（画布右键）—— 一键把图打包排布到当前视口，全部可见
-- **运行历史与运行到节点** —— 回看每次执行、只跑到某个节点为止
-- **撤销 / 重做** —— 画布编辑全程可回退（AI Agent 的整次搭建折叠为一步）
-- **自动保存与最近项目** —— 断电不丢，快速重开
-- **帮助面板与边上数据预览** —— 连线上直接看流过的值
-- **AI 解释 / 修复工作流** —— 让 LLM 解读或修补一张图
+打开示例 `.lml` 后，请在文件导入节点重新选择本机对应附件；示例中保存的绝对路径来自测试环境。不含 AI 节点的已保存流程可直接在本机复跑；重新生成计划，或运行含 `ai_judge` 等 AI 节点的流程，仍需配置模型。
+
+这组记录验证了指定样例上的行为；其他题目的完成情况取决于已有模块、输入线索和模型输出。
+
+## 画布操作
+
+默认在空白处左键拖动框选节点。`Ctrl / Shift` 点击可追加或取消选择，`Ctrl` 拖动框选可追加一组节点。左上角可切换平移工具，也可以按住空格或使用中键拖动画布。
+
+拖动端口建立连线，连接时校验类型；右键节点、连线或选区可打开操作菜单。普通处理节点展示最多 3 个常用参数，长密钥、多行配置及高级参数在侧栏编辑。
+
+| 快捷键 | 操作 |
+|---|---|
+| `Ctrl+A` / `Esc` | 全选节点与连线 / 取消选择 |
+| `Ctrl+C` / `Ctrl+X` / `Ctrl+V` | 复制 / 剪切 / 粘贴选中子图，保留内部连线与参数 |
+| `Ctrl+D` | 创建选中子图的副本 |
+| `Delete` / `Backspace` | 批量删除节点或连线，删除节点时同步移除关联连线 |
+| `Ctrl+Z` / `Ctrl+Y` / `Ctrl+Shift+Z` | 撤销 / 重做 |
+| `F2` | 重命名单个选中节点；Enter 确认、Esc 取消 |
+| 方向键 / `Shift+方向键` | 移动选中节点 1 / 10 个画布单位 |
+| `Home` / `Ctrl+0` / `Ctrl++` / `Ctrl+-` | 适应视图 / 100% / 放大 / 缩小 |
+| `Ctrl+N` / `Ctrl+O` / `Ctrl+S` / `Ctrl+Shift+S` | 新建 / 打开 / 保存 / 另存为流程 |
+| `Ctrl+K` | 打开命令面板 |
+
+macOS 上可使用对应的 `Cmd` 组合键。文本框内保留正常文字编辑行为，弹窗或菜单打开时不会操作底层画布。一次拖动、连续编辑同一参数或长按方向键按一次撤销记录处理。
 
 ## 节点分类
 
-> 共 **270** 个内置节点，按分类：
+目录由 Rust 注册表统一定义，模块侧栏、模块页面、搜索菜单、帮助、AI 与 MCP 共用。编码与解码通常使用独立节点，同方向的算法变体通过参数选择。
 
-| 分类 | 数量 | 举例 |
-|---|:--:|---|
-| 编码/加密 | 46 | Base32/45/58/62/64/85/92 · Hex · URL · 二维码 · 摩斯 · 培根 · 盲文 · Brainfuck · DNA · 重复 XOR 破解 |
-| 图像处理 | 38 | 通道/混合/滤镜/几何/色彩空间/差分 · 频域(FFT) · GIF · PNG/JPG/BMP 宽高修复 · 盲水印 · 01↔图像 |
-| 加密解密 | 39 | AES/DES/Blowfish/RC4/ChaCha/Salsa/RSA · 维吉尼亚/仿射/Atbash/Playfair/Enigma/ADFGVX/栅栏 · 古典密码自动分析/爆破 · 数论/RSA 小工具 · PGP |
-| 隐写术 | 29 | 零宽字符 · StegCloak · 空白/SNOW · LSB 提取/嵌入 · zsteg 扫描 · imageIN/ImageMask/stegpy/PixelJihad |
-| 控制/逻辑 | 22 | 开关 · 门控 · 迭代 · 映射/过滤/归约 · 正则路由 · 合流 · 数值比较 · 列表工具 |
-| 工具/分析 | 25 | 熵值 · 字频 · hexdump · EXIF · 文件类型识别 · PNG/JPEG/GIF/PDF 结构 · OOXML/APK 取证 · 文件雕刻 · HTTP · JWT · IP 转换 |
-| 文本处理 | 14 | 拼接/分割/替换/正则/大小写/去重/排序… |
-| 进制转换 | 9 | 二/八/十/十六 · 字符码 · 十进制 |
-| 压缩包 | 9 | ZIP/7z/TAR/GZIP/RAR 解包 · ZIP 列表/目录差异/CRC 爆破/bkcrack · **ZIP 创建** · **ZIP 伪加密（出题）** |
-| 输入输出 | 7 | 文本输入/输出/展示 · 文件导入/输出 · 图片输入/查看 |
-| 二进制分析 | 13 | ELF / PE / Mach-O 信息 · DEX 字符串 · 节区列表/提取/熵 · PE 资源/证书/imphash/壳提示/.NET 元数据 · strings · overlay |
-| 音频处理 | 5 | WAV 信息 · 频谱图 · WAV LSB · DTMF · DeepSound |
-| 字符编码 | 5 | GBK/UTF/Big5 等字符集互转 · Quoted-Printable · 全角/半角 |
-| 哈希/摘要 | 4 | MD5/SHA/SHA3/RIPEMD/BLAKE2/Whirlpool/SM3/CRC32/HMAC/bcrypt |
-| 可视化分析 | 3 | 字节直方图 · 熵曲线 · 字节分布图 |
-| AI | 2 | 文本判断 `ai_judge` · 视觉识图 `ai_vision` |
+<details>
+<summary><b>展开 489 个内置节点的分类概览</b></summary>
 
-## 架构
+数量核对日期：2026-10-27。一级分类共 18 个，含用于本地扩展的「自定义」。
 
-采用 Cargo workspace，把与 Tauri 无关的分析引擎和薄适配层彻底分离：
+| 分类 | 数量 | 代表能力 |
+|---|---:|---|
+| 输入输出 | 9 | 文本、文件、图片输入输出；文件产物保存与读取 |
+| 编码解码 | 130 | Base 家族、传输编码、字符集、花式编码 |
+| 文本与数据 | 29 | 文本处理、URL Query/Cookie、JSON ↔ Base64url、Data URI |
+| 进制与数值 | 114 | 进制、位与字节、Varint、数论、时间日期、地址与单位 |
+| 古典密码 | 21 | ROT、凯撒、仿射、Playfair、Polybius、栅栏、Enigma |
+| 现代密码 | 14 | AES、DES、Blowfish、RC4、ChaCha、Salsa、RSA、PGP、HMAC |
+| 哈希与校验 | 14 | MD5、SHA、SHA3、RIPEMD、BLAKE2、SM3、CRC、bcrypt |
+| 分析与破解 | 17 | 熵、字频、自动识别、古典密码分析、口令与归档破解 |
+| 压缩与归档 | 10 | Zlib、ZIP、7z、TAR、GZIP、RAR；归档创建与修复 |
+| 文件与取证 | 25 | 文件结构、Office/APK、ELF/PE/Mach-O、文件雕刻 |
+| 隐写与水印 | 37 | 零宽字符、StegCloak、SNOW、图像与音频隐写、文件载体 |
+| 图像与二维码 | 38 | 通道、滤镜、几何与色彩、FFT、GIF、宽高修复、二维码 |
+| 音频与视频 | 3 | WAV 信息、频谱图、DTMF |
+| 语言与执行 | 1 | Brainfuck |
+| 可视化分析 | 3 | 字节直方图、熵曲线、字节分布图 |
+| 控制与逻辑 | 22 | 开关、分支、门控、列表、映射、归约、比较与路由 |
+| AI | 2 | 文本判断 `ai_judge`、视觉识图 `ai_vision` |
+| 自定义 | 0 | 用户本地复合模块与脚本节点，数量随本地扩展变化 |
 
-```
-LovelyMiscLab/
-├── crates/misclab-core/     # 纯 Rust 分析引擎（可无头单测、可被 CLI 复用）
-│   ├── src/graph/           # 图引擎：端口类型、模型、执行器、缓存、复合/脚本节点
-│   ├── src/node/            # Node trait、NodeDescriptor（数据驱动 UI 的单一真相源）、注册表
-│   ├── src/nodes/           # 270 个内置节点实现（一文件一节点或一对编解码）
-│   ├── src/ai.rs            # OpenAI 兼容的 chat / vision / 工具调用(chat_step)
-│   └── tests/               # 集成测试（大量编码解密对照用例）
-├── src-tauri/               # Tauri 应用外壳（薄适配器，over misclab-core）
-│   ├── src/mcp/             # 内嵌 MCP 服务器（rmcp/axum）：工具、状态、鉴权、IO 适配、画布桥接
-│   ├── src/commands/        # 暴露的 Tauri command（图执行 / AI Agent / 项目 / 模块 / 设置 / MCP…）
-│   ├── src/db.rs            # SQLite 持久化
-│   └── src/lib.rs           # 应用入口：注册插件、构建注册表、（可选）自启 MCP
-├── src/                     # React 前端
-│   ├── flow/                # 画布、节点、连线、检查器、整理布局、端口建议、Agent 回放、canvasSync
-│   ├── app/                 # 标题栏、命令面板、自动保存、运行控制台、Agent 面板、各类对话框
-│   ├── views/               # 画布 / 模块 / 模板 / 设置（含 MCP 面板）等视图
-│   ├── store/               # zustand 状态（graph / run / agent / descriptors…）
-│   └── lib/                 # Tauri IPC 绑定、类型、工程存取
-└── scripts/                 # UTF-8 检查等辅助脚本
-```
+</details>
 
-### 数据流
+## MCP 与 AI 调用
 
-```
-前端画布 (React + @xyflow/react)
-        │  SerializedGraph (JSON)                        ┌──────────────────────┐
-        ▼                                                │  外部 AI 客户端        │
-Tauri commands (src-tauri) ──Channel──▶ 流式进度/每节点结果 │  Claude Code / Cursor │
-        │                                                └──────────┬───────────┘
-        ▼                                          HTTP / Bearer     │  MCP
-GraphExecutor (misclab-core) 拓扑排序→逐节点 run→增量缓存 ◀── src/mcp ─┘  画布双向同步
-        │
-        ▼
-NodeRegistry + NodeDescriptor ──▶ 前端据此渲染调色板/节点体/连接校验
-```
+应用内嵌基于 **rmcp + axum** 的 Streamable HTTP MCP 服务，默认关闭。可在 **设置 → MCP 服务**中启用，复制面板提供的端点、令牌和客户端配置。
 
-`NodeDescriptor` 是**单一真相源**：后端声明节点的输入 / 输出 / 参数控件，前端完全据此渲染 UI，无需为每个节点写前端代码。AI Agent 与 MCP 服务器复用同一套引擎与执行器；`AppBridge` trait 让 MCP 能脱离 Tauri 单测。
+默认端点为 `http://127.0.0.1:8765/mcp`，请求使用 `Authorization: Bearer <令牌>`。外部客户端通常先发现分类与模块，再读取具体签名，最后执行或编辑画布。
 
-### 关键 Tauri Commands
-
-| 分类 | Command |
+| 场景 | 工具 |
 |---|---|
-| 图执行 | `list_node_descriptors` · `run_node` · `run_graph` · `cancel_job` · `reset_run` |
-| AI | `agent_run`（分步 Agent，流式）· `suggest_next_nodes`（端口预测）· `generate_workflow` · `explain_workflow` |
-| MCP | `mcp_start` · `mcp_stop` · `mcp_status` · `mcp_get_config` · `mcp_set_config` · `sync_canvas` |
-| 复合/脚本模块 | `list/save/delete_composite_module` · `list/save/delete_script_module` |
-| 工程与设置 | `save_project` · `load_project` · `get_settings` · `set_settings` · `detect_tool` |
+| 查找能力 | `list_categories` → `list_nodes` → `describe_node`；本地扩展使用 `list_modules` |
+| 执行 | `run_node`、`run_graph`；整图执行可使用当前画布 |
+| 编辑画布 | `get_canvas`、`set_canvas`、`add_node`、`connect`、`set_param`、`remove_node`、`remove_edge`、`move_node` |
+| 保存与复用 | `save_workflow`、`load_workflow`、`save_composite_module` |
+| 规划与环境 | `generate_workflow`、`get_settings`（配置脱敏）、`detect_tool`、`ping` |
 
-## 技术栈
+内置 AI 工作流助手直接使用桌面配置的模型，无需启用 MCP。MCP 面向外部客户端；服务启用后，持有令牌的客户端可调用引擎和画布能力，其调用确认由相应客户端管理。
 
-**前端**：React 19 · TypeScript · Vite 7 · Tailwind CSS v4 · @xyflow/react（节点图）· zustand · TanStack Query
+## EBCTFCodeBox 迁移进度
 
-**后端**：Rust 2021 · Tauri 2 · petgraph（图算法）· rusqlite（SQLite，bundled）· image / imageproc · rustfft · RustCrypto 全家桶 · rPGP · encoding_rs
+迁移基线固定为 [EBCTFCodeBox · ea2bc36](https://github.com/Henglie/EBCTFCodeBox/tree/ea2bc36dae31c97060f7f2cddad8df5518afad7b)，共 **820 项操作**。内置算法按实际功能用 Rust 实现，保留来源、参数映射、测试与兼容差异。
 
-**MCP**：[rmcp](https://github.com/modelcontextprotocol/rust-sdk) 2.0 · axum · tokio（`mcp` feature，默认开启）
+**当前暂停迁移，继续验证现有模块与交互。** 截至 2026-10-27：
+
+| 状态 | 数量 | 含义 |
+|---|---:|---|
+| 已验收 | 135 | 有真实节点或参数组合映射，并完成相应测试 |
+| 现有候选待核验 | 49 | 已找到可能对应的能力，尚未完成兼容验收 |
+| 待迁入 | 636 | 后续批次需要实现或确认覆盖方式 |
+
+**489 个节点不等于 489 项上游操作已迁移。** 一个操作可能拆成多个方向节点，也可能由某个节点的参数模式覆盖；名称相似不计完成。当前自主解题闭环的实测，也不代表上游所有“一把梭”或组合分析能力已完成迁移。
+
+[迁移说明](docs/ebctf-migration.md) · [完整操作清单](docs/ebctf-operations.md) · [机器可读清单](docs/ebctf-migration.json) · [人工验收记录](docs/ebctf-acceptance.json)
 
 ## 下载 / 安装
 
-到 [Releases](https://github.com/Tokeii0/LovelyMiscLab/releases) 下载对应平台的绿色版（免安装）：
+发布工作流提供以下目标，实际可用资产以 [Release 页面](https://github.com/LovelyTeams/LovelyMiscLab/releases)为准：
 
-| 平台 | 资源 | 说明 |
+| 平台 | 资源命名 | 运行要求 |
 |---|---|---|
-| 🪟 **Windows** | `*-windows-x64.exe` | 双击运行。依赖系统自带的 WebView2 运行时（Win10/11 已内置），已用 UPX 压缩。 |
-| 🐧 **Linux** | `*-linux-x64` | `chmod +x` 后运行。需要 WebKitGTK 4.1（Debian/Ubuntu：`sudo apt install libwebkit2gtk-4.1-0`）。 |
-| 🍎 **macOS** | `*-macos-universal.dmg` | Intel + Apple Silicon 通用；拖入「应用程序」。未签名，首次打开若被 Gatekeeper 拦截：右键 →「打开」，或终端执行 `xattr -cr /Applications/LovelyMiscLab.app`。 |
+| Windows x64 | `LovelyMiscLab-<版本>-windows-x64.exe` | Windows 桌面环境与 WebView2 Runtime |
+| Linux x64 | `LovelyMiscLab-<版本>-linux-x64` | 设置可执行权限，并准备 WebKitGTK 4.1 等运行依赖 |
+| macOS Universal | `LovelyMiscLab-<版本>-macos-universal.dmg` | Intel / Apple Silicon；打开 DMG 后放入应用程序目录 |
 
-> 应用内置自动更新：新版本发布后会在应用内提示升级（macOS 因 `.dmg` 内是 `.app` 包，改为引导到发布页手动下载）。
+从 v0.3.0 起，内置更新器使用 [LovelyTeams/LovelyMiscLab 发布渠道](https://github.com/LovelyTeams/LovelyMiscLab/releases)。旧版仍使用历史更新地址，可从本仓库 Release 页面下载新版。
 
 ## 开发
 
-### 前置依赖
+### 环境与启动
 
-- [Node.js](https://nodejs.org/) + [pnpm](https://pnpm.io/) · [Rust 工具链](https://www.rust-lang.org/tools/install) · [Tauri 2 系统依赖](https://tauri.app/start/prerequisites/)
-
-### 常用命令
+当前 CI 使用 **Node.js 22、pnpm 10、Rust 1.93.0**，并在 Windows、Linux、macOS 上执行构建与测试。操作系统依赖见 [Tauri 前置要求](https://tauri.app/start/prerequisites/)。
 
 ```bash
-pnpm install                       # 安装前端依赖
-pnpm tauri dev                     # 桌面开发模式（Tauri + Vite 热更新）
-pnpm dev                           # 仅浏览器预览前端（mock 节点，无 Tauri IPC）
-pnpm tauri build                   # 构建发布版桌面应用
-
-pnpm check:utf8                    # 校验源码 UTF-8 编码
-cargo clippy --workspace --all-targets -- -D warnings   # 零告警门禁（同 CI）
-cargo test -p misclab-core         # 引擎单元/集成测试（无需 Tauri）
-cargo test -p misclab-app --features mcp   # 应用层 + MCP 测试
-cargo build --no-default-features  # 不含 MCP 栈的精简构建
+pnpm install --frozen-lockfile
+pnpm tauri dev                 # 桌面开发：前端 + Rust 后端
 ```
 
-`crates/misclab-core` 完全独立于 Tauri，可单独测试与复用；MCP 由 `mcp` Cargo feature 门控（默认开启，服务本身运行时默认关闭）。CI 在 Windows / Linux / macOS 三系统上跑构建、测试与 Clippy 零告警门禁。
+```bash
+pnpm dev                       # 仅浏览器前端预览
+pnpm build                     # TypeScript 检查与前端生产构建
+pnpm tauri build               # 构建桌面发布产物
+```
+
+Windows 的常规本地发布构建位于 `target/release/misclab-app.exe`。临时联调 EXE 不随源码分发；新环境可以通过桌面开发命令测试当前代码。
+
+### 验证与目录维护
+
+```bash
+pnpm test:frontend             # 画布、计划、执行协调与自主解题回归
+pnpm check:utf8                # UTF-8 检查
+pnpm check:catalog             # Rust 注册表与前端生成目录一致性
+pnpm build
+
+cargo test -p misclab-core
+cargo test -p misclab-app --features mcp
+cargo clippy --workspace --all-targets -- -D warnings
+```
+
+修改 descriptor 后运行 `pnpm generate:catalog`，更新节点与分类目录。迁移人工状态维护在 `docs/ebctf-acceptance.json`；`pnpm generate:migration` 只更新派生清单，不覆盖人工验收结论。
+
+格式化新增或修改的 Rust 文件；当前工作区的既有全仓库格式差异单独追踪。`misclab-core` 可脱离 Tauri 独立测试；MCP 通过 Cargo 的 `mcp` feature 门控，默认编译，但服务运行时默认关闭。
+
+**最近一轮验证快照（2026-10-27）：** 61 项前端测试、30 项应用与 MCP 测试通过，严格 Clippy、UTF-8 和生产构建通过；复杂题完成真实模型联调与无模型参与的 Rust 独立复跑。记录见 [复杂题验收文件](examples/ai-complex-solver-validation.json)。常规回归测试不调用外部模型，真实模型联调需显式启用并使用本机已保存配置。
+
+## 架构
+
+```text
+LovelyMiscLab/
+├── crates/misclab-core/       # Rust 分析引擎
+│   └── src/
+│       ├── graph/            # 类型化数据流、执行器、缓存、复合模块
+│       ├── node/             # descriptor、统一分类与注册表
+│       └── nodes/            # 内置模块实现
+├── src-tauri/                # 桌面应用外壳
+│   └── src/
+│       ├── commands/         # 图执行、模型决策、计划生成、产物与设置
+│       └── mcp/              # MCP 工具、鉴权与画布桥接
+├── src/
+│   ├── flow/                 # 画布、参数与结果组件、Agent 规划和执行
+│   ├── app/                  # AI 对话框、执行报告与桌面交互
+│   ├── views/                # 模块、模板与设置等页面
+│   ├── store/                # 图、运行、Agent 等状态
+│   └── lib/                 # IPC 绑定、共享搜索与项目存取
+├── examples/                 # 可复跑的流程、题目附件与验证记录
+├── tests/                    # 前端回归与显式启用的真实模型联调
+└── docs/                     # 迁移清单与验收记录
+```
+
+`NodeDescriptor` 统一声明输入、输出、参数、分类和展示信息。前端据此渲染模块、校验连线；AI 与 MCP 复用真实注册表和 Rust 执行器。
+
+前端使用 **React 19、TypeScript、Vite 7、Tailwind CSS 4、React Flow、Zustand**；桌面外壳使用 **Tauri 2**，核心为 **Rust 2021**。
 
 ## 贡献
 
-欢迎贡献新节点、修 bug、完善文档。**新增节点请用 Rust 实现，且仓库只允许使用 Rust 版依赖库**——想移植某个 Python 工具，请先用 Rust 重写。完整规范、节点开发模板、PR 流程见 **[开发手册 CONTRIBUTING.md](./CONTRIBUTING.md)**。
+欢迎补充节点、修复问题、完善测试与文档。新增内置算法使用 Rust 与 Rust crate 实现；本地脚本节点是用户扩展能力，迁移时不将 Python、JavaScript、WASM 或外部程序引入为新增内置算法的运行依赖。
 
-## 推荐 IDE
+新增模块应提供明确的输入输出、参数说明、有效默认值、可运行示例和对照测试，并保留既有节点 ID、端口及参数的兼容性。完整要求见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
-[VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+交流 QQ 群：**424875687**。
 
 ## 许可
 
-[GPL-3.0](./LICENSE) · 详见 [CHANGELOG](./CHANGELOG.md)
+LovelyMiscLab 使用 [GPL-3.0-only](LICENSE)。变更记录见 [CHANGELOG.md](CHANGELOG.md)。
+
+感谢 [EBCTFCodeBox](https://github.com/Henglie/EBCTFCodeBox) 提供功能参考；迁移基线记录的上游许可为 Apache-2.0，具体来源与兼容差异保留在迁移文档和验收清单中。

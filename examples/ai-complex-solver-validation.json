@@ -1,0 +1,2212 @@
+{
+  "version": 1,
+  "task": "未知格式的综合取证题。请自主读取附件、判断真实线索，找出最终答案；记录每轮证据和推理，生成可以从附件重新执行的流程。",
+  "status": "verified",
+  "fixture": "ai-complex-solver.dat",
+  "sha256": "b0d86eb2b2a6f7ffbbfb56380a0835e5b8555b80cc483ea2af5aba26b89a0915",
+  "answer": "flag{cross_domain_05a19c474ab83642}",
+  "rounds": 5,
+  "nodes": 19,
+  "edges": 19,
+  "heldOutAnswer": "Kept in local expected-answer field; not included in model prompts",
+  "initialInputs": {
+    "files": [
+      "specimen.dat"
+    ],
+    "text": ""
+  },
+  "runSteps": "答案校验通过\nflag{cross_domain_05a19c474ab83642}\n第 5 轮 · rot13_29.text · 与标准答案一致\n解题证据 · 5 轮\n第 1/8 轮：6 个节点\n第一轮仅做识别探测：从唯一原始文件 specimen.dat 读取 bytes，送 detect_file_type 判断真实魔数/类型，同时用 file_carve(index=0, 空签名表) 观察内嵌结构列表；另把 file_import 得到的可读文本直接输出，便于查看是否有明文线索。题目文本为空，无可写入的 text_input。后续根据真实文件类型（如 PNG/JPEG/ZIP/音频等）再接入图像通道、归档条目或音频隐写节点；若 file_carve 返回 count 与条目信息，则按真实条目索引继续展开而非默认第一个。复测标准：detect.text 非空且给出可信类型，carve.text 给出可核查的偏移/条目描述。\n文件导入\nsrc\n文件类型识别\ndetect\n文件雕刻(binwalk)\ncarve\n文本输出\nout_type\n文本输出\nout_carve\n文本输出\nout_text\n已配置 6 个节点、连接 5 条线\n运行第 1 轮并检查真实输出\nsrc：执行通过\n4 项输出已返回\ndetect：执行通过\n3 项输出已返回\ncarve：执行通过\n3 项输出已返回\nout_type：执行通过\n1 项输出已返回\nout_carve：执行通过\n1 项输出已返回\nout_text：执行通过\n1 项输出已返回\ndetect.text 非空检查：通过\n实际：\"ZIP / docx / jar / apk\\n后缀名: zip\\n幻数: 50 4b 03 04 14 00 00 00\"\n本轮未发现目标答案\n节点执行成功，已单独检查解题目标。\n读取本轮证据，自动调整下一轮节点和参数…\n分析实际证据，判断需要修复或继续处理的节点…\n诊断下一步判断\ndetect_file_type 判定原始输入为 ZIP（幻数 50 4b 03 04）。out_text 显示该 ZIP 含 brief.txt、dispatch/packet.json、assets/photograph.png；carve 的 [0] 偏移 303 实际是 dispatch/packet.json 的局部 ZIP 头，只抽取了 305 字节压缩数据，不是完整独立归档。\n诊断发现 carve 需要修改\n对完整 ZIP 使用 file_carve(index=0) 从偏移 303 起仅抽取 305 字节，得到的是 dispatch/packet.json 的局部压缩数据，不是可独立解压的嵌套归档。 修改：移除 carve 默认抽取分支作为后续归档输入；保留 detect 结果，并从 src.bytes 接入 ZIP 条目列表/解压节点。 复测：ZIP 条目列表返回 brief.txt、dispatch/packet.json、assets/photograph.png，且各条目可被解压读取。\n接下来需要的能力\n停用误导性的默认 carve 抽取，改为从原始 bytes 列出并解压 ZIP 全部条目；先读取 brief.txt 与 dispatch/packet.json，再对 assets/photograph.png 做图像、二维码或隐写探测。\n检索查找「解压」：解压 (archive_extract)、Base64 + Zlib 编码 (base64_zlib_encode)、Base64 + Zlib 解码 (base64_zlib_decode)、压缩包文件列表 (archive_list)、取解压文件 (archive_get_file)、PNG 宽高修复 (png_fix)\n检索查找「ZIP 列表」：未找到对应模块\n检索查找「archive_list」：压缩包文件列表 (archive_list)\n检索查找「zsteg」：LSB 全组合扫描 (zsteg_scan)\n检索查找「二维码」：二维码编码 (qr_encode)、二维码解码 (qr_decode)、01 转图像 (bits_to_image)、BMP 宽高修复 (bmp_fix)、GIF 取帧 (gif_frame)、GIF 帧时序解码 (gif_timing)、GIF 拼帧 (gif_sprite)、JPG 宽高修复 (jpg_fix)\n正在选择节点、配置参数和连线…\n节点、参数、连线和测试条件校验通过\n第 2/8 轮：15 个节点\n第一轮误把 file_carve 从偏移 303 抽取的局部数据当作独立 ZIP；本轮移除该误导分支。保留 src/detect/out_type，直接对原始 bytes 使用 archive_list 获取完整条目列表，再用 archive_extract 解压全部条目；按真实条目名精确取 brief.txt 与 dispatch/packet.json 查看线索，并取 assets/photograph.png 同时做 LSB 全位扫描与二维码解码。复测标准：out_list 显示 brief.txt、dispatch/packet.json、assets/photograph.png；out_brief/out_packet 非空可读；若 PNG 含隐写或二维码，out_zsteg/out_qr 出现候选 flag{。\n修改新增 压缩包文件列表 (list)\n修改新增 文本输出 (out_list)\n修改新增 解压 (ext)\n修改新增 取解压文件 (get_brief)\n修改新增 取解压文件 (get_packet)\n修改新增 取解压文件 (get_png)\n修改新增 LSB 全组合扫描 (zsteg)\n修改新增 二维码解码 (qr)\n修改新增 文本输出 (out_brief)\n修改新增 文本输出 (out_packet)\n修改新增 文本输出 (out_zsteg)\n修改新增 文本输出 (out_qr)\n修改移除 文件雕刻(binwalk) (carve)\n修改移除 文本输出 (out_carve)\n修改移除 文本输出 (out_text)\n修改连接 src.bytes → list.archive\n修改连接 list.text → out_list.text\n修改连接 src.bytes → ext.archive\n修改连接 ext.entries → get_brief.entries\n修改连接 ext.entries → get_packet.entries\n修改连接 ext.entries → get_png.entries\n修改连接 get_brief.text → out_brief.text\n修改连接 get_packet.text → out_packet.text\n修改连接 get_png.bytes → zsteg.data\n修改连接 get_png.bytes → qr.image\n修改连接 zsteg.best → out_zsteg.text\n修改连接 qr.text → out_qr.text\n修改断开 src.bytes → carve.data\n修改断开 carve.text → out_carve.text\n修改断开 src.text → out_text.text\n已在当前流程修改并拼接：15 个节点、14 条连线\n运行第 2 轮并检查真实输出\n复测修复复测 carve：已移除，待核验\n原节点已移除；不能据此判定修复通过，需检查替代分支和目标结果。\nsrc：执行通过\n4 项输出已返回\ndetect：执行通过\n3 项输出已返回\nout_type：执行通过\n1 项输出已返回\nlist：执行通过\n4 项输出已返回\nout_list：执行通过\n1 项输出已返回\next：执行通过\n8 项输出已返回\nget_brief：执行通过\n4 项输出已返回\nget_packet：执行通过\n4 项输出已返回\nget_png：执行通过\n4 项输出已返回\nzsteg：执行通过\n2 项输出已返回\nqr：执行通过\n3 项输出已返回\nout_brief：执行通过\n1 项输出已返回\nout_packet：执行通过\n1 项输出已返回\nout_zsteg：执行通过\n1 项输出已返回\nout_qr：执行通过\n1 项输出已返回\nout_list.value 非空检查：通过\n实际：\"共 4 个条目（0 个加密）：\\nbrief.txt 原始 425 压缩 264 Deflated 明文 CRC 7a3f2a30\\ndispatch/packet.json 原始 311 压缩 255 Deflated 明\"…\nout_brief.value 非空检查：通过\n实际：\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form \"…\nout_packet.value 非空检查：通过\n实际：\"{\\n \\\"version\\\": 1,\\n \\\"cipher\\\": \\\"AES-128-CBC\\\",\\n \\\"padding\\\": \\\"PKCS7\\\",\\n \\\"encoding\\\": \\\"Base64\\\",\\n \\\"iv_hex\\\": \\\"2a031841c4d27aaf0c1d40b0c5e6eb48\\\",\\n \\\"ciphertext\\\": \\\"SutD\"…\n本轮未发现目标答案\n节点执行成功，已单独检查解题目标。\n读取本轮证据，自动调整下一轮节点和参数…\n分析实际证据，判断需要修复或继续处理的节点…\n诊断下一步判断\nZIP 明文包含 4 个条目；brief.txt 明确提示密钥在图像绿色通道最低位、每 8 位按 MSB-first 组成字节；packet.json 给出 AES-128-CBC、PKCS7、Base64、IV 与 ciphertext。当前 zsteg_scan 的 best 为“bit1 g lsb”且输出乱码，未满足绿色最低位与 MSB-first；QR 解码为空且无线索支持该分支。\n诊断发现 zsteg 需要修改\n现有扫描未限定绿色通道与 MSB-first，best 为 bit1 g lsb 且输出非文本乱码，与 brief.txt 的“green lowest bit, most significant first”不符。 修改：将 LSB 提取改为绿色通道 bit0，按每 8 位 MSB-first 重组；先取前 16 字节作为 AES-128 密钥候选，并保留原始提取流供核对。 复测：out_zsteg 至少出现 16 字节可打印 ASCII 密钥候选，且不再是乱码；同一图像可重复得到一致结果。\n诊断发现 qr 需要修改\nQR 解码为空，brief/packet 无线索指示二维码层，该探测无新发现。 修改：移除 qr 与 out_qr 分支，将节点额度用于绿色 LSB 提取、packet JSON 字段提取和 AES 解密。 复测：图中不再保留空 QR 输出；PNG 仅作为绿色 LSB 密钥来源。\n接下来需要的能力\n按 brief 从 PNG 绿色通道 bit0 以 MSB-first 提取 AES-128 密钥，并保留 packet 到 JSON 字段、Base64 与 AES-CBC 解密链所需的真实数据连接。\n检索查找「LSB隐写」：未找到对应模块\n检索查找「绿色通道」：未找到对应模块\n检索查找「MSB位序」：未找到对应模块\n检索查找「JSON字段提取」：未找到对应模块\n检索查找「Base64解码」：未找到对应模块\n检索查找「AES-CBC解密」：未找到对应模块\n分析实际证据，判断需要修复或继续处理的节点…\n诊断下一步判断\n原始 ZIP 已列出 4 个条目；brief.txt 明确密钥在照片绿色通道最低位、8 位一字节且 MSB-first；dispatch/packet.json 给出 AES-128-CBC/PKCS7/Base64、IV 和密文；telemetry 声明为噪声。当前 zsteg 以 maxBit=7 扫描，best 标为 bit1 g lsb 但内容乱码，QR 解码为空，不能直接作为密钥或答案。\n诊断发现 zsteg 需要修改\n参数 maxBit=7 进行全位面扫描，未显式限定绿色通道最低位，也未保证每字节 MSB-first；best 输出乱码，不能作为照片中的密钥。 修改：优先将扫描收窄到绿色通道最低位并设置 MSB-first；若当前 zsteg_scan 不支持通道/位序参数，改用检索到的专用 LSB/比特提取能力，输入仍接 get_png 的 bytes。 复测：提取结果按 AES-128 应为 16 字节；用 packet 中 IV 和 Base64 密文解密后 PKCS7 填充有效，明文可读且最终候选匹配 flag\\{...\\}。\n接下来需要的能力\n修正 PNG 绿色通道最低位 MSB-first 的比特提取以获得 AES-128 密钥，再对 packet 的 Base64 密文按给定 IV 做 AES-CBC/PKCS7 解密，检查明文并继续必要层。\n检索查找「LSB」：LSB 全组合扫描 (zsteg_scan)、LSB 嵌入(出题) (lsb_embed)、LSB 提取 (lsb_extract)、cloacked-pixel 嵌入 (cloacked_pixel_embed)、cloacked-pixel 提取 (cloacked_pixel_extract)、stegpy 嵌入 (stegpy_embed)、stegpy 提取 (stegpy_extract)、WAV LSB 提取 (wav_lsb)\n检索查找「bit_extract」：未找到对应模块\n检索查找「AES」：AES (aes)、凯撒密码 (caesar)、CryptoJS AES 解密 (cryptojs_aes)、凯撒爆破 (caesar_brute)、cloacked-pixel 提取 (cloacked_pixel_extract)、DeepSound 提取 (deepsound_extract)\n检索查找「Base64」：Base64 编码 (base64_encode)、Base64 解码 (base64_decode)、字典 Base64 编码 (base64_dict_encode)、字典 Base64 解码 (base64_dict_decode)、Base64url → JSON (b64url_json_decode)、Base64 + Zlib 编码 (base64_zlib_encode)、Base64 + Zlib 解码 (base64_zlib_decode)、Base64 补位隐写 嵌入 (base64_padding_stego_encode)\n检索查找「PKCS7」：未找到对应模块\n检索查找「stegano」：未找到对应模块\n正在选择节点、配置参数和连线…\n正在根据目录校验结果修正计划…\n正在根据目录校验结果修正计划…\n节点、参数、连线和测试条件校验通过\n第 3/8 轮：18 个节点\n保留有效链：原始 ZIP → archive_list（4 条目）→ archive_extract → 精确取 brief.txt / dispatch/packet.json / assets/photograph.png；移除 file_carve 误抽分支、全位面 zsteg 扫描与空 QR 分支。按 brief.txt 提示“绿色通道最低位、8 位成一字节、MSB 优先”，把 lsb_extract 参数收窄为 channels=G、bit=0、msbFirst=true，输入仍接 get_png.bytes；其 text 与 hex 分别送 out_key_text/out_key_hex 便于核查密钥形态（预期 AES-128 即 16 字节）。AES 两分支共用 packet 中给定的 IV 2a031841c4d27aaf0c1d40b0c5e6eb48 与 CBC/PKCS7、inputFormat=Base64、outputFormat=UTF8：aes_utf8 用 keyFormat=UTF8 接 lsb.text，aes_hex 用 keyFormat=Hex 接 lsb.hex，覆盖密钥以 ASCII 或十六进制保存的两种真实可能。注意风险点：aes 的 text 输入接的是整段 packet JSON 而非纯密文串，若因 JSON 混入导致 Base64 解析失败，本轮输出将给出原始报错，下一轮再改用可提取纯密文的路径（如 base64 系列节点的 bytes 输出）并据报错调整 keyFormat/长度。复测标准：out_key_text 非空；正确 AES 分支明文可读并以 flag{...} 结尾，届时下一轮再为该输出补 contains 校验。\n修改新增 LSB 提取 (lsb)\n修改新增 文本输出 (out_key_text)\n修改新增 文本输出 (out_key_hex)\n修改新增 AES (aes_utf8)\n修改新增 文本输出 (out_flag_utf8)\n修改新增 AES (aes_hex)\n修改新增 文本输出 (out_flag_hex)\n修改移除 LSB 全组合扫描 (zsteg)\n修改移除 二维码解码 (qr)\n修改移除 文本输出 (out_zsteg)\n修改移除 文本输出 (out_qr)\n修改连接 get_png.bytes → lsb.data\n修改连接 lsb.text → out_key_text.text\n修改连接 lsb.hex → out_key_hex.text\n修改连接 lsb.text → aes_utf8.key\n修改连接 get_packet.text → aes_utf8.text\n修改连接 aes_utf8.text → out_flag_utf8.text\n修改连接 lsb.hex → aes_hex.key\n修改连接 get_packet.text → aes_hex.text\n修改连接 aes_hex.text → out_flag_hex.text\n修改断开 get_png.bytes → zsteg.data\n修改断开 get_png.bytes → qr.image\n修改断开 zsteg.best → out_zsteg.text\n修改断开 qr.text → out_qr.text\n已在当前流程修改并拼接：18 个节点、19 条连线\n运行第 3 轮并检查真实输出\n复测修复复测 zsteg：已移除，待核验\n原节点已移除；不能据此判定修复通过，需检查替代分支和目标结果。\nparse error: AES 密钥须为 16/24/32 字节(当前 128)\nsrc：执行通过\n4 项输出已返回\ndetect：执行通过\n3 项输出已返回\nout_type：执行通过\n1 项输出已返回\nlist：执行通过\n4 项输出已返回\nout_list：执行通过\n1 项输出已返回\next：执行通过\n8 项输出已返回\nget_brief：执行通过\n4 项输出已返回\nout_brief：执行通过\n1 项输出已返回\nget_packet：执行通过\n4 项输出已返回\nout_packet：执行通过\n1 项输出已返回\nget_png：执行通过\n4 项输出已返回\nlsb：执行通过\n3 项输出已返回\nout_key_text：执行通过\n1 项输出已返回\nout_key_hex：执行通过\n1 项输出已返回\naes_utf8：未完成\nparse error: AES 密钥须为 16/24/32 字节(当前 128)\nout_flag_utf8：执行通过\n1 项输出已返回\naes_hex：未完成\nparse error: AES 密钥须为 16/24/32 字节(当前 128)\nout_flag_hex：执行通过\n1 项输出已返回\nout_key_text.value 非空检查：通过\n实际：\"KEY_HEX=55c352a4dd8b8ccebb46d788109dab05\\n\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\"\n本轮未发现目标答案\n有 2 项执行/断言未通过，将连同输出交回模型。\n读取本轮证据，自动调整下一轮节点和参数…\n分析实际证据，判断需要修复或继续处理的节点…\n诊断下一步判断\nLSB 绿色通道最低位已得到真实密钥线索：KEY_HEX=55c352a4dd8b8ccebb46d788109dab05（32 个十六进制字符，即 16 字节），但当前 AES 节点把包含 KEY_HEX= 前缀和大量 NUL 的整段 lsb.text/lsb.hex 当作密钥，导致密钥长度错误；同时 AES 的 text 输入接的是整段 packet JSON，而不是其中的纯 Base64 ciphertext。\n诊断发现 aes_hex 需要修改\n密钥输入接 lsb.hex 整段（含 KEY_HEX= 与 NUL），且密文输入接整段 packet JSON，均不是 AES 节点期望的纯密钥和纯 Base64 密文。 修改：新增/接入 JSON 路径提取节点从 get_packet.text 取 ciphertext 字段；新增/接入正则或十六进制提取节点从 lsb.text 中取 KEY_HEX= 后 32 个 hex 字符；将 aes_hex.key 改接提取出的 32 位 hex 密钥，aes_hex.text 改接提取出的纯 ciphertext，保持 keyFormat=Hex、inputFormat=Base64、mode=CBC、iv=2a031841c4d27aaf0c1d40b0c5e6eb48。 复测：aes_hex 不再报密钥长度错误，输出 UTF8 明文可读，并包含 flag{ 与结尾 }。\n诊断发现 aes_utf8 需要修改\n该分支使用 UTF8 密钥格式，但真实密钥线索明确为 KEY_HEX 十六进制格式，且当前同样收到整段 LSB 文本。 修改：移除或停用该冗余错误分支，避免重复无效解密；保留修复后的 aes_hex 单分支。 复测：图中不再执行 aes_utf8 错误分支，最终结果由修复后的 aes_hex 分支产生。\n接下来需要的能力\n从 LSB 文本中提取等号后的 32 位十六进制密钥，从 packet JSON 中提取 ciphertext 字段，按 AES-128-CBC/PKCS7/Base64/给定 IV 解密，得到 flag{...} 候选。\n检索查找「JSON路径提取」：未找到对应模块\n检索查找「正则提取」：正则提取 (regex_extract)\n检索查找「AES」：AES (aes)、凯撒密码 (caesar)、CryptoJS AES 解密 (cryptojs_aes)、凯撒爆破 (caesar_brute)、cloacked-pixel 提取 (cloacked_pixel_extract)、DeepSound 提取 (deepsound_extract)\n检索查找「十六进制」：HTML 实体解码 (html_entity_decode)、Unicode 反转义 (unicode_unescape)、Unicode 转义 (unicode_escape)、IPv6 展开 (ipv6_expand)、IP地址转换 (ip_convert)、提取像素值 (pixel_extract)\n检索查找「Base64解码」：未找到对应模块\n正在选择节点、配置参数和连线…\n节点、参数、连线和测试条件校验通过\n第 4/8 轮：18 个节点\n保留原始 ZIP→条目列表/解压→brief.txt、packet.json、photograph.png 的取证链。上一轮已按 brief 提示从 PNG 绿色通道最低位、MSB 优先提取到真实密钥行 KEY_HEX=55c352a4dd8b8ccebb46d788109dab05；本轮不再把整段含 NUL 的 LSB 文本或整段 JSON 直接喂给 AES，而是新增两个 regex_extract：rx_key 从 lsb.text 中取 32 位十六进制密钥，rx_ct 从 packet.text 中取长 Base64 ciphertext。aes_hex 保持 AES-128-CBC、PKCS7、iv=2a031841c4d27aaf0c1d40b0c5e6eb48，keyFormat=Hex、inputFormat=Base64、outputFormat=UTF8；移除无效的 aes_utf8 分支。复测标准：aes_hex 不再报密钥长度错误，out_flag_hex 输出明文含 flag{...}；若 rx_ct 误取到其他长串，则据输出改 pattern 为 ciphertext 字段更严格形式。\n修改新增 正则提取 (rx_key)\n修改新增 正则提取 (rx_ct)\n修改移除 AES (aes_utf8)\n修改移除 文本输出 (out_flag_utf8)\n修改连接 lsb.text → rx_key.text\n修改连接 get_packet.text → rx_ct.text\n修改连接 rx_key.text → aes_hex.key\n修改连接 rx_ct.text → aes_hex.text\n修改断开 lsb.text → aes_utf8.key\n修改断开 get_packet.text → aes_utf8.text\n修改断开 aes_utf8.text → out_flag_utf8.text\n修改断开 lsb.hex → aes_hex.key\n修改断开 get_packet.text → aes_hex.text\n已在当前流程修改并拼接：18 个节点、18 条连线\n运行第 4 轮并检查真实输出\n复测修复复测 aes_hex：已执行，待核验\n节点已重新执行；没有针对该节点的结果断言，尚不能确认修复目标。\n复测修复复测 aes_utf8：已移除，待核验\n原节点已移除；不能据此判定修复通过，需检查替代分支和目标结果。\nsrc：执行通过\n4 项输出已返回\ndetect：执行通过\n3 项输出已返回\nout_type：执行通过\n1 项输出已返回\nlist：执行通过\n4 项输出已返回\nout_list：执行通过\n1 项输出已返回\next：执行通过\n8 项输出已返回\nget_brief：执行通过\n4 项输出已返回\nout_brief：执行通过\n1 项输出已返回\nget_packet：执行通过\n4 项输出已返回\nout_packet：执行通过\n1 项输出已返回\nget_png：执行通过\n4 项输出已返回\nlsb：执行通过\n3 项输出已返回\nout_key_text：执行通过\n1 项输出已返回\nout_key_hex：执行通过\n1 项输出已返回\nrx_key：执行通过\n2 项输出已返回\nrx_ct：执行通过\n2 项输出已返回\naes_hex：执行通过\n2 项输出已返回\nout_flag_hex：执行通过\n1 项输出已返回\nout_flag_hex.value 包含检查：未通过\n实际：\"NzM3OTZlNzQ3YjcwNjU2MjY2NjY1ZjcxNjI3YTZlNzY2MTVmMzAzNTZlMzEzOTcwMzQzNzM0NmU2ZjM4MzMzNjM0MzI3ZA==\"\n本轮未发现目标答案\n有 1 项执行/断言未通过，将连同输出交回模型。\n读取本轮证据，自动调整下一轮节点和参数…\n分析实际证据，判断需要修复或继续处理的节点…\n诊断下一步判断\nAES-128-CBC 已成功解密，aes_hex.text 得到的是 Base64 字符串“NzM3OTZlNzQ3YjcwNjU2MjY2NjY1ZjcxNjI3YTZlNzY2MTVmMzAzNTZlMzEzOTcwMzQzNzM0NmU2ZjM4MzMzNjM0MzI3ZA==”；它不是最终 flag，仍需继续解码。该字符串呈现明显的多层包装特征：Base64 解码后是十六进制文本，十六进制解码后是“synt{...}”形态，疑似 ROT13 后的 flag。\n接下来需要的能力\n保留现有 ZIP→brief/packet/photograph→LSB→regex→AES 链，在 aes_hex 后依次接入 Base64 解码、十六进制解码与 ROT13/凯撒还原，最终校验输出以 flag{ 开头并以 } 结尾。\n检索查找「Base64 解码」：Base64 解码 (base64_decode)、多行 Base64 解码 (multiline_base64_decode)、字典 Base64 解码 (base64_dict_decode)、HTTP Basic 认证 编码 (http_basic_auth_encode)、HTTP Basic 认证 解码 (http_basic_auth_decode)、Base64 + Zlib 编码 (base64_zlib_encode)、Base64 + Zlib 解码 (base64_zlib_decode)\n检索查找「Hex 解码」：Hex 解码 (hex_decode)\n检索查找「ROT13」：ROT13 (rot13)\n检索查找「凯撒」：凯撒密码 (caesar)、凯撒爆破 (caesar_brute)\n检索查找「字符编码」：Quoted-Printable 编码 (quoted_printable_encode)、Quoted-Printable 解码 (quoted_printable_decode)、全角/半角 (fullwidth_halfwidth)、文本编码 (encode_text)、文本解码 (decode_text)、EBCDIC ASCII 子集 编码 (ebcdic_encode)、EBCDIC ASCII 子集 解码 (ebcdic_decode)\n正在选择节点、配置参数和连线…\n正在根据目录校验结果修正计划…\n节点、参数、连线和测试条件校验通过\n第 5/8 轮：19 个节点\n修正语法错误：src 的 params 改为空对象（源文件路径仍由程序绑定本题唯一原始输入 specimen.dat，不改动）。保留已生效取证链：ZIP→ext→get_brief（提示绿色通道最低位、8 位成字节、MSB 优先）与 get_packet（AES-128-CBC/PKCS7/Base64、iv=2a031841c4d27aaf0c1d40b0c5e6eb48）→ get_png→lsb(G,bit0,msbFirst)→rx_key 取 32 位 hex 密钥、rx_ct 取 Base64 密文→aes_hex 解密。上一轮实测 aes_hex.text 为 Base64 串 NzM3OTZlNzQ3YjcwNjU2MjY2NjY1ZjcxNjI3YTZlNzY2MTVmMzAzNTZlMzEzOTcwMzQzNzM0NmU2ZjM4MzMzNjM0MzI3ZA==，说明还有两层包装，故新增 b64dec(标准)→hexdec→rot13，输出接 out_final。已移除本轮无价值展示节点（out_packet/out_key_hex/out_flag_hex）以控节点数≤20。复测标准：b64dec 输出为纯 hex 文本、hexdec 输出为 synt{...} 形态、rot13 输出以 flag{ 开头以 } 结尾；checks 仅用 contains flag{ 校验展示端口。若 hexdec 因残留非 hex 字符报错，下轮改 strip=true。\n修改新增 Base64 解码 (b64dec)\n修改新增 Hex 解码 (hexdec)\n修改新增 ROT13 (rot13)\n修改新增 文本输出 (out_final)\n修改移除 文本输出 (out_packet)\n修改移除 文本输出 (out_key_hex)\n修改移除 文本输出 (out_flag_hex)\n修改连接 aes_hex.text → b64dec.text\n修改连接 b64dec.text → hexdec.text\n修改连接 hexdec.text → rot13.text\n修改连接 rot13.text → out_final.text\n修改断开 get_packet.text → out_packet.text\n修改断开 lsb.hex → out_key_hex.text\n修改断开 aes_hex.text → out_flag_hex.text\n已在当前流程修改并拼接：19 个节点、19 条连线\n运行第 5 轮并检查真实输出\nsrc：执行通过\n4 项输出已返回\ndetect：执行通过\n3 项输出已返回\nout_type：执行通过\n1 项输出已返回\nlist：执行通过\n4 项输出已返回\nout_list：执行通过\n1 项输出已返回\next：执行通过\n8 项输出已返回\nget_brief：执行通过\n4 项输出已返回\nout_brief：执行通过\n1 项输出已返回\nget_packet：执行通过\n4 项输出已返回\nget_png：执行通过\n4 项输出已返回\nlsb：执行通过\n3 项输出已返回\nout_key_text：执行通过\n1 项输出已返回\nrx_key：执行通过\n2 项输出已返回\nrx_ct：执行通过\n2 项输出已返回\naes_hex：执行通过\n2 项输出已返回\nb64dec：执行通过\n2 项输出已返回\nhexdec：执行通过\n2 项输出已返回\nrot13：执行通过\n1 项输出已返回\nout_final：执行通过\n1 项输出已返回\nout_final.value 包含检查：通过\n实际：\"flag{cross_domain_05a19c474ab83642}\"\n发现 1 个符合目标格式的候选\n节点执行成功，已单独检查解题目标。\n实际输出与用户提供的标准答案一致。每个候选均保留来源节点和处理链。",
+  "roundPlans": [
+    {
+      "time": "2026-10-27T02:26:31.211Z",
+      "op": "generate",
+      "id": "2",
+      "kind": "result",
+      "value": {
+        "nodes": [
+          {
+            "key": "src",
+            "descriptorId": "file_import",
+            "params": {
+              "path": "D:\\Lovelymisclab\\.git\\solver-fixtures\\complex\\specimen.dat"
+            },
+            "position": {
+              "x": 40,
+              "y": 60
+            }
+          },
+          {
+            "key": "detect",
+            "descriptorId": "detect_file_type",
+            "params": {},
+            "position": {
+              "x": 300,
+              "y": 60
+            }
+          },
+          {
+            "key": "carve",
+            "descriptorId": "file_carve",
+            "params": {
+              "index": 0,
+              "signatures": ""
+            },
+            "position": {
+              "x": 300,
+              "y": 210
+            }
+          },
+          {
+            "key": "out_type",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 560,
+              "y": 60
+            }
+          },
+          {
+            "key": "out_carve",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 560,
+              "y": 210
+            }
+          },
+          {
+            "key": "out_text",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 300,
+              "y": 360
+            }
+          }
+        ],
+        "edges": [
+          {
+            "from": {
+              "node": "src",
+              "port": "bytes"
+            },
+            "to": {
+              "node": "detect",
+              "port": "data"
+            }
+          },
+          {
+            "from": {
+              "node": "src",
+              "port": "bytes"
+            },
+            "to": {
+              "node": "carve",
+              "port": "data"
+            }
+          },
+          {
+            "from": {
+              "node": "detect",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_type",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "carve",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_carve",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "src",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_text",
+              "port": "text"
+            }
+          }
+        ],
+        "notes": "第一轮仅做识别探测：从唯一原始文件 specimen.dat 读取 bytes，送 detect_file_type 判断真实魔数/类型，同时用 file_carve(index=0, 空签名表) 观察内嵌结构列表；另把 file_import 得到的可读文本直接输出，便于查看是否有明文线索。题目文本为空，无可写入的 text_input。后续根据真实文件类型（如 PNG/JPEG/ZIP/音频等）再接入图像通道、归档条目或音频隐写节点；若 file_carve 返回 count 与条目信息，则按真实条目索引继续展开而非默认第一个。复测标准：detect.text 非空且给出可信类型，carve.text 给出可核查的偏移/条目描述。",
+        "checks": [
+          {
+            "node": "detect",
+            "port": "text",
+            "kind": "nonEmpty"
+          }
+        ]
+      }
+    },
+    {
+      "time": "2026-10-27T02:27:27.04Z",
+      "op": "generate",
+      "id": "5",
+      "kind": "result",
+      "value": {
+        "nodes": [
+          {
+            "key": "src",
+            "descriptorId": "file_import",
+            "params": {
+              "path": "D:\\Lovelymisclab\\.git\\solver-fixtures\\complex\\specimen.dat"
+            },
+            "position": {
+              "x": 40,
+              "y": 60
+            }
+          },
+          {
+            "key": "detect",
+            "descriptorId": "detect_file_type",
+            "params": {},
+            "position": {
+              "x": 300,
+              "y": 60
+            }
+          },
+          {
+            "key": "out_type",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 560,
+              "y": 60
+            }
+          },
+          {
+            "key": "list",
+            "descriptorId": "archive_list",
+            "params": {},
+            "position": {
+              "x": 300,
+              "y": 210
+            }
+          },
+          {
+            "key": "out_list",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 560,
+              "y": 210
+            }
+          },
+          {
+            "key": "ext",
+            "descriptorId": "archive_extract",
+            "params": {
+              "format": "自动",
+              "password": "",
+              "entry": ""
+            },
+            "position": {
+              "x": 300,
+              "y": 360
+            }
+          },
+          {
+            "key": "get_brief",
+            "descriptorId": "archive_get_file",
+            "params": {
+              "entry": "brief.txt",
+              "match": "精确",
+              "index": 0
+            },
+            "position": {
+              "x": 560,
+              "y": 360
+            }
+          },
+          {
+            "key": "get_packet",
+            "descriptorId": "archive_get_file",
+            "params": {
+              "entry": "dispatch/packet.json",
+              "match": "精确",
+              "index": 0
+            },
+            "position": {
+              "x": 560,
+              "y": 510
+            }
+          },
+          {
+            "key": "get_png",
+            "descriptorId": "archive_get_file",
+            "params": {
+              "entry": "assets/photograph.png",
+              "match": "精确",
+              "index": 0
+            },
+            "position": {
+              "x": 560,
+              "y": 660
+            }
+          },
+          {
+            "key": "zsteg",
+            "descriptorId": "zsteg_scan",
+            "params": {
+              "maxBit": 7,
+              "columnMajor": false,
+              "flagRegex": "flag\\{"
+            },
+            "position": {
+              "x": 820,
+              "y": 60
+            }
+          },
+          {
+            "key": "qr",
+            "descriptorId": "qr_decode",
+            "params": {},
+            "position": {
+              "x": 820,
+              "y": 210
+            }
+          },
+          {
+            "key": "out_brief",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 820,
+              "y": 360
+            }
+          },
+          {
+            "key": "out_packet",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 820,
+              "y": 510
+            }
+          },
+          {
+            "key": "out_zsteg",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 1080,
+              "y": 60
+            }
+          },
+          {
+            "key": "out_qr",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 1080,
+              "y": 210
+            }
+          }
+        ],
+        "edges": [
+          {
+            "from": {
+              "node": "src",
+              "port": "bytes"
+            },
+            "to": {
+              "node": "detect",
+              "port": "data"
+            }
+          },
+          {
+            "from": {
+              "node": "detect",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_type",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "src",
+              "port": "bytes"
+            },
+            "to": {
+              "node": "list",
+              "port": "archive"
+            }
+          },
+          {
+            "from": {
+              "node": "list",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_list",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "src",
+              "port": "bytes"
+            },
+            "to": {
+              "node": "ext",
+              "port": "archive"
+            }
+          },
+          {
+            "from": {
+              "node": "ext",
+              "port": "entries"
+            },
+            "to": {
+              "node": "get_brief",
+              "port": "entries"
+            }
+          },
+          {
+            "from": {
+              "node": "ext",
+              "port": "entries"
+            },
+            "to": {
+              "node": "get_packet",
+              "port": "entries"
+            }
+          },
+          {
+            "from": {
+              "node": "ext",
+              "port": "entries"
+            },
+            "to": {
+              "node": "get_png",
+              "port": "entries"
+            }
+          },
+          {
+            "from": {
+              "node": "get_brief",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_brief",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "get_packet",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_packet",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "get_png",
+              "port": "bytes"
+            },
+            "to": {
+              "node": "zsteg",
+              "port": "data"
+            }
+          },
+          {
+            "from": {
+              "node": "get_png",
+              "port": "bytes"
+            },
+            "to": {
+              "node": "qr",
+              "port": "image"
+            }
+          },
+          {
+            "from": {
+              "node": "zsteg",
+              "port": "best"
+            },
+            "to": {
+              "node": "out_zsteg",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "qr",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_qr",
+              "port": "text"
+            }
+          }
+        ],
+        "notes": "第一轮误把 file_carve 从偏移 303 抽取的局部数据当作独立 ZIP；本轮移除该误导分支。保留 src/detect/out_type，直接对原始 bytes 使用 archive_list 获取完整条目列表，再用 archive_extract 解压全部条目；按真实条目名精确取 brief.txt 与 dispatch/packet.json 查看线索，并取 assets/photograph.png 同时做 LSB 全位扫描与二维码解码。复测标准：out_list 显示 brief.txt、dispatch/packet.json、assets/photograph.png；out_brief/out_packet 非空可读；若 PNG 含隐写或二维码，out_zsteg/out_qr 出现候选 flag{。",
+        "checks": [
+          {
+            "node": "out_list",
+            "port": "value",
+            "kind": "nonEmpty"
+          },
+          {
+            "node": "out_brief",
+            "port": "value",
+            "kind": "nonEmpty"
+          },
+          {
+            "node": "out_packet",
+            "port": "value",
+            "kind": "nonEmpty"
+          }
+        ]
+      }
+    },
+    {
+      "time": "2026-10-27T02:30:11.12Z",
+      "op": "generate",
+      "id": "9",
+      "kind": "result",
+      "value": {
+        "nodes": [
+          {
+            "key": "src",
+            "descriptorId": "file_import",
+            "params": {},
+            "position": {
+              "x": 40,
+              "y": 60
+            }
+          },
+          {
+            "key": "detect",
+            "descriptorId": "detect_file_type",
+            "params": {},
+            "position": {
+              "x": 300,
+              "y": 60
+            }
+          },
+          {
+            "key": "out_type",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 560,
+              "y": 60
+            }
+          },
+          {
+            "key": "list",
+            "descriptorId": "archive_list",
+            "params": {},
+            "position": {
+              "x": 300,
+              "y": 210
+            }
+          },
+          {
+            "key": "out_list",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 560,
+              "y": 210
+            }
+          },
+          {
+            "key": "ext",
+            "descriptorId": "archive_extract",
+            "params": {
+              "format": "自动",
+              "password": "",
+              "entry": ""
+            },
+            "position": {
+              "x": 300,
+              "y": 360
+            }
+          },
+          {
+            "key": "get_brief",
+            "descriptorId": "archive_get_file",
+            "params": {
+              "entry": "brief.txt",
+              "match": "精确",
+              "index": 0
+            },
+            "position": {
+              "x": 560,
+              "y": 360
+            }
+          },
+          {
+            "key": "out_brief",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 820,
+              "y": 60
+            }
+          },
+          {
+            "key": "get_packet",
+            "descriptorId": "archive_get_file",
+            "params": {
+              "entry": "dispatch/packet.json",
+              "match": "精确",
+              "index": 0
+            },
+            "position": {
+              "x": 560,
+              "y": 510
+            }
+          },
+          {
+            "key": "out_packet",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 820,
+              "y": 210
+            }
+          },
+          {
+            "key": "get_png",
+            "descriptorId": "archive_get_file",
+            "params": {
+              "entry": "assets/photograph.png",
+              "match": "精确",
+              "index": 0
+            },
+            "position": {
+              "x": 560,
+              "y": 660
+            }
+          },
+          {
+            "key": "lsb",
+            "descriptorId": "lsb_extract",
+            "params": {
+              "channels": "G",
+              "bit": 0,
+              "msbFirst": true
+            },
+            "position": {
+              "x": 820,
+              "y": 360
+            }
+          },
+          {
+            "key": "out_key_text",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 1080,
+              "y": 60
+            }
+          },
+          {
+            "key": "out_key_hex",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 1080,
+              "y": 210
+            }
+          },
+          {
+            "key": "aes_utf8",
+            "descriptorId": "aes",
+            "params": {
+              "operation": "解密",
+              "mode": "CBC",
+              "key": "",
+              "keyFormat": "UTF8",
+              "iv": "2a031841c4d27aaf0c1d40b0c5e6eb48",
+              "ivFormat": "Hex",
+              "inputFormat": "Base64",
+              "outputFormat": "UTF8"
+            },
+            "position": {
+              "x": 1080,
+              "y": 360
+            }
+          },
+          {
+            "key": "out_flag_utf8",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 1340,
+              "y": 60
+            }
+          },
+          {
+            "key": "aes_hex",
+            "descriptorId": "aes",
+            "params": {
+              "operation": "解密",
+              "mode": "CBC",
+              "key": "",
+              "keyFormat": "Hex",
+              "iv": "2a031841c4d27aaf0c1d40b0c5e6eb48",
+              "ivFormat": "Hex",
+              "inputFormat": "Base64",
+              "outputFormat": "UTF8"
+            },
+            "position": {
+              "x": 1080,
+              "y": 510
+            }
+          },
+          {
+            "key": "out_flag_hex",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 1340,
+              "y": 210
+            }
+          }
+        ],
+        "edges": [
+          {
+            "from": {
+              "node": "src",
+              "port": "bytes"
+            },
+            "to": {
+              "node": "detect",
+              "port": "data"
+            }
+          },
+          {
+            "from": {
+              "node": "detect",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_type",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "src",
+              "port": "bytes"
+            },
+            "to": {
+              "node": "list",
+              "port": "archive"
+            }
+          },
+          {
+            "from": {
+              "node": "list",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_list",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "src",
+              "port": "bytes"
+            },
+            "to": {
+              "node": "ext",
+              "port": "archive"
+            }
+          },
+          {
+            "from": {
+              "node": "ext",
+              "port": "entries"
+            },
+            "to": {
+              "node": "get_brief",
+              "port": "entries"
+            }
+          },
+          {
+            "from": {
+              "node": "get_brief",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_brief",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "ext",
+              "port": "entries"
+            },
+            "to": {
+              "node": "get_packet",
+              "port": "entries"
+            }
+          },
+          {
+            "from": {
+              "node": "get_packet",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_packet",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "ext",
+              "port": "entries"
+            },
+            "to": {
+              "node": "get_png",
+              "port": "entries"
+            }
+          },
+          {
+            "from": {
+              "node": "get_png",
+              "port": "bytes"
+            },
+            "to": {
+              "node": "lsb",
+              "port": "data"
+            }
+          },
+          {
+            "from": {
+              "node": "lsb",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_key_text",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "lsb",
+              "port": "hex"
+            },
+            "to": {
+              "node": "out_key_hex",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "lsb",
+              "port": "text"
+            },
+            "to": {
+              "node": "aes_utf8",
+              "port": "key"
+            }
+          },
+          {
+            "from": {
+              "node": "get_packet",
+              "port": "text"
+            },
+            "to": {
+              "node": "aes_utf8",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "aes_utf8",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_flag_utf8",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "lsb",
+              "port": "hex"
+            },
+            "to": {
+              "node": "aes_hex",
+              "port": "key"
+            }
+          },
+          {
+            "from": {
+              "node": "get_packet",
+              "port": "text"
+            },
+            "to": {
+              "node": "aes_hex",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "aes_hex",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_flag_hex",
+              "port": "text"
+            }
+          }
+        ],
+        "notes": "保留有效链：原始 ZIP → archive_list（4 条目）→ archive_extract → 精确取 brief.txt / dispatch/packet.json / assets/photograph.png；移除 file_carve 误抽分支、全位面 zsteg 扫描与空 QR 分支。按 brief.txt 提示“绿色通道最低位、8 位成一字节、MSB 优先”，把 lsb_extract 参数收窄为 channels=G、bit=0、msbFirst=true，输入仍接 get_png.bytes；其 text 与 hex 分别送 out_key_text/out_key_hex 便于核查密钥形态（预期 AES-128 即 16 字节）。AES 两分支共用 packet 中给定的 IV 2a031841c4d27aaf0c1d40b0c5e6eb48 与 CBC/PKCS7、inputFormat=Base64、outputFormat=UTF8：aes_utf8 用 keyFormat=UTF8 接 lsb.text，aes_hex 用 keyFormat=Hex 接 lsb.hex，覆盖密钥以 ASCII 或十六进制保存的两种真实可能。注意风险点：aes 的 text 输入接的是整段 packet JSON 而非纯密文串，若因 JSON 混入导致 Base64 解析失败，本轮输出将给出原始报错，下一轮再改用可提取纯密文的路径（如 base64 系列节点的 bytes 输出）并据报错调整 keyFormat/长度。复测标准：out_key_text 非空；正确 AES 分支明文可读并以 flag{...} 结尾，届时下一轮再为该输出补 contains 校验。",
+        "checks": [
+          {
+            "node": "out_key_text",
+            "port": "value",
+            "kind": "nonEmpty"
+          }
+        ]
+      }
+    },
+    {
+      "time": "2026-10-27T02:30:34.667Z",
+      "op": "generate",
+      "id": "12",
+      "kind": "result",
+      "value": {
+        "nodes": [
+          {
+            "key": "src",
+            "descriptorId": "file_import",
+            "params": {
+              "path": "D:\\Lovelymisclab\\.git\\solver-fixtures\\complex\\specimen.dat"
+            },
+            "position": {
+              "x": 40,
+              "y": 60
+            }
+          },
+          {
+            "key": "detect",
+            "descriptorId": "detect_file_type",
+            "params": {},
+            "position": {
+              "x": 300,
+              "y": 60
+            }
+          },
+          {
+            "key": "out_type",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 560,
+              "y": 60
+            }
+          },
+          {
+            "key": "list",
+            "descriptorId": "archive_list",
+            "params": {},
+            "position": {
+              "x": 300,
+              "y": 210
+            }
+          },
+          {
+            "key": "out_list",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 560,
+              "y": 210
+            }
+          },
+          {
+            "key": "ext",
+            "descriptorId": "archive_extract",
+            "params": {
+              "format": "自动",
+              "password": "",
+              "entry": ""
+            },
+            "position": {
+              "x": 300,
+              "y": 360
+            }
+          },
+          {
+            "key": "get_brief",
+            "descriptorId": "archive_get_file",
+            "params": {
+              "entry": "brief.txt",
+              "match": "精确",
+              "index": 0
+            },
+            "position": {
+              "x": 560,
+              "y": 360
+            }
+          },
+          {
+            "key": "out_brief",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 820,
+              "y": 60
+            }
+          },
+          {
+            "key": "get_packet",
+            "descriptorId": "archive_get_file",
+            "params": {
+              "entry": "dispatch/packet.json",
+              "match": "精确",
+              "index": 0
+            },
+            "position": {
+              "x": 560,
+              "y": 510
+            }
+          },
+          {
+            "key": "out_packet",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 820,
+              "y": 210
+            }
+          },
+          {
+            "key": "get_png",
+            "descriptorId": "archive_get_file",
+            "params": {
+              "entry": "assets/photograph.png",
+              "match": "精确",
+              "index": 0
+            },
+            "position": {
+              "x": 560,
+              "y": 660
+            }
+          },
+          {
+            "key": "lsb",
+            "descriptorId": "lsb_extract",
+            "params": {
+              "channels": "G",
+              "bit": 0,
+              "msbFirst": true
+            },
+            "position": {
+              "x": 820,
+              "y": 360
+            }
+          },
+          {
+            "key": "out_key_text",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 1080,
+              "y": 60
+            }
+          },
+          {
+            "key": "out_key_hex",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 1080,
+              "y": 210
+            }
+          },
+          {
+            "key": "rx_key",
+            "descriptorId": "regex_extract",
+            "params": {
+              "preset": "自定义",
+              "pattern": "[0-9a-fA-F]{32}"
+            },
+            "position": {
+              "x": 1080,
+              "y": 360
+            }
+          },
+          {
+            "key": "rx_ct",
+            "descriptorId": "regex_extract",
+            "params": {
+              "preset": "自定义",
+              "pattern": "[A-Za-z0-9+/]{60,}={0,2}"
+            },
+            "position": {
+              "x": 820,
+              "y": 510
+            }
+          },
+          {
+            "key": "aes_hex",
+            "descriptorId": "aes",
+            "params": {
+              "operation": "解密",
+              "mode": "CBC",
+              "key": "",
+              "keyFormat": "Hex",
+              "iv": "2a031841c4d27aaf0c1d40b0c5e6eb48",
+              "ivFormat": "Hex",
+              "inputFormat": "Base64",
+              "outputFormat": "UTF8"
+            },
+            "position": {
+              "x": 1340,
+              "y": 60
+            }
+          },
+          {
+            "key": "out_flag_hex",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 1600,
+              "y": 60
+            }
+          }
+        ],
+        "edges": [
+          {
+            "from": {
+              "node": "src",
+              "port": "bytes"
+            },
+            "to": {
+              "node": "detect",
+              "port": "data"
+            }
+          },
+          {
+            "from": {
+              "node": "detect",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_type",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "src",
+              "port": "bytes"
+            },
+            "to": {
+              "node": "list",
+              "port": "archive"
+            }
+          },
+          {
+            "from": {
+              "node": "list",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_list",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "src",
+              "port": "bytes"
+            },
+            "to": {
+              "node": "ext",
+              "port": "archive"
+            }
+          },
+          {
+            "from": {
+              "node": "ext",
+              "port": "entries"
+            },
+            "to": {
+              "node": "get_brief",
+              "port": "entries"
+            }
+          },
+          {
+            "from": {
+              "node": "get_brief",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_brief",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "ext",
+              "port": "entries"
+            },
+            "to": {
+              "node": "get_packet",
+              "port": "entries"
+            }
+          },
+          {
+            "from": {
+              "node": "get_packet",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_packet",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "ext",
+              "port": "entries"
+            },
+            "to": {
+              "node": "get_png",
+              "port": "entries"
+            }
+          },
+          {
+            "from": {
+              "node": "get_png",
+              "port": "bytes"
+            },
+            "to": {
+              "node": "lsb",
+              "port": "data"
+            }
+          },
+          {
+            "from": {
+              "node": "lsb",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_key_text",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "lsb",
+              "port": "hex"
+            },
+            "to": {
+              "node": "out_key_hex",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "lsb",
+              "port": "text"
+            },
+            "to": {
+              "node": "rx_key",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "get_packet",
+              "port": "text"
+            },
+            "to": {
+              "node": "rx_ct",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "rx_key",
+              "port": "text"
+            },
+            "to": {
+              "node": "aes_hex",
+              "port": "key"
+            }
+          },
+          {
+            "from": {
+              "node": "rx_ct",
+              "port": "text"
+            },
+            "to": {
+              "node": "aes_hex",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "aes_hex",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_flag_hex",
+              "port": "text"
+            }
+          }
+        ],
+        "notes": "保留原始 ZIP→条目列表/解压→brief.txt、packet.json、photograph.png 的取证链。上一轮已按 brief 提示从 PNG 绿色通道最低位、MSB 优先提取到真实密钥行 KEY_HEX=55c352a4dd8b8ccebb46d788109dab05；本轮不再把整段含 NUL 的 LSB 文本或整段 JSON 直接喂给 AES，而是新增两个 regex_extract：rx_key 从 lsb.text 中取 32 位十六进制密钥，rx_ct 从 packet.text 中取长 Base64 ciphertext。aes_hex 保持 AES-128-CBC、PKCS7、iv=2a031841c4d27aaf0c1d40b0c5e6eb48，keyFormat=Hex、inputFormat=Base64、outputFormat=UTF8；移除无效的 aes_utf8 分支。复测标准：aes_hex 不再报密钥长度错误，out_flag_hex 输出明文含 flag{...}；若 rx_ct 误取到其他长串，则据输出改 pattern 为 ciphertext 字段更严格形式。",
+        "checks": [
+          {
+            "node": "out_flag_hex",
+            "port": "value",
+            "kind": "contains",
+            "expected": "flag{"
+          }
+        ]
+      }
+    },
+    {
+      "time": "2026-10-27T02:31:14.811Z",
+      "op": "generate",
+      "id": "15",
+      "kind": "result",
+      "value": {
+        "nodes": [
+          {
+            "key": "src",
+            "descriptorId": "file_import",
+            "params": {},
+            "position": {
+              "x": 40,
+              "y": 60
+            }
+          },
+          {
+            "key": "detect",
+            "descriptorId": "detect_file_type",
+            "params": {},
+            "position": {
+              "x": 300,
+              "y": 60
+            }
+          },
+          {
+            "key": "out_type",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 560,
+              "y": 60
+            }
+          },
+          {
+            "key": "list",
+            "descriptorId": "archive_list",
+            "params": {},
+            "position": {
+              "x": 300,
+              "y": 210
+            }
+          },
+          {
+            "key": "out_list",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 560,
+              "y": 210
+            }
+          },
+          {
+            "key": "ext",
+            "descriptorId": "archive_extract",
+            "params": {
+              "format": "自动",
+              "password": "",
+              "entry": ""
+            },
+            "position": {
+              "x": 300,
+              "y": 360
+            }
+          },
+          {
+            "key": "get_brief",
+            "descriptorId": "archive_get_file",
+            "params": {
+              "entry": "brief.txt",
+              "match": "精确",
+              "index": 0
+            },
+            "position": {
+              "x": 560,
+              "y": 360
+            }
+          },
+          {
+            "key": "out_brief",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 820,
+              "y": 60
+            }
+          },
+          {
+            "key": "get_packet",
+            "descriptorId": "archive_get_file",
+            "params": {
+              "entry": "dispatch/packet.json",
+              "match": "精确",
+              "index": 0
+            },
+            "position": {
+              "x": 560,
+              "y": 510
+            }
+          },
+          {
+            "key": "get_png",
+            "descriptorId": "archive_get_file",
+            "params": {
+              "entry": "assets/photograph.png",
+              "match": "精确",
+              "index": 0
+            },
+            "position": {
+              "x": 560,
+              "y": 660
+            }
+          },
+          {
+            "key": "lsb",
+            "descriptorId": "lsb_extract",
+            "params": {
+              "channels": "G",
+              "bit": 0,
+              "msbFirst": true
+            },
+            "position": {
+              "x": 820,
+              "y": 210
+            }
+          },
+          {
+            "key": "out_key_text",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 1080,
+              "y": 60
+            }
+          },
+          {
+            "key": "rx_key",
+            "descriptorId": "regex_extract",
+            "params": {
+              "preset": "自定义",
+              "pattern": "[0-9a-fA-F]{32}"
+            },
+            "position": {
+              "x": 1080,
+              "y": 210
+            }
+          },
+          {
+            "key": "rx_ct",
+            "descriptorId": "regex_extract",
+            "params": {
+              "preset": "自定义",
+              "pattern": "[A-Za-z0-9+/]{60,}={0,2}"
+            },
+            "position": {
+              "x": 820,
+              "y": 360
+            }
+          },
+          {
+            "key": "aes_hex",
+            "descriptorId": "aes",
+            "params": {
+              "operation": "解密",
+              "mode": "CBC",
+              "key": "",
+              "keyFormat": "Hex",
+              "iv": "2a031841c4d27aaf0c1d40b0c5e6eb48",
+              "ivFormat": "Hex",
+              "inputFormat": "Base64",
+              "outputFormat": "UTF8"
+            },
+            "position": {
+              "x": 1340,
+              "y": 60
+            }
+          },
+          {
+            "key": "b64dec",
+            "descriptorId": "base64_decode",
+            "params": {
+              "variant": "标准",
+              "alphabet": "",
+              "padding": true,
+              "urlsafe": false
+            },
+            "position": {
+              "x": 1600,
+              "y": 60
+            }
+          },
+          {
+            "key": "hexdec",
+            "descriptorId": "hex_decode",
+            "params": {
+              "alphabet": "0123456789ABCDEF",
+              "strip": false
+            },
+            "position": {
+              "x": 1860,
+              "y": 60
+            }
+          },
+          {
+            "key": "rot13",
+            "descriptorId": "rot13",
+            "params": {},
+            "position": {
+              "x": 2120,
+              "y": 60
+            }
+          },
+          {
+            "key": "out_final",
+            "descriptorId": "text_output",
+            "params": {},
+            "position": {
+              "x": 2380,
+              "y": 60
+            }
+          }
+        ],
+        "edges": [
+          {
+            "from": {
+              "node": "src",
+              "port": "bytes"
+            },
+            "to": {
+              "node": "detect",
+              "port": "data"
+            }
+          },
+          {
+            "from": {
+              "node": "detect",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_type",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "src",
+              "port": "bytes"
+            },
+            "to": {
+              "node": "list",
+              "port": "archive"
+            }
+          },
+          {
+            "from": {
+              "node": "list",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_list",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "src",
+              "port": "bytes"
+            },
+            "to": {
+              "node": "ext",
+              "port": "archive"
+            }
+          },
+          {
+            "from": {
+              "node": "ext",
+              "port": "entries"
+            },
+            "to": {
+              "node": "get_brief",
+              "port": "entries"
+            }
+          },
+          {
+            "from": {
+              "node": "get_brief",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_brief",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "ext",
+              "port": "entries"
+            },
+            "to": {
+              "node": "get_packet",
+              "port": "entries"
+            }
+          },
+          {
+            "from": {
+              "node": "ext",
+              "port": "entries"
+            },
+            "to": {
+              "node": "get_png",
+              "port": "entries"
+            }
+          },
+          {
+            "from": {
+              "node": "get_png",
+              "port": "bytes"
+            },
+            "to": {
+              "node": "lsb",
+              "port": "data"
+            }
+          },
+          {
+            "from": {
+              "node": "lsb",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_key_text",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "lsb",
+              "port": "text"
+            },
+            "to": {
+              "node": "rx_key",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "get_packet",
+              "port": "text"
+            },
+            "to": {
+              "node": "rx_ct",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "rx_key",
+              "port": "text"
+            },
+            "to": {
+              "node": "aes_hex",
+              "port": "key"
+            }
+          },
+          {
+            "from": {
+              "node": "rx_ct",
+              "port": "text"
+            },
+            "to": {
+              "node": "aes_hex",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "aes_hex",
+              "port": "text"
+            },
+            "to": {
+              "node": "b64dec",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "b64dec",
+              "port": "text"
+            },
+            "to": {
+              "node": "hexdec",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "hexdec",
+              "port": "text"
+            },
+            "to": {
+              "node": "rot13",
+              "port": "text"
+            }
+          },
+          {
+            "from": {
+              "node": "rot13",
+              "port": "text"
+            },
+            "to": {
+              "node": "out_final",
+              "port": "text"
+            }
+          }
+        ],
+        "notes": "修正语法错误：src 的 params 改为空对象（源文件路径仍由程序绑定本题唯一原始输入 specimen.dat，不改动）。保留已生效取证链：ZIP→ext→get_brief（提示绿色通道最低位、8 位成字节、MSB 优先）与 get_packet（AES-128-CBC/PKCS7/Base64、iv=2a031841c4d27aaf0c1d40b0c5e6eb48）→ get_png→lsb(G,bit0,msbFirst)→rx_key 取 32 位 hex 密钥、rx_ct 取 Base64 密文→aes_hex 解密。上一轮实测 aes_hex.text 为 Base64 串 NzM3OTZlNzQ3YjcwNjU2MjY2NjY1ZjcxNjI3YTZlNzY2MTVmMzAzNTZlMzEzOTcwMzQzNzM0NmU2ZjM4MzMzNjM0MzI3ZA==，说明还有两层包装，故新增 b64dec(标准)→hexdec→rot13，输出接 out_final。已移除本轮无价值展示节点（out_packet/out_key_hex/out_flag_hex）以控节点数≤20。复测标准：b64dec 输出为纯 hex 文本、hexdec 输出为 synt{...} 形态、rot13 输出以 flag{ 开头以 } 结尾；checks 仅用 contains flag{ 校验展示端口。若 hexdec 因残留非 hex 字符报错，下轮改 strip=true。",
+        "checks": [
+          {
+            "node": "out_final",
+            "port": "value",
+            "kind": "contains",
+            "expected": "flag{"
+          }
+        ]
+      }
+    }
+  ],
+  "roundEvidence": [
+    [
+      {
+        "node": "src",
+        "outputs": "原始输入已读取；从下游结果判断下一步",
+        "status": "done",
+        "type": "file_import"
+      },
+      {
+        "node": "detect",
+        "outputs": "{\"type\":{\"type\":\"text\",\"length\":22,\"value\":\"ZIP / docx / jar / apk\"},\"ext\":{\"type\":\"text\",\"length\":3,\"value\":\"zip\"},\"text\":{\"type\":\"text\",\"length\":59,\"value\":\"ZIP / docx / jar / apk\\n后缀名: zip\\n幻数: 50 4b 03 04 14 00 00 00\"}}",
+        "status": "done",
+        "type": "detect_file_type"
+      },
+      {
+        "node": "carve",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":293,\"value\":\"宿主：ZIP / docx / jar / apk\\n发现 5 个内嵌签名：\\n  [0] 偏移 303 (0x12F)  ZIP / docx / jar / apk  .zip\\n  [1] 偏移 608 (0x260)  ZIP / docx / jar / apk  .zip\\n  [2] 偏移 664 (0x298)  PNG 图片  .png\\n  [3] 偏移 3616 (0xE20)  ZIP / docx / jar / apk  .zip\\n  [4] 偏移 3946 (0xF6A)  空 ZIP  .zip\\n\\n已抽取 [0] 偏移 303 起 305 字节（.zip）。\"},\"count\":{\"type\":\"number\",\"value\":5},\"bytes\":{\"type\":\"bytes\",\"size\":305,\"hex\":\"504b03041400000008007c515b5dc4b82eb1ff000000370100001400000064697370617463682f7061636b65742e6a736f6e358d416f82300085effe0ad2f38c\",\"utf8\":\"PK\\u0003\\u0004\\u0014\\u0000\\u0000\\u0000\\b\\u0000|Q[]ĸ.\ufffd\ufffd\\u0000\\u0000\\u00007\\u0001\\u0000\\u0000\\u0014\\u0000\\u0000\\u0000dispatch/packet.json5\ufffdAo\ufffd0\\u0000\ufffd\ufffd\ufffd\\n\ufffd\ufffdBE\\u0013\\u000f\ufffd \ufffdpP\ufffde\ufffde\ufffdR\ufffdQA*\ufffdl\ufffd_\\u0018\ufffd\ufffd}\ufffd{y\ufffd\\u0003M\\u0003\ufffdP7Y\ufffd`\ufffd\ufffd\ufffd.sÿ́\\u00023\\r,\ufffd\ufffd\\u0010\\\"kH\\t\\u0005\ufffd\\u001a\ufffd\ufffd̏\ufffdc\\u001e\ufffdLz*r^\ufffdc\\u0012\ufffd\\u00046z.\ufffd\ufffdL<:\ufffdb}\\f-\\u0003r#E\ufffd8>\ufffd\\u001c\ufffd\ufffd\ufffd\ufffd\ufffd\\u0014X$\ufffd\ufffd\ufffd\ufffd\ufffdJ<\ufffdn\ufffd\ufffdWvP:\ufffd\ufffd\ufffd\ufffd\ufffd>S\ufffd]e\\u0006u\ufffd\ufffdP\ufffd-\ufffd\ufffdi\ufffdŦ\ufffd\\u0019\ufffdB\ufffdx\ufffd\ufffdҷ\\u0010\ufffd\\u001e\ufffd\ufffd\ufffd\ufffdkE\ufffd\ufffds\ufffd|t!6ģ\ufffdM\ufffd M\ufffdݠ5\ufffd<\ufffdo\ufffd\ufffd\ufffd\ufffd:z^v\ufffd\ufffd\ufffd\ufffdMߤ\ufffd\ufffdX\ufffd\ufffd{C\ufffd\\n3\ufffd!hH\ufffd0(\ufffd\ufffd|R\\u0015\ufffd\ufffd\\u000f\ufffd|\\u000e\\u0006?\ufffd\"}}",
+        "status": "done",
+        "type": "file_carve"
+      },
+      {
+        "node": "out_type",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":59,\"value\":\"ZIP / docx / jar / apk\\n后缀名: zip\\n幻数: 50 4b 03 04 14 00 00 00\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "out_carve",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":293,\"value\":\"宿主：ZIP / docx / jar / apk\\n发现 5 个内嵌签名：\\n  [0] 偏移 303 (0x12F)  ZIP / docx / jar / apk  .zip\\n  [1] 偏移 608 (0x260)  ZIP / docx / jar / apk  .zip\\n  [2] 偏移 664 (0x298)  PNG 图片  .png\\n  [3] 偏移 3616 (0xE20)  ZIP / docx / jar / apk  .zip\\n  [4] 偏移 3946 (0xF6A)  空 ZIP  .zip\\n\\n已抽取 [0] 偏移 303 起 305 字节（.zip）。\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "out_text",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":3769,\"value\":\"PK\\u0003\\u0004\\u0014\\u0000\\u0000\\u0000\\b\\u0000|Q[]0*?z\\b\\u0001\\u0000\\u0000\ufffd\\u0001\\u0000\\u0000\\t\\u0000\\u0000\\u0000brief.txtE\ufffdAn\ufffd@\\f\\u0004\ufffd~E?\ufffdX$\ufffd8H\ufffdy@\ufffd\\u000fУ\ufffd\ufffd\ufffd\\u00119 \ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\\bre\\u0017\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\\f.X4\ufffdT\ufffd\ufffd(mW\\u0016^^\ufffd{\ufffdq\ufffd\ufffdN\ufffd:\\b~\\u0014-\ufffd\\r\ufffd$\ufffdg]\ufffd\ufffd\ufffd\ufffdP\\u0006\ufffd\ufffd\\u0005\ufffd\ufffdw\ufffd\ufffd:1\ufffd\ufffdo!\ufffd\ufffd\ufffd\\u0016\ufffd\ufffd蚓\ufffd\ufffd:\ufffd\ufffd\\u0007\ufffd\ufffd\ufffd\\f\ufffd\ufffd\ufffd?\ufffdz\ufffd\\u0010\ufffd݋8\ufffd\ufffd\ufffd\ufffd\ufffdt\ufffd&VX5\ufffdyL9\ufffd\ufffd\ufffd\ufffd\ufffdJ4\ufffd\ufffd\ufffdd\ufffdږ\ufffd-\ufffdEh\\\"K\ufffd\ufffd\\u00112'\ufffd\ufffd6T\ufffd\ufffd\ufffd(\ufffdZ\\f\ufffd\ufffd\ufffdmg1\ufffd\ufffd'/\ufffd\ufffd\ufffd\ufffd\ufffdUM\\u0006\ufffd!\ufffd/,*\ufffdy\\u0012\ufffd\ufffd1\ufffd\ufffd\ufffd\\u001a\ufffd\ufffd\\u001a\ufffd\ufffd&\\u0003ͭh\ufffd\\u000f\ufffd\ufffd\ufffdΊ\ufffd㹚\ufffdYpHq\ufffdN\ufffd[p\ufffd\\u0015\ufffd5yy\ufffd\\u0004PK\\u0003\\u0004\\u0014\\u0000\\u0000\\u0000\\b\\u0000|Q[]ĸ.\ufffd\ufffd\\u0000\\u0000\\u00007\\u0001\\u0000\\u0000\\u0014\\u0000\\u0000\\u0000dispatch/packet.json5\ufffdAo\ufffd0\\u0000\ufffd\ufffd\ufffd\\n\ufffd\ufffdBE\\u0013\\u000f\ufffd \ufffdpP\ufffde\ufffde\ufffdR\ufffdQA*\ufffdl\ufffd_\\u0018\ufffd\ufffd}\ufffd{y\ufffd\\u0003M\\u0003\ufffdP7Y\ufffd`\ufffd\ufffd\ufffd.sÿ́\\u00023\\r,\ufffd\ufffd\\u0010\\\"kH\\t\\u0005\ufffd\\u001a\ufffd\ufffd̏\ufffdc\\u001e\ufffdLz*r^\ufffdc\\u0012\ufffd\\u00046z.\ufffd\ufffdL<:\ufffdb}\\f-\\u0003r#E\ufffd8>\ufffd\\u001c\ufffd\ufffd\ufffd\ufffd\ufffd\\u0014X$\ufffd\ufffd\ufffd\ufffd\ufffdJ<\ufffdn\ufffd\ufffdWvP:\ufffd\ufffd\ufffd\ufffd\ufffd>S\ufffd]e\\u0006u\ufffd\ufffdP\ufffd-\ufffd\ufffdi\ufffdŦ\ufffd\\u0019\ufffdB\ufffdx\ufffd\ufffdҷ\\u0010\ufffd\\u001e\ufffd\ufffd\ufffd\ufffdkE\ufffd\ufffds\ufffd|t!6ģ\ufffdM\ufffd M\ufffdݠ5\ufffd<\ufffdo\ufffd\ufffd\ufffd\ufffd:z^v\ufffd\ufffd\ufffd\ufffdMߤ\ufffd\ufffdX\ufffd\ufffd{C\ufffd\\n3\ufffd!hH\ufffd0(\ufffd\ufffd|R\\u0015\ufffd\ufffd\\u000f\ufffd|\\u000e\\u0006?\ufffdPK\\u0003\\u0004\\u0014\\u0000\\u0000\\u0000\\b\\u0000|Q[]\ufffd\\u0016EV\ufffd\\u000b\\u0000\\u0000\ufffd\\u000b\\u0000\\u0000\\u0015\\u0000\\u0000\\u0000assets/photograph.png\\u0001\ufffd\\u000bw\ufffdPNG\\r\\n\\u001a\\n\\u0000\\u0000\\u0000\\rIHDR\\u0000\\u0000\\u0000 \\u0000\\u0000\\u0000 \\b\\u0002\\u0000\\u0000\\u0000\ufffd\\u0018\ufffd\ufffd\\u0000\\u0000\\u000bOIDATx\ufffd\\u0005\ufffd\\u0001\ufffd\ufffd\ufffda\\u0000\ufffdor35\ufffd\ufffdLM.\ufffd^n\ufffd\ufffdr\\u0015\\u0015\\u0013\ufffd<\\u0011\\u0013\ufffdT\ufffdz\ufffdv\ufffd\ufffd\ufffdy\ufffd\ufffdz*v5S3\ufffd\ufffd\ufffdD\ufffd33\ufffd/*\ufffd*\ufffd\ufffd\ufffd\ufffd^nf\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\\u0003vׂ򿒜O\\u0003\ufffdBV\ufffd\ufffd\ufffd\ufffdKR\\u000f\\u0003\ufffd\\u0017K\ufffd\\u0011\ufffdo=_\ufffdXT\ufffd\ufffd]\ufffd\ufffd\ufffd\ufffdI\ufffdY\ufffd|\ufffdO\ufffd\ufffd⟘\ufffdTX\ufffd\ufffd,\ufffd_a*\ufffdx]5\ufffd\ufffdK\ufffdK\\u0012\\u001d\ufffd\\u0007\ufffd\ufffd\ufffd5\ufffd\ufffd\ufffd\ufffd]=\ufffdy\ufffd\ufffd\ufffd\\u001f\ufffd\ufffd\\u0007\ufffd\ufffd\ufffd\\bHJd\\u0006s\ufffd?\\u001b\ufffd?\ufffd-\ufffd\ufffd\ufffd\\u0004g\\f[\ufffd\ufffd\ufffdC\\u0015v\ufffd\ufffd\ufffd\ufffd0K\ufffdW\ufffdC\ufffd\ufffd?F\\u001fml\ufffdoK\ufffdQV\ufffda\ufffd\\u001fg\\u0002\ufffd\ufffd\ufffd\ufffdQ\ufffdt\\n\ufffd\ufffdQ\ufffd\ufffd_\ufffd\\n?L\ufffd\ufffdb\ufffd}\\\\*\\\"Q\ufffd7#`큝\ufffdi\ufffdw\ufffd\ufffd\ufffd\ufffdg\ufffd\ufffd]\ufffd'\\b\\u001d~\ufffd\ufffd\ufffd(\ufffdA\\u000b\ufffdÆ\ufffd\ufffdKX\ufffdY~C\ufffd\ufffdV\ufffdO\ufffd\ufffd\\b\ufffd\ufffdmi\ufffd\ufffdkW\ufffd\ufffd\ufffd֘g\\u000f\ufffd/>6\ufffd\ufffd~\ufffdE\ufffd\ufffd\\t\ufffd{\ufffd\ufffd\ufffd\\bT\ufffd\ufffd\ufffd:v\ufffd3:\ufffd\ufffd$`s&l\ufffd;\ufffd\\u001fF*\ufffd(\ufffd\ufffdv\ufffd_^\\u001e\\b\\u0003ܟQ\ufffdM\\u001bAJL\ufffd\ufffdH\ufffd\ufffdI\ufffd\ufffd\ufffdw\ufffd\ufffd\\u000e\\u001e\\u0005\ufffd\\\"\\u001d\ufffdxO\ufffdz?\ufffd,\\fo\ufffd\ufffd|\ufffdm,\ufffd\\u0018}f\ufffd\\u00187\ufffdʯ\ufffd\ufffd\ufffd\\u001f\ufffd\\tT\ufffdOL\ufffd\ufffd\ufffd\ufffd\\u0018\\u0002*ڳ\ufffd\ufffd\ufffd_\ufffdyl\ufffd}f\ufffdq\ufffd\ufffd\ufffd`\\u0007]\ufffd\ufffd\ufffdL\ufffd\ufffdU=\ufffd;Ϋz\ufffdM\ufffdg\ufffds,\\b@\\u0005\ufffd#]\\u001dyk\ufffd\ufffd\ufffd\ufffd\ufffd7q\ufffd\ufffd\ufffdp\ufffd\ufffd\ufffd\ufffd2\\\\\ufffdN\\b\ufffd\ufffd\\b\ufffd\ufffd=\ufffd؍]\ufffd3\ufffd\ufffd\\u0017\ufffd2\ufffd\\f\ufffd\ufffd\\u0012d(\ufffd\ufffdgy\ufffd\ufffdS\ufffd\ufffd\ufffdU\ufffd\ufffd\\u001c\ufffdT\ufffdbGZ\ufffd\ufffd]I\ufffdE\ufffdE\ufffd\\u0019|f\\u0000}\ufffd\ufffd]\ufffd\ufffd\ufffd\ufffdC\ufffd\ufffdx\ufffd\ufffd\ufffd>ȍA\ufffdc\ufffd\ufffd\ufffd}\ufffd\ufffdc8ۤ\\n\ufffd\ufffd\ufffd\ufffd\ufffdWK\ufffdp\\u0006\ufffd>\ufffd\\rҩ\ufffd\ufffd\\u0000\ufffd|%\ufffd\\u0016 \ufffd\ufffd\\u0011\ufffd\ufffd\ufffd\ufffd0\ufffd\ufffd\ufffd[e\ufffd&2y\ufffd\ufffd\ufffdת\ufffd\ufffd\ufffd\\u001b\ufffd[\ufffdmc\\u0018\ufffd\ufffd\\u000f\\bxV\ufffdķ\ufffd\ufffdϱ/,g\ufffdh\ufffdH\ufffd\ufffd*΅S\ufffdD\ufffdP2\ufffd:\ufffd\ufffd9\ufffd\ufffd\ufffdJx\\u0005\\u0001\ufffdwS\ufffd/\ufffd[c\\u0019\\u0018\ufffd.\ufffd_>پ\ufffd\ufffd)\ufffd\ufffd\ufffd\ufffd\ufffd]F\\u000e(\\u0005\ufffdm=\ufffdu\ufffdD_\\u0007\\u0010\\u001fl\ufffd\\\\\ufffd\ufffd\ufffd2\ufffd\ufffd\ufffd_\\u001f\ufffd\ufffdB00p~c\\u001e~\\u0017f\ufffd\ufffdpY]v\ufffdj\ufffd\ufffd\ufffd\ufffd$\ufffd%\ufffd\ufffd\\u0007\ufffd\ufffd[*្\ufffddpCB\ufffd\\u0002\\u000b\ufffd\ufffd\ufffdnD\ufffd\ufffdGu\ufffdn\ufffd\ufffd\ufffd\ufffd)=\ufffd\ufffd\ufffd\ufffdv\ufffdʢ\ufffd\ufffd~\ufffd\ufffd\ufffd\\u0015\ufffdC]\ufffd…[已截断，共 3769 字符]\",\"tail\":\"v\\u0013\ufffd\ufffd\ufffd\ufffd\ufffdX\\fX\ufffd\ufffd\\u001d2\ufffd=!\ufffd\\rM\ufffd\\u001d9\ufffd\ufffd\\u001f\ufffdp\\u0006\ufffd\ufffd\\u0001\ufffd\ufffd\ufffdCi\ufffd\\u0002\ufffd\\u0000\\u0000\\u0000\\u0000IEND\ufffdB`\ufffdPK\\u0003\\u0004\\u0014\\u0000\\u0000\\u0000\\b\\u0000|Q[]X޽\\u001c\\u0000\\u0000\\u0000\\u001a\\u0000\\u0000\\u0000\\u0013\\u0000\\u0000\\u0000telemetry/noise.csv+\ufffd\ufffdM\ufffd)K\ufffd)M\ufffd2\ufffd14\ufffd2Ա4\ufffd2\ufffd12\ufffd\\u0002\\u0000PK\\u0001\\u0002\\u0014\\u0000\\u0014\\u0000\\u0000\\u0000\\b\\u0000|Q[]0*?z\\b\\u0001\\u0000\\u0000\ufffd\\u0001\\u0000\\u0000\\t\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\ufffd\\u0001\\u0000\\u0000\\u0000\\u0000brief.txtPK\\u0001\\u0002\\u0014\\u0000\\u0014\\u0000\\u0000\\u0000\\b\\u0000|Q[]ĸ.\ufffd\ufffd\\u0000\\u0000\\u00007\\u0001\\u0000\\u0000\\u0014\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\ufffd\\u0001/\\u0001\\u0000\\u0000dispatch/packet.jsonPK\\u0001\\u0002\\u0014\\u0000\\u0014\\u0000\\u0000\\u0000\\b\\u0000|Q[]\ufffd\\u0016EV\ufffd\\u000b\\u0000\\u0000\ufffd\\u000b\\u0000\\u0000\\u0015\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\ufffd\\u0001`\\u0002\\u0000\\u0000assets/photograph.pngPK\\u0001\\u0002\\u0014\\u0000\\u0014\\u0000\\u0000\\u0000\\b\\u0000|Q[]X޽\\u001c\\u0000\\u0000\\u0000\\u001a\\u0000\\u0000\\u0000\\u0013\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\ufffd\\u0001 \\u000e\\u0000\\u0000telemetry/noise.csvPK\\u0005\\u0006\\u0000\\u0000\\u0000\\u0000\\u0004\\u0000\\u0004\\u0000\ufffd\\u0000\\u0000\\u0000m\\u000e\\u0000\\u0000\\u0000\\u0000\"}}",
+        "status": "done",
+        "type": "text_output"
+      }
+    ],
+    [
+      {
+        "node": "src",
+        "outputs": "原始输入已读取；从下游结果判断下一步",
+        "status": "done",
+        "type": "file_import"
+      },
+      {
+        "node": "detect",
+        "outputs": "{\"type\":{\"type\":\"text\",\"length\":22,\"value\":\"ZIP / docx / jar / apk\"},\"ext\":{\"type\":\"text\",\"length\":3,\"value\":\"zip\"},\"text\":{\"type\":\"text\",\"length\":59,\"value\":\"ZIP / docx / jar / apk\\n后缀名: zip\\n幻数: 50 4b 03 04 14 00 00 00\"}}",
+        "status": "done",
+        "type": "detect_file_type"
+      },
+      {
+        "node": "out_type",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":59,\"value\":\"ZIP / docx / jar / apk\\n后缀名: zip\\n幻数: 50 4b 03 04 14 00 00 00\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "list",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":340,\"value\":\"共 4 个条目（0 个加密）：\\nbrief.txt              原始       425  压缩       264  Deflated   明文    CRC 7a3f2a30\\ndispatch/packet.json   原始       311  压缩       255  Deflated   明文    CRC b12eb8c4\\nassets/photograph.png  原始      2952  压缩      2957  Deflated   明文    CRC 564516c1\\ntelemetry/noise.csv    原始        26  压缩        28  Deflated   明文    CRC bdde7f58\\n\"},\"count\":{\"type\":\"number\",\"value\":4},\"files\":{\"type\":\"stringList\",\"value\":{\"length\":4,\"items\":[\"brief.txt\",\"dispatch/packet.json\",\"assets/photograph.png\",\"telemetry/noise.csv\"]}},\"encrypted\":{\"type\":\"bool\",\"value\":false}}",
+        "status": "done",
+        "type": "archive_list"
+      },
+      {
+        "node": "out_list",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":340,\"value\":\"共 4 个条目（0 个加密）：\\nbrief.txt              原始       425  压缩       264  Deflated   明文    CRC 7a3f2a30\\ndispatch/packet.json   原始       311  压缩       255  Deflated   明文    CRC b12eb8c4\\nassets/photograph.png  原始      2952  压缩      2957  Deflated   明文    CRC 564516c1\\ntelemetry/noise.csv    原始        26  压缩        28  Deflated   明文    CRC bdde7f58\\n\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "ext",
+        "outputs": "{\"summary\":{\"type\":\"text\",\"length\":35,\"value\":\"zip: 4 个文件；当前输出「brief.txt」（425 字节）。\"},\"text\":{\"type\":\"text\",\"length\":425,\"value\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"},\"format\":{\"type\":\"text\",\"length\":3,\"value\":\"zip\"},\"entry\":{\"type\":\"text\",\"length\":9,\"value\":\"brief.txt\"},\"entries\":{\"type\":\"json\",\"value\":{\"kind\":\"misclab.archive.entries\",\"version\":1,\"format\":\"zip\",\"entries\":{\"length\":4,\"items\":[{\"index\":0,\"fileIndex\":0,\"name\":\"brief.txt\",\"isDir\":false,\"size\":425,\"compressedSize\":264,\"encrypted\":false,\"crc32\":\"7a3f2a30\",\"error\":null,\"dataBase64\":\"[归档字节 568 个 Base64 字符，请用取解压文件读取]\"},{\"index\":1,\"fileIndex\":1,\"name\":\"dispatch/packet.json\",\"isDir\":false,\"size\":311,\"compressedSize\":255,\"encrypted\":false,\"crc32\":\"b12eb8c4\",\"error\":null,\"dataBase64\":\"[归档字节 416 个 Base64 字符，请用取解压文件读取]\"},{\"index\":2,\"fileIndex\":2,\"name\":\"assets/photograph.png\",\"isDir\":false,\"size\":2952,\"compressedSize\":2957,\"encrypted\":false,\"crc32\":\"564516c1\",\"error\":null,\"dataBase64\":\"[归档字节 3936 个 Base64 字符，请用取解压文件读取]\"},{\"index\":3,\"fileIndex\":3,\"name\":\"telemetry/noise.csv\",\"isDir\":false,\"size\":26,\"compressedSize\":28,\"encrypted\":false,\"crc32\":\"bdde7f58\",\"error\":null,\"dataBase64\":\"[归档字节 36 个 Base64 字符，请用取解压文件读取]\"}]}}},\"bytes\":{\"type\":\"bytes\",\"size\":425,\"hex\":\"5265636f76657265642064697370617463682c207469636b6574203237313032382e205468652066696c6520657874656e73696f6e20776173206c6f73742e0a\",\"utf8\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"},\"files\":{\"type\":\"stringList\",\"value\":{\"length\":4,\"items\":[\"brief.txt\",\"dispatch/packet.json\",\"assets/photograph.png\",\"telemetry/noise.csv\"]}},\"count\":{\"type\":\"number\",\"value\":4}}",
+        "status": "done",
+        "type": "archive_extract"
+      },
+      {
+        "node": "get_brief",
+        "outputs": "{\"name\":{\"type\":\"text\",\"length\":9,\"value\":\"brief.txt\"},\"text\":{\"type\":\"text\",\"length\":425,\"value\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"},\"bytes\":{\"type\":\"bytes\",\"size\":425,\"hex\":\"5265636f76657265642064697370617463682c207469636b6574203237313032382e205468652066696c6520657874656e73696f6e20776173206c6f73742e0a\",\"utf8\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"},\"size\":{\"type\":\"number\",\"value\":425}}",
+        "status": "done",
+        "type": "archive_get_file"
+      },
+      {
+        "node": "get_packet",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":311,\"value\":\"{\\n  \\\"version\\\": 1,\\n  \\\"cipher\\\": \\\"AES-128-CBC\\\",\\n  \\\"padding\\\": \\\"PKCS7\\\",\\n  \\\"encoding\\\": \\\"Base64\\\",\\n  \\\"iv_hex\\\": \\\"2a031841c4d27aaf0c1d40b0c5e6eb48\\\",\\n  \\\"ciphertext\\\": \\\"SutDOqEKN2TEpDlCicGr5OvtJECBIhFKYEy28P9Y5QLQrPcYh0iN82cTgBAUN6RrBZNHy2NN/mBD16/qyb1eBwq6GOy4BillskkGXzgKKhfCFRmP9MiGbXPorGuwCrL6PcWeCQCbQOqZun7toPc3fw==\\\"\\n}\"},\"name\":{\"type\":\"text\",\"length\":20,\"value\":\"dispatch/packet.json\"},\"bytes\":{\"type\":\"bytes\",\"size\":311,\"hex\":\"7b0a20202276657273696f6e223a20312c0a202022636970686572223a20224145532d3132382d434243222c0a20202270616464696e67223a2022504b435337\",\"utf8\":\"{\\n  \\\"version\\\": 1,\\n  \\\"cipher\\\": \\\"AES-128-CBC\\\",\\n  \\\"padding\\\": \\\"PKCS7\\\",\\n  \\\"encoding\\\": \\\"Base64\\\",\\n  \\\"iv_hex\\\": \\\"2a031841c4d27aaf0c1d40b0c5e6eb48\\\",\\n  \\\"ciphertext\\\": \\\"SutDOqEKN2TEpDlCicGr5OvtJECBIhFKYEy28P9Y5QLQrPcYh0iN82cTgBAUN6RrBZNHy2NN/mBD16/qyb1eBwq6GOy4BillskkGXzgKKhfCFRmP9MiGbXPorGuwCrL6PcWeCQCbQOqZun7toPc3fw==\\\"\\n}\"},\"size\":{\"type\":\"number\",\"value\":311}}",
+        "status": "done",
+        "type": "archive_get_file"
+      },
+      {
+        "node": "get_png",
+        "outputs": "{\"name\":{\"type\":\"text\",\"length\":21,\"value\":\"assets/photograph.png\"},\"text\":{\"type\":\"text\",\"length\":2783,\"value\":\"\ufffdPNG\\r\\n\\u001a\\n\\u0000\\u0000\\u0000\\rIHDR\\u0000\\u0000\\u0000 \\u0000\\u0000\\u0000 \\b\\u0002\\u0000\\u0000\\u0000\ufffd\\u0018\ufffd\ufffd\\u0000\\u0000\\u000bOIDATx\ufffd\\u0005\ufffd\\u0001\ufffd\ufffd\ufffda\\u0000\ufffdor35\ufffd\ufffdLM.\ufffd^n\ufffd\ufffdr\\u0015\\u0015\\u0013\ufffd<\\u0011\\u0013\ufffdT\ufffdz\ufffdv\ufffd\ufffd\ufffdy\ufffd\ufffdz*v5S3\ufffd\ufffd\ufffdD\ufffd33\ufffd/*\ufffd*\ufffd\ufffd\ufffd\ufffd^nf\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\\u0003vׂ򿒜O\\u0003\ufffdBV\ufffd\ufffd\ufffd\ufffdKR\\u000f\\u0003\ufffd\\u0017K\ufffd\\u0011\ufffdo=_\ufffdXT\ufffd\ufffd]\ufffd\ufffd\ufffd\ufffdI\ufffdY\ufffd|\ufffdO\ufffd\ufffd⟘\ufffdTX\ufffd\ufffd,\ufffd_a*\ufffdx]5\ufffd\ufffdK\ufffdK\\u0012\\u001d\ufffd\\u0007\ufffd\ufffd\ufffd5\ufffd\ufffd\ufffd\ufffd]=\ufffdy\ufffd\ufffd\ufffd\\u001f\ufffd\ufffd\\u0007\ufffd\ufffd\ufffd\\bHJd\\u0006s\ufffd?\\u001b\ufffd?\ufffd-\ufffd\ufffd\ufffd\\u0004g\\f[\ufffd\ufffd\ufffdC\\u0015v\ufffd\ufffd\ufffd\ufffd0K\ufffdW\ufffdC\ufffd\ufffd?F\\u001fml\ufffdoK\ufffdQV\ufffda\ufffd\\u001fg\\u0002\ufffd\ufffd\ufffd\ufffdQ\ufffdt\\n\ufffd\ufffdQ\ufffd\ufffd_\ufffd\\n?L\ufffd\ufffdb\ufffd}\\\\*\\\"Q\ufffd7#`큝\ufffdi\ufffdw\ufffd\ufffd\ufffd\ufffdg\ufffd\ufffd]\ufffd'\\b\\u001d~\ufffd\ufffd\ufffd(\ufffdA\\u000b\ufffdÆ\ufffd\ufffdKX\ufffdY~C\ufffd\ufffdV\ufffdO\ufffd\ufffd\\b\ufffd\ufffdmi\ufffd\ufffdkW\ufffd\ufffd\ufffd֘g\\u000f\ufffd/>6\ufffd\ufffd~\ufffdE\ufffd\ufffd\\t\ufffd{\ufffd\ufffd\ufffd\\bT\ufffd\ufffd\ufffd:v\ufffd3:\ufffd\ufffd$`s&l\ufffd;\ufffd\\u001fF*\ufffd(\ufffd\ufffdv\ufffd_^\\u001e\\b\\u0003ܟQ\ufffdM\\u001bAJL\ufffd\ufffdH\ufffd\ufffdI\ufffd\ufffd\ufffdw\ufffd\ufffd\\u000e\\u001e\\u0005\ufffd\\\"\\u001d\ufffdxO\ufffdz?\ufffd,\\fo\ufffd\ufffd|\ufffdm,\ufffd\\u0018}f\ufffd\\u00187\ufffdʯ\ufffd\ufffd\ufffd\\u001f\ufffd\\tT\ufffdOL\ufffd\ufffd\ufffd\ufffd\\u0018\\u0002*ڳ\ufffd\ufffd\ufffd_\ufffdyl\ufffd}f\ufffdq\ufffd\ufffd\ufffd`\\u0007]\ufffd\ufffd\ufffdL\ufffd\ufffdU=\ufffd;Ϋz\ufffdM\ufffdg\ufffds,\\b@\\u0005\ufffd#]\\u001dyk\ufffd\ufffd\ufffd\ufffd\ufffd7q\ufffd\ufffd\ufffdp\ufffd\ufffd\ufffd\ufffd2\\\\\ufffdN\\b\ufffd\ufffd\\b\ufffd\ufffd=\ufffd؍]\ufffd3\ufffd\ufffd\\u0017\ufffd2\ufffd\\f\ufffd\ufffd\\u0012d(\ufffd\ufffdgy\ufffd\ufffdS\ufffd\ufffd\ufffdU\ufffd\ufffd\\u001c\ufffdT\ufffdbGZ\ufffd\ufffd]I\ufffdE\ufffdE\ufffd\\u0019|f\\u0000}\ufffd\ufffd]\ufffd\ufffd\ufffd\ufffdC\ufffd\ufffdx\ufffd\ufffd\ufffd>ȍA\ufffdc\ufffd\ufffd\ufffd}\ufffd\ufffdc8ۤ\\n\ufffd\ufffd\ufffd\ufffd\ufffdWK\ufffdp\\u0006\ufffd>\ufffd\\rҩ\ufffd\ufffd\\u0000\ufffd|%\ufffd\\u0016 \ufffd\ufffd\\u0011\ufffd\ufffd\ufffd\ufffd0\ufffd\ufffd\ufffd[e\ufffd&2y\ufffd\ufffd\ufffdת\ufffd\ufffd\ufffd\\u001b\ufffd[\ufffdmc\\u0018\ufffd\ufffd\\u000f\\bxV\ufffdķ\ufffd\ufffdϱ/,g\ufffdh\ufffdH\ufffd\ufffd*΅S\ufffdD\ufffdP2\ufffd:\ufffd\ufffd9\ufffd\ufffd\ufffdJx\\u0005\\u0001\ufffdwS\ufffd/\ufffd[c\\u0019\\u0018\ufffd.\ufffd_>پ\ufffd\ufffd)\ufffd\ufffd\ufffd\ufffd\ufffd]F\\u000e(\\u0005\ufffdm=\ufffdu\ufffdD_\\u0007\\u0010\\u001fl\ufffd\\\\\ufffd\ufffd\ufffd2\ufffd\ufffd\ufffd_\\u001f\ufffd\ufffdB00p~c\\u001e~\\u0017f\ufffd\ufffdpY]v\ufffdj\ufffd\ufffd\ufffd\ufffd$\ufffd%\ufffd\ufffd\\u0007\ufffd\ufffd[*្\ufffddpCB\ufffd\\u0002\\u000b\ufffd\ufffd\ufffdnD\ufffd\ufffdGu\ufffdn\ufffd\ufffd\ufffd\ufffd)=\ufffd\ufffd\ufffd\ufffdv\ufffdʢ\ufffd\ufffd~\ufffd\ufffd\ufffd\\u0015\ufffdC]\ufffd\ufffdG\ufffd$\ufffdeܙ\ufffdvm;}\ufffd\ufffd\ufffd\ufffd9\ufffd\ufffdǏ\ufffd\\u001f\ufffdD\ufffd?!\\nY\ufffd\ufffd}\ufffd\ufffd\\bqO͈:˯L\ufffd㗶(\\u0005\\u0000O\\u0018\ufffd?ں7\ufffd\ufffd\ufffd3\ufffd\ufffdA\ufffdË\ufffd\ufffd\ufffd\\u0013\ufffdD\ufffd\ufffd~\\u001a8\ufffd]\\u0002\\u0013k\ufffd\\u0017\ufffd\ufffdG\ufffd\ufffd\ufffdr\ufffdkΨ䢈Ժ/\ufffd\ufffd\\u001f\ufffd^\ufffd\ufffd4i\ufffds\ufffd\ufffd\ufffd큟G1\ufffdw\ufffd֔\ufffd\ufffdAI\ufffd\ufffd\\u0013\ufffdڄ2\ufffd\ufffd\\u00138*X\ufffd\ufffd\\u0005\ufffd<\ufffdk#0\ufffd;UZ.\ufffd_0\ufffd7\ufffd\ufffd\ufffd\\u0011\ufffd[\ufffd\\u000b\ufffdI\\u0016n\ufffd\ufffd\ufffd\ufffdn\\u000b먋\ufffd\\u0010Q\ufffdك\ufffd&c!\\u0015\ufffd*\ufffdM/WCV\ufffdd\ufffd\\u0006>t\\u001a\ufffd(\ufffd\ufffd\ufffd\ufffd\\f\ufffd\ufffd\ufffd\ufffdn\\u0015+\\r\\u0000\ufffdZ\ufffd9\ufffd\ufffdL\ufffd^\ufffdW\ufffd\ufffd\ufffdw\\u001c\ufffd\ufffdS_RXZ\ufffd\ufffdܠ\ufffd\ufffd\ufffd\\b\ufffdn=\\u0016\ufffda\ufffd.\\u001f\ufffd\ufffdZ\\u0004\ufffdФz\ufffd\ufffd\\u000f[\ufffd\ufffd\ufffd\ufffd\\u0019\\\\p\ufffd7\ufffd\ufffd\ufffd&\ufffd\ufffd\ufffd\ufffdWҫ\ufffd\\u00128k\ufffdt\ufffdJ\ufffd\ufffd\\u0005\ufffd\ufffdI\ufffd׾q\ufffd\ufffd\ufffd\ufffd\ufffd\\u0010\\u001b&\ufffd\ufffd\ufffd\ufffdq\ufffd\ufffd[v4\ufffd\\u0018!\ufffdvg9&J&\ufffd_/\ufffd\ufffdӠnŰ\ufffd1;T\ufffdYCK\ufffd\\u001f\ufffd>fl;yW\\u0007\ufffdd\ufffd\ufffd\ufffdc\ufffd5\\u0017=H\\f\ufffd\ufffdD\ufffdGST/P@J\ufffdi\\t\\u0019+\\u001e\\u001b\ufffd^\ufffd\ufffdKTU\ufffdf\\rV\ufffd\\u0013\ufffd\\bp\ufffd\ufffd\ufffd\ufffd}X\ufffd\\u0017\ufffd\ufffdCQ\ufffd/`άwjl\ufffdb\ufffd\\u0016\\u0006\\u0016G\\\\\\u00141\ufffd|\ufffd\ufffdS\ufffd_\ufffd\ufffd*\ufffd2\ufffd0\ufffd\ufffd8.\ufffd\ufffdx.\ufffdp\ufffd(\ufffd\ufffd=J\\u0006\\u0004\ufffdO.1[ȍ\ufffd\ufffd\ufffd\ufffdEl\ufffd;ڭ^\ufffdҒ{l\ufffd\ufffd\\u0000\ufffd\ufffd\ufffd\ufffdl6i\\r\ufffd\ufffd\ufffd\ufffd>\ufffdAwv\ufffd\ufffdG\ufffdN@q)\ufffd;\ufffd\ufffd܄\\u000e\\u001f\ufffd\ufffd\\u00181\ufffd[\\u0006\ufffd\ufffdH\ufffd\\u0018bi#F*\ufffd\ufffd\\r\ufffd3\ufffd\\f\\u0010(6\ufffd\ufffd\ufffdo\ufffd)\ufffd`\ufffd\ufffd!\ufffdD\ufffdk\ufffd\ufffd-\ufffd\\n\ufffd\ufffdە8\\\"\ufffd8\\u000e\ufffd\ufffd/\ufffd\ufffd鑸\\\\\ufffdĐ\ufffd\ufffd\ufffdakc\ufffd\\u001bi\ufffd/\ufffd\ufffdp\ufffd\ufffd\ufffd\\u0012?|\ufffdo\\u0004\ufffdmh\ufffdgR\ufffdh\ufffd9\ufffdO\ufffd\ufffdYD\\u001a\ufffd!G\\u00174\ufffd\ufffd>\ufffdi\ufffdo\ufffdF\ufffdȦH\ufffd\ufffd\ufffd\ufffd\\n\\u0001\ufffd…[已截断，共 2783 字符]\",\"tail\":\"+\\u0004\ufffd\\\"N\ufffd\\u0013\ufffd=\\u0005Y\ufffdv\ufffd?\ufffd\ufffd\ufffd)\ufffd\ufffd\ufffdˉ\ufffdE +a]6\\u0016\ufffd\\u0011T\ufffd\ufffd^\ufffd\ufffd0\ufffd\ufffd;\\u000ee\ufffd%\ufffdP\ufffd8\ufffd\ufffd4\ufffdʅ\ufffd\ufffd\ufffd xlN\\u0004\\u001e\ufffd\ufffd<>\ufffd˥s\ufffd\ufffdZݝ\ufffdU\ufffd\\u0018\ufffd%\\u001b\ufffd1\ufffdX\ufffdP_+\ufffd\ufffdpÝ\ufffd\\u0012_w흁\ufffd|(L\ufffdD[\ufffdN\ufffd6\ufffda\ufffd\\u0019B\ufffd(\ufffd)~\\n\ufffd\ufffd\\u0018B\ufffd\ufffd@\ufffdP\ufffd\ufffd%\ufffd\\u0015^\ufffd=\ufffd\ufffd\ufffd(\ufffde\ufffd1\ufffd*\ufffd\\u0011\ufffd\ufffdV\ufffd\ufffd\ufffd\ufffdK\ufffdY\ufffd_\ufffd\ufffd\\u000f\ufffdr\ufffd6\\u001f\ufffd\ufffdw\ufffd#9+\ufffd1\ufffd\ufffde\ufffdi\ufffd\ufffd\ufffd8\ufffd\ufffd\ufffd@\\u0014\ufffdQ\ufffd\\u0016\ufffd\ufffd\ufffd\ufffdJi\ufffdlc\ufffdA\ufffd\\u0005\\u0002\ufffd\ufffd<\ufffd\\u0001Y\ufffd;\ufffdh\ufffd|[\ufffd\ufffd\\u0012\\\\b\ufffdiZ\ufffd\ufffd\ufffdM\ufffdEx\\u001d\ufffd\ufffd\ufffd\\u001e\ufffd)e\\u0013 \ufffdU\\\\\ufffd9\\u001e\ufffd\ufffd\ufffdȨ\ufffd\\u001cG\\u0017\ufffd\\u0002!\ufffd~?!:n\ufffd\ufffd\ufffdX\ufffd0\\u0006S#\ufffd\ufffdϿ\ufffd\\\\J\\u0004\ufffd\ufffd(z\\u0005 (\ufffd}\ufffd.BQ\ufffdP\ufffd[\\u0011Wx/\ufffdj\ufffd\ufffd6O\ufffdj\ufffd#\ufffd\ufffdK\ufffd\ufffd\ufffd4\ufffd\ufffdl\\ft\ufffd,\ufffdX\ufffdao=sށ\ufffd\\u0007\ufffd\ufffd\ufffd)v\\u0013\ufffd\ufffd\ufffd\ufffd\ufffdX\\fX\ufffd\ufffd\\u001d2\ufffd=!\ufffd\\rM\ufffd\\u001d9\ufffd\ufffd\\u001f\ufffdp\\u0006\ufffd\ufffd\\u0001\ufffd\ufffd\ufffdCi\ufffd\\u0002\ufffd\\u0000\\u0000\\u0000\\u0000IEND\ufffdB`\ufffd\"},\"bytes\":{\"type\":\"bytes\",\"size\":2952,\"hex\":\"89504e470d0a1a0a0000000d4948445200000020000000200802000000fc18eda300000b4f49444154789c05c1018cb98b6100f06f723335b9dc4c4d2ee6995e\",\"utf8\":\"\ufffdPNG\\r\\n\\u001a\\n\\u0000\\u0000\\u0000\\rIHDR\\u0000\\u0000\\u0000 \\u0000\\u0000\\u0000 \\b\\u0002\\u0000\\u0000\\u0000\ufffd\\u0018\ufffd\ufffd\\u0000\\u0000\\u000bOIDATx\ufffd\\u0005\ufffd\\u0001\ufffd\ufffd\ufffda\\u0000\ufffdor35\ufffd\ufffdLM.\ufffd^n\ufffd\ufffdr\\u0015\\u0015\\u0013\ufffd<\\u0011\\u0013\ufffdT\ufffdz\ufffdv\ufffd\ufffd\ufffdy\ufffd\ufffdz*v5S3\ufffd\ufffd\ufffdD\ufffd33\ufffd/*\ufffd*\ufffd\ufffd\ufffd\ufffd^nf\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\\u0003vׂ򿒜O\\u0003\ufffdBV\ufffd\ufffd\ufffd\ufffdKR\\u000f\\u0003\ufffd\\u0017K\ufffd\\u0011\ufffdo=_\ufffdXT\ufffd\ufffd]\ufffd\ufffd\ufffd\ufffdI\ufffdY\ufffd|\ufffdO\ufffd\ufffd⟘\ufffdTX\ufffd\ufffd,\ufffd_a*\ufffdx]5\ufffd\ufffdK\ufffdK\\u0012\\u001d\ufffd\\u0007\ufffd\ufffd\ufffd5\ufffd\ufffd\ufffd\ufffd]=\ufffdy\ufffd\ufffd\ufffd\\u001f\ufffd\ufffd\\u0007\ufffd\ufffd\ufffd\\bHJd\\u0006s\ufffd?\\u001b\ufffd?\ufffd-\ufffd\ufffd\ufffd\\u0004g\\f[\ufffd\ufffd\ufffdC\\u0015v\ufffd\ufffd\ufffd\ufffd0K\ufffdW\ufffdC\ufffd\ufffd?F\\u001fml\ufffdoK\ufffdQV\ufffda\ufffd\\u001fg\\u0002\ufffd\ufffd\ufffd\ufffdQ\ufffdt\\n\ufffd\ufffdQ\ufffd\ufffd_\ufffd\\n?L\ufffd\ufffdb\ufffd}\\\\*\\\"Q\ufffd7#`큝\ufffdi\ufffdw\ufffd\ufffd\ufffd\ufffdg\ufffd\ufffd]\ufffd'\\b\\u001d~\ufffd\ufffd\ufffd(\ufffdA\\u000b\ufffdÆ\ufffd\ufffdKX\ufffdY~C\ufffd\ufffdV\ufffdO\ufffd\ufffd\\b\ufffd\ufffdmi\ufffd\ufffdkW\ufffd\ufffd\ufffd֘g\\u000f\ufffd/>6\ufffd\ufffd~\ufffdE\ufffd\ufffd\\t\ufffd{\ufffd\ufffd\ufffd\\bT\ufffd\ufffd\ufffd:v\ufffd3:\ufffd\ufffd$`s&l\ufffd;\ufffd\\u001fF*\ufffd(\ufffd\ufffdv\ufffd_^\\u001e\\b\\u0003ܟQ\ufffdM\\u001bAJL\ufffd\ufffdH\ufffd\ufffdI\ufffd\ufffd\ufffdw\ufffd\ufffd\\u000e\\u001e\\u0005\ufffd\\\"\\u001d\ufffdxO\ufffdz?\ufffd,\\fo\ufffd\ufffd|\ufffdm,\ufffd\\u0018}f\ufffd\\u00187\ufffdʯ\ufffd\ufffd\ufffd\\u001f\ufffd\\tT\ufffdOL\ufffd\ufffd\ufffd\ufffd\\u0018\\u0002*ڳ\ufffd\ufffd\ufffd_\ufffdyl\ufffd}f\ufffdq\ufffd\ufffd\ufffd`\\u0007]\ufffd\ufffd\ufffdL\ufffd\ufffdU=\ufffd;Ϋz\ufffdM\ufffdg\ufffds,\\b@\\u0005\ufffd#]\\u001dyk\ufffd\ufffd\ufffd\ufffd\ufffd7q\ufffd\ufffd\ufffdp\ufffd\ufffd\ufffd\ufffd2\\\\\ufffdN\\b\ufffd\ufffd\\b\ufffd\ufffd=\ufffd؍]\ufffd3\ufffd\ufffd\\u0017\ufffd2\ufffd\\f\ufffd\ufffd\\u0012d(\ufffd\ufffdgy\ufffd\ufffdS\ufffd\ufffd\ufffdU\ufffd\ufffd\\u001c\ufffdT\ufffdbGZ\ufffd\ufffd]I\ufffdE\ufffdE\ufffd\\u0019|f\\u0000}\ufffd\ufffd]\ufffd\ufffd\ufffd\ufffdC\ufffd\ufffdx\ufffd\ufffd\ufffd>ȍA\ufffdc\ufffd\ufffd\ufffd}\ufffd\ufffdc8ۤ\\n\ufffd\ufffd\ufffd\ufffd\ufffdWK\ufffdp\\u0006\ufffd>\ufffd\\rҩ\ufffd\ufffd\\u0000\ufffd|%\ufffd\\u0016 \ufffd\ufffd\\u0011\ufffd\ufffd\ufffd\ufffd0\ufffd\ufffd\ufffd[e\ufffd&2y\ufffd\ufffd\ufffdת\ufffd\ufffd\ufffd\\u001b\ufffd[\ufffdmc\\u0018\ufffd\ufffd\\u000f\\bxV\ufffdķ\ufffd\ufffdϱ/,g\ufffdh\ufffdH\ufffd\ufffd*΅S\ufffdD\ufffdP2\ufffd:\ufffd\ufffd9\ufffd\ufffd\ufffdJx\\u0005\\u0001\ufffdwS\ufffd/\ufffd[c\\u0019\\u0018\ufffd.\ufffd_>پ\ufffd\ufffd)\ufffd\ufffd\ufffd\ufffd\ufffd]F\\u000e(\\u0005\ufffdm=\ufffdu\ufffdD_\\u0007\\u0010\\u001fl\ufffd\\\\\ufffd\ufffd\ufffd2\ufffd\ufffd\ufffd_\\u001f\ufffd\ufffdB00p~c\\u001e~\\u0017f\ufffd\ufffdpY]v\ufffdj\ufffd\ufffd\ufffd\ufffd$\ufffd%\ufffd\ufffd\\u0007\ufffd\ufffd[*្\ufffddpCB\ufffd\\u0002\\u000b\ufffd\ufffd\ufffdnD\ufffd\ufffdGu\ufffdn\ufffd\ufffd\ufffd\ufffd)=\ufffd\ufffd\ufffd\ufffdv\ufffdʢ\ufffd\ufffd~\ufffd\ufffd\ufffd\\u0015\ufffdC]\ufffd\ufffdG\ufffd$\ufffdeܙ\ufffdvm;}\ufffd\ufffd\ufffd\ufffd9\ufffd\ufffdǏ\ufffd\\u001f\ufffdD\ufffd?!\\nY\ufffd\ufffd}\ufffd\ufffd\\bqO͈:˯L\ufffd㗶(\\u0005\\u0000O\\u0018\ufffd?ں7\ufffd\ufffd\ufffd3\ufffd\ufffdA\ufffdË\ufffd\ufffd\ufffd\\u0013\ufffdD\ufffd\ufffd~\\u001a8\ufffd]\\u0002\\u0013k\ufffd\\u0017\ufffd\ufffdG\ufffd\ufffd\ufffdr\ufffdkΨ䢈Ժ/\ufffd\ufffd\\u001f\ufffd^\ufffd\ufffd4i\ufffds\ufffd\ufffd\ufffd큟G1\ufffdw\ufffd֔\ufffd\ufffdAI\ufffd\ufffd\\u0013\ufffdڄ2\ufffd\ufffd\\u00138*X\ufffd\ufffd\\u0005\ufffd<\ufffdk#0\ufffd;UZ.\ufffd_0\ufffd7\ufffd\ufffd\ufffd\\u0011\ufffd[\ufffd\\u000b\ufffdI\\u0016n\ufffd\ufffd\ufffd\ufffdn\\u000b먋\ufffd\\u0010Q\ufffdك\ufffd&c!\\u0015\ufffd*\ufffdM/WCV\ufffdd\ufffd\\u0006>t\\u001a\ufffd(\ufffd\ufffd\ufffd\ufffd\\f\ufffd\ufffd\ufffd\ufffdn\\u0015+\\r\\u0000\ufffdZ\ufffd9\ufffd\ufffdL\ufffd^\ufffdW\ufffd\ufffd\ufffdw\\u001c\ufffd\ufffdS_RXZ\ufffd\ufffdܠ\ufffd\ufffd\ufffd\\b\ufffdn=\\u0016\ufffda\ufffd.\\u001f\ufffd\ufffdZ\\u0004\ufffdФz\ufffd\ufffd\\u000f[\ufffd\ufffd\ufffd\ufffd\\u0019\\\\p\ufffd7\ufffd\ufffd\ufffd&\ufffd\ufffd\ufffd\ufffdWҫ\ufffd\\u00128k\ufffdt\ufffdJ\ufffd\ufffd\\u0005\ufffd\ufffdI\ufffd׾q\ufffd\ufffd\ufffd\ufffd\ufffd\\u0010\\u001b&\ufffd\ufffd\ufffd\ufffdq\ufffd\ufffd[v4\ufffd\\u0018!\ufffdvg9&J&\ufffd_/\ufffd\ufffdӠnŰ\ufffd1;T\ufffdYCK\ufffd\\u001f\ufffd>fl;yW\\u0007\ufffdd\ufffd\ufffd\ufffdc\ufffd5\\u0017=H\\f\ufffd\ufffdD\ufffdGST/P@J\ufffdi\\t\\u0019+\\u001e\\u001b\ufffd^\ufffd\ufffdKTU\ufffdf\\rV\ufffd\\u0013\ufffd\\bp\ufffd\ufffd\ufffd\ufffd}X\ufffd\\u0017\ufffd\ufffdCQ\ufffd/`άwjl\ufffdb\ufffd\\u0016\\u0006\\u0016G\\\\\\u00141\ufffd|\ufffd\ufffdS\ufffd_\ufffd\ufffd*\ufffd2\ufffd0\ufffd\ufffd8.\ufffd\ufffdx.\ufffdp\ufffd(\ufffd\ufffd=J\\u0006\\u0004\ufffdO.1[ȍ\ufffd\ufffd\ufffd\ufffdEl\ufffd;ڭ^\ufffdҒ{l\ufffd\ufffd\\u0000\ufffd\ufffd\ufffd\ufffdl6i\\r\ufffd\ufffd\ufffd\ufffd>\ufffdAwv\ufffd\ufffdG\ufffdN@q)\ufffd;\ufffd\ufffd܄\\u000e\\u001f\ufffd\ufffd\\u00181\ufffd[\\u0006\ufffd\ufffdH\ufffd\\u0018bi#F*\ufffd\ufffd\\r\ufffd3\ufffd\\f\\u0010(6\ufffd…[已截断，共 1931 字符]\"},\"size\":{\"type\":\"number\",\"value\":2952}…[已截断，共 5501 字符]",
+        "status": "done",
+        "type": "archive_get_file"
+      },
+      {
+        "node": "zsteg",
+        "outputs": "{\"best\":{\"type\":\"text\",\"length\":123,\"value\":\"\ufffd\ufffd\\u0013I\ufffd\ufffd6TG\ufffd\ufffdU\\\\>\ufffd7}55\\u0007,\ufffdJU\ufffd\\r\ufffdu\\u0003\ufffd\ufffdM\ufffd%\\u001a \ufffdH}\ufffd\ufffdhz\ufffdJ\ufffdE\ufffdu\ufffd\\n}\ufffd0\ufffdq\ufffd\ufffd{Pՠ\ufffdY7\\\\.8\\n/\ufffd\ufffd(\ufffd6A\ufffd\ufffdO\\u0011\ufffd<\ufffd\ufffd\ufffd\ufffdƖ\ufffdF#k\ufffd\ufffd\ufffd}i\\r[\ufffd\ufffd}\ufffd,\\u0003\\u0000\ufffd8nf\ufffd\ufffd\ufffd\ufffdƵ\\u0015m覺\ufffd&\ufffd\\u0011\ufffd\ufffd;\"},\"candidates\":{\"type\":\"candidates\",\"value\":{\"length\":8,\"items\":[{\"text\":\"\ufffd\ufffd\\u0013I\ufffd\ufffd6TG\ufffd\ufffdU\\\\>\ufffd7}55\\u0007,\ufffdJU\ufffd\\r\ufffdu\\u0003\ufffd\ufffdM\ufffd%\\u001a \ufffdH}\ufffd\ufffdhz\ufffdJ\ufffdE\ufffdu\ufffd\\n}\ufffd0\ufffdq\ufffd\ufffd{Pՠ\ufffdY7\\\\.8\\n/\ufffd\ufffd(\ufffd6A\ufffd\ufffdO\\u0011\ufffd<\ufffd\ufffd\ufffd\ufffdƖ\ufffdF#k\ufffd\ufffd\ufffd}i\\r[\ufffd\ufffd}\ufffd,\\u0003\\u0000\ufffd8nf\ufffd\ufffd\ufffd\ufffdƵ\\u0015m覺\ufffd&\ufffd\\u0011\ufffd\ufffd;\",\"score\":0.64227647,\"note\":\"bit1 g lsb\"},{\"text\":\"\ufffd|\\u0010P\ufffdG\ufffdp\ufffdxFi\ufffd>PS\ufffd\ufffd \ufffdф\ufffd1pA\ufffd\\\\j\ufffd\ufffd\\u001c?.\\u0017F\\f.\ufffdO\ufffd1Z&wűG\ufffdx;|{\ufffd\ufffdH\ufffd\ufffd\ufffd\\u0016g\\u000bzR]\ufffd7\ufffd\\\\\ufffd\ufffd\\u0005\ufffdR\ufffd^\ufffd\ufffd3\ufffd^\ufffd\ufffd\\b\\t\\u0003\ufffd)u\\u0001K\ufffdY\ufffdk\\u0006\ufffd \ufffdP\\bFf\ufffd*\\b\\r \ufffd\\u0000r\ufffd\ufffd\ufffd6}WFDYp\ufffd\",\"score\":0.55245906,\"note\":\"bit2 g lsb\"},{\"text\":\"\ufffd\\u0010_\ufffd\ufffd\ufffd\ufffd~?\\u0000\ufffd$h(\ufffd\ufffd7E\ufffd\\u001b\ufffd\\u0018*e(\ufffd+=\ufffdei>\ufffd\ufffd\ufffd\ufffdc\ufffd)\ufffd\ufffdz\ufffd'\ufffd,0\ufffd{\ufffd\\u000b\ufffd\ufffdG\ufffd\ufffdh\\u0002\\u0007\\u000b\ufffd\ufffd\\n{\ufffd\ufffd\ufffd\ufffd\ufffdnD\ufffdv+J`\ufffdi\ufffdGJ\ufffd|\ufffd\ufffd\ufffdt8\\u0011D\ufffd\ufffdd\ufffd\\u000b\ufffd̤\ufffd\ufffd\ufffde\ufffd\ufffd\ufffd\\u0017\ufffdh\ufffd\ufffdت\ufffdT\\\"\ufffd\\u0014\ufffd\ufffdQӚ\ufffd\\u001e\ufffd\ufffd\ufffdo!\\u0007\\u0019/\ufffd\ufffd\\u00101\ufffd2\\u001d\ufffd\ufffdjfpu\ufffd\\u0013\ufffdb\ufffd_Hu\ufffd:\ufffd\ufffd\ufffdg\ufffd^\ufffd˯\ufffd\ufffd\ufffd\ufffd\\u0001\ufffd\ufffd\ufffdpq\ufffdD\ufffd\ufffdb띰\ufffd\ufffd@/\\u0017\\r\\\"Yg=Xx\ufffd¥\ufffdgK|\ufffd\ufffd\ufffdKǴ\ufffdٳ\ufffdq\ufffd\ufffdԬ,.\ufffd\ufffd\ufffdL\ufffdZ\ufffdȴL\ufffd]ys\ufffd׀j\ufffd\ufffd::\\u0001}3\\u0004qh\ufffd\ufffdvb#˗\\\\\ufffd=\ufffd\ufffd\ufffd\ufffd\\n\ufffd\ufffd\\u0001\ufffd6C\ufffd&?Z\\u0012\ufffd?\ufffdJ\ufffd%\ufffd\ufffd\ufffdFR4>\\u0005\ufffd\ufffd1\ufffdg-\ufffd\ufffd\\u0011\ufffdVωЁ\ufffdnVgM\ufffd\ufffd\ufffd\\u0005\ufffdEs\\u0018dO\\u0002\ufffdK8\ufffdٟX\ufffd\ufffd\\u0010\\u001d\\u0011,\ufffd\ufffd\ufffdM\ufffd$\\n\ufffd\ufffd\ufffdbI\ufffd0x蛑9a\\bW\\u0013\\\\^\ufffd\ufffd1\ufffd\ufffd-\ufffd\ufffd\\n\ufffd\ufffd\ufffd\ufffd\ufffd,'\ufffd:A\ufffdPe\ufffd\",\"score\":0.54986155,\"note\":\"bit2 bgr lsb\"},{\"text\":\"\ufffdU#\\u000e\ufffd\ufffd\\u0014\\t\ufffd8\ufffdh@Z\\f\ufffd\\u001b\ufffd\ufffd@)\ufffdqF)\ufffdv4\ufffd\\u0000}\ufffd\\u000f,Y\ufffd\ufffdG\\u00067=d\ufffd+\\u0004/~A\ufffd/G\ufffd2S\ufffd-\ufffd\ufffd\\n\ufffd\\u001fڦ\ufffd$\\u000b\ufffd_\ufffd\ufffd܀\ufffdu\ufffd38x_E\\u0010 \ufffdl`\ufffd7 \\\\\ufffd~6\\b\ufffdc\\u0013\ufffd\ufffdԸ\ufffd\ufffdZ\ufffdо\ufffd^\ufffd\ufffd7FG\ufffd\\rj#T4\\u0000\ufffdl\ufffdޔ\ufffdp\ufffd\ufffd\\u0006&d@\ufffd·]R\ufffd\ufffd\ufffd\ufffd\\u000en\ufffd\ufffd\ufffd\ufffd\ufffdU\ufffd\ufffd\ufffd%w\ufffd\\u0000\\u001b\ufffd\ufffd\ufffd\\u001c\ufffd\ufffd\\u0006g\ufffd\\u0006\ufffd\ufffd\ufffd\ufffd\ufffdKA\ufffd\ufffd\ufffdb\ufffd\ufffd>\ufffd\ufffdG\ufffd\ufffd\ufffd\ufffd\\u0001\\nD\ufffdc\ufffd\ufffdsԔ4f\ufffd\ufffd\ufffdO\ufffd&צb+v(\\u0011d\ufffdǬ\\u000f\ufffd\ufffd<TM\\u0003y\ufffd\ufffd\ufffdѳ\ufffdl=\\u0004\ufffd\ufffdE\\u0017\ufffdj\ufffdN\ufffd\ufffd\ufffdu\\\\\ufffd\ufffd\ufffdm&ZQ=\ufffd\ufffd\ufffd\ufffd'!\ufffd\ufffd\\\\\\u0015\ufffdw\ufffdt\ufffd\ufffd\ufffd\\u0015\ufffdD}\ufffdL\ufffd\ufffd$\ufffdw\ufffd\ufffdm\\\\צq\ufffd)MXiz\ufffd\ufffdh\ufffd5\\u001cބ|\ufffd\ufffdǣZ\ufffd>7X\ufffd\ufffd\\\"P\ufffdϸ\ufffd\ufffd\ufffdϗp<#\ufffdu\ufffdx\ufffd\ufffd\ufffd\\u0000@\\u0006/\\u0011n\ufffd\\u0010\ufffdGՃӂ,@٧\ufffdVf\ufffdoD\ufffdJ\ufffd9\ufffd\ufffd\ufffd\ufffd\\u00125a{R#\\u0003\",\"score\":0.5452514,\"note\":\"bit7 bgr lsb\"},{\"text\":\"{\ufffd\ufffd%\ufffd\\u001a\ufffdLe`\ufffd4q\ufffd\ufffd\ufffd<\ufffd\\u001f\ufffd\ufffd\ufffdT\ufffd\ufffd]\ufffdC'\ufffdOZ\ufffd\\u0015\\u0015\ufffdvx\\r\ufffd\ufffd\ufffd\ufffd\\u0017[\ufffd\ufffdQ5\ufffdGD\ufffds\\u0004\ufffdy\ufffdh\ufffdq\ufffd\ufffdt\\u001a*c<s\ufffdY!\ufffd\ufffdu2$\ufffd\ufffdQG\ufffdxJm\\u0011l\\u0003\ufffd\ufffd7\ufffd=\ufffd\\u0007>w[\ufffd\\b~@\ufffd\ufffd\ufffdN\ufffd\ufffd&\ufffd0g\ufffd\ufffdkQ\ufffd\\u000e\\u0004ֲ\ufffd\ufffd\\b\ufffd\ufffdyo*\ufffdP8\ufffd\ufffdS\ufffd\\u0018\ufffdu\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd*\ufffd-\ufffd}\ufffd\ufffd\ufffd'4\ufffd\ufffdǈ\ufffdT\ufffd\ufffd\ufffd\ufffd\ufffdVVj|\ufffd\ufffd\ufffdpe\ufffdr\ufffd\ufffd\ufffd8\ufffd\ufffdVd0\ufffdT\ufffd't1\\u001fp\ufffd0\ufffd\ufffd:{L\ufffd\ufffd\ufffdh\ufffd'\ufffd\ufffd\ufffd\ufffdx\ufffdoJ\ufffd\\u000fL\ufffdB\ufffdp\ufffdr\ufffd\ufffd\ufffd{k\ufffdt\ufffdi>Z\ufffd\\u0007\ufffd\ufffd\ufffd\ufffd\ufffdv2z\ufffd`zf\ufffd\ufffd\ufffdH\\u0016=\ufffd&d\ufffd+=\\u0019Qz\ufffd\ufffdN\ufffd\ufffdy\\f\ufffd\\u0002gf\ufffd\\u0000+E\ufffd\ufffd\ufffd\ufffdu\ufffd(\ufffd\ufffd}\\u0013VB6F\\u0012\ufffd\ufffdՓm&\ufffd3\ufffdJ\ufffdH&\\u001b@\\u0003B\ufffd\\u0010\ufffdȩx\ufffd\\u000f\\u0018\ufffd\ufffdg6M\ufffdW\ufffd\\u001b\ufffd\ufffd;\\u000b\\u0018\\u0017\ufffd\ufffdA\ufffd-\ufffd\ufffd\ufffd\\u0010`ҟ\\b\ufffd\\u001c-\ufffd\ufffd\ufffdZ\\u000bB\ufffd~\ufffd\ufffd\\\\A\\u0014\ufffd\\u0006e\ufffd\ufffd\ufffd\ufffd\",\"score\":0.52581507,\"note\":\"bit1 bgr msb\"},{\"text\":\"T\\nLbf\ufffd\\u001aW\ufffd\ufffd\ufffd7I\ufffd\ufffd\ufffd\ufffd\ufffd\ufffdNlڰ\ufffdD\\n\ufffd\\u001f\ufffd\\u0011\ufffd\\u0000Vì\ufffd\\\\ҍ\ufffdd\ufffdV\ufffd{{\ufffd\ufffd@\ufffd\\t\ufffd\ufffd\ufffdY4\ufffdk\ufffd\ufffd\ufffd\ufffdE\ufffd\ufffd\ufffd\ufffd\\u001f\ufffd\ufffdh\ufffd\ufffd{\ufffd9\ufffd1ƢG\ufffdп\ufffd\ufffd\ufffd2\ufffd<Xh.\ufffdԪ\ufffd)\ufffd\ufffd`\ufffd\\u0012\ufffd\\u0014\ufffd\ufffdHV\ufffdi\ufffdȰ\\u0015\\u001bH\ufffd\ufffd\\u0012\ufffd\\u0014\ufffd\ufffdQ\ufffdz⅑JWe\ufffd.\ufffd\\u0007\\u001a\ufffdJ\ufffd\ufffd\\u0005\ufffdɷ\ufffd\ufffdC\\u000fFI\ufffd,l\ufffd\ufffdqlB\ufffd\ufffd\ufffd\ufffdz\ufffd\ufffd\ufffd\\u0017*[\ufffd\ufffdA\\rBFѢ\\\\\ufffd-\ufffd\ufffd\ufffd|\\u001b\ufffd\ufffd~K\\u0002\ufffd\ufffd\\u000f\ufffd$\ufffdD\\u000f%\ufffd\\\\\ufffd3\ufffd\ufffdn\\\\(\ufffd\ufffd\ufffdV<\\u0003\\u001b\\u0010}GG\ufffd}\\u0017eu\\u0014'#\ufffdBp\ufffd_\\u001eQ\ufffd8\ufffd\ufffd8o\ufffd\\u001a\ufffdg\ufffd#\ufffdw&J\ufffd(\ufffd}\\u0013\\n\ufffdS\ufffd\\u000bCiɮa~\ufffdKA\ufffd~m\ufffd\ufffd֦nj*ce\\u001f\ufffd5\ufffdo\\u0017S4\ufffd\ufffd\ufffd\ufffdR+ٍh1\ufffdm\ufffduh)\\u0010]\ufffd[Z\\u0019Y\ufffd\\u0013\ufffd\ufffdlm\ufffd-|\ufffd\\u0002\ufffd\ufffdV\ufffdt\ufffd\ufffd\ufffd۴bv\\u001a\\u0019\\\\\ufffd\ufffd^Ygx\ufffd\ufffd߆<W\ufffdi\ufffd\ufffd\ufffd8\ufffd_\ufffd1\ufffdt\ufffd\ufffd\\u0015C]\\u0017Q4O\",\"score\":0.51250005,\"note\":\"bit4 bgr lsb\"},{\"text\":\"22Z\ufffd\ufffd}\ufffdm1Ԃ\ufffd~\ufffd=\ufffd<\\u000f\ufffd\ufffd&\\u00148-\\u0015\ufffd\ufffd\ufffd\ufffd\\u001bIFM5d\ufffd\ufffd\ufffd\\u0005\ufffd\ufffd\\u001eD-${\ufffd\ufffdo\ufffd\ufffd\ufffd\ufffdw\ufffd'E\\u001d\ufffd\\u0004Ҷa\ufffd\ufffdO\ufffd\\u001e\ufffd3)\ufffdi\ufffd(˲\ufffd\ufffd\ufffd&JMS_ҰB\ufffd\ufffd\ufffd\ufffdl\ufffd\ufffd\ufffdq\ufffd(\ufffd\\u001d\ufffd\ufffdj\ufffd`\ufffd\ufffd\ufffdg\ufffdl\ufffd\\u000b\ufffd\\u0013J\ufffd\ufffd\ufffd\\n\ufffdU\ufffd\ufffd\\u000e\ufffd\ufffd\",\"score\":0.5016129,\"note\":\"bit4 b msb\"},{\"text\":\"\ufffd\ufffd2\\b\\u0013\ufffdt9q\\t~\ufffd\ufffdI\ufffdl\ufffd\ufffdw\\n,\ufffd\\u0001\ufffd\ufffd\ufffd\ufffd\ufffd\\u0018\ufffd\\\"n\\t\\\\\ufffd\ufffdW\ufffdh\ufffd_\\u001f\\u0016n\\\"\ufffd\ufffd\ufffd3=0\ufffd\ufffd\\u0006LN\ufffd\ufffd\\u0003\ufffd\ufffd-\ufffdq\ufffdc\ufffdl>\\u0011Z^*\ufffd.`x\ufffd\ufffdHT\ufffd\ufffd\ufffd\ufffd\ufffd1\ufffd5\ufffd\ufffdc\\u001de_\ufffd\ufffd\ufffdJ㞬f\\u001e\ufffdV\\u001e\ufffdX\ufffd\\u001b\ufffd\ufffd\ufffdMǣ4\ufffd犣\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd;\ufffdz\ufffdS*\ufffd\ufffdM\ufffd/5\\b\ufffd|\\u0014vp\ufffd\ufffd\ufffd_\\u0016\\u001f,{\\u0012\ufffd\\b\ufffd\\u000b\ufffd\ufffd\ufffd\ufffd;\\u0015J1\ufffda\ufffdZ\ufffd䙐\\\\1?\\n\ufffd>\ufffd\ufffd\\u0007\ufffdT\ufffd\ufffd@\ufffd\ufffdp\ufffdpt\\u0016|\ufffd\ufffd\ufffd\ufffd_\\u0007\ufffdU\\u0002\ufffd{\ufffd\ufffd\ufffd\ufffd\ufffdQ\ufffdg\ufffd#\ufffd\\u0003\ufffdL\ufffdV\ufffdtu\\u0012.>\ufffd\ufffd\\u0004\ufffd,\ufffd4\\u0017Ijs\\u000fߩ\ufffd\ufffd@u\\u001e\\u001b\ufffdj\ufffdN\ufffdb\ufffdi\\u001a\ufffdO7\ufffd\\b\ufffd\ufffd\\u001d\\u0003\ufffd\\u0018\ufffdtru@\\t\ufffd \ufffdރ\ufffdl\ufffdc\\tHhI;\ufffd\ufffd\ufffd\ufffdQ\\t\ufffd\ufffd\ufffdQW\ufffd\ufffdNS\ufffd\ufffdU\ufffdys\\u001az/|\ufffd%\ufffd@\\u0007ս\ufffd\ufffdĻ'\ufffd.J9\ufffd`G]~㔅\ufffd0\\\"\ufffd3}먔\ufffdni\ufffd\ufffdR\ufffdM\ufffd\ufffd\ufffd\ufffd\ufffdX:Vq\\u0016O\ufffd\ufffdb\ufffd/e\\u0014y\ufffd\ufffd\",\"score\":0.4947803,\"note\":\"bit6 rgb msb\"}]}}}",
+        "status": "done",
+        "type": "zsteg_scan"
+      },
+      {
+        "node": "qr",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":0,\"value\":\"\"},\"format\":{\"type\":\"text\",\"length\":0,\"value\":\"\"},\"all\":{\"type\":\"stringList\",\"value\":{\"length\":0,\"items\":[]}}}",
+        "status": "done",
+        "type": "qr_decode"
+      },
+      {
+        "node": "out_brief",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":425,\"value\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "out_packet",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":311,\"value\":\"{\\n  \\\"version\\\": 1,\\n  \\\"cipher\\\": \\\"AES-128-CBC\\\",\\n  \\\"padding\\\": \\\"PKCS7\\\",\\n  \\\"encoding\\\": \\\"Base64\\\",\\n  \\\"iv_hex\\\": \\\"2a031841c4d27aaf0c1d40b0c5e6eb48\\\",\\n  \\\"ciphertext\\\": \\\"SutDOqEKN2TEpDlCicGr5OvtJECBIhFKYEy28P9Y5QLQrPcYh0iN82cTgBAUN6RrBZNHy2NN/mBD16/qyb1eBwq6GOy4BillskkGXzgKKhfCFRmP9MiGbXPorGuwCrL6PcWeCQCbQOqZun7toPc3fw==\\\"\\n}\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "out_zsteg",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":123,\"value\":\"\ufffd\ufffd\\u0013I\ufffd\ufffd6TG\ufffd\ufffdU\\\\>\ufffd7}55\\u0007,\ufffdJU\ufffd\\r\ufffdu\\u0003\ufffd\ufffdM\ufffd%\\u001a \ufffdH}\ufffd\ufffdhz\ufffdJ\ufffdE\ufffdu\ufffd\\n}\ufffd0\ufffdq\ufffd\ufffd{Pՠ\ufffdY7\\\\.8\\n/\ufffd\ufffd(\ufffd6A\ufffd\ufffdO\\u0011\ufffd<\ufffd\ufffd\ufffd\ufffdƖ\ufffdF#k\ufffd\ufffd\ufffd}i\\r[\ufffd\ufffd}\ufffd,\\u0003\\u0000\ufffd8nf\ufffd\ufffd\ufffd\ufffdƵ\\u0015m覺\ufffd&\ufffd\\u0011\ufffd\ufffd;\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "out_qr",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":0,\"value\":\"\"}}",
+        "status": "done",
+        "type": "text_output"
+      }
+    ],
+    [
+      {
+        "node": "src",
+        "outputs": "原始输入已读取；从下游结果判断下一步",
+        "status": "done",
+        "type": "file_import"
+      },
+      {
+        "node": "detect",
+        "outputs": "{\"type\":{\"type\":\"text\",\"length\":22,\"value\":\"ZIP / docx / jar / apk\"},\"ext\":{\"type\":\"text\",\"length\":3,\"value\":\"zip\"},\"text\":{\"type\":\"text\",\"length\":59,\"value\":\"ZIP / docx / jar / apk\\n后缀名: zip\\n幻数: 50 4b 03 04 14 00 00 00\"}}",
+        "status": "done",
+        "type": "detect_file_type"
+      },
+      {
+        "node": "out_type",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":59,\"value\":\"ZIP / docx / jar / apk\\n后缀名: zip\\n幻数: 50 4b 03 04 14 00 00 00\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "list",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":340,\"value\":\"共 4 个条目（0 个加密）：\\nbrief.txt              原始       425  压缩       264  Deflated   明文    CRC 7a3f2a30\\ndispatch/packet.json   原始       311  压缩       255  Deflated   明文    CRC b12eb8c4\\nassets/photograph.png  原始      2952  压缩      2957  Deflated   明文    CRC 564516c1\\ntelemetry/noise.csv    原始        26  压缩        28  Deflated   明文    CRC bdde7f58\\n\"},\"files\":{\"type\":\"stringList\",\"value\":{\"length\":4,\"items\":[\"brief.txt\",\"dispatch/packet.json\",\"assets/photograph.png\",\"telemetry/noise.csv\"]}},\"count\":{\"type\":\"number\",\"value\":4},\"encrypted\":{\"type\":\"bool\",\"value\":false}}",
+        "status": "done",
+        "type": "archive_list"
+      },
+      {
+        "node": "out_list",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":340,\"value\":\"共 4 个条目（0 个加密）：\\nbrief.txt              原始       425  压缩       264  Deflated   明文    CRC 7a3f2a30\\ndispatch/packet.json   原始       311  压缩       255  Deflated   明文    CRC b12eb8c4\\nassets/photograph.png  原始      2952  压缩      2957  Deflated   明文    CRC 564516c1\\ntelemetry/noise.csv    原始        26  压缩        28  Deflated   明文    CRC bdde7f58\\n\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "ext",
+        "outputs": "{\"format\":{\"type\":\"text\",\"length\":3,\"value\":\"zip\"},\"text\":{\"type\":\"text\",\"length\":425,\"value\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"},\"entry\":{\"type\":\"text\",\"length\":9,\"value\":\"brief.txt\"},\"summary\":{\"type\":\"text\",\"length\":35,\"value\":\"zip: 4 个文件；当前输出「brief.txt」（425 字节）。\"},\"entries\":{\"type\":\"json\",\"value\":{\"kind\":\"misclab.archive.entries\",\"version\":1,\"format\":\"zip\",\"entries\":{\"length\":4,\"items\":[{\"index\":0,\"fileIndex\":0,\"name\":\"brief.txt\",\"isDir\":false,\"size\":425,\"compressedSize\":264,\"encrypted\":false,\"crc32\":\"7a3f2a30\",\"error\":null,\"dataBase64\":\"[归档字节 568 个 Base64 字符，请用取解压文件读取]\"},{\"index\":1,\"fileIndex\":1,\"name\":\"dispatch/packet.json\",\"isDir\":false,\"size\":311,\"compressedSize\":255,\"encrypted\":false,\"crc32\":\"b12eb8c4\",\"error\":null,\"dataBase64\":\"[归档字节 416 个 Base64 字符，请用取解压文件读取]\"},{\"index\":2,\"fileIndex\":2,\"name\":\"assets/photograph.png\",\"isDir\":false,\"size\":2952,\"compressedSize\":2957,\"encrypted\":false,\"crc32\":\"564516c1\",\"error\":null,\"dataBase64\":\"[归档字节 3936 个 Base64 字符，请用取解压文件读取]\"},{\"index\":3,\"fileIndex\":3,\"name\":\"telemetry/noise.csv\",\"isDir\":false,\"size\":26,\"compressedSize\":28,\"encrypted\":false,\"crc32\":\"bdde7f58\",\"error\":null,\"dataBase64\":\"[归档字节 36 个 Base64 字符，请用取解压文件读取]\"}]}}},\"bytes\":{\"type\":\"bytes\",\"size\":425,\"hex\":\"5265636f76657265642064697370617463682c207469636b6574203237313032382e205468652066696c6520657874656e73696f6e20776173206c6f73742e0a\",\"utf8\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"},\"count\":{\"type\":\"number\",\"value\":4},\"files\":{\"type\":\"stringList\",\"value\":{\"length\":4,\"items\":[\"brief.txt\",\"dispatch/packet.json\",\"assets/photograph.png\",\"telemetry/noise.csv\"]}}}",
+        "status": "done",
+        "type": "archive_extract"
+      },
+      {
+        "node": "get_brief",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":425,\"value\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"},\"name\":{\"type\":\"text\",\"length\":9,\"value\":\"brief.txt\"},\"bytes\":{\"type\":\"bytes\",\"size\":425,\"hex\":\"5265636f76657265642064697370617463682c207469636b6574203237313032382e205468652066696c6520657874656e73696f6e20776173206c6f73742e0a\",\"utf8\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"},\"size\":{\"type\":\"number\",\"value\":425}}",
+        "status": "done",
+        "type": "archive_get_file"
+      },
+      {
+        "node": "out_brief",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":425,\"value\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "get_packet",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":311,\"value\":\"{\\n  \\\"version\\\": 1,\\n  \\\"cipher\\\": \\\"AES-128-CBC\\\",\\n  \\\"padding\\\": \\\"PKCS7\\\",\\n  \\\"encoding\\\": \\\"Base64\\\",\\n  \\\"iv_hex\\\": \\\"2a031841c4d27aaf0c1d40b0c5e6eb48\\\",\\n  \\\"ciphertext\\\": \\\"SutDOqEKN2TEpDlCicGr5OvtJECBIhFKYEy28P9Y5QLQrPcYh0iN82cTgBAUN6RrBZNHy2NN/mBD16/qyb1eBwq6GOy4BillskkGXzgKKhfCFRmP9MiGbXPorGuwCrL6PcWeCQCbQOqZun7toPc3fw==\\\"\\n}\"},\"name\":{\"type\":\"text\",\"length\":20,\"value\":\"dispatch/packet.json\"},\"bytes\":{\"type\":\"bytes\",\"size\":311,\"hex\":\"7b0a20202276657273696f6e223a20312c0a202022636970686572223a20224145532d3132382d434243222c0a20202270616464696e67223a2022504b435337\",\"utf8\":\"{\\n  \\\"version\\\": 1,\\n  \\\"cipher\\\": \\\"AES-128-CBC\\\",\\n  \\\"padding\\\": \\\"PKCS7\\\",\\n  \\\"encoding\\\": \\\"Base64\\\",\\n  \\\"iv_hex\\\": \\\"2a031841c4d27aaf0c1d40b0c5e6eb48\\\",\\n  \\\"ciphertext\\\": \\\"SutDOqEKN2TEpDlCicGr5OvtJECBIhFKYEy28P9Y5QLQrPcYh0iN82cTgBAUN6RrBZNHy2NN/mBD16/qyb1eBwq6GOy4BillskkGXzgKKhfCFRmP9MiGbXPorGuwCrL6PcWeCQCbQOqZun7toPc3fw==\\\"\\n}\"},\"size\":{\"type\":\"number\",\"value\":311}}",
+        "status": "done",
+        "type": "archive_get_file"
+      },
+      {
+        "node": "out_packet",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":311,\"value\":\"{\\n  \\\"version\\\": 1,\\n  \\\"cipher\\\": \\\"AES-128-CBC\\\",\\n  \\\"padding\\\": \\\"PKCS7\\\",\\n  \\\"encoding\\\": \\\"Base64\\\",\\n  \\\"iv_hex\\\": \\\"2a031841c4d27aaf0c1d40b0c5e6eb48\\\",\\n  \\\"ciphertext\\\": \\\"SutDOqEKN2TEpDlCicGr5OvtJECBIhFKYEy28P9Y5QLQrPcYh0iN82cTgBAUN6RrBZNHy2NN/mBD16/qyb1eBwq6GOy4BillskkGXzgKKhfCFRmP9MiGbXPorGuwCrL6PcWeCQCbQOqZun7toPc3fw==\\\"\\n}\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "get_png",
+        "outputs": "{\"name\":{\"type\":\"text\",\"length\":21,\"value\":\"assets/photograph.png\"},\"text\":{\"type\":\"text\",\"length\":2783,\"value\":\"\ufffdPNG\\r\\n\\u001a\\n\\u0000\\u0000\\u0000\\rIHDR\\u0000\\u0000\\u0000 \\u0000\\u0000\\u0000 \\b\\u0002\\u0000\\u0000\\u0000\ufffd\\u0018\ufffd\ufffd\\u0000\\u0000\\u000bOIDATx\ufffd\\u0005\ufffd\\u0001\ufffd\ufffd\ufffda\\u0000\ufffdor35\ufffd\ufffdLM.\ufffd^n\ufffd\ufffdr\\u0015\\u0015\\u0013\ufffd<\\u0011\\u0013\ufffdT\ufffdz\ufffdv\ufffd\ufffd\ufffdy\ufffd\ufffdz*v5S3\ufffd\ufffd\ufffdD\ufffd33\ufffd/*\ufffd*\ufffd\ufffd\ufffd\ufffd^nf\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\\u0003vׂ򿒜O\\u0003\ufffdBV\ufffd\ufffd\ufffd\ufffdKR\\u000f\\u0003\ufffd\\u0017K\ufffd\\u0011\ufffdo=_\ufffdXT\ufffd\ufffd]\ufffd\ufffd\ufffd\ufffdI\ufffdY\ufffd|\ufffdO\ufffd\ufffd⟘\ufffdTX\ufffd\ufffd,\ufffd_a*\ufffdx]5\ufffd\ufffdK\ufffdK\\u0012\\u001d\ufffd\\u0007\ufffd\ufffd\ufffd5\ufffd\ufffd\ufffd\ufffd]=\ufffdy\ufffd\ufffd\ufffd\\u001f\ufffd\ufffd\\u0007\ufffd\ufffd\ufffd\\bHJd\\u0006s\ufffd?\\u001b\ufffd?\ufffd-\ufffd\ufffd\ufffd\\u0004g\\f[\ufffd\ufffd\ufffdC\\u0015v\ufffd\ufffd\ufffd\ufffd0K\ufffdW\ufffdC\ufffd\ufffd?F\\u001fml\ufffdoK\ufffdQV\ufffda\ufffd\\u001fg\\u0002\ufffd\ufffd\ufffd\ufffdQ\ufffdt\\n\ufffd\ufffdQ\ufffd\ufffd_\ufffd\\n?L\ufffd\ufffdb\ufffd}\\\\*\\\"Q\ufffd7#`큝\ufffdi\ufffdw\ufffd\ufffd\ufffd\ufffdg\ufffd\ufffd]\ufffd'\\b\\u001d~\ufffd\ufffd\ufffd(\ufffdA\\u000b\ufffdÆ\ufffd\ufffdKX\ufffdY~C\ufffd\ufffdV\ufffdO\ufffd\ufffd\\b\ufffd\ufffdmi\ufffd\ufffdkW\ufffd\ufffd\ufffd֘g\\u000f\ufffd/>6\ufffd\ufffd~\ufffdE\ufffd\ufffd\\t\ufffd{\ufffd\ufffd\ufffd\\bT\ufffd\ufffd\ufffd:v\ufffd3:\ufffd\ufffd$`s&l\ufffd;\ufffd\\u001fF*\ufffd(\ufffd\ufffdv\ufffd_^\\u001e\\b\\u0003ܟQ\ufffdM\\u001bAJL\ufffd\ufffdH\ufffd\ufffdI\ufffd\ufffd\ufffdw\ufffd\ufffd\\u000e\\u001e\\u0005\ufffd\\\"\\u001d\ufffdxO\ufffdz?\ufffd,\\fo\ufffd\ufffd|\ufffdm,\ufffd\\u0018}f\ufffd\\u00187\ufffdʯ\ufffd\ufffd\ufffd\\u001f\ufffd\\tT\ufffdOL\ufffd\ufffd\ufffd\ufffd\\u0018\\u0002*ڳ\ufffd\ufffd\ufffd_\ufffdyl\ufffd}f\ufffdq\ufffd\ufffd\ufffd`\\u0007]\ufffd\ufffd\ufffdL\ufffd\ufffdU=\ufffd;Ϋz\ufffdM\ufffdg\ufffds,\\b@\\u0005\ufffd#]\\u001dyk\ufffd\ufffd\ufffd\ufffd\ufffd7q\ufffd\ufffd\ufffdp\ufffd\ufffd\ufffd\ufffd2\\\\\ufffdN\\b\ufffd\ufffd\\b\ufffd\ufffd=\ufffd؍]\ufffd3\ufffd\ufffd\\u0017\ufffd2\ufffd\\f\ufffd\ufffd\\u0012d(\ufffd\ufffdgy\ufffd\ufffdS\ufffd\ufffd\ufffdU\ufffd\ufffd\\u001c\ufffdT\ufffdbGZ\ufffd\ufffd]I\ufffdE\ufffdE\ufffd\\u0019|f\\u0000}\ufffd\ufffd]\ufffd\ufffd\ufffd\ufffdC\ufffd\ufffdx\ufffd\ufffd\ufffd>ȍA\ufffdc\ufffd\ufffd\ufffd}\ufffd\ufffdc8ۤ\\n\ufffd\ufffd\ufffd\ufffd\ufffdWK\ufffdp\\u0006\ufffd>\ufffd\\rҩ\ufffd\ufffd\\u0000\ufffd|%\ufffd\\u0016 \ufffd\ufffd\\u0011\ufffd\ufffd\ufffd\ufffd0\ufffd\ufffd\ufffd[e\ufffd&2y\ufffd\ufffd\ufffdת\ufffd\ufffd\ufffd\\u001b\ufffd[\ufffdmc\\u0018\ufffd\ufffd\\u000f\\bxV\ufffdķ\ufffd\ufffdϱ/,g\ufffdh\ufffdH\ufffd\ufffd*΅S\ufffdD\ufffdP2\ufffd:\ufffd\ufffd9\ufffd\ufffd\ufffdJx\\u0005\\u0001\ufffdwS\ufffd/\ufffd[c\\u0019\\u0018\ufffd.\ufffd_>پ\ufffd\ufffd)\ufffd\ufffd\ufffd\ufffd\ufffd]F\\u000e(\\u0005\ufffdm=\ufffdu\ufffdD_\\u0007\\u0010\\u001fl\ufffd\\\\\ufffd\ufffd\ufffd2\ufffd\ufffd\ufffd_\\u001f\ufffd\ufffdB00p~c\\u001e~\\u0017f\ufffd\ufffdpY]v\ufffdj\ufffd\ufffd\ufffd\ufffd$\ufffd%\ufffd\ufffd\\u0007\ufffd\ufffd[*្\ufffddpCB\ufffd\\u0002\\u000b\ufffd\ufffd\ufffdnD\ufffd\ufffdGu\ufffdn\ufffd\ufffd\ufffd\ufffd)=\ufffd\ufffd\ufffd\ufffdv\ufffdʢ\ufffd\ufffd~\ufffd\ufffd\ufffd\\u0015\ufffdC]\ufffd\ufffdG\ufffd$\ufffdeܙ\ufffdvm;}\ufffd\ufffd\ufffd\ufffd9\ufffd\ufffdǏ\ufffd\\u001f\ufffdD\ufffd?!\\nY\ufffd\ufffd}\ufffd\ufffd\\bqO͈:˯L\ufffd㗶(\\u0005\\u0000O\\u0018\ufffd?ں7\ufffd\ufffd\ufffd3\ufffd\ufffdA\ufffdË\ufffd\ufffd\ufffd\\u0013\ufffdD\ufffd\ufffd~\\u001a8\ufffd]\\u0002\\u0013k\ufffd\\u0017\ufffd\ufffdG\ufffd\ufffd\ufffdr\ufffdkΨ䢈Ժ/\ufffd\ufffd\\u001f\ufffd^\ufffd\ufffd4i\ufffds\ufffd\ufffd\ufffd큟G1\ufffdw\ufffd֔\ufffd\ufffdAI\ufffd\ufffd\\u0013\ufffdڄ2\ufffd\ufffd\\u00138*X\ufffd\ufffd\\u0005\ufffd<\ufffdk#0\ufffd;UZ.\ufffd_0\ufffd7\ufffd\ufffd\ufffd\\u0011\ufffd[\ufffd\\u000b\ufffdI\\u0016n\ufffd\ufffd\ufffd\ufffdn\\u000b먋\ufffd\\u0010Q\ufffdك\ufffd&c!\\u0015\ufffd*\ufffdM/WCV\ufffdd\ufffd\\u0006>t\\u001a\ufffd(\ufffd\ufffd\ufffd\ufffd\\f\ufffd\ufffd\ufffd\ufffdn\\u0015+\\r\\u0000\ufffdZ\ufffd9\ufffd\ufffdL\ufffd^\ufffdW\ufffd\ufffd\ufffdw\\u001c\ufffd\ufffdS_RXZ\ufffd\ufffdܠ\ufffd\ufffd\ufffd\\b\ufffdn=\\u0016\ufffda\ufffd.\\u001f\ufffd\ufffdZ\\u0004\ufffdФz\ufffd\ufffd\\u000f[\ufffd\ufffd\ufffd\ufffd\\u0019\\\\p\ufffd7\ufffd\ufffd\ufffd&\ufffd\ufffd\ufffd\ufffdWҫ\ufffd\\u00128k\ufffdt\ufffdJ\ufffd\ufffd\\u0005\ufffd\ufffdI\ufffd׾q\ufffd\ufffd\ufffd\ufffd\ufffd\\u0010\\u001b&\ufffd\ufffd\ufffd\ufffdq\ufffd\ufffd[v4\ufffd\\u0018!\ufffdvg9&J&\ufffd_/\ufffd\ufffdӠnŰ\ufffd1;T\ufffdYCK\ufffd\\u001f\ufffd>fl;yW\\u0007\ufffdd\ufffd\ufffd\ufffdc\ufffd5\\u0017=H\\f\ufffd\ufffdD\ufffdGST/P@J\ufffdi\\t\\u0019+\\u001e\\u001b\ufffd^\ufffd\ufffdKTU\ufffdf\\rV\ufffd\\u0013\ufffd\\bp\ufffd\ufffd\ufffd\ufffd}X\ufffd\\u0017\ufffd\ufffdCQ\ufffd/`άwjl\ufffdb\ufffd\\u0016\\u0006\\u0016G\\\\\\u00141\ufffd|\ufffd\ufffdS\ufffd_\ufffd\ufffd*\ufffd2\ufffd0\ufffd\ufffd8.\ufffd\ufffdx.\ufffdp\ufffd(\ufffd\ufffd=J\\u0006\\u0004\ufffdO.1[ȍ\ufffd\ufffd\ufffd\ufffdEl\ufffd;ڭ^\ufffdҒ{l\ufffd\ufffd\\u0000\ufffd\ufffd\ufffd\ufffdl6i\\r\ufffd\ufffd\ufffd\ufffd>\ufffdAwv\ufffd\ufffdG\ufffdN@q)\ufffd;\ufffd\ufffd܄\\u000e\\u001f\ufffd\ufffd\\u00181\ufffd[\\u0006\ufffd\ufffdH\ufffd\\u0018bi#F*\ufffd\ufffd\\r\ufffd3\ufffd\\f\\u0010(6\ufffd\ufffd\ufffdo\ufffd)\ufffd`\ufffd\ufffd!\ufffdD\ufffdk\ufffd\ufffd-\ufffd\\n\ufffd\ufffdە8\\\"\ufffd8\\u000e\ufffd\ufffd/\ufffd\ufffd鑸\\\\\ufffdĐ\ufffd\ufffd\ufffdakc\ufffd\\u001bi\ufffd/\ufffd\ufffdp\ufffd\ufffd\ufffd\\u0012?|\ufffdo\\u0004\ufffdmh\ufffdgR\ufffdh\ufffd9\ufffdO\ufffd\ufffdYD\\u001a\ufffd!G\\u00174\ufffd\ufffd>\ufffdi\ufffdo\ufffdF\ufffdȦH\ufffd\ufffd\ufffd\ufffd\\n\\u0001\ufffd…[已截断，共 2783 字符]\",\"tail\":\"+\\u0004\ufffd\\\"N\ufffd\\u0013\ufffd=\\u0005Y\ufffdv\ufffd?\ufffd\ufffd\ufffd)\ufffd\ufffd\ufffdˉ\ufffdE +a]6\\u0016\ufffd\\u0011T\ufffd\ufffd^\ufffd\ufffd0\ufffd\ufffd;\\u000ee\ufffd%\ufffdP\ufffd8\ufffd\ufffd4\ufffdʅ\ufffd\ufffd\ufffd xlN\\u0004\\u001e\ufffd\ufffd<>\ufffd˥s\ufffd\ufffdZݝ\ufffdU\ufffd\\u0018\ufffd%\\u001b\ufffd1\ufffdX\ufffdP_+\ufffd\ufffdpÝ\ufffd\\u0012_w흁\ufffd|(L\ufffdD[\ufffdN\ufffd6\ufffda\ufffd\\u0019B\ufffd(\ufffd)~\\n\ufffd\ufffd\\u0018B\ufffd\ufffd@\ufffdP\ufffd\ufffd%\ufffd\\u0015^\ufffd=\ufffd\ufffd\ufffd(\ufffde\ufffd1\ufffd*\ufffd\\u0011\ufffd\ufffdV\ufffd\ufffd\ufffd\ufffdK\ufffdY\ufffd_\ufffd\ufffd\\u000f\ufffdr\ufffd6\\u001f\ufffd\ufffdw\ufffd#9+\ufffd1\ufffd\ufffde\ufffdi\ufffd\ufffd\ufffd8\ufffd\ufffd\ufffd@\\u0014\ufffdQ\ufffd\\u0016\ufffd\ufffd\ufffd\ufffdJi\ufffdlc\ufffdA\ufffd\\u0005\\u0002\ufffd\ufffd<\ufffd\\u0001Y\ufffd;\ufffdh\ufffd|[\ufffd\ufffd\\u0012\\\\b\ufffdiZ\ufffd\ufffd\ufffdM\ufffdEx\\u001d\ufffd\ufffd\ufffd\\u001e\ufffd)e\\u0013 \ufffdU\\\\\ufffd9\\u001e\ufffd\ufffd\ufffdȨ\ufffd\\u001cG\\u0017\ufffd\\u0002!\ufffd~?!:n\ufffd\ufffd\ufffdX\ufffd0\\u0006S#\ufffd\ufffdϿ\ufffd\\\\J\\u0004\ufffd\ufffd(z\\u0005 (\ufffd}\ufffd.BQ\ufffdP\ufffd[\\u0011Wx/\ufffdj\ufffd\ufffd6O\ufffdj\ufffd#\ufffd\ufffdK\ufffd\ufffd\ufffd4\ufffd\ufffdl\\ft\ufffd,\ufffdX\ufffdao=sށ\ufffd\\u0007\ufffd\ufffd\ufffd)v\\u0013\ufffd\ufffd\ufffd\ufffd\ufffdX\\fX\ufffd\ufffd\\u001d2\ufffd=!\ufffd\\rM\ufffd\\u001d9\ufffd\ufffd\\u001f\ufffdp\\u0006\ufffd\ufffd\\u0001\ufffd\ufffd\ufffdCi\ufffd\\u0002\ufffd\\u0000\\u0000\\u0000\\u0000IEND\ufffdB`\ufffd\"},\"size\":{\"type\":\"number\",\"value\":2952},\"bytes\":{\"type\":\"bytes\",\"size\":2952,\"hex\":\"89504e470d0a1a0a0000000d4948445200000020000000200802000000fc18eda300000b4f49444154789c05c1018cb98b6100f06f723335b9dc4c4d2ee6995e\",\"utf8\":\"\ufffdPNG\\r\\n\\u001a\\n\\u0000\\u0000\\u0000\\rIHDR\\u0000\\u0000\\u0000 \\u0000\\u0000\\u0000 \\b\\u0002\\u0000\\u0000\\u0000\ufffd\\u0018\ufffd\ufffd\\u0000\\u0000\\u000bOIDATx\ufffd\\u0005\ufffd\\u0001\ufffd\ufffd\ufffda\\u0000\ufffdor35\ufffd\ufffdLM.\ufffd^n\ufffd\ufffdr\\u0015\\u0015\\u0013\ufffd<\\u0011\\u0013\ufffdT\ufffdz\ufffdv\ufffd\ufffd\ufffdy\ufffd\ufffdz*v5S3\ufffd\ufffd\ufffdD\ufffd33\ufffd/*\ufffd*\ufffd\ufffd\ufffd\ufffd^nf\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\\u0003vׂ򿒜O\\u0003\ufffdBV\ufffd\ufffd\ufffd\ufffdKR\\u000f\\u0003\ufffd\\u0017K\ufffd\\u0011\ufffdo=_\ufffdXT\ufffd\ufffd]\ufffd\ufffd\ufffd\ufffdI\ufffdY\ufffd|\ufffdO\ufffd\ufffd⟘\ufffdTX\ufffd\ufffd,\ufffd_a*\ufffdx]5\ufffd\ufffdK\ufffdK\\u0012\\u001d\ufffd\\u0007\ufffd\ufffd\ufffd5\ufffd\ufffd\ufffd\ufffd]=\ufffdy\ufffd\ufffd\ufffd\\u001f\ufffd\ufffd\\u0007\ufffd\ufffd\ufffd\\bHJd\\u0006s\ufffd?\\u001b\ufffd?\ufffd-\ufffd\ufffd\ufffd\\u0004g\\f[\ufffd\ufffd\ufffdC\\u0015v\ufffd\ufffd\ufffd\ufffd0K\ufffdW\ufffdC\ufffd\ufffd?F\\u001fml\ufffdoK\ufffdQV\ufffda\ufffd\\u001fg\\u0002\ufffd\ufffd\ufffd\ufffdQ\ufffdt\\n\ufffd\ufffdQ\ufffd\ufffd_\ufffd\\n?L\ufffd\ufffdb\ufffd}\\\\*\\\"Q\ufffd7#`큝\ufffdi\ufffdw\ufffd\ufffd\ufffd\ufffdg\ufffd\ufffd]\ufffd'\\b\\u001d~\ufffd\ufffd\ufffd(\ufffdA\\u000b\ufffdÆ\ufffd\ufffdKX\ufffdY~C\ufffd\ufffdV\ufffdO\ufffd\ufffd\\b\ufffd\ufffdmi\ufffd\ufffdkW\ufffd\ufffd\ufffd֘g\\u000f\ufffd/>6\ufffd\ufffd~\ufffdE\ufffd\ufffd\\t\ufffd{\ufffd\ufffd\ufffd\\bT\ufffd\ufffd\ufffd:v\ufffd3:\ufffd\ufffd$`s&l\ufffd;\ufffd\\u001fF*\ufffd(\ufffd\ufffdv\ufffd_^\\u001e\\b\\u0003ܟQ\ufffdM\\u001bAJL\ufffd\ufffdH\ufffd\ufffdI\ufffd\ufffd\ufffdw\ufffd\ufffd\\u000e\\u001e\\u0005\ufffd\\\"\\u001d\ufffdxO\ufffdz?\ufffd,\\fo\ufffd\ufffd|\ufffdm,\ufffd\\u0018}f\ufffd\\u00187\ufffdʯ\ufffd\ufffd\ufffd\\u001f\ufffd\\tT\ufffdOL\ufffd\ufffd\ufffd\ufffd\\u0018\\u0002*ڳ\ufffd\ufffd\ufffd_\ufffdyl\ufffd}f\ufffdq\ufffd\ufffd\ufffd`\\u0007]\ufffd\ufffd\ufffdL\ufffd\ufffdU=\ufffd;Ϋz\ufffdM\ufffdg\ufffds,\\b@\\u0005\ufffd#]\\u001dyk\ufffd\ufffd\ufffd\ufffd\ufffd7q\ufffd\ufffd\ufffdp\ufffd\ufffd\ufffd\ufffd2\\\\\ufffdN\\b\ufffd\ufffd\\b\ufffd\ufffd=\ufffd؍]\ufffd3\ufffd\ufffd\\u0017\ufffd2\ufffd\\f\ufffd\ufffd\\u0012d(\ufffd\ufffdgy\ufffd\ufffdS\ufffd\ufffd\ufffdU\ufffd\ufffd\\u001c\ufffdT\ufffdbGZ\ufffd\ufffd]I\ufffdE\ufffdE\ufffd\\u0019|f\\u0000}\ufffd\ufffd]\ufffd\ufffd\ufffd\ufffdC\ufffd\ufffdx\ufffd\ufffd\ufffd>ȍA\ufffdc\ufffd\ufffd\ufffd}\ufffd\ufffdc8ۤ\\n\ufffd\ufffd\ufffd\ufffd\ufffdWK\ufffdp\\u0006\ufffd>\ufffd\\rҩ\ufffd\ufffd\\u0000\ufffd|%\ufffd\\u0016 \ufffd\ufffd\\u0011\ufffd\ufffd\ufffd\ufffd0\ufffd\ufffd\ufffd[e\ufffd&2y\ufffd\ufffd\ufffdת\ufffd\ufffd\ufffd\\u001b\ufffd[\ufffdmc\\u0018\ufffd\ufffd\\u000f\\bxV\ufffdķ\ufffd\ufffdϱ/,g\ufffdh\ufffdH\ufffd\ufffd*΅S\ufffdD\ufffdP2\ufffd:\ufffd\ufffd9\ufffd\ufffd\ufffdJx\\u0005\\u0001\ufffdwS\ufffd/\ufffd[c\\u0019\\u0018\ufffd.\ufffd_>پ\ufffd\ufffd)\ufffd\ufffd\ufffd\ufffd\ufffd]F\\u000e(\\u0005\ufffdm=\ufffdu\ufffdD_\\u0007\\u0010\\u001fl\ufffd\\\\\ufffd\ufffd\ufffd2\ufffd\ufffd\ufffd_\\u001f\ufffd\ufffdB00p~c\\u001e~\\u0017f\ufffd\ufffdpY]v\ufffdj\ufffd\ufffd\ufffd\ufffd$\ufffd%\ufffd\ufffd\\u0007\ufffd\ufffd[*្\ufffddpCB\ufffd\\u0002\\u000b\ufffd\ufffd\ufffdnD\ufffd\ufffdGu\ufffdn\ufffd\ufffd\ufffd\ufffd)=\ufffd\ufffd\ufffd\ufffdv\ufffdʢ\ufffd\ufffd~\ufffd\ufffd\ufffd\\u0015\ufffdC]\ufffd\ufffdG\ufffd$\ufffdeܙ\ufffdvm;}\ufffd\ufffd\ufffd\ufffd9\ufffd\ufffdǏ\ufffd\\u001f\ufffdD\ufffd?!\\nY\ufffd\ufffd}\ufffd\ufffd\\bqO͈:˯L\ufffd㗶(\\u0005\\u0000O\\u0018\ufffd?ں7\ufffd\ufffd\ufffd3\ufffd\ufffdA\ufffdË\ufffd\ufffd\ufffd\\u0013\ufffdD\ufffd\ufffd~\\u001a8\ufffd]\\u0002\\u0013k\ufffd\\u0017\ufffd\ufffdG\ufffd\ufffd\ufffdr\ufffdkΨ䢈Ժ/\ufffd\ufffd\\u001f\ufffd^\ufffd\ufffd4i\ufffds\ufffd\ufffd\ufffd큟G1\ufffdw\ufffd֔\ufffd\ufffdAI\ufffd\ufffd\\u0013\ufffdڄ2\ufffd\ufffd\\u00138*X\ufffd\ufffd\\u0005\ufffd<\ufffdk#0\ufffd;UZ.\ufffd_0\ufffd7\ufffd\ufffd\ufffd\\u0011\ufffd[\ufffd\\u000b\ufffdI\\u0016n\ufffd\ufffd\ufffd\ufffdn\\u000b먋\ufffd\\u0010Q\ufffdك\ufffd&c!\\u0015\ufffd*\ufffdM/WCV\ufffdd\ufffd\\u0006>t\\u001a\ufffd(\ufffd\ufffd\ufffd\ufffd\\f\ufffd\ufffd\ufffd\ufffdn\\u0015+\\r\\u0000\ufffdZ\ufffd9\ufffd\ufffdL\ufffd^\ufffdW\ufffd\ufffd\ufffdw\\u001c\ufffd\ufffdS_RXZ\ufffd\ufffdܠ\ufffd\ufffd\ufffd\\b\ufffdn=\\u0016\ufffda\ufffd.\\u001f\ufffd\ufffdZ\\u0004\ufffdФz\ufffd\ufffd\\u000f[\ufffd\ufffd\ufffd\ufffd\\u0019\\\\p\ufffd7\ufffd\ufffd\ufffd&\ufffd\ufffd\ufffd\ufffdWҫ\ufffd\\u00128k\ufffdt\ufffdJ\ufffd\ufffd\\u0005\ufffd\ufffdI\ufffd׾q\ufffd\ufffd\ufffd\ufffd\ufffd\\u0010\\u001b&\ufffd\ufffd\ufffd\ufffdq\ufffd\ufffd[v4\ufffd\\u0018!\ufffdvg9&J&\ufffd_/\ufffd\ufffdӠnŰ\ufffd1;T\ufffdYCK\ufffd\\u001f\ufffd>fl;yW\\u0007\ufffdd\ufffd\ufffd\ufffdc\ufffd5\\u0017=H\\f\ufffd\ufffdD\ufffdGST/P@J\ufffdi\\t\\u0019+\\u001e\\u001b\ufffd^\ufffd\ufffdKTU\ufffdf\\rV\ufffd\\u0013\ufffd\\bp\ufffd\ufffd\ufffd\ufffd}X\ufffd\\u0017\ufffd\ufffdCQ\ufffd/`άwjl\ufffdb\ufffd\\u0016\\u0006\\u0016G\\\\\\u00141\ufffd|\ufffd\ufffdS\ufffd_\ufffd\ufffd*\ufffd2\ufffd0\ufffd\ufffd8.\ufffd\ufffdx.\ufffdp\ufffd(\ufffd\ufffd=J\\u0006\\u0004\ufffdO.1[ȍ\ufffd\ufffd\ufffd\ufffdEl\ufffd;ڭ^\ufffdҒ{l\ufffd\ufffd\\u0000\ufffd\ufffd\ufffd\ufffdl6i\\r\ufffd\ufffd\ufffd\ufffd>\ufffdAwv\ufffd\ufffdG\ufffdN@q)\ufffd;\ufffd\ufffd܄\\u000e\\u001f\ufffd\ufffd\\u00181\ufffd[\\u0006\ufffd\ufffdH\ufffd\\u0018bi#F*\ufffd\ufffd\\r\ufffd3\ufffd\\f\\u0010(6\ufffd…[已截断，共 1931 字符]\"}…[已截断，共 5501 字符]",
+        "status": "done",
+        "type": "archive_get_file"
+      },
+      {
+        "node": "lsb",
+        "outputs": "{\"hex\":{\"type\":\"text\",\"length\":256,\"value\":\"4b45595f4845583d35356333353261346464386238636365626234366437383831303964616230350a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\"},\"text\":{\"type\":\"text\",\"length\":128,\"value\":\"KEY_HEX=55c352a4dd8b8ccebb46d788109dab05\\n\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\"},\"bytes\":{\"type\":\"bytes\",\"size\":128,\"hex\":\"4b45595f4845583d35356333353261346464386238636365626234366437383831303964616230350a0000000000000000000000000000000000000000000000\",\"utf8\":\"KEY_HEX=55c352a4dd8b8ccebb46d788109dab05\\n\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\"}}",
+        "status": "done",
+        "type": "lsb_extract"
+      },
+      {
+        "node": "out_key_text",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":128,\"value\":\"KEY_HEX=55c352a4dd8b8ccebb46d788109dab05\\n\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "out_key_hex",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":256,\"value\":\"4b45595f4845583d35356333353261346464386238636365626234366437383831303964616230350a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "error": "parse error: AES 密钥须为 16/24/32 字节(当前 128)",
+        "node": "aes_utf8",
+        "outputs": "{}",
+        "status": "error",
+        "type": "aes"
+      },
+      {
+        "node": "out_flag_utf8",
+        "outputs": "{\"value\":{\"type\":\"none\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "error": "parse error: AES 密钥须为 16/24/32 字节(当前 128)",
+        "node": "aes_hex",
+        "outputs": "{}",
+        "status": "error",
+        "type": "aes"
+      },
+      {
+        "node": "out_flag_hex",
+        "outputs": "{\"value\":{\"type\":\"none\"}}",
+        "status": "done",
+        "type": "text_output"
+      }
+    ],
+    [
+      {
+        "node": "src",
+        "outputs": "原始输入已读取；从下游结果判断下一步",
+        "status": "done",
+        "type": "file_import"
+      },
+      {
+        "node": "detect",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":59,\"value\":\"ZIP / docx / jar / apk\\n后缀名: zip\\n幻数: 50 4b 03 04 14 00 00 00\"},\"type\":{\"type\":\"text\",\"length\":22,\"value\":\"ZIP / docx / jar / apk\"},\"ext\":{\"type\":\"text\",\"length\":3,\"value\":\"zip\"}}",
+        "status": "done",
+        "type": "detect_file_type"
+      },
+      {
+        "node": "out_type",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":59,\"value\":\"ZIP / docx / jar / apk\\n后缀名: zip\\n幻数: 50 4b 03 04 14 00 00 00\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "list",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":340,\"value\":\"共 4 个条目（0 个加密）：\\nbrief.txt              原始       425  压缩       264  Deflated   明文    CRC 7a3f2a30\\ndispatch/packet.json   原始       311  压缩       255  Deflated   明文    CRC b12eb8c4\\nassets/photograph.png  原始      2952  压缩      2957  Deflated   明文    CRC 564516c1\\ntelemetry/noise.csv    原始        26  压缩        28  Deflated   明文    CRC bdde7f58\\n\"},\"count\":{\"type\":\"number\",\"value\":4},\"encrypted\":{\"type\":\"bool\",\"value\":false},\"files\":{\"type\":\"stringList\",\"value\":{\"length\":4,\"items\":[\"brief.txt\",\"dispatch/packet.json\",\"assets/photograph.png\",\"telemetry/noise.csv\"]}}}",
+        "status": "done",
+        "type": "archive_list"
+      },
+      {
+        "node": "out_list",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":340,\"value\":\"共 4 个条目（0 个加密）：\\nbrief.txt              原始       425  压缩       264  Deflated   明文    CRC 7a3f2a30\\ndispatch/packet.json   原始       311  压缩       255  Deflated   明文    CRC b12eb8c4\\nassets/photograph.png  原始      2952  压缩      2957  Deflated   明文    CRC 564516c1\\ntelemetry/noise.csv    原始        26  压缩        28  Deflated   明文    CRC bdde7f58\\n\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "ext",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":425,\"value\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"},\"format\":{\"type\":\"text\",\"length\":3,\"value\":\"zip\"},\"entry\":{\"type\":\"text\",\"length\":9,\"value\":\"brief.txt\"},\"summary\":{\"type\":\"text\",\"length\":35,\"value\":\"zip: 4 个文件；当前输出「brief.txt」（425 字节）。\"},\"entries\":{\"type\":\"json\",\"value\":{\"kind\":\"misclab.archive.entries\",\"version\":1,\"format\":\"zip\",\"entries\":{\"length\":4,\"items\":[{\"index\":0,\"fileIndex\":0,\"name\":\"brief.txt\",\"isDir\":false,\"size\":425,\"compressedSize\":264,\"encrypted\":false,\"crc32\":\"7a3f2a30\",\"error\":null,\"dataBase64\":\"[归档字节 568 个 Base64 字符，请用取解压文件读取]\"},{\"index\":1,\"fileIndex\":1,\"name\":\"dispatch/packet.json\",\"isDir\":false,\"size\":311,\"compressedSize\":255,\"encrypted\":false,\"crc32\":\"b12eb8c4\",\"error\":null,\"dataBase64\":\"[归档字节 416 个 Base64 字符，请用取解压文件读取]\"},{\"index\":2,\"fileIndex\":2,\"name\":\"assets/photograph.png\",\"isDir\":false,\"size\":2952,\"compressedSize\":2957,\"encrypted\":false,\"crc32\":\"564516c1\",\"error\":null,\"dataBase64\":\"[归档字节 3936 个 Base64 字符，请用取解压文件读取]\"},{\"index\":3,\"fileIndex\":3,\"name\":\"telemetry/noise.csv\",\"isDir\":false,\"size\":26,\"compressedSize\":28,\"encrypted\":false,\"crc32\":\"bdde7f58\",\"error\":null,\"dataBase64\":\"[归档字节 36 个 Base64 字符，请用取解压文件读取]\"}]}}},\"bytes\":{\"type\":\"bytes\",\"size\":425,\"hex\":\"5265636f76657265642064697370617463682c207469636b6574203237313032382e205468652066696c6520657874656e73696f6e20776173206c6f73742e0a\",\"utf8\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"},\"files\":{\"type\":\"stringList\",\"value\":{\"length\":4,\"items\":[\"brief.txt\",\"dispatch/packet.json\",\"assets/photograph.png\",\"telemetry/noise.csv\"]}},\"count\":{\"type\":\"number\",\"value\":4}}",
+        "status": "done",
+        "type": "archive_extract"
+      },
+      {
+        "node": "get_brief",
+        "outputs": "{\"name\":{\"type\":\"text\",\"length\":9,\"value\":\"brief.txt\"},\"text\":{\"type\":\"text\",\"length\":425,\"value\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"},\"size\":{\"type\":\"number\",\"value\":425},\"bytes\":{\"type\":\"bytes\",\"size\":425,\"hex\":\"5265636f76657265642064697370617463682c207469636b6574203237313032382e205468652066696c6520657874656e73696f6e20776173206c6f73742e0a\",\"utf8\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"}}",
+        "status": "done",
+        "type": "archive_get_file"
+      },
+      {
+        "node": "out_brief",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":425,\"value\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "get_packet",
+        "outputs": "{\"name\":{\"type\":\"text\",\"length\":20,\"value\":\"dispatch/packet.json\"},\"text\":{\"type\":\"text\",\"length\":311,\"value\":\"{\\n  \\\"version\\\": 1,\\n  \\\"cipher\\\": \\\"AES-128-CBC\\\",\\n  \\\"padding\\\": \\\"PKCS7\\\",\\n  \\\"encoding\\\": \\\"Base64\\\",\\n  \\\"iv_hex\\\": \\\"2a031841c4d27aaf0c1d40b0c5e6eb48\\\",\\n  \\\"ciphertext\\\": \\\"SutDOqEKN2TEpDlCicGr5OvtJECBIhFKYEy28P9Y5QLQrPcYh0iN82cTgBAUN6RrBZNHy2NN/mBD16/qyb1eBwq6GOy4BillskkGXzgKKhfCFRmP9MiGbXPorGuwCrL6PcWeCQCbQOqZun7toPc3fw==\\\"\\n}\"},\"bytes\":{\"type\":\"bytes\",\"size\":311,\"hex\":\"7b0a20202276657273696f6e223a20312c0a202022636970686572223a20224145532d3132382d434243222c0a20202270616464696e67223a2022504b435337\",\"utf8\":\"{\\n  \\\"version\\\": 1,\\n  \\\"cipher\\\": \\\"AES-128-CBC\\\",\\n  \\\"padding\\\": \\\"PKCS7\\\",\\n  \\\"encoding\\\": \\\"Base64\\\",\\n  \\\"iv_hex\\\": \\\"2a031841c4d27aaf0c1d40b0c5e6eb48\\\",\\n  \\\"ciphertext\\\": \\\"SutDOqEKN2TEpDlCicGr5OvtJECBIhFKYEy28P9Y5QLQrPcYh0iN82cTgBAUN6RrBZNHy2NN/mBD16/qyb1eBwq6GOy4BillskkGXzgKKhfCFRmP9MiGbXPorGuwCrL6PcWeCQCbQOqZun7toPc3fw==\\\"\\n}\"},\"size\":{\"type\":\"number\",\"value\":311}}",
+        "status": "done",
+        "type": "archive_get_file"
+      },
+      {
+        "node": "out_packet",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":311,\"value\":\"{\\n  \\\"version\\\": 1,\\n  \\\"cipher\\\": \\\"AES-128-CBC\\\",\\n  \\\"padding\\\": \\\"PKCS7\\\",\\n  \\\"encoding\\\": \\\"Base64\\\",\\n  \\\"iv_hex\\\": \\\"2a031841c4d27aaf0c1d40b0c5e6eb48\\\",\\n  \\\"ciphertext\\\": \\\"SutDOqEKN2TEpDlCicGr5OvtJECBIhFKYEy28P9Y5QLQrPcYh0iN82cTgBAUN6RrBZNHy2NN/mBD16/qyb1eBwq6GOy4BillskkGXzgKKhfCFRmP9MiGbXPorGuwCrL6PcWeCQCbQOqZun7toPc3fw==\\\"\\n}\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "get_png",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":2783,\"value\":\"\ufffdPNG\\r\\n\\u001a\\n\\u0000\\u0000\\u0000\\rIHDR\\u0000\\u0000\\u0000 \\u0000\\u0000\\u0000 \\b\\u0002\\u0000\\u0000\\u0000\ufffd\\u0018\ufffd\ufffd\\u0000\\u0000\\u000bOIDATx\ufffd\\u0005\ufffd\\u0001\ufffd\ufffd\ufffda\\u0000\ufffdor35\ufffd\ufffdLM.\ufffd^n\ufffd\ufffdr\\u0015\\u0015\\u0013\ufffd<\\u0011\\u0013\ufffdT\ufffdz\ufffdv\ufffd\ufffd\ufffdy\ufffd\ufffdz*v5S3\ufffd\ufffd\ufffdD\ufffd33\ufffd/*\ufffd*\ufffd\ufffd\ufffd\ufffd^nf\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\\u0003vׂ򿒜O\\u0003\ufffdBV\ufffd\ufffd\ufffd\ufffdKR\\u000f\\u0003\ufffd\\u0017K\ufffd\\u0011\ufffdo=_\ufffdXT\ufffd\ufffd]\ufffd\ufffd\ufffd\ufffdI\ufffdY\ufffd|\ufffdO\ufffd\ufffd⟘\ufffdTX\ufffd\ufffd,\ufffd_a*\ufffdx]5\ufffd\ufffdK\ufffdK\\u0012\\u001d\ufffd\\u0007\ufffd\ufffd\ufffd5\ufffd\ufffd\ufffd\ufffd]=\ufffdy\ufffd\ufffd\ufffd\\u001f\ufffd\ufffd\\u0007\ufffd\ufffd\ufffd\\bHJd\\u0006s\ufffd?\\u001b\ufffd?\ufffd-\ufffd\ufffd\ufffd\\u0004g\\f[\ufffd\ufffd\ufffdC\\u0015v\ufffd\ufffd\ufffd\ufffd0K\ufffdW\ufffdC\ufffd\ufffd?F\\u001fml\ufffdoK\ufffdQV\ufffda\ufffd\\u001fg\\u0002\ufffd\ufffd\ufffd\ufffdQ\ufffdt\\n\ufffd\ufffdQ\ufffd\ufffd_\ufffd\\n?L\ufffd\ufffdb\ufffd}\\\\*\\\"Q\ufffd7#`큝\ufffdi\ufffdw\ufffd\ufffd\ufffd\ufffdg\ufffd\ufffd]\ufffd'\\b\\u001d~\ufffd\ufffd\ufffd(\ufffdA\\u000b\ufffdÆ\ufffd\ufffdKX\ufffdY~C\ufffd\ufffdV\ufffdO\ufffd\ufffd\\b\ufffd\ufffdmi\ufffd\ufffdkW\ufffd\ufffd\ufffd֘g\\u000f\ufffd/>6\ufffd\ufffd~\ufffdE\ufffd\ufffd\\t\ufffd{\ufffd\ufffd\ufffd\\bT\ufffd\ufffd\ufffd:v\ufffd3:\ufffd\ufffd$`s&l\ufffd;\ufffd\\u001fF*\ufffd(\ufffd\ufffdv\ufffd_^\\u001e\\b\\u0003ܟQ\ufffdM\\u001bAJL\ufffd\ufffdH\ufffd\ufffdI\ufffd\ufffd\ufffdw\ufffd\ufffd\\u000e\\u001e\\u0005\ufffd\\\"\\u001d\ufffdxO\ufffdz?\ufffd,\\fo\ufffd\ufffd|\ufffdm,\ufffd\\u0018}f\ufffd\\u00187\ufffdʯ\ufffd\ufffd\ufffd\\u001f\ufffd\\tT\ufffdOL\ufffd\ufffd\ufffd\ufffd\\u0018\\u0002*ڳ\ufffd\ufffd\ufffd_\ufffdyl\ufffd}f\ufffdq\ufffd\ufffd\ufffd`\\u0007]\ufffd\ufffd\ufffdL\ufffd\ufffdU=\ufffd;Ϋz\ufffdM\ufffdg\ufffds,\\b@\\u0005\ufffd#]\\u001dyk\ufffd\ufffd\ufffd\ufffd\ufffd7q\ufffd\ufffd\ufffdp\ufffd\ufffd\ufffd\ufffd2\\\\\ufffdN\\b\ufffd\ufffd\\b\ufffd\ufffd=\ufffd؍]\ufffd3\ufffd\ufffd\\u0017\ufffd2\ufffd\\f\ufffd\ufffd\\u0012d(\ufffd\ufffdgy\ufffd\ufffdS\ufffd\ufffd\ufffdU\ufffd\ufffd\\u001c\ufffdT\ufffdbGZ\ufffd\ufffd]I\ufffdE\ufffdE\ufffd\\u0019|f\\u0000}\ufffd\ufffd]\ufffd\ufffd\ufffd\ufffdC\ufffd\ufffdx\ufffd\ufffd\ufffd>ȍA\ufffdc\ufffd\ufffd\ufffd}\ufffd\ufffdc8ۤ\\n\ufffd\ufffd\ufffd\ufffd\ufffdWK\ufffdp\\u0006\ufffd>\ufffd\\rҩ\ufffd\ufffd\\u0000\ufffd|%\ufffd\\u0016 \ufffd\ufffd\\u0011\ufffd\ufffd\ufffd\ufffd0\ufffd\ufffd\ufffd[e\ufffd&2y\ufffd\ufffd\ufffdת\ufffd\ufffd\ufffd\\u001b\ufffd[\ufffdmc\\u0018\ufffd\ufffd\\u000f\\bxV\ufffdķ\ufffd\ufffdϱ/,g\ufffdh\ufffdH\ufffd\ufffd*΅S\ufffdD\ufffdP2\ufffd:\ufffd\ufffd9\ufffd\ufffd\ufffdJx\\u0005\\u0001\ufffdwS\ufffd/\ufffd[c\\u0019\\u0018\ufffd.\ufffd_>پ\ufffd\ufffd)\ufffd\ufffd\ufffd\ufffd\ufffd]F\\u000e(\\u0005\ufffdm=\ufffdu\ufffdD_\\u0007\\u0010\\u001fl\ufffd\\\\\ufffd\ufffd\ufffd2\ufffd\ufffd\ufffd_\\u001f\ufffd\ufffdB00p~c\\u001e~\\u0017f\ufffd\ufffdpY]v\ufffdj\ufffd\ufffd\ufffd\ufffd$\ufffd%\ufffd\ufffd\\u0007\ufffd\ufffd[*្\ufffddpCB\ufffd\\u0002\\u000b\ufffd\ufffd\ufffdnD\ufffd\ufffdGu\ufffdn\ufffd\ufffd\ufffd\ufffd)=\ufffd\ufffd\ufffd\ufffdv\ufffdʢ\ufffd\ufffd~\ufffd\ufffd\ufffd\\u0015\ufffdC]\ufffd\ufffdG\ufffd$\ufffdeܙ\ufffdvm;}\ufffd\ufffd\ufffd\ufffd9\ufffd\ufffdǏ\ufffd\\u001f\ufffdD\ufffd?!\\nY\ufffd\ufffd}\ufffd\ufffd\\bqO͈:˯L\ufffd㗶(\\u0005\\u0000O\\u0018\ufffd?ں7\ufffd\ufffd\ufffd3\ufffd\ufffdA\ufffdË\ufffd\ufffd\ufffd\\u0013\ufffdD\ufffd\ufffd~\\u001a8\ufffd]\\u0002\\u0013k\ufffd\\u0017\ufffd\ufffdG\ufffd\ufffd\ufffdr\ufffdkΨ䢈Ժ/\ufffd\ufffd\\u001f\ufffd^\ufffd\ufffd4i\ufffds\ufffd\ufffd\ufffd큟G1\ufffdw\ufffd֔\ufffd\ufffdAI\ufffd\ufffd\\u0013\ufffdڄ2\ufffd\ufffd\\u00138*X\ufffd\ufffd\\u0005\ufffd<\ufffdk#0\ufffd;UZ.\ufffd_0\ufffd7\ufffd\ufffd\ufffd\\u0011\ufffd[\ufffd\\u000b\ufffdI\\u0016n\ufffd\ufffd\ufffd\ufffdn\\u000b먋\ufffd\\u0010Q\ufffdك\ufffd&c!\\u0015\ufffd*\ufffdM/WCV\ufffdd\ufffd\\u0006>t\\u001a\ufffd(\ufffd\ufffd\ufffd\ufffd\\f\ufffd\ufffd\ufffd\ufffdn\\u0015+\\r\\u0000\ufffdZ\ufffd9\ufffd\ufffdL\ufffd^\ufffdW\ufffd\ufffd\ufffdw\\u001c\ufffd\ufffdS_RXZ\ufffd\ufffdܠ\ufffd\ufffd\ufffd\\b\ufffdn=\\u0016\ufffda\ufffd.\\u001f\ufffd\ufffdZ\\u0004\ufffdФz\ufffd\ufffd\\u000f[\ufffd\ufffd\ufffd\ufffd\\u0019\\\\p\ufffd7\ufffd\ufffd\ufffd&\ufffd\ufffd\ufffd\ufffdWҫ\ufffd\\u00128k\ufffdt\ufffdJ\ufffd\ufffd\\u0005\ufffd\ufffdI\ufffd׾q\ufffd\ufffd\ufffd\ufffd\ufffd\\u0010\\u001b&\ufffd\ufffd\ufffd\ufffdq\ufffd\ufffd[v4\ufffd\\u0018!\ufffdvg9&J&\ufffd_/\ufffd\ufffdӠnŰ\ufffd1;T\ufffdYCK\ufffd\\u001f\ufffd>fl;yW\\u0007\ufffdd\ufffd\ufffd\ufffdc\ufffd5\\u0017=H\\f\ufffd\ufffdD\ufffdGST/P@J\ufffdi\\t\\u0019+\\u001e\\u001b\ufffd^\ufffd\ufffdKTU\ufffdf\\rV\ufffd\\u0013\ufffd\\bp\ufffd\ufffd\ufffd\ufffd}X\ufffd\\u0017\ufffd\ufffdCQ\ufffd/`άwjl\ufffdb\ufffd\\u0016\\u0006\\u0016G\\\\\\u00141\ufffd|\ufffd\ufffdS\ufffd_\ufffd\ufffd*\ufffd2\ufffd0\ufffd\ufffd8.\ufffd\ufffdx.\ufffdp\ufffd(\ufffd\ufffd=J\\u0006\\u0004\ufffdO.1[ȍ\ufffd\ufffd\ufffd\ufffdEl\ufffd;ڭ^\ufffdҒ{l\ufffd\ufffd\\u0000\ufffd\ufffd\ufffd\ufffdl6i\\r\ufffd\ufffd\ufffd\ufffd>\ufffdAwv\ufffd\ufffdG\ufffdN@q)\ufffd;\ufffd\ufffd܄\\u000e\\u001f\ufffd\ufffd\\u00181\ufffd[\\u0006\ufffd\ufffdH\ufffd\\u0018bi#F*\ufffd\ufffd\\r\ufffd3\ufffd\\f\\u0010(6\ufffd\ufffd\ufffdo\ufffd)\ufffd`\ufffd\ufffd!\ufffdD\ufffdk\ufffd\ufffd-\ufffd\\n\ufffd\ufffdە8\\\"\ufffd8\\u000e\ufffd\ufffd/\ufffd\ufffd鑸\\\\\ufffdĐ\ufffd\ufffd\ufffdakc\ufffd\\u001bi\ufffd/\ufffd\ufffdp\ufffd\ufffd\ufffd\\u0012?|\ufffdo\\u0004\ufffdmh\ufffdgR\ufffdh\ufffd9\ufffdO\ufffd\ufffdYD\\u001a\ufffd!G\\u00174\ufffd\ufffd>\ufffdi\ufffdo\ufffdF\ufffdȦH\ufffd\ufffd\ufffd\ufffd\\n\\u0001\ufffd…[已截断，共 2783 字符]\",\"tail\":\"+\\u0004\ufffd\\\"N\ufffd\\u0013\ufffd=\\u0005Y\ufffdv\ufffd?\ufffd\ufffd\ufffd)\ufffd\ufffd\ufffdˉ\ufffdE +a]6\\u0016\ufffd\\u0011T\ufffd\ufffd^\ufffd\ufffd0\ufffd\ufffd;\\u000ee\ufffd%\ufffdP\ufffd8\ufffd\ufffd4\ufffdʅ\ufffd\ufffd\ufffd xlN\\u0004\\u001e\ufffd\ufffd<>\ufffd˥s\ufffd\ufffdZݝ\ufffdU\ufffd\\u0018\ufffd%\\u001b\ufffd1\ufffdX\ufffdP_+\ufffd\ufffdpÝ\ufffd\\u0012_w흁\ufffd|(L\ufffdD[\ufffdN\ufffd6\ufffda\ufffd\\u0019B\ufffd(\ufffd)~\\n\ufffd\ufffd\\u0018B\ufffd\ufffd@\ufffdP\ufffd\ufffd%\ufffd\\u0015^\ufffd=\ufffd\ufffd\ufffd(\ufffde\ufffd1\ufffd*\ufffd\\u0011\ufffd\ufffdV\ufffd\ufffd\ufffd\ufffdK\ufffdY\ufffd_\ufffd\ufffd\\u000f\ufffdr\ufffd6\\u001f\ufffd\ufffdw\ufffd#9+\ufffd1\ufffd\ufffde\ufffdi\ufffd\ufffd\ufffd8\ufffd\ufffd\ufffd@\\u0014\ufffdQ\ufffd\\u0016\ufffd\ufffd\ufffd\ufffdJi\ufffdlc\ufffdA\ufffd\\u0005\\u0002\ufffd\ufffd<\ufffd\\u0001Y\ufffd;\ufffdh\ufffd|[\ufffd\ufffd\\u0012\\\\b\ufffdiZ\ufffd\ufffd\ufffdM\ufffdEx\\u001d\ufffd\ufffd\ufffd\\u001e\ufffd)e\\u0013 \ufffdU\\\\\ufffd9\\u001e\ufffd\ufffd\ufffdȨ\ufffd\\u001cG\\u0017\ufffd\\u0002!\ufffd~?!:n\ufffd\ufffd\ufffdX\ufffd0\\u0006S#\ufffd\ufffdϿ\ufffd\\\\J\\u0004\ufffd\ufffd(z\\u0005 (\ufffd}\ufffd.BQ\ufffdP\ufffd[\\u0011Wx/\ufffdj\ufffd\ufffd6O\ufffdj\ufffd#\ufffd\ufffdK\ufffd\ufffd\ufffd4\ufffd\ufffdl\\ft\ufffd,\ufffdX\ufffdao=sށ\ufffd\\u0007\ufffd\ufffd\ufffd)v\\u0013\ufffd\ufffd\ufffd\ufffd\ufffdX\\fX\ufffd\ufffd\\u001d2\ufffd=!\ufffd\\rM\ufffd\\u001d9\ufffd\ufffd\\u001f\ufffdp\\u0006\ufffd\ufffd\\u0001\ufffd\ufffd\ufffdCi\ufffd\\u0002\ufffd\\u0000\\u0000\\u0000\\u0000IEND\ufffdB`\ufffd\"},\"name\":{\"type\":\"text\",\"length\":21,\"value\":\"assets/photograph.png\"},\"bytes\":{\"type\":\"bytes\",\"size\":2952,\"hex\":\"89504e470d0a1a0a0000000d4948445200000020000000200802000000fc18eda300000b4f49444154789c05c1018cb98b6100f06f723335b9dc4c4d2ee6995e\",\"utf8\":\"\ufffdPNG\\r\\n\\u001a\\n\\u0000\\u0000\\u0000\\rIHDR\\u0000\\u0000\\u0000 \\u0000\\u0000\\u0000 \\b\\u0002\\u0000\\u0000\\u0000\ufffd\\u0018\ufffd\ufffd\\u0000\\u0000\\u000bOIDATx\ufffd\\u0005\ufffd\\u0001\ufffd\ufffd\ufffda\\u0000\ufffdor35\ufffd\ufffdLM.\ufffd^n\ufffd\ufffdr\\u0015\\u0015\\u0013\ufffd<\\u0011\\u0013\ufffdT\ufffdz\ufffdv\ufffd\ufffd\ufffdy\ufffd\ufffdz*v5S3\ufffd\ufffd\ufffdD\ufffd33\ufffd/*\ufffd*\ufffd\ufffd\ufffd\ufffd^nf\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\\u0003vׂ򿒜O\\u0003\ufffdBV\ufffd\ufffd\ufffd\ufffdKR\\u000f\\u0003\ufffd\\u0017K\ufffd\\u0011\ufffdo=_\ufffdXT\ufffd\ufffd]\ufffd\ufffd\ufffd\ufffdI\ufffdY\ufffd|\ufffdO\ufffd\ufffd⟘\ufffdTX\ufffd\ufffd,\ufffd_a*\ufffdx]5\ufffd\ufffdK\ufffdK\\u0012\\u001d\ufffd\\u0007\ufffd\ufffd\ufffd5\ufffd\ufffd\ufffd\ufffd]=\ufffdy\ufffd\ufffd\ufffd\\u001f\ufffd\ufffd\\u0007\ufffd\ufffd\ufffd\\bHJd\\u0006s\ufffd?\\u001b\ufffd?\ufffd-\ufffd\ufffd\ufffd\\u0004g\\f[\ufffd\ufffd\ufffdC\\u0015v\ufffd\ufffd\ufffd\ufffd0K\ufffdW\ufffdC\ufffd\ufffd?F\\u001fml\ufffdoK\ufffdQV\ufffda\ufffd\\u001fg\\u0002\ufffd\ufffd\ufffd\ufffdQ\ufffdt\\n\ufffd\ufffdQ\ufffd\ufffd_\ufffd\\n?L\ufffd\ufffdb\ufffd}\\\\*\\\"Q\ufffd7#`큝\ufffdi\ufffdw\ufffd\ufffd\ufffd\ufffdg\ufffd\ufffd]\ufffd'\\b\\u001d~\ufffd\ufffd\ufffd(\ufffdA\\u000b\ufffdÆ\ufffd\ufffdKX\ufffdY~C\ufffd\ufffdV\ufffdO\ufffd\ufffd\\b\ufffd\ufffdmi\ufffd\ufffdkW\ufffd\ufffd\ufffd֘g\\u000f\ufffd/>6\ufffd\ufffd~\ufffdE\ufffd\ufffd\\t\ufffd{\ufffd\ufffd\ufffd\\bT\ufffd\ufffd\ufffd:v\ufffd3:\ufffd\ufffd$`s&l\ufffd;\ufffd\\u001fF*\ufffd(\ufffd\ufffdv\ufffd_^\\u001e\\b\\u0003ܟQ\ufffdM\\u001bAJL\ufffd\ufffdH\ufffd\ufffdI\ufffd\ufffd\ufffdw\ufffd\ufffd\\u000e\\u001e\\u0005\ufffd\\\"\\u001d\ufffdxO\ufffdz?\ufffd,\\fo\ufffd\ufffd|\ufffdm,\ufffd\\u0018}f\ufffd\\u00187\ufffdʯ\ufffd\ufffd\ufffd\\u001f\ufffd\\tT\ufffdOL\ufffd\ufffd\ufffd\ufffd\\u0018\\u0002*ڳ\ufffd\ufffd\ufffd_\ufffdyl\ufffd}f\ufffdq\ufffd\ufffd\ufffd`\\u0007]\ufffd\ufffd\ufffdL\ufffd\ufffdU=\ufffd;Ϋz\ufffdM\ufffdg\ufffds,\\b@\\u0005\ufffd#]\\u001dyk\ufffd\ufffd\ufffd\ufffd\ufffd7q\ufffd\ufffd\ufffdp\ufffd\ufffd\ufffd\ufffd2\\\\\ufffdN\\b\ufffd\ufffd\\b\ufffd\ufffd=\ufffd؍]\ufffd3\ufffd\ufffd\\u0017\ufffd2\ufffd\\f\ufffd\ufffd\\u0012d(\ufffd\ufffdgy\ufffd\ufffdS\ufffd\ufffd\ufffdU\ufffd\ufffd\\u001c\ufffdT\ufffdbGZ\ufffd\ufffd]I\ufffdE\ufffdE\ufffd\\u0019|f\\u0000}\ufffd\ufffd]\ufffd\ufffd\ufffd\ufffdC\ufffd\ufffdx\ufffd\ufffd\ufffd>ȍA\ufffdc\ufffd\ufffd\ufffd}\ufffd\ufffdc8ۤ\\n\ufffd\ufffd\ufffd\ufffd\ufffdWK\ufffdp\\u0006\ufffd>\ufffd\\rҩ\ufffd\ufffd\\u0000\ufffd|%\ufffd\\u0016 \ufffd\ufffd\\u0011\ufffd\ufffd\ufffd\ufffd0\ufffd\ufffd\ufffd[e\ufffd&2y\ufffd\ufffd\ufffdת\ufffd\ufffd\ufffd\\u001b\ufffd[\ufffdmc\\u0018\ufffd\ufffd\\u000f\\bxV\ufffdķ\ufffd\ufffdϱ/,g\ufffdh\ufffdH\ufffd\ufffd*΅S\ufffdD\ufffdP2\ufffd:\ufffd\ufffd9\ufffd\ufffd\ufffdJx\\u0005\\u0001\ufffdwS\ufffd/\ufffd[c\\u0019\\u0018\ufffd.\ufffd_>پ\ufffd\ufffd)\ufffd\ufffd\ufffd\ufffd\ufffd]F\\u000e(\\u0005\ufffdm=\ufffdu\ufffdD_\\u0007\\u0010\\u001fl\ufffd\\\\\ufffd\ufffd\ufffd2\ufffd\ufffd\ufffd_\\u001f\ufffd\ufffdB00p~c\\u001e~\\u0017f\ufffd\ufffdpY]v\ufffdj\ufffd\ufffd\ufffd\ufffd$\ufffd%\ufffd\ufffd\\u0007\ufffd\ufffd[*្\ufffddpCB\ufffd\\u0002\\u000b\ufffd\ufffd\ufffdnD\ufffd\ufffdGu\ufffdn\ufffd\ufffd\ufffd\ufffd)=\ufffd\ufffd\ufffd\ufffdv\ufffdʢ\ufffd\ufffd~\ufffd\ufffd\ufffd\\u0015\ufffdC]\ufffd\ufffdG\ufffd$\ufffdeܙ\ufffdvm;}\ufffd\ufffd\ufffd\ufffd9\ufffd\ufffdǏ\ufffd\\u001f\ufffdD\ufffd?!\\nY\ufffd\ufffd}\ufffd\ufffd\\bqO͈:˯L\ufffd㗶(\\u0005\\u0000O\\u0018\ufffd?ں7\ufffd\ufffd\ufffd3\ufffd\ufffdA\ufffdË\ufffd\ufffd\ufffd\\u0013\ufffdD\ufffd\ufffd~\\u001a8\ufffd]\\u0002\\u0013k\ufffd\\u0017\ufffd\ufffdG\ufffd\ufffd\ufffdr\ufffdkΨ䢈Ժ/\ufffd\ufffd\\u001f\ufffd^\ufffd\ufffd4i\ufffds\ufffd\ufffd\ufffd큟G1\ufffdw\ufffd֔\ufffd\ufffdAI\ufffd\ufffd\\u0013\ufffdڄ2\ufffd\ufffd\\u00138*X\ufffd\ufffd\\u0005\ufffd<\ufffdk#0\ufffd;UZ.\ufffd_0\ufffd7\ufffd\ufffd\ufffd\\u0011\ufffd[\ufffd\\u000b\ufffdI\\u0016n\ufffd\ufffd\ufffd\ufffdn\\u000b먋\ufffd\\u0010Q\ufffdك\ufffd&c!\\u0015\ufffd*\ufffdM/WCV\ufffdd\ufffd\\u0006>t\\u001a\ufffd(\ufffd\ufffd\ufffd\ufffd\\f\ufffd\ufffd\ufffd\ufffdn\\u0015+\\r\\u0000\ufffdZ\ufffd9\ufffd\ufffdL\ufffd^\ufffdW\ufffd\ufffd\ufffdw\\u001c\ufffd\ufffdS_RXZ\ufffd\ufffdܠ\ufffd\ufffd\ufffd\\b\ufffdn=\\u0016\ufffda\ufffd.\\u001f\ufffd\ufffdZ\\u0004\ufffdФz\ufffd\ufffd\\u000f[\ufffd\ufffd\ufffd\ufffd\\u0019\\\\p\ufffd7\ufffd\ufffd\ufffd&\ufffd\ufffd\ufffd\ufffdWҫ\ufffd\\u00128k\ufffdt\ufffdJ\ufffd\ufffd\\u0005\ufffd\ufffdI\ufffd׾q\ufffd\ufffd\ufffd\ufffd\ufffd\\u0010\\u001b&\ufffd\ufffd\ufffd\ufffdq\ufffd\ufffd[v4\ufffd\\u0018!\ufffdvg9&J&\ufffd_/\ufffd\ufffdӠnŰ\ufffd1;T\ufffdYCK\ufffd\\u001f\ufffd>fl;yW\\u0007\ufffdd\ufffd\ufffd\ufffdc\ufffd5\\u0017=H\\f\ufffd\ufffdD\ufffdGST/P@J\ufffdi\\t\\u0019+\\u001e\\u001b\ufffd^\ufffd\ufffdKTU\ufffdf\\rV\ufffd\\u0013\ufffd\\bp\ufffd\ufffd\ufffd\ufffd}X\ufffd\\u0017\ufffd\ufffdCQ\ufffd/`άwjl\ufffdb\ufffd\\u0016\\u0006\\u0016G\\\\\\u00141\ufffd|\ufffd\ufffdS\ufffd_\ufffd\ufffd*\ufffd2\ufffd0\ufffd\ufffd8.\ufffd\ufffdx.\ufffdp\ufffd(\ufffd\ufffd=J\\u0006\\u0004\ufffdO.1[ȍ\ufffd\ufffd\ufffd\ufffdEl\ufffd;ڭ^\ufffdҒ{l\ufffd\ufffd\\u0000\ufffd\ufffd\ufffd\ufffdl6i\\r\ufffd\ufffd\ufffd\ufffd>\ufffdAwv\ufffd\ufffdG\ufffdN@q)\ufffd;\ufffd\ufffd܄\\u000e\\u001f\ufffd\ufffd\\u00181\ufffd[\\u0006\ufffd\ufffdH\ufffd\\u0018bi#F*\ufffd\ufffd\\r\ufffd3\ufffd\\f\\u0010(6\ufffd…[已截断，共 1931 字符]\"},\"size\":{\"type\":\"number\",\"value\":2952}…[已截断，共 5501 字符]",
+        "status": "done",
+        "type": "archive_get_file"
+      },
+      {
+        "node": "lsb",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":128,\"value\":\"KEY_HEX=55c352a4dd8b8ccebb46d788109dab05\\n\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\"},\"hex\":{\"type\":\"text\",\"length\":256,\"value\":\"4b45595f4845583d35356333353261346464386238636365626234366437383831303964616230350a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\"},\"bytes\":{\"type\":\"bytes\",\"size\":128,\"hex\":\"4b45595f4845583d35356333353261346464386238636365626234366437383831303964616230350a0000000000000000000000000000000000000000000000\",\"utf8\":\"KEY_HEX=55c352a4dd8b8ccebb46d788109dab05\\n\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\"}}",
+        "status": "done",
+        "type": "lsb_extract"
+      },
+      {
+        "node": "out_key_text",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":128,\"value\":\"KEY_HEX=55c352a4dd8b8ccebb46d788109dab05\\n\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "out_key_hex",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":256,\"value\":\"4b45595f4845583d35356333353261346464386238636365626234366437383831303964616230350a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "rx_key",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":32,\"value\":\"55c352a4dd8b8ccebb46d788109dab05\"},\"matches\":{\"type\":\"stringList\",\"value\":{\"length\":1,\"items\":[\"55c352a4dd8b8ccebb46d788109dab05\"]}}}",
+        "status": "done",
+        "type": "regex_extract"
+      },
+      {
+        "node": "rx_ct",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":152,\"value\":\"SutDOqEKN2TEpDlCicGr5OvtJECBIhFKYEy28P9Y5QLQrPcYh0iN82cTgBAUN6RrBZNHy2NN/mBD16/qyb1eBwq6GOy4BillskkGXzgKKhfCFRmP9MiGbXPorGuwCrL6PcWeCQCbQOqZun7toPc3fw==\"},\"matches\":{\"type\":\"stringList\",\"value\":{\"length\":1,\"items\":[\"SutDOqEKN2TEpDlCicGr5OvtJECBIhFKYEy28P9Y5QLQrPcYh0iN82cTgBAUN6RrBZNHy2NN/mBD16/qyb1eBwq6GOy4BillskkGXzgKKhfCFRmP9MiGbXPorGuwCrL6PcWeCQCbQOqZun7toPc3fw==\"]}}}",
+        "status": "done",
+        "type": "regex_extract"
+      },
+      {
+        "node": "aes_hex",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":96,\"value\":\"NzM3OTZlNzQ3YjcwNjU2MjY2NjY1ZjcxNjI3YTZlNzY2MTVmMzAzNTZlMzEzOTcwMzQzNzM0NmU2ZjM4MzMzNjM0MzI3ZA==\"},\"bytes\":{\"type\":\"bytes\",\"size\":96,\"hex\":\"4e7a4d334f545a6c4e7a5133596a63774e6a55324d6a59324e6a59315a6a63784e6a493359545a6c4e7a59324d54566d4d7a417a4e545a6c4d7a457a4f546377\",\"utf8\":\"NzM3OTZlNzQ3YjcwNjU2MjY2NjY1ZjcxNjI3YTZlNzY2MTVmMzAzNTZlMzEzOTcwMzQzNzM0NmU2ZjM4MzMzNjM0MzI3ZA==\"}}",
+        "status": "done",
+        "type": "aes"
+      },
+      {
+        "node": "out_flag_hex",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":96,\"value\":\"NzM3OTZlNzQ3YjcwNjU2MjY2NjY1ZjcxNjI3YTZlNzY2MTVmMzAzNTZlMzEzOTcwMzQzNzM0NmU2ZjM4MzMzNjM0MzI3ZA==\"}}",
+        "status": "done",
+        "type": "text_output"
+      }
+    ],
+    [
+      {
+        "node": "src",
+        "outputs": "原始输入已读取；从下游结果判断下一步",
+        "status": "done",
+        "type": "file_import"
+      },
+      {
+        "node": "detect",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":59,\"value\":\"ZIP / docx / jar / apk\\n后缀名: zip\\n幻数: 50 4b 03 04 14 00 00 00\"},\"type\":{\"type\":\"text\",\"length\":22,\"value\":\"ZIP / docx / jar / apk\"},\"ext\":{\"type\":\"text\",\"length\":3,\"value\":\"zip\"}}",
+        "status": "done",
+        "type": "detect_file_type"
+      },
+      {
+        "node": "out_type",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":59,\"value\":\"ZIP / docx / jar / apk\\n后缀名: zip\\n幻数: 50 4b 03 04 14 00 00 00\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "list",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":340,\"value\":\"共 4 个条目（0 个加密）：\\nbrief.txt              原始       425  压缩       264  Deflated   明文    CRC 7a3f2a30\\ndispatch/packet.json   原始       311  压缩       255  Deflated   明文    CRC b12eb8c4\\nassets/photograph.png  原始      2952  压缩      2957  Deflated   明文    CRC 564516c1\\ntelemetry/noise.csv    原始        26  压缩        28  Deflated   明文    CRC bdde7f58\\n\"},\"encrypted\":{\"type\":\"bool\",\"value\":false},\"count\":{\"type\":\"number\",\"value\":4},\"files\":{\"type\":\"stringList\",\"value\":{\"length\":4,\"items\":[\"brief.txt\",\"dispatch/packet.json\",\"assets/photograph.png\",\"telemetry/noise.csv\"]}}}",
+        "status": "done",
+        "type": "archive_list"
+      },
+      {
+        "node": "out_list",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":340,\"value\":\"共 4 个条目（0 个加密）：\\nbrief.txt              原始       425  压缩       264  Deflated   明文    CRC 7a3f2a30\\ndispatch/packet.json   原始       311  压缩       255  Deflated   明文    CRC b12eb8c4\\nassets/photograph.png  原始      2952  压缩      2957  Deflated   明文    CRC 564516c1\\ntelemetry/noise.csv    原始        26  压缩        28  Deflated   明文    CRC bdde7f58\\n\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "ext",
+        "outputs": "{\"format\":{\"type\":\"text\",\"length\":3,\"value\":\"zip\"},\"text\":{\"type\":\"text\",\"length\":425,\"value\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"},\"summary\":{\"type\":\"text\",\"length\":35,\"value\":\"zip: 4 个文件；当前输出「brief.txt」（425 字节）。\"},\"entry\":{\"type\":\"text\",\"length\":9,\"value\":\"brief.txt\"},\"bytes\":{\"type\":\"bytes\",\"size\":425,\"hex\":\"5265636f76657265642064697370617463682c207469636b6574203237313032382e205468652066696c6520657874656e73696f6e20776173206c6f73742e0a\",\"utf8\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"},\"files\":{\"type\":\"stringList\",\"value\":{\"length\":4,\"items\":[\"brief.txt\",\"dispatch/packet.json\",\"assets/photograph.png\",\"telemetry/noise.csv\"]}},\"count\":{\"type\":\"number\",\"value\":4},\"entries\":{\"type\":\"json\",\"value\":{\"kind\":\"misclab.archive.entries\",\"version\":1,\"format\":\"zip\",\"entries\":{\"length\":4,\"items\":[{\"index\":0,\"fileIndex\":0,\"name\":\"brief.txt\",\"isDir\":false,\"size\":425,\"compressedSize\":264,\"encrypted\":false,\"crc32\":\"7a3f2a30\",\"error\":null,\"dataBase64\":\"[归档字节 568 个 Base64 字符，请用取解压文件读取]\"},{\"index\":1,\"fileIndex\":1,\"name\":\"dispatch/packet.json\",\"isDir\":false,\"size\":311,\"compressedSize\":255,\"encrypted\":false,\"crc32\":\"b12eb8c4\",\"error\":null,\"dataBase64\":\"[归档字节 416 个 Base64 字符，请用取解压文件读取]\"},{\"index\":2,\"fileIndex\":2,\"name\":\"assets/photograph.png\",\"isDir\":false,\"size\":2952,\"compressedSize\":2957,\"encrypted\":false,\"crc32\":\"564516c1\",\"error\":null,\"dataBase64\":\"[归档字节 3936 个 Base64 字符，请用取解压文件读取]\"},{\"index\":3,\"fileIndex\":3,\"name\":\"telemetry/noise.csv\",\"isDir\":false,\"size\":26,\"compressedSize\":28,\"encrypted\":false,\"crc32\":\"bdde7f58\",\"error\":null,\"dataBase64\":\"[归档字节 36 个 Base64 字符，请用取解压文件读取]\"}]}}}}",
+        "status": "done",
+        "type": "archive_extract"
+      },
+      {
+        "node": "get_brief",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":425,\"value\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"},\"name\":{\"type\":\"text\",\"length\":9,\"value\":\"brief.txt\"},\"size\":{\"type\":\"number\",\"value\":425},\"bytes\":{\"type\":\"bytes\",\"size\":425,\"hex\":\"5265636f76657265642064697370617463682c207469636b6574203237313032382e205468652066696c6520657874656e73696f6e20776173206c6f73742e0a\",\"utf8\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"}}",
+        "status": "done",
+        "type": "archive_get_file"
+      },
+      {
+        "node": "out_brief",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":425,\"value\":\"Recovered dispatch, ticket 271028. The file extension was lost.\\nThe courier kept a key in the photograph: green whispers at the lowest bit, eight whispers form a byte with the most significant first.\\nThe packet states its cipher settings. The note is still wrapped for transport after opening the envelope. Find the final flag; diagnose each layer from its actual contents.\\nThe telemetry file is unrelated measurement noise.\\n\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "get_packet",
+        "outputs": "{\"name\":{\"type\":\"text\",\"length\":20,\"value\":\"dispatch/packet.json\"},\"text\":{\"type\":\"text\",\"length\":311,\"value\":\"{\\n  \\\"version\\\": 1,\\n  \\\"cipher\\\": \\\"AES-128-CBC\\\",\\n  \\\"padding\\\": \\\"PKCS7\\\",\\n  \\\"encoding\\\": \\\"Base64\\\",\\n  \\\"iv_hex\\\": \\\"2a031841c4d27aaf0c1d40b0c5e6eb48\\\",\\n  \\\"ciphertext\\\": \\\"SutDOqEKN2TEpDlCicGr5OvtJECBIhFKYEy28P9Y5QLQrPcYh0iN82cTgBAUN6RrBZNHy2NN/mBD16/qyb1eBwq6GOy4BillskkGXzgKKhfCFRmP9MiGbXPorGuwCrL6PcWeCQCbQOqZun7toPc3fw==\\\"\\n}\"},\"size\":{\"type\":\"number\",\"value\":311},\"bytes\":{\"type\":\"bytes\",\"size\":311,\"hex\":\"7b0a20202276657273696f6e223a20312c0a202022636970686572223a20224145532d3132382d434243222c0a20202270616464696e67223a2022504b435337\",\"utf8\":\"{\\n  \\\"version\\\": 1,\\n  \\\"cipher\\\": \\\"AES-128-CBC\\\",\\n  \\\"padding\\\": \\\"PKCS7\\\",\\n  \\\"encoding\\\": \\\"Base64\\\",\\n  \\\"iv_hex\\\": \\\"2a031841c4d27aaf0c1d40b0c5e6eb48\\\",\\n  \\\"ciphertext\\\": \\\"SutDOqEKN2TEpDlCicGr5OvtJECBIhFKYEy28P9Y5QLQrPcYh0iN82cTgBAUN6RrBZNHy2NN/mBD16/qyb1eBwq6GOy4BillskkGXzgKKhfCFRmP9MiGbXPorGuwCrL6PcWeCQCbQOqZun7toPc3fw==\\\"\\n}\"}}",
+        "status": "done",
+        "type": "archive_get_file"
+      },
+      {
+        "node": "get_png",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":2783,\"value\":\"\ufffdPNG\\r\\n\\u001a\\n\\u0000\\u0000\\u0000\\rIHDR\\u0000\\u0000\\u0000 \\u0000\\u0000\\u0000 \\b\\u0002\\u0000\\u0000\\u0000\ufffd\\u0018\ufffd\ufffd\\u0000\\u0000\\u000bOIDATx\ufffd\\u0005\ufffd\\u0001\ufffd\ufffd\ufffda\\u0000\ufffdor35\ufffd\ufffdLM.\ufffd^n\ufffd\ufffdr\\u0015\\u0015\\u0013\ufffd<\\u0011\\u0013\ufffdT\ufffdz\ufffdv\ufffd\ufffd\ufffdy\ufffd\ufffdz*v5S3\ufffd\ufffd\ufffdD\ufffd33\ufffd/*\ufffd*\ufffd\ufffd\ufffd\ufffd^nf\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\\u0003vׂ򿒜O\\u0003\ufffdBV\ufffd\ufffd\ufffd\ufffdKR\\u000f\\u0003\ufffd\\u0017K\ufffd\\u0011\ufffdo=_\ufffdXT\ufffd\ufffd]\ufffd\ufffd\ufffd\ufffdI\ufffdY\ufffd|\ufffdO\ufffd\ufffd⟘\ufffdTX\ufffd\ufffd,\ufffd_a*\ufffdx]5\ufffd\ufffdK\ufffdK\\u0012\\u001d\ufffd\\u0007\ufffd\ufffd\ufffd5\ufffd\ufffd\ufffd\ufffd]=\ufffdy\ufffd\ufffd\ufffd\\u001f\ufffd\ufffd\\u0007\ufffd\ufffd\ufffd\\bHJd\\u0006s\ufffd?\\u001b\ufffd?\ufffd-\ufffd\ufffd\ufffd\\u0004g\\f[\ufffd\ufffd\ufffdC\\u0015v\ufffd\ufffd\ufffd\ufffd0K\ufffdW\ufffdC\ufffd\ufffd?F\\u001fml\ufffdoK\ufffdQV\ufffda\ufffd\\u001fg\\u0002\ufffd\ufffd\ufffd\ufffdQ\ufffdt\\n\ufffd\ufffdQ\ufffd\ufffd_\ufffd\\n?L\ufffd\ufffdb\ufffd}\\\\*\\\"Q\ufffd7#`큝\ufffdi\ufffdw\ufffd\ufffd\ufffd\ufffdg\ufffd\ufffd]\ufffd'\\b\\u001d~\ufffd\ufffd\ufffd(\ufffdA\\u000b\ufffdÆ\ufffd\ufffdKX\ufffdY~C\ufffd\ufffdV\ufffdO\ufffd\ufffd\\b\ufffd\ufffdmi\ufffd\ufffdkW\ufffd\ufffd\ufffd֘g\\u000f\ufffd/>6\ufffd\ufffd~\ufffdE\ufffd\ufffd\\t\ufffd{\ufffd\ufffd\ufffd\\bT\ufffd\ufffd\ufffd:v\ufffd3:\ufffd\ufffd$`s&l\ufffd;\ufffd\\u001fF*\ufffd(\ufffd\ufffdv\ufffd_^\\u001e\\b\\u0003ܟQ\ufffdM\\u001bAJL\ufffd\ufffdH\ufffd\ufffdI\ufffd\ufffd\ufffdw\ufffd\ufffd\\u000e\\u001e\\u0005\ufffd\\\"\\u001d\ufffdxO\ufffdz?\ufffd,\\fo\ufffd\ufffd|\ufffdm,\ufffd\\u0018}f\ufffd\\u00187\ufffdʯ\ufffd\ufffd\ufffd\\u001f\ufffd\\tT\ufffdOL\ufffd\ufffd\ufffd\ufffd\\u0018\\u0002*ڳ\ufffd\ufffd\ufffd_\ufffdyl\ufffd}f\ufffdq\ufffd\ufffd\ufffd`\\u0007]\ufffd\ufffd\ufffdL\ufffd\ufffdU=\ufffd;Ϋz\ufffdM\ufffdg\ufffds,\\b@\\u0005\ufffd#]\\u001dyk\ufffd\ufffd\ufffd\ufffd\ufffd7q\ufffd\ufffd\ufffdp\ufffd\ufffd\ufffd\ufffd2\\\\\ufffdN\\b\ufffd\ufffd\\b\ufffd\ufffd=\ufffd؍]\ufffd3\ufffd\ufffd\\u0017\ufffd2\ufffd\\f\ufffd\ufffd\\u0012d(\ufffd\ufffdgy\ufffd\ufffdS\ufffd\ufffd\ufffdU\ufffd\ufffd\\u001c\ufffdT\ufffdbGZ\ufffd\ufffd]I\ufffdE\ufffdE\ufffd\\u0019|f\\u0000}\ufffd\ufffd]\ufffd\ufffd\ufffd\ufffdC\ufffd\ufffdx\ufffd\ufffd\ufffd>ȍA\ufffdc\ufffd\ufffd\ufffd}\ufffd\ufffdc8ۤ\\n\ufffd\ufffd\ufffd\ufffd\ufffdWK\ufffdp\\u0006\ufffd>\ufffd\\rҩ\ufffd\ufffd\\u0000\ufffd|%\ufffd\\u0016 \ufffd\ufffd\\u0011\ufffd\ufffd\ufffd\ufffd0\ufffd\ufffd\ufffd[e\ufffd&2y\ufffd\ufffd\ufffdת\ufffd\ufffd\ufffd\\u001b\ufffd[\ufffdmc\\u0018\ufffd\ufffd\\u000f\\bxV\ufffdķ\ufffd\ufffdϱ/,g\ufffdh\ufffdH\ufffd\ufffd*΅S\ufffdD\ufffdP2\ufffd:\ufffd\ufffd9\ufffd\ufffd\ufffdJx\\u0005\\u0001\ufffdwS\ufffd/\ufffd[c\\u0019\\u0018\ufffd.\ufffd_>پ\ufffd\ufffd)\ufffd\ufffd\ufffd\ufffd\ufffd]F\\u000e(\\u0005\ufffdm=\ufffdu\ufffdD_\\u0007\\u0010\\u001fl\ufffd\\\\\ufffd\ufffd\ufffd2\ufffd\ufffd\ufffd_\\u001f\ufffd\ufffdB00p~c\\u001e~\\u0017f\ufffd\ufffdpY]v\ufffdj\ufffd\ufffd\ufffd\ufffd$\ufffd%\ufffd\ufffd\\u0007\ufffd\ufffd[*្\ufffddpCB\ufffd\\u0002\\u000b\ufffd\ufffd\ufffdnD\ufffd\ufffdGu\ufffdn\ufffd\ufffd\ufffd\ufffd)=\ufffd\ufffd\ufffd\ufffdv\ufffdʢ\ufffd\ufffd~\ufffd\ufffd\ufffd\\u0015\ufffdC]\ufffd\ufffdG\ufffd$\ufffdeܙ\ufffdvm;}\ufffd\ufffd\ufffd\ufffd9\ufffd\ufffdǏ\ufffd\\u001f\ufffdD\ufffd?!\\nY\ufffd\ufffd}\ufffd\ufffd\\bqO͈:˯L\ufffd㗶(\\u0005\\u0000O\\u0018\ufffd?ں7\ufffd\ufffd\ufffd3\ufffd\ufffdA\ufffdË\ufffd\ufffd\ufffd\\u0013\ufffdD\ufffd\ufffd~\\u001a8\ufffd]\\u0002\\u0013k\ufffd\\u0017\ufffd\ufffdG\ufffd\ufffd\ufffdr\ufffdkΨ䢈Ժ/\ufffd\ufffd\\u001f\ufffd^\ufffd\ufffd4i\ufffds\ufffd\ufffd\ufffd큟G1\ufffdw\ufffd֔\ufffd\ufffdAI\ufffd\ufffd\\u0013\ufffdڄ2\ufffd\ufffd\\u00138*X\ufffd\ufffd\\u0005\ufffd<\ufffdk#0\ufffd;UZ.\ufffd_0\ufffd7\ufffd\ufffd\ufffd\\u0011\ufffd[\ufffd\\u000b\ufffdI\\u0016n\ufffd\ufffd\ufffd\ufffdn\\u000b먋\ufffd\\u0010Q\ufffdك\ufffd&c!\\u0015\ufffd*\ufffdM/WCV\ufffdd\ufffd\\u0006>t\\u001a\ufffd(\ufffd\ufffd\ufffd\ufffd\\f\ufffd\ufffd\ufffd\ufffdn\\u0015+\\r\\u0000\ufffdZ\ufffd9\ufffd\ufffdL\ufffd^\ufffdW\ufffd\ufffd\ufffdw\\u001c\ufffd\ufffdS_RXZ\ufffd\ufffdܠ\ufffd\ufffd\ufffd\\b\ufffdn=\\u0016\ufffda\ufffd.\\u001f\ufffd\ufffdZ\\u0004\ufffdФz\ufffd\ufffd\\u000f[\ufffd\ufffd\ufffd\ufffd\\u0019\\\\p\ufffd7\ufffd\ufffd\ufffd&\ufffd\ufffd\ufffd\ufffdWҫ\ufffd\\u00128k\ufffdt\ufffdJ\ufffd\ufffd\\u0005\ufffd\ufffdI\ufffd׾q\ufffd\ufffd\ufffd\ufffd\ufffd\\u0010\\u001b&\ufffd\ufffd\ufffd\ufffdq\ufffd\ufffd[v4\ufffd\\u0018!\ufffdvg9&J&\ufffd_/\ufffd\ufffdӠnŰ\ufffd1;T\ufffdYCK\ufffd\\u001f\ufffd>fl;yW\\u0007\ufffdd\ufffd\ufffd\ufffdc\ufffd5\\u0017=H\\f\ufffd\ufffdD\ufffdGST/P@J\ufffdi\\t\\u0019+\\u001e\\u001b\ufffd^\ufffd\ufffdKTU\ufffdf\\rV\ufffd\\u0013\ufffd\\bp\ufffd\ufffd\ufffd\ufffd}X\ufffd\\u0017\ufffd\ufffdCQ\ufffd/`άwjl\ufffdb\ufffd\\u0016\\u0006\\u0016G\\\\\\u00141\ufffd|\ufffd\ufffdS\ufffd_\ufffd\ufffd*\ufffd2\ufffd0\ufffd\ufffd8.\ufffd\ufffdx.\ufffdp\ufffd(\ufffd\ufffd=J\\u0006\\u0004\ufffdO.1[ȍ\ufffd\ufffd\ufffd\ufffdEl\ufffd;ڭ^\ufffdҒ{l\ufffd\ufffd\\u0000\ufffd\ufffd\ufffd\ufffdl6i\\r\ufffd\ufffd\ufffd\ufffd>\ufffdAwv\ufffd\ufffdG\ufffdN@q)\ufffd;\ufffd\ufffd܄\\u000e\\u001f\ufffd\ufffd\\u00181\ufffd[\\u0006\ufffd\ufffdH\ufffd\\u0018bi#F*\ufffd\ufffd\\r\ufffd3\ufffd\\f\\u0010(6\ufffd\ufffd\ufffdo\ufffd)\ufffd`\ufffd\ufffd!\ufffdD\ufffdk\ufffd\ufffd-\ufffd\\n\ufffd\ufffdە8\\\"\ufffd8\\u000e\ufffd\ufffd/\ufffd\ufffd鑸\\\\\ufffdĐ\ufffd\ufffd\ufffdakc\ufffd\\u001bi\ufffd/\ufffd\ufffdp\ufffd\ufffd\ufffd\\u0012?|\ufffdo\\u0004\ufffdmh\ufffdgR\ufffdh\ufffd9\ufffdO\ufffd\ufffdYD\\u001a\ufffd!G\\u00174\ufffd\ufffd>\ufffdi\ufffdo\ufffdF\ufffdȦH\ufffd\ufffd\ufffd\ufffd\\n\\u0001\ufffd…[已截断，共 2783 字符]\",\"tail\":\"+\\u0004\ufffd\\\"N\ufffd\\u0013\ufffd=\\u0005Y\ufffdv\ufffd?\ufffd\ufffd\ufffd)\ufffd\ufffd\ufffdˉ\ufffdE +a]6\\u0016\ufffd\\u0011T\ufffd\ufffd^\ufffd\ufffd0\ufffd\ufffd;\\u000ee\ufffd%\ufffdP\ufffd8\ufffd\ufffd4\ufffdʅ\ufffd\ufffd\ufffd xlN\\u0004\\u001e\ufffd\ufffd<>\ufffd˥s\ufffd\ufffdZݝ\ufffdU\ufffd\\u0018\ufffd%\\u001b\ufffd1\ufffdX\ufffdP_+\ufffd\ufffdpÝ\ufffd\\u0012_w흁\ufffd|(L\ufffdD[\ufffdN\ufffd6\ufffda\ufffd\\u0019B\ufffd(\ufffd)~\\n\ufffd\ufffd\\u0018B\ufffd\ufffd@\ufffdP\ufffd\ufffd%\ufffd\\u0015^\ufffd=\ufffd\ufffd\ufffd(\ufffde\ufffd1\ufffd*\ufffd\\u0011\ufffd\ufffdV\ufffd\ufffd\ufffd\ufffdK\ufffdY\ufffd_\ufffd\ufffd\\u000f\ufffdr\ufffd6\\u001f\ufffd\ufffdw\ufffd#9+\ufffd1\ufffd\ufffde\ufffdi\ufffd\ufffd\ufffd8\ufffd\ufffd\ufffd@\\u0014\ufffdQ\ufffd\\u0016\ufffd\ufffd\ufffd\ufffdJi\ufffdlc\ufffdA\ufffd\\u0005\\u0002\ufffd\ufffd<\ufffd\\u0001Y\ufffd;\ufffdh\ufffd|[\ufffd\ufffd\\u0012\\\\b\ufffdiZ\ufffd\ufffd\ufffdM\ufffdEx\\u001d\ufffd\ufffd\ufffd\\u001e\ufffd)e\\u0013 \ufffdU\\\\\ufffd9\\u001e\ufffd\ufffd\ufffdȨ\ufffd\\u001cG\\u0017\ufffd\\u0002!\ufffd~?!:n\ufffd\ufffd\ufffdX\ufffd0\\u0006S#\ufffd\ufffdϿ\ufffd\\\\J\\u0004\ufffd\ufffd(z\\u0005 (\ufffd}\ufffd.BQ\ufffdP\ufffd[\\u0011Wx/\ufffdj\ufffd\ufffd6O\ufffdj\ufffd#\ufffd\ufffdK\ufffd\ufffd\ufffd4\ufffd\ufffdl\\ft\ufffd,\ufffdX\ufffdao=sށ\ufffd\\u0007\ufffd\ufffd\ufffd)v\\u0013\ufffd\ufffd\ufffd\ufffd\ufffdX\\fX\ufffd\ufffd\\u001d2\ufffd=!\ufffd\\rM\ufffd\\u001d9\ufffd\ufffd\\u001f\ufffdp\\u0006\ufffd\ufffd\\u0001\ufffd\ufffd\ufffdCi\ufffd\\u0002\ufffd\\u0000\\u0000\\u0000\\u0000IEND\ufffdB`\ufffd\"},\"name\":{\"type\":\"text\",\"length\":21,\"value\":\"assets/photograph.png\"},\"size\":{\"type\":\"number\",\"value\":2952},\"bytes\":{\"type\":\"bytes\",\"size\":2952,\"hex\":\"89504e470d0a1a0a0000000d4948445200000020000000200802000000fc18eda300000b4f49444154789c05c1018cb98b6100f06f723335b9dc4c4d2ee6995e\",\"utf8\":\"\ufffdPNG\\r\\n\\u001a\\n\\u0000\\u0000\\u0000\\rIHDR\\u0000\\u0000\\u0000 \\u0000\\u0000\\u0000 \\b\\u0002\\u0000\\u0000\\u0000\ufffd\\u0018\ufffd\ufffd\\u0000\\u0000\\u000bOIDATx\ufffd\\u0005\ufffd\\u0001\ufffd\ufffd\ufffda\\u0000\ufffdor35\ufffd\ufffdLM.\ufffd^n\ufffd\ufffdr\\u0015\\u0015\\u0013\ufffd<\\u0011\\u0013\ufffdT\ufffdz\ufffdv\ufffd\ufffd\ufffdy\ufffd\ufffdz*v5S3\ufffd\ufffd\ufffdD\ufffd33\ufffd/*\ufffd*\ufffd\ufffd\ufffd\ufffd^nf\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\\u0003vׂ򿒜O\\u0003\ufffdBV\ufffd\ufffd\ufffd\ufffdKR\\u000f\\u0003\ufffd\\u0017K\ufffd\\u0011\ufffdo=_\ufffdXT\ufffd\ufffd]\ufffd\ufffd\ufffd\ufffdI\ufffdY\ufffd|\ufffdO\ufffd\ufffd⟘\ufffdTX\ufffd\ufffd,\ufffd_a*\ufffdx]5\ufffd\ufffdK\ufffdK\\u0012\\u001d\ufffd\\u0007\ufffd\ufffd\ufffd5\ufffd\ufffd\ufffd\ufffd]=\ufffdy\ufffd\ufffd\ufffd\\u001f\ufffd\ufffd\\u0007\ufffd\ufffd\ufffd\\bHJd\\u0006s\ufffd?\\u001b\ufffd?\ufffd-\ufffd\ufffd\ufffd\\u0004g\\f[\ufffd\ufffd\ufffdC\\u0015v\ufffd\ufffd\ufffd\ufffd0K\ufffdW\ufffdC\ufffd\ufffd?F\\u001fml\ufffdoK\ufffdQV\ufffda\ufffd\\u001fg\\u0002\ufffd\ufffd\ufffd\ufffdQ\ufffdt\\n\ufffd\ufffdQ\ufffd\ufffd_\ufffd\\n?L\ufffd\ufffdb\ufffd}\\\\*\\\"Q\ufffd7#`큝\ufffdi\ufffdw\ufffd\ufffd\ufffd\ufffdg\ufffd\ufffd]\ufffd'\\b\\u001d~\ufffd\ufffd\ufffd(\ufffdA\\u000b\ufffdÆ\ufffd\ufffdKX\ufffdY~C\ufffd\ufffdV\ufffdO\ufffd\ufffd\\b\ufffd\ufffdmi\ufffd\ufffdkW\ufffd\ufffd\ufffd֘g\\u000f\ufffd/>6\ufffd\ufffd~\ufffdE\ufffd\ufffd\\t\ufffd{\ufffd\ufffd\ufffd\\bT\ufffd\ufffd\ufffd:v\ufffd3:\ufffd\ufffd$`s&l\ufffd;\ufffd\\u001fF*\ufffd(\ufffd\ufffdv\ufffd_^\\u001e\\b\\u0003ܟQ\ufffdM\\u001bAJL\ufffd\ufffdH\ufffd\ufffdI\ufffd\ufffd\ufffdw\ufffd\ufffd\\u000e\\u001e\\u0005\ufffd\\\"\\u001d\ufffdxO\ufffdz?\ufffd,\\fo\ufffd\ufffd|\ufffdm,\ufffd\\u0018}f\ufffd\\u00187\ufffdʯ\ufffd\ufffd\ufffd\\u001f\ufffd\\tT\ufffdOL\ufffd\ufffd\ufffd\ufffd\\u0018\\u0002*ڳ\ufffd\ufffd\ufffd_\ufffdyl\ufffd}f\ufffdq\ufffd\ufffd\ufffd`\\u0007]\ufffd\ufffd\ufffdL\ufffd\ufffdU=\ufffd;Ϋz\ufffdM\ufffdg\ufffds,\\b@\\u0005\ufffd#]\\u001dyk\ufffd\ufffd\ufffd\ufffd\ufffd7q\ufffd\ufffd\ufffdp\ufffd\ufffd\ufffd\ufffd2\\\\\ufffdN\\b\ufffd\ufffd\\b\ufffd\ufffd=\ufffd؍]\ufffd3\ufffd\ufffd\\u0017\ufffd2\ufffd\\f\ufffd\ufffd\\u0012d(\ufffd\ufffdgy\ufffd\ufffdS\ufffd\ufffd\ufffdU\ufffd\ufffd\\u001c\ufffdT\ufffdbGZ\ufffd\ufffd]I\ufffdE\ufffdE\ufffd\\u0019|f\\u0000}\ufffd\ufffd]\ufffd\ufffd\ufffd\ufffdC\ufffd\ufffdx\ufffd\ufffd\ufffd>ȍA\ufffdc\ufffd\ufffd\ufffd}\ufffd\ufffdc8ۤ\\n\ufffd\ufffd\ufffd\ufffd\ufffdWK\ufffdp\\u0006\ufffd>\ufffd\\rҩ\ufffd\ufffd\\u0000\ufffd|%\ufffd\\u0016 \ufffd\ufffd\\u0011\ufffd\ufffd\ufffd\ufffd0\ufffd\ufffd\ufffd[e\ufffd&2y\ufffd\ufffd\ufffdת\ufffd\ufffd\ufffd\\u001b\ufffd[\ufffdmc\\u0018\ufffd\ufffd\\u000f\\bxV\ufffdķ\ufffd\ufffdϱ/,g\ufffdh\ufffdH\ufffd\ufffd*΅S\ufffdD\ufffdP2\ufffd:\ufffd\ufffd9\ufffd\ufffd\ufffdJx\\u0005\\u0001\ufffdwS\ufffd/\ufffd[c\\u0019\\u0018\ufffd.\ufffd_>پ\ufffd\ufffd)\ufffd\ufffd\ufffd\ufffd\ufffd]F\\u000e(\\u0005\ufffdm=\ufffdu\ufffdD_\\u0007\\u0010\\u001fl\ufffd\\\\\ufffd\ufffd\ufffd2\ufffd\ufffd\ufffd_\\u001f\ufffd\ufffdB00p~c\\u001e~\\u0017f\ufffd\ufffdpY]v\ufffdj\ufffd\ufffd\ufffd\ufffd$\ufffd%\ufffd\ufffd\\u0007\ufffd\ufffd[*្\ufffddpCB\ufffd\\u0002\\u000b\ufffd\ufffd\ufffdnD\ufffd\ufffdGu\ufffdn\ufffd\ufffd\ufffd\ufffd)=\ufffd\ufffd\ufffd\ufffdv\ufffdʢ\ufffd\ufffd~\ufffd\ufffd\ufffd\\u0015\ufffdC]\ufffd\ufffdG\ufffd$\ufffdeܙ\ufffdvm;}\ufffd\ufffd\ufffd\ufffd9\ufffd\ufffdǏ\ufffd\\u001f\ufffdD\ufffd?!\\nY\ufffd\ufffd}\ufffd\ufffd\\bqO͈:˯L\ufffd㗶(\\u0005\\u0000O\\u0018\ufffd?ں7\ufffd\ufffd\ufffd3\ufffd\ufffdA\ufffdË\ufffd\ufffd\ufffd\\u0013\ufffdD\ufffd\ufffd~\\u001a8\ufffd]\\u0002\\u0013k\ufffd\\u0017\ufffd\ufffdG\ufffd\ufffd\ufffdr\ufffdkΨ䢈Ժ/\ufffd\ufffd\\u001f\ufffd^\ufffd\ufffd4i\ufffds\ufffd\ufffd\ufffd큟G1\ufffdw\ufffd֔\ufffd\ufffdAI\ufffd\ufffd\\u0013\ufffdڄ2\ufffd\ufffd\\u00138*X\ufffd\ufffd\\u0005\ufffd<\ufffdk#0\ufffd;UZ.\ufffd_0\ufffd7\ufffd\ufffd\ufffd\\u0011\ufffd[\ufffd\\u000b\ufffdI\\u0016n\ufffd\ufffd\ufffd\ufffdn\\u000b먋\ufffd\\u0010Q\ufffdك\ufffd&c!\\u0015\ufffd*\ufffdM/WCV\ufffdd\ufffd\\u0006>t\\u001a\ufffd(\ufffd\ufffd\ufffd\ufffd\\f\ufffd\ufffd\ufffd\ufffdn\\u0015+\\r\\u0000\ufffdZ\ufffd9\ufffd\ufffdL\ufffd^\ufffdW\ufffd\ufffd\ufffdw\\u001c\ufffd\ufffdS_RXZ\ufffd\ufffdܠ\ufffd\ufffd\ufffd\\b\ufffdn=\\u0016\ufffda\ufffd.\\u001f\ufffd\ufffdZ\\u0004\ufffdФz\ufffd\ufffd\\u000f[\ufffd\ufffd\ufffd\ufffd\\u0019\\\\p\ufffd7\ufffd\ufffd\ufffd&\ufffd\ufffd\ufffd\ufffdWҫ\ufffd\\u00128k\ufffdt\ufffdJ\ufffd\ufffd\\u0005\ufffd\ufffdI\ufffd׾q\ufffd\ufffd\ufffd\ufffd\ufffd\\u0010\\u001b&\ufffd\ufffd\ufffd\ufffdq\ufffd\ufffd[v4\ufffd\\u0018!\ufffdvg9&J&\ufffd_/\ufffd\ufffdӠnŰ\ufffd1;T\ufffdYCK\ufffd\\u001f\ufffd>fl;yW\\u0007\ufffdd\ufffd\ufffd\ufffdc\ufffd5\\u0017=H\\f\ufffd\ufffdD\ufffdGST/P@J\ufffdi\\t\\u0019+\\u001e\\u001b\ufffd^\ufffd\ufffdKTU\ufffdf\\rV\ufffd\\u0013\ufffd\\bp\ufffd\ufffd\ufffd\ufffd}X\ufffd\\u0017\ufffd\ufffdCQ\ufffd/`άwjl\ufffdb\ufffd\\u0016\\u0006\\u0016G\\\\\\u00141\ufffd|\ufffd\ufffdS\ufffd_\ufffd\ufffd*\ufffd2\ufffd0\ufffd\ufffd8.\ufffd\ufffdx.\ufffdp\ufffd(\ufffd\ufffd=J\\u0006\\u0004\ufffdO.1[ȍ\ufffd\ufffd\ufffd\ufffdEl\ufffd;ڭ^\ufffdҒ{l\ufffd\ufffd\\u0000\ufffd\ufffd\ufffd\ufffdl6i\\r\ufffd\ufffd\ufffd\ufffd>\ufffdAwv\ufffd\ufffdG\ufffdN@q)\ufffd;\ufffd\ufffd܄\\u000e\\u001f\ufffd\ufffd\\u00181\ufffd[\\u0006\ufffd\ufffdH\ufffd\\u0018bi#F*\ufffd\ufffd\\r\ufffd3\ufffd\\f\\u0010(6\ufffd…[已截断，共 1931 字符]\"}…[已截断，共 5501 字符]",
+        "status": "done",
+        "type": "archive_get_file"
+      },
+      {
+        "node": "lsb",
+        "outputs": "{\"hex\":{\"type\":\"text\",\"length\":256,\"value\":\"4b45595f4845583d35356333353261346464386238636365626234366437383831303964616230350a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\"},\"text\":{\"type\":\"text\",\"length\":128,\"value\":\"KEY_HEX=55c352a4dd8b8ccebb46d788109dab05\\n\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\"},\"bytes\":{\"type\":\"bytes\",\"size\":128,\"hex\":\"4b45595f4845583d35356333353261346464386238636365626234366437383831303964616230350a0000000000000000000000000000000000000000000000\",\"utf8\":\"KEY_HEX=55c352a4dd8b8ccebb46d788109dab05\\n\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\"}}",
+        "status": "done",
+        "type": "lsb_extract"
+      },
+      {
+        "node": "out_key_text",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":128,\"value\":\"KEY_HEX=55c352a4dd8b8ccebb46d788109dab05\\n\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\"}}",
+        "status": "done",
+        "type": "text_output"
+      },
+      {
+        "node": "rx_key",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":32,\"value\":\"55c352a4dd8b8ccebb46d788109dab05\"},\"matches\":{\"type\":\"stringList\",\"value\":{\"length\":1,\"items\":[\"55c352a4dd8b8ccebb46d788109dab05\"]}}}",
+        "status": "done",
+        "type": "regex_extract"
+      },
+      {
+        "node": "rx_ct",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":152,\"value\":\"SutDOqEKN2TEpDlCicGr5OvtJECBIhFKYEy28P9Y5QLQrPcYh0iN82cTgBAUN6RrBZNHy2NN/mBD16/qyb1eBwq6GOy4BillskkGXzgKKhfCFRmP9MiGbXPorGuwCrL6PcWeCQCbQOqZun7toPc3fw==\"},\"matches\":{\"type\":\"stringList\",\"value\":{\"length\":1,\"items\":[\"SutDOqEKN2TEpDlCicGr5OvtJECBIhFKYEy28P9Y5QLQrPcYh0iN82cTgBAUN6RrBZNHy2NN/mBD16/qyb1eBwq6GOy4BillskkGXzgKKhfCFRmP9MiGbXPorGuwCrL6PcWeCQCbQOqZun7toPc3fw==\"]}}}",
+        "status": "done",
+        "type": "regex_extract"
+      },
+      {
+        "node": "aes_hex",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":96,\"value\":\"NzM3OTZlNzQ3YjcwNjU2MjY2NjY1ZjcxNjI3YTZlNzY2MTVmMzAzNTZlMzEzOTcwMzQzNzM0NmU2ZjM4MzMzNjM0MzI3ZA==\"},\"bytes\":{\"type\":\"bytes\",\"size\":96,\"hex\":\"4e7a4d334f545a6c4e7a5133596a63774e6a55324d6a59324e6a59315a6a63784e6a493359545a6c4e7a59324d54566d4d7a417a4e545a6c4d7a457a4f546377\",\"utf8\":\"NzM3OTZlNzQ3YjcwNjU2MjY2NjY1ZjcxNjI3YTZlNzY2MTVmMzAzNTZlMzEzOTcwMzQzNzM0NmU2ZjM4MzMzNjM0MzI3ZA==\"}}",
+        "status": "done",
+        "type": "aes"
+      },
+      {
+        "node": "b64dec",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":70,\"value\":\"73796e747b70656266665f71627a6e76615f30356e3139703437346e6f38333634327d\"},\"bytes\":{\"type\":\"bytes\",\"size\":70,\"hex\":\"37333739366537343762373036353632363636363566373136323761366537363631356633303335366533313339373033343337333436653666333833333336\",\"utf8\":\"73796e747b70656266665f71627a6e76615f30356e3139703437346e6f38333634327d\"}}",
+        "status": "done",
+        "type": "base64_decode"
+      },
+      {
+        "node": "hexdec",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":35,\"value\":\"synt{pebff_qbznva_05n19p474no83642}\"},\"bytes\":{\"type\":\"bytes\",\"size\":35,\"hex\":\"73796e747b70656266665f71627a6e76615f30356e3139703437346e6f38333634327d\",\"utf8\":\"synt{pebff_qbznva_05n19p474no83642}\"}}",
+        "status": "done",
+        "type": "hex_decode"
+      },
+      {
+        "node": "rot13",
+        "outputs": "{\"text\":{\"type\":\"text\",\"length\":35,\"value\":\"flag{cross_domain_05a19c474ab83642}\"}}",
+        "status": "done",
+        "type": "rot13"
+      },
+      {
+        "node": "out_final",
+        "outputs": "{\"value\":{\"type\":\"text\",\"length\":35,\"value\":\"flag{cross_domain_05a19c474ab83642}\"}}",
+        "status": "done",
+        "type": "text_output"
+      }
+    ]
+  ],
+  "undoRedo": {
+    "before": 19,
+    "undo": 18,
+    "redo": 19
+  },
+  "cancellation": {
+    "cancelState": "Browser tab: 13, Title: \"AI Agent 真实模型联调\", URL: \"http://127.0.0.1:1423/tests/browser/live-agent.html\".\nThe following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.\nRemoved element IDs: 819\n~\t\t\t789 button 自主解题\n~\t\t\t790 button 规划流程\n~\t\t\t791 button 解释画布\n~\t\t\t792 button 规划修复\n~\t\t\t\t795 text entry area (settable) 任务描述, Value: 未知格式的综合取证题。请自主读取附件、判断真实线索，找出最终答案；记录每轮证据和推理，生成可以从附件重新执行的流程。\n~\t\t\t\t798 text entry area (settable) 待处理数据（可选，保留原始空白）\n~\t\t\t800 button 选择题目文件\n~\t\t\t801 text entry area (settable) Description: 题目文件路径, Value: D:\\Lovelymisclab\\.git\\solver-fixtures\\complex\\specimen.dat\n~\t\t\t\t804 text field (settable) 答案前缀, Value: flag{\n~\t\t\t\t807 stepper (settable, integer) 最多尝试轮数, Value: 8\n~\t\t\t\t810 stepper (settable, integer) 总时限（分钟）, Value: 15\n~\t\t\t\t814 text entry area (settable) 标准答案（可选，仅本地验收，不交给模型）, Value: flag{cross_domain_05a19c474ab83642}\n~\t\t\t818 text 已取消规划，可修改任务后重新生成。\n~\t\t\t817 button 生成计划\nThe focused UI element is 0 AXWebArea AI Agent 真实模型联调, URL: 127.0.0.1:1423/tests/browser/live-agent.html",
+    "afterWaitHeader": "Browser tab: 13, Title: \"AI Agent 真实模型联调\", URL: \"http://127.0.0.1:1423/tests/browser/live-agent.html\".\n0 AXWebArea AI Agent 真实模型联调, URL: 127.0.0.1:1423/tests/browser/live-agent.html\n\t1 container\n\t\t2 text 真实模型联调 · 已保存模型 + Rust 执行器\n\t\t3 button AI 助手\n\t\t4 button 撤销搭建\n\t\t5 button 清空测试画布\n\t\t6 text 节点  19  · 连线  19  · 运行  success\n\t\t7 button (collapsed) 导出测试流程, Secondary Actions: Expand\n\t\t\t8 text 导出测试流程\n\t\t9 container 画布工具 左键平移 · Ctrl / Shift 多选 · 空格 / 中键平移 AI 执行报告\n\t\t\t784 container\n\t\t\t\t785 container\n\t\t\t\t\t786 image\n\t\t\t\t\t\t787 container Edge from hex_decode_28 to rot13_29\n\t\t\t\t\t788 image\n\t\t\t\t\t\t789 container Edge from rot13_29 to text_output_30\n\t\t\t\t\t790 text ",
+    "noNewNodes": true,
+    "dialogClosed": true
+  },
+  "rustReplay": {
+    "date": "2026-10-27T02:37:27.126Z",
+    "nodes": 19,
+    "edges": 19,
+    "completed": 19,
+    "failures": [],
+    "finalNode": "text_output_30",
+    "actual": "flag{cross_domain_05a19c474ab83642}",
+    "expectedMatch": true,
+    "modelCalls": 0,
+    "answerInParameters": false
+  },
+  "checks": {
+    "productionBuild": "passed",
+    "strictClippy": "passed",
+    "appAndMcp": 30,
+    "frontend": 61,
+    "utf8": "passed"
+  }
+}

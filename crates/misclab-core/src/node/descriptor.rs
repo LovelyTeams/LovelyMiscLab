@@ -6,9 +6,10 @@ use serde::{Deserialize, Serialize};
 
 use crate::graph::port::PortType;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub enum Cost {
+    #[default]
     Cheap,
     Medium,
     Heavy,
@@ -43,10 +44,22 @@ impl PortSpec {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(tag = "kind", rename_all = "camelCase")]
 pub enum ParamWidget {
-    Text { multiline: bool },
-    Number { min: f64, max: f64, step: f64 },
-    Slider { min: f64, max: f64, step: f64 },
-    Select { options: Vec<String> },
+    Text {
+        multiline: bool,
+    },
+    Number {
+        min: f64,
+        max: f64,
+        step: f64,
+    },
+    Slider {
+        min: f64,
+        max: f64,
+        step: f64,
+    },
+    Select {
+        options: Vec<String>,
+    },
     Toggle,
     /// A file picker; the param value is the chosen path.
     File,
@@ -132,11 +145,45 @@ impl ParamSpec {
 }
 
 /// Everything the frontend needs to render and wire a node type.
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct NodePresentation {
+    #[serde(default)]
+    pub inline_params: Vec<String>,
+    /// Output name -> auto/text/hex/json/table/candidates/image/artifact.
+    #[serde(default)]
+    pub previews: std::collections::BTreeMap<String, String>,
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct NodeExample {
+    pub label: String,
+    pub inputs: super::PortMap,
+    pub params: serde_json::Value,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct NodeDescriptor {
     pub id: String,
     pub category: String,
+    #[serde(default)]
+    pub category_id: String,
+    #[serde(default)]
+    pub subcategory_id: String,
+    #[serde(default)]
+    pub legacy_categories: Vec<String>,
+    #[serde(default)]
+    pub aliases: Vec<String>,
+    #[serde(default)]
+    pub upstream_ids: Vec<String>,
+    #[serde(default)]
+    pub family: String,
+    #[serde(default)]
+    pub presentation: NodePresentation,
+    #[serde(default)]
+    pub examples: Vec<NodeExample>,
     pub display_name: String,
     #[serde(default, skip_serializing_if = "String::is_empty")]
     pub description: String,

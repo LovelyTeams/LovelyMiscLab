@@ -1,0 +1,5651 @@
+{
+  "revision": "ea2bc36dae31c97060f7f2cddad8df5518afad7b",
+  "vectors": [
+    {
+      "operation": "radixConvert",
+      "node": "radix_transform_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "FF"
+        }
+      },
+      "params": {
+        "fromBase": 16,
+        "toBase": 2
+      },
+      "text": "11111111"
+    },
+    {
+      "operation": "radixConvert",
+      "node": "radix_transform_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "11111111"
+        }
+      },
+      "params": {
+        "fromBase": 16,
+        "toBase": 2
+      },
+      "text": "ff"
+    },
+    {
+      "operation": "radixConvert",
+      "node": "radix_transform_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-123456789012345678901234567890"
+        }
+      },
+      "params": {
+        "fromBase": 10,
+        "toBase": 36
+      },
+      "text": "-byw97um9s91dlz68tsi"
+    },
+    {
+      "operation": "radixConvert",
+      "node": "radix_transform_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-byw97um9s91dlz68tsi"
+        }
+      },
+      "params": {
+        "fromBase": 10,
+        "toBase": 36
+      },
+      "text": "-123456789012345678901234567890"
+    },
+    {
+      "operation": "radixConvert",
+      "node": "radix_transform_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "101101"
+        }
+      },
+      "params": {
+        "fromBase": 2,
+        "toBase": 16
+      },
+      "text": "2d"
+    },
+    {
+      "operation": "radixConvert",
+      "node": "radix_transform_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2d"
+        }
+      },
+      "params": {
+        "fromBase": 2,
+        "toBase": 16
+      },
+      "text": "101101"
+    },
+    {
+      "operation": "radixConvert",
+      "node": "radix_transform_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "zzzz"
+        }
+      },
+      "params": {
+        "fromBase": 36,
+        "toBase": 10
+      },
+      "text": "1679615"
+    },
+    {
+      "operation": "radixConvert",
+      "node": "radix_transform_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1679615"
+        }
+      },
+      "params": {
+        "fromBase": 36,
+        "toBase": 10
+      },
+      "text": "zzzz"
+    },
+    {
+      "operation": "radixConvert",
+      "node": "radix_transform_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "fromBase": 10,
+        "toBase": 2
+      },
+      "text": "0"
+    },
+    {
+      "operation": "radixConvert",
+      "node": "radix_transform_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "fromBase": 10,
+        "toBase": 2
+      },
+      "text": "0"
+    },
+    {
+      "operation": "radixConvert",
+      "node": "radix_transform_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "+77"
+        }
+      },
+      "params": {
+        "fromBase": 8,
+        "toBase": 16
+      },
+      "text": "3f"
+    },
+    {
+      "operation": "radixConvert",
+      "node": "radix_transform_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3f"
+        }
+      },
+      "params": {
+        "fromBase": 8,
+        "toBase": 16
+      },
+      "text": "77"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "base": 2
+      },
+      "text": ""
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "base": 2
+      },
+      "text": ""
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello"
+        }
+      },
+      "params": {
+        "base": 2
+      },
+      "text": "01001000 01100101 01101100 01101100 01101111"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "01001000 01100101 01101100 01101100 01101111"
+        }
+      },
+      "params": {
+        "base": 2
+      },
+      "text": "Hello"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂"
+        }
+      },
+      "params": {
+        "base": 2
+      },
+      "text": "11100100 10111000 10101101 11100110 10010110 10000111 11110000 10011111 10011001 10000010"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "11100100 10111000 10101101 11100110 10010110 10000111 11110000 10011111 10011001 10000010"
+        }
+      },
+      "params": {
+        "base": 2
+      },
+      "text": "中文🙂"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "base": 8
+      },
+      "text": ""
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "base": 8
+      },
+      "text": ""
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello"
+        }
+      },
+      "params": {
+        "base": 8
+      },
+      "text": "110 145 154 154 157"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "110 145 154 154 157"
+        }
+      },
+      "params": {
+        "base": 8
+      },
+      "text": "Hello"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂"
+        }
+      },
+      "params": {
+        "base": 8
+      },
+      "text": "344 270 255 346 226 207 360 237 231 202"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "344 270 255 346 226 207 360 237 231 202"
+        }
+      },
+      "params": {
+        "base": 8
+      },
+      "text": "中文🙂"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "base": 10
+      },
+      "text": ""
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "base": 10
+      },
+      "text": ""
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello"
+        }
+      },
+      "params": {
+        "base": 10
+      },
+      "text": "072 101 108 108 111"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "072 101 108 108 111"
+        }
+      },
+      "params": {
+        "base": 10
+      },
+      "text": "Hello"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂"
+        }
+      },
+      "params": {
+        "base": 10
+      },
+      "text": "228 184 173 230 150 135 240 159 153 130"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "228 184 173 230 150 135 240 159 153 130"
+        }
+      },
+      "params": {
+        "base": 10
+      },
+      "text": "中文🙂"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "base": 16
+      },
+      "text": ""
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "base": 16
+      },
+      "text": ""
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello"
+        }
+      },
+      "params": {
+        "base": 16
+      },
+      "text": "48 65 6c 6c 6f"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "48 65 6c 6c 6f"
+        }
+      },
+      "params": {
+        "base": 16
+      },
+      "text": "Hello"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂"
+        }
+      },
+      "params": {
+        "base": 16
+      },
+      "text": "e4 b8 ad e6 96 87 f0 9f 99 82"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "e4 b8 ad e6 96 87 f0 9f 99 82"
+        }
+      },
+      "params": {
+        "base": 16
+      },
+      "text": "中文🙂"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "base": 3
+      },
+      "text": ""
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "base": 3
+      },
+      "text": ""
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello"
+        }
+      },
+      "params": {
+        "base": 3
+      },
+      "text": "2200 10202 11000 11000 11010"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2200 10202 11000 11000 11010"
+        }
+      },
+      "params": {
+        "base": 3
+      },
+      "text": "Hello"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂"
+        }
+      },
+      "params": {
+        "base": 3
+      },
+      "text": "22110 20211 20102 22112 12120 12000 22220 12220 12200 11211"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "22110 20211 20102 22112 12120 12000 22220 12220 12200 11211"
+        }
+      },
+      "params": {
+        "base": 3
+      },
+      "text": "中文🙂"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "base": 36
+      },
+      "text": ""
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "base": 36
+      },
+      "text": ""
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello"
+        }
+      },
+      "params": {
+        "base": 36
+      },
+      "text": "20 2t 30 30 33"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "20 2t 30 30 33"
+        }
+      },
+      "params": {
+        "base": 36
+      },
+      "text": "Hello"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中文🙂"
+        }
+      },
+      "params": {
+        "base": 36
+      },
+      "text": "6c 54 4t 6e 46 3r 6o 4f 49 3m"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "6c 54 4t 6e 46 3r 6o 4f 49 3m"
+        }
+      },
+      "params": {
+        "base": 36
+      },
+      "text": "中文🙂"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello! 123"
+        }
+      },
+      "params": {
+        "base": 2,
+        "bits": 7,
+        "invert": false,
+        "bitReverse": false
+      },
+      "text": "1001000 1100101 1101100 1101100 1101111 0100001 0100000 0110001 0110010 0110011"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1001000 1100101 1101100 1101100 1101111 0100001 0100000 0110001 0110010 0110011"
+        }
+      },
+      "params": {
+        "base": 2,
+        "bits": 7,
+        "invert": false,
+        "bitReverse": false
+      },
+      "text": "Hello! 123"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello! 123"
+        }
+      },
+      "params": {
+        "base": 2,
+        "bits": 7,
+        "invert": false,
+        "bitReverse": true
+      },
+      "text": "0001001 1010011 0011011 0011011 1111011 1000010 0000010 1000110 0100110 1100110"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0001001 1010011 0011011 0011011 1111011 1000010 0000010 1000110 0100110 1100110"
+        }
+      },
+      "params": {
+        "base": 2,
+        "bits": 7,
+        "invert": false,
+        "bitReverse": true
+      },
+      "text": "Hello! 123"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello! 123"
+        }
+      },
+      "params": {
+        "base": 2,
+        "bits": 7,
+        "invert": true,
+        "bitReverse": false
+      },
+      "text": "0110111 0011010 0010011 0010011 0010000 1011110 1011111 1001110 1001101 1001100"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0110111 0011010 0010011 0010011 0010000 1011110 1011111 1001110 1001101 1001100"
+        }
+      },
+      "params": {
+        "base": 2,
+        "bits": 7,
+        "invert": true,
+        "bitReverse": false
+      },
+      "text": "Hello! 123"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello! 123"
+        }
+      },
+      "params": {
+        "base": 2,
+        "bits": 7,
+        "invert": true,
+        "bitReverse": true
+      },
+      "text": "1110110 0101100 1100100 1100100 0000100 0111101 1111101 0111001 1011001 0011001"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1110110 0101100 1100100 1100100 0000100 0111101 1111101 0111001 1011001 0011001"
+        }
+      },
+      "params": {
+        "base": 2,
+        "bits": 7,
+        "invert": true,
+        "bitReverse": true
+      },
+      "text": "Hello! 123"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello! 123"
+        }
+      },
+      "params": {
+        "base": 2,
+        "bits": 8,
+        "invert": false,
+        "bitReverse": false
+      },
+      "text": "01001000 01100101 01101100 01101100 01101111 00100001 00100000 00110001 00110010 00110011"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "01001000 01100101 01101100 01101100 01101111 00100001 00100000 00110001 00110010 00110011"
+        }
+      },
+      "params": {
+        "base": 2,
+        "bits": 8,
+        "invert": false,
+        "bitReverse": false
+      },
+      "text": "Hello! 123"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello! 123"
+        }
+      },
+      "params": {
+        "base": 2,
+        "bits": 8,
+        "invert": false,
+        "bitReverse": true
+      },
+      "text": "00010010 10100110 00110110 00110110 11110110 10000100 00000100 10001100 01001100 11001100"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00010010 10100110 00110110 00110110 11110110 10000100 00000100 10001100 01001100 11001100"
+        }
+      },
+      "params": {
+        "base": 2,
+        "bits": 8,
+        "invert": false,
+        "bitReverse": true
+      },
+      "text": "Hello! 123"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello! 123"
+        }
+      },
+      "params": {
+        "base": 2,
+        "bits": 8,
+        "invert": true,
+        "bitReverse": false
+      },
+      "text": "10110111 10011010 10010011 10010011 10010000 11011110 11011111 11001110 11001101 11001100"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10110111 10011010 10010011 10010011 10010000 11011110 11011111 11001110 11001101 11001100"
+        }
+      },
+      "params": {
+        "base": 2,
+        "bits": 8,
+        "invert": true,
+        "bitReverse": false
+      },
+      "text": "Hello! 123"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello! 123"
+        }
+      },
+      "params": {
+        "base": 2,
+        "bits": 8,
+        "invert": true,
+        "bitReverse": true
+      },
+      "text": "11101101 01011001 11001001 11001001 00001001 01111011 11111011 01110011 10110011 00110011"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "11101101 01011001 11001001 11001001 00001001 01111011 11111011 01110011 10110011 00110011"
+        }
+      },
+      "params": {
+        "base": 2,
+        "bits": 8,
+        "invert": true,
+        "bitReverse": true
+      },
+      "text": "Hello! 123"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "A B"
+        }
+      },
+      "params": {
+        "base": 8,
+        "compat": false
+      },
+      "text": "101 040 102"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "101 040 102"
+        }
+      },
+      "params": {
+        "base": 8,
+        "compat": false
+      },
+      "text": "A B"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "A B"
+        }
+      },
+      "params": {
+        "base": 8,
+        "compat": true
+      },
+      "text": "101 40 102"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "101 40 102"
+        }
+      },
+      "params": {
+        "base": 8,
+        "compat": true
+      },
+      "text": "A B"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "A B"
+        }
+      },
+      "params": {
+        "base": 10,
+        "compat": false
+      },
+      "text": "065 032 066"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "065 032 066"
+        }
+      },
+      "params": {
+        "base": 10,
+        "compat": false
+      },
+      "text": "A B"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "A B"
+        }
+      },
+      "params": {
+        "base": 10,
+        "compat": true
+      },
+      "text": "65 32 66"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "65 32 66"
+        }
+      },
+      "params": {
+        "base": 10,
+        "compat": true
+      },
+      "text": "A B"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "A B"
+        }
+      },
+      "params": {
+        "base": 16,
+        "compat": false
+      },
+      "text": "41 20 42"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "41 20 42"
+        }
+      },
+      "params": {
+        "base": 16,
+        "compat": false
+      },
+      "text": "A B"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "A B"
+        }
+      },
+      "params": {
+        "base": 16,
+        "compat": true
+      },
+      "text": "41 20 42"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "41 20 42"
+        }
+      },
+      "params": {
+        "base": 16,
+        "compat": true
+      },
+      "text": "A B"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0100100001101001"
+        }
+      },
+      "params": {
+        "base": 2
+      },
+      "text": "Hi"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "e4b8ad"
+        }
+      },
+      "params": {
+        "base": 16
+      },
+      "text": "中"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "072105"
+        }
+      },
+      "params": {
+        "base": 10
+      },
+      "text": "Hi"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "110151"
+        }
+      },
+      "params": {
+        "base": 8
+      },
+      "text": "Hi"
+    },
+    {
+      "operation": "bcd",
+      "node": "bcd_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "compat": false
+      },
+      "text": "0"
+    },
+    {
+      "operation": "bcd",
+      "node": "bcd_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "compat": false
+      },
+      "text": "0"
+    },
+    {
+      "operation": "bcd",
+      "node": "bcd_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "001234567890"
+        }
+      },
+      "params": {
+        "compat": false
+      },
+      "text": "001234567890"
+    },
+    {
+      "operation": "bcd",
+      "node": "bcd_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "001234567890"
+        }
+      },
+      "params": {
+        "compat": false
+      },
+      "text": "001234567890"
+    },
+    {
+      "operation": "bcd",
+      "node": "bcd_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27"
+        }
+      },
+      "params": {
+        "compat": false
+      },
+      "text": "20261027"
+    },
+    {
+      "operation": "bcd",
+      "node": "bcd_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "20261027"
+        }
+      },
+      "params": {
+        "compat": false
+      },
+      "text": "20261027"
+    },
+    {
+      "operation": "bcd",
+      "node": "bcd_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "compat": false
+      },
+      "error": "BCD 输入须为十进制数字串"
+    },
+    {
+      "operation": "bcd",
+      "node": "bcd_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "compat": true
+      },
+      "text": "0000"
+    },
+    {
+      "operation": "bcd",
+      "node": "bcd_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0000"
+        }
+      },
+      "params": {
+        "compat": true
+      },
+      "text": "0"
+    },
+    {
+      "operation": "bcd",
+      "node": "bcd_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "001234567890"
+        }
+      },
+      "params": {
+        "compat": true
+      },
+      "text": "0000 0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 0000"
+    },
+    {
+      "operation": "bcd",
+      "node": "bcd_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0000 0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 0000"
+        }
+      },
+      "params": {
+        "compat": true
+      },
+      "text": "001234567890"
+    },
+    {
+      "operation": "bcd",
+      "node": "bcd_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27"
+        }
+      },
+      "params": {
+        "compat": true
+      },
+      "text": "0010 0000 0010 0110 0001 0000 0010 0111"
+    },
+    {
+      "operation": "bcd",
+      "node": "bcd_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0010 0000 0010 0110 0001 0000 0010 0111"
+        }
+      },
+      "params": {
+        "compat": true
+      },
+      "text": "20261027"
+    },
+    {
+      "operation": "bcd",
+      "node": "bcd_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "compat": true
+      },
+      "error": "BCD 输入须为十进制数字串"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "bits": 1
+      },
+      "text": "0"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "bits": 1
+      },
+      "text": "0"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "bits": 1
+      },
+      "text": "1"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "bits": 1
+      },
+      "text": "1"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "bits": 8
+      },
+      "text": "00000000"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00000000"
+        }
+      },
+      "params": {
+        "bits": 8
+      },
+      "text": "0"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "bits": 8
+      },
+      "text": "00000001"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00000001"
+        }
+      },
+      "params": {
+        "bits": 8
+      },
+      "text": "1"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "bits": 16
+      },
+      "text": "0000000000000000"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0000000000000000"
+        }
+      },
+      "params": {
+        "bits": 16
+      },
+      "text": "0"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "bits": 16
+      },
+      "text": "0000000000000001"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0000000000000001"
+        }
+      },
+      "params": {
+        "bits": 16
+      },
+      "text": "1"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "bits": 128
+      },
+      "text": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        }
+      },
+      "params": {
+        "bits": 128
+      },
+      "text": "0"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "bits": 128
+      },
+      "text": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+        }
+      },
+      "params": {
+        "bits": 128
+      },
+      "text": "1"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "18446744073709551616"
+        }
+      },
+      "params": {
+        "bits": 128
+      },
+      "text": "00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000"
+        }
+      },
+      "params": {
+        "bits": 128
+      },
+      "text": "18446744073709551616"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hi中🙂"
+        }
+      },
+      "params": {
+        "mode": "hex",
+        "sep": " "
+      },
+      "text": "x48 x69 x4e2d x1f642"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "x48 x69 x4e2d x1f642"
+        }
+      },
+      "params": {
+        "mode": "hex",
+        "sep": " "
+      },
+      "text": "Hi中🙂"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hi中🙂"
+        }
+      },
+      "params": {
+        "mode": "hex",
+        "sep": "\\"
+      },
+      "text": "x48\\x69\\x4e2d\\x1f642"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "x48\\x69\\x4e2d\\x1f642"
+        }
+      },
+      "params": {
+        "mode": "hex",
+        "sep": "\\"
+      },
+      "text": "Hi中🙂"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hi中🙂"
+        }
+      },
+      "params": {
+        "mode": "hex",
+        "sep": ","
+      },
+      "text": "x48,x69,x4e2d,x1f642"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "x48,x69,x4e2d,x1f642"
+        }
+      },
+      "params": {
+        "mode": "hex",
+        "sep": ","
+      },
+      "text": "Hi中🙂"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hi中🙂"
+        }
+      },
+      "params": {
+        "mode": "dec",
+        "sep": " "
+      },
+      "text": "d72 d105 d20013 d128578"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "d72 d105 d20013 d128578"
+        }
+      },
+      "params": {
+        "mode": "dec",
+        "sep": " "
+      },
+      "text": "Hi中🙂"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hi中🙂"
+        }
+      },
+      "params": {
+        "mode": "dec",
+        "sep": "\\"
+      },
+      "text": "d72\\d105\\d20013\\d128578"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "d72\\d105\\d20013\\d128578"
+        }
+      },
+      "params": {
+        "mode": "dec",
+        "sep": "\\"
+      },
+      "text": "Hi中🙂"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hi中🙂"
+        }
+      },
+      "params": {
+        "mode": "dec",
+        "sep": ","
+      },
+      "text": "d72,d105,d20013,d128578"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "d72,d105,d20013,d128578"
+        }
+      },
+      "params": {
+        "mode": "dec",
+        "sep": ","
+      },
+      "text": "Hi中🙂"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hi中🙂"
+        }
+      },
+      "params": {
+        "mode": "oct",
+        "sep": " "
+      },
+      "text": "o110 o151 o47055 o373102"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "o110 o151 o47055 o373102"
+        }
+      },
+      "params": {
+        "mode": "oct",
+        "sep": " "
+      },
+      "text": "Hi中🙂"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hi中🙂"
+        }
+      },
+      "params": {
+        "mode": "oct",
+        "sep": "\\"
+      },
+      "text": "o110\\o151\\o47055\\o373102"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "o110\\o151\\o47055\\o373102"
+        }
+      },
+      "params": {
+        "mode": "oct",
+        "sep": "\\"
+      },
+      "text": "Hi中🙂"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hi中🙂"
+        }
+      },
+      "params": {
+        "mode": "oct",
+        "sep": ","
+      },
+      "text": "o110,o151,o47055,o373102"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "o110,o151,o47055,o373102"
+        }
+      },
+      "params": {
+        "mode": "oct",
+        "sep": ","
+      },
+      "text": "Hi中🙂"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hi中🙂"
+        }
+      },
+      "params": {
+        "mode": "bin",
+        "sep": " "
+      },
+      "text": "b1001000 b1101001 b100111000101101 b11111011001000010"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "b1001000 b1101001 b100111000101101 b11111011001000010"
+        }
+      },
+      "params": {
+        "mode": "bin",
+        "sep": " "
+      },
+      "text": "Hi中🙂"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hi中🙂"
+        }
+      },
+      "params": {
+        "mode": "bin",
+        "sep": "\\"
+      },
+      "text": "b1001000\\b1101001\\b100111000101101\\b11111011001000010"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "b1001000\\b1101001\\b100111000101101\\b11111011001000010"
+        }
+      },
+      "params": {
+        "mode": "bin",
+        "sep": "\\"
+      },
+      "text": "Hi中🙂"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hi中🙂"
+        }
+      },
+      "params": {
+        "mode": "bin",
+        "sep": ","
+      },
+      "text": "b1001000,b1101001,b100111000101101,b11111011001000010"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "b1001000,b1101001,b100111000101101,b11111011001000010"
+        }
+      },
+      "params": {
+        "mode": "bin",
+        "sep": ","
+      },
+      "text": "Hi中🙂"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hi中🙂"
+        }
+      },
+      "params": {
+        "mode": "auto",
+        "sep": " "
+      },
+      "text": "d72 x69 x4e2d x1f642"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "d72 x69 x4e2d x1f642"
+        }
+      },
+      "params": {
+        "mode": "auto",
+        "sep": " "
+      },
+      "text": "Hi中🙂"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hi中🙂"
+        }
+      },
+      "params": {
+        "mode": "auto",
+        "sep": "\\"
+      },
+      "text": "d72\\x69\\x4e2d\\x1f642"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "d72\\x69\\x4e2d\\x1f642"
+        }
+      },
+      "params": {
+        "mode": "auto",
+        "sep": "\\"
+      },
+      "text": "Hi中🙂"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hi中🙂"
+        }
+      },
+      "params": {
+        "mode": "auto",
+        "sep": ","
+      },
+      "text": "d72,x69,x4e2d,x1f642"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "d72,x69,x4e2d,x1f642"
+        }
+      },
+      "params": {
+        "mode": "auto",
+        "sep": ","
+      },
+      "text": "Hi中🙂"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0b1 0b101 0b11"
+        }
+      },
+      "params": {
+        "bits": 0
+      },
+      "text": "001 101 011"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "001 101 011"
+        }
+      },
+      "params": {
+        "bits": 0
+      },
+      "text": "1 101 11"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x1 0xff 0xa"
+        }
+      },
+      "params": {
+        "bits": 0
+      },
+      "text": "01 ff 0a"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "01 ff 0a"
+        }
+      },
+      "params": {
+        "bits": 0
+      },
+      "text": "1 ff 0a"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1 02 333"
+        }
+      },
+      "params": {
+        "bits": 0
+      },
+      "text": "001 002 333"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "001 002 333"
+        }
+      },
+      "params": {
+        "bits": 0
+      },
+      "text": "1 2 333"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中 🙂"
+        }
+      },
+      "params": {
+        "bits": 0
+      },
+      "text": "0中 🙂"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0中 🙂"
+        }
+      },
+      "params": {
+        "bits": 0
+      },
+      "text": "0中 🙂"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0b1 0b101 0b11"
+        }
+      },
+      "params": {
+        "bits": 8
+      },
+      "text": "00000001 00000101 00000011"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00000001 00000101 00000011"
+        }
+      },
+      "params": {
+        "bits": 8
+      },
+      "text": "1 101 11"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x1 0xff 0xa"
+        }
+      },
+      "params": {
+        "bits": 8
+      },
+      "text": "00000001 000000ff 0000000a"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00000001 000000ff 0000000a"
+        }
+      },
+      "params": {
+        "bits": 8
+      },
+      "text": "1 0ff 0a"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1 02 333"
+        }
+      },
+      "params": {
+        "bits": 8
+      },
+      "text": "00000001 00000002 00000333"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00000001 00000002 00000333"
+        }
+      },
+      "params": {
+        "bits": 8
+      },
+      "text": "1 2 333"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中 🙂"
+        }
+      },
+      "params": {
+        "bits": 8
+      },
+      "text": "0000000中 000000🙂"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0000000中 000000🙂"
+        }
+      },
+      "params": {
+        "bits": 8
+      },
+      "text": "0中 0🙂"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0b1 0b101 0b11"
+        }
+      },
+      "params": {
+        "bits": 16
+      },
+      "text": "0000000000000001 0000000000000101 0000000000000011"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0000000000000001 0000000000000101 0000000000000011"
+        }
+      },
+      "params": {
+        "bits": 16
+      },
+      "text": "1 101 11"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x1 0xff 0xa"
+        }
+      },
+      "params": {
+        "bits": 16
+      },
+      "text": "0000000000000001 00000000000000ff 000000000000000a"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0000000000000001 00000000000000ff 000000000000000a"
+        }
+      },
+      "params": {
+        "bits": 16
+      },
+      "text": "1 0ff 0a"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1 02 333"
+        }
+      },
+      "params": {
+        "bits": 16
+      },
+      "text": "0000000000000001 0000000000000002 0000000000000333"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0000000000000001 0000000000000002 0000000000000333"
+        }
+      },
+      "params": {
+        "bits": 16
+      },
+      "text": "1 2 333"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中 🙂"
+        }
+      },
+      "params": {
+        "bits": 16
+      },
+      "text": "000000000000000中 00000000000000🙂"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "000000000000000中 00000000000000🙂"
+        }
+      },
+      "params": {
+        "bits": 16
+      },
+      "text": "0中 0🙂"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "base": -2
+      },
+      "text": "0"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "base": -2
+      },
+      "text": "0"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "base": -2
+      },
+      "text": "1"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "base": -2
+      },
+      "text": "1"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {
+        "base": -2
+      },
+      "text": "11"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "11"
+        }
+      },
+      "params": {
+        "base": -2
+      },
+      "text": "-1"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "13"
+        }
+      },
+      "params": {
+        "base": -2
+      },
+      "text": "11101"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "11101"
+        }
+      },
+      "params": {
+        "base": -2
+      },
+      "text": "13"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-42"
+        }
+      },
+      "params": {
+        "base": -2
+      },
+      "text": "101010"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "101010"
+        }
+      },
+      "params": {
+        "base": -2
+      },
+      "text": "-42"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "12345678901234567890"
+        }
+      },
+      "params": {
+        "base": -2
+      },
+      "text": "11111111101010101111111101001110100111111011000110001111111010110"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "11111111101010101111111101001110100111111011000110001111111010110"
+        }
+      },
+      "params": {
+        "base": -2
+      },
+      "text": "12345678901234567890"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "base": -3
+      },
+      "text": "0"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "base": -3
+      },
+      "text": "0"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "base": -3
+      },
+      "text": "1"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "base": -3
+      },
+      "text": "1"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {
+        "base": -3
+      },
+      "text": "12"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "12"
+        }
+      },
+      "params": {
+        "base": -3
+      },
+      "text": "-1"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "13"
+        }
+      },
+      "params": {
+        "base": -3
+      },
+      "text": "221"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "221"
+        }
+      },
+      "params": {
+        "base": -3
+      },
+      "text": "13"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-42"
+        }
+      },
+      "params": {
+        "base": -3
+      },
+      "text": "2220"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2220"
+        }
+      },
+      "params": {
+        "base": -3
+      },
+      "text": "-42"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "12345678901234567890"
+        }
+      },
+      "params": {
+        "base": -3
+      },
+      "text": "10002202021022211200210210110102200211100"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10002202021022211200210210110102200211100"
+        }
+      },
+      "params": {
+        "base": -3
+      },
+      "text": "12345678901234567890"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "base": -10
+      },
+      "text": "0"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "base": -10
+      },
+      "text": "0"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "base": -10
+      },
+      "text": "1"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "base": -10
+      },
+      "text": "1"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {
+        "base": -10
+      },
+      "text": "19"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "19"
+        }
+      },
+      "params": {
+        "base": -10
+      },
+      "text": "-1"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "13"
+        }
+      },
+      "params": {
+        "base": -10
+      },
+      "text": "193"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "193"
+        }
+      },
+      "params": {
+        "base": -10
+      },
+      "text": "13"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-42"
+        }
+      },
+      "params": {
+        "base": -10
+      },
+      "text": "58"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "58"
+        }
+      },
+      "params": {
+        "base": -10
+      },
+      "text": "-42"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "12345678901234567890"
+        }
+      },
+      "params": {
+        "base": -10
+      },
+      "text": "193755739119375573910"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "193755739119375573910"
+        }
+      },
+      "params": {
+        "base": -10
+      },
+      "text": "12345678901234567890"
+    },
+    {
+      "operation": "balancedTernary",
+      "node": "balanced_ternary_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {},
+      "text": "0"
+    },
+    {
+      "operation": "balancedTernary",
+      "node": "balanced_ternary_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {},
+      "text": "0"
+    },
+    {
+      "operation": "balancedTernary",
+      "node": "balanced_ternary_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {},
+      "text": "1"
+    },
+    {
+      "operation": "balancedTernary",
+      "node": "balanced_ternary_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {},
+      "text": "1"
+    },
+    {
+      "operation": "balancedTernary",
+      "node": "balanced_ternary_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {},
+      "text": "T"
+    },
+    {
+      "operation": "balancedTernary",
+      "node": "balanced_ternary_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "T"
+        }
+      },
+      "params": {},
+      "text": "-1"
+    },
+    {
+      "operation": "balancedTernary",
+      "node": "balanced_ternary_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "13"
+        }
+      },
+      "params": {},
+      "text": "111"
+    },
+    {
+      "operation": "balancedTernary",
+      "node": "balanced_ternary_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "111"
+        }
+      },
+      "params": {},
+      "text": "13"
+    },
+    {
+      "operation": "balancedTernary",
+      "node": "balanced_ternary_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-42"
+        }
+      },
+      "params": {},
+      "text": "T1110"
+    },
+    {
+      "operation": "balancedTernary",
+      "node": "balanced_ternary_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "T1110"
+        }
+      },
+      "params": {},
+      "text": "-42"
+    },
+    {
+      "operation": "balancedTernary",
+      "node": "balanced_ternary_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "12345678901234567890"
+        }
+      },
+      "params": {},
+      "text": "100011T1T111TTTT0101TTT1101T0T0TT0T11T100"
+    },
+    {
+      "operation": "balancedTernary",
+      "node": "balanced_ternary_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "100011T1T111TTTT0101TTT1101T0T0TT0T11T100"
+        }
+      },
+      "params": {},
+      "text": "12345678901234567890"
+    },
+    {
+      "operation": "chineseNum",
+      "node": "chinese_number_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {},
+      "text": "零"
+    },
+    {
+      "operation": "chineseNum",
+      "node": "chinese_number_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "零"
+        }
+      },
+      "params": {},
+      "text": "0"
+    },
+    {
+      "operation": "chineseNum",
+      "node": "chinese_number_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {},
+      "text": "一"
+    },
+    {
+      "operation": "chineseNum",
+      "node": "chinese_number_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "一"
+        }
+      },
+      "params": {},
+      "text": "1"
+    },
+    {
+      "operation": "chineseNum",
+      "node": "chinese_number_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {},
+      "text": "负一"
+    },
+    {
+      "operation": "chineseNum",
+      "node": "chinese_number_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "负一"
+        }
+      },
+      "params": {},
+      "text": "-1"
+    },
+    {
+      "operation": "chineseNum",
+      "node": "chinese_number_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "13"
+        }
+      },
+      "params": {},
+      "text": "一三"
+    },
+    {
+      "operation": "chineseNum",
+      "node": "chinese_number_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "一三"
+        }
+      },
+      "params": {},
+      "text": "13"
+    },
+    {
+      "operation": "chineseNum",
+      "node": "chinese_number_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-42"
+        }
+      },
+      "params": {},
+      "text": "负四二"
+    },
+    {
+      "operation": "chineseNum",
+      "node": "chinese_number_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "负四二"
+        }
+      },
+      "params": {},
+      "text": "-42"
+    },
+    {
+      "operation": "chineseNum",
+      "node": "chinese_number_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "12345678901234567890"
+        }
+      },
+      "params": {},
+      "text": "一二三四五六七八九零一二三四五六七八九零"
+    },
+    {
+      "operation": "chineseNum",
+      "node": "chinese_number_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "一二三四五六七八九零一二三四五六七八九零"
+        }
+      },
+      "params": {},
+      "text": "12345678901234567890"
+    },
+    {
+      "operation": "factorialBase",
+      "node": "factorial_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {},
+      "text": "0"
+    },
+    {
+      "operation": "factorialBase",
+      "node": "factorial_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "strict": false
+      },
+      "text": "0"
+    },
+    {
+      "operation": "factorialBase",
+      "node": "factorial_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {},
+      "text": "1"
+    },
+    {
+      "operation": "factorialBase",
+      "node": "factorial_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "strict": false
+      },
+      "text": "1"
+    },
+    {
+      "operation": "factorialBase",
+      "node": "factorial_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2"
+        }
+      },
+      "params": {},
+      "text": "1:0"
+    },
+    {
+      "operation": "factorialBase",
+      "node": "factorial_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1:0"
+        }
+      },
+      "params": {
+        "strict": false
+      },
+      "text": "2"
+    },
+    {
+      "operation": "factorialBase",
+      "node": "factorial_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10"
+        }
+      },
+      "params": {},
+      "text": "1:2:0"
+    },
+    {
+      "operation": "factorialBase",
+      "node": "factorial_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1:2:0"
+        }
+      },
+      "params": {
+        "strict": false
+      },
+      "text": "10"
+    },
+    {
+      "operation": "factorialBase",
+      "node": "factorial_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "100"
+        }
+      },
+      "params": {},
+      "text": "4:0:2:0"
+    },
+    {
+      "operation": "factorialBase",
+      "node": "factorial_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "4:0:2:0"
+        }
+      },
+      "params": {
+        "strict": false
+      },
+      "text": "100"
+    },
+    {
+      "operation": "factorialBase",
+      "node": "factorial_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "463"
+        }
+      },
+      "params": {},
+      "text": "3:4:1:0:1"
+    },
+    {
+      "operation": "factorialBase",
+      "node": "factorial_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3:4:1:0:1"
+        }
+      },
+      "params": {
+        "strict": false
+      },
+      "text": "463"
+    },
+    {
+      "operation": "factorialBase",
+      "node": "factorial_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "123456789012345678901234567890"
+        }
+      },
+      "params": {},
+      "text": "11:9:3:4:22:15:17:4:9:18:1:10:13:9:13:0:10:5:8:8:5:2:3:3:3:0:0"
+    },
+    {
+      "operation": "factorialBase",
+      "node": "factorial_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "11:9:3:4:22:15:17:4:9:18:1:10:13:9:13:0:10:5:8:8:5:2:3:3:3:0:0"
+        }
+      },
+      "params": {
+        "strict": false
+      },
+      "text": "123456789012345678901234567890"
+    },
+    {
+      "operation": "zeckendorf",
+      "node": "zeckendorf_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {},
+      "text": "0"
+    },
+    {
+      "operation": "zeckendorf",
+      "node": "zeckendorf_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {},
+      "text": "0"
+    },
+    {
+      "operation": "zeckendorf",
+      "node": "zeckendorf_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {},
+      "text": "1"
+    },
+    {
+      "operation": "zeckendorf",
+      "node": "zeckendorf_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {},
+      "text": "1"
+    },
+    {
+      "operation": "zeckendorf",
+      "node": "zeckendorf_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2"
+        }
+      },
+      "params": {},
+      "text": "10"
+    },
+    {
+      "operation": "zeckendorf",
+      "node": "zeckendorf_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10"
+        }
+      },
+      "params": {},
+      "text": "2"
+    },
+    {
+      "operation": "zeckendorf",
+      "node": "zeckendorf_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10"
+        }
+      },
+      "params": {},
+      "text": "10010"
+    },
+    {
+      "operation": "zeckendorf",
+      "node": "zeckendorf_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10010"
+        }
+      },
+      "params": {},
+      "text": "10"
+    },
+    {
+      "operation": "zeckendorf",
+      "node": "zeckendorf_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "100"
+        }
+      },
+      "params": {},
+      "text": "1000010100"
+    },
+    {
+      "operation": "zeckendorf",
+      "node": "zeckendorf_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1000010100"
+        }
+      },
+      "params": {},
+      "text": "100"
+    },
+    {
+      "operation": "zeckendorf",
+      "node": "zeckendorf_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "463"
+        }
+      },
+      "params": {},
+      "text": "1000101010010"
+    },
+    {
+      "operation": "zeckendorf",
+      "node": "zeckendorf_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1000101010010"
+        }
+      },
+      "params": {},
+      "text": "463"
+    },
+    {
+      "operation": "zeckendorf",
+      "node": "zeckendorf_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "123456789012345678901234567890"
+        }
+      },
+      "params": {},
+      "text": "1010010101001000001010100001010001000001000010100100010101001001001000010000000100000010100001001001010001000010000010001001000010001000001"
+    },
+    {
+      "operation": "zeckendorf",
+      "node": "zeckendorf_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1010010101001000001010100001010001000001000010100100010101001001001000010000000100000010100001001001010001000010000010001001000010001000001"
+        }
+      },
+      "params": {},
+      "text": "123456789012345678901234567890"
+    },
+    {
+      "operation": "factorialBase",
+      "node": "factorial_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1, 2 0"
+        }
+      },
+      "params": {
+        "strict": false
+      },
+      "text": "10"
+    },
+    {
+      "operation": "zeckendorf",
+      "node": "zeckendorf_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1 1,0 1"
+        }
+      },
+      "params": {},
+      "text": "9"
+    },
+    {
+      "operation": "roman",
+      "node": "roman_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {},
+      "text": "I"
+    },
+    {
+      "operation": "roman",
+      "node": "roman_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "I"
+        }
+      },
+      "params": {},
+      "text": "1"
+    },
+    {
+      "operation": "roman",
+      "node": "roman_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "4"
+        }
+      },
+      "params": {},
+      "text": "IV"
+    },
+    {
+      "operation": "roman",
+      "node": "roman_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "IV"
+        }
+      },
+      "params": {},
+      "text": "4"
+    },
+    {
+      "operation": "roman",
+      "node": "roman_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "9"
+        }
+      },
+      "params": {},
+      "text": "IX"
+    },
+    {
+      "operation": "roman",
+      "node": "roman_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "IX"
+        }
+      },
+      "params": {},
+      "text": "9"
+    },
+    {
+      "operation": "roman",
+      "node": "roman_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "49"
+        }
+      },
+      "params": {},
+      "text": "XLIX"
+    },
+    {
+      "operation": "roman",
+      "node": "roman_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "XLIX"
+        }
+      },
+      "params": {},
+      "text": "49"
+    },
+    {
+      "operation": "roman",
+      "node": "roman_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1994"
+        }
+      },
+      "params": {},
+      "text": "MCMXCIV"
+    },
+    {
+      "operation": "roman",
+      "node": "roman_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "MCMXCIV"
+        }
+      },
+      "params": {},
+      "text": "1994"
+    },
+    {
+      "operation": "roman",
+      "node": "roman_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026"
+        }
+      },
+      "params": {},
+      "text": "MMXXVI"
+    },
+    {
+      "operation": "roman",
+      "node": "roman_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "MMXXVI"
+        }
+      },
+      "params": {},
+      "text": "2026"
+    },
+    {
+      "operation": "roman",
+      "node": "roman_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3999"
+        }
+      },
+      "params": {},
+      "text": "MMMCMXCIX"
+    },
+    {
+      "operation": "roman",
+      "node": "roman_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "MMMCMXCIX"
+        }
+      },
+      "params": {},
+      "text": "3999"
+    },
+    {
+      "operation": "roman",
+      "node": "roman_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "mcmxciv"
+        }
+      },
+      "params": {},
+      "text": "1994"
+    },
+    {
+      "operation": "continuedFraction",
+      "node": "continued_fraction_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {},
+      "text": "[0]"
+    },
+    {
+      "operation": "continuedFraction",
+      "node": "continued_fraction_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "[0]"
+        }
+      },
+      "params": {},
+      "text": "0/1"
+    },
+    {
+      "operation": "continuedFraction",
+      "node": "continued_fraction_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {},
+      "text": "[1]"
+    },
+    {
+      "operation": "continuedFraction",
+      "node": "continued_fraction_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "[1]"
+        }
+      },
+      "params": {},
+      "text": "1/1"
+    },
+    {
+      "operation": "continuedFraction",
+      "node": "continued_fraction_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "355/113"
+        }
+      },
+      "params": {},
+      "text": "[3, 7, 16]"
+    },
+    {
+      "operation": "continuedFraction",
+      "node": "continued_fraction_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "[3, 7, 16]"
+        }
+      },
+      "params": {},
+      "text": "355/113"
+    },
+    {
+      "operation": "continuedFraction",
+      "node": "continued_fraction_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-22/7"
+        }
+      },
+      "params": {},
+      "text": "[-4, 1, 6]"
+    },
+    {
+      "operation": "continuedFraction",
+      "node": "continued_fraction_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "[-4, 1, 6]"
+        }
+      },
+      "params": {},
+      "text": "-22/7"
+    },
+    {
+      "operation": "continuedFraction",
+      "node": "continued_fraction_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "22/-7"
+        }
+      },
+      "params": {},
+      "text": "[-4, 1, 6]"
+    },
+    {
+      "operation": "continuedFraction",
+      "node": "continued_fraction_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "[-4, 1, 6]"
+        }
+      },
+      "params": {},
+      "text": "-22/7"
+    },
+    {
+      "operation": "continuedFraction",
+      "node": "continued_fraction_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-22/-7"
+        }
+      },
+      "params": {},
+      "text": "[3, 7]"
+    },
+    {
+      "operation": "continuedFraction",
+      "node": "continued_fraction_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "[3, 7]"
+        }
+      },
+      "params": {},
+      "text": "22/7"
+    },
+    {
+      "operation": "continuedFraction",
+      "node": "continued_fraction_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "6/8"
+        }
+      },
+      "params": {},
+      "text": "[0, 1, 3]"
+    },
+    {
+      "operation": "continuedFraction",
+      "node": "continued_fraction_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "[0, 1, 3]"
+        }
+      },
+      "params": {},
+      "text": "3/4"
+    },
+    {
+      "operation": "continuedFraction",
+      "node": "continued_fraction_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "12345678901234567890/1234567"
+        }
+      },
+      "params": {},
+      "text": "[10000007210005, 3, 1, 3, 1, 19, 2, 4, 1, 3, 1, 1, 6, 5]"
+    },
+    {
+      "operation": "continuedFraction",
+      "node": "continued_fraction_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "[10000007210005, 3, 1, 3, 1, 19, 2, 4, 1, 3, 1, 1, 6, 5]"
+        }
+      },
+      "params": {},
+      "text": "12345678901234567890/1234567"
+    },
+    {
+      "operation": "continuedFraction",
+      "node": "continued_fraction_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "[3; 7, 16]"
+        }
+      },
+      "params": {},
+      "text": "355/113"
+    },
+    {
+      "operation": "sternBrocot",
+      "node": "stern_brocot_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1/1"
+        }
+      },
+      "params": {},
+      "text": "(root)"
+    },
+    {
+      "operation": "sternBrocot",
+      "node": "stern_brocot_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "(root)"
+        }
+      },
+      "params": {},
+      "text": "1/1"
+    },
+    {
+      "operation": "sternBrocot",
+      "node": "stern_brocot_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "5/3"
+        }
+      },
+      "params": {},
+      "text": "RLR"
+    },
+    {
+      "operation": "sternBrocot",
+      "node": "stern_brocot_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "RLR"
+        }
+      },
+      "params": {},
+      "text": "5/3"
+    },
+    {
+      "operation": "sternBrocot",
+      "node": "stern_brocot_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1/42"
+        }
+      },
+      "params": {},
+      "text": "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
+    },
+    {
+      "operation": "sternBrocot",
+      "node": "stern_brocot_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
+        }
+      },
+      "params": {},
+      "text": "1/42"
+    },
+    {
+      "operation": "sternBrocot",
+      "node": "stern_brocot_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "42/1"
+        }
+      },
+      "params": {},
+      "text": "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"
+    },
+    {
+      "operation": "sternBrocot",
+      "node": "stern_brocot_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"
+        }
+      },
+      "params": {},
+      "text": "42/1"
+    },
+    {
+      "operation": "sternBrocot",
+      "node": "stern_brocot_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "6/8"
+        }
+      },
+      "params": {},
+      "text": "LRR"
+    },
+    {
+      "operation": "sternBrocot",
+      "node": "stern_brocot_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "LRR"
+        }
+      },
+      "params": {},
+      "text": "3/4"
+    },
+    {
+      "operation": "sternBrocot",
+      "node": "stern_brocot_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "123/456"
+        }
+      },
+      "params": {},
+      "text": "LLLRLLRRLLR"
+    },
+    {
+      "operation": "sternBrocot",
+      "node": "stern_brocot_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "LLLRLLRRLLR"
+        }
+      },
+      "params": {},
+      "text": "41/152"
+    },
+    {
+      "operation": "sternBrocot",
+      "node": "stern_brocot_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": "1/1"
+    },
+    {
+      "operation": "sternBrocot",
+      "node": "stern_brocot_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "(root)"
+        }
+      },
+      "params": {},
+      "text": "1/1"
+    },
+    {
+      "operation": "sternBrocot",
+      "node": "stern_brocot_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "l,r L"
+        }
+      },
+      "params": {},
+      "text": "3/5"
+    },
+    {
+      "operation": "separationAscii",
+      "node": "separate_ascii",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": "（空输入）"
+    },
+    {
+      "operation": "separationAscii",
+      "node": "separate_ascii",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "72101108108111"
+        }
+      },
+      "params": {},
+      "text": "10 进制: Hello"
+    },
+    {
+      "operation": "separationAscii",
+      "node": "separate_ascii",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "48656c6c6f"
+        }
+      },
+      "params": {},
+      "text": "16 进制: Hello"
+    },
+    {
+      "operation": "separationAscii",
+      "node": "separate_ascii",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0100100001101001"
+        }
+      },
+      "params": {},
+      "text": "（无可行分割）"
+    },
+    {
+      "operation": "separationAscii",
+      "node": "separate_ascii",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "310939249775"
+        }
+      },
+      "params": {},
+      "text": "整数→字节: Hello"
+    },
+    {
+      "operation": "separationAscii",
+      "node": "separate_ascii",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {},
+      "text": "（无可行分割）"
+    },
+    {
+      "operation": "separationAscii",
+      "node": "separate_ascii",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00072"
+        }
+      },
+      "params": {},
+      "text": "整数→字节: H\n10 进制: H\n16 进制: r\n8 进制: :"
+    },
+    {
+      "operation": "separationAscii",
+      "node": "separate_ascii",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "not numbers"
+        }
+      },
+      "params": {},
+      "text": "（无可行分割）"
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "offset": -3
+      },
+      "text": "",
+      "bytes": []
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "offset": -3
+      },
+      "text": "",
+      "bytes": []
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ABCxyz"
+        }
+      },
+      "params": {
+        "offset": -3
+      },
+      "text": ">?@uvw",
+      "bytes": [
+        62,
+        0,
+        63,
+        0,
+        64,
+        0,
+        117,
+        0,
+        118,
+        0,
+        119,
+        0
+      ]
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ABCxyz"
+        }
+      },
+      "params": {
+        "offset": -3
+      },
+      "text": "DEF{|}",
+      "bytes": [
+        68,
+        0,
+        69,
+        0,
+        70,
+        0,
+        123,
+        0,
+        124,
+        0,
+        125,
+        0
+      ]
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "params": {
+        "offset": -3
+      },
+      "text": "个斄",
+      "bytes": [
+        42,
+        78,
+        132,
+        101
+      ]
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "params": {
+        "offset": -3
+      },
+      "text": "丰斊",
+      "bytes": [
+        48,
+        78,
+        138,
+        101
+      ]
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "🙂"
+        }
+      },
+      "params": {
+        "offset": -3
+      },
+      "text": "\uFFFD",
+      "bytes": [
+        58,
+        216
+      ]
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "🙂"
+        }
+      },
+      "params": {
+        "offset": -3
+      },
+      "text": "\uFFFD",
+      "bytes": [
+        64,
+        216
+      ]
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "offset": 0
+      },
+      "text": "-26\t\n-25\t\n-24\t\n-23\t\n-22\t\n-21\t\n-20\t\n-19\t\n-18\t\n-17\t\n-16\t\n-15\t\n-14\t\n-13\t\n-12\t\n-11\t\n-10\t\n-9\t\n-8\t\n-7\t\n-6\t\n-5\t\n-4\t\n-3\t\n-2\t\n-1\t\n1\t\n2\t\n3\t\n4\t\n5\t\n6\t\n7\t\n8\t\n9\t\n10\t\n11\t\n12\t\n13\t\n14\t\n15\t\n16\t\n17\t\n18\t\n19\t\n20\t\n21\t\n22\t\n23\t\n24\t\n25\t\n26\t"
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "offset": 0
+      },
+      "text": "-26\t\n-25\t\n-24\t\n-23\t\n-22\t\n-21\t\n-20\t\n-19\t\n-18\t\n-17\t\n-16\t\n-15\t\n-14\t\n-13\t\n-12\t\n-11\t\n-10\t\n-9\t\n-8\t\n-7\t\n-6\t\n-5\t\n-4\t\n-3\t\n-2\t\n-1\t\n1\t\n2\t\n3\t\n4\t\n5\t\n6\t\n7\t\n8\t\n9\t\n10\t\n11\t\n12\t\n13\t\n14\t\n15\t\n16\t\n17\t\n18\t\n19\t\n20\t\n21\t\n22\t\n23\t\n24\t\n25\t\n26\t"
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ABCxyz"
+        }
+      },
+      "params": {
+        "offset": 0
+      },
+      "text": "-26\t'()^_`\n-25\t()*_`a\n-24\t)*+`ab\n-23\t*+,abc\n-22\t+,-bcd\n-21\t,-.cde\n-20\t-./def\n-19\t./0efg\n-18\t/01fgh\n-17\t012ghi\n-16\t123hij\n-15\t234ijk\n-14\t345jkl\n-13\t456klm\n-12\t567lmn\n-11\t678mno\n-10\t789nop\n-9\t89:opq\n-8\t9:;pqr\n-7\t:;<qrs\n-6\t;<=rst\n-5\t<=>stu\n-4\t=>?tuv\n-3\t>?@uvw\n-2\t?@Avwx\n-1\t@ABwxy\n1\tBCDyz{\n2\tCDEz{|\n3\tDEF{|}\n4\tEFG|}~\n5\tFGH}~\n6\tGHI~\n7\tHIJ\n8\tIJK\n9\tJKL\n10\tKLM\n11\tLMN\n12\tMNO\n13\tNOP\n14\tOPQ\n15\tPQR\n16\tQRS\n17\tRST\n18\tSTU\n19\tTUV\n20\tUVW\n21\tVWX\n22\tWXY\n23\tXYZ\n24\tYZ[\n25\tZ[\\\n26\t[\\]"
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ABCxyz"
+        }
+      },
+      "params": {
+        "offset": 0
+      },
+      "text": "-26\t'()^_`\n-25\t()*_`a\n-24\t)*+`ab\n-23\t*+,abc\n-22\t+,-bcd\n-21\t,-.cde\n-20\t-./def\n-19\t./0efg\n-18\t/01fgh\n-17\t012ghi\n-16\t123hij\n-15\t234ijk\n-14\t345jkl\n-13\t456klm\n-12\t567lmn\n-11\t678mno\n-10\t789nop\n-9\t89:opq\n-8\t9:;pqr\n-7\t:;<qrs\n-6\t;<=rst\n-5\t<=>stu\n-4\t=>?tuv\n-3\t>?@uvw\n-2\t?@Avwx\n-1\t@ABwxy\n1\tBCDyz{\n2\tCDEz{|\n3\tDEF{|}\n4\tEFG|}~\n5\tFGH}~\n6\tGHI~\n7\tHIJ\n8\tIJK\n9\tJKL\n10\tKLM\n11\tLMN\n12\tMNO\n13\tNOP\n14\tOPQ\n15\tPQR\n16\tQRS\n17\tRST\n18\tSTU\n19\tTUV\n20\tUVW\n21\tVWX\n22\tWXY\n23\tXYZ\n24\tYZ[\n25\tZ[\\\n26\t[\\]"
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "params": {
+        "offset": 0
+      },
+      "text": "-26\t专敭\n-25\t且敮\n-24\t丕敯\n-23\t世数\n-22\t丗敱\n-21\t丘敲\n-20\t丙敳\n-19\t业整\n-18\t丛敵\n-17\t东敶\n-16\t丝敷\n-15\t丞數\n-14\t丟敹\n-13\t丠敺\n-12\t両敻\n-11\t丢敼\n-10\t丣敽\n-9\t两敾\n-8\t严敿\n-7\t並斀\n-6\t丧斁\n-5\t丨斂\n-4\t丩斃\n-3\t个斄\n-2\t丫斅\n-1\t丬斆\n1\t丮斈\n2\t丯斉\n3\t丰斊\n4\t丱斋\n5\t串斌\n6\t丳斍\n7\t临斎\n8\t丵斏\n9\t丶斐\n10\t丷斑\n11\t丸斒\n12\t丹斓\n13\t为斔\n14\t主斕\n15\t丼斖\n16\t丽斗\n17\t举斘\n18\t丿料\n19\t乀斚\n20\t乁斛\n21\t乂斜\n22\t乃斝\n23\t乄斞\n24\t久斟\n25\t乆斠\n26\t乇斡"
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "params": {
+        "offset": 0
+      },
+      "text": "-26\t专敭\n-25\t且敮\n-24\t丕敯\n-23\t世数\n-22\t丗敱\n-21\t丘敲\n-20\t丙敳\n-19\t业整\n-18\t丛敵\n-17\t东敶\n-16\t丝敷\n-15\t丞數\n-14\t丟敹\n-13\t丠敺\n-12\t両敻\n-11\t丢敼\n-10\t丣敽\n-9\t两敾\n-8\t严敿\n-7\t並斀\n-6\t丧斁\n-5\t丨斂\n-4\t丩斃\n-3\t个斄\n-2\t丫斅\n-1\t丬斆\n1\t丮斈\n2\t丯斉\n3\t丰斊\n4\t丱斋\n5\t串斌\n6\t丳斍\n7\t临斎\n8\t丵斏\n9\t丶斐\n10\t丷斑\n11\t丸斒\n12\t丹斓\n13\t为斔\n14\t主斕\n15\t丼斖\n16\t丽斗\n17\t举斘\n18\t丿料\n19\t乀斚\n20\t乁斛\n21\t乂斜\n22\t乃斝\n23\t乄斞\n24\t久斟\n25\t乆斠\n26\t乇斡"
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "🙂"
+        }
+      },
+      "params": {
+        "offset": 0
+      },
+      "text": "-26\t\uFFFD\n-25\t\uFFFD\n-24\t\uFFFD\n-23\t\uFFFD\n-22\t\uFFFD\n-21\t\uFFFD\n-20\t\uFFFD\n-19\t\uFFFD\n-18\t\uFFFD\n-17\t\uFFFD\n-16\t\uFFFD\n-15\t\uFFFD\n-14\t\uFFFD\n-13\t\uFFFD\n-12\t\uFFFD\n-11\t\uFFFD\n-10\t\uFFFD\n-9\t\uFFFD\n-8\t\uFFFD\n-7\t\uFFFD\n-6\t\uFFFD\n-5\t\uFFFD\n-4\t\uFFFD\n-3\t\uFFFD\n-2\t\uFFFD\n-1\t\uFFFD\n1\t\uFFFD\n2\t\uFFFD\n3\t\uFFFD\n4\t\uFFFD\n5\t\uFFFD\n6\t\uFFFD\n7\t\uFFFD\n8\t\uFFFD\n9\t\uFFFD\n10\t\uFFFD\n11\t\uFFFD\n12\t\uFFFD\n13\t\uFFFD\n14\t\uFFFD\n15\t\uFFFD\n16\t\uFFFD\n17\t\uFFFD\n18\t\uFFFD\n19\t\uFFFD\n20\t\uFFFD\n21\t\uFFFD\n22\t\uFFFD\n23\t\uFFFD\n24\t\uFFFD\n25\t\uFFFD\n26\t\uFFFD"
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "🙂"
+        }
+      },
+      "params": {
+        "offset": 0
+      },
+      "text": "-26\t\uFFFD\n-25\t\uFFFD\n-24\t\uFFFD\n-23\t\uFFFD\n-22\t\uFFFD\n-21\t\uFFFD\n-20\t\uFFFD\n-19\t\uFFFD\n-18\t\uFFFD\n-17\t\uFFFD\n-16\t\uFFFD\n-15\t\uFFFD\n-14\t\uFFFD\n-13\t\uFFFD\n-12\t\uFFFD\n-11\t\uFFFD\n-10\t\uFFFD\n-9\t\uFFFD\n-8\t\uFFFD\n-7\t\uFFFD\n-6\t\uFFFD\n-5\t\uFFFD\n-4\t\uFFFD\n-3\t\uFFFD\n-2\t\uFFFD\n-1\t\uFFFD\n1\t\uFFFD\n2\t\uFFFD\n3\t\uFFFD\n4\t\uFFFD\n5\t\uFFFD\n6\t\uFFFD\n7\t\uFFFD\n8\t\uFFFD\n9\t\uFFFD\n10\t\uFFFD\n11\t\uFFFD\n12\t\uFFFD\n13\t\uFFFD\n14\t\uFFFD\n15\t\uFFFD\n16\t\uFFFD\n17\t\uFFFD\n18\t\uFFFD\n19\t\uFFFD\n20\t\uFFFD\n21\t\uFFFD\n22\t\uFFFD\n23\t\uFFFD\n24\t\uFFFD\n25\t\uFFFD\n26\t\uFFFD"
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "offset": 3
+      },
+      "text": "",
+      "bytes": []
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "offset": 3
+      },
+      "text": "",
+      "bytes": []
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ABCxyz"
+        }
+      },
+      "params": {
+        "offset": 3
+      },
+      "text": "DEF{|}",
+      "bytes": [
+        68,
+        0,
+        69,
+        0,
+        70,
+        0,
+        123,
+        0,
+        124,
+        0,
+        125,
+        0
+      ]
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ABCxyz"
+        }
+      },
+      "params": {
+        "offset": 3
+      },
+      "text": ">?@uvw",
+      "bytes": [
+        62,
+        0,
+        63,
+        0,
+        64,
+        0,
+        117,
+        0,
+        118,
+        0,
+        119,
+        0
+      ]
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "params": {
+        "offset": 3
+      },
+      "text": "丰斊",
+      "bytes": [
+        48,
+        78,
+        138,
+        101
+      ]
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "params": {
+        "offset": 3
+      },
+      "text": "个斄",
+      "bytes": [
+        42,
+        78,
+        132,
+        101
+      ]
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "🙂"
+        }
+      },
+      "params": {
+        "offset": 3
+      },
+      "text": "\uFFFD",
+      "bytes": [
+        64,
+        216
+      ]
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "🙂"
+        }
+      },
+      "params": {
+        "offset": 3
+      },
+      "text": "\uFFFD",
+      "bytes": [
+        58,
+        216
+      ]
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "offset": 256
+      },
+      "text": "",
+      "bytes": []
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "offset": 256
+      },
+      "text": "",
+      "bytes": []
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ABCxyz"
+        }
+      },
+      "params": {
+        "offset": 256
+      },
+      "text": "ŁłŃŸŹź",
+      "bytes": [
+        65,
+        1,
+        66,
+        1,
+        67,
+        1,
+        120,
+        1,
+        121,
+        1,
+        122,
+        1
+      ]
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ABCxyz"
+        }
+      },
+      "params": {
+        "offset": 256
+      },
+      "text": "ａｂｃｸｹｺ",
+      "bytes": [
+        65,
+        255,
+        66,
+        255,
+        67,
+        255,
+        120,
+        255,
+        121,
+        255,
+        122,
+        255
+      ]
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "params": {
+        "offset": 256
+      },
+      "text": "伭暇",
+      "bytes": [
+        45,
+        79,
+        135,
+        102
+      ]
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "params": {
+        "offset": 256
+      },
+      "text": "䴭撇",
+      "bytes": [
+        45,
+        77,
+        135,
+        100
+      ]
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "🙂"
+        }
+      },
+      "params": {
+        "offset": 256
+      },
+      "text": "\uFFFD",
+      "bytes": [
+        61,
+        217
+      ]
+    },
+    {
+      "operation": "asciiOffset",
+      "node": "ascii_offset_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "🙂"
+        }
+      },
+      "params": {
+        "offset": 256
+      },
+      "text": "휽",
+      "bytes": [
+        61,
+        215
+      ]
+    },
+    {
+      "operation": "binaryComplement",
+      "node": "binary_complement",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {},
+      "text": "10 进制数：0\n位宽：8 bit\n原码：00000000\n反码：00000000\n补码：00000000"
+    },
+    {
+      "operation": "binaryComplement",
+      "node": "binary_complement",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {},
+      "text": "10 进制数：1\n位宽：8 bit\n原码：00000001\n反码：00000001\n补码：00000001"
+    },
+    {
+      "operation": "binaryComplement",
+      "node": "binary_complement",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {},
+      "text": "10 进制数：-1\n位宽：8 bit\n原码：10000001\n反码：11111110\n补码：11111111"
+    },
+    {
+      "operation": "binaryComplement",
+      "node": "binary_complement",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "127"
+        }
+      },
+      "params": {},
+      "text": "10 进制数：127\n位宽：8 bit\n原码：01111111\n反码：01111111\n补码：01111111"
+    },
+    {
+      "operation": "binaryComplement",
+      "node": "binary_complement",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-127"
+        }
+      },
+      "params": {},
+      "text": "10 进制数：-127\n位宽：8 bit\n原码：11111111\n反码：10000000\n补码：10000001"
+    },
+    {
+      "operation": "binaryComplement",
+      "node": "binary_complement",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "128"
+        }
+      },
+      "params": {},
+      "text": "10 进制数：128\n位宽：16 bit\n原码：0000000010000000\n反码：0000000010000000\n补码：0000000010000000"
+    },
+    {
+      "operation": "binaryComplement",
+      "node": "binary_complement",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-129"
+        }
+      },
+      "params": {},
+      "text": "10 进制数：-129\n位宽：16 bit\n原码：1000000010000001\n反码：1111111101111110\n补码：1111111101111111"
+    },
+    {
+      "operation": "binaryComplement",
+      "node": "binary_complement",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "32767"
+        }
+      },
+      "params": {},
+      "text": "10 进制数：32767\n位宽：16 bit\n原码：0111111111111111\n反码：0111111111111111\n补码：0111111111111111"
+    },
+    {
+      "operation": "binaryComplement",
+      "node": "binary_complement",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-32767"
+        }
+      },
+      "params": {},
+      "text": "10 进制数：-32767\n位宽：16 bit\n原码：1111111111111111\n反码：1000000000000000\n补码：1000000000000001"
+    },
+    {
+      "operation": "binaryComplement",
+      "node": "binary_complement",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "32768"
+        }
+      },
+      "params": {},
+      "text": "10 进制数：32768\n位宽：32 bit\n原码：00000000000000001000000000000000\n反码：00000000000000001000000000000000\n补码：00000000000000001000000000000000"
+    },
+    {
+      "operation": "binaryComplement",
+      "node": "binary_complement",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-32769"
+        }
+      },
+      "params": {},
+      "text": "10 进制数：-32769\n位宽：32 bit\n原码：10000000000000001000000000000001\n反码：11111111111111110111111111111110\n补码：11111111111111110111111111111111"
+    },
+    {
+      "operation": "binaryComplement",
+      "node": "binary_complement",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2147483647"
+        }
+      },
+      "params": {},
+      "text": "10 进制数：2147483647\n位宽：32 bit\n原码：01111111111111111111111111111111\n反码：01111111111111111111111111111111\n补码：01111111111111111111111111111111"
+    },
+    {
+      "operation": "complementToDec",
+      "node": "complement_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "bits": 0
+      },
+      "text": "位串: 0\n位宽: 1 bit（最高位 0 = 正）\n按原码解释: 0\n按反码解释: 0\n按补码解释: 0\n\n三种编码只在负数时不同；正数三者相同。CTF 中给出位串未说明编码时，优先看题目语境或逐个试。"
+    },
+    {
+      "operation": "complementToDec",
+      "node": "complement_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "bits": 0
+      },
+      "text": "位串: 1\n位宽: 1 bit（最高位 1 = 负）\n按原码解释: -0\n按反码解释: -0\n按补码解释: -1\n\n三种编码只在负数时不同；正数三者相同。CTF 中给出位串未说明编码时，优先看题目语境或逐个试。"
+    },
+    {
+      "operation": "complementToDec",
+      "node": "complement_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10000000"
+        }
+      },
+      "params": {
+        "bits": 0
+      },
+      "text": "位串: 10000000\n位宽: 8 bit（最高位 1 = 负）\n按原码解释: -0\n按反码解释: -127\n按补码解释: -128\n\n三种编码只在负数时不同；正数三者相同。CTF 中给出位串未说明编码时，优先看题目语境或逐个试。"
+    },
+    {
+      "operation": "complementToDec",
+      "node": "complement_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "11111111"
+        }
+      },
+      "params": {
+        "bits": 0
+      },
+      "text": "位串: 11111111\n位宽: 8 bit（最高位 1 = 负）\n按原码解释: -127\n按反码解释: -0\n按补码解释: -1\n\n三种编码只在负数时不同；正数三者相同。CTF 中给出位串未说明编码时，优先看题目语境或逐个试。"
+    },
+    {
+      "operation": "complementToDec",
+      "node": "complement_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "bits": 8
+      },
+      "text": "位串: 00000000\n位宽: 8 bit（最高位 0 = 正）\n按原码解释: 0\n按反码解释: 0\n按补码解释: 0\n\n三种编码只在负数时不同；正数三者相同。CTF 中给出位串未说明编码时，优先看题目语境或逐个试。"
+    },
+    {
+      "operation": "complementToDec",
+      "node": "complement_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "bits": 8
+      },
+      "text": "位串: 00000001\n位宽: 8 bit（最高位 0 = 正）\n按原码解释: 1\n按反码解释: 1\n按补码解释: 1\n\n三种编码只在负数时不同；正数三者相同。CTF 中给出位串未说明编码时，优先看题目语境或逐个试。"
+    },
+    {
+      "operation": "complementToDec",
+      "node": "complement_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10000000"
+        }
+      },
+      "params": {
+        "bits": 8
+      },
+      "text": "位串: 10000000\n位宽: 8 bit（最高位 1 = 负）\n按原码解释: -0\n按反码解释: -127\n按补码解释: -128\n\n三种编码只在负数时不同；正数三者相同。CTF 中给出位串未说明编码时，优先看题目语境或逐个试。"
+    },
+    {
+      "operation": "complementToDec",
+      "node": "complement_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "11111111"
+        }
+      },
+      "params": {
+        "bits": 8
+      },
+      "text": "位串: 11111111\n位宽: 8 bit（最高位 1 = 负）\n按原码解释: -127\n按反码解释: -0\n按补码解释: -1\n\n三种编码只在负数时不同；正数三者相同。CTF 中给出位串未说明编码时，优先看题目语境或逐个试。"
+    },
+    {
+      "operation": "complementToDec",
+      "node": "complement_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "bits": 16
+      },
+      "text": "位串: 0000000000000000\n位宽: 16 bit（最高位 0 = 正）\n按原码解释: 0\n按反码解释: 0\n按补码解释: 0\n\n三种编码只在负数时不同；正数三者相同。CTF 中给出位串未说明编码时，优先看题目语境或逐个试。"
+    },
+    {
+      "operation": "complementToDec",
+      "node": "complement_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "bits": 16
+      },
+      "text": "位串: 0000000000000001\n位宽: 16 bit（最高位 0 = 正）\n按原码解释: 1\n按反码解释: 1\n按补码解释: 1\n\n三种编码只在负数时不同；正数三者相同。CTF 中给出位串未说明编码时，优先看题目语境或逐个试。"
+    },
+    {
+      "operation": "complementToDec",
+      "node": "complement_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10000000"
+        }
+      },
+      "params": {
+        "bits": 16
+      },
+      "text": "位串: 0000000010000000\n位宽: 16 bit（最高位 0 = 正）\n按原码解释: 128\n按反码解释: 128\n按补码解释: 128\n\n三种编码只在负数时不同；正数三者相同。CTF 中给出位串未说明编码时，优先看题目语境或逐个试。"
+    },
+    {
+      "operation": "complementToDec",
+      "node": "complement_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "11111111"
+        }
+      },
+      "params": {
+        "bits": 16
+      },
+      "text": "位串: 0000000011111111\n位宽: 16 bit（最高位 0 = 正）\n按原码解释: 255\n按反码解释: 255\n按补码解释: 255\n\n三种编码只在负数时不同；正数三者相同。CTF 中给出位串未说明编码时，优先看题目语境或逐个试。"
+    },
+    {
+      "operation": "complementToDec",
+      "node": "complement_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "bits": 64
+      },
+      "text": "位串: 0000000000000000000000000000000000000000000000000000000000000000\n位宽: 64 bit（最高位 0 = 正）\n按原码解释: 0\n按反码解释: 0\n按补码解释: 0\n\n三种编码只在负数时不同；正数三者相同。CTF 中给出位串未说明编码时，优先看题目语境或逐个试。"
+    },
+    {
+      "operation": "complementToDec",
+      "node": "complement_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "bits": 64
+      },
+      "text": "位串: 0000000000000000000000000000000000000000000000000000000000000001\n位宽: 64 bit（最高位 0 = 正）\n按原码解释: 1\n按反码解释: 1\n按补码解释: 1\n\n三种编码只在负数时不同；正数三者相同。CTF 中给出位串未说明编码时，优先看题目语境或逐个试。"
+    },
+    {
+      "operation": "complementToDec",
+      "node": "complement_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10000000"
+        }
+      },
+      "params": {
+        "bits": 64
+      },
+      "text": "位串: 0000000000000000000000000000000000000000000000000000000010000000\n位宽: 64 bit（最高位 0 = 正）\n按原码解释: 128\n按反码解释: 128\n按补码解释: 128\n\n三种编码只在负数时不同；正数三者相同。CTF 中给出位串未说明编码时，优先看题目语境或逐个试。"
+    },
+    {
+      "operation": "complementToDec",
+      "node": "complement_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "11111111"
+        }
+      },
+      "params": {
+        "bits": 64
+      },
+      "text": "位串: 0000000000000000000000000000000000000000000000000000000011111111\n位宽: 64 bit（最高位 0 = 正）\n按原码解释: 255\n按反码解释: 255\n按补码解释: 255\n\n三种编码只在负数时不同；正数三者相同。CTF 中给出位串未说明编码时，优先看题目语境或逐个试。"
+    },
+    {
+      "operation": "gcd",
+      "node": "gcd_lcm",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "12,18,30"
+        }
+      },
+      "params": {},
+      "text": "输入: 12, 18, 30\n最大公约数 (GCD): 6\n最小公倍数 (LCM): 180"
+    },
+    {
+      "operation": "gcd",
+      "node": "gcd_lcm",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-12 18"
+        }
+      },
+      "params": {},
+      "text": "输入: -12, 18\n最大公约数 (GCD): 6\n最小公倍数 (LCM): -36"
+    },
+    {
+      "operation": "gcd",
+      "node": "gcd_lcm",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0 5"
+        }
+      },
+      "params": {},
+      "text": "输入: 0, 5\n最大公约数 (GCD): 5\n最小公倍数 (LCM): 0"
+    },
+    {
+      "operation": "gcd",
+      "node": "gcd_lcm",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "42 42 42"
+        }
+      },
+      "params": {},
+      "text": "输入: 42, 42, 42\n最大公约数 (GCD): 42\n最小公倍数 (LCM): 42"
+    },
+    {
+      "operation": "gcd",
+      "node": "gcd_lcm",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1 2 3"
+        }
+      },
+      "params": {},
+      "text": "输入: 1, 2, 3\n最大公约数 (GCD): 1\n最小公倍数 (LCM): 6"
+    },
+    {
+      "operation": "fibonacci",
+      "node": "fibonacci_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "fibonacci",
+      "node": "fibonacci_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3524578"
+        }
+      },
+      "params": {},
+      "text": "!"
+    },
+    {
+      "operation": "fibonacci",
+      "node": "fibonacci_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "flag 3524578/5702887"
+        }
+      },
+      "params": {},
+      "text": "flag !/\""
+    },
+    {
+      "operation": "fibonacci",
+      "node": "fibonacci_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "12中文"
+        }
+      },
+      "params": {},
+      "text": "12中文"
+    },
+    {
+      "operation": "radixConvert",
+      "node": "radix_transform_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2"
+        }
+      },
+      "params": {
+        "fromBase": 2,
+        "toBase": 10
+      },
+      "error": "字符 '2' 不在基数 2 的字符集中"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "中"
+        }
+      },
+      "params": {
+        "base": 2,
+        "bits": 7
+      },
+      "error": "7-bit 只能编码 ASCII（<128），遇到字节 228"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "base": 2
+      },
+      "error": "定宽无空格输入长度不是 8 的倍数"
+    },
+    {
+      "operation": "asciiRadix",
+      "node": "ascii_radix_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "999"
+        }
+      },
+      "params": {
+        "base": 10
+      },
+      "error": "值 999 超出字节范围 0-255"
+    },
+    {
+      "operation": "bcd",
+      "node": "bcd_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A"
+        }
+      },
+      "params": {},
+      "error": "BCD 非法数字 A（>9）"
+    },
+    {
+      "operation": "bcd",
+      "node": "bcd_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1010"
+        }
+      },
+      "params": {
+        "compat": true
+      },
+      "error": "BCD 非法半字节 1010（>9）"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "256"
+        }
+      },
+      "params": {
+        "bits": 8
+      },
+      "error": "数值 256 超出 8 位"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {},
+      "error": "补零对齐输入须为非负整数"
+    },
+    {
+      "operation": "binPad",
+      "node": "binary_pad_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "error": "无效二进制串"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "z41"
+        }
+      },
+      "params": {},
+      "error": "hybridCode: 未知前缀 'z'（应为 b/x/o/d）"
+    },
+    {
+      "operation": "hybridCode",
+      "node": "hybrid_code_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "x110000"
+        }
+      },
+      "params": {},
+      "error": "Invalid code point 1114112"
+    },
+    {
+      "operation": "completion",
+      "node": "zero_align_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "error": "空输入"
+    },
+    {
+      "operation": "negabase",
+      "node": "negative_base_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2"
+        }
+      },
+      "params": {
+        "base": -2
+      },
+      "error": "negabase: 非法字符 2"
+    },
+    {
+      "operation": "balancedTernary",
+      "node": "balanced_ternary_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2"
+        }
+      },
+      "params": {},
+      "error": "balancedTernary: 仅含 T/0/1"
+    },
+    {
+      "operation": "factorialBase",
+      "node": "factorial_base_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {},
+      "error": "factorialBase: 不支持负数"
+    },
+    {
+      "operation": "zeckendorf",
+      "node": "zeckendorf_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {},
+      "error": "zeckendorf: 不支持负数"
+    },
+    {
+      "operation": "roman",
+      "node": "roman_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "IIII"
+        }
+      },
+      "params": {},
+      "error": "roman: 非法罗马数字 IIII"
+    },
+    {
+      "operation": "roman",
+      "node": "roman_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "4000"
+        }
+      },
+      "params": {},
+      "error": "roman: 范围 1-3999"
+    },
+    {
+      "operation": "continuedFraction",
+      "node": "continued_fraction_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1/0"
+        }
+      },
+      "params": {},
+      "error": "continuedFraction: 分母不能为 0"
+    },
+    {
+      "operation": "sternBrocot",
+      "node": "stern_brocot_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {},
+      "error": "sternBrocot: 仅支持正分数"
+    },
+    {
+      "operation": "sternBrocot",
+      "node": "stern_brocot_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "X"
+        }
+      },
+      "params": {},
+      "error": "sternBrocot: 路径仅含 L/R"
+    },
+    {
+      "operation": "complementToDec",
+      "node": "complement_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "001"
+        }
+      },
+      "params": {
+        "bits": 2
+      },
+      "error": "位串长度 3 超过指定位宽 2"
+    },
+    {
+      "operation": "gcd",
+      "node": "gcd_lcm",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {},
+      "error": "请输入至少 2 个数字（空格或逗号分隔）"
+    }
+  ]
+}

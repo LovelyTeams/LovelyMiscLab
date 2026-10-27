@@ -22,7 +22,6 @@ import { UpdateDialog } from "@/app/UpdateDialog";
 import { useUpdate } from "@/store/update";
 import { WindowResizeHandles } from "@/app/WindowResizeHandles";
 import { CanvasView } from "@/views/CanvasView";
-import { GalgameView } from "@/views/GalgameView";
 import { ResourcesView, RunsView } from "@/views/EmptyState";
 import { ModulesView } from "@/views/ModulesView";
 import { SettingsView } from "@/views/SettingsView";
@@ -53,6 +52,7 @@ function App() {
         .listNodeDescriptors()
         .then(setDescriptors)
         .catch((e) => console.error("listNodeDescriptors failed", e));
+      api.listNodeCategories().then(useDescriptorStore.getState().setCategories).catch(console.error);
       // Auto-check for a newer release shortly after launch (opens the update
       // dialog only when one is available; silent otherwise).
       const t = setTimeout(() => void useUpdate.getState().check({ silent: true }), 3000);
@@ -111,7 +111,6 @@ function App() {
           <LeftRail />
           <div className="min-w-0 flex-1">
             {view === "canvas" && <CanvasView />}
-            {view === "galgame" && <GalgameView />}
             {view === "modules" && <ModulesView />}
             {view === "templates" && <TemplatesView />}
             {view === "runs" && <RunsView />}

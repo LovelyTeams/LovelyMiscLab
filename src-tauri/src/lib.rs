@@ -38,6 +38,7 @@ pub fn run() {
                 .app_data_dir()
                 .expect("failed to resolve app data dir");
             std::fs::create_dir_all(&data_dir).ok();
+            misclab_core::artifacts::configure(data_dir.join("artifacts"));
 
             let db_path = data_dir.join("lovelymisclab.db");
             let db = db::Db::open(&db_path).expect("failed to open database");
@@ -96,6 +97,11 @@ pub fn run() {
             commands::system::app_info,
             commands::system::db_health,
             commands::graph::list_node_descriptors,
+            commands::graph::list_node_categories,
+            commands::artifacts::artifact_metadata,
+            commands::artifacts::artifact_read,
+            commands::artifacts::artifact_put,
+            commands::artifacts::artifact_export,
             commands::graph::run_node,
             commands::graph::run_node_streamed,
             commands::graph::run_graph,
@@ -105,7 +111,7 @@ pub fn run() {
             commands::settings::set_settings,
             commands::settings::detect_tool,
             commands::ai_workflow::generate_workflow,
-            commands::galgame::galgame_step,
+            commands::ai_solver::decide_solver_step,
             commands::modules::list_composite_modules,
             commands::modules::save_composite_module,
             commands::modules::delete_composite_module,
@@ -116,7 +122,6 @@ pub fn run() {
             commands::project::load_project,
             commands::ai_workflow::explain_workflow,
             commands::ai_workflow::suggest_next_nodes,
-            commands::agent::agent_run,
             commands::update::check_update,
             commands::update::install_update,
             #[cfg(feature = "mcp")]

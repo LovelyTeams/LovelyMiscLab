@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "mode": "Production React UI + saved DeepSeek + Rust executor via opt-in loopback test bridge",
+  "answerDisclosure": "Expected answers were withheld from the model; AES exact expectation was checked locally",
+  "cases": [
+    {
+      "name": "text",
+      "matched": true,
+      "report": "发现候选 · 待核验\nflag{text_0f44fa8b94}\n第 1 轮 · rot13_3.text · 仅格式命中\n解题证据 · 1 轮\n第 1/5 轮：5 个节点\n先对题目文本做 Base64 解码；预计得到“记录”+换行+一段十六进制串。再用 hex_decode 并开启 strip，丢弃非 Hex 字符后解出类 ROT13 文本；最后 ROT13 得到 flag{...}。check 仅验证最终文本包含目标前缀 flag{。\n文本输入\nin\nBase64 解码\nb64\nHex 解码\nhex\nROT13\nrot\n文本输出\nout\n已配置 5 个节点、连接 4 条线\n运行第 1 轮并检查真实输出\nin：执行通过\n1 项输出已返回\nb64：执行通过\n2 项输出已返回\nhex：执行通过\n2 项输出已返回\nrot：执行通过\n1 项输出已返回\nout：执行通过\n1 项输出已返回\nrot.text 包含检查：通过\n实际：\"记录\\nflag{text_0f44fa8b94}\"\n发现 1 个符合目标格式的候选\n节点执行成功，已单独检查解题目标。\n发现符合目标格式的候选，尚未经题目平台判定。可检查来源节点，继续连接下游，或导出解题记录。每轮搭建可分别撤销。"
+    },
+    {
+      "name": "cancel_during_replanning",
+      "matched": null,
+      "report": "计划已取消\n解题证据 · 2 轮\n第 1/5 轮：4 个节点\n观察到密文前缀 qwlr 与明文 flag 的逐字母位移均为 11，先假设整段由凯撒位移生成；用 caesar_brute 无密钥枚举并由英文评分选优，再用 flag 正则提取候选。预计输出 the_hidden_caesar_message_... 一类明文；若爆破结果不佳，下一轮再针对后缀数字/字母混合段尝试其他位移或替换方式。\n文本输入\nin\n凯撒爆破\nbrute\n信息提取\nflag\n文本输出\nout\n已配置 4 个节点、连接 3 条线\n运行第 1 轮并检查真实输出\nin：未完成\n未收到完整执行结果\nbrute：未完成\n未收到完整执行结果\nflag：未完成\n未收到完整执行结果\nout：未完成\n未收到完整执行结果\n本轮未发现目标答案\n有 4 项执行/断言未通过，将连同输出交回模型。\n读取本轮证据，自动调整下一轮节点和参数…\n第 2/5 轮：4 个节点\n上轮爆破未实际执行；根据密文前缀 qwlr 与明文 flag 的逐字母关系，整体为凯撒位移，qwlr 需向前 11 位（等价于 caesar 参数 amount=15）。本轮直接应用固定位移，再用 flag 正则提取候选并展示；预计得到以 flag{ 开头、以 } 结尾的完整明文。\n文本输入\nin\n凯撒密码\ncaesar\n信息提取\nflag\n文本输出\nout\n已配置 4 个节点、连接 3 条线\n运行第 2 轮并检查真实输出\nin：未完成\n未收到完整执行结果\ncaesar：未完成\n未收到完整执行结果\nflag：未完成\n未收到完整执行结果\nout：未完成\n未收到完整执行结果\n本轮未发现目标答案\n有 4 项执行/断言未通过，将连同输出交回模型。\n读取本轮证据，自动调整下一轮节点和参数…\n已取消自主解题，已完成结果保留。"
+    },
+    {
+      "name": "archive",
+      "matched": true,
+      "report": "发现候选 · 待核验\nflag{archive_d33e193629}\n第 3 轮 · rot13_24.text · 仅格式命中\n解题证据 · 3 轮\n第 1/5 轮：5 个节点\n第1轮：仅做无风险探测。用 file_import 读取唯一给定文件，先由 detect_file_type 判断真实容器/魔数，再用 strings 抽取可打印串寻找格式线索（如 PNG/ZIP/PDF 头、base64 块、flag 片段）。预期从探测输出决定后续方向：若为图片走 png_chunks/zsteg_scan，若为归档走 archive_list 再看条目，若为文本走编码识别链。目前缺少文件大小与魔数信息，故不做任何解码假设。\n文件导入\nin\n文件类型识别\ndtype\n字符串提取\nstrs\n文本输出\nout_type\n文本输出\nout_strs\n已配置 5 个节点、连接 4 条线\n运行第 1 轮并检查真实输出\nin：执行通过\n4 项输出已返回\ndtype：执行通过\n3 项输出已返回\nstrs：执行通过\n3 项输出已返回\nout_type：执行通过\n1 项输出已返回\nout_strs：执行通过\n1 项输出已返回\n本轮未发现目标答案\n节点执行成功，已单独检查解题目标。\n读取本轮证据，自动调整下一轮节点和参数…\n第 2/5 轮：14 个节点\n第2轮：第1轮已确认 specimen.dat 是 ZIP 容器，strings 中可见 readme.txt、records/noise.txt、records/payload.txt。本轮用 archive_list 查看完整条目与是否加密，用 archive_extract 取得 entries 元数据，再按精确名称分别读取 readme.txt、records/payload.txt、records/noise.txt；同时用 detect_file_type 与 strings 探测 payload 的真实内容类型，判断它是文本、嵌套容器还是编码载荷。预期 readme.txt 给出下一步线索，payload 是主分析对象，noise.txt 用于排除干扰。缺少的信息：压缩包是否加密、payload 是否为嵌套 ZIP/图片/音频、readme 中是否指定密码或解码方式；本轮不做猜测性解码。\n文件导入\nin\n压缩包文件列表\nlist\n解压\nextract\n取解压文件\nget_readme\n取解压文件\nget_payload\n取解压文件\nget_noise\n文件类型识别\ndtype_payload\n字符串提取\nstrs_payload\n文本输出\nout_list\n文本输出\nout_readme\n文本输出\nout_payload\n文本输出\nout_noise\n文本输出\nout_payload_type\n文本输出\nout_payload_strings\n已配置 14 个节点、连接 13 条线\n运行第 2 轮并检查真实输出\nin：执行通过\n4 项输出已返回\nlist：执行通过\n4 项输出已返回\nextract：执行通过\n8 项输出已返回\nget_readme：执行通过\n4 项输出已返回\nget_payload：执行通过\n4 项输出已返回\nget_noise：执行通过\n4 项输出已返回\ndtype_payload：执行通过\n3 项输出已返回\nstrs_payload：执行通过\n3 项输出已返回\nout_list：执行通过\n1 项输出已返回\nout_readme：执行通过\n1 项输出已返回\nout_payload：执行通过\n1 项输出已返回\nout_noise：执行通过\n1 项输出已返回\nout_payload_type：执行通过\n1 项输出已返回\nout_payload_strings：执行通过\n1 项输出已返回\n本轮未发现目标答案\n节点执行成功，已单独检查解题目标。\n读取本轮证据，自动调整下一轮节点和参数…\n第 3/5 轮：7 个节点\n第3轮：沿用第2轮已确认的 ZIP 条目 records/payload.txt。该条目内容是 Base64 字符串，先 Base64 解码得到小写 Hex 串，再用小写字母表 Hex 解码得到 ROT13 文本，最后 ROT13 还原。预期最终输出以 flag{ 开头并以 } 结尾。未引入猜测密钥或上轮中间结果；若失败重点检查 Base64 严格性、Hex 字母表大小写与 ROT13 方向。\n文件导入\nin\n解压\nextract\n取解压文件\nget_payload\nBase64 解码\nb64\nHex 解码\nhex\nROT13\nrot\n文本输出\nfinal\n已配置 7 个节点、连接 6 条线\n运行第 3 轮并检查真实输出\nin：执行通过\n4 项输出已返回\nextract：执行通过\n8 项输出已返回\nget_payload：执行通过\n4 项输出已返回\nb64：执行通过\n2 项输出已返回\nhex：执行通过\n2 项输出已返回\nrot：执行通过\n1 项输出已返回\nfinal：执行通过\n1 项输出已返回\nrot.text 包含检查：通过\n实际：\"flag{archive_d33e193629}\"\n发现 1 个符合目标格式的候选\n节点执行成功，已单独检查解题目标。\n发现符合目标格式的候选，尚未经题目平台判定。可检查来源节点，继续连接下游，或导出解题记录。每轮搭建可分别撤销。"
+    },
+    {
+      "name": "image",
+      "matched": true,
+      "report": "发现候选 · 待核验\nflag{image_565dff6851}\n第 1 轮 · zsteg_scan_30.best · 仅格式命中\n解题证据 · 1 轮\n第 1/5 轮：13 个节点\n本轮假设图片为 PNG 且使用最低有效位隐写。先识别真实文件类型、读取图像尺寸并提取可见字符串；同时用 zsteg_scan 扫描 LSB 通道组合，并用 lsb_extract 分别尝试 RGB 通道、bit0、MSB/MSB 反转两种位序。若 zsteg 候选或 lsb_extract 文本出现 flag{...} 即可结束；若只得到乱码/片段，下一轮依据候选证据调整通道、bit、位序或对提取字节做二次编码分析。\n文件导入\nsrc\n文件类型识别\ntype\n图像信息\ninfo\n字符串提取\nstrs\nLSB 全组合扫描\nzsteg\nLSB 提取\nlsb_msb\nLSB 提取\nlsb_lsb\n文本输出\nout_type\n文本输出\nout_info\n文本输出\nout_strs\n文本输出\nout_zsteg\n文本输出\nout_msb\n文本输出\nout_lsb\n已配置 13 个节点、连接 12 条线\n运行第 1 轮并检查真实输出\nsrc：执行通过\n4 项输出已返回\ntype：执行通过\n3 项输出已返回\ninfo：执行通过\n3 项输出已返回\nstrs：执行通过\n3 项输出已返回\nzsteg：执行通过\n2 项输出已返回\nlsb_msb：执行通过\n3 项输出已返回\nlsb_lsb：执行通过\n3 项输出已返回\nout_type：执行通过\n1 项输出已返回\nout_info：执行通过\n1 项输出已返回\nout_strs：执行通过\n1 项输出已返回\nout_zsteg：执行通过\n1 项输出已返回\nout_msb：执行通过\n1 项输出已返回\nout_lsb：执行通过\n1 项输出已返回\n发现 1 个符合目标格式的候选\n节点执行成功，已单独检查解题目标。\n发现符合目标格式的候选，尚未经题目平台判定。可检查来源节点，继续连接下游，或导出解题记录。每轮搭建可分别撤销。"
+    },
+    {
+      "name": "audio",
+      "matched": true,
+      "report": "发现候选 · 待核验\nflag{audio_5088756579}\n第 1 轮 · wav_lsb_44.bytes · 仅格式命中\n解题证据 · 1 轮\n第 1/5 轮：17 个节点\n先识别 WAV 基本信息，再并行测试 1 位采样最低有效位的三种声道选择与两种位序，观察哪种组合输出可读文本或含 flag；若均为乱码，下轮再调整 bits/声道/采样格式。\n文件导入\nsrc\n文件类型识别\nftype\n音频信息\nainfo\n文本输出\nftype_out\n文本输出\nainfo_out\nWAV LSB 提取\nlsb_all_msb\n文本输出\nout_all_msb\nWAV LSB 提取\nlsb_all_lsb\n文本输出\nout_all_lsb\nWAV LSB 提取\nlsb_left_msb\n文本输出\nout_left_msb\nWAV LSB 提取\nlsb_left_lsb\n文本输出\nout_left_lsb\nWAV LSB 提取\nlsb_right_msb\n文本输出\nout_right_msb\nWAV LSB 提取\nlsb_right_lsb\n文本输出\nout_right_lsb\n已配置 17 个节点、连接 16 条线\n运行第 1 轮并检查真实输出\nsrc：执行通过\n4 项输出已返回\nftype：执行通过\n3 项输出已返回\nainfo：执行通过\n4 项输出已返回\nftype_out：执行通过\n1 项输出已返回\nainfo_out：执行通过\n1 项输出已返回\nlsb_all_msb：执行通过\n3 项输出已返回\nout_all_msb：执行通过\n1 项输出已返回\nlsb_all_lsb：执行通过\n3 项输出已返回\nout_all_lsb：执行通过\n1 项输出已返回\nlsb_left_msb：执行通过\n3 项输出已返回\nout_left_msb：执行通过\n1 项输出已返回\nlsb_left_lsb：执行通过\n3 项输出已返回\nout_left_lsb：执行通过\n1 项输出已返回\nlsb_right_msb：执行通过\n3 项输出已返回\nout_right_msb：执行通过\n1 项输出已返回\nlsb_right_lsb：执行通过\n3 项输出已返回\nout_right_lsb：执行通过\n1 项输出已返回\n发现 1 个符合目标格式的候选\n节点执行成功，已单独检查解题目标。\n发现符合目标格式的候选，尚未经题目平台判定。可检查来源节点，继续连接下游，或导出解题记录。每轮搭建可分别撤销。"
+    },
+    {
+      "name": "aes",
+      "matched": true,
+      "report": "答案校验通过\nflag{aes_aa03bbf4e0}\n第 1 轮 · aes_57.text · 与标准答案一致\n解题证据 · 1 轮\n第 1/5 轮：3 个节点\n按题目提示使用 AES-CBC 解密，密钥和 IV 均按 Hex 解析，密文由程序填入 text_input（64 个 Hex 字符，即 32 字节），PKCS7 填充由 AES 节点解密流程处理。本轮直接验证是否能得到以 flag{ 开头的明文；若解密成功应输出完整明文，失败则检查密文格式或密钥/IV 解析方式。\n文本输入\ncipher\nAES\naes_dec\n文本输出\nout\n已配置 3 个节点、连接 2 条线\n运行第 1 轮并检查真实输出\ncipher：执行通过\n1 项输出已返回\naes_dec：执行通过\n2 项输出已返回\nout：执行通过\n1 项输出已返回\n发现 1 个符合目标格式的候选\n节点执行成功，已单独检查解题目标。\n实际输出与用户提供的标准答案一致。每个候选均保留来源节点和处理链。"
+    },
+    {
+      "name": "cipher",
+      "matched": true,
+      "report": "发现候选 · 待核验\nflag{the_hidden_caesar_message_9c6fdbe7f2}\n第 1 轮 · caesar_brute_60.best · 仅格式命中\n解题证据 · 1 轮\n第 1/5 轮：5 个节点\n题面为纯字母+数字+下划线+花括号的定长密文，前后缀长度与 flag{...} 一致，怀疑为单表移位/替换。先用 caesar_brute 对全字母做 26 位移扫描，按可读性排序查看 best 候选；同时用 caesar(amount=11) 直接从原始输入计算，因为 q→f、w→l、l→a、r→g 的位移差均为 11。预计应得 flag{the_hidden_caesar_message_...} 形态的明文，数字保持不变；若 best 与 caesar 结果不一致，则改用 affine/词频分析进一步判断。\n文本输入\nin\n凯撒爆破\nbrute\n文本展示\nbrute_view\n凯撒密码\ndec\n文本输出\nout\n已配置 5 个节点、连接 4 条线\n运行第 1 轮并检查真实输出\nin：执行通过\n1 项输出已返回\nbrute：执行通过\n2 项输出已返回\nbrute_view：执行通过\n1 项输出已返回\ndec：执行通过\n1 项输出已返回\nout：执行通过\n1 项输出已返回\n发现 1 个符合目标格式的候选\n节点执行成功，已单独检查解题目标。\n发现符合目标格式的候选，尚未经题目平台判定。可检查来源节点，继续连接下游，或导出解题记录。每轮搭建可分别撤销。"
+    }
+  ],
+  "archiveExample": {
+    "input": "ai-autonomous-archive.dat",
+    "nodes": 26,
+    "expected": "flag{archive_d33e193629}",
+    "edges": 23,
+    "rounds": 3,
+    "project": "ai-autonomous-archive.lml"
+  },
+  "checks": {
+    "rustFormat": "passed",
+    "frontendPassed": 56,
+    "appAndMcpPassed": 29,
+    "productionBuild": "passed",
+    "corePassed": 373,
+    "strictClippy": "passed"
+  }
+}

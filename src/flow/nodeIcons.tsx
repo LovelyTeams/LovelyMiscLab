@@ -1,3 +1,4 @@
+import { nodeCategories } from "@/lib/catalog";
 import {
   Activity,
   AlignJustify,
@@ -35,7 +36,6 @@ import {
   Wrench,
   Asterisk,
   AudioLines,
-  AudioWaveform,
   Music,
   Phone,
   Aperture,
@@ -121,7 +121,6 @@ import {
   Split,
   TableProperties,
   Type,
-  VenetianMask,
   Wand2,
   Scale,
   CircleSlash,
@@ -407,25 +406,12 @@ const NODE_ICONS: Record<string, LucideIcon> = {
   deepsound_extract: KeyRound,
 };
 
-const CATEGORY_ICONS: Record<string, LucideIcon> = {
-  输入输出: FolderInput,
-  "编码/加密": KeyRound,
-  文本处理: Type,
-  "控制/逻辑": GitBranch,
-  压缩包: Package,
-  隐写术: VenetianMask,
-  "哈希/摘要": Fingerprint,
-  进制转换: Binary,
-  加密解密: Lock,
-  字符编码: Languages,
-  "工具/分析": Wrench,
-  图像处理: Image,
-  音频处理: AudioWaveform,
-  AI: Sparkles,
-  二进制分析: Cpu,
-  可视化分析: BarChart3,
-  自定义: Boxes,
+const ICONS: Record<string, LucideIcon> = {
+  FileInput: FolderInput, Binary, Type, Calculator, KeyRound, LockKeyhole, Hash: Fingerprint,
+  ScanSearch: FileSearch, Archive, FileSearch, EyeOff, Image, AudioLines, Code,
+  ChartColumn: BarChart3, Workflow: GitBranch, Sparkles, Boxes,
 };
+const CATEGORY_ICONS = Object.fromEntries(nodeCategories.map((c) => [c.name, ICONS[c.icon] ?? Braces]));
 
 export function nodeIcon(id: string, category?: string): LucideIcon {
   return NODE_ICONS[id] ?? (category ? CATEGORY_ICONS[category] : undefined) ?? Braces;

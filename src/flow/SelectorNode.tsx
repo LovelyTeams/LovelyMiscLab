@@ -37,6 +37,7 @@ function SelectorNodeImpl({ id, data: raw, selected }: NodeProps) {
   const deleteNode = useGraphStore((s) => s.deleteNode);
   const edges = useGraphStore((s) => s.edges);
   const nodes = useGraphStore((s) => s.nodes);
+  const selectionCount = nodes.filter((n) => n.selected).length;
 
   const value = (data.params.value as string) ?? "";
 
@@ -76,7 +77,7 @@ function SelectorNodeImpl({ id, data: raw, selected }: NodeProps) {
   return (
     <>
       <NodeToolbar
-        isVisible={selected}
+        isVisible={selected && selectionCount === 1}
         position={Position.Top}
         offset={8}
         className="flex items-center gap-0.5 rounded-lg border border-border bg-card p-0.5 shadow-md"
@@ -111,7 +112,9 @@ function SelectorNodeImpl({ id, data: raw, selected }: NodeProps) {
           </span>
         </div>
 
-        <div className="flex flex-col gap-1.5 p-2">
+        <div className="flex flex-col gap-1.5 p-2"
+          onFocusCapture={(e) => { if (e.target instanceof HTMLInputElement) useGraphStore.getState().beginHistoryGroup(`param:${id}:value`); }}
+          onBlurCapture={() => useGraphStore.getState().endHistoryGroup(`param:${id}:value`)}>
           {options ? (
             <>
               <div className="truncate text-[10px] text-muted-foreground" title={targetLabel}>

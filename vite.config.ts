@@ -15,8 +15,7 @@ const pkg = JSON.parse(
 // https://vite.dev/config/
 export default defineConfig(async () => ({
   // viteSingleFile inlines JS + CSS + assets into one self-contained index.html
-  // (galgame art is already WebP to keep that single file small). Tauri CSP is
-  // null, so inline scripts are allowed.
+  // for the desktop build. Tauri CSP permits the resulting inline scripts.
   plugins: [react(), tailwindcss(), viteSingleFile()],
 
   // Expose the package version to the app (shown in the status bar).
@@ -48,7 +47,7 @@ export default defineConfig(async () => ({
       : undefined,
     watch: {
       // 3. tell Vite to ignore watching `src-tauri`
-      ignored: ["**/src-tauri/**"],
+      ignored: ["**/src-tauri/**", "**/target/**", "**/dist/**"],
     },
   },
 }));

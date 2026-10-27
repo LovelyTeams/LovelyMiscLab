@@ -1,8 +1,9 @@
 //! `#[tauri::command]` surface. Grouped by concern.
 
-pub mod agent;
+mod ai_request;
+pub mod ai_solver;
 pub mod ai_workflow;
-pub mod galgame;
+pub mod artifacts;
 pub mod graph;
 #[cfg(feature = "mcp")]
 pub mod mcp;

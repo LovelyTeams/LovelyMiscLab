@@ -1,7 +1,8 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { BookOpen, Cable, Keyboard, Search, Workflow, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { searchNodes } from "@/lib/catalog";
 import { cn } from "@/lib/utils";
 import { useDescriptorStore } from "@/store/descriptors";
 import { useHelpStore } from "@/store/help";
@@ -17,17 +18,15 @@ export function HelpDialog() {
   const [tab, setTab] = useState<Tab>("nodes");
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(initialId);
+  useEffect(() => {
+    if (!open) return;
+    const closeOnEscape = (e: KeyboardEvent) => { if (e.key === "Escape") { e.stopPropagation(); setOpen(false); } };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [open, setOpen]);
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return descriptors;
-    return descriptors.filter(
-      (d) =>
-        d.displayName.toLowerCase().includes(q) ||
-        d.id.toLowerCase().includes(q) ||
-        d.category.toLowerCase().includes(q) ||
-        (d.description ?? "").toLowerCase().includes(q)
-    );
+    return searchNodes(descriptors, query);
   }, [descriptors, query]);
 
   if (!open) return null;
@@ -38,6 +37,7 @@ export function HelpDialog() {
   return (
     <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/45 p-4" onClick={close}>
       <div
+        role="dialog" aria-modal="true" aria-label="帮助与节点文档"
         className="flex h-[78vh] w-[960px] max-w-[96vw] flex-col overflow-hidden rounded-lg border border-border bg-card shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
@@ -198,16 +198,27 @@ function ShortcutDoc() {
   const rows = [
     ["Ctrl+K", "打开命令面板"],
     ["Ctrl+N / Ctrl+O / Ctrl+S", "新建、打开、保存流程"],
+    ["Ctrl+Shift+S", "流程另存为"],
     ["Ctrl+C / Ctrl+V / Ctrl+X", "复制、粘贴、剪切选中节点"],
     ["Ctrl+D", "复制选中子图"],
-    ["Ctrl+Z / Ctrl+Y", "撤销、重做"],
+    ["Ctrl+Z / Ctrl+Y / Ctrl+Shift+Z", "撤销、重做；一轮参数编辑或一次拖动只需撤销一次"],
+    ["Ctrl+A / Esc", "全选节点与连线、取消选择"],
     ["Delete / Backspace", "删除选中节点或连线"],
+    ["F2", "重命名单个选中节点"],
+    ["方向键 / Shift+方向键", "移动选中节点 1 / 10 个画布单位"],
+    ["Home / Ctrl+0", "适应全部节点 / 恢复 100% 缩放"],
+    ["Ctrl++ / Ctrl+-", "放大、缩小画布"],
+    ["左键拖动空白处", "框选接触到的节点；可用左上角工具切换为平移"],
+    ["Ctrl / Shift + 点击", "追加或取消选中节点、连线；按住 Ctrl 框选可追加选择"],
+    ["空格 + 拖动 / 中键拖动", "临时平移画布"],
+    ["拖动连线端点", "更换连接，松开在无效位置时保留原线"],
     ["双击画布", "打开节点搜索"],
     ["右键画布/节点/连线", "打开上下文菜单"],
   ];
   return (
     <div className="min-h-0 flex-1 overflow-y-auto p-5">
       <div className="mb-4 text-lg font-semibold">快捷键</div>
+      <p className="mb-3 text-xs text-muted-foreground">输入框内保留文字编辑快捷键。弹窗和菜单打开时，画布快捷键暂停。macOS 可使用 Command 代替 Ctrl。</p>
       <div className="divide-y divide-border overflow-hidden rounded-md border border-border">
         {rows.map(([key, desc]) => (
           <div key={key} className="grid grid-cols-[220px_1fr] px-3 py-2 text-sm">

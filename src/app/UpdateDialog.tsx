@@ -27,6 +27,7 @@ export function UpdateDialog() {
     >
       <div
         className="flex max-h-[80vh] w-[560px] max-w-[94vw] flex-col overflow-hidden rounded-lg border border-border bg-card shadow-2xl"
+        role="dialog" aria-modal="true" aria-label="软件更新"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center gap-2 border-b border-border px-4 py-3">

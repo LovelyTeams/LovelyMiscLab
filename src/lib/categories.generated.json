@@ -1,0 +1,530 @@
+[
+  {
+    "id": "io",
+    "name": "输入输出",
+    "parentId": null,
+    "order": 0,
+    "icon": "FileInput",
+    "color": "#64748b"
+  },
+  {
+    "id": "io.sources",
+    "name": "输入与输出",
+    "parentId": "io",
+    "order": 1,
+    "icon": "FileInput",
+    "color": "#64748b"
+  },
+  {
+    "id": "encoding",
+    "name": "编码解码",
+    "parentId": null,
+    "order": 2,
+    "icon": "Binary",
+    "color": "#22c55e"
+  },
+  {
+    "id": "encoding.base",
+    "name": "Base 编码",
+    "parentId": "encoding",
+    "order": 3,
+    "icon": "Binary",
+    "color": "#22c55e"
+  },
+  {
+    "id": "encoding.transport",
+    "name": "传输编码",
+    "parentId": "encoding",
+    "order": 4,
+    "icon": "Binary",
+    "color": "#22c55e"
+  },
+  {
+    "id": "encoding.charset",
+    "name": "字符集",
+    "parentId": "encoding",
+    "order": 5,
+    "icon": "Binary",
+    "color": "#22c55e"
+  },
+  {
+    "id": "encoding.fancy",
+    "name": "花式编码",
+    "parentId": "encoding",
+    "order": 6,
+    "icon": "Binary",
+    "color": "#22c55e"
+  },
+  {
+    "id": "encoding.chinese",
+    "name": "中文编码",
+    "parentId": "encoding",
+    "order": 7,
+    "icon": "Binary",
+    "color": "#22c55e"
+  },
+  {
+    "id": "data",
+    "name": "文本与数据",
+    "parentId": null,
+    "order": 8,
+    "icon": "Type",
+    "color": "#14b8a6"
+  },
+  {
+    "id": "data.text",
+    "name": "文本处理",
+    "parentId": "data",
+    "order": 9,
+    "icon": "Type",
+    "color": "#14b8a6"
+  },
+  {
+    "id": "data.serialization",
+    "name": "序列化",
+    "parentId": "data",
+    "order": 10,
+    "icon": "Type",
+    "color": "#14b8a6"
+  },
+  {
+    "id": "data.structure",
+    "name": "结构解析",
+    "parentId": "data",
+    "order": 11,
+    "icon": "Type",
+    "color": "#14b8a6"
+  },
+  {
+    "id": "numeric",
+    "name": "进制与数值",
+    "parentId": null,
+    "order": 12,
+    "icon": "Calculator",
+    "color": "#06b6d4"
+  },
+  {
+    "id": "numeric.radix",
+    "name": "进制",
+    "parentId": "numeric",
+    "order": 13,
+    "icon": "Calculator",
+    "color": "#06b6d4"
+  },
+  {
+    "id": "numeric.bits",
+    "name": "位与字节",
+    "parentId": "numeric",
+    "order": 14,
+    "icon": "Calculator",
+    "color": "#06b6d4"
+  },
+  {
+    "id": "numeric.math",
+    "name": "数论",
+    "parentId": "numeric",
+    "order": 15,
+    "icon": "Calculator",
+    "color": "#06b6d4"
+  },
+  {
+    "id": "numeric.time",
+    "name": "时间日期",
+    "parentId": "numeric",
+    "order": 16,
+    "icon": "Calculator",
+    "color": "#06b6d4"
+  },
+  {
+    "id": "numeric.address",
+    "name": "地址与单位",
+    "parentId": "numeric",
+    "order": 17,
+    "icon": "Calculator",
+    "color": "#06b6d4"
+  },
+  {
+    "id": "classical",
+    "name": "古典密码",
+    "parentId": null,
+    "order": 18,
+    "icon": "KeyRound",
+    "color": "#a855f7"
+  },
+  {
+    "id": "classical.substitution",
+    "name": "替换密码",
+    "parentId": "classical",
+    "order": 19,
+    "icon": "KeyRound",
+    "color": "#a855f7"
+  },
+  {
+    "id": "classical.transposition",
+    "name": "置换密码",
+    "parentId": "classical",
+    "order": 20,
+    "icon": "KeyRound",
+    "color": "#a855f7"
+  },
+  {
+    "id": "classical.polygraphic",
+    "name": "多表与分组",
+    "parentId": "classical",
+    "order": 21,
+    "icon": "KeyRound",
+    "color": "#a855f7"
+  },
+  {
+    "id": "classical.rotor",
+    "name": "转轮密码",
+    "parentId": "classical",
+    "order": 22,
+    "icon": "KeyRound",
+    "color": "#a855f7"
+  },
+  {
+    "id": "crypto",
+    "name": "现代密码",
+    "parentId": null,
+    "order": 23,
+    "icon": "LockKeyhole",
+    "color": "#6366f1"
+  },
+  {
+    "id": "crypto.block",
+    "name": "分组密码",
+    "parentId": "crypto",
+    "order": 24,
+    "icon": "LockKeyhole",
+    "color": "#6366f1"
+  },
+  {
+    "id": "crypto.stream",
+    "name": "流密码",
+    "parentId": "crypto",
+    "order": 25,
+    "icon": "LockKeyhole",
+    "color": "#6366f1"
+  },
+  {
+    "id": "crypto.asymmetric",
+    "name": "非对称密码",
+    "parentId": "crypto",
+    "order": 26,
+    "icon": "LockKeyhole",
+    "color": "#6366f1"
+  },
+  {
+    "id": "crypto.auth",
+    "name": "签名与认证",
+    "parentId": "crypto",
+    "order": 27,
+    "icon": "LockKeyhole",
+    "color": "#6366f1"
+  },
+  {
+    "id": "hash",
+    "name": "哈希与校验",
+    "parentId": null,
+    "order": 28,
+    "icon": "Hash",
+    "color": "#f59e0b"
+  },
+  {
+    "id": "hash.digest",
+    "name": "摘要",
+    "parentId": "hash",
+    "order": 29,
+    "icon": "Hash",
+    "color": "#f59e0b"
+  },
+  {
+    "id": "hash.checksum",
+    "name": "校验",
+    "parentId": "hash",
+    "order": 30,
+    "icon": "Hash",
+    "color": "#f59e0b"
+  },
+  {
+    "id": "analysis",
+    "name": "分析与破解",
+    "parentId": null,
+    "order": 31,
+    "icon": "ScanSearch",
+    "color": "#d946ef"
+  },
+  {
+    "id": "analysis.statistics",
+    "name": "统计分析",
+    "parentId": "analysis",
+    "order": 32,
+    "icon": "ScanSearch",
+    "color": "#d946ef"
+  },
+  {
+    "id": "analysis.detect",
+    "name": "自动识别",
+    "parentId": "analysis",
+    "order": 33,
+    "icon": "ScanSearch",
+    "color": "#d946ef"
+  },
+  {
+    "id": "analysis.crypto",
+    "name": "密码分析",
+    "parentId": "analysis",
+    "order": 34,
+    "icon": "ScanSearch",
+    "color": "#d946ef"
+  },
+  {
+    "id": "analysis.password",
+    "name": "口令破解",
+    "parentId": "analysis",
+    "order": 35,
+    "icon": "ScanSearch",
+    "color": "#d946ef"
+  },
+  {
+    "id": "archive",
+    "name": "压缩与归档",
+    "parentId": null,
+    "order": 36,
+    "icon": "Archive",
+    "color": "#f59e0b"
+  },
+  {
+    "id": "archive.compression",
+    "name": "压缩",
+    "parentId": "archive",
+    "order": 37,
+    "icon": "Archive",
+    "color": "#f59e0b"
+  },
+  {
+    "id": "archive.container",
+    "name": "归档",
+    "parentId": "archive",
+    "order": 38,
+    "icon": "Archive",
+    "color": "#f59e0b"
+  },
+  {
+    "id": "forensics",
+    "name": "文件与取证",
+    "parentId": null,
+    "order": 39,
+    "icon": "FileSearch",
+    "color": "#3b82f6"
+  },
+  {
+    "id": "forensics.structure",
+    "name": "文件结构",
+    "parentId": "forensics",
+    "order": 40,
+    "icon": "FileSearch",
+    "color": "#3b82f6"
+  },
+  {
+    "id": "forensics.document",
+    "name": "文档与 APK",
+    "parentId": "forensics",
+    "order": 41,
+    "icon": "FileSearch",
+    "color": "#3b82f6"
+  },
+  {
+    "id": "forensics.binary",
+    "name": "可执行文件",
+    "parentId": "forensics",
+    "order": 42,
+    "icon": "FileSearch",
+    "color": "#3b82f6"
+  },
+  {
+    "id": "forensics.network",
+    "name": "网络流量",
+    "parentId": "forensics",
+    "order": 43,
+    "icon": "FileSearch",
+    "color": "#3b82f6"
+  },
+  {
+    "id": "stego",
+    "name": "隐写与水印",
+    "parentId": null,
+    "order": 44,
+    "icon": "EyeOff",
+    "color": "#a855f7"
+  },
+  {
+    "id": "stego.text",
+    "name": "文本载体",
+    "parentId": "stego",
+    "order": 45,
+    "icon": "EyeOff",
+    "color": "#a855f7"
+  },
+  {
+    "id": "stego.image",
+    "name": "图像载体",
+    "parentId": "stego",
+    "order": 46,
+    "icon": "EyeOff",
+    "color": "#a855f7"
+  },
+  {
+    "id": "stego.audio",
+    "name": "音频载体",
+    "parentId": "stego",
+    "order": 47,
+    "icon": "EyeOff",
+    "color": "#a855f7"
+  },
+  {
+    "id": "stego.file",
+    "name": "文件载体",
+    "parentId": "stego",
+    "order": 48,
+    "icon": "EyeOff",
+    "color": "#a855f7"
+  },
+  {
+    "id": "image",
+    "name": "图像与二维码",
+    "parentId": null,
+    "order": 49,
+    "icon": "Image",
+    "color": "#f43f5e"
+  },
+  {
+    "id": "image.process",
+    "name": "图像处理",
+    "parentId": "image",
+    "order": 50,
+    "icon": "Image",
+    "color": "#f43f5e"
+  },
+  {
+    "id": "image.qr",
+    "name": "二维码",
+    "parentId": "image",
+    "order": 51,
+    "icon": "Image",
+    "color": "#f43f5e"
+  },
+  {
+    "id": "media",
+    "name": "音频与视频",
+    "parentId": null,
+    "order": 52,
+    "icon": "AudioLines",
+    "color": "#d946ef"
+  },
+  {
+    "id": "media.audio",
+    "name": "音频分析",
+    "parentId": "media",
+    "order": 53,
+    "icon": "AudioLines",
+    "color": "#d946ef"
+  },
+  {
+    "id": "media.convert",
+    "name": "音视频转换",
+    "parentId": "media",
+    "order": 54,
+    "icon": "AudioLines",
+    "color": "#d946ef"
+  },
+  {
+    "id": "language",
+    "name": "语言与执行",
+    "parentId": null,
+    "order": 55,
+    "icon": "Code",
+    "color": "#22c55e"
+  },
+  {
+    "id": "language.esolang",
+    "name": "深奥语言",
+    "parentId": "language",
+    "order": 56,
+    "icon": "Code",
+    "color": "#22c55e"
+  },
+  {
+    "id": "language.code",
+    "name": "代码编码解析",
+    "parentId": "language",
+    "order": 57,
+    "icon": "Code",
+    "color": "#22c55e"
+  },
+  {
+    "id": "visual",
+    "name": "可视化分析",
+    "parentId": null,
+    "order": 58,
+    "icon": "ChartColumn",
+    "color": "#06b6d4"
+  },
+  {
+    "id": "visual.charts",
+    "name": "数据图表",
+    "parentId": "visual",
+    "order": 59,
+    "icon": "ChartColumn",
+    "color": "#06b6d4"
+  },
+  {
+    "id": "control",
+    "name": "控制与逻辑",
+    "parentId": null,
+    "order": 60,
+    "icon": "Workflow",
+    "color": "#64748b"
+  },
+  {
+    "id": "control.flow",
+    "name": "流程控制",
+    "parentId": "control",
+    "order": 61,
+    "icon": "Workflow",
+    "color": "#64748b"
+  },
+  {
+    "id": "ai",
+    "name": "AI",
+    "parentId": null,
+    "order": 62,
+    "icon": "Sparkles",
+    "color": "#a855f7"
+  },
+  {
+    "id": "ai.models",
+    "name": "模型调用",
+    "parentId": "ai",
+    "order": 63,
+    "icon": "Sparkles",
+    "color": "#a855f7"
+  },
+  {
+    "id": "custom",
+    "name": "自定义",
+    "parentId": null,
+    "order": 64,
+    "icon": "Boxes",
+    "color": "#8b5cf6"
+  },
+  {
+    "id": "custom.modules",
+    "name": "用户模块",
+    "parentId": "custom",
+    "order": 65,
+    "icon": "Boxes",
+    "color": "#8b5cf6"
+  }
+]

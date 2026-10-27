@@ -8,7 +8,7 @@ license.workspace = true
 
 [dependencies]
 serde = { version = "1", features = ["derive", "rc"] }
-serde_json = "1"
+serde_json = { version = "1", features = ["preserve_order", "arbitrary_precision"] }
 thiserror = "2"
 uuid = { version = "1", features = ["v4", "serde"] }
 petgraph = "0.8"
@@ -18,7 +18,9 @@ urlencoding = "2"
 regex = "1"
 ureq = { version = "2", features = ["json"] }
 # HTTP request node: blocking client with HTTP/1.1 + HTTP/2 (ALPN) over rustls.
-reqwest = { version = "0.12", default-features = false, features = ["blocking", "rustls-tls", "http2", "gzip"] }
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "rustls-tls", "http2", "gzip", "json"] }
+# AI nodes remain synchronous to callers, but poll cancellation while HTTP is pending.
+tokio = { version = "1", features = ["rt", "net", "time", "macros"] }
 image = { version = "0.25", default-features = false, features = ["png", "jpeg", "gif", "bmp", "webp"] }
 qrcode = "0.14"
 rxing = { version = "0.7", default-features = false }
@@ -73,6 +75,8 @@ imageproc = "0.27.0"
 hound = "3.5"
 # binary / executable analysis (ELF / PE / Mach-O) — pure-Rust multi-format parser
 goblin = "0.10.7"
+ryu-js = "1.0.3"
+half = "2.7.1" # already present transitively; direct use for IEEE binary16
 
 [dev-dependencies]
 rand = "0.8"  # matches rPGP; only used by in-crate PGP fixture-generation test

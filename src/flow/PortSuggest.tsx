@@ -3,6 +3,7 @@ import { useReactFlow } from "@xyflow/react";
 import { Loader2, Sparkles } from "lucide-react";
 
 import { api } from "@/lib/bindings";
+import { searchNodes } from "@/lib/catalog";
 import { inTauri } from "@/lib/devMocks";
 import type { NodeDescriptor } from "@/lib/types";
 import { useGraphStore } from "@/store/graph";
@@ -41,11 +42,7 @@ export function PortSuggest() {
   if (!ctx) return null;
 
   const q = query.trim().toLowerCase();
-  const filtered = q
-    ? base.filter(
-        (d) => d.id.toLowerCase().includes(q) || d.displayName.toLowerCase().includes(q)
-      )
-    : base;
+  const filtered = searchNodes(base, q);
   // AI-ranked ids float to the top (in the model's order); the rest follow.
   const ordered = aiOrder
     ? [
@@ -130,6 +127,7 @@ export function PortSuggest() {
       />
       <div
         className="fixed z-[61] flex max-h-[368px] flex-col rounded-lg border border-border bg-popover text-xs shadow-xl"
+        data-canvas-shortcuts="blocked"
         style={{ left, top, width: WIDTH }}
         onClick={(e) => e.stopPropagation()}
       >

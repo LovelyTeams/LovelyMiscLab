@@ -31,6 +31,30 @@ export function longestPathLevels(nodes: FlowNode[], edges: Edge[]): Record<stri
   return level;
 }
 
+/** Keep AI branches in dependency columns, accounting for measured previews. */
+export function measuredLayeredLayout(nodes: FlowNode[], edges: Edge[]): Record<string, { x: number; y: number }> {
+  if (!nodes.length) return {};
+  const levels = longestPathLevels(nodes, edges);
+  const columns = new Map<number, FlowNode[]>();
+  for (const node of nodes) {
+    const column = columns.get(levels[node.id]) ?? [];
+    column.push(node);
+    columns.set(levels[node.id], column);
+  }
+  const positions: Record<string, { x: number; y: number }> = {};
+  let x = Math.min(...nodes.map((node) => node.position.x));
+  const top = Math.min(...nodes.map((node) => node.position.y));
+  for (const [, column] of [...columns].sort(([a], [b]) => a - b)) {
+    let y = top;
+    for (const node of column) {
+      positions[node.id] = { x, y };
+      y += (node.measured?.height ?? 120) + 48;
+    }
+    x += Math.max(...column.map((node) => node.measured?.width ?? 200)) + 80;
+  }
+  return positions;
+}
+
 /** Aspect ratio (w/h) of the visible canvas, used to pack the graph so a
  * following fitView shows every node as large as possible. Landscape fallback. */
 export function viewportAspect(): number {

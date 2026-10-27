@@ -3662,7 +3662,7 @@ dependencies = [
 
 [[package]]
 name = "misclab-app"
-version = "0.2.9"
+version = "0.3.0"
 dependencies = [
  "axum",
  "base64 0.22.1",
@@ -3690,7 +3690,7 @@ dependencies = [
 
 [[package]]
 name = "misclab-core"
-version = "0.2.9"
+version = "0.3.0"
 dependencies = [
  "aes",
  "base64 0.22.1",
@@ -3710,6 +3710,7 @@ dependencies = [
  "flate2",
  "getrandom 0.2.17",
  "goblin",
+ "half",
  "hex",
  "hmac",
  "hound",
@@ -3731,6 +3732,7 @@ dependencies = [
  "ripemd",
  "rustfft",
  "rxing",
+ "ryu-js",
  "salsa20",
  "serde",
  "serde_json",
@@ -3741,6 +3743,7 @@ dependencies = [
  "sm3",
  "tar",
  "thiserror 2.0.18",
+ "tokio",
  "unrar",
  "ureq",
  "urlencoding",
@@ -5636,6 +5639,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9774ba4a74de5f7b1c1451ed6cd5285a32eddb5cccb8cc655a4e50009e06477f"
 
 [[package]]
+name = "ryu-js"
+version = "1.0.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "04d056b875a9d2e6cb9a61d127afee9ac5999b9f87bcb32079d1318e505be714"
+
+[[package]]
 name = "safe_arch"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5862,6 +5871,7 @@ version = "1.0.150"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e8014e44b4736ed0538adeecded0fce2a272f22dc9578a7eb6b2d9993c74cfb9"
 dependencies = [
+ "indexmap 2.14.0",
  "itoa",
  "memchr",
  "serde",

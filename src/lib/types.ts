@@ -60,9 +60,27 @@ export interface ParamSpec {
 
 export type Cost = "cheap" | "medium" | "heavy";
 
+export interface NodeCategory {
+  id: string; name: string; parentId: string | null; order: number; icon: string; color: string;
+}
+export interface NodeExample {
+  label: string; inputs: Record<string, PortValue>; params: Record<string, unknown>;
+}
+export interface ArtifactMetadata {
+  id: string; name: string; mime: string; size: number; sha256: string;
+}
+
 export interface NodeDescriptor {
   id: string;
   category: string;
+  categoryId?: string;
+  subcategoryId?: string;
+  legacyCategories?: string[];
+  aliases?: string[];
+  upstreamIds?: string[];
+  family?: string;
+  presentation?: { inlineParams: string[]; previews: Record<string, string> };
+  examples?: NodeExample[];
   displayName: string;
   description?: string;
   color: string;

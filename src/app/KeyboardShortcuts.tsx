@@ -1,128 +1,85 @@
 import { useEffect } from "react";
+import { useReactFlow } from "@xyflow/react";
 
 import { newFlow, openFlow, saveFlow } from "@/lib/project";
 import { useCommandPaletteStore } from "@/store/commandPalette";
-import { useGraphStore, type Clipboard } from "@/store/graph";
+import { useViewStore } from "@/store/view";
+import { useGraphStore } from "@/store/graph";
+import { useAgentStore } from "@/store/agent";
+import { canvasOverlaySelector, canvasShortcut, isEditingTarget } from "@/flow/canvasShortcuts";
+import { copySelection, cutSelection, duplicateSelection, pasteSelection } from "@/flow/graphClipboard";
 
-// Module-level clipboard (persists across renders; not reactive).
-let clipboard: Clipboard | null = null;
-let pasteOffset = 0;
-
-/** Snapshot the currently-selected nodes + the edges wholly between them. */
-function buildClip(): Clipboard | null {
-  const g = useGraphStore.getState();
-  const sel = g.nodes.filter((n) => n.selected);
-  if (sel.length === 0) return null;
-  const ids = new Set(sel.map((n) => n.id));
-  return {
-    nodes: sel.map((n) => ({
-      oldId: n.id,
-      descriptorId: n.data.descriptorId,
-      label: n.data.label,
-      color: n.data.color,
-      params: { ...n.data.params },
-      inputParams: [...(n.data.inputParams ?? [])],
-      position: { ...n.position },
-    })),
-    edges: g.edges
-      .filter((e) => ids.has(e.source) && ids.has(e.target))
-      .map((e) => ({
-        source: e.source,
-        sourceHandle: e.sourceHandle,
-        target: e.target,
-        targetHandle: e.targetHandle,
-      })),
-  };
-}
-
-/** Global canvas keyboard shortcuts: copy/paste/cut/duplicate/select-all/delete. */
 export function KeyboardShortcuts() {
+  const rf = useReactFlow();
   useEffect(() => {
+    const endMove = () => useGraphStore.getState().endHistoryGroup("moveSelection");
+    const keyup = (e: KeyboardEvent) => { if (e.key.startsWith("Arrow")) endMove(); };
     const handler = (e: KeyboardEvent) => {
-      // File shortcuts work everywhere (even while a field is focused).
-      const fileMod = e.ctrlKey || e.metaKey;
-      const fileKey = e.key.toLowerCase();
-      if (fileMod && fileKey === "k") {
-        e.preventDefault();
-        useCommandPaletteStore.getState().toggle();
-        return;
-      }
-      if (fileMod && (fileKey === "s" || fileKey === "o" || fileKey === "n")) {
-        e.preventDefault();
-        if (fileKey === "s") void saveFlow();
-        else if (fileKey === "o") void openFlow();
+      if (e.defaultPrevented || e.isComposing || e.altKey) return;
+      // A modal or floating picker owns its keyboard, even when a button has focus.
+      if (document.querySelector(canvasOverlaySelector)) return;
+      const mod = e.ctrlKey || e.metaKey;
+      const key = e.key.toLowerCase();
+      if (mod && ["s", "o", "n", "k"].includes(key)) {
+        e.preventDefault(); e.stopPropagation();
+        if (e.repeat) return;
+        if (key === "k") useCommandPaletteStore.getState().toggle();
+        else if (key === "s") void saveFlow(e.shiftKey);
+        else if (key === "o") void openFlow();
         else newFlow();
         return;
       }
-
-      // Don't hijack typing in inputs/textareas/selects (node inline fields, inspector).
-      const t = e.target as HTMLElement | null;
-      if (
-        t &&
-        (t.tagName === "INPUT" ||
-          t.tagName === "TEXTAREA" ||
-          t.tagName === "SELECT" ||
-          t.isContentEditable)
-      ) {
+      if (isEditingTarget(e.target) || useViewStore.getState().view !== "canvas") return;
+      const action = canvasShortcut(e);
+      if (!action) return;
+      e.preventDefault(); e.stopPropagation();
+      const g = useGraphStore.getState();
+      const move = ({ left: [-1, 0], right: [1, 0], up: [0, -1], down: [0, 1] } as Record<string, number[]>)[action];
+      if (move) {
+        if (g.nodes.some((node) => node.selected)) useAgentStore.getState().focusNodes([]);
+        g.beginHistoryGroup("moveSelection");
+        const step = e.shiftKey ? 10 : 1;
+        g.moveSelection(move[0] * step, move[1] * step);
         return;
       }
-
-      const g = useGraphStore.getState();
-      const mod = e.ctrlKey || e.metaKey;
-      const key = e.key.toLowerCase();
-
-      if (mod && key === "c") {
-        const clip = buildClip();
-        if (clip) {
-          clipboard = clip;
-          pasteOffset = 0;
-          e.preventDefault();
+      endMove();
+      if (e.repeat) return;
+      switch (action) {
+        case "copy": copySelection(); break;
+        case "cut": cutSelection(); break;
+        case "paste": pasteSelection(); break;
+        case "duplicate": duplicateSelection(); break;
+        case "selectAll": g.selectAll(); break;
+        case "undo": g.undo(); break;
+        case "redo": g.redo(); break;
+        case "delete": g.deleteSelection(); break;
+        case "deselect": g.deselectAll(); break;
+        case "rename": {
+          const selected = g.nodes.filter((n) => n.selected);
+          if (selected.length !== 1) break;
+          g.setSelected(selected[0].id);
+          requestAnimationFrame(() => {
+            const field = document.querySelector<HTMLInputElement>("[data-node-name]");
+            field?.focus(); field?.select();
+          });
+          break;
         }
-      } else if (mod && key === "z") {
-        if (e.shiftKey) g.redo();
-        else g.undo();
-        e.preventDefault();
-      } else if (mod && key === "y") {
-        g.redo();
-        e.preventDefault();
-      } else if (mod && key === "v") {
-        if (clipboard) {
-          pasteOffset += 32;
-          g.paste(clipboard, pasteOffset, pasteOffset);
-          e.preventDefault();
-        }
-      } else if (mod && key === "x") {
-        const clip = buildClip();
-        if (clip) {
-          clipboard = clip;
-          pasteOffset = 0;
-          g.nodes.filter((n) => n.selected).forEach((n) => g.deleteNode(n.id));
-          e.preventDefault();
-        }
-      } else if (mod && key === "d") {
-        const clip = buildClip();
-        if (clip) {
-          g.paste(clip, 32, 32);
-          e.preventDefault();
-        }
-      } else if (mod && key === "a") {
-        g.selectAll();
-        e.preventDefault();
-      } else if (key === "delete" || key === "backspace") {
-        const nodes = g.nodes.filter((n) => n.selected);
-        const dges = g.edges.filter((ed) => ed.selected);
-        if (nodes.length || dges.length) {
-          nodes.forEach((n) => g.deleteNode(n.id));
-          dges.forEach((ed) => g.deleteEdge(ed.id));
-          e.preventDefault();
-        }
-      } else if (key === "escape") {
-        g.deselectAll();
+        case "fit": void rf.fitView({ duration: 200, padding: 0.15 }); break;
+        case "actualSize": void rf.zoomTo(1, { duration: 200 }); break;
+        case "zoomIn": void rf.zoomIn({ duration: 150 }); break;
+        case "zoomOut": void rf.zoomOut({ duration: 150 }); break;
       }
     };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, []);
-
+    // Capture prevents React Flow's node keyboard handler from moving a node twice.
+    window.addEventListener("keydown", handler, true);
+    window.addEventListener("keyup", keyup);
+    window.addEventListener("blur", endMove);
+    return () => {
+      window.removeEventListener("keydown", handler, true);
+      window.removeEventListener("keyup", keyup);
+      window.removeEventListener("blur", endMove);
+      endMove();
+    };
+  }, [rf]);
   return null;
 }

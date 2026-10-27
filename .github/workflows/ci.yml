@@ -60,6 +60,12 @@ jobs:
       - name: Frontend typecheck & build
         run: pnpm build
 
+      - name: Frontend regression tests
+        run: pnpm test:frontend
+
+      - name: UTF-8 source check
+        run: pnpm check:utf8
+
       # Zero-warning gate (matches CONTRIBUTING). After the frontend build so the
       # app crate's generate_context! can embed ../dist while linting --all-targets.
       - name: Clippy (-D warnings)
@@ -67,6 +73,9 @@ jobs:
 
       - name: Backend tests (misclab-core)
         run: cargo test -p misclab-core
+
+      - name: Verify generated node catalog
+        run: pnpm check:catalog
 
       # Compiles the full Tauri app + runs the MCP integration test on every OS —
       # the real cross-platform guard (catches platform-specific breakage early).

@@ -1,13 +1,13 @@
-import { memo, useState } from "react";
-import { Handle, NodeToolbar, Position, type NodeProps } from "@xyflow/react";
+import { memo, useEffect, useState } from "react";
+import { Handle, NodeToolbar, Position, useUpdateNodeInternals, type NodeProps } from "@xyflow/react";
 import { Ban, Check, Copy, Eye, Play, Sparkles, Trash2, X } from "lucide-react";
 
 import { ProgressBar } from "@/components/ui/progress";
-import type { PortValue } from "@/lib/types";
+import { inlineParams as getInlineParams } from "@/lib/catalog";
+import { OutputValue } from "./portValue";
 import { cn } from "@/lib/utils";
 import { useDescriptorStore } from "@/store/descriptors";
 import { useGraphStore, type FlowNodeData } from "@/store/graph";
-import { useImageViewer } from "@/store/imageViewer";
 import { useInspectorStore } from "@/store/inspector";
 import { usePortSuggest } from "@/store/portSuggest";
 
@@ -29,28 +29,6 @@ const handleStyle = (color: string): React.CSSProperties => ({
   background: color,
   border: "2px solid var(--card)",
 });
-
-function shortText(v: PortValue): string {
-  switch (v.type) {
-    case "text":
-      return v.value;
-    case "number":
-      return String(v.value);
-    case "bool":
-      return v.value ? "true" : "false";
-    case "stringList":
-      return `${v.value.length} 项`;
-    case "candidates":
-      return `${v.value.length} 候选`;
-    case "bytes":
-      return `${v.value.length} 字节`;
-    case "json":
-    case "fingerprint":
-      return JSON.stringify(v.value);
-    default:
-      return "";
-  }
-}
 
 /** Hover-revealed ✨ button on a port row → opens the AI next-node suggester.
  * Absolutely positioned in the row's empty inner gutter so it never overlaps the
@@ -98,6 +76,10 @@ function GenericNodeImpl({ id, data: raw, selected }: NodeProps) {
   const renameNode = useGraphStore((s) => s.renameNode);
   const setInspectorTab = useInspectorStore((s) => s.setTab);
   const [editing, setEditing] = useState(false);
+  const selectionCount = useGraphStore((s) => s.nodes.filter((n) => n.selected).length);
+  const updateNodeInternals = useUpdateNodeInternals();
+  const ports = (data.inputParams ?? []).join("\u0000");
+  useEffect(() => { updateNodeInternals(id); }, [id, ports, updateNodeInternals]);
 
   if (!descriptor) {
     return (
@@ -110,27 +92,12 @@ function GenericNodeImpl({ id, data: raw, selected }: NodeProps) {
   const Icon = nodeIcon(descriptor.id, descriptor.category);
   // Latest log line, shown under the progress bar as the current stage.
   const runningStatus = data.logs?.[data.logs.length - 1]?.message;
-  // Dedicated viewer nodes get a richer on-node preview: a larger image / a
-  // multi-line scrollable text block instead of the default one-line preview.
-  const isImageView = descriptor.id === "image_view";
-  const isTextView = descriptor.id === "text_view";
-  const outputs = data.outputs;
-  // Preview the first *declared* output that has a value. Node outputs arrive as
-  // an unordered map (Rust HashMap → JSON), so iterating by key order would pick
-  // a random port each run; follow the descriptor's declared order instead.
-  const firstOut: [string, PortValue] | undefined = (() => {
-    if (!outputs) return undefined;
-    for (const p of descriptor.outputs) {
-      const v = outputs[p.name];
-      if (v !== undefined) return [p.name, v];
-    }
-    return Object.entries(outputs)[0];
-  })();
-  // Source nodes (no input ports) show their param widgets inline for direct entry.
-  const inlineParams =
-    descriptor.inputs.length === 0
-      ? descriptor.params.filter((p) => !(data.inputParams ?? []).includes(p.name))
-      : [];
+  const outputs = data.outputs ?? {};
+  const previewPorts = descriptor.outputs.filter((p) => outputs[p.name]);
+  // Terminal text output returns a display value without a connectable port.
+  if (descriptor.id === "text_output" && outputs.value)
+    previewPorts.push({ name: "value", label: "结果", type: "text", required: false });
+  const inlineParams = getInlineParams(descriptor).filter((p) => !(data.inputParams ?? []).includes(p.name));
 
   const action =
     "flex h-6 w-6 items-center justify-center rounded text-muted-foreground transition-colors hover:bg-accent hover:text-foreground";
@@ -149,7 +116,7 @@ function GenericNodeImpl({ id, data: raw, selected }: NodeProps) {
   return (
     <>
       <NodeToolbar
-        isVisible={selected}
+        isVisible={selected && selectionCount === 1}
         position={Position.Top}
         offset={8}
         className="flex items-center gap-0.5 rounded-lg border border-border bg-card p-0.5 shadow-md"
@@ -214,6 +181,7 @@ function GenericNodeImpl({ id, data: raw, selected }: NodeProps) {
                 setEditing(false);
               }}
               onKeyDown={(e) => {
+                if (e.nativeEvent.isComposing) return;
                 if (e.key === "Enter") {
                   renameNode(id, (e.target as HTMLInputElement).value);
                   setEditing(false);
@@ -237,7 +205,7 @@ function GenericNodeImpl({ id, data: raw, selected }: NodeProps) {
           )}
           <StatusIcon status={data.status} />
           <button
-            className="rounded p-0.5 text-muted-foreground transition-colors hover:bg-accent hover:text-primary"
+            className="nodrag nopan rounded p-0.5 text-muted-foreground transition-colors hover:bg-accent hover:text-primary"
             title="单独执行"
             onClick={(e) => {
               e.stopPropagation();
@@ -264,6 +232,7 @@ function GenericNodeImpl({ id, data: raw, selected }: NodeProps) {
                 type="target"
                 position={Position.Left}
                 id={p.name}
+                title={`${p.label}（输入：${p.type}）`}
                 style={handleStyle(portColor(p.type))}
               />
               <span className="text-muted-foreground">{p.label}</span>
@@ -279,6 +248,7 @@ function GenericNodeImpl({ id, data: raw, selected }: NodeProps) {
                   type="target"
                   position={Position.Left}
                   id={name}
+                  title={`${spec.label}（参数输入）`}
                   style={handleStyle(portColor(paramPortType(spec.widget)))}
                 />
                 <span className="italic text-muted-foreground/80">{spec.label}</span>
@@ -296,6 +266,7 @@ function GenericNodeImpl({ id, data: raw, selected }: NodeProps) {
                 type="source"
                 position={Position.Right}
                 id={p.name}
+                title={`${p.label}（输出：${p.type}）`}
                 style={handleStyle(portColor(p.type))}
               />
             </div>
@@ -303,15 +274,17 @@ function GenericNodeImpl({ id, data: raw, selected }: NodeProps) {
         </div>
 
         {inlineParams.length > 0 && (
-          <div className="flex flex-col gap-1.5 border-t border-border p-2">
+          <div className="nodrag nowheel nopan flex flex-col gap-1.5 border-t border-border p-2">
             {inlineParams.map((p) => (
               <div key={`ip-${p.name}`} className="text-[10px]">
-                {inlineParams.length > 1 && (
-                  <div className="mb-0.5 text-muted-foreground">{p.label}</div>
+                {(
+                  <div className="mb-0.5 text-muted-foreground" title={p.description}>{p.label}</div>
                 )}
                 <WidgetRenderer
                   spec={p}
                   value={data.params[p.name]}
+                  onEditStart={() => useGraphStore.getState().beginHistoryGroup(`param:${id}:${p.name}`)}
+                  onEditEnd={() => useGraphStore.getState().endHistoryGroup(`param:${id}:${p.name}`)}
                   onChange={(v) => setParam(id, p.name, v)}
                 />
               </div>
@@ -319,46 +292,16 @@ function GenericNodeImpl({ id, data: raw, selected }: NodeProps) {
           </div>
         )}
 
-        {firstOut &&
-          (firstOut[1].type === "image" ? (
-            <div className="border-t border-border bg-secondary/40 p-1">
-              <img
-                src={firstOut[1].value}
-                alt=""
-                title="点击查看大图 / 调整"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  useImageViewer
-                    .getState()
-                    .show(
-                      (firstOut[1] as Extract<PortValue, { type: "image" }>).value,
-                      data.label?.trim() || descriptor.displayName
-                    );
-                }}
-                className={cn(
-                  "nodrag w-full cursor-zoom-in rounded object-contain",
-                  isImageView ? "max-h-72" : "max-h-32"
-                )}
-              />
-            </div>
-          ) : isTextView ? (
-            <div className="border-t border-border bg-secondary/40 p-1">
-              <pre className="nodrag nowheel max-h-44 overflow-auto whitespace-pre-wrap break-all rounded bg-background/60 px-2 py-1 font-mono text-[10px] leading-snug">
-                {shortText(firstOut[1]).slice(0, 4000) || "（空）"}
-              </pre>
-            </div>
-          ) : (
-            <div
-              className="truncate border-t border-border bg-secondary/40 px-2 py-1 font-mono text-[10px]"
-              title={shortText(firstOut[1])}
-            >
-              {shortText(firstOut[1]) || "（空）"}
-            </div>
-          ))}
+        {descriptor.params.length > inlineParams.length && <button className="nodrag w-full border-t border-border py-1 text-[10px] text-primary" onClick={() => { setSelected(id); setInspectorTab("params"); }}>全部参数（{descriptor.params.length}）</button>}
+        {previewPorts.slice(0, 2).map((port) => <div key={port.name} className="border-t border-border bg-secondary/40 p-2">
+          <div className="mb-1 text-[9px] text-muted-foreground">{port.label}</div>
+          <OutputValue value={outputs[port.name]} compact={!["image_view", "text_view"].includes(descriptor.id)} previewKind={descriptor.presentation?.previews[port.name]} />
+        </div>)}
+        {previewPorts.length > 2 && <button className="nodrag w-full py-1 text-[10px] text-primary" onClick={() => { setSelected(id); setInspectorTab("output"); }}>查看全部 {previewPorts.length} 项输出</button>}
 
         {data.status === "error" && data.error && (
-          <div className="border-t border-destructive/30 bg-destructive/10 px-2 py-1 text-[10px] text-destructive">
-            {data.error}
+          <div className="nodrag nowheel nopan max-h-24 overflow-auto break-all border-t border-destructive/30 bg-destructive/10 px-2 py-1 text-[10px] text-destructive">
+            {data.error.slice(0, 600)}{data.error.length > 600 && "…（完整错误见侧栏）"}
           </div>
         )}
       </div>

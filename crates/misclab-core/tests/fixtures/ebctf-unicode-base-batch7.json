@@ -1,0 +1,6120 @@
+{
+  "revision": "ea2bc36dae31c97060f7f2cddad8df5518afad7b",
+  "vectors": [
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "A"
+        }
+      },
+      "params": {},
+      "text": "\">"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\">"
+        }
+      },
+      "params": {},
+      "text": "A"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hi"
+        }
+      },
+      "params": {},
+      "text": "/+B"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "/+B"
+        }
+      },
+      "params": {},
+      "text": "Hi"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abc"
+        }
+      },
+      "params": {},
+      "text": "$==3<"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "$==3<"
+        }
+      },
+      "params": {},
+      "text": "abc"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcd"
+        }
+      },
+      "params": {},
+      "text": "<!;>/="
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "<!;>/="
+        }
+      },
+      "params": {},
+      "text": "abcd"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcde"
+        }
+      },
+      "params": {},
+      "text": "&-&+:&&B"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "&-&+:&&B"
+        }
+      },
+      "params": {},
+      "text": "abcde"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdef"
+        }
+      },
+      "params": {},
+      "text": "\"\"C.9#=;&3"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\"\"C.9#=;&3"
+        }
+      },
+      "params": {},
+      "text": "abcdef"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdefg"
+        }
+      },
+      "params": {},
+      "text": "(2A2((A*D'@"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "(2A2((A*D'@"
+        }
+      },
+      "params": {},
+      "text": "abcdefg"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdefgh"
+        }
+      },
+      "params": {},
+      "text": "\"2,+C,-&3C)@-"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\"2,+C,-&3C)@-"
+        }
+      },
+      "params": {},
+      "text": "abcdefgh"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, 中文🙂"
+        }
+      },
+      "params": {},
+      "text": "?2)\"9B(1%B<9@:>(5+>!,(7-\"?"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "?2)\"9B(1%B<9@:>(5+>!,(7-\"?"
+        }
+      },
+      "params": {},
+      "text": "Hello, 中文🙂"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "﻿test"
+        }
+      },
+      "params": {},
+      "text": "310+2@\"''3-"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "310+2@\"''3-"
+        }
+      },
+      "params": {},
+      "text": "﻿test"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "\u0000\u0000Hello"
+        }
+      },
+      "params": {},
+      "text": "!!$C?.()78"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "!!$C?.()78"
+        }
+      },
+      "params": {},
+      "text": "\u0000\u0000Hello"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "A"
+        }
+      },
+      "params": {},
+      "text": "gA-AAAAAAAAAAA6="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "gA-AAAAAAAAAAA6="
+        }
+      },
+      "params": {},
+      "text": "A"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hi"
+        }
+      },
+      "params": {},
+      "text": "kAaAgAAAAAAAAA5="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "kAaAgAAAAAAAAA5="
+        }
+      },
+      "params": {},
+      "text": "Hi"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abc"
+        }
+      },
+      "params": {},
+      "text": "wATBHBwAAAAAAA4="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "wATBHBwAAAAAAA4="
+        }
+      },
+      "params": {},
+      "text": "abc"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcd"
+        }
+      },
+      "params": {},
+      "text": "wATBHB2AgAAAAA3="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "wATBHB2AgAAAAA3="
+        }
+      },
+      "params": {},
+      "text": "abcd"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcde"
+        }
+      },
+      "params": {},
+      "text": "wATBHB2AjAUAAA2="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "wATBHB2AjAUAAA2="
+        }
+      },
+      "params": {},
+      "text": "abcde"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdef"
+        }
+      },
+      "params": {},
+      "text": "wATBHB2AjAVAHB1="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "wATBHB2AjAVAHB1="
+        }
+      },
+      "params": {},
+      "text": "abcdef"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdefg"
+        }
+      },
+      "params": {},
+      "text": "wATBHB2AjAVAHBiB"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "wATBHB2AjAVAHBiB"
+        }
+      },
+      "params": {},
+      "text": "abcdefg"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdefgh"
+        }
+      },
+      "params": {},
+      "text": "wATBHB2AjAVAHBiB0AAAAAAAAAAAAA6="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "wATBHB2AjAVAHBiB0AAAAAAAAAAAAA6="
+        }
+      },
+      "params": {},
+      "text": "abcdefgh"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, 中文🙂"
+        }
+      },
+      "params": {},
+      "text": "kAZAtABBeB8ATBgAtBuAVAZB0AVBPArBKBhBwAgAAAAAAA4="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "kAZAtABBeB8ATBgAtBuAVAZB0AVBPArBKBhBwAgAAAAAAA4="
+        }
+      },
+      "params": {},
+      "text": "Hello, 中文🙂"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "﻿test"
+        }
+      },
+      "params": {},
+      "text": "yBpByByBjAVAhBvB"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "yBpByByBjAVAhBvB"
+        }
+      },
+      "params": {},
+      "text": "﻿test"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "\u0000\u0000Hello"
+        }
+      },
+      "params": {},
+      "text": "AAAAJAGArAxATBqB"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "AAAAJAGArAxATBqB"
+        }
+      },
+      "params": {},
+      "text": "\u0000\u0000Hello"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "A"
+        }
+      },
+      "params": {},
+      "text": "ҵ"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ҵ"
+        }
+      },
+      "params": {},
+      "text": "A"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hi"
+        }
+      },
+      "params": {},
+      "text": "ԋՈ"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ԋՈ"
+        }
+      },
+      "params": {},
+      "text": "Hi"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abc"
+        }
+      },
+      "params": {},
+      "text": "ٽȤ7"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ٽȤ7"
+        }
+      },
+      "params": {},
+      "text": "abc"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcd"
+        }
+      },
+      "params": {},
+      "text": "ٽȤൺ"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ٽȤൺ"
+        }
+      },
+      "params": {},
+      "text": "abcd"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcde"
+        }
+      },
+      "params": {},
+      "text": "ٽȤ൸ಶ"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ٽȤ൸ಶ"
+        }
+      },
+      "params": {},
+      "text": "abcde"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdef"
+        }
+      },
+      "params": {},
+      "text": "ٽȤ൸ಬܠ"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ٽȤ൸ಬܠ"
+        }
+      },
+      "params": {},
+      "text": "abcdef"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdefg"
+        }
+      },
+      "params": {},
+      "text": "ٽȤ൸ಬڥ7"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ٽȤ൸ಬڥ7"
+        }
+      },
+      "params": {},
+      "text": "abcdefg"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdefgh"
+        }
+      },
+      "params": {},
+      "text": "ٽȤ൸ಬڥୟ"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ٽȤ൸ಬڥୟ"
+        }
+      },
+      "params": {},
+      "text": "abcdefgh"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, 中文🙂"
+        }
+      },
+      "params": {},
+      "text": "ԋϠɲණరݐข௱ॺҢθЬВ"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ԋϠɲණరݐข௱ॺҢθЬВ"
+        }
+      },
+      "params": {},
+      "text": "Hello, 中文🙂"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "﻿test"
+        }
+      },
+      "params": {},
+      "text": "໔ඨඡಭя3"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "໔ඨඡಭя3"
+        }
+      },
+      "params": {},
+      "text": "﻿test"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "\u0000\u0000Hello"
+        }
+      },
+      "params": {},
+      "text": "8Qɤ൶ಊ7"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "8Qɤ൶ಊ7"
+        }
+      },
+      "params": {},
+      "text": "\u0000\u0000Hello"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "A"
+        }
+      },
+      "params": {},
+      "text": "ᕁ"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ᕁ"
+        }
+      },
+      "params": {},
+      "text": "A"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hi"
+        }
+      },
+      "params": {},
+      "text": "鹈"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "鹈"
+        }
+      },
+      "params": {},
+      "text": "Hi"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abc"
+        }
+      },
+      "params": {},
+      "text": "靡ᕣ"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "靡ᕣ"
+        }
+      },
+      "params": {},
+      "text": "abc"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcd"
+        }
+      },
+      "params": {},
+      "text": "靡饣"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "靡饣"
+        }
+      },
+      "params": {},
+      "text": "abcd"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcde"
+        }
+      },
+      "params": {},
+      "text": "靡饣ᕥ"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "靡饣ᕥ"
+        }
+      },
+      "params": {},
+      "text": "abcde"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdef"
+        }
+      },
+      "params": {},
+      "text": "靡饣魥"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "靡饣魥"
+        }
+      },
+      "params": {},
+      "text": "abcdef"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdefg"
+        }
+      },
+      "params": {},
+      "text": "靡饣魥ᕧ"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "靡饣魥ᕧ"
+        }
+      },
+      "params": {},
+      "text": "abcdefg"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdefgh"
+        }
+      },
+      "params": {},
+      "text": "靡饣魥鵧"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "靡饣魥鵧"
+        }
+      },
+      "params": {},
+      "text": "abcdefgh"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, 中文🙂"
+        }
+      },
+      "params": {},
+      "text": "驈ꍬ慯𦨠𣎸𡳦𧚇𡾟ᖂ"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "驈ꍬ慯𦨠𣎸𡳦𧚇𡾟ᖂ"
+        }
+      },
+      "params": {},
+      "text": "Hello, 中文🙂"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "﻿test"
+        }
+      },
+      "params": {},
+      "text": "𤇯𓊿𓅥ᕴ"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "𤇯𓊿𓅥ᕴ"
+        }
+      },
+      "params": {},
+      "text": "﻿test"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "\u0000\u0000Hello"
+        }
+      },
+      "params": {},
+      "text": "㐀驈ꍬᕯ"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "㐀驈ꍬᕯ"
+        }
+      },
+      "params": {},
+      "text": "\u0000\u0000Hello"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "A"
+        }
+      },
+      "params": {},
+      "text": "🏒☕☕☕"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "🏒☕☕☕"
+        }
+      },
+      "params": {},
+      "text": "A"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hi"
+        }
+      },
+      "params": {},
+      "text": "🏯🕸☕☕"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "🏯🕸☕☕"
+        }
+      },
+      "params": {},
+      "text": "Hi"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abc"
+        }
+      },
+      "params": {},
+      "text": "👖📸🎈☕"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "👖📸🎈☕"
+        }
+      },
+      "params": {},
+      "text": "abc"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcd"
+        }
+      },
+      "params": {},
+      "text": "👖📸🎦⚜"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "👖📸🎦⚜"
+        }
+      },
+      "params": {},
+      "text": "abcd"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcde"
+        }
+      },
+      "params": {},
+      "text": "👖📸🎦🌭"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "👖📸🎦🌭"
+        }
+      },
+      "params": {},
+      "text": "abcde"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdef"
+        }
+      },
+      "params": {},
+      "text": "👖📸🎦🌭👩☕☕☕"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "👖📸🎦🌭👩☕☕☕"
+        }
+      },
+      "params": {},
+      "text": "abcdef"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdefg"
+        }
+      },
+      "params": {},
+      "text": "👖📸🎦🌭👪🕎☕☕"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "👖📸🎦🌭👪🕎☕☕"
+        }
+      },
+      "params": {},
+      "text": "abcdefg"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdefgh"
+        }
+      },
+      "params": {},
+      "text": "👖📸🎦🌭👪🕕📒☕"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "👖📸🎦🌭👪🕕📒☕"
+        }
+      },
+      "params": {},
+      "text": "abcdefgh"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, 中文🙂"
+        }
+      },
+      "params": {},
+      "text": "🏯🔩🚗🌷🍸📠🏿🍵🥊🐹📍🍧🔹🇵☕☕"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "🏯🔩🚗🌷🍸📠🏿🍵🥊🐹📍🍧🔹🇵☕☕"
+        }
+      },
+      "params": {},
+      "text": "Hello, 中文🙂"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "﻿test"
+        }
+      },
+      "params": {},
+      "text": "🥮🥫🦓🌭💞🚼☕☕"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "🥮🥫🦓🌭💞🚼☕☕"
+        }
+      },
+      "params": {},
+      "text": "﻿test"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "\u0000\u0000Hello"
+        }
+      },
+      "params": {},
+      "text": "🀄🅾📫🐽💂😻☕☕"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "🀄🅾📫🐽💂😻☕☕"
+        }
+      },
+      "params": {},
+      "text": "\u0000\u0000Hello"
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "A"
+        }
+      },
+      "params": {},
+      "text": "ON2E====\nOR2R===="
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ON2E====\nOR2R===="
+        }
+      },
+      "params": {},
+      "text": "A"
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hi"
+        }
+      },
+      "params": {},
+      "text": "ON2E====\nOR2Y====\nOV3G====\nOZ3Z===="
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ON2E====\nOR2Y====\nOV3G====\nOZ3Z===="
+        }
+      },
+      "params": {},
+      "text": "Hi"
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abc"
+        }
+      },
+      "params": {},
+      "text": "ON2G====\nOR2R====\nOV3G====\nOZ3S====\nO54G====\nPB4T===="
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ON2G====\nOR2R====\nOV3G====\nOZ3S====\nO54G====\nPB4T===="
+        }
+      },
+      "params": {},
+      "text": "abc"
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcd"
+        }
+      },
+      "params": {},
+      "text": "ON2G====\nOR2R====\nOV3G====\nOZ3S====\nO54G====\nPB4T====\nPF5G====\nPJ5U===="
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ON2G====\nOR2R====\nOV3G====\nOZ3S====\nO54G====\nPB4T====\nPF5G====\nPJ5U===="
+        }
+      },
+      "params": {},
+      "text": "abcd"
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcde"
+        }
+      },
+      "params": {},
+      "text": "ON2G====\nOR2R====\nOV3G====\nOZ3S====\nO54G====\nPB4T====\nPF5G====\nPJ5U====\nPN6G====\nPR6V===="
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ON2G====\nOR2R====\nOV3G====\nOZ3S====\nO54G====\nPB4T====\nPF5G====\nPJ5U====\nPN6G====\nPR6V===="
+        }
+      },
+      "params": {},
+      "text": "abcde"
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdef"
+        }
+      },
+      "params": {},
+      "text": "ON2G====\nOR2R====\nOV3G====\nOZ3S====\nO54G====\nPB4T====\nPF5G====\nPJ5U====\nPN6G====\nPR6V====\nPV7G====\nPZ7W===="
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ON2G====\nOR2R====\nOV3G====\nOZ3S====\nO54G====\nPB4T====\nPF5G====\nPJ5U====\nPN6G====\nPR6V====\nPV7G====\nPZ7W===="
+        }
+      },
+      "params": {},
+      "text": "abcdef"
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdefg"
+        }
+      },
+      "params": {},
+      "text": "ON2G====\nOR2R====\nOV3G====\nOZ3S====\nO54G====\nPB4T====\nPF5G====\nPJ5U====\nPN6G====\nPR6V====\nPV7G====\nPZ7W====\nP6AG====\nQCAX===="
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ON2G====\nOR2R====\nOV3G====\nOZ3S====\nO54G====\nPB4T====\nPF5G====\nPJ5U====\nPN6G====\nPR6V====\nPV7G====\nPZ7W====\nP6AG====\nQCAX===="
+        }
+      },
+      "params": {},
+      "text": "abcdefg"
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdefgh"
+        }
+      },
+      "params": {},
+      "text": "ON2G====\nOR2R====\nOV3G====\nOZ3S====\nO54G====\nPB4T====\nPF5G====\nPJ5U====\nPN6G====\nPR6V====\nPV7G====\nPZ7W====\nP6AG====\nQCAX====\nQGBG====\nQKBY===="
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ON2G====\nOR2R====\nOV3G====\nOZ3S====\nO54G====\nPB4T====\nPF5G====\nPJ5U====\nPN6G====\nPR6V====\nPV7G====\nPZ7W====\nP6AG====\nQCAX====\nQGBG====\nQKBY===="
+        }
+      },
+      "params": {},
+      "text": "abcdefgh"
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, 中文🙂"
+        }
+      },
+      "params": {},
+      "text": "ON2E====\nOR2Y====\nOV3G====\nOZ3V====\nO54G====\nPB44====\nPF5G====\nPJ54====\nPN6G====\nPR67====\nPV7C====\nPZ74====\nP6AC====\nQCAQ====\nQGBO====\nQKBU====\nQOCL====\nQSCY====\nQWDK====\nQ2D5====\nQ6EO====\nRCEW====\nRGFJ====\nRKFW====\nROGI====\nRSGX====\nRWHP====\nR2HQ====\nR6IJ====\nSCI7====\nSGJJ====\nSKJZ====\nSOKI====\nSSKS===="
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ON2E====\nOR2Y====\nOV3G====\nOZ3V====\nO54G====\nPB44====\nPF5G====\nPJ54====\nPN6G====\nPR67====\nPV7C====\nPZ74====\nP6AC====\nQCAQ====\nQGBO====\nQKBU====\nQOCL====\nQSCY====\nQWDK====\nQ2D5====\nQ6EO====\nRCEW====\nRGFJ====\nRKFW====\nROGI====\nRSGX====\nRWHP====\nR2HQ====\nR6IJ====\nSCI7====\nSGJJ====\nSKJZ====\nSOKI====\nSSKS===="
+        }
+      },
+      "params": {},
+      "text": "Hello, 中文🙂"
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "﻿test"
+        }
+      },
+      "params": {},
+      "text": "ON2O====\nOR27====\nOV3L====\nOZ33====\nO54L====\nPB47====\nPF5H====\nPJ5U====\nPN6G====\nPR6V====\nPV7H====\nPZ7T====\nP6AH====\nQCAU===="
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ON2O====\nOR27====\nOV3L====\nOZ33====\nO54L====\nPB47====\nPF5H====\nPJ5U====\nPN6G====\nPR6V====\nPV7H====\nPZ7T====\nP6AH====\nQCAU===="
+        }
+      },
+      "params": {},
+      "text": "﻿test"
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "\u0000\u0000Hello"
+        }
+      },
+      "params": {},
+      "text": "ON2A====\nOR2Q====\nOV3A====\nOZ3Q====\nO54E====\nPB4Y====\nPF5G====\nPJ5V====\nPN6G====\nPR64====\nPV7G====\nPZ74====\nP6AG====\nQCA7===="
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ON2A====\nOR2Q====\nOV3A====\nOZ3Q====\nO54E====\nPB4Y====\nPF5G====\nPJ5V====\nPN6G====\nPR64====\nPV7G====\nPZ74====\nP6AG====\nQCA7===="
+        }
+      },
+      "params": {},
+      "text": "\u0000\u0000Hello"
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "A"
+        }
+      },
+      "params": {},
+      "text": "czB=\ncw==\nczJ="
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "czB=\ncw==\nczJ="
+        }
+      },
+      "params": {},
+      "text": "A"
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hi"
+        }
+      },
+      "params": {},
+      "text": "czB=\ncy==\nczI=\nc2==\nczS=\nc0=="
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "czB=\ncy==\nczI=\nc2==\nczS=\nc0=="
+        }
+      },
+      "params": {},
+      "text": "Hi"
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abc"
+        }
+      },
+      "params": {},
+      "text": "czB=\nc4==\nczJ=\nc2==\nczQ=\nc5==\ncza=\ncz=="
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "czB=\nc4==\nczJ=\nc2==\nczQ=\nc5==\ncza=\ncz=="
+        }
+      },
+      "params": {},
+      "text": "abc"
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcd"
+        }
+      },
+      "params": {},
+      "text": "czB=\nc4==\nczJ=\nc2==\nczQ=\nc5==\ncza=\ncz==\nczh=\nc5==\nczE="
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "czB=\nc4==\nczJ=\nc2==\nczQ=\nc5==\ncza=\ncz==\nczh=\nc5==\nczE="
+        }
+      },
+      "params": {},
+      "text": "abcd"
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcde"
+        }
+      },
+      "params": {},
+      "text": "czB=\nc4==\nczJ=\nc2==\nczQ=\nc5==\ncza=\ncz==\nczh=\nc5==\nczE=\nc2==\nczF=\nc0=="
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "czB=\nc4==\nczJ=\nc2==\nczQ=\nc5==\ncza=\ncz==\nczh=\nc5==\nczE=\nc2==\nczF=\nc0=="
+        }
+      },
+      "params": {},
+      "text": "abcde"
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdef"
+        }
+      },
+      "params": {},
+      "text": "czB=\nc4==\nczJ=\nc2==\nczQ=\nc5==\ncza=\ncz==\nczh=\nc5==\nczE=\nc2==\nczF=\nc1==\nczG=\nc2=="
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "czB=\nc4==\nczJ=\nc2==\nczQ=\nc5==\ncza=\ncz==\nczh=\nc5==\nczE=\nc2==\nczF=\nc1==\nczG=\nc2=="
+        }
+      },
+      "params": {},
+      "text": "abcdef"
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdefg"
+        }
+      },
+      "params": {},
+      "text": "czB=\nc4==\nczJ=\nc2==\nczQ=\nc5==\ncza=\ncz==\nczh=\nc5==\nczE=\nc2==\nczF=\nc1==\nczG=\nc2==\nczF=\nc5==\nczH="
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "czB=\nc4==\nczJ=\nc2==\nczQ=\nc5==\ncza=\ncz==\nczh=\nc5==\nczE=\nc2==\nczF=\nc1==\nczG=\nc2==\nczF=\nc5==\nczH="
+        }
+      },
+      "params": {},
+      "text": "abcdefg"
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "abcdefgh"
+        }
+      },
+      "params": {},
+      "text": "czB=\nc4==\nczJ=\nc2==\nczQ=\nc5==\ncza=\ncz==\nczh=\nc5==\nczE=\nc2==\nczF=\nc1==\nczG=\nc2==\nczF=\nc5==\nczH=\nc2==\nczK=\ncw=="
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "czB=\nc4==\nczJ=\nc2==\nczQ=\nc5==\ncza=\ncz==\nczh=\nc5==\nczE=\nc2==\nczF=\nc1==\nczG=\nc2==\nczF=\nc5==\nczH=\nc2==\nczK=\ncw=="
+        }
+      },
+      "params": {},
+      "text": "abcdefgh"
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello, 中文🙂"
+        }
+      },
+      "params": {},
+      "text": "czB=\ncy==\nczI=\nc2==\nczR=\nc1==\ncza=\nc8==\nczh=\nc7==\nczE=\nc2==\nczH=\nc8==\nczG=\nc8==\nczE=\nc4==\nczE=\nc+==\nczJ=\ncy==\nczL=\nc4==\nczK=\nc7==\nczJ=\nc+==\nczJ=\nc6==\nczN=\nc2==\nczO=\ncx==\nczP=\nc/==\nczM=\ncy==\nczN=\nc/==\nczS=\nc2==\nczR=\nc4==\nczQ=\nc4=="
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "czB=\ncy==\nczI=\nc2==\nczR=\nc1==\ncza=\nc8==\nczh=\nc7==\nczE=\nc2==\nczH=\nc8==\nczG=\nc8==\nczE=\nc4==\nczE=\nc+==\nczJ=\ncy==\nczL=\nc4==\nczK=\nc7==\nczJ=\nc+==\nczJ=\nc6==\nczN=\nc2==\nczO=\ncx==\nczP=\nc/==\nczM=\ncy==\nczN=\nc/==\nczS=\nc2==\nczR=\nc4==\nczQ=\nc4=="
+        }
+      },
+      "params": {},
+      "text": "Hello, 中文🙂"
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "﻿test"
+        }
+      },
+      "params": {},
+      "text": "czD=\nc7==\nczL=\nc7==\nczS=\nc+==\nczb=\nc/==\nczh=\nc9==\nczE=\nc2==\nczF=\nc1==\nczH=\ncz==\nczF=\nc9==\nczE="
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "czD=\nc7==\nczL=\nc7==\nczS=\nc+==\nczb=\nc/==\nczh=\nc9==\nczE=\nc2==\nczF=\nc1==\nczH=\ncz==\nczF=\nc9==\nczE="
+        }
+      },
+      "params": {},
+      "text": "﻿test"
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "\u0000\u0000Hello"
+        }
+      },
+      "params": {},
+      "text": "czA=\ncw==\nczI=\ncw==\nczQ=\ncx==\nczY=\nc4==\nczh=\nc5==\nczF=\nc2==\nczH=\ncx==\nczG=\nc8==\nczF=\nc7==\nczH="
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "czA=\ncw==\nczI=\ncw==\nczQ=\ncx==\nczY=\nc4==\nczh=\nc5==\nczF=\nc2==\nczH=\ncx==\nczG=\nc8==\nczF=\nc7==\nczH="
+        }
+      },
+      "params": {},
+      "text": "\u0000\u0000Hello"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "!"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "!"
+        }
+      },
+      "params": {},
+      "text": "\u0000"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "!!"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "!!"
+        }
+      },
+      "params": {},
+      "text": "\u0000\u0000"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            255
+          ]
+        }
+      },
+      "params": {},
+      "text": "($"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "($"
+        }
+      },
+      "params": {},
+      "bytes": [
+        255
+      ]
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            255,
+            128,
+            1,
+            65,
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "!/!%/,=$5"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "!/!%/,=$5"
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        255,
+        128,
+        1,
+        65,
+        0
+      ]
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157,
+            158,
+            159,
+            160,
+            161,
+            162,
+            163,
+            164,
+            165,
+            166,
+            167,
+            168,
+            169,
+            170,
+            171,
+            172,
+            173,
+            174,
+            175,
+            176,
+            177,
+            178,
+            179,
+            180,
+            181,
+            182,
+            183,
+            184,
+            185,
+            186,
+            187,
+            188,
+            189,
+            190,
+            191,
+            192,
+            193,
+            194,
+            195,
+            196,
+            197,
+            198,
+            199,
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229,
+            230,
+            231,
+            232,
+            233,
+            234,
+            235,
+            236,
+            237,
+            238,
+            239,
+            240,
+            241,
+            242,
+            243,
+            244,
+            245,
+            246,
+            247,
+            248,
+            249,
+            250,
+            251,
+            252,
+            253,
+            254,
+            255
+          ]
+        }
+      },
+      "params": {},
+      "text": "!\"')=A93'3?D4%0,A58682'*&D6))@'&;-018A<A/:;-B,*.C=76?9A;+2@>$<*1=-\"@%(==B.3@4.+$8>>6'<!%%:DD(DA2>1?#759A&>=#)B#7,A/82$A0D%=\"=+<=:026<+5@;<1:7D,''=1>D#6D,9>6(<#)A-;)*#&-(%(,%%6'!@<5$=-<38%D@8A8(:.=?519'6142?\"8?A4(C>\"2*?4:/$9=\"(98=5(=:%C=7C>?&').9#>;/>A8<7,B,#.>.)5;9<-9+5+3D67*=@<)+B/\"+-B0?<=D\"\"8?,<23120.'%C27:**?-@D<*%%8)-9!\"9%B'%-7,.),/!2;,7#DC&?A/%?:6-%=+&!B+4/6%,55B,\"52#\":3=8+$(/;A:,:;\"\"C:<"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "!\"')=A93'3?D4%0,A58682'*&D6))@'&;-018A<A/:;-B,*.C=76?9A;+2@>$<*1=-\"@%(==B.3@4.+$8>>6'<!%%:DD(DA2>1?#759A&>=#)B#7,A/82$A0D%=\"=+<=:026<+5@;<1:7D,''=1>D#6D,9>6(<#)A-;)*#&-(%(,%%6'!@<5$=-<38%D@8A8(:.=?519'6142?\"8?A4(C>\"2*?4:/$9=\"(98=5(=:%C=7C>?&').9#>;/>A8<7,B,#.>.)5;9<-9+5+3D67*=@<)+B/\"+-B0?<=D\"\"8?,<23120.'%C27:**?-@D<*%%8)-9!\"9%B'%-7,.),/!2;,7#DC&?A/%?:6-%=+&!B+4/6%,55B,\"52#\":3=8+$(/;A:,:;\"\"C:<"
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255
+      ]
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "AAAAAAAAAAAAAA6="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "AAAAAAAAAAAAAA6="
+        }
+      },
+      "params": {},
+      "text": "\u0000"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "AAAAAAAAAAAAAA5="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "AAAAAAAAAAAAAA5="
+        }
+      },
+      "params": {},
+      "text": "\u0000\u0000"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            255
+          ]
+        }
+      },
+      "params": {},
+      "text": "6B-AAAAAAAAAAA6="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "6B-AAAAAAAAAAA6="
+        }
+      },
+      "params": {},
+      "bytes": [
+        255
+      ]
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            255,
+            128,
+            1,
+            65,
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "AA/ArBAAKAEAAA1="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "AA/ArBAAKAEAAA1="
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        255,
+        128,
+        1,
+        65,
+        0
+      ]
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157,
+            158,
+            159,
+            160,
+            161,
+            162,
+            163,
+            164,
+            165,
+            166,
+            167,
+            168,
+            169,
+            170,
+            171,
+            172,
+            173,
+            174,
+            175,
+            176,
+            177,
+            178,
+            179,
+            180,
+            181,
+            182,
+            183,
+            184,
+            185,
+            186,
+            187,
+            188,
+            189,
+            190,
+            191,
+            192,
+            193,
+            194,
+            195,
+            196,
+            197,
+            198,
+            199,
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229,
+            230,
+            231,
+            232,
+            233,
+            234,
+            235,
+            236,
+            237,
+            238,
+            239,
+            240,
+            241,
+            242,
+            243,
+            244,
+            245,
+            246,
+            247,
+            248,
+            249,
+            250,
+            251,
+            252,
+            253,
+            254,
+            255
+          ]
+        }
+      },
+      "params": {},
+      "text": "AAAAgAgAYAQAKAGADA<ABAQALBsAYANAHADAdBBAIADBmAUAKAAB<AsB-AfB0AbAOAHAjAcB0BAA<AiARAEBEANBxAcALBpAVAKAgB<AkB4AZBwAYAHBBBzAhAPBnB3AcAOAnAjAUBrB1B+AfALBIAUASANAIAABjARAkBEAFBpAWAHBmAOBEBwBCAABkAOBqAVAqAgB6AcByAVBtASBLAQBtB4B-AcBxAYAnBBBrAZAJBjB0AVBIB2AeB1AXBqB4AcAuAnAbAMBlBxB7AZBPAXAOBoBzB4B/AfArBIAMAKAHAEA<AcBLBzB|AmAVALABBjAxAjB3B<AjASAEBgBSAUB0AZBxAZAIBmAuBEBnB1B/AgALBjBPB6AlAWAIBnAPBqA1AqAYByAWBuASBnBWAbAVAJBkB1AWBtAyBLAIBlByB8AZBqBSB3BGAHAFA>AdBxA4AnB+AjATAFBgBuBZAXBxB/AhAMBkB0A1BIBuAWBvATBnBxBWB9AhByB9AaBrB4A8AuAfATAGBhBuB1BdAeASBvAUBoByB7A5BPAPAGBiBvB1B4BZB6BCBiBwB2B5B/A/AqBzBAAAA3="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "AAAAgAgAYAQAKAGADA<ABAQALBsAYANAHADAdBBAIADBmAUAKAAB<AsB-AfB0AbAOAHAjAcB0BAA<AiARAEBEANBxAcALBpAVAKAgB<AkB4AZBwAYAHBBBzAhAPBnB3AcAOAnAjAUBrB1B+AfALBIAUASANAIAABjARAkBEAFBpAWAHBmAOBEBwBCAABkAOBqAVAqAgB6AcByAVBtASBLAQBtB4B-AcBxAYAnBBBrAZAJBjB0AVBIB2AeB1AXBqB4AcAuAnAbAMBlBxB7AZBPAXAOBoBzB4B/AfArBIAMAKAHAEA<AcBLBzB|AmAVALABBjAxAjB3B<AjASAEBgBSAUB0AZBxAZAIBmAuBEBnB1B/AgALBjBPB6AlAWAIBnAPBqA1AqAYByAWBuASBnBWAbAVAJBkB1AWBtAyBLAIBlByB8AZBqBSB3BGAHAFA>AdBxA4AnB+AjATAFBgBuBZAXBxB/AhAMBkB0A1BIBuAWBvATBnBxBWB9AhByB9AaBrB4A8AuAfATAGBhBuB1BdAeASBvAUBoByB7A5BPAPAGBiBvB1B4BZB6BCBiBwB2B5B/A/AqBzBAAAA3="
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255
+      ]
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "F"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "F"
+        }
+      },
+      "params": {},
+      "text": "\u0000"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "8Đ"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "8Đ"
+        }
+      },
+      "params": {},
+      "text": "\u0000\u0000"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            255
+          ]
+        }
+      },
+      "params": {},
+      "text": "ၕ"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ၕ"
+        }
+      },
+      "params": {},
+      "bytes": [
+        255
+      ]
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            255,
+            128,
+            1,
+            65,
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "FရAߧƶ"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "FရAߧƶ"
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        255,
+        128,
+        1,
+        65,
+        0
+      ]
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157,
+            158,
+            159,
+            160,
+            161,
+            162,
+            163,
+            164,
+            165,
+            166,
+            167,
+            168,
+            169,
+            170,
+            171,
+            172,
+            173,
+            174,
+            175,
+            176,
+            177,
+            178,
+            179,
+            180,
+            181,
+            182,
+            183,
+            184,
+            185,
+            186,
+            187,
+            188,
+            189,
+            190,
+            191,
+            192,
+            193,
+            194,
+            195,
+            196,
+            197,
+            198,
+            199,
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229,
+            230,
+            231,
+            232,
+            233,
+            234,
+            235,
+            236,
+            237,
+            238,
+            239,
+            240,
+            241,
+            242,
+            243,
+            244,
+            245,
+            246,
+            247,
+            248,
+            249,
+            250,
+            251,
+            252,
+            253,
+            254,
+            255
+          ]
+        }
+      },
+      "params": {},
+      "text": "8đߝđՌaʛʤƋٱӄʋGࡥԪࠁɊஜwеଣƩށญʣƿಝԚڅॠਸәϦڽࢰٱȥɦചઆюమԽݱౠ৵ဣĦҸɫǁࢷݢΖςھԳݑഴਢΚણսಭמಬॼச൛Аߣϧڍͳרഈࡊ୩૪आܔޚɼดяѱൿໄމലනဒฬడuՌࠐϦਜƿওӨХଣकࠐڗβԒರهȥঢචδҏဋՏࢦݢ੫о๖խધ൞୶൛ଚअૠڽخرคя௨ผܞߓƓ෧ƭওಉҘЧॲ௱کѵဋഢॺནર۹ຜڭخඟໃஏమʋݍस௱ฬԂޓ൮ഈཧఝʋ༱ৼґຮߓޥທߓဿཬ7"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "8đߝđՌaʛʤƋٱӄʋGࡥԪࠁɊஜwеଣƩށญʣƿಝԚڅॠਸәϦڽࢰٱȥɦചઆюమԽݱౠ৵ဣĦҸɫǁࢷݢΖςھԳݑഴਢΚણսಭמಬॼச൛Аߣϧڍͳרഈࡊ୩૪आܔޚɼดяѱൿໄމലනဒฬడuՌࠐϦਜƿওӨХଣकࠐڗβԒರهȥঢචδҏဋՏࢦݢ੫о๖խધ൞୶൛ଚअૠڽخرคя௨ผܞߓƓ෧ƭওಉҘЧॲ௱کѵဋഢॺནર۹ຜڭخඟໃஏమʋݍस௱ฬԂޓ൮ഈཧఝʋ༱ৼґຮߓޥທߓဿཬ7"
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255
+      ]
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "ᔀ"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ᔀ"
+        }
+      },
+      "params": {},
+      "text": "\u0000"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "㐀"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "㐀"
+        }
+      },
+      "params": {},
+      "text": "\u0000\u0000"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            255
+          ]
+        }
+      },
+      "params": {},
+      "text": "ᗿ"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ᗿ"
+        }
+      },
+      "params": {},
+      "bytes": [
+        255
+      ]
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            255,
+            128,
+            1,
+            65,
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "𨔀㖀㑁"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "𨔀㖀㑁"
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        255,
+        128,
+        1,
+        65,
+        0
+      ]
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157,
+            158,
+            159,
+            160,
+            161,
+            162,
+            163,
+            164,
+            165,
+            166,
+            167,
+            168,
+            169,
+            170,
+            171,
+            172,
+            173,
+            174,
+            175,
+            176,
+            177,
+            178,
+            179,
+            180,
+            181,
+            182,
+            183,
+            184,
+            185,
+            186,
+            187,
+            188,
+            189,
+            190,
+            191,
+            192,
+            193,
+            194,
+            195,
+            196,
+            197,
+            198,
+            199,
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229,
+            230,
+            231,
+            232,
+            233,
+            234,
+            235,
+            236,
+            237,
+            238,
+            239,
+            240,
+            241,
+            242,
+            243,
+            244,
+            245,
+            246,
+            247,
+            248,
+            249,
+            250,
+            251,
+            252,
+            253,
+            254,
+            255
+          ]
+        }
+      },
+      "params": {},
+      "text": "㔀㜂㤄㬆㴈㼊䄌䌎䔐䜒䤔䬖丘倚刜吞嘠堢娤尦帨怪戬搮昰栲樴氶游瀺爼琾癀硂穄籆繈聊艌葎虐衒詔豖蹘遚鉜鑞陠顢驤鱦鹨ꉪꕬ𒁮𒉰𓅲𓍴𔕶𖥸𠅺𠍼𠕾𠞀𠦂𠮄𠶆𠾈𡆊𡎌𡖎𡞐𡦒𡮔𡶖𡾘𢆚𢎜𢖞𢞠𢦢𢮤𢶦𢾨𣆪𣎬𣖮𣞰𣦲𣮴𣶶𣾸𤆺𤎼𤖾𤟀𤧂𤯄𤷆𤿈𥇊𥏌𥗎𥟐𥧒𥯔𥷖𥿘𦇚𦏜𦗞𦟠𦧢𦯤𦷦𦿨𧇪𧏬𧗮𧟰𧧲𧯴𧷶𧿸𨇺𨏼𨗾"
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "㔀㜂㤄㬆㴈㼊䄌䌎䔐䜒䤔䬖丘倚刜吞嘠堢娤尦帨怪戬搮昰栲樴氶游瀺爼琾癀硂穄籆繈聊艌葎虐衒詔豖蹘遚鉜鑞陠顢驤鱦鹨ꉪꕬ𒁮𒉰𓅲𓍴𔕶𖥸𠅺𠍼𠕾𠞀𠦂𠮄𠶆𠾈𡆊𡎌𡖎𡞐𡦒𡮔𡶖𡾘𢆚𢎜𢖞𢞠𢦢𢮤𢶦𢾨𣆪𣎬𣖮𣞰𣦲𣮴𣶶𣾸𤆺𤎼𤖾𤟀𤧂𤯄𤷆𤿈𥇊𥏌𥗎𥟐𥧒𥯔𥷖𥿘𦇚𦏜𦗞𦟠𦧢𦯤𦷦𦿨𧇪𧏬𧗮𧟰𧧲𧯴𧷶𧿸𨇺𨏼𨗾"
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255
+      ]
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "🀄☕☕☕"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "🀄☕☕☕"
+        }
+      },
+      "params": {},
+      "text": "\u0000"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "🀄🀄☕☕"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "🀄🀄☕☕"
+        }
+      },
+      "params": {},
+      "text": "\u0000\u0000"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            255
+          ]
+        }
+      },
+      "params": {},
+      "text": "🧒☕☕☕"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "🧒☕☕☕"
+        }
+      },
+      "params": {},
+      "bytes": [
+        255
+      ]
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            255,
+            128,
+            1,
+            65,
+            0
+          ]
+        }
+      },
+      "params": {},
+      "text": "🅱🧁🀄🐒🀄☕☕☕"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "🅱🧁🀄🐒🀄☕☕☕"
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        255,
+        128,
+        1,
+        65,
+        0
+      ]
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_encode",
+      "input": {
+        "data": {
+          "type": "bytes",
+          "value": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157,
+            158,
+            159,
+            160,
+            161,
+            162,
+            163,
+            164,
+            165,
+            166,
+            167,
+            168,
+            169,
+            170,
+            171,
+            172,
+            173,
+            174,
+            175,
+            176,
+            177,
+            178,
+            179,
+            180,
+            181,
+            182,
+            183,
+            184,
+            185,
+            186,
+            187,
+            188,
+            189,
+            190,
+            191,
+            192,
+            193,
+            194,
+            195,
+            196,
+            197,
+            198,
+            199,
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229,
+            230,
+            231,
+            232,
+            233,
+            234,
+            235,
+            236,
+            237,
+            238,
+            239,
+            240,
+            241,
+            242,
+            243,
+            244,
+            245,
+            246,
+            247,
+            248,
+            249,
+            250,
+            251,
+            252,
+            253,
+            254,
+            255
+          ]
+        }
+      },
+      "params": {},
+      "text": "🀄🆚🍈🚀🇩🌨💓🆓🇽🍸🙏🏜🌂🏏🌊📥🌖🐢👖🚔🌬👲😒🇲🍀📃🆒🏰🍔🔕🐚📹🍨🕺🕰🚨🍼😭🦂🈴🎐🚯🏛🐇🎩🤰🔡🔎🎽🦉🤽🚼🏓🇹🎞🌋🏧🌼📤🐛🏾🎌🛡🔢🐒🏣🍜🛢🐦🐶💧🌟🐺💆🚓🐯👎📘🌞🔶👢🔩👪🤕👶🗓😦🌵💊🙂🇱👃💞🛃🐮🕖💲🥇🖱🤩📆🦝🦖🍉📜🉐🏯👗📰🍐🔵🕳🔅🎥🥓🤾🔙🏺🎲🍝🔭👊📸👫🕌💚🤔🖲🕡📬🍰🥔🖌🔽💻🍱🗡😅🚧👿😉🚇🌴🗾😝🛰👾🥨😱🥛😺🎅🙅🧒🈳💓🚋🌒👂😒🚟🍤🗽🦂🚳🎹🦷🎞🛌🐎🐆💧🛶👞🕕😦🤠💮🥧🦖🤴🔁🏆🎲🥋🕝🔍💻🥟😙🤨😺🥵🚛🎄🦷🦍🤜📏🏆🦡🥯🚻📏🧒☕☕☕"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "🀄🆚🍈🚀🇩🌨💓🆓🇽🍸🙏🏜🌂🏏🌊📥🌖🐢👖🚔🌬👲😒🇲🍀📃🆒🏰🍔🔕🐚📹🍨🕺🕰🚨🍼😭🦂🈴🎐🚯🏛🐇🎩🤰🔡🔎🎽🦉🤽🚼🏓🇹🎞🌋🏧🌼📤🐛🏾🎌🛡🔢🐒🏣🍜🛢🐦🐶💧🌟🐺💆🚓🐯👎📘🌞🔶👢🔩👪🤕👶🗓😦🌵💊🙂🇱👃💞🛃🐮🕖💲🥇🖱🤩📆🦝🦖🍉📜🉐🏯👗📰🍐🔵🕳🔅🎥🥓🤾🔙🏺🎲🍝🔭👊📸👫🕌💚🤔🖲🕡📬🍰🥔🖌🔽💻🍱🗡😅🚧👿😉🚇🌴🗾😝🛰👾🥨😱🥛😺🎅🙅🧒🈳💓🚋🌒👂😒🚟🍤🗽🦂🚳🎹🦷🎞🛌🐎🐆💧🛶👞🕕😦🤠💮🥧🦖🤴🔁🏆🎲🥋🕝🔍💻🥟😙🤨😺🥵🚛🎄🦷🦍🤜📏🏆🦡🥯🚻📏🧒☕☕☕"
+        }
+      },
+      "params": {},
+      "bytes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255
+      ]
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hi中文"
+        }
+      },
+      "params": {
+        "radix": 2
+      },
+      "text": "\"!!\"!!!!\"\"!\"!!\"\"\"\"!!\"!!\"!\"\"\"!!!\"!\"!\"\"!\"\"\"\"!!\"\"!\"!!\"!\"\"!\"!!!!\"\"\""
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\"!!\"!!!!\"\"!\"!!\"\"\"\"!!\"!!\"!\"\"\"!!!\"!\"!\"\"!\"\"\"\"!!\"\"!\"!!\"!\"\"!\"!!!!\"\"\""
+        }
+      },
+      "params": {
+        "radix": 2
+      },
+      "text": "Hi中文"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hi中文"
+        }
+      },
+      "params": {
+        "radix": 8
+      },
+      "text": "%%\"&\"(\"\"$%#&&(\"&\"$#!("
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "%%\"&\"(\"\"$%#&&(\"&\"$#!("
+        }
+      },
+      "params": {
+        "radix": 8
+      },
+      "text": "Hi中文"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hi中文"
+        }
+      },
+      "params": {
+        "radix": 16
+      },
+      "text": "%)'*/%,)+./'*')("
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "%)'*/%,)+./'*')("
+        }
+      },
+      "params": {
+        "radix": 16
+      },
+      "text": "Hi中文"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hi中文"
+        }
+      },
+      "params": {
+        "radix": 36
+      },
+      "text": "\"$8'#!./@D4A8"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "\"$8'#!./@D4A8"
+        }
+      },
+      "params": {
+        "radix": 36
+      },
+      "text": "Hi中文"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hi中文"
+        }
+      },
+      "params": {
+        "radix": 62
+      },
+      "text": "'.=29XX;=V\""
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "'.=29XX;=V\""
+        }
+      },
+      "params": {
+        "radix": 62
+      },
+      "text": "Hi中文"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hi中文"
+        }
+      },
+      "params": {
+        "radix": 94
+      },
+      "text": "*+!_AYsS*\""
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "*+!_AYsS*\""
+        }
+      },
+      "params": {
+        "radix": 94
+      },
+      "text": "Hi中文"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ABC"
+        }
+      },
+      "params": {
+        "radix": 4,
+        "dict": "abcd"
+      },
+      "text": "baabbaacbaad"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "baabbaacbaad"
+        }
+      },
+      "params": {
+        "radix": 4,
+        "dict": "abcd"
+      },
+      "text": "ABC"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ABC"
+        }
+      },
+      "params": {
+        "radix": 95,
+        "dict": "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
+      },
+      "text": "%~t~"
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "%~t~"
+        }
+      },
+      "params": {
+        "radix": 95,
+        "dict": "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
+      },
+      "text": "ABC"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "x"
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "I|||AAAAAAAAAA6="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "I|||AAAAAAAAAA6="
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "x"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "xx"
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "I|m|||AAAAAAAA5="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "I|m|||AAAAAAAA5="
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "xx"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "xxx"
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "I|m|1|||AAAAAA4="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "I|m|1|||AAAAAA4="
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "xxx"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "xxxx"
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "I|m|1|9|E|AAAA3="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "I|m|1|9|E|AAAA3="
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "xxxx"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "xxxxx"
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "I|m|1|9|B|p>AA2="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "I|m|1|9|B|p>AA2="
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "xxxxx"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "xxxxxx"
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "I|m|1|9|B|o>Z>1="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "I|m|1|9|B|o>Z>1="
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "xxxxxx"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "xxxxxxx"
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "I|m|1|9|B|o>Z>R>"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "I|m|1|9|B|o>Z>R>"
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "xxxxxxx"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "xxxxxxxx"
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "I|m|1|9|B|o>Z>R>I|||AAAAAAAAAA6="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "I|m|1|9|B|o>Z>R>I|||AAAAAAAAAA6="
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "xxxxxxxx"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "xxxxxxxxx"
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "I|m|1|9|B|o>Z>R>I|m|||AAAAAAAA5="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "I|m|1|9|B|o>Z>R>I|m|||AAAAAAAA5="
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "xxxxxxxxx"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "xxxxxxxxxx"
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "I|m|1|9|B|o>Z>R>I|m|1|||AAAAAA4="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "I|m|1|9|B|o>Z>R>I|m|1|||AAAAAA4="
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "xxxxxxxxxx"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "xxxxxxxxxxx"
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "I|m|1|9|B|o>Z>R>I|m|1|9|E|AAAA3="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "I|m|1|9|B|o>Z>R>I|m|1|9|E|AAAA3="
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "xxxxxxxxxxx"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "xxxxxxxxxxxx"
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "I|m|1|9|B|o>Z>R>I|m|1|9|B|p>AA2="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "I|m|1|9|B|o>Z>R>I|m|1|9|B|p>AA2="
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "xxxxxxxxxxxx"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "xxxxxxxxxxxxx"
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "I|m|1|9|B|o>Z>R>I|m|1|9|B|o>Z>1="
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "I|m|1|9|B|o>Z>R>I|m|1|9|B|o>Z>1="
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "xxxxxxxxxxxxx"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "xxxxxxxxxxxxxx"
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "I|m|1|9|B|o>Z>R>I|m|1|9|B|o>Z>R>"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "I|m|1|9|B|o>Z>R>I|m|1|9|B|o>Z>R>"
+        }
+      },
+      "params": {
+        "dict": "|><*-/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+      },
+      "text": "xxxxxxxxxxxxxx"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "1234567"
+        }
+      },
+      "params": {},
+      "text": "YAHBBBzAhAPBnB3A"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "YAHBBBzAhAPBnB3AAAAAAAAAAAAA7="
+        }
+      },
+      "params": {},
+      "text": "1234567"
+    },
+    {
+      "operation": "base2048",
+      "node": "base2048_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "not-a-valid-code🙂"
+        }
+      },
+      "params": {
+        "strict": false
+      },
+      "bytes": [
+        5,
+        32,
+        168,
+        23,
+        129,
+        192,
+        98,
+        7,
+        1,
+        56,
+        36,
+        3,
+        224,
+        120,
+        21,
+        1,
+        240
+      ]
+    },
+    {
+      "operation": "base65536",
+      "node": "base65536_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ABC🙂"
+        }
+      },
+      "params": {
+        "strict": false
+      },
+      "text": "ABCB"
+    },
+    {
+      "operation": "ecoji",
+      "node": "ecoji_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "ABCDx"
+        }
+      },
+      "params": {
+        "strict": false
+      },
+      "text": "\u0000\u0000\u0000\u0000\u0000"
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Secret中文"
+        }
+      },
+      "params": {},
+      "text": "ON2F====\nOR2T====\nOV3G====\nOZ3V====\nO54G====\nPB4T====\nPF5H====\nPJ5S====\nPN6G====\nPR6V====\nPV7H====\nPZ7U====\nP6AO====\nQCAU====\nQGBL====\nQKBY====\nQOCK====\nQSC5====\nQWDO====\nQ2DW====\nQ6EJ====\nRCEW====\nRGFI====\nRKFX===="
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " ON2F==== \r\n OR2T==== \r\n OV3G==== \r\n OZ3V==== \r\n O54G==== \r\n PB4T==== \r\n PF5H==== \r\n PJ5S==== \r\n PN6G==== \r\n PR6V==== \r\n PV7H==== \r\n PZ7U==== \r\n P6AO==== \r\n QCAU==== \r\n QGBL==== \r\n QKBY==== \r\n QOCK==== \r\n QSC5==== \r\n QWDO==== \r\n Q2DW==== \r\n Q6EJ==== \r\n RCEW==== \r\n RGFI==== \r\n RKFX==== "
+        }
+      },
+      "params": {},
+      "text": "Secret中文"
+    },
+    {
+      "operation": "base32steg",
+      "node": "base32_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "plain line without padding"
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Secret中文"
+        }
+      },
+      "params": {},
+      "text": "czB=\nc0==\nczL=\nc2==\nczR=\nc1==\ncza=\ncz==\nczh=\nc8==\nczG=\nc2==\nczF=\nc1==\nczH=\nc0==\nczH=\nc5==\nczE=\nc7==\nczK=\ncy==\nczK=\nc9==\nczL=\nc5==\nczK=\nc5==\nczJ=\nc6==\nczM=\nc3=="
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " czB= \r\n c0== \r\n czL= \r\n c2== \r\n czR= \r\n c1== \r\n cza= \r\n cz== \r\n czh= \r\n c8== \r\n czG= \r\n c2== \r\n czF= \r\n c1== \r\n czH= \r\n c0== \r\n czH= \r\n c5== \r\n czE= \r\n c7== \r\n czK= \r\n cy== \r\n czK= \r\n c9== \r\n czL= \r\n c5== \r\n czK= \r\n c5== \r\n czJ= \r\n c6== \r\n czM= \r\n c3== "
+        }
+      },
+      "params": {},
+      "text": "Secret中文"
+    },
+    {
+      "operation": "base64steg",
+      "node": "base64_padding_stego_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "plain line without padding"
+        }
+      },
+      "params": {},
+      "text": ""
+    },
+    {
+      "operation": "radixN",
+      "node": "radix_n_encode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "Hello"
+        }
+      },
+      "params": {
+        "radix": 95
+      },
+      "error": "码表长度 94 不足以表示 95 进制"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "AA"
+        }
+      },
+      "params": {},
+      "error": "base69: 编码长度须为 16 的倍数（旧 7= 尾形态除外，且不得只有尾无数据体）"
+    },
+    {
+      "operation": "base69",
+      "node": "base69_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "AAAAAAAAAAAA7="
+        }
+      },
+      "params": {},
+      "error": "base69: 编码长度须为 16 的倍数（旧 7= 尾形态除外，且不得只有尾无数据体）"
+    }
+  ]
+}

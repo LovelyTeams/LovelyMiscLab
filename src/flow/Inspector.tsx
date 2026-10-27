@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Check, Copy, Link2, Play, StepForward } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Link2, Play, StepForward } from "lucide-react";
 
 import { ProgressBar } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
@@ -9,26 +9,9 @@ import { useGraphStore, type FlowNode } from "@/store/graph";
 import { useInspectorStore, type InspectorTab as Tab } from "@/store/inspector";
 
 import { nodeIcon } from "./nodeIcons";
-import { valueText } from "./portValue";
+import { OutputValue } from "./portValue";
 import { executeToNode, runSingleNode } from "./runner";
 import { WidgetRenderer } from "./WidgetRenderer";
-
-function CopyButton({ text }: { text: string }) {
-  const [done, setDone] = useState(false);
-  return (
-    <button
-      onClick={() => {
-        navigator.clipboard?.writeText(text).catch(() => {});
-        setDone(true);
-        setTimeout(() => setDone(false), 1200);
-      }}
-      className="flex items-center gap-1 rounded border border-border px-1.5 py-0.5 text-[10px] text-muted-foreground hover:bg-accent"
-    >
-      {done ? <Check className="h-3 w-3 text-green-600" /> : <Copy className="h-3 w-3" />}
-      复制
-    </button>
-  );
-}
 
 function StatusBadge({ status }: { status: FlowNode["data"]["status"] }) {
   const map = {
@@ -48,13 +31,32 @@ function StatusBadge({ status }: { status: FlowNode["data"]["status"] }) {
   );
 }
 
+function NodeNameField({ node, fallback }: { node: FlowNode; fallback: string }) {
+  const [draft, setDraft] = useState(node.data.label);
+  const cancelled = useRef(false);
+  useEffect(() => { setDraft(node.data.label); }, [node.data.label]);
+  return <input data-node-name aria-label="节点名称" value={draft} placeholder={fallback}
+    title="节点名称（可修改）"
+    onFocus={() => { cancelled.current = false; }}
+    onChange={(e) => setDraft(e.target.value)}
+    onBlur={() => {
+      if (!cancelled.current) useGraphStore.getState().renameNode(node.id, draft.trim() || node.data.label);
+      if (cancelled.current || !draft.trim()) setDraft(node.data.label);
+    }}
+    onKeyDown={(e) => {
+      if (e.nativeEvent.isComposing) return;
+      if (e.key === "Escape") { cancelled.current = true; e.preventDefault(); e.currentTarget.blur(); }
+      else if (e.key === "Enter") e.currentTarget.blur();
+    }}
+    className="min-w-0 flex-1 rounded border border-transparent bg-transparent text-sm font-semibold hover:border-border focus:border-input focus:bg-background focus:outline-none" />;
+}
+
 export function Inspector() {
   const selectedId = useGraphStore((s) => s.selectedId);
   const node = useGraphStore((s) => s.nodes.find((n) => n.id === selectedId));
   const setParam = useGraphStore((s) => s.setParam);
   const edges = useGraphStore((s) => s.edges);
   const toggleParamInput = useGraphStore((s) => s.toggleParamInput);
-  const renameNode = useGraphStore((s) => s.renameNode);
   const descriptor = useDescriptorStore((s) =>
     node ? s.byId[node.data.descriptorId] : undefined
   );
@@ -83,13 +85,7 @@ export function Inspector() {
           >
             <Icon className="h-4 w-4" />
           </span>
-          <input
-            value={node.data.label || descriptor.displayName}
-            onChange={(e) => renameNode(node.id, e.target.value)}
-            placeholder={descriptor.displayName}
-            title="节点名称（可修改）"
-            className="min-w-0 flex-1 rounded border border-transparent bg-transparent text-sm font-semibold hover:border-border focus:border-input focus:bg-background focus:outline-none"
-          />
+          <NodeNameField key={node.id} node={node} fallback={descriptor.displayName} />
           <div className="ml-auto shrink-0">
             <StatusBadge status={node.data.status} />
           </div>
@@ -188,8 +184,11 @@ export function Inspector() {
                         <WidgetRenderer
                           spec={p}
                           value={node.data.params[p.name]}
+                          onEditStart={() => useGraphStore.getState().beginHistoryGroup(`param:${node.id}:${p.name}`)}
+                          onEditEnd={() => useGraphStore.getState().endHistoryGroup(`param:${node.id}:${p.name}`)}
                           onChange={(v) => setParam(node.id, p.name, v)}
                         />
+                        {p.description && <p className="mt-1 text-[10px] text-muted-foreground">{p.description}</p>}
                         {promoted && (
                           <div className="mt-0.5 text-[9px] text-muted-foreground">
                             已开放为输入（未连接时用此值）
@@ -225,19 +224,8 @@ export function Inspector() {
                     <span className="text-[11px] font-medium text-muted-foreground">
                       {label}
                     </span>
-                    {val.type !== "image" && <CopyButton text={valueText(val)} />}
                   </div>
-                  {val.type === "image" ? (
-                    <img
-                      src={val.value}
-                      alt={label}
-                      className="max-h-64 w-full rounded border border-border bg-white object-contain"
-                    />
-                  ) : (
-                    <pre className="max-h-64 select-text overflow-auto whitespace-pre-wrap break-all rounded bg-background p-2 font-mono text-[10px] leading-snug">
-                      {valueText(val) || "（空）"}
-                    </pre>
-                  )}
+                  <OutputValue value={val} previewKind={descriptor.presentation?.previews[key]} />
                 </div>
               );
             })

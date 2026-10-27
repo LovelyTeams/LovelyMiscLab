@@ -94,14 +94,14 @@ export function newFlow() {
   useProjectStore.getState().reset();
 }
 
-export async function saveFlow() {
+export async function saveFlow(saveAs = false) {
   const project = buildProject();
   const json = JSON.stringify(project, null, 2);
   if (!inTauri) {
     downloadText(`${project.name || "流程"}.lml`, json);
     return;
   }
-  let path = useProjectStore.getState().path;
+  let path = saveAs ? null : useProjectStore.getState().path;
   if (!path) {
     const chosen = await save({ filters: FILTERS, defaultPath: `${project.name || "流程"}.lml` });
     if (typeof chosen !== "string") return;

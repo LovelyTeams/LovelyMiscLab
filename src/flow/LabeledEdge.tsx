@@ -22,6 +22,7 @@ export function LabeledEdge({
   sourceHandleId,
   markerEnd,
   style,
+  selected,
 }: EdgeProps) {
   const [path, labelX, labelY] = getBezierPath({
     sourceX,
@@ -44,7 +45,7 @@ export function LabeledEdge({
 
   return (
     <>
-      <BaseEdge id={id} path={path} markerEnd={markerEnd} style={style} />
+      <BaseEdge id={id} path={path} markerEnd={markerEnd} style={{ ...style, ...(selected ? { stroke: "var(--primary)", strokeWidth: 2.5 } : {}) }} />
       {(type || preview) && (
         <EdgeLabelRenderer>
           <div

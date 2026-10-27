@@ -1,0 +1,407 @@
+{
+  "version": 1,
+  "name": "三层解码与多分支校验",
+  "nodes": [
+    {
+      "id": "text_input_0",
+      "descriptorId": "text_input",
+      "label": "文本输入",
+      "color": "#64748b",
+      "params": {
+        "text": "%35%72%57%4C%36%4B%2B%56%35%6F%71%6C%35%5A%47%4B%44%51%70%7A%65%57%35%30%65%2B%57%6B%6A%65%61%64%67%6C%2F%6C%69%49%62%6D%6C%4B%39%66%4D%6A%41%79%4E%6E%30%4E%43%6D%46%69%64%6D%5A%79%4F%69%41%30%4D%67%30%4B%63%33%6C%75%64%48%74%75%65%57%4E%31%62%6C%38%79%4D%44%49%32%66%51%30%4B%63%33%6C%75%64%48%76%6C%70%49%33%6D%6E%59%4A%66%35%59%69%47%35%70%53%76%58%7A%49%77%4D%6A%5A%39%44%51%6F%3D"
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 40,
+        "y": 60
+      }
+    },
+    {
+      "id": "url_decode_1",
+      "descriptorId": "url_decode",
+      "label": "URL 解码",
+      "color": "#22c55e",
+      "params": {
+        "plus": false,
+        "trim": false,
+        "strict": true,
+        "utf8": true
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 320,
+        "y": 60
+      }
+    },
+    {
+      "id": "base64_decode_2",
+      "descriptorId": "base64_decode",
+      "label": "Base64 解码",
+      "color": "#22c55e",
+      "params": {
+        "variant": "标准",
+        "alphabet": "",
+        "padding": true,
+        "urlsafe": false
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 600,
+        "y": 60
+      }
+    },
+    {
+      "id": "rot13_3",
+      "descriptorId": "rot13",
+      "label": "ROT13",
+      "color": "#a855f7",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 880,
+        "y": 60
+      }
+    },
+    {
+      "id": "regex_extract_4",
+      "descriptorId": "regex_extract",
+      "label": "正则提取",
+      "color": "#14b8a6",
+      "params": {
+        "preset": "flag",
+        "pattern": "flag\\{[^}]*\\}"
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1160,
+        "y": 60
+      }
+    },
+    {
+      "id": "text_output_5",
+      "descriptorId": "text_output",
+      "label": "文本输出",
+      "color": "#64748b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1440,
+        "y": 60
+      }
+    },
+    {
+      "id": "hash_6",
+      "descriptorId": "hash",
+      "label": "哈希计算",
+      "color": "#f59e0b",
+      "params": {
+        "algorithm": "SHA256"
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1440,
+        "y": 240
+      }
+    },
+    {
+      "id": "text_output_7",
+      "descriptorId": "text_output",
+      "label": "文本输出",
+      "color": "#64748b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1720,
+        "y": 60
+      }
+    },
+    {
+      "id": "join_list_8",
+      "descriptorId": "join_list",
+      "label": "列表合并",
+      "color": "#64748b",
+      "params": {
+        "sep": "换行"
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1440,
+        "y": 525
+      }
+    },
+    {
+      "id": "unique_lines_9",
+      "descriptorId": "unique_lines",
+      "label": "行去重",
+      "color": "#14b8a6",
+      "params": {
+        "count": false
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1720,
+        "y": 267
+      }
+    },
+    {
+      "id": "sort_lines_10",
+      "descriptorId": "sort_lines",
+      "label": "行排序",
+      "color": "#14b8a6",
+      "params": {
+        "order": "字母升序"
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 2000,
+        "y": 60
+      }
+    },
+    {
+      "id": "text_output_11",
+      "descriptorId": "text_output",
+      "label": "文本输出",
+      "color": "#64748b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 2280,
+        "y": 60
+      }
+    },
+    {
+      "id": "base64_encode_12",
+      "descriptorId": "base64_encode",
+      "label": "Base64 编码",
+      "color": "#22c55e",
+      "params": {
+        "variant": "标准",
+        "alphabet": "",
+        "padding": true,
+        "urlsafe": false
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1440,
+        "y": 810
+      }
+    },
+    {
+      "id": "base64_decode_13",
+      "descriptorId": "base64_decode",
+      "label": "Base64 解码",
+      "color": "#22c55e",
+      "params": {
+        "variant": "标准",
+        "alphabet": "",
+        "padding": true,
+        "urlsafe": false
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1720,
+        "y": 535
+      }
+    },
+    {
+      "id": "text_output_14",
+      "descriptorId": "text_output",
+      "label": "文本输出",
+      "color": "#64748b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 2000,
+        "y": 331
+      }
+    },
+    {
+      "id": "concat_15",
+      "descriptorId": "concat",
+      "label": "文本合并",
+      "color": "#14b8a6",
+      "params": {
+        "sep": "\n"
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 1720,
+        "y": 1032
+      }
+    },
+    {
+      "id": "ai_judge_16",
+      "descriptorId": "ai_judge",
+      "label": "AI 判断",
+      "color": "#a855f7",
+      "params": {
+        "system": "你是一名 CTF misc 解题助手，回答简洁、只给结论。",
+        "instruction": "请用中文简要说明收到的 flag 和 SHA256 摘要，并原样引用这两个值；不要重新计算摘要。",
+        "format": ""
+      },
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 2000,
+        "y": 511
+      }
+    },
+    {
+      "id": "text_output_17",
+      "descriptorId": "text_output",
+      "label": "文本输出",
+      "color": "#64748b",
+      "params": {},
+      "inputParams": [],
+      "disabled": false,
+      "position": {
+        "x": 2280,
+        "y": 254
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "xy-edge__text_input_0text-url_decode_1text",
+      "source": "text_input_0",
+      "sourceHandle": "text",
+      "target": "url_decode_1",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__url_decode_1text-base64_decode_2text",
+      "source": "url_decode_1",
+      "sourceHandle": "text",
+      "target": "base64_decode_2",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__base64_decode_2text-rot13_3text",
+      "source": "base64_decode_2",
+      "sourceHandle": "text",
+      "target": "rot13_3",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__rot13_3text-regex_extract_4text",
+      "source": "rot13_3",
+      "sourceHandle": "text",
+      "target": "regex_extract_4",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__regex_extract_4text-text_output_5text",
+      "source": "regex_extract_4",
+      "sourceHandle": "text",
+      "target": "text_output_5",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__regex_extract_4text-hash_6data",
+      "source": "regex_extract_4",
+      "sourceHandle": "text",
+      "target": "hash_6",
+      "targetHandle": "data"
+    },
+    {
+      "id": "xy-edge__hash_6text-text_output_7text",
+      "source": "hash_6",
+      "sourceHandle": "text",
+      "target": "text_output_7",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__regex_extract_4matches-join_list_8list",
+      "source": "regex_extract_4",
+      "sourceHandle": "matches",
+      "target": "join_list_8",
+      "targetHandle": "list"
+    },
+    {
+      "id": "xy-edge__join_list_8text-unique_lines_9text",
+      "source": "join_list_8",
+      "sourceHandle": "text",
+      "target": "unique_lines_9",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__unique_lines_9text-sort_lines_10text",
+      "source": "unique_lines_9",
+      "sourceHandle": "text",
+      "target": "sort_lines_10",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__sort_lines_10text-text_output_11text",
+      "source": "sort_lines_10",
+      "sourceHandle": "text",
+      "target": "text_output_11",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__regex_extract_4text-base64_encode_12text",
+      "source": "regex_extract_4",
+      "sourceHandle": "text",
+      "target": "base64_encode_12",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__base64_encode_12text-base64_decode_13text",
+      "source": "base64_encode_12",
+      "sourceHandle": "text",
+      "target": "base64_decode_13",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__base64_decode_13text-text_output_14text",
+      "source": "base64_decode_13",
+      "sourceHandle": "text",
+      "target": "text_output_14",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__regex_extract_4text-concat_15a",
+      "source": "regex_extract_4",
+      "sourceHandle": "text",
+      "target": "concat_15",
+      "targetHandle": "a"
+    },
+    {
+      "id": "xy-edge__hash_6text-concat_15b",
+      "source": "hash_6",
+      "sourceHandle": "text",
+      "target": "concat_15",
+      "targetHandle": "b"
+    },
+    {
+      "id": "xy-edge__concat_15text-ai_judge_16text",
+      "source": "concat_15",
+      "sourceHandle": "text",
+      "target": "ai_judge_16",
+      "targetHandle": "text"
+    },
+    {
+      "id": "xy-edge__ai_judge_16text-text_output_17text",
+      "source": "ai_judge_16",
+      "sourceHandle": "text",
+      "target": "text_output_17",
+      "targetHandle": "text"
+    }
+  ]
+}

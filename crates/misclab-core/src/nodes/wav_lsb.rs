@@ -7,7 +7,13 @@ use super::image_util::input_bytes;
 use super::prelude::*;
 
 /// Pull `nbits` LSBs from each selected sample and pack them into bytes.
-fn extract_lsb(a: &Audio, nbits: u32, channel: &str, msb_first: bool) -> Vec<u8> {
+fn extract_lsb(
+    a: &Audio,
+    nbits: u32,
+    channel: &str,
+    msb_first: bool,
+    cancel: &crate::cancel::CancellationToken,
+) -> Result<Vec<u8>, CoreError> {
     let ch = a.channels.max(1) as usize;
     let start = match channel {
         "左声道" => 0,
@@ -19,6 +25,9 @@ fn extract_lsb(a: &Audio, nbits: u32, channel: &str, msb_first: bool) -> Vec<u8>
     let mut bits: Vec<u8> = Vec::new();
     let mut i = start;
     while i < a.ints.len() {
+        if ((i - start) / step).is_multiple_of(4096) {
+            cancel.check()?;
+        }
         let s = a.ints[i] as u32;
         if msb_first {
             for k in (0..nbits).rev() {
@@ -40,7 +49,8 @@ fn extract_lsb(a: &Audio, nbits: u32, channel: &str, msb_first: bool) -> Vec<u8>
         }
         out.push(b);
     }
-    out
+    cancel.check()?;
+    Ok(out)
 }
 
 struct N;
@@ -49,8 +59,9 @@ impl Node for N {
         &self,
         inputs: &PortMap,
         p: &serde_json::Value,
-        _c: &mut NodeCtx,
+        ctx: &mut NodeCtx,
     ) -> Result<PortMap, CoreError> {
+        ctx.check_cancel()?;
         let bytes = input_bytes(inputs, "data")?;
         let a = decode_wav(&bytes)?;
         if a.ints.is_empty() {
@@ -62,7 +73,8 @@ impl Node for N {
         let channel = pstr(p, "channel", "全部(交错)");
         let msb_first = pstr(p, "bitOrder", "MSB优先") == "MSB优先";
 
-        let out = extract_lsb(&a, nbits, channel, msb_first);
+        let out = extract_lsb(&a, nbits, channel, msb_first, ctx.cancel)?;
+        ctx.progress(1.0);
         let preview = String::from_utf8_lossy(&out).into_owned();
 
         let mut m = PortMap::new();
@@ -71,7 +83,10 @@ impl Node for N {
             PortValue::Bytes(Arc::from(out.clone().into_boxed_slice())),
         );
         m.insert("text".into(), PortValue::Text(preview));
-        m.insert("hex".into(), PortValue::Text(hex::encode(&out[..out.len().min(4096)])));
+        m.insert(
+            "hex".into(),
+            PortValue::Text(hex::encode(&out[..out.len().min(4096)])),
+        );
         Ok(m)
     }
 }
@@ -127,7 +142,10 @@ mod tests {
             .collect();
         let wav = encode_wav_i16(&samples, 8000, 1);
         let a = decode_wav(&wav).unwrap();
-        let out = extract_lsb(&a, 1, "全部(交错)", true);
+        let cancel = crate::cancel::CancellationToken::new();
+        let out = extract_lsb(&a, 1, "全部(交错)", true, &cancel).unwrap();
         assert!(out.starts_with(msg), "got: {:?}", &out[..out.len().min(20)]);
+        cancel.cancel();
+        assert!(extract_lsb(&a, 1, "全部(交错)", true, &cancel).is_err());
     }
 }

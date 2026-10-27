@@ -5,14 +5,9 @@
 use super::prelude::*;
 
 // ---- alphabet presets (CyberChef-compatible, `-` denotes a range) ----------
-pub const B32_STANDARD: &str = "A-Z2-7=";
-pub const B32_HEX: &str = "0-9A-V=";
-pub const B58_BITCOIN: &str =
-    "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
-pub const B58_RIPPLE: &str =
-    "rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz";
+pub const B58_BITCOIN: &str = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+pub const B58_RIPPLE: &str = "rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz";
 pub const B62_STANDARD: &str = "0-9A-Za-z";
-pub const B45_ALPHABET: &str = "0-9A-Z $%*+\\-./:";
 pub const B85_STANDARD: &str = "!-u";
 pub const B85_Z85: &str = "0-9a-zA-Z.\\-:+=^!/*?&<>()[]{}@%$#";
 pub const B85_IPV6: &str = "0-9A-Za-z!#$%&()*+\\-;<=>?@^_`{|}~";
@@ -61,8 +56,17 @@ pub fn decoded(bytes: Vec<u8>) -> PortMap {
 /// Encode bytes as a base-N string. `preserve_zeros` keeps leading zero bytes as
 /// leading `alphabet[0]` (Base58 behavior); off drops them (Base62/bignum).
 pub fn radix_encode(input: &[u8], alphabet: &[char], preserve_zeros: bool) -> String {
+    radix_encode_checked(input, alphabet, preserve_zeros, None).expect("uncancelled radix encoding")
+}
+
+pub fn radix_encode_checked(
+    input: &[u8],
+    alphabet: &[char],
+    preserve_zeros: bool,
+    ctx: Option<&NodeCtx>,
+) -> Result<String, CoreError> {
     if input.is_empty() {
-        return String::new();
+        return Ok(String::new());
     }
     let base = alphabet.len();
     let mut zero_prefix = 0usize;
@@ -76,7 +80,13 @@ pub fn radix_encode(input: &[u8], alphabet: &[char], preserve_zeros: bool) -> St
         }
     }
     let mut result: Vec<usize> = Vec::new();
-    for &b in input {
+    for (index, &b) in input.iter().enumerate() {
+        if let Some(ctx) = ctx {
+            if index.is_multiple_of(64) {
+                ctx.progress(index as f32 / input.len() as f32);
+                ctx.check_cancel()?;
+            }
+        }
         let mut carry = b as usize;
         for r in result.iter_mut() {
             carry += *r << 8;
@@ -95,7 +105,11 @@ pub fn radix_encode(input: &[u8], alphabet: &[char], preserve_zeros: bool) -> St
     for _ in 0..zero_prefix {
         s.insert(0, alphabet[0]);
     }
-    s
+    if let Some(ctx) = ctx {
+        ctx.progress(1.0);
+        ctx.check_cancel()?;
+    }
+    Ok(s)
 }
 
 pub fn radix_decode(
@@ -104,7 +118,20 @@ pub fn radix_decode(
     preserve_zeros: bool,
     strip: bool,
 ) -> Result<Vec<u8>, CoreError> {
-    let chars: Vec<char> = input.chars().collect();
+    radix_decode_checked(input, alphabet, preserve_zeros, strip, None)
+}
+
+pub fn radix_decode_checked(
+    input: &str,
+    alphabet: &[char],
+    preserve_zeros: bool,
+    strip: bool,
+    ctx: Option<&NodeCtx>,
+) -> Result<Vec<u8>, CoreError> {
+    let chars: Vec<char> = input
+        .chars()
+        .filter(|c| !strip || alphabet.contains(c))
+        .collect();
     if chars.is_empty() {
         return Ok(Vec::new());
     }
@@ -121,6 +148,12 @@ pub fn radix_decode(
     }
     let mut result: Vec<usize> = Vec::new();
     for (pos, &c) in chars.iter().enumerate() {
+        if let Some(ctx) = ctx {
+            if pos.is_multiple_of(64) {
+                ctx.progress(pos as f32 / chars.len() as f32);
+                ctx.check_cancel()?;
+            }
+        }
         let idx = match alphabet.iter().position(|&a| a == c) {
             Some(i) => i,
             None if strip => continue,
@@ -143,116 +176,11 @@ pub fn radix_decode(
     }
     result.extend(std::iter::repeat_n(0, zero_prefix));
     result.reverse();
+    if let Some(ctx) = ctx {
+        ctx.progress(1.0);
+        ctx.check_cancel()?;
+    }
     Ok(result.iter().map(|&b| b as u8).collect())
-}
-
-// ---- Base32 (RFC 4648) -----------------------------------------------------
-
-pub fn base32_encode(input: &[u8], alphabet: &[char]) -> String {
-    let mut out = String::new();
-    let mut i = 0;
-    while i < input.len() {
-        let chr1 = input[i];
-        let chr2 = input.get(i + 1).copied();
-        let chr3 = input.get(i + 2).copied();
-        let chr4 = input.get(i + 3).copied();
-        let chr5 = input.get(i + 4).copied();
-        i += 5;
-
-        let (c1, c2, c3, c4, c5) = (
-            chr1 as u32,
-            chr2.unwrap_or(0) as u32,
-            chr3.unwrap_or(0) as u32,
-            chr4.unwrap_or(0) as u32,
-            chr5.unwrap_or(0) as u32,
-        );
-
-        let enc1 = c1 >> 3;
-        let enc2 = ((c1 & 7) << 2) | (c2 >> 6);
-        let mut enc3 = (c2 >> 1) & 31;
-        let mut enc4 = ((c2 & 1) << 4) | (c3 >> 4);
-        let mut enc5 = ((c3 & 15) << 1) | (c4 >> 7);
-        let mut enc6 = (c4 >> 2) & 31;
-        let mut enc7 = ((c4 & 3) << 3) | (c5 >> 5);
-        let mut enc8 = c5 & 31;
-
-        if chr2.is_none() {
-            enc3 = 32;
-            enc4 = 32;
-            enc5 = 32;
-            enc6 = 32;
-            enc7 = 32;
-            enc8 = 32;
-        } else if chr3.is_none() {
-            enc5 = 32;
-            enc6 = 32;
-            enc7 = 32;
-            enc8 = 32;
-        } else if chr4.is_none() {
-            enc6 = 32;
-            enc7 = 32;
-            enc8 = 32;
-        } else if chr5.is_none() {
-            enc8 = 32;
-        }
-
-        for e in [enc1, enc2, enc3, enc4, enc5, enc6, enc7, enc8] {
-            out.push(alphabet[e as usize]);
-        }
-    }
-    out
-}
-
-pub fn base32_decode(input: &str, alphabet: &[char], strip: bool) -> Vec<u8> {
-    let chars: Vec<char> = if strip {
-        input.chars().filter(|c| alphabet.contains(c)).collect()
-    } else {
-        input.chars().collect()
-    };
-    let idx = |k: usize| -> i32 {
-        let ch = chars.get(k).copied().unwrap_or('=');
-        alphabet
-            .iter()
-            .position(|&a| a == ch)
-            .map(|p| p as i32)
-            .unwrap_or(-1)
-    };
-    let mut out = Vec::new();
-    let mut i = 0;
-    while i < chars.len() {
-        let (enc1, enc2, enc3, enc4, enc5, enc6, enc7, enc8) = (
-            idx(i),
-            idx(i + 1),
-            idx(i + 2),
-            idx(i + 3),
-            idx(i + 4),
-            idx(i + 5),
-            idx(i + 6),
-            idx(i + 7),
-        );
-        i += 8;
-
-        let chr1 = (enc1 << 3) | (enc2 >> 2);
-        let chr2 = ((enc2 & 3) << 6) | (enc3 << 1) | (enc4 >> 4);
-        let chr3 = ((enc4 & 15) << 4) | (enc5 >> 1);
-        let chr4 = ((enc5 & 1) << 7) | (enc6 << 2) | (enc7 >> 3);
-        let chr5 = ((enc7 & 7) << 5) | enc8;
-
-        out.push((chr1 & 0xff) as u8);
-        if (enc2 & 3) != 0 || enc3 != 32 {
-            out.push((chr2 & 0xff) as u8);
-        }
-        if (enc4 & 15) != 0 || enc5 != 32 {
-            out.push((chr3 & 0xff) as u8);
-        }
-        if (enc5 & 1) != 0 || enc6 != 32 {
-            out.push((chr4 & 0xff) as u8);
-        }
-        if (enc7 & 7) != 0 || enc8 != 32 {
-            out.push((chr5 & 0xff) as u8);
-        }
-    }
-    out
 }
 
 // ---- Base45 (RFC 9285) -----------------------------------------------------
@@ -284,11 +212,7 @@ pub fn base45_encode(input: &[u8], alphabet: &[char]) -> String {
     res
 }
 
-pub fn base45_decode(
-    input: &str,
-    alphabet: &[char],
-    strip: bool,
-) -> Result<Vec<u8>, CoreError> {
+pub fn base45_decode(input: &str, alphabet: &[char], strip: bool) -> Result<Vec<u8>, CoreError> {
     let chars: Vec<char> = if strip {
         input.chars().filter(|c| alphabet.contains(c)).collect()
     } else {
@@ -296,6 +220,9 @@ pub fn base45_decode(
     };
     let mut res = Vec::new();
     for triple in chars.chunks(3) {
+        if triple.len() == 1 {
+            return Err(CoreError::Parse("Base45 末组不能只有一个字符".into()));
+        }
         let mut b: u32 = 0;
         for &c in triple.iter().rev() {
             let idx = alphabet
@@ -304,7 +231,7 @@ pub fn base45_decode(
                 .ok_or_else(|| CoreError::Parse(format!("字符不在码表中: '{c}'")))?;
             b = b * 45 + idx as u32;
         }
-        if b > 65535 {
+        if b > 65535 || (triple.len() == 2 && b > 255) {
             return Err(CoreError::Parse(format!(
                 "三元组过大: '{}'",
                 triple.iter().collect::<String>()
@@ -321,7 +248,7 @@ pub fn base45_decode(
 // ---- Base85 / Ascii85 ------------------------------------------------------
 
 fn strip_delims(s: &str) -> String {
-    if s.len() >= 5 && s.starts_with("<~") && s.ends_with("~>") {
+    if s.len() >= 4 && s.starts_with("<~") && s.ends_with("~>") {
         s[2..s.len() - 2].to_string()
     } else {
         s.to_string()
@@ -334,9 +261,6 @@ pub fn base85_encode(
     standard: bool,
     include_delim: bool,
 ) -> String {
-    if input.is_empty() {
-        return String::new();
-    }
     let n = input.len();
     let mut result = String::new();
     let mut i = 0;
@@ -345,7 +269,7 @@ pub fn base85_encode(
             + ((*input.get(i + 1).unwrap_or(&0) as u64) << 16)
             + ((*input.get(i + 2).unwrap_or(&0) as u64) << 8)
             + (*input.get(i + 3).unwrap_or(&0) as u64);
-        if !standard || block > 0 {
+        if !standard || block > 0 || i + 4 > n {
             let mut digits = [0usize; 5];
             let mut b = block;
             for d in digits.iter_mut() {
@@ -397,6 +321,9 @@ pub fn base85_decode(
             continue;
         }
         let take = (n - i).min(5);
+        if take == 1 {
+            return Err(CoreError::Parse("Base85 尾组至少需要两个字符".into()));
+        }
         let mut d = [84u64; 5];
         for (k, slot) in d.iter_mut().enumerate() {
             if k < take {
@@ -404,16 +331,15 @@ pub fn base85_decode(
                 match alphabet.iter().position(|&a| a == c) {
                     Some(p) => *slot = p as u64,
                     None => {
-                        return Err(CoreError::Parse(format!(
-                            "非法字符 '{c}' 于位置 {}",
-                            i + k
-                        )))
+                        return Err(CoreError::Parse(format!("非法字符 '{c}' 于位置 {}", i + k)))
                     }
                 }
             }
         }
-        let block =
-            (d[0] * 52200625 + d[1] * 614125 + d[2] * 7225 + d[3] * 85 + d[4]) & 0xffffffff;
+        let block = d[0] * 52200625 + d[1] * 614125 + d[2] * 7225 + d[3] * 85 + d[4];
+        if block > u32::MAX as u64 {
+            return Err(CoreError::Parse("Base85 分组超过 32 位".into()));
+        }
         let bb = [
             ((block >> 24) & 0xff) as u8,
             ((block >> 16) & 0xff) as u8,

@@ -5,38 +5,14 @@ import type { NodeDescriptor, PortSpec } from "@/lib/types";
 import { useDescriptorStore } from "@/store/descriptors";
 import { usePaletteDrag } from "@/store/paletteDrag";
 
-import { NODE_DESCRIPTIONS } from "./nodeDescriptions";
+import { categoryLabel, searchNodes } from "@/lib/catalog";
 import { nodeIcon } from "./nodeIcons";
 import { portColor } from "./portColors";
 
 const COLLAPSE_KEY = "misclab-collapsed-categories";
 
-// Logical display order for the categories (unlisted ones fall to the end).
-const CATEGORY_ORDER = [
-  "输入输出",
-  "编码/加密",
-  "进制转换",
-  "字符编码",
-  "加密解密",
-  "哈希/摘要",
-  "压缩包",
-  "隐写术",
-  "图像处理",
-  "音频处理",
-  "文本处理",
-  "控制/逻辑",
-  "工具/分析",
-  "AI",
-  "自定义",
-];
-
-function catRank(c: string) {
-  const i = CATEGORY_ORDER.indexOf(c);
-  return i < 0 ? CATEGORY_ORDER.length : i;
-}
-
 function describe(d: NodeDescriptor) {
-  return NODE_DESCRIPTIONS[d.id] || d.description || "";
+  return d.description || "";
 }
 
 function Dots({ ports }: { ports: PortSpec[] }) {
@@ -57,10 +33,13 @@ function Dots({ ports }: { ports: PortSpec[] }) {
 
 export function ModuleLibrary() {
   const list = useDescriptorStore((s) => s.list);
+  const categories = useDescriptorStore((s) => s.categories);
+  const [limits, setLimits] = useState<Record<string, number>>({});
   const [q, setQ] = useState("");
   const [collapsed, setCollapsed] = useState<Set<string>>(() => {
     try {
-      return new Set(JSON.parse(localStorage.getItem(COLLAPSE_KEY) || "[]"));
+      const saved = localStorage.getItem(COLLAPSE_KEY + "-v2");
+      return new Set(saved ? JSON.parse(saved) : categories.filter((c) => !c.parentId && c.id !== "io").map((c) => c.id));
     } catch {
       return new Set();
     }
@@ -71,7 +50,7 @@ export function ModuleLibrary() {
       const next = new Set(prev);
       next.has(c) ? next.delete(c) : next.add(c);
       try {
-        localStorage.setItem(COLLAPSE_KEY, JSON.stringify([...next]));
+        localStorage.setItem(COLLAPSE_KEY + "-v2", JSON.stringify([...next]));
       } catch {
         /* ignore */
       }
@@ -79,21 +58,16 @@ export function ModuleLibrary() {
     });
 
   const grouped = useMemo(() => {
-    const needle = q.toLowerCase();
-    const filtered = list.filter(
-      (d) =>
-        d.displayName.toLowerCase().includes(needle) ||
-        d.category.toLowerCase().includes(needle) ||
-        describe(d).toLowerCase().includes(needle)
-    );
+    const filtered = searchNodes(list, q);
     const map = new Map<string, NodeDescriptor[]>();
     for (const d of filtered) {
-      const arr = map.get(d.category) ?? [];
+      const id = d.categoryId || d.category;
+      const arr = map.get(id) ?? [];
       arr.push(d);
-      map.set(d.category, arr);
+      map.set(id, arr);
     }
-    return Array.from(map.entries()).sort((a, b) => catRank(a[0]) - catRank(b[0]));
-  }, [list, q]);
+    return Array.from(map.entries()).sort((a, b) => (categories.find((c) => c.id === a[0])?.order ?? 999) - (categories.find((c) => c.id === b[0])?.order ?? 999));
+  }, [list, q, categories]);
 
   const onPointerDown = (e: React.PointerEvent, d: NodeDescriptor) => {
     if (e.button !== 0) return;
@@ -112,8 +86,8 @@ export function ModuleLibrary() {
       <div className="border-b border-border p-2">
         <input
           value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="搜索模块 / 说明…"
+          onChange={(e) => { setQ(e.target.value); setLimits({}); }}
+          placeholder="搜索名称 / ID / 别名…"
           className="w-full rounded-md border border-input bg-background px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-ring"
         />
       </div>
@@ -131,12 +105,12 @@ export function ModuleLibrary() {
                 ) : (
                   <ChevronDown className="h-3 w-3 shrink-0" />
                 )}
-                <span className="flex-1 truncate text-left">{category}</span>
+                <span className="flex-1 truncate text-left">{categories.find((c) => c.id === category)?.name ?? category}</span>
                 <span className="text-[10px] opacity-60">{nodes.length}</span>
               </button>
               {!isCollapsed && (
                 <div className="space-y-1 p-1">
-                  {nodes.map((d) => {
+                  {nodes.slice(0, limits[category] ?? 12).map((d) => {
                     const Icon = nodeIcon(d.id, d.category);
                     const desc = describe(d);
                     return (
@@ -167,9 +141,11 @@ export function ModuleLibrary() {
                             {desc}
                           </div>
                         )}
+                        <div className="mt-1 truncate pl-[30px] text-[9px] text-muted-foreground">{categoryLabel(d, categories)}</div>
                       </div>
                     );
                   })}
+                  {nodes.length > (limits[category] ?? 12) && <button className="w-full py-2 text-[11px] text-primary" onClick={() => setLimits((p) => ({ ...p, [category]: (p[category] ?? 12) + 24 }))}>继续显示（剩余 {nodes.length - (limits[category] ?? 12)}）</button>}
                 </div>
               )}
             </div>

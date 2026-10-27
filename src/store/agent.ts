@@ -1,63 +1,53 @@
 import { create } from "zustand";
-
-export type AgentStepKind =
-  | "thinking"
-  | "add"
-  | "connect"
-  | "param"
-  | "run"
-  | "result"
-  | "error"
-  | "done";
+import type { ReviewedPlan } from "@/flow/agentPlan";
+import type { SolveAttempt, SolveCandidate } from "@/flow/agentSolve";
 
 export interface AgentStep {
-  kind: AgentStepKind;
+  kind: "add" | "connect" | "run" | "result" | "error" | "done" | "plan" | "evidence" | "diagnose" | "search" | "change" | "verify";
   text: string;
-  /** The one-line "巧思" the agent gave for this step, shown dimmer. */
   detail?: string;
-  /** For result steps: whether the node ran ok. */
   ok?: boolean;
 }
 
 interface AgentState {
   running: boolean;
-  job: string | null;
+  cancelling: boolean;
+  cancelled: boolean;
   steps: AgentStep[];
   notes: string;
   error: string;
-  /** Set by the AI dialog; consumed by Canvas (which owns the ReactFlow handle). */
-  pendingPrompt: string | null;
-  /** Optional long input (e.g. ciphertext) the app injects into the source node
-   * directly, so the model never has to echo it. */
-  pendingData: string | null;
-
-  launch: (prompt: string, data?: string | null) => void;
+  solveStatus: "idle" | "working" | "candidate" | "verified" | "unresolved" | "cancelled";
+  candidates: SolveCandidate[];
+  attempts: SolveAttempt[];
+  recordAttempt: (attempt: SolveAttempt) => void;
+  setSolveResult: (status: AgentState["solveStatus"], candidates?: SolveCandidate[]) => void;
+  pendingPlan: ReviewedPlan | null;
+  focusNodeIds: string[];
+  focusNodes: (ids: string[]) => void;
+  launch: (plan: ReviewedPlan) => void;
   clearPending: () => void;
   start: () => void;
-  setJob: (job: string) => void;
-  pushStep: (s: AgentStep) => void;
-  finish: (notes: string) => void;
-  setError: (msg: string) => void;
+  requestCancel: () => void;
+  pushStep: (step: AgentStep) => void;
+  finish: (notes: string, cancelled?: boolean) => void;
+  setError: (error: string) => void;
   reset: () => void;
 }
 
-/** Drives the live AI agent: the step log the user watches + the run/cancel
- * state shown in AgentPanel. */
-export const useAgentStore = create<AgentState>((set) => ({
-  running: false,
-  job: null,
-  steps: [],
-  notes: "",
-  error: "",
-  pendingPrompt: null,
-  pendingData: null,
-
-  launch: (prompt, data) => set({ pendingPrompt: prompt, pendingData: data ?? null }),
-  clearPending: () => set({ pendingPrompt: null, pendingData: null }),
-  start: () => set({ running: true, steps: [], notes: "", error: "", job: null }),
-  setJob: (job) => set({ job }),
-  pushStep: (s) => set((st) => ({ steps: [...st.steps, s] })),
-  finish: (notes) => set({ running: false, notes }),
-  setError: (msg) => set({ running: false, error: msg }),
-  reset: () => set({ running: false, job: null, steps: [], notes: "", error: "" }),
+export const useAgentStore = create<AgentState>((set, get) => ({
+  running: false, cancelling: false, cancelled: false, steps: [], notes: "", error: "", pendingPlan: null, focusNodeIds: [],
+  solveStatus: "idle", candidates: [], attempts: [],
+  recordAttempt: (attempt) => set((s) => ({ attempts: [...s.attempts, attempt] })),
+  setSolveResult: (solveStatus, candidates) => set((s) => ({ solveStatus, candidates: candidates ?? s.candidates })),
+  focusNodes: (focusNodeIds) => set({ focusNodeIds }),
+  launch: (plan) => {
+    if (!get().running && !get().pendingPlan) set({ pendingPlan: structuredClone(plan) });
+  },
+  clearPending: () => set({ pendingPlan: null }),
+  start: () => set({ running: true, cancelling: false, cancelled: false, focusNodeIds: [], steps: [], notes: "", error: "", solveStatus: "idle", candidates: [], attempts: [] }),
+  requestCancel: () => set({ cancelling: true, pendingPlan: null }),
+  pushStep: (step) => set((state) => ({ steps: [...state.steps, step] })),
+  finish: (notes, cancelled = false) => set({ running: false, cancelling: false, cancelled, notes }),
+  setError: (error) => set({ running: false, cancelling: false, error }),
+  reset: () => { if (!get().running) set({ steps: [], notes: "", error: "", pendingPlan: null, cancelling: false, cancelled: false, focusNodeIds: [], solveStatus: "idle", candidates: [], attempts: [] }); },
 }));

@@ -7,8 +7,7 @@ fn to_image_url(input: &str) -> Result<String, CoreError> {
     if s.starts_with("http://") || s.starts_with("https://") || s.starts_with("data:") {
         return Ok(s.to_string());
     }
-    let bytes =
-        std::fs::read(s).map_err(|e| CoreError::Other(format!("读取图片失败: {e}")))?;
+    let bytes = std::fs::read(s).map_err(|e| CoreError::Other(format!("读取图片失败: {e}")))?;
     let mime = if s.ends_with(".jpg") || s.ends_with(".jpeg") {
         "image/jpeg"
     } else if s.ends_with(".gif") {
@@ -34,7 +33,7 @@ impl Node for N {
         let image = in_text(inputs, "image")?;
         let prompt = pstr(params, "prompt", "识别图片中的文字或 flag，只输出结果。");
         let url = to_image_url(image)?;
-        let answer = ai::vision(&ctx.env.ai.vision, prompt, &url)?;
+        let answer = ai::vision_with_cancel(&ctx.env.ai.vision, prompt, &url, ctx.cancel)?;
         Ok(out_text(answer))
     }
 }

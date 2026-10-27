@@ -4,6 +4,8 @@ import { Channel, invoke } from "@tauri-apps/api/core";
 
 import type {
   CompositeModule,
+  ArtifactMetadata,
+  NodeCategory,
   GraphOutputs,
   NodeDescriptor,
   PortValue,
@@ -78,48 +80,23 @@ export interface GeneratedGraph {
   nodes: GeneratedNode[];
   edges: GeneratedEdge[];
   notes: string;
+  checks?: PlanCheck[];
+}
+export interface PlanCheck {
+  node: string;
+  port: string;
+  kind: "equals" | "contains" | "nonEmpty";
+  expected?: string;
 }
 export interface AiTextResult {
   text: string;
 }
-
-// ---- 故事模式 (galgame) -----------------------------------------------------
-export interface GalgameChoice {
-  text: string;
-  /** Descriptor id of the tool to run on the current data (absent ⇒ narrative). */
-  node?: string | null;
-  params?: Record<string, unknown> | null;
-}
-export interface GalgameHistoryItem {
-  narration: string;
-  picked?: string | null;
-  outputs?: string | null;
-}
-export interface GalgamePicked {
-  text: string;
-  node?: string | null;
-  params?: Record<string, unknown> | null;
-}
-export interface GalgameStepRequest {
-  challenge: string;
-  challengeKind: string;
-  /** Optional problem statement / hint typed alongside a file/image (题干). */
-  brief: string;
-  history: GalgameHistoryItem[];
-  picked?: GalgamePicked | null;
-}
-export interface GalgameTurn {
-  speaker: string;
-  /** neutral | happy | thinking | worried | excited */
-  mood: string;
-  narration: string;
-  choices: GalgameChoice[];
-  /** Tool result summary produced this turn. */
-  outputs?: string | null;
-  /** "good" | "bad" | null. */
-  ending?: string | null;
-  /** Raw pipeline output this round — chained into the next round's input. */
-  resultData?: string | null;
+export interface SolverDecision {
+  observation: string;
+  action: "inspect" | "extend" | "repair" | "stop";
+  nextGoal: string;
+  queries: string[];
+  repairs: { node: string; problem: string; change: string; verify: string }[];
 }
 
 export interface SuggestCtx {
@@ -135,27 +112,6 @@ export interface Suggestion {
   reason: string;
 }
 
-/** Streamed step of the AI agent building a workflow. Nodes are referenced by
- * the agent's own `key`; the frontend maps those to real store ids. */
-export type AgentEvent =
-  | { kind: "started"; job: string; stepsMax: number }
-  | { kind: "thinking"; text: string }
-  | { kind: "addNode"; key: string; descriptorId: string; params: unknown; reason: string }
-  | {
-      kind: "connect";
-      fromKey: string;
-      fromPort: string;
-      toKey: string;
-      toPort: string;
-      reason: string;
-    }
-  | { kind: "setParam"; key: string; name: string; value: unknown; reason: string }
-  | { kind: "runStart"; keys: string[] }
-  | { kind: "nodeResult"; key: string; ok: boolean; summary: string }
-  | { kind: "toolError"; tool: string; message: string }
-  | { kind: "done"; notes: string; stepsUsed: number }
-  | { kind: "error"; message: string };
-
 export const api = {
   ping: (name: string) => invoke<string>("ping", { name }),
   appInfo: () => invoke<AppInfo>("app_info"),
@@ -167,6 +123,11 @@ export const api = {
 
   listNodeDescriptors: () =>
     invoke<NodeDescriptor[]>("list_node_descriptors"),
+  listNodeCategories: () => invoke<NodeCategory[]>("list_node_categories"),
+  artifactMetadata: (id: string) => invoke<ArtifactMetadata>("artifact_metadata", { id }),
+  artifactRead: (id: string, offset = 0, length = 65536) => invoke<number[]>("artifact_read", { id, offset, length }),
+  artifactPut: (name: string, mime: string, bytes: number[]) => invoke<ArtifactMetadata>("artifact_put", { name, mime, bytes }),
+  artifactExport: (id: string, path: string) => invoke<void>("artifact_export", { id, path }),
 
   /** Run a single node silently (no progress stream). */
   runNode: (
@@ -216,24 +177,24 @@ export const api = {
     invoke<ToolStatus>("detect_tool", { path, arg }),
 
   /** Ask the LLM to assemble a node graph from a natural-language task. */
-  generateWorkflow: (prompt: string) =>
-    invoke<GeneratedGraph>("generate_workflow", { prompt }),
-  explainWorkflow: (graph: SerializedGraph, prompt: string) =>
-    invoke<AiTextResult>("explain_workflow", { graph, prompt }),
+  decideSolverStep: (prompt: string, onEvent?: (event: ProgressMsg) => void) => {
+    const channel = new Channel<ProgressMsg>();
+    channel.onmessage = (event) => onEvent?.(event);
+    return invoke<SolverDecision>("decide_solver_step", { prompt, onEvent: channel });
+  },
+  generateWorkflow: (prompt: string, onEvent?: (event: ProgressMsg) => void, catalogIds?: string[]) => {
+    const channel = new Channel<ProgressMsg>();
+    channel.onmessage = onEvent ?? (() => {});
+    return invoke<GeneratedGraph>("generate_workflow", { prompt, onEvent: channel, catalogIds });
+  },
+  explainWorkflow: (graph: SerializedGraph, prompt: string, onEvent?: (event: ProgressMsg) => void) => {
+    const channel = new Channel<ProgressMsg>();
+    channel.onmessage = onEvent ?? (() => {});
+    return invoke<AiTextResult>("explain_workflow", { graph, prompt, onEvent: channel });
+  },
   /** Suggest compatible next/previous nodes for a hovered port. */
   suggestNextNodes: (ctx: SuggestCtx) =>
     invoke<Suggestion[]>("suggest_next_nodes", { ctx }),
-  /** Build a workflow step-by-step, streaming each action to the canvas. */
-  agentRun: (prompt: string, onEvent: (m: AgentEvent) => void) => {
-    const channel = new Channel<AgentEvent>();
-    channel.onmessage = onEvent;
-    return invoke<void>("agent_run", { prompt, onEvent: channel });
-  },
-
-  /** 故事模式：跑一"幕"——可选执行一次解题动作，然后由 LLM 叙述下一幕。 */
-  galgameStep: (req: GalgameStepRequest) =>
-    invoke<GalgameTurn>("galgame_step", { req }),
-
   // User-defined composite (sub-graph) modules.
   listCompositeModules: () => invoke<CompositeModule[]>("list_composite_modules"),
   saveCompositeModule: (module: CompositeModule) =>

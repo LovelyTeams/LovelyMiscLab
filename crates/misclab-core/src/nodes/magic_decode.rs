@@ -47,12 +47,16 @@ impl Node for N {
         &self,
         inputs: &PortMap,
         params: &serde_json::Value,
-        _ctx: &mut NodeCtx,
+        ctx: &mut NodeCtx,
     ) -> Result<PortMap, CoreError> {
         let input = in_text(inputs, "text")?.to_string();
         let pattern = pstr(params, "pattern", r"[A-Za-z0-9_]+\{[^}]*\}");
-        let depth = params.get("depth").and_then(|v| v.as_f64()).unwrap_or(8.0) as usize;
-        let re = regex::Regex::new(pattern).ok();
+        let depth =
+            (params.get("depth").and_then(|v| v.as_f64()).unwrap_or(8.0) as usize).clamp(1, 16);
+        let re = regex::Regex::new(pattern)
+            .map_err(|e| CoreError::Parse(format!("目标正则无效: {e}")))?;
+        ctx.check_cancel()?;
+        ctx.progress(0.0);
 
         let mut seen: HashSet<String> = HashSet::new();
         let mut queue: VecDeque<(String, String, usize)> = VecDeque::new();
@@ -61,19 +65,22 @@ impl Node for N {
         let mut best = (input.clone(), String::new(), english_score(&input));
 
         while let Some((cur, chain, d)) = queue.pop_front() {
-            if let Some(re) = &re {
-                if re.is_match(&cur) {
-                    return Ok(result(cur, chain, true));
-                }
+            ctx.check_cancel()?;
+            if re.is_match(&cur) {
+                ctx.progress(1.0);
+                return Ok(result(cur, chain, true));
             }
             let score = english_score(&cur);
             if score > best.2 {
                 best = (cur.clone(), chain.clone(), score);
             }
-            if d >= depth || seen.len() > 4096 {
+            if d >= depth || seen.len() >= 4096 {
                 continue;
             }
             for (name, next) in expand(&cur) {
+                if seen.len() >= 4096 {
+                    break;
+                }
                 if seen.insert(next.clone()) {
                     let next_chain = if chain.is_empty() {
                         name.to_string()
@@ -83,7 +90,11 @@ impl Node for N {
                     queue.push_back((next, next_chain, d + 1));
                 }
             }
+            if seen.len().is_multiple_of(32) {
+                ctx.progress((seen.len() as f32 / 4096.0).min(0.99));
+            }
         }
+        ctx.progress(1.0);
         Ok(result(best.0, best.1, false))
     }
 }
@@ -116,4 +127,38 @@ pub fn register(reg: &mut NodeRegistry) {
         ),
         Arc::new(|| Arc::new(N)),
     );
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::{cancel::CancellationToken, graph::executor::GraphExecutor, progress::NullSink};
+
+    #[test]
+    fn chains_report_hit_and_reject_invalid_patterns_or_cancel() {
+        let plain = "flag{盲测_2026}";
+        let encoded = base64::engine::general_purpose::STANDARD.encode(hex::encode(plain));
+        let inputs = PortMap::from([("text".into(), PortValue::Text(encoded))]);
+        let registry = crate::nodes::default_registry();
+        let cancel = CancellationToken::new();
+        let run = |params| {
+            GraphExecutor::run_node(
+                &registry,
+                "magic_decode",
+                &inputs,
+                &params,
+                &NullSink,
+                &cancel,
+            )
+        };
+        let out = run(serde_json::json!({"pattern": "flag\\{[^}]+\\}", "depth": 4})).unwrap();
+        assert_eq!(out["text"].as_text().unwrap(), plain);
+        assert_eq!(out["chain"].as_text().unwrap(), "base64 → hex");
+        assert!(matches!(out["hit"], PortValue::Bool(true)));
+        let miss = run(serde_json::json!({"pattern": "impossible", "depth": 1})).unwrap();
+        assert!(matches!(miss["hit"], PortValue::Bool(false)));
+        assert!(run(serde_json::json!({"pattern": "["})).is_err());
+        cancel.cancel();
+        assert!(run(serde_json::json!({})).is_err());
+    }
 }

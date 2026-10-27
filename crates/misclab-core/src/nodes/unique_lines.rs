@@ -23,7 +23,7 @@ impl Node for N {
                     counts.push((l.to_string(), 1));
                 }
             }
-            counts.sort_by(|a, b| b.1.cmp(&a.1));
+            counts.sort_by_key(|b| std::cmp::Reverse(b.1));
             let out = counts
                 .iter()
                 .map(|(l, c)| format!("{c}\t{l}"))

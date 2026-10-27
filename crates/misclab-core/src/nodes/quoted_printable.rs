@@ -1,5 +1,9 @@
 //! Quoted-Printable (RFC 2045) encode/decode — common in email forensics.
-use super::prelude::*;
+use super::{
+    codec_support::{document_text, help},
+    prelude::*,
+};
+use serde_json::json;
 
 fn emit(out: &mut String, chunk: &str, line: &mut usize) {
     if *line + chunk.len() > 75 {
@@ -33,7 +37,7 @@ fn qp_encode(data: &[u8]) -> String {
     out
 }
 
-fn qp_decode(s: &str) -> Vec<u8> {
+fn qp_decode(s: &str, strict: bool) -> Result<Vec<u8>, CoreError> {
     let b = s.as_bytes();
     let mut out = Vec::new();
     let mut i = 0;
@@ -48,11 +52,19 @@ fn qp_decode(s: &str) -> Vec<u8> {
                 continue;
             }
             if i + 2 < b.len() {
-                if let Ok(v) = u8::from_str_radix(&s[i + 1..i + 3], 16) {
-                    out.push(v);
+                if let (Some(h), Some(l)) = (
+                    (b[i + 1] as char).to_digit(16),
+                    (b[i + 2] as char).to_digit(16),
+                ) {
+                    out.push((h * 16 + l) as u8);
                     i += 3;
                     continue;
                 }
+            }
+            if strict {
+                return Err(CoreError::Parse(format!(
+                    "Quoted-Printable：偏移 {i} 的转义无效"
+                )));
             }
             out.push(b'=');
             i += 1;
@@ -61,49 +73,92 @@ fn qp_decode(s: &str) -> Vec<u8> {
             i += 1;
         }
     }
-    out
+    Ok(out)
 }
 
 struct Enc;
 impl Node for Enc {
-    fn run(&self, inputs: &PortMap, _p: &serde_json::Value, _c: &mut NodeCtx) -> Result<PortMap, CoreError> {
-        Ok(out_text(qp_encode(&in_bytes(inputs, "data")?)))
+    fn run(
+        &self,
+        inputs: &PortMap,
+        p: &serde_json::Value,
+        ctx: &mut NodeCtx,
+    ) -> Result<PortMap, CoreError> {
+        let bytes = in_bytes(inputs, "data")?;
+        if pstr(p, "mode", "邮件文本") == "邮件文本" {
+            return Ok(out_text(qp_encode(&bytes)));
+        }
+        let mut out = String::new();
+        for (i, b) in bytes.into_iter().enumerate() {
+            if i % 4096 == 0 {
+                ctx.cancel.check()?;
+            }
+            if ((33..=126).contains(&b) && b != b'=') || b == b' ' || b == b'\t' {
+                out.push(b as char);
+            } else {
+                out.push_str(&format!("={b:02X}"));
+            }
+        }
+        Ok(out_text(out))
     }
 }
 
 struct Dec;
 impl Node for Dec {
-    fn run(&self, inputs: &PortMap, _p: &serde_json::Value, _c: &mut NodeCtx) -> Result<PortMap, CoreError> {
-        let bytes = qp_decode(in_text(inputs, "text")?);
+    fn run(
+        &self,
+        inputs: &PortMap,
+        p: &serde_json::Value,
+        _c: &mut NodeCtx,
+    ) -> Result<PortMap, CoreError> {
+        let bytes = qp_decode(in_text(inputs, "text")?, pbool(p, "strict", false))?;
         let mut m = PortMap::new();
-        m.insert("text".to_string(), PortValue::Text(String::from_utf8_lossy(&bytes).into_owned()));
-        m.insert("bytes".to_string(), PortValue::Bytes(Arc::from(bytes.into_boxed_slice())));
+        m.insert(
+            "text".to_string(),
+            PortValue::Text(String::from_utf8_lossy(&bytes).into_owned()),
+        );
+        m.insert(
+            "bytes".to_string(),
+            PortValue::Bytes(Arc::from(bytes.into_boxed_slice())),
+        );
         Ok(m)
     }
 }
 
 pub fn register(reg: &mut NodeRegistry) {
     reg.register(
-        desc(
+        document_text(desc(
             "quoted_printable_encode",
             CHARSET,
             "Quoted-Printable 编码",
             INDIGO,
             vec![req("data", "输入", PortType::Any)],
             vec![t_out()],
-            vec![],
-        ),
+            vec![help(ParamSpec::select("mode", "换行方式", &["邮件文本", "原始字节"], "邮件文本"), "邮件文本保留旧行为：统一 CRLF、折行与行尾空白编码；原始字节逐字节编码，CR/LF 也转义，不折行。")],
+        ), "quotedPrintable", "Quoted-Printable 编码；原始字节模式精确保留 CR、LF 与全部二进制数据。", "Hello, 中文!\r\n", json!({"mode":"原始字节"})),
         Arc::new(|| Arc::new(Enc)),
     );
     reg.register(
-        desc(
-            "quoted_printable_decode",
-            CHARSET,
-            "Quoted-Printable 解码",
-            INDIGO,
-            vec![t_in()],
-            vec![req("text", "文本", PortType::Text), opt("bytes", "字节", PortType::Bytes)],
-            vec![],
+        document_text(
+            desc(
+                "quoted_printable_decode",
+                CHARSET,
+                "Quoted-Printable 解码",
+                INDIGO,
+                vec![t_in()],
+                vec![
+                    req("text", "文本", PortType::Text),
+                    opt("bytes", "字节", PortType::Bytes),
+                ],
+                vec![help(
+                    ParamSpec::toggle("strict", "严格转义校验", false),
+                    "开启时拒绝残缺或非 Hex 的 =XX；关闭原样保留，兼容旧流程。",
+                )],
+            ),
+            "quotedPrintable",
+            "还原 =XX 与软换行；文本预览和完整字节分开输出，未知转义可选择严格拒绝。",
+            "Hello =E4=B8=AD=E6=96=87=21",
+            json!({"strict":true}),
         ),
         Arc::new(|| Arc::new(Dec)),
     );

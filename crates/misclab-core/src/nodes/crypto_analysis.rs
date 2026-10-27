@@ -120,7 +120,7 @@ fn crack_score(text: &str) -> f32 {
             score -= (ratio - 0.40).abs().min(0.4);
         }
     }
-    if text.contains('�') {
+    if text.contains('\u{fffd}') {
         score -= 1.0;
     }
     if text
@@ -655,9 +655,9 @@ fn columnar_decode(cipher: &str, order: &[usize]) -> String {
     }
     let mut out = String::with_capacity(chars.len());
     for r in 0..rows {
-        for c in 0..cols {
-            if r < columns[c].len() {
-                out.push(columns[c][r]);
+        for column in &columns {
+            if r < column.len() {
+                out.push(column[r]);
             }
         }
     }

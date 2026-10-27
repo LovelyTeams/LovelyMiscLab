@@ -47,6 +47,8 @@ struct NodeSummary<'a> {
     id: &'a str,
     display_name: &'a str,
     category: &'a str,
+    category_id: &'a str,
+    subcategory_id: &'a str,
     inputs: Vec<PortInfo<'a>>,
     outputs: Vec<PortInfo<'a>>,
     params: Vec<ParamInfo<'a>>,
@@ -54,7 +56,11 @@ struct NodeSummary<'a> {
 
 fn port_infos(ps: &[misclab_core::node::descriptor::PortSpec]) -> Vec<PortInfo<'_>> {
     ps.iter()
-        .map(|p| PortInfo { name: &p.name, port_type: p.port_type, required: p.required })
+        .map(|p| PortInfo {
+            name: &p.name,
+            port_type: p.port_type,
+            required: p.required,
+        })
         .collect()
 }
 
@@ -63,12 +69,18 @@ fn summarize(d: &NodeDescriptor) -> NodeSummary<'_> {
         id: &d.id,
         display_name: &d.display_name,
         category: &d.category,
+        category_id: &d.category_id,
+        subcategory_id: &d.subcategory_id,
         inputs: port_infos(&d.inputs),
         outputs: port_infos(&d.outputs),
         params: d
             .params
             .iter()
-            .map(|p| ParamInfo { name: &p.name, widget: &p.widget, default: &p.default })
+            .map(|p| ParamInfo {
+                name: &p.name,
+                widget: &p.widget,
+                default: &p.default,
+            })
             .collect(),
     }
 }
@@ -77,15 +89,29 @@ fn summarize(d: &NodeDescriptor) -> NodeSummary<'_> {
 
 /// Node-category counts — the cheapest first step for discovery.
 pub(crate) fn list_categories_value(reg: &NodeRegistry) -> Value {
-    use std::collections::BTreeMap;
     let descs = reg.descriptors();
-    let mut counts: BTreeMap<String, usize> = BTreeMap::new();
-    for d in &descs {
-        *counts.entry(d.category.clone()).or_insert(0) += 1;
-    }
-    let cats: Vec<Value> = counts
-        .into_iter()
-        .map(|(category, count)| json!({ "category": category, "count": count }))
+    let catalog = misclab_core::node::catalog::categories();
+    let cats: Vec<Value> = catalog
+        .iter()
+        .filter(|c| c.parent_id.is_none())
+        .map(|c| {
+            let mut value = serde_json::to_value(c).expect("category serialization");
+            value["category"] = json!(c.name); // Legacy display-name field.
+            value["count"] = json!(descs.iter().filter(|d| d.category_id == c.id).count());
+            value["groups"] = Value::Array(
+                catalog
+                    .iter()
+                    .filter(|s| s.parent_id.as_deref() == Some(&c.id))
+                    .map(|s| {
+                        let mut group = serde_json::to_value(s).expect("category serialization");
+                        group["count"] =
+                            json!(descs.iter().filter(|d| d.subcategory_id == s.id).count());
+                        group
+                    })
+                    .collect(),
+            );
+            value
+        })
         .collect();
     json!({ "total": descs.len(), "categories": cats })
 }
@@ -102,25 +128,36 @@ pub(crate) fn list_nodes_value(
 ) -> Value {
     let all = reg.descriptors();
     let q = query.map(|s| s.to_lowercase());
-    let filtered: Vec<&NodeDescriptor> = all
+    let mut filtered: Vec<&NodeDescriptor> = all
         .iter()
         .filter(|d| {
-            let cat_ok = category.map(|c| d.category == c).unwrap_or(true);
+            let cat_ok = category
+                .map(|c| misclab_core::node::catalog::matches_category(d, c))
+                .unwrap_or(true);
             let q_ok = q
                 .as_deref()
-                .map(|q| d.id.to_lowercase().contains(q) || d.display_name.to_lowercase().contains(q))
+                .map(|q| misclab_core::node::catalog::search_rank(d, q).is_some())
                 .unwrap_or(true);
             cat_ok && q_ok
         })
         .collect();
+    if let Some(q) = &q {
+        filtered.sort_by_key(|d| misclab_core::node::catalog::search_rank(d, q));
+    }
     let nodes = if full {
-        filtered.iter().map(|d| serde_json::to_value(d).unwrap_or_default()).collect::<Vec<_>>()
+        filtered
+            .iter()
+            .map(|d| serde_json::to_value(d).unwrap_or_default())
+            .collect::<Vec<_>>()
     } else if detail {
-        filtered.iter().map(|d| serde_json::to_value(summarize(d)).unwrap_or_default()).collect()
+        filtered
+            .iter()
+            .map(|d| serde_json::to_value(summarize(d)).unwrap_or_default())
+            .collect()
     } else {
         filtered
             .iter()
-            .map(|d| json!({ "id": d.id, "name": d.display_name, "category": d.category }))
+            .map(|d| json!({ "id": d.id, "name": d.display_name, "category": d.category, "categoryId": d.category_id, "subcategoryId": d.subcategory_id }))
             .collect()
     };
     json!({ "count": nodes.len(), "nodes": nodes })
@@ -149,8 +186,8 @@ pub(crate) fn redact_settings(env: &NodeEnv) -> Value {
 pub(crate) fn coerce_json_arg(v: &Value) -> Value {
     if let Value::String(s) = v {
         let t = s.trim();
-        let looks_json = (t.starts_with('{') && t.ends_with('}'))
-            || (t.starts_with('[') && t.ends_with(']'));
+        let looks_json =
+            (t.starts_with('{') && t.ends_with('}')) || (t.starts_with('[') && t.ends_with(']'));
         if looks_json {
             if let Ok(parsed) = serde_json::from_str::<Value>(t) {
                 return parsed;
@@ -174,7 +211,13 @@ impl McpState {
         detail: bool,
         full: bool,
     ) -> Value {
-        list_nodes_value(&self.combined_registry(), category.as_deref(), query.as_deref(), detail, full)
+        list_nodes_value(
+            &self.combined_registry(),
+            category.as_deref(),
+            query.as_deref(),
+            detail,
+            full,
+        )
     }
 
     pub fn describe_node(&self, id: &str) -> Result<Value, String> {
@@ -186,7 +229,11 @@ impl McpState {
     }
 
     pub fn list_modules(&self) -> Value {
-        let comps = self.composites.lock().expect("composites mutex poisoned").clone();
+        let comps = self
+            .composites
+            .lock()
+            .expect("composites mutex poisoned")
+            .clone();
         let scripts = self.scripts.lock().expect("scripts mutex poisoned").clone();
         json!({ "composites": comps, "scripts": scripts })
     }
@@ -197,13 +244,19 @@ impl McpState {
 
     /// The user's current canvas as they see it (nodes + edges + rev).
     pub fn get_canvas(&self) -> Value {
-        serde_json::to_value(&*self.canvas.lock().expect("canvas mutex poisoned")).unwrap_or_default()
+        serde_json::to_value(&*self.canvas.lock().expect("canvas mutex poisoned"))
+            .unwrap_or_default()
     }
 
     /// Run a single node standalone. `inputs` maps port name → value JSON (see
     /// [`port_value_in`]); `params` is the node's param object. Blocking — call
     /// from a blocking thread.
-    pub fn run_node(&self, descriptor_id: &str, inputs: &Value, params: &Value) -> Result<Value, String> {
+    pub fn run_node(
+        &self,
+        descriptor_id: &str,
+        inputs: &Value,
+        params: &Value,
+    ) -> Result<Value, String> {
         let inputs = coerce_json_arg(inputs);
         let mut port_inputs: PortMap = HashMap::new();
         if let Some(obj) = inputs.as_object() {
@@ -214,7 +267,11 @@ impl McpState {
         let params = coerce_json_arg(params);
         let params = if params.is_null() { json!({}) } else { params };
         let registry = self.combined_registry();
-        let env = self.settings.lock().expect("settings mutex poisoned").clone();
+        let env = self
+            .settings
+            .lock()
+            .expect("settings mutex poisoned")
+            .clone();
         let cancel = CancellationToken::new();
         let out = GraphExecutor::run_node_with_env(
             &registry,
@@ -234,13 +291,20 @@ impl McpState {
     /// Blocking — call from a blocking thread.
     pub fn run_graph(&self, graph: Option<Value>) -> Result<Value, String> {
         let graph: SerializedGraph = match graph {
-            Some(v) if !v.is_null() => {
-                serde_json::from_value(coerce_json_arg(&v)).map_err(|e| format!("invalid graph: {e}"))?
-            }
-            _ => self.canvas.lock().expect("canvas mutex poisoned").to_serialized_graph(),
+            Some(v) if !v.is_null() => serde_json::from_value(coerce_json_arg(&v))
+                .map_err(|e| format!("invalid graph: {e}"))?,
+            _ => self
+                .canvas
+                .lock()
+                .expect("canvas mutex poisoned")
+                .to_serialized_graph(),
         };
         let registry = self.combined_registry();
-        let env = self.settings.lock().expect("settings mutex poisoned").clone();
+        let env = self
+            .settings
+            .lock()
+            .expect("settings mutex poisoned")
+            .clone();
         let cancel = CancellationToken::new();
         let exec = GraphExecutor::new(&registry, &graph)
             .map_err(|e| e.to_string())?
@@ -271,11 +335,17 @@ fn adapt_port_map(pm: &PortMap, state: &McpState) -> Value {
 
 fn unique_node_id(cv: &CanvasSnapshot, descriptor_id: &str) -> String {
     // `ai_` prefix keeps AI ids from colliding with the frontend's counter.
-    (1..).map(|i| format!("ai_{descriptor_id}_{i}")).find(|id| !cv.nodes.iter().any(|n| &n.id == id)).unwrap()
+    (1..)
+        .map(|i| format!("ai_{descriptor_id}_{i}"))
+        .find(|id| !cv.nodes.iter().any(|n| &n.id == id))
+        .unwrap()
 }
 
 fn unique_edge_id(cv: &CanvasSnapshot) -> String {
-    (1..).map(|i| format!("ai_edge_{i}")).find(|id| !cv.edges.iter().any(|e| &e.id == id)).unwrap()
+    (1..)
+        .map(|i| format!("ai_edge_{i}"))
+        .find(|id| !cv.edges.iter().any(|e| &e.id == id))
+        .unwrap()
 }
 
 pub(crate) fn add_node_to(
@@ -378,12 +448,24 @@ pub(crate) fn connect_in(
     Ok(id)
 }
 
-pub(crate) fn set_param_in(cv: &mut CanvasSnapshot, node_id: &str, name: &str, value: Value) -> Result<(), String> {
-    let node = cv.nodes.iter_mut().find(|n| n.id == node_id).ok_or_else(|| format!("unknown node: {node_id}"))?;
+pub(crate) fn set_param_in(
+    cv: &mut CanvasSnapshot,
+    node_id: &str,
+    name: &str,
+    value: Value,
+) -> Result<(), String> {
+    let node = cv
+        .nodes
+        .iter_mut()
+        .find(|n| n.id == node_id)
+        .ok_or_else(|| format!("unknown node: {node_id}"))?;
     if !node.params.is_object() {
         node.params = json!({});
     }
-    node.params.as_object_mut().unwrap().insert(name.to_string(), value);
+    node.params
+        .as_object_mut()
+        .unwrap()
+        .insert(name.to_string(), value);
     Ok(())
 }
 
@@ -393,7 +475,8 @@ pub(crate) fn remove_node_in(cv: &mut CanvasSnapshot, node_id: &str) -> Result<(
     if cv.nodes.len() == before {
         return Err(format!("unknown node: {node_id}"));
     }
-    cv.edges.retain(|e| e.source != node_id && e.target != node_id);
+    cv.edges
+        .retain(|e| e.source != node_id && e.target != node_id);
     Ok(())
 }
 
@@ -406,8 +489,17 @@ pub(crate) fn remove_edge_in(cv: &mut CanvasSnapshot, edge_id: &str) -> Result<(
     Ok(())
 }
 
-pub(crate) fn move_node_in(cv: &mut CanvasSnapshot, node_id: &str, x: f64, y: f64) -> Result<(), String> {
-    let node = cv.nodes.iter_mut().find(|n| n.id == node_id).ok_or_else(|| format!("unknown node: {node_id}"))?;
+pub(crate) fn move_node_in(
+    cv: &mut CanvasSnapshot,
+    node_id: &str,
+    x: f64,
+    y: f64,
+) -> Result<(), String> {
+    let node = cv
+        .nodes
+        .iter_mut()
+        .find(|n| n.id == node_id)
+        .ok_or_else(|| format!("unknown node: {node_id}"))?;
     node.position = Pos { x, y };
     Ok(())
 }
@@ -421,7 +513,10 @@ impl McpState {
 
     /// Lock the canvas, apply a fallible mutation, and — on success — bump `rev`
     /// and emit the new snapshot. The lock is released before the emit.
-    fn mutate_canvas<T>(&self, f: impl FnOnce(&mut CanvasSnapshot) -> Result<T, String>) -> Result<T, String> {
+    fn mutate_canvas<T>(
+        &self,
+        f: impl FnOnce(&mut CanvasSnapshot) -> Result<T, String>,
+    ) -> Result<T, String> {
         let (result, snap) = {
             let mut cv = self.canvas.lock().expect("canvas mutex poisoned");
             match f(&mut cv) {
@@ -440,8 +535,8 @@ impl McpState {
 
     /// Replace the whole canvas (server assigns a fresh `rev`).
     pub fn set_canvas(&self, snapshot: Value) -> Result<Value, String> {
-        let incoming: CanvasSnapshot =
-            serde_json::from_value(coerce_json_arg(&snapshot)).map_err(|e| format!("invalid snapshot: {e}"))?;
+        let incoming: CanvasSnapshot = serde_json::from_value(coerce_json_arg(&snapshot))
+            .map_err(|e| format!("invalid snapshot: {e}"))?;
         let count = incoming.nodes.len();
         self.mutate_canvas(|cv| {
             cv.nodes = incoming.nodes;
@@ -452,9 +547,17 @@ impl McpState {
     }
 
     /// Add a node (params default from the descriptor, overridden by `params`).
-    pub fn add_node(&self, descriptor_id: &str, params: Option<Value>, x: Option<f64>, y: Option<f64>) -> Result<Value, String> {
+    pub fn add_node(
+        &self,
+        descriptor_id: &str,
+        params: Option<Value>,
+        x: Option<f64>,
+        y: Option<f64>,
+    ) -> Result<Value, String> {
         let reg = self.combined_registry();
-        let entry = reg.get(descriptor_id).ok_or_else(|| format!("unknown node id: {descriptor_id}"))?;
+        let entry = reg
+            .get(descriptor_id)
+            .ok_or_else(|| format!("unknown node id: {descriptor_id}"))?;
         let d = &entry.descriptor;
         let mut p = serde_json::Map::new();
         for ps in &d.params {
@@ -469,14 +572,30 @@ impl McpState {
         }
         let (label, color) = (d.display_name.clone(), d.color.clone());
         let id = self.mutate_canvas(|cv| {
-            Ok(add_node_to(cv, descriptor_id, label, color, Value::Object(p), x.unwrap_or(80.0), y.unwrap_or(80.0)))
+            Ok(add_node_to(
+                cv,
+                descriptor_id,
+                label,
+                color,
+                Value::Object(p),
+                x.unwrap_or(80.0),
+                y.unwrap_or(80.0),
+            ))
         })?;
         Ok(json!({ "ok": true, "id": id }))
     }
 
-    pub fn connect(&self, source: &str, source_handle: &str, target: &str, target_handle: &str) -> Result<Value, String> {
+    pub fn connect(
+        &self,
+        source: &str,
+        source_handle: &str,
+        target: &str,
+        target_handle: &str,
+    ) -> Result<Value, String> {
         let reg = self.combined_registry();
-        let id = self.mutate_canvas(|cv| connect_in(cv, &reg, source, source_handle, target, target_handle))?;
+        let id = self.mutate_canvas(|cv| {
+            connect_in(cv, &reg, source, source_handle, target, target_handle)
+        })?;
         Ok(json!({ "ok": true, "edgeId": id }))
     }
 
@@ -519,7 +638,9 @@ fn file_stem(path: &str) -> String {
 
 impl McpState {
     fn app_data_dir(&self) -> Result<std::path::PathBuf, String> {
-        self.app.app_data_dir().ok_or_else(|| "app data dir unavailable".to_string())
+        self.app
+            .app_data_dir()
+            .ok_or_else(|| "app data dir unavailable".to_string())
     }
 
     /// Write the canvas (or a given snapshot) to a `.lml`/`.json` FlowProject file.
@@ -528,9 +649,8 @@ impl McpState {
             return Err("path must end with .lml or .json".into());
         }
         let snap: CanvasSnapshot = match snapshot {
-            Some(v) if !v.is_null() => {
-                serde_json::from_value(coerce_json_arg(&v)).map_err(|e| format!("invalid snapshot: {e}"))?
-            }
+            Some(v) if !v.is_null() => serde_json::from_value(coerce_json_arg(&v))
+                .map_err(|e| format!("invalid snapshot: {e}"))?,
             _ => self.canvas.lock().expect("canvas mutex poisoned").clone(),
         };
         let project = json!({
@@ -548,12 +668,17 @@ impl McpState {
     /// push it onto the user's canvas.
     pub fn load_workflow(&self, path: &str, apply: bool) -> Result<Value, String> {
         let text = std::fs::read_to_string(path).map_err(|e| format!("read {path} failed: {e}"))?;
-        let project: Value = serde_json::from_str(&text).map_err(|e| format!("parse {path} failed: {e}"))?;
+        let project: Value =
+            serde_json::from_str(&text).map_err(|e| format!("parse {path} failed: {e}"))?;
         let snap = CanvasSnapshot {
-            nodes: serde_json::from_value(project.get("nodes").cloned().unwrap_or_else(|| json!([])))
-                .map_err(|e| format!("nodes: {e}"))?,
-            edges: serde_json::from_value(project.get("edges").cloned().unwrap_or_else(|| json!([])))
-                .map_err(|e| format!("edges: {e}"))?,
+            nodes: serde_json::from_value(
+                project.get("nodes").cloned().unwrap_or_else(|| json!([])),
+            )
+            .map_err(|e| format!("nodes: {e}"))?,
+            edges: serde_json::from_value(
+                project.get("edges").cloned().unwrap_or_else(|| json!([])),
+            )
+            .map_err(|e| format!("edges: {e}"))?,
             rev: 0,
         };
         let value = serde_json::to_value(&snap).unwrap_or_default();
@@ -568,7 +693,8 @@ impl McpState {
     }
 
     pub fn save_composite_module(&self, module: Value) -> Result<Value, String> {
-        let m: CompositeModule = serde_json::from_value(module).map_err(|e| format!("invalid composite module: {e}"))?;
+        let m: CompositeModule =
+            serde_json::from_value(module).map_err(|e| format!("invalid composite module: {e}"))?;
         let dir = self.app_data_dir()?;
         crate::modules::save_one(&dir, "modules", &m.id, &m).map_err(|e| e.to_string())?;
         let id = m.id.clone();
@@ -580,7 +706,8 @@ impl McpState {
     }
 
     pub fn save_script_module(&self, module: Value) -> Result<Value, String> {
-        let m: ScriptModule = serde_json::from_value(module).map_err(|e| format!("invalid script module: {e}"))?;
+        let m: ScriptModule =
+            serde_json::from_value(module).map_err(|e| format!("invalid script module: {e}"))?;
         let dir = self.app_data_dir()?;
         crate::modules::save_one(&dir, "script_modules", &m.id, &m).map_err(|e| e.to_string())?;
         let id = m.id.clone();
@@ -597,7 +724,13 @@ impl McpState {
         if prompt.trim().is_empty() {
             return Err("prompt is empty".into());
         }
-        let cfg = self.settings.lock().expect("settings mutex poisoned").ai.llm.clone();
+        let cfg = self
+            .settings
+            .lock()
+            .expect("settings mutex poisoned")
+            .ai
+            .llm
+            .clone();
         let gen = crate::commands::ai_workflow::generate(&self.combined_registry(), &cfg, prompt)
             .map_err(|e| e.message)?;
         let gen_value = serde_json::to_value(&gen).map_err(|e| e.to_string())?;
@@ -609,7 +742,9 @@ impl McpState {
                 cv.edges = snap.edges;
                 Ok(())
             })?;
-            return Ok(json!({ "ok": true, "applied": true, "nodeCount": count, "graph": gen_value }));
+            return Ok(
+                json!({ "ok": true, "applied": true, "nodeCount": count, "graph": gen_value }),
+            );
         }
         Ok(gen_value)
     }
@@ -624,13 +759,26 @@ impl McpState {
             .map(|arr| {
                 arr.iter()
                     .map(|n| {
-                        let did = n.get("descriptorId").and_then(|v| v.as_str()).unwrap_or("").to_string();
+                        let did = n
+                            .get("descriptorId")
+                            .and_then(|v| v.as_str())
+                            .unwrap_or("")
+                            .to_string();
                         let (label, color) = reg
                             .get(&did)
-                            .map(|e| (e.descriptor.display_name.clone(), e.descriptor.color.clone()))
+                            .map(|e| {
+                                (
+                                    e.descriptor.display_name.clone(),
+                                    e.descriptor.color.clone(),
+                                )
+                            })
                             .unwrap_or_else(|| (did.clone(), "#888888".into()));
                         CanvasNode {
-                            id: n.get("key").and_then(|v| v.as_str()).unwrap_or("").to_string(),
+                            id: n
+                                .get("key")
+                                .and_then(|v| v.as_str())
+                                .unwrap_or("")
+                                .to_string(),
                             descriptor_id: did,
                             label,
                             color,
@@ -638,8 +786,12 @@ impl McpState {
                             input_params: Vec::new(),
                             disabled: false,
                             position: Pos {
-                                x: n.pointer("/position/x").and_then(|v| v.as_f64()).unwrap_or(80.0),
-                                y: n.pointer("/position/y").and_then(|v| v.as_f64()).unwrap_or(80.0),
+                                x: n.pointer("/position/x")
+                                    .and_then(|v| v.as_f64())
+                                    .unwrap_or(80.0),
+                                y: n.pointer("/position/y")
+                                    .and_then(|v| v.as_f64())
+                                    .unwrap_or(80.0),
                             },
                         }
                     })
@@ -654,16 +806,34 @@ impl McpState {
                     .enumerate()
                     .map(|(i, e)| CanvasEdge {
                         id: format!("gen_edge_{i}"),
-                        source: e.pointer("/from/node").and_then(|v| v.as_str()).unwrap_or("").to_string(),
-                        source_handle: e.pointer("/from/port").and_then(|v| v.as_str()).map(|s| s.to_string()),
-                        target: e.pointer("/to/node").and_then(|v| v.as_str()).unwrap_or("").to_string(),
-                        target_handle: e.pointer("/to/port").and_then(|v| v.as_str()).map(|s| s.to_string()),
+                        source: e
+                            .pointer("/from/node")
+                            .and_then(|v| v.as_str())
+                            .unwrap_or("")
+                            .to_string(),
+                        source_handle: e
+                            .pointer("/from/port")
+                            .and_then(|v| v.as_str())
+                            .map(|s| s.to_string()),
+                        target: e
+                            .pointer("/to/node")
+                            .and_then(|v| v.as_str())
+                            .unwrap_or("")
+                            .to_string(),
+                        target_handle: e
+                            .pointer("/to/port")
+                            .and_then(|v| v.as_str())
+                            .map(|s| s.to_string()),
                         edge_type: None,
                     })
                     .collect()
             })
             .unwrap_or_default();
-        CanvasSnapshot { nodes, edges, rev: 0 }
+        CanvasSnapshot {
+            nodes,
+            edges,
+            rev: 0,
+        }
     }
 }
 
@@ -681,7 +851,10 @@ mod tests {
         assert_eq!(all["count"].as_u64().unwrap() as usize, reg.len());
         let first = &all["nodes"][0];
         assert!(first["id"].is_string() && first["name"].is_string());
-        assert!(first.get("inputs").is_none(), "compact tier must omit ports");
+        assert!(
+            first.get("inputs").is_none(),
+            "compact tier must omit ports"
+        );
         assert!(first.get("color").is_none());
 
         // Query filters by id/name substring and never exceeds the total.
@@ -690,8 +863,8 @@ mod tests {
         assert!(n >= 1 && (n as usize) <= reg.len());
         for node in b64["nodes"].as_array().unwrap() {
             let id = node["id"].as_str().unwrap().to_lowercase();
-            let name = node["name"].as_str().unwrap().to_lowercase();
-            assert!(id.contains("base64") || name.contains("base64"));
+            let descriptor = &reg.get(&id).unwrap().descriptor;
+            assert!(misclab_core::node::catalog::search_rank(descriptor, "base64").is_some());
         }
 
         // `detail` adds ports/params (but still no color).
@@ -709,10 +882,43 @@ mod tests {
         let reg = default_registry();
         let v = list_categories_value(&reg);
         assert_eq!(v["total"].as_u64().unwrap() as usize, reg.len());
-        let sum: u64 = v["categories"].as_array().unwrap().iter().map(|c| c["count"].as_u64().unwrap()).sum();
+        let sum: u64 = v["categories"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|c| c["count"].as_u64().unwrap())
+            .sum();
         assert_eq!(sum, reg.len() as u64);
         // categories are non-empty and carry a name.
         assert!(v["categories"][0]["category"].is_string());
+        for category in v["categories"].as_array().unwrap() {
+            let groups: u64 = category["groups"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .map(|g| g["count"].as_u64().unwrap())
+                .sum();
+            assert_eq!(groups, category["count"].as_u64().unwrap());
+            let nodes = list_nodes_value(&reg, category["id"].as_str(), None, false, false);
+            assert_eq!(nodes["count"], category["count"]);
+        }
+    }
+
+    #[test]
+    fn catalog_filters_support_subcategories_legacy_names_and_upstream_aliases() {
+        let reg = default_registry();
+        let old = list_nodes_value(&reg, Some("编码/加密"), Some("base64_decode"), false, false);
+        assert!(old["nodes"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .any(|n| n["id"] == "base64_decode"));
+        let by_id = list_nodes_value(&reg, Some("numeric.bits"), Some("byteSwap"), true, false);
+        assert_eq!(by_id["count"], 2);
+        let by_name = list_nodes_value(&reg, Some("位与字节"), Some("byteSwap"), true, false);
+        assert_eq!(by_id, by_name);
+        let ranked = list_nodes_value(&reg, None, Some("base64_decode"), false, false);
+        assert_eq!(ranked["nodes"][0]["id"], "base64_decode");
     }
 
     #[test]
@@ -733,8 +939,24 @@ mod tests {
         let mut cv = CanvasSnapshot::default();
 
         // Add two nodes — ids are unique and `ai_`-prefixed.
-        let a = add_node_to(&mut cv, "text_input", "In".into(), "#fff".into(), json!({}), 0.0, 0.0);
-        let b = add_node_to(&mut cv, "text_output", "Out".into(), "#fff".into(), json!({}), 0.0, 0.0);
+        let a = add_node_to(
+            &mut cv,
+            "text_input",
+            "In".into(),
+            "#fff".into(),
+            json!({}),
+            0.0,
+            0.0,
+        );
+        let b = add_node_to(
+            &mut cv,
+            "text_output",
+            "Out".into(),
+            "#fff".into(),
+            json!({}),
+            0.0,
+            0.0,
+        );
         assert_eq!(a, "ai_text_input_1");
         assert_eq!(cv.nodes.len(), 2);
         assert_ne!(a, b);
@@ -759,24 +981,41 @@ mod tests {
         // Removing a node also drops its edges (cascade).
         remove_node_in(&mut cv, &a).unwrap();
         assert_eq!(cv.nodes.len(), 1);
-        assert!(cv.edges.is_empty(), "edge should cascade-delete with its node");
+        assert!(
+            cv.edges.is_empty(),
+            "edge should cascade-delete with its node"
+        );
 
         // Removing an unknown edge/node errors.
         assert!(remove_edge_in(&mut cv, &e).is_err());
         assert!(remove_node_in(&mut cv, "ghost").is_err());
 
         // A fresh add reuses the now-free id slot.
-        let a2 = add_node_to(&mut cv, "text_input", "In".into(), "#fff".into(), json!({}), 0.0, 0.0);
+        let a2 = add_node_to(
+            &mut cv,
+            "text_input",
+            "In".into(),
+            "#fff".into(),
+            json!({}),
+            0.0,
+            0.0,
+        );
         assert_eq!(a2, "ai_text_input_1");
     }
 
     #[test]
     fn coerce_json_arg_accepts_stringified_objects() {
         // Real objects/arrays pass through unchanged.
-        assert_eq!(coerce_json_arg(&json!({"text": "hi"})), json!({"text": "hi"}));
+        assert_eq!(
+            coerce_json_arg(&json!({"text": "hi"})),
+            json!({"text": "hi"})
+        );
         assert_eq!(coerce_json_arg(&json!([1, 2, 3])), json!([1, 2, 3]));
         // A JSON-stringified object/array (what some MCP clients send) is parsed.
-        assert_eq!(coerce_json_arg(&json!("{\"text\":\"hi\"}")), json!({"text": "hi"}));
+        assert_eq!(
+            coerce_json_arg(&json!("{\"text\":\"hi\"}")),
+            json!({"text": "hi"})
+        );
         assert_eq!(coerce_json_arg(&json!("[1,2,3]")), json!([1, 2, 3]));
         // Plain scalar strings are left alone — not every string is JSON.
         assert_eq!(coerce_json_arg(&json!("RGBA")), json!("RGBA"));

@@ -4,6 +4,7 @@ import type { NodeDescriptor } from "@/lib/types";
 import { useDescriptorStore } from "@/store/descriptors";
 
 import { portColor } from "./portColors";
+import { searchNodes } from "@/lib/catalog";
 
 interface Props {
   x: number;
@@ -24,13 +25,7 @@ export function NodeSearchMenu({ x, y, onPick, onClose }: Props) {
   }, []);
 
   const results = useMemo(() => {
-    const needle = q.toLowerCase();
-    return list.filter(
-      (d) =>
-        d.displayName.toLowerCase().includes(needle) ||
-        d.category.toLowerCase().includes(needle) ||
-        d.id.toLowerCase().includes(needle)
-    );
+    return searchNodes(list, q).slice(0, 80);
   }, [list, q]);
 
   const left = Math.min(x, window.innerWidth - 244);
@@ -61,6 +56,7 @@ export function NodeSearchMenu({ x, y, onPick, onClose }: Props) {
       />
       <div
         className="fixed z-50 w-60 overflow-hidden rounded-md border border-border bg-popover text-popover-foreground shadow-xl"
+        data-canvas-shortcuts="blocked"
         style={{ left, top }}
       >
         <div className="border-b border-border p-1.5">

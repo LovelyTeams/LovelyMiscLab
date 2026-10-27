@@ -199,7 +199,7 @@ export function ImageViewerModal() {
   const tactive = "bg-white/15 text-white";
 
   return (
-    <div className="fixed inset-0 z-[90] flex flex-col bg-black/95">
+    <div role="dialog" aria-modal="true" aria-label="图片查看" className="fixed inset-0 z-[90] flex flex-col bg-black/95">
       {/* Off-screen SVG filter defs driven by the adjustment sliders. */}
       <svg aria-hidden width="0" height="0" className="absolute">
         <defs>

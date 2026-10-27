@@ -130,6 +130,7 @@ export function CreateModuleDialog() {
     <div className="fixed inset-0 z-[75] flex items-center justify-center bg-black/50 p-4" onClick={close}>
       <div
         className="flex max-h-[90vh] w-[560px] max-w-[95vw] flex-col rounded-xl border border-border bg-card shadow-2xl"
+        role="dialog" aria-modal="true" aria-label="封装为模块"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center gap-2 border-b border-border p-4">

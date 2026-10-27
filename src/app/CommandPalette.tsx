@@ -19,6 +19,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
+import { searchFields, searchRank } from "@/lib/catalog";
 import { newFlow, openFlow, saveFlow } from "@/lib/project";
 import { cn } from "@/lib/utils";
 import { executeGraph, stopRun, pauseRun } from "@/flow/runner";
@@ -155,7 +156,7 @@ export function CommandPalette() {
       title: `添加节点：${d.displayName}`,
       hint: `${d.category} · ${d.id}`,
       icon: nodeIcon(d.id, d.category),
-      keywords: `${d.id} ${d.displayName} ${d.category} ${d.description ?? ""}`,
+      keywords: searchFields(d).join(" "),
       action: () => {
         addNode(d, { x: 260 + Math.random() * 120, y: 160 + Math.random() * 120 });
         setView("canvas");
@@ -169,8 +170,11 @@ export function CommandPalette() {
     if (!q) return commands.slice(0, 24);
     return commands
       .filter((c) => `${c.title} ${c.hint} ${c.keywords}`.toLowerCase().includes(q))
-      .slice(0, 36);
-  }, [commands, query]);
+      .sort((a, b) => {
+        const rank = (c: Command) => { const d = descriptors.find((d) => c.id === "node-" + d.id); return d ? searchRank(d, query) : 0; };
+        return rank(a) - rank(b);
+      }).slice(0, 36);
+  }, [commands, query, descriptors]);
 
   if (!open) return null;
 
@@ -183,6 +187,7 @@ export function CommandPalette() {
     <div className="fixed inset-0 z-[90] bg-black/35 p-4 pt-[12vh]" onClick={() => setOpen(false)}>
       <div
         className="mx-auto flex max-h-[72vh] w-[720px] max-w-[96vw] flex-col overflow-hidden rounded-lg border border-border bg-card shadow-2xl"
+        role="dialog" aria-modal="true" aria-label="命令面板"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center gap-2 border-b border-border px-3 py-2">

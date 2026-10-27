@@ -26,10 +26,16 @@ impl NodeRegistry {
         Self::default()
     }
 
-    pub fn register(&mut self, descriptor: NodeDescriptor, factory: NodeFactory) {
+    pub fn register(&mut self, mut descriptor: NodeDescriptor, factory: NodeFactory) {
+        super::catalog::enrich(&mut descriptor);
         let id = descriptor.id.clone();
-        self.entries
-            .insert(id, Arc::new(RegistryEntry { descriptor, factory }));
+        self.entries.insert(
+            id,
+            Arc::new(RegistryEntry {
+                descriptor,
+                factory,
+            }),
+        );
     }
 
     pub fn get(&self, id: &str) -> Option<&Arc<RegistryEntry>> {
@@ -43,10 +49,14 @@ impl NodeRegistry {
 
     /// All descriptors, sorted by (category, display name) for a stable palette.
     pub fn descriptors(&self) -> Vec<NodeDescriptor> {
-        let mut v: Vec<NodeDescriptor> = self.entries.values().map(|e| e.descriptor.clone()).collect();
+        let mut v: Vec<NodeDescriptor> = self
+            .entries
+            .values()
+            .map(|e| e.descriptor.clone())
+            .collect();
         v.sort_by(|a, b| {
-            a.category
-                .cmp(&b.category)
+            super::catalog::category_order(&a.subcategory_id)
+                .cmp(&super::catalog::category_order(&b.subcategory_id))
                 .then_with(|| a.display_name.cmp(&b.display_name))
         });
         v

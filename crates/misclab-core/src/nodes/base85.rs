@@ -41,41 +41,56 @@ impl Node for Dec {
         let (alphabet, standard) = resolve(params);
         let strip = pbool(params, "strip", true);
         let zero_char = if standard { Some('z') } else { None };
-        Ok(decoded(base85_decode(
-            in_text(inputs, "text")?,
-            &alphabet,
-            strip,
-            zero_char,
-        )?))
+        let text: String = in_text(inputs, "text")?
+            .chars()
+            .filter(|c| !c.is_whitespace())
+            .collect();
+        Ok(decoded(base85_decode(&text, &alphabet, strip, zero_char)?))
     }
 }
 
 pub fn register(reg: &mut NodeRegistry) {
     let variant = || ParamSpec::select("variant", "码表", &["标准", "Z85", "IPv6"], "标准");
     reg.register(
-        desc(
-            "base85_encode",
-            ENC,
-            "Base85 编码",
-            BLUE,
-            vec![req("data", "输入", PortType::Any)],
-            vec![t_out()],
-            vec![variant(), ParamSpec::toggle("delim", "包含 <~ ~> 分隔符", false)],
+        super::codec_support::document_base(
+            desc(
+                "base85_encode",
+                ENC,
+                "Base85 编码",
+                BLUE,
+                vec![req("data", "输入", PortType::Any)],
+                vec![t_out()],
+                vec![
+                    variant(),
+                    ParamSpec::toggle("delim", "包含 <~ ~> 分隔符", false),
+                ],
+            ),
+            "base85",
+            "hello world",
+            serde_json::json!({"delim":true}),
         ),
         Arc::new(|| Arc::new(Enc)),
     );
     reg.register(
-        desc(
-            "base85_decode",
-            ENC,
-            "Base85 解码",
-            BLUE,
-            vec![t_in()],
-            vec![
-                req("text", "文本", PortType::Text),
-                opt("bytes", "字节", PortType::Bytes),
-            ],
-            vec![variant(), ParamSpec::toggle("strip", "去除非码表字符", true)],
+        super::codec_support::document_base(
+            desc(
+                "base85_decode",
+                ENC,
+                "Base85 解码",
+                BLUE,
+                vec![t_in()],
+                vec![
+                    req("text", "文本", PortType::Text),
+                    opt("bytes", "字节", PortType::Bytes),
+                ],
+                vec![
+                    variant(),
+                    ParamSpec::toggle("strip", "去除非码表字符", true),
+                ],
+            ),
+            "base85",
+            "<~BOu!rD]j7BEbo7~>",
+            serde_json::json!({}),
         ),
         Arc::new(|| Arc::new(Dec)),
     );

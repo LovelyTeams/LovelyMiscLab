@@ -1,0 +1,264 @@
+[
+  {
+    "name": "PNG 图像",
+    "mime": "image/png",
+    "ext": "png",
+    "sig": [
+      137,
+      80,
+      78,
+      71,
+      13,
+      10,
+      26,
+      10
+    ],
+    "src": "ISO/IEC 15948"
+  },
+  {
+    "name": "JPEG 图像",
+    "mime": "image/jpeg",
+    "ext": "jpg",
+    "sig": [
+      255,
+      216,
+      255
+    ],
+    "src": "ITU-T T.81"
+  },
+  {
+    "name": "GIF 图像",
+    "mime": "image/gif",
+    "ext": "gif",
+    "sig": [
+      71,
+      73,
+      70,
+      56,
+      57,
+      97
+    ],
+    "src": "GIF89a"
+  },
+  {
+    "name": "GIF 图像",
+    "mime": "image/gif",
+    "ext": "gif",
+    "sig": [
+      71,
+      73,
+      70,
+      56,
+      55,
+      97
+    ],
+    "src": "GIF87a"
+  },
+  {
+    "name": "BMP 图像",
+    "mime": "image/bmp",
+    "ext": "bmp",
+    "sig": [
+      66,
+      77
+    ],
+    "src": "Microsoft 位图格式"
+  },
+  {
+    "name": "ICO 图标",
+    "mime": "image/x-icon",
+    "ext": "ico",
+    "sig": [
+      0,
+      0,
+      1,
+      0
+    ],
+    "src": "Microsoft ICO 格式"
+  },
+  {
+    "name": "ZIP 归档",
+    "mime": "application/zip",
+    "ext": "zip",
+    "sig": [
+      80,
+      75,
+      3,
+      4
+    ],
+    "src": "APPNOTE.TXT"
+  },
+  {
+    "name": "ZIP 归档（空）",
+    "mime": "application/zip",
+    "ext": "zip",
+    "sig": [
+      80,
+      75,
+      5,
+      6
+    ],
+    "src": "APPNOTE.TXT"
+  },
+  {
+    "name": "GZIP 流",
+    "mime": "application/gzip",
+    "ext": "gz",
+    "sig": [
+      31,
+      139
+    ],
+    "src": "RFC 1952"
+  },
+  {
+    "name": "PDF 文档",
+    "mime": "application/pdf",
+    "ext": "pdf",
+    "sig": [
+      37,
+      80,
+      68,
+      70,
+      45
+    ],
+    "src": "ISO 32000"
+  },
+  {
+    "name": "7z 归档",
+    "mime": "application/x-7z-compressed",
+    "ext": "7z",
+    "sig": [
+      55,
+      122,
+      188,
+      175,
+      39,
+      28
+    ],
+    "src": "7-Zip 格式"
+  },
+  {
+    "name": "RAR 归档（v4）",
+    "mime": "application/vnd.rar",
+    "ext": "rar",
+    "sig": [
+      82,
+      97,
+      114,
+      33,
+      26,
+      7,
+      0
+    ],
+    "src": "RAR 格式"
+  },
+  {
+    "name": "RAR 归档（v5）",
+    "mime": "application/vnd.rar",
+    "ext": "rar",
+    "sig": [
+      82,
+      97,
+      114,
+      33,
+      26,
+      7,
+      1,
+      0
+    ],
+    "src": "RAR5 格式"
+  },
+  {
+    "name": "ELF 可执行/目标文件",
+    "mime": "application/x-elf",
+    "ext": "elf",
+    "sig": [
+      127,
+      69,
+      76,
+      70
+    ],
+    "src": "ELF 规范"
+  },
+  {
+    "name": "PE 可执行文件",
+    "mime": "application/vnd.microsoft.portable-executable",
+    "ext": "exe",
+    "sig": [
+      77,
+      90
+    ],
+    "src": "PE 格式"
+  },
+  {
+    "name": "Java class",
+    "mime": "application/java-vm",
+    "ext": "class",
+    "sig": [
+      202,
+      254,
+      186,
+      190
+    ],
+    "src": "JVM 规范"
+  },
+  {
+    "name": "OGG 容器",
+    "mime": "application/ogg",
+    "ext": "ogg",
+    "sig": [
+      79,
+      103,
+      103,
+      83
+    ],
+    "src": "Ogg 规范"
+  },
+  {
+    "name": "RIFF 容器（WAV/AVI/WebP）",
+    "mime": "application/riff",
+    "ext": "riff",
+    "sig": [
+      82,
+      73,
+      70,
+      70
+    ],
+    "src": "RIFF 规范"
+  },
+  {
+    "name": "SQLite 数据库",
+    "mime": "application/vnd.sqlite3",
+    "ext": "sqlite",
+    "sig": [
+      83,
+      81,
+      76,
+      105,
+      116,
+      101,
+      32,
+      102,
+      111,
+      114,
+      109,
+      97,
+      116,
+      32,
+      51,
+      0
+    ],
+    "src": "SQLite 文件格式"
+  },
+  {
+    "name": "MP3 音频（含 ID3 标签）",
+    "mime": "audio/mpeg",
+    "ext": "mp3",
+    "sig": [
+      73,
+      68,
+      51
+    ],
+    "src": "ID3v2 规范"
+  }
+]

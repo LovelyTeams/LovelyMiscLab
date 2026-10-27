@@ -1,0 +1,5049 @@
+{
+  "revision": "ea2bc36dae31c97060f7f2cddad8df5518afad7b",
+  "timezone": "Asia/Shanghai",
+  "vectors": [
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "0000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0000"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "0000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0000"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "8000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "8000"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "3C00"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3C00"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "1"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "BC00"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "BC00"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "-1"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1.1"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "3C66"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3C66"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "1.099609375"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "2E66"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2E66"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "0.0999755859375"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1.00048828125"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "3C00"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3C00"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "1"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3.141592653589793"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "4248"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "4248"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "3.140625"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "65504"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "7BFF"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "7BFF"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "65504"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "65520"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "7BFF"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "7BFF"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "65504"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e-10"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "6DF37F"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "6DF37F"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "6092"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e-15"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "0048"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0048"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "1152"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "5.960464477539063e-8"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "0001"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0001"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "16"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1.1754943508222875e-38"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "0000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0000"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e-40"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "0000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0000"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Infinity"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "7C00"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "7C00"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "Infinity"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-Infinity"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "FC00"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "FC00"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "-Infinity"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e308"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "7C00"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "7C00"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "Infinity"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "NaN"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "error": "无效浮点数: NaN"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "error": "无效浮点数: 中文"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "00000000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00000000"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "00000000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00000000"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "80000000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "80000000"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "3F800000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3F800000"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "1"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "BF800000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "BF800000"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "-1"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1.1"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "3F8CCCCD"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3F8CCCCD"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "1.100000023841858"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "3DCCCCCD"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3DCCCCCD"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "0.10000000149011612"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1.00048828125"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "3F801000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3F801000"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "1.00048828125"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3.141592653589793"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "40490FDB"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "40490FDB"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "3.1415927410125732"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "65504"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "477FE000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "477FE000"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "65504"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "65520"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "477FF000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "477FF000"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "65520"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e-10"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "2EDBE6FF"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2EDBE6FF"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "1.000000013351432e-10"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e-15"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "26901D7D"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "26901D7D"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "1.0000000036274937e-15"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "5.960464477539063e-8"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "33800000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "33800000"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "5.960464477539063e-8"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1.1754943508222875e-38"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "00800000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00800000"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "1.1754943508222875e-38"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e-40"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "000116C2"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "000116C2"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "9.99994610111476e-41"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Infinity"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "7F800000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "7F800000"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "Infinity"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-Infinity"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "FF800000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "FF800000"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "-Infinity"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e308"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "7F800000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "7F800000"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "Infinity"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "NaN"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "error": "无效浮点数: NaN"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "error": "无效浮点数: 中文"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "0000000000000000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0000000000000000"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "0000000000000000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0000000000000000"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "8000000000000000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "8000000000000000"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "3FF0000000000000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3FF0000000000000"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "1"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "BFF0000000000000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "BFF0000000000000"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "-1"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1.1"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "3FF199999999999A"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3FF199999999999A"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "1.1"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "3FB999999999999A"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3FB999999999999A"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "0.1"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1.00048828125"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "3FF0020000000000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3FF0020000000000"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "1.00048828125"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3.141592653589793"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "400921FB54442D18"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "400921FB54442D18"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "3.141592653589793"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "65504"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "40EFFC0000000000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "40EFFC0000000000"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "65504"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "65520"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "40EFFE0000000000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "40EFFE0000000000"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "65520"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e-10"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "3DDB7CDFD9D7BDBB"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3DDB7CDFD9D7BDBB"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "1e-10"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e-15"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "3CD203AF9EE75616"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3CD203AF9EE75616"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "1e-15"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "5.960464477539063e-8"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "3E70000000000000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3E70000000000000"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "5.960464477539063e-8"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1.1754943508222875e-38"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "3810000000000000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3810000000000000"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "1.1754943508222875e-38"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e-40"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "37A16C262777579C"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "37A16C262777579C"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "1e-40"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Infinity"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "7FF0000000000000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "7FF0000000000000"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "Infinity"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-Infinity"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "FFF0000000000000"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "FFF0000000000000"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "-Infinity"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e308"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "7FE1CCF385EBC8A0"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "7FE1CCF385EBC8A0"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "1e+308"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "NaN"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "error": "无效浮点数: NaN"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "error": "无效浮点数: 中文"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0001"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "16"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "03FF"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "16368"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0400"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "0.00006103515625"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "8000"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "7C01"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "NaN"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "7E00"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "NaN"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "FC00"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "-Infinity"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3c00"
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "1"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": " 3 c 0 0 "
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "text": "1"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "precision": "half",
+        "halfMode": "upstream"
+      },
+      "error": "无效十六进制: "
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "00000001"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "1.401298464324817e-45"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "7FC00000"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "NaN"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "80000000"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "FF800000"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "-Infinity"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3f8"
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "text": "1.4237192397540141e-42"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "precision": "single"
+      },
+      "error": "无效十六进制: "
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0000000000000001"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "5e-324"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "7FF8000000000000"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "NaN"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "8000000000000000"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "0"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "FFF0000000000000"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "-Infinity"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3FF0000000000000"
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "text": "1"
+    },
+    {
+      "operation": "ieee754",
+      "node": "ieee754_decode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "precision": "double"
+      },
+      "error": "Cannot convert 0x to a BigInt"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "precision": 1
+      },
+      "text": "输入: \n精度: 1 位小数\n2 进制: 0\n8 进制: 0\n10 进制: 0\n16 进制: 0"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "precision": 1
+      },
+      "text": "输入: 0\n精度: 1 位小数\n2 进制: 0\n8 进制: 0\n10 进制: 0\n16 进制: 0"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0"
+        }
+      },
+      "params": {
+        "precision": 1
+      },
+      "text": "输入: -0\n精度: 1 位小数\n2 进制: 0\n8 进制: 0\n10 进制: 0\n16 进制: 0"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.625"
+        }
+      },
+      "params": {
+        "precision": 1
+      },
+      "text": "输入: 10.625\n精度: 1 位小数\n2 进制: 1010.1\n8 进制: 12.5\n10 进制: 10.6\n16 进制: A.A"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-10.625"
+        }
+      },
+      "params": {
+        "precision": 1
+      },
+      "text": "输入: -10.625\n精度: 1 位小数\n2 进制: -1010.1\n8 进制: -12.5\n10 进制: -10.6\n16 进制: -A.A"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "precision": 1
+      },
+      "text": "输入: 0.1\n精度: 1 位小数\n2 进制: 0\n8 进制: 0\n10 进制: 0.1\n16 进制: 0.1"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "255"
+        }
+      },
+      "params": {
+        "precision": 1
+      },
+      "text": "输入: 255\n精度: 1 位小数\n2 进制: 11111111\n8 进制: 377\n10 进制: 255\n16 进制: FF"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e21"
+        }
+      },
+      "params": {
+        "precision": 1
+      },
+      "text": "输入: 1e21\n精度: 1 位小数\n2 进制: 1101100011010111001001101011011100010111011110101000000000000000000000\n8 进制: 154327115334273650000000\n10 进制: 1000000000000000000000\n16 进制: 3635C9ADC5DEA00000"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e-10"
+        }
+      },
+      "params": {
+        "precision": 1
+      },
+      "text": "输入: 1e-10\n精度: 1 位小数\n2 进制: 0\n8 进制: 0\n10 进制: 0\n16 进制: 0"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0xFF"
+        }
+      },
+      "params": {
+        "precision": 1
+      },
+      "text": "输入: 0xFF\n精度: 1 位小数\n2 进制: 11111111\n8 进制: 377\n10 进制: 255\n16 进制: FF"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "params": {
+        "precision": 1
+      },
+      "error": "无效数字: 中文"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "precision": 2
+      },
+      "text": "输入: \n精度: 2 位小数\n2 进制: 0\n8 进制: 0\n10 进制: 0\n16 进制: 0"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "precision": 2
+      },
+      "text": "输入: 0\n精度: 2 位小数\n2 进制: 0\n8 进制: 0\n10 进制: 0\n16 进制: 0"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0"
+        }
+      },
+      "params": {
+        "precision": 2
+      },
+      "text": "输入: -0\n精度: 2 位小数\n2 进制: 0\n8 进制: 0\n10 进制: 0\n16 进制: 0"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.625"
+        }
+      },
+      "params": {
+        "precision": 2
+      },
+      "text": "输入: 10.625\n精度: 2 位小数\n2 进制: 1010.1\n8 进制: 12.5\n10 进制: 10.62\n16 进制: A.A"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-10.625"
+        }
+      },
+      "params": {
+        "precision": 2
+      },
+      "text": "输入: -10.625\n精度: 2 位小数\n2 进制: -1010.1\n8 进制: -12.5\n10 进制: -10.62\n16 进制: -A.A"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "precision": 2
+      },
+      "text": "输入: 0.1\n精度: 2 位小数\n2 进制: 0\n8 进制: 0.06\n10 进制: 0.1\n16 进制: 0.19"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "255"
+        }
+      },
+      "params": {
+        "precision": 2
+      },
+      "text": "输入: 255\n精度: 2 位小数\n2 进制: 11111111\n8 进制: 377\n10 进制: 255\n16 进制: FF"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e21"
+        }
+      },
+      "params": {
+        "precision": 2
+      },
+      "text": "输入: 1e21\n精度: 2 位小数\n2 进制: 1101100011010111001001101011011100010111011110101000000000000000000000\n8 进制: 154327115334273650000000\n10 进制: 1000000000000000000000\n16 进制: 3635C9ADC5DEA00000"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e-10"
+        }
+      },
+      "params": {
+        "precision": 2
+      },
+      "text": "输入: 1e-10\n精度: 2 位小数\n2 进制: 0\n8 进制: 0\n10 进制: 0\n16 进制: 0"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0xFF"
+        }
+      },
+      "params": {
+        "precision": 2
+      },
+      "text": "输入: 0xFF\n精度: 2 位小数\n2 进制: 11111111\n8 进制: 377\n10 进制: 255\n16 进制: FF"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "params": {
+        "precision": 2
+      },
+      "error": "无效数字: 中文"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "precision": 16
+      },
+      "text": "输入: \n精度: 16 位小数\n2 进制: 0\n8 进制: 0\n10 进制: 0\n16 进制: 0"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "precision": 16
+      },
+      "text": "输入: 0\n精度: 16 位小数\n2 进制: 0\n8 进制: 0\n10 进制: 0\n16 进制: 0"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0"
+        }
+      },
+      "params": {
+        "precision": 16
+      },
+      "text": "输入: -0\n精度: 16 位小数\n2 进制: 0\n8 进制: 0\n10 进制: 0\n16 进制: 0"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.625"
+        }
+      },
+      "params": {
+        "precision": 16
+      },
+      "text": "输入: 10.625\n精度: 16 位小数\n2 进制: 1010.101\n8 进制: 12.5\n10 进制: 10.625\n16 进制: A.A"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-10.625"
+        }
+      },
+      "params": {
+        "precision": 16
+      },
+      "text": "输入: -10.625\n精度: 16 位小数\n2 进制: -1010.101\n8 进制: -12.5\n10 进制: -10.625\n16 进制: -A.A"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "precision": 16
+      },
+      "text": "输入: 0.1\n精度: 16 位小数\n2 进制: 0.0001100110011001\n8 进制: 0.0631463146314631\n10 进制: 0.1\n16 进制: 0.1999999999999A"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "255"
+        }
+      },
+      "params": {
+        "precision": 16
+      },
+      "text": "输入: 255\n精度: 16 位小数\n2 进制: 11111111\n8 进制: 377\n10 进制: 255\n16 进制: FF"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e21"
+        }
+      },
+      "params": {
+        "precision": 16
+      },
+      "text": "输入: 1e21\n精度: 16 位小数\n2 进制: 1101100011010111001001101011011100010111011110101000000000000000000000\n8 进制: 154327115334273650000000\n10 进制: 1000000000000000000000\n16 进制: 3635C9ADC5DEA00000"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e-10"
+        }
+      },
+      "params": {
+        "precision": 16
+      },
+      "text": "输入: 1e-10\n精度: 16 位小数\n2 进制: 0\n8 进制: 0.0000000000066763\n10 进制: 0.0000000001\n16 进制: 0.000000006DF37F67"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0xFF"
+        }
+      },
+      "params": {
+        "precision": 16
+      },
+      "text": "输入: 0xFF\n精度: 16 位小数\n2 进制: 11111111\n8 进制: 377\n10 进制: 255\n16 进制: FF"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "params": {
+        "precision": 16
+      },
+      "error": "无效数字: 中文"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "precision": 64
+      },
+      "text": "输入: \n精度: 64 位小数\n2 进制: 0\n8 进制: 0\n10 进制: 0\n16 进制: 0"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "precision": 64
+      },
+      "text": "输入: 0\n精度: 64 位小数\n2 进制: 0\n8 进制: 0\n10 进制: 0\n16 进制: 0"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0"
+        }
+      },
+      "params": {
+        "precision": 64
+      },
+      "text": "输入: -0\n精度: 64 位小数\n2 进制: 0\n8 进制: 0\n10 进制: 0\n16 进制: 0"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.625"
+        }
+      },
+      "params": {
+        "precision": 64
+      },
+      "text": "输入: 10.625\n精度: 64 位小数\n2 进制: 1010.101\n8 进制: 12.5\n10 进制: 10.625\n16 进制: A.A"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-10.625"
+        }
+      },
+      "params": {
+        "precision": 64
+      },
+      "text": "输入: -10.625\n精度: 64 位小数\n2 进制: -1010.101\n8 进制: -12.5\n10 进制: -10.625\n16 进制: -A.A"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "precision": 64
+      },
+      "text": "输入: 0.1\n精度: 64 位小数\n2 进制: 0.0001100110011001100110011001100110011001100110011001101\n8 进制: 0.0631463146314631464\n10 进制: 0.1\n16 进制: 0.1999999999999A"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "255"
+        }
+      },
+      "params": {
+        "precision": 64
+      },
+      "text": "输入: 255\n精度: 64 位小数\n2 进制: 11111111\n8 进制: 377\n10 进制: 255\n16 进制: FF"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e21"
+        }
+      },
+      "params": {
+        "precision": 64
+      },
+      "text": "输入: 1e21\n精度: 64 位小数\n2 进制: 1101100011010111001001101011011100010111011110101000000000000000000000\n8 进制: 154327115334273650000000\n10 进制: 1000000000000000000000\n16 进制: 3635C9ADC5DEA00000"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1e-10"
+        }
+      },
+      "params": {
+        "precision": 64
+      },
+      "text": "输入: 1e-10\n精度: 64 位小数\n2 进制: 0.0000000000000000000000000000000001101101111100110111111101100111\n8 进制: 0.00000000000667633766353675566\n10 进制: 0.0000000001\n16 进制: 0.000000006DF37F675EF6EC"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0xFF"
+        }
+      },
+      "params": {
+        "precision": 64
+      },
+      "text": "输入: 0xFF\n精度: 64 位小数\n2 进制: 11111111\n8 进制: 377\n10 进制: 255\n16 进制: FF"
+    },
+    {
+      "operation": "decimalToFloat",
+      "node": "decimal_to_radix_float",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "params": {
+        "precision": 64
+      },
+      "error": "无效数字: 中文"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1010.101"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 0
+      },
+      "text": "2 进制浮点: 1010.101\n十进制: 10.625\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0.1"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 0
+      },
+      "text": "2 进制浮点: -0.1\n十进制: -0.5\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0b11.01"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 0
+      },
+      "text": "2 进制浮点: 0b11.01\n十进制: 3.25\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ".1"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 0
+      },
+      "text": "2 进制浮点: .1\n十进制: 0.5\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 0
+      },
+      "text": "2 进制浮点: 0.1\n十进制: 0.5\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 0
+      },
+      "error": "空输入"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1010.101"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 1
+      },
+      "text": "2 进制浮点: 1010.101\n十进制: 10.6\n精度: 1 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0.1"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 1
+      },
+      "text": "2 进制浮点: -0.1\n十进制: -0.5\n精度: 1 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0b11.01"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 1
+      },
+      "text": "2 进制浮点: 0b11.01\n十进制: 3.3\n精度: 1 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ".1"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 1
+      },
+      "text": "2 进制浮点: .1\n十进制: 0.5\n精度: 1 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 1
+      },
+      "text": "2 进制浮点: 0.1\n十进制: 0.5\n精度: 1 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 1
+      },
+      "error": "空输入"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1010.101"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 2
+      },
+      "text": "2 进制浮点: 1010.101\n十进制: 10.63\n精度: 2 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0.1"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 2
+      },
+      "text": "2 进制浮点: -0.1\n十进制: -0.5\n精度: 2 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0b11.01"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 2
+      },
+      "text": "2 进制浮点: 0b11.01\n十进制: 3.25\n精度: 2 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ".1"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 2
+      },
+      "text": "2 进制浮点: .1\n十进制: 0.5\n精度: 2 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 2
+      },
+      "text": "2 进制浮点: 0.1\n十进制: 0.5\n精度: 2 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 2
+      },
+      "error": "空输入"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1010.101"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 16
+      },
+      "text": "2 进制浮点: 1010.101\n十进制: 10.625\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0.1"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 16
+      },
+      "text": "2 进制浮点: -0.1\n十进制: -0.5\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0b11.01"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 16
+      },
+      "text": "2 进制浮点: 0b11.01\n十进制: 3.25\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ".1"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 16
+      },
+      "text": "2 进制浮点: .1\n十进制: 0.5\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 16
+      },
+      "text": "2 进制浮点: 0.1\n十进制: 0.5\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 16
+      },
+      "error": "空输入"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1010.101"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 64
+      },
+      "text": "2 进制浮点: 1010.101\n十进制: 10.625\n精度: 64 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0.1"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 64
+      },
+      "text": "2 进制浮点: -0.1\n十进制: -0.5\n精度: 64 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0b11.01"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 64
+      },
+      "text": "2 进制浮点: 0b11.01\n十进制: 3.25\n精度: 64 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ".1"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 64
+      },
+      "text": "2 进制浮点: .1\n十进制: 0.5\n精度: 64 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 64
+      },
+      "text": "2 进制浮点: 0.1\n十进制: 0.5\n精度: 64 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "base": "2",
+        "precision": 64
+      },
+      "error": "空输入"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "12.5"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 0
+      },
+      "text": "8 进制浮点: 12.5\n十进制: 10.625\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0o12.5"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 0
+      },
+      "text": "8 进制浮点: -0o12.5\n十进制: -10.625\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 0
+      },
+      "text": "8 进制浮点: 0.1\n十进制: 0.125\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "8"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 0
+      },
+      "error": "非法 8 进制字符: 8"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "12.5"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 1
+      },
+      "text": "8 进制浮点: 12.5\n十进制: 10.6\n精度: 1 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0o12.5"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 1
+      },
+      "text": "8 进制浮点: -0o12.5\n十进制: -10.6\n精度: 1 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 1
+      },
+      "text": "8 进制浮点: 0.1\n十进制: 0.1\n精度: 1 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "8"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 1
+      },
+      "error": "非法 8 进制字符: 8"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "12.5"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 2
+      },
+      "text": "8 进制浮点: 12.5\n十进制: 10.63\n精度: 2 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0o12.5"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 2
+      },
+      "text": "8 进制浮点: -0o12.5\n十进制: -10.63\n精度: 2 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 2
+      },
+      "text": "8 进制浮点: 0.1\n十进制: 0.13\n精度: 2 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "8"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 2
+      },
+      "error": "非法 8 进制字符: 8"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "12.5"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 16
+      },
+      "text": "8 进制浮点: 12.5\n十进制: 10.625\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0o12.5"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 16
+      },
+      "text": "8 进制浮点: -0o12.5\n十进制: -10.625\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 16
+      },
+      "text": "8 进制浮点: 0.1\n十进制: 0.125\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "8"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 16
+      },
+      "error": "非法 8 进制字符: 8"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "12.5"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 64
+      },
+      "text": "8 进制浮点: 12.5\n十进制: 10.625\n精度: 64 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0o12.5"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 64
+      },
+      "text": "8 进制浮点: -0o12.5\n十进制: -10.625\n精度: 64 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 64
+      },
+      "text": "8 进制浮点: 0.1\n十进制: 0.125\n精度: 64 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "8"
+        }
+      },
+      "params": {
+        "base": "8",
+        "precision": 64
+      },
+      "error": "非法 8 进制字符: 8"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.625"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 0
+      },
+      "text": "10 进制浮点: 10.625\n十进制: 10.625\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 0
+      },
+      "text": "10 进制浮点: 0.1\n十进制: 0.1\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0.0001"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 0
+      },
+      "text": "10 进制浮点: -0.0001\n十进制: -0.0001\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2.5"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 0
+      },
+      "text": "10 进制浮点: 2.5\n十进制: 2.5\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3.5"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 0
+      },
+      "text": "10 进制浮点: 3.5\n十进制: 3.5\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1.005"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 0
+      },
+      "text": "10 进制浮点: 1.005\n十进制: 1.0049999999999999\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x10"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 0
+      },
+      "error": "非法 10 进制字符: x"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.625"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 1
+      },
+      "text": "10 进制浮点: 10.625\n十进制: 10.6\n精度: 1 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 1
+      },
+      "text": "10 进制浮点: 0.1\n十进制: 0.1\n精度: 1 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0.0001"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 1
+      },
+      "text": "10 进制浮点: -0.0001\n十进制: -0\n精度: 1 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2.5"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 1
+      },
+      "text": "10 进制浮点: 2.5\n十进制: 2.5\n精度: 1 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3.5"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 1
+      },
+      "text": "10 进制浮点: 3.5\n十进制: 3.5\n精度: 1 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1.005"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 1
+      },
+      "text": "10 进制浮点: 1.005\n十进制: 1\n精度: 1 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x10"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 1
+      },
+      "error": "非法 10 进制字符: x"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.625"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 2
+      },
+      "text": "10 进制浮点: 10.625\n十进制: 10.63\n精度: 2 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 2
+      },
+      "text": "10 进制浮点: 0.1\n十进制: 0.1\n精度: 2 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0.0001"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 2
+      },
+      "text": "10 进制浮点: -0.0001\n十进制: -0\n精度: 2 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2.5"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 2
+      },
+      "text": "10 进制浮点: 2.5\n十进制: 2.5\n精度: 2 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3.5"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 2
+      },
+      "text": "10 进制浮点: 3.5\n十进制: 3.5\n精度: 2 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1.005"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 2
+      },
+      "text": "10 进制浮点: 1.005\n十进制: 1\n精度: 2 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x10"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 2
+      },
+      "error": "非法 10 进制字符: x"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.625"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 16
+      },
+      "text": "10 进制浮点: 10.625\n十进制: 10.625\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 16
+      },
+      "text": "10 进制浮点: 0.1\n十进制: 0.1\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0.0001"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 16
+      },
+      "text": "10 进制浮点: -0.0001\n十进制: -0.0001\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2.5"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 16
+      },
+      "text": "10 进制浮点: 2.5\n十进制: 2.5\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3.5"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 16
+      },
+      "text": "10 进制浮点: 3.5\n十进制: 3.5\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1.005"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 16
+      },
+      "text": "10 进制浮点: 1.005\n十进制: 1.0049999999999999\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x10"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 16
+      },
+      "error": "非法 10 进制字符: x"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "10.625"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 64
+      },
+      "text": "10 进制浮点: 10.625\n十进制: 10.625\n精度: 64 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 64
+      },
+      "text": "10 进制浮点: 0.1\n十进制: 0.1000000000000000055511151231257827021181583404541015625\n精度: 64 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0.0001"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 64
+      },
+      "text": "10 进制浮点: -0.0001\n十进制: -0.0001000000000000000047921736023859295983129413798451423645019531\n精度: 64 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2.5"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 64
+      },
+      "text": "10 进制浮点: 2.5\n十进制: 2.5\n精度: 64 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "3.5"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 64
+      },
+      "text": "10 进制浮点: 3.5\n十进制: 3.5\n精度: 64 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1.005"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 64
+      },
+      "text": "10 进制浮点: 1.005\n十进制: 1.00499999999999989341858963598497211933135986328125\n精度: 64 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0x10"
+        }
+      },
+      "params": {
+        "base": "10",
+        "precision": 64
+      },
+      "error": "非法 10 进制字符: x"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "a.a"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 0
+      },
+      "text": "16 进制浮点: a.a\n十进制: 10.625\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0xa.a"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 0
+      },
+      "text": "16 进制浮点: -0xa.a\n十进制: -10.625\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0BEEF"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 0
+      },
+      "text": "16 进制浮点: 0BEEF\n十进制: 48879\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 0
+      },
+      "text": "16 进制浮点: 0.1\n十进制: 0.0625\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "FF.FF"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 0
+      },
+      "text": "16 进制浮点: FF.FF\n十进制: 255.99609375\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "z"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 0
+      },
+      "error": "非法 16 进制字符: z"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "a.a"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 1
+      },
+      "text": "16 进制浮点: a.a\n十进制: 10.6\n精度: 1 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0xa.a"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 1
+      },
+      "text": "16 进制浮点: -0xa.a\n十进制: -10.6\n精度: 1 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0BEEF"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 1
+      },
+      "text": "16 进制浮点: 0BEEF\n十进制: 48879\n精度: 1 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 1
+      },
+      "text": "16 进制浮点: 0.1\n十进制: 0.1\n精度: 1 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "FF.FF"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 1
+      },
+      "text": "16 进制浮点: FF.FF\n十进制: 256\n精度: 1 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "z"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 1
+      },
+      "error": "非法 16 进制字符: z"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "a.a"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 2
+      },
+      "text": "16 进制浮点: a.a\n十进制: 10.63\n精度: 2 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0xa.a"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 2
+      },
+      "text": "16 进制浮点: -0xa.a\n十进制: -10.63\n精度: 2 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0BEEF"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 2
+      },
+      "text": "16 进制浮点: 0BEEF\n十进制: 48879\n精度: 2 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 2
+      },
+      "text": "16 进制浮点: 0.1\n十进制: 0.06\n精度: 2 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "FF.FF"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 2
+      },
+      "text": "16 进制浮点: FF.FF\n十进制: 256\n精度: 2 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "z"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 2
+      },
+      "error": "非法 16 进制字符: z"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "a.a"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 16
+      },
+      "text": "16 进制浮点: a.a\n十进制: 10.625\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0xa.a"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 16
+      },
+      "text": "16 进制浮点: -0xa.a\n十进制: -10.625\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0BEEF"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 16
+      },
+      "text": "16 进制浮点: 0BEEF\n十进制: 48879\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 16
+      },
+      "text": "16 进制浮点: 0.1\n十进制: 0.0625\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "FF.FF"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 16
+      },
+      "text": "16 进制浮点: FF.FF\n十进制: 255.99609375\n精度: 16 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "z"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 16
+      },
+      "error": "非法 16 进制字符: z"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "a.a"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 64
+      },
+      "text": "16 进制浮点: a.a\n十进制: 10.625\n精度: 64 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-0xa.a"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 64
+      },
+      "text": "16 进制浮点: -0xa.a\n十进制: -10.625\n精度: 64 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0BEEF"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 64
+      },
+      "text": "16 进制浮点: 0BEEF\n十进制: 48879\n精度: 64 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0.1"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 64
+      },
+      "text": "16 进制浮点: 0.1\n十进制: 0.0625\n精度: 64 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "FF.FF"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 64
+      },
+      "text": "16 进制浮点: FF.FF\n十进制: 255.99609375\n精度: 64 位小数"
+    },
+    {
+      "operation": "floatToDecimal",
+      "node": "radix_float_to_decimal",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "z"
+        }
+      },
+      "params": {
+        "base": "16",
+        "precision": 64
+      },
+      "error": "非法 16 进制字符: z"
+    },
+    {
+      "operation": "standardCode",
+      "node": "charset_probe_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "legacyReport": true
+      },
+      "text": "（空输入）"
+    },
+    {
+      "operation": "standardCode",
+      "node": "charset_probe_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "Hello"
+        }
+      },
+      "params": {
+        "legacyReport": true
+      },
+      "text": "输入: 文本 (5 字符)\n\nutf-8 编码: 48656c6c6f\nutf-16le 编码: 480065006c006c006f00\nutf-16be 编码: 00480065006c006c006f\nlatin1 编码: 48656c6c6f\niso-8859-1 编码: 48656c6c6f\ngbk 编码: TextEncoder 不支持（仅 utf-8）\ngb18030 编码: TextEncoder 不支持（仅 utf-8）\nbig5 编码: TextEncoder 不支持（仅 utf-8）\nshift_jis 编码: TextEncoder 不支持（仅 utf-8）\neuc-jp 编码: TextEncoder 不支持（仅 utf-8）\nwindows-1252 编码: TextEncoder 不支持（仅 utf-8）"
+    },
+    {
+      "operation": "standardCode",
+      "node": "charset_probe_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文🙂"
+        }
+      },
+      "params": {
+        "legacyReport": true
+      },
+      "text": "输入: 文本 (4 字符)\n\nutf-8 编码: e4b8ade69687f09f9982\nutf-16le 编码: 2d4e87653dd842de\nutf-16be 编码: 4e2d6587d83dde42\nlatin1 编码: （非 Latin1 域，无法表示）\niso-8859-1 编码: （非 Latin1 域，无法表示）\ngbk 编码: TextEncoder 不支持（仅 utf-8）\ngb18030 编码: TextEncoder 不支持（仅 utf-8）\nbig5 编码: TextEncoder 不支持（仅 utf-8）\nshift_jis 编码: TextEncoder 不支持（仅 utf-8）\neuc-jp 编码: TextEncoder 不支持（仅 utf-8）\nwindows-1252 编码: TextEncoder 不支持（仅 utf-8）"
+    },
+    {
+      "operation": "standardCode",
+      "node": "charset_probe_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "中文"
+        }
+      },
+      "params": {
+        "legacyReport": true
+      },
+      "text": "输入: 文本 (2 字符)\n\nutf-8 编码: e4b8ade69687\nutf-16le 编码: 2d4e8765\nutf-16be 编码: 4e2d6587\nlatin1 编码: （非 Latin1 域，无法表示）\niso-8859-1 编码: （非 Latin1 域，无法表示）\ngbk 编码: TextEncoder 不支持（仅 utf-8）\ngb18030 编码: TextEncoder 不支持（仅 utf-8）\nbig5 编码: TextEncoder 不支持（仅 utf-8）\nshift_jis 编码: TextEncoder 不支持（仅 utf-8）\neuc-jp 编码: TextEncoder 不支持（仅 utf-8）\nwindows-1252 编码: TextEncoder 不支持（仅 utf-8）"
+    },
+    {
+      "operation": "standardCode",
+      "node": "charset_probe_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "café"
+        }
+      },
+      "params": {
+        "legacyReport": true
+      },
+      "text": "输入: 文本 (4 字符)\n\nutf-8 编码: 636166c3a9\nutf-16le 编码: 630061006600e900\nutf-16be 编码: 00630061006600e9\nlatin1 编码: 636166e9\niso-8859-1 编码: 636166e9\ngbk 编码: TextEncoder 不支持（仅 utf-8）\ngb18030 编码: TextEncoder 不支持（仅 utf-8）\nbig5 编码: TextEncoder 不支持（仅 utf-8）\nshift_jis 编码: TextEncoder 不支持（仅 utf-8）\neuc-jp 编码: TextEncoder 不支持（仅 utf-8）\nwindows-1252 编码: TextEncoder 不支持（仅 utf-8）"
+    },
+    {
+      "operation": "standardCode",
+      "node": "charset_probe_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "こんにちは"
+        }
+      },
+      "params": {
+        "legacyReport": true
+      },
+      "text": "输入: 文本 (5 字符)\n\nutf-8 编码: e38193e38293e381abe381a1e381af\nutf-16le 编码: 533093306b3061306f30\nutf-16be 编码: 30533093306b3061306f\nlatin1 编码: （非 Latin1 域，无法表示）\niso-8859-1 编码: （非 Latin1 域，无法表示）\ngbk 编码: TextEncoder 不支持（仅 utf-8）\ngb18030 编码: TextEncoder 不支持（仅 utf-8）\nbig5 编码: TextEncoder 不支持（仅 utf-8）\nshift_jis 编码: TextEncoder 不支持（仅 utf-8）\neuc-jp 编码: TextEncoder 不支持（仅 utf-8）\nwindows-1252 编码: TextEncoder 不支持（仅 utf-8）"
+    },
+    {
+      "operation": "standardCode",
+      "node": "charset_probe_decode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "48656C6C6F"
+        }
+      },
+      "params": {},
+      "text": "输入: hex (5 字节)\n\nutf-8 解码: Hello\nutf-16le 解码: 效汬\uFFFD  （含替换符 U+FFFD）\nutf-16be 解码: 䡥汬\uFFFD  （含替换符 U+FFFD）\nlatin1 解码: Hello\niso-8859-1 解码: Hello\ngbk 解码: Hello\ngb18030 解码: Hello\nbig5 解码: Hello\nshift_jis 解码: Hello\neuc-jp 解码: Hello\nwindows-1252 解码: Hello"
+    },
+    {
+      "operation": "standardCode",
+      "node": "charset_probe_decode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "e4b8ade69687"
+        }
+      },
+      "params": {},
+      "text": "输入: hex (6 字节)\n\nutf-8 解码: 中文\nutf-16le 解码: 룤螖\nutf-16be 解码: 귦隇\nlatin1 解码: ä¸­æ\niso-8859-1 解码: ä¸­æ\ngbk 解码: 涓枃\ngb18030 解码: 涓枃\nbig5 解码: 銝剜\uFFFD  （含替换符 U+FFFD）\nshift_jis 解码: 荳ｭ譁\uFFFD  （含替换符 U+FFFD）\neuc-jp 解码: 筝㊥\nwindows-1252 解码: ä¸­æ"
+    },
+    {
+      "operation": "standardCode",
+      "node": "charset_probe_decode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "EFBBBF41"
+        }
+      },
+      "params": {},
+      "text": "输入: hex (4 字节)\n\nutf-8 解码: A\nutf-16le 解码: 믯䆿\nutf-16be 解码: 뽁\nlatin1 解码: ï»¿A\niso-8859-1 解码: ï»¿A\ngbk 解码: 锘緼\ngb18030 解码: 锘緼\nbig5 解码: 嚜澤\nshift_jis 解码: \uFFFDｿA  （含替换符 U+FFFD）\neuc-jp 解码: 鏤\uFFFDA  （含替换符 U+FFFD）\nwindows-1252 解码: ï»¿A"
+    },
+    {
+      "operation": "standardCode",
+      "node": "charset_probe_decode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "FFFE4100"
+        }
+      },
+      "params": {},
+      "text": "输入: hex (4 字节)\n\nutf-8 解码: \uFFFD\uFFFDA\u0000  （含替换符 U+FFFD）\nutf-16le 解码: A\nutf-16be 解码: ￾䄀\nlatin1 解码: ÿþA\u0000\niso-8859-1 解码: ÿþA\u0000\ngbk 解码: 嗀\u0000\ngb18030 解码: \uFFFD嗀\u0000  （含替换符 U+FFFD）\nbig5 解码: \u0000\nshift_jis 解码: \uFFFD\uFFFDA\u0000  （含替换符 U+FFFD）\neuc-jp 解码: \uFFFD\uFFFDA\u0000  （含替换符 U+FFFD）\nwindows-1252 解码: ÿþA\u0000"
+    },
+    {
+      "operation": "standardCode",
+      "node": "charset_probe_decode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "FEFF0041"
+        }
+      },
+      "params": {},
+      "text": "输入: hex (4 字节)\n\nutf-8 解码: \uFFFD\uFFFD\u0000A  （含替换符 U+FFFD）\nutf-16le 解码: ￾䄀\nutf-16be 解码: A\nlatin1 解码: þÿ\u0000A\niso-8859-1 解码: þÿ\u0000A\ngbk 解码: \uFFFD\u0000A  （含替换符 U+FFFD）\ngb18030 解码: \uFFFD\u0000A  （含替换符 U+FFFD）\nbig5 解码: \uFFFD\u0000A  （含替换符 U+FFFD）\nshift_jis 解码: \uFFFD\uFFFD\u0000A  （含替换符 U+FFFD）\neuc-jp 解码: \uFFFD\u0000A  （含替换符 U+FFFD）\nwindows-1252 解码: þÿ\u0000A"
+    },
+    {
+      "operation": "standardCode",
+      "node": "charset_probe_decode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "ff00"
+        }
+      },
+      "params": {},
+      "text": "输入: hex (2 字节)\n\nutf-8 解码: \uFFFD\u0000  （含替换符 U+FFFD）\nutf-16le 解码: ÿ\nutf-16be 解码: ＀\nlatin1 解码: ÿ\u0000\niso-8859-1 解码: ÿ\u0000\ngbk 解码: \u0000\ngb18030 解码: \uFFFD\u0000  （含替换符 U+FFFD）\nbig5 解码: \u0000\nshift_jis 解码: \uFFFD\u0000  （含替换符 U+FFFD）\neuc-jp 解码: \uFFFD\u0000  （含替换符 U+FFFD）\nwindows-1252 解码: ÿ\u0000"
+    },
+    {
+      "operation": "standardCode",
+      "node": "charset_probe_decode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "800081829F"
+        }
+      },
+      "params": {},
+      "text": "输入: hex (5 字节)\n\nutf-8 解码: \uFFFD\u0000\uFFFD\uFFFD\uFFFD  （含替换符 U+FFFD）\nutf-16le 解码: 芁\uFFFD  （含替换符 U+FFFD）\nutf-16be 解码: 耀膂\uFFFD  （含替换符 U+FFFD）\nlatin1 解码: \u0000\niso-8859-1 解码: \u0000\ngbk 解码: €\u0000亗\uFFFD  （含替换符 U+FFFD）\ngb18030 解码: €\u0000亗\uFFFD  （含替换符 U+FFFD）\nbig5 解码: \u0000\uFFFD\uFFFD  （含替换符 U+FFFD）\nshift_jis 解码: \uFFFD\u0000≠\uFFFD  （含替换符 U+FFFD）\neuc-jp 解码: \u0000\nwindows-1252 解码: \u0000"
+    },
+    {
+      "operation": "standardCode",
+      "node": "charset_probe_decode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "d6d0cec4"
+        }
+      },
+      "params": {},
+      "text": "输入: hex (4 字节)\n\nutf-8 解码: \uFFFD\uFFFD\uFFFD\uFFFD  （含替换符 U+FFFD）\nutf-16le 解码: 탖쓎\nutf-16be 解码: 훐컄\nlatin1 解码: ÖÐÎÄ\niso-8859-1 解码: ÖÐÎÄ\ngbk 解码: 中文\ngb18030 解码: 中文\nbig5 解码: 笢恅\nshift_jis 解码: ﾖﾐﾎﾄ\neuc-jp 解码: 嶄猟\nwindows-1252 解码: ÖÐÎÄ"
+    },
+    {
+      "operation": "standardCode",
+      "node": "charset_probe_decode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "c4e3bac3"
+        }
+      },
+      "params": {},
+      "text": "输入: hex (4 字节)\n\nutf-8 解码: \uFFFD\uFFFD\uFFFD  （含替换符 U+FFFD）\nutf-16le 解码: 쎺\nutf-16be 解码: 쓣뫃\nlatin1 解码: ÄãºÃ\niso-8859-1 解码: ÄãºÃ\ngbk 解码: 你好\ngb18030 解码: 你好\nbig5 解码: 斕疑\nshift_jis 解码: ﾄ羲ﾃ\neuc-jp 解码: 低挫\nwindows-1252 解码: ÄãºÃ"
+    },
+    {
+      "operation": "standardCode",
+      "node": "charset_probe_decode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "00"
+        }
+      },
+      "params": {},
+      "text": "输入: hex (1 字节)\n\nutf-8 解码: \u0000\nutf-16le 解码: \uFFFD  （含替换符 U+FFFD）\nutf-16be 解码: \uFFFD  （含替换符 U+FFFD）\nlatin1 解码: \u0000\niso-8859-1 解码: \u0000\ngbk 解码: \u0000\ngb18030 解码: \u0000\nbig5 解码: \u0000\nshift_jis 解码: \u0000\neuc-jp 解码: \u0000\nwindows-1252 解码: \u0000"
+    },
+    {
+      "operation": "standardCode",
+      "node": "charset_probe_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "A"
+        }
+      },
+      "params": {
+        "legacyReport": true
+      },
+      "text": "输入: 文本 (1 字符)\n\nutf-8 编码: 41\nutf-16le 编码: 4100\nutf-16be 编码: 0041\nlatin1 编码: 41\niso-8859-1 编码: 41\ngbk 编码: TextEncoder 不支持（仅 utf-8）\ngb18030 编码: TextEncoder 不支持（仅 utf-8）\nbig5 编码: TextEncoder 不支持（仅 utf-8）\nshift_jis 编码: TextEncoder 不支持（仅 utf-8）\neuc-jp 编码: TextEncoder 不支持（仅 utf-8）\nwindows-1252 编码: TextEncoder 不支持（仅 utf-8）"
+    },
+    {
+      "operation": "standardCode",
+      "node": "charset_probe_decode",
+      "input": {
+        "data": {
+          "type": "text",
+          "value": "AB"
+        }
+      },
+      "params": {},
+      "text": "输入: hex (1 字节)\n\nutf-8 解码: \uFFFD  （含替换符 U+FFFD）\nutf-16le 解码: \uFFFD  （含替换符 U+FFFD）\nutf-16be 解码: \uFFFD  （含替换符 U+FFFD）\nlatin1 解码: «\niso-8859-1 解码: «\ngbk 解码: \uFFFD  （含替换符 U+FFFD）\ngb18030 解码: \uFFFD  （含替换符 U+FFFD）\nbig5 解码: \uFFFD  （含替换符 U+FFFD）\nshift_jis 解码: ｫ\neuc-jp 解码: \uFFFD  （含替换符 U+FFFD）\nwindows-1252 解码: «"
+    },
+    {
+      "operation": "standardCode",
+      "node": "charset_probe_encode",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "🙂"
+        }
+      },
+      "params": {
+        "legacyReport": true
+      },
+      "text": "输入: 文本 (2 字符)\n\nutf-8 编码: f09f9982\nutf-16le 编码: 3dd842de\nutf-16be 编码: d83dde42\nlatin1 编码: （非 Latin1 域，无法表示）\niso-8859-1 编码: （非 Latin1 域，无法表示）\ngbk 编码: TextEncoder 不支持（仅 utf-8）\ngb18030 编码: TextEncoder 不支持（仅 utf-8）\nbig5 编码: TextEncoder 不支持（仅 utf-8）\nshift_jis 编码: TextEncoder 不支持（仅 utf-8）\neuc-jp 编码: TextEncoder 不支持（仅 utf-8）\nwindows-1252 编码: TextEncoder 不支持（仅 utf-8）"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_report",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间戳: 0\n本地时间: 1970/1/1 08:00:00\nUTC: 1970-01-01T00:00:00.000Z\nUnix秒: 0\nUnix毫秒: 0"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_report",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1793059200"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间戳: 1793059200\n本地时间: 2026/10/27 08:00:00\nUTC: 2026-10-27T00:00:00.000Z\nUnix秒: 1793059200\nUnix毫秒: 1793059200000"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_report",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1793059200123"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间戳: 1793059200123\n本地时间: 2026/10/27 08:00:00\nUTC: 2026-10-27T00:00:00.123Z\nUnix秒: 1793059200\nUnix毫秒: 1793059200123"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_report",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间戳: -1\n本地时间: 1970/1/1 07:59:59\nUTC: 1969-12-31T23:59:59.000Z\nUnix秒: -1\nUnix毫秒: -1000"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_report",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1.25"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间戳: 1.25\n本地时间: 1970/1/1 08:00:01\nUTC: 1970-01-01T00:00:01.250Z\nUnix秒: 1\nUnix毫秒: 1250"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_report",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1000000000000"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间戳: -1000000000000\n本地时间: 29720/4/6 06:19:03\nUTC: -029719-04-05T22:13:20.000Z\nUnix秒: -1000000000000\nUnix毫秒: -1000000000000000"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_to_time",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "0"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间戳: 0\n本地时间: 1970/1/1 08:00:00\nUTC: 1970-01-01T00:00:00.000Z\nUnix秒: 0\nUnix毫秒: 0"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_to_time",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1793059200"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间戳: 1793059200\n本地时间: 2026/10/27 08:00:00\nUTC: 2026-10-27T00:00:00.000Z\nUnix秒: 1793059200\nUnix毫秒: 1793059200000"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_to_time",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1793059200123"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间戳: 1793059200123\n本地时间: 2026/10/27 08:00:00\nUTC: 2026-10-27T00:00:00.123Z\nUnix秒: 1793059200\nUnix毫秒: 1793059200123"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_to_time",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间戳: -1\n本地时间: 1970/1/1 07:59:59\nUTC: 1969-12-31T23:59:59.000Z\nUnix秒: -1\nUnix毫秒: -1000"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_to_time",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1.25"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间戳: 1.25\n本地时间: 1970/1/1 08:00:01\nUTC: 1970-01-01T00:00:01.250Z\nUnix秒: 1\nUnix毫秒: 1250"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_to_time",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "-1000000000000"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间戳: -1000000000000\n本地时间: 29720/4/6 06:19:03\nUTC: -029719-04-05T22:13:20.000Z\nUnix秒: -1000000000000\nUnix毫秒: -1000000000000000"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_report",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1970-01-01"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间: 1970-01-01\nUnix时间戳(秒): 0\nUnix时间戳(毫秒): 0\nUTC: 1970-01-01T00:00:00.000Z"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_report",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27 08:00:00"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间: 2026-10-27 08:00:00\nUnix时间戳(秒): 1793059200\nUnix时间戳(毫秒): 1793059200000\nUTC: 2026-10-27T00:00:00.000Z"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_report",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T08:00:00"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间: 2026-10-27T08:00:00\nUnix时间戳(秒): 1793059200\nUnix时间戳(毫秒): 1793059200000\nUTC: 2026-10-27T00:00:00.000Z"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_report",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T08:00:00+08:00"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间: 2026-10-27T08:00:00+08:00\nUnix时间戳(秒): 1793059200\nUnix时间戳(毫秒): 1793059200000\nUTC: 2026-10-27T00:00:00.000Z"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_report",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T00:00:00Z"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间: 2026-10-27T00:00:00Z\nUnix时间戳(秒): 1793059200\nUnix时间戳(毫秒): 1793059200000\nUTC: 2026-10-27T00:00:00.000Z"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_report",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026/10/27"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间: 2026/10/27\nUnix时间戳(秒): 1793030400\nUnix时间戳(毫秒): 1793030400000\nUTC: 2026-10-26T16:00:00.000Z"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_report",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T00:00:00.123Z"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间: 2026-10-27T00:00:00.123Z\nUnix时间戳(秒): 1793059200\nUnix时间戳(毫秒): 1793059200123\nUTC: 2026-10-27T00:00:00.123Z"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_report",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "error": "无效时间格式，例：2020-01-01 01:01:01"
+    },
+    {
+      "operation": "timestamp",
+      "node": "timestamp_report",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "wrong"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "error": "无效时间格式，例：2020-01-01 01:01:01"
+    },
+    {
+      "operation": "timestamp",
+      "node": "time_to_timestamp",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "1970-01-01"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间: 1970-01-01\nUnix时间戳(秒): 0\nUnix时间戳(毫秒): 0\nUTC: 1970-01-01T00:00:00.000Z"
+    },
+    {
+      "operation": "timestamp",
+      "node": "time_to_timestamp",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27 08:00:00"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间: 2026-10-27 08:00:00\nUnix时间戳(秒): 1793059200\nUnix时间戳(毫秒): 1793059200000\nUTC: 2026-10-27T00:00:00.000Z"
+    },
+    {
+      "operation": "timestamp",
+      "node": "time_to_timestamp",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T08:00:00"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间: 2026-10-27T08:00:00\nUnix时间戳(秒): 1793059200\nUnix时间戳(毫秒): 1793059200000\nUTC: 2026-10-27T00:00:00.000Z"
+    },
+    {
+      "operation": "timestamp",
+      "node": "time_to_timestamp",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T08:00:00+08:00"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间: 2026-10-27T08:00:00+08:00\nUnix时间戳(秒): 1793059200\nUnix时间戳(毫秒): 1793059200000\nUTC: 2026-10-27T00:00:00.000Z"
+    },
+    {
+      "operation": "timestamp",
+      "node": "time_to_timestamp",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T00:00:00Z"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间: 2026-10-27T00:00:00Z\nUnix时间戳(秒): 1793059200\nUnix时间戳(毫秒): 1793059200000\nUTC: 2026-10-27T00:00:00.000Z"
+    },
+    {
+      "operation": "timestamp",
+      "node": "time_to_timestamp",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026/10/27"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间: 2026/10/27\nUnix时间戳(秒): 1793030400\nUnix时间戳(毫秒): 1793030400000\nUTC: 2026-10-26T16:00:00.000Z"
+    },
+    {
+      "operation": "timestamp",
+      "node": "time_to_timestamp",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "2026-10-27T00:00:00.123Z"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "text": "时间: 2026-10-27T00:00:00.123Z\nUnix时间戳(秒): 1793059200\nUnix时间戳(毫秒): 1793059200123\nUTC: 2026-10-27T00:00:00.123Z"
+    },
+    {
+      "operation": "timestamp",
+      "node": "time_to_timestamp",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": ""
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "error": "无效时间格式，例：2020-01-01 01:01:01"
+    },
+    {
+      "operation": "timestamp",
+      "node": "time_to_timestamp",
+      "input": {
+        "text": {
+          "type": "text",
+          "value": "wrong"
+        }
+      },
+      "params": {
+        "timezone": "+08:00"
+      },
+      "error": "无效时间格式，例：2020-01-01 01:01:01"
+    }
+  ]
+}

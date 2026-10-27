@@ -24,7 +24,7 @@ export interface RunHistoryEvent {
 
 export interface RunHistoryEntry {
   id: string;
-  scope: "graph" | "node" | "debug";
+  scope: "graph" | "node" | "debug" | "standalone";
   title: string;
   projectName: string;
   startedAt: string;
@@ -152,6 +152,7 @@ export const useRunStore = create<RunState>((set) => ({
   recordProgress: (msg) => {
     const event = eventFromProgress(msg);
     if (!event) return;
+    event.message = event.message.slice(0, 4000);
     set((state) => {
       if (!state.activeHistoryId) return {};
       const history = state.history.map((entry) =>
@@ -166,7 +167,7 @@ export const useRunStore = create<RunState>((set) => ({
   appendHistoryEvent: (entryId, event) =>
     set((state) => {
       const history = state.history.map((entry) =>
-        entry.id === entryId ? { ...entry, events: [...entry.events, event].slice(-300) } : entry
+        entry.id === entryId ? { ...entry, events: [...entry.events, { ...event, message: event.message.slice(0, 4000) }].slice(-300) } : entry
       );
       persistHistory(history);
       return { history };
