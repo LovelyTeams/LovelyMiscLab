@@ -959,6 +959,7 @@ mod tests {
             ("diffTool", "diff_tool", "data.text"),
             ("bigCalc", "big_integer_calc", "numeric.math"),
             ("progCalc", "programmer_calc", "numeric.bits"),
+            ("unitConv", "unit_convert", "numeric.address"),
         ] {
             let result = list_nodes_value(&reg, Some(category), Some(query), true, true);
             assert!(

@@ -45,3 +45,5 @@
 第十九批参考 bigmath.js；以既有 num-bigint/num-integer 和系统 getrandom 纯 Rust 实现精确整数运算、扩展欧几里得、整数牛顿法和 Pollard–Brent 分解，复用第十七批可取消模幂及固定基 Miller–Rabin。分解预算与不确定性说明见人工验收记录，无新增依赖。capture-upstream-big-integer-vectors.mjs 仅用于维护固定参考向量。
 
 第二十批参考 progCalc.js；以纯 Rust 词法/Pratt 表达式解析和既有 num-bigint 实现固定宽度整数语义，复用可取消模幂；新增结构化结果、精确十进制/大端字节输出和解析资源边界。capture-upstream-programmer-vectors.mjs 仅用于维护固定上游测试向量，异常 UTF-16 诊断以转义文本保存；无 JavaScript 运行时算法依赖。
+
+第二十一批参考 unitConv.js 的固定单位系数、别名、纪元和数值显示规则；unit_definitions.json 为静态数据快照，附固定提交。全部有理数运算、binary64 有效数字舍入、纪元、日历和报告以 Rust 实现，复用既有 num-bigint/num-integer/chrono/ryu-js，无新增依赖。capture-upstream-unit-vectors.mjs 仅在维护时读取固定参考生成静态系数与测试向量；未引入上游快速换算视图中未注册为 unitConv 的额外分类，其非操作 UI 扩展不计入本次 820 项验收。

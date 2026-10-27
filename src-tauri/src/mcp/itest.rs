@@ -231,6 +231,13 @@ fn server_end_to_end_over_http() {
         "Programmer calculation failed: {programmer_resp}"
     );
 
+    let units = r#"{"jsonrpc":"2.0","id":13,"method":"tools/call","params":{"name":"run_node","arguments":{"descriptorId":"unit_convert","inputs":{"text":"1.5"},"params":{"tsEpoch":"unix_s"}}}}"#;
+    let (units_resp, _) = post(addr, TOKEN, Some(&sid), units);
+    assert!(
+        units_resp.contains("unix_ms = 1500") && units_resp.contains("1970-01-01T00:00:01.500Z"),
+        "Unit subsecond conversion failed: {units_resp}"
+    );
+
     // --- tools/call add_node emits a canvas update --------------------------
     let add = r#"{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"add_node","arguments":{"descriptorId":"text_input"}}}"#;
     let (add_resp, _) = post(addr, TOKEN, Some(&sid), add);

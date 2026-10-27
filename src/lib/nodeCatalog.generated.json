@@ -23047,6 +23047,103 @@
     "cost": "cheap"
   },
   {
+    "id": "unit_convert",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.address",
+    "legacyCategories": [
+      "numeric.address"
+    ],
+    "aliases": [
+      "unitConv",
+      "unitConv",
+      "单位换算",
+      "GB GiB",
+      "Mbps MB/s",
+      "长度速度",
+      "元角分",
+      "纪元对照",
+      "unit_convert"
+    ],
+    "upstreamIds": [
+      "unitConv"
+    ],
+    "family": "unit conversion rational arithmetic epochs",
+    "presentation": {
+      "inlineParams": [
+        "tsEpoch"
+      ],
+      "previews": {
+        "json": "json",
+        "rows": "table",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "1 GB"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "单位与纪元换算",
+    "description": "74 种单位与 73 个别名：SI/IEC 数据量、bit/Byte 速率、时间、频率、角度、长度、速度、同币种面额及时间戳纪元对照。数值支持十进制正负整数/小数（最多 18 位小数），有理数结果保存完整分子/分母；角度仅近似。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "rows",
+        "label": "换算表",
+        "type": "json",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "精确分数与纪元依据",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "tsEpoch",
+        "label": "纯数字纪元",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "auto",
+            "unix_s",
+            "unix_ms",
+            "filetime",
+            "cocoa",
+            "chrome_us"
+          ]
+        },
+        "default": "auto",
+        "description": "输入纯数字时使用：auto 按数量级嗅探 Unix 秒/毫秒、FILETIME 或 Chrome 微秒；可显式指定 Cocoa。小数秒完整保留；有单位时忽略此参数。"
+      }
+    ],
+    "cost": "cheap"
+  },
+  {
     "id": "geo_dms_encode",
     "category": "进制与数值",
     "categoryId": "numeric",

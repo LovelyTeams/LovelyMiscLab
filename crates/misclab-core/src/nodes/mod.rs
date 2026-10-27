@@ -86,6 +86,7 @@ mod time_codecs;
 mod timestamp_report;
 mod transport_codecs;
 mod unicode_bases;
+mod unit_convert;
 mod unix_permissions;
 mod utf7;
 mod uu_xxencode;
@@ -317,6 +318,7 @@ pub fn register_builtins(reg: &mut NodeRegistry) {
     diff_tool::register(reg);
     big_integer_calc::register(reg);
     programmer_calc::register(reg);
+    unit_convert::register(reg);
     numeral_systems::register(reg);
     numeric_bytes::register(reg);
     numeric_reports::register(reg);

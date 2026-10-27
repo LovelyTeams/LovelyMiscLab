@@ -2,7 +2,7 @@
 
 由 `pnpm generate:migration` 生成。来源提交：`ea2bc36dae31c97060f7f2cddad8df5518afad7b`。人工验收源：[ebctf-acceptance.json](ebctf-acceptance.json)，生成器不会覆盖它。
 
-总计 820 项：已迁入 157，部分完成 0，待解决 0，现有候选待核验 49，待迁入 614。
+总计 820 项：已迁入 158，部分完成 0，待解决 0，现有候选待核验 49，待迁入 613。
 
 `existing-review` 仅表示名称匹配，不表示算法、参数或文件处理能力等价。验收范围和批次见 [迁移说明](ebctf-migration.md)；机器可读清单见 [JSON](ebctf-migration.json)。
 
@@ -799,7 +799,7 @@
 | `yueChang` | 曰唱 | cn | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/fengCodec.js) |
 | `radixAll` | 一键多进制转换 | radix | migrated | `radix_all` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/radixAll.js) |
 | `progCalc` | 程序员计算器 | radix | migrated | `programmer_calc` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/progCalc.js) |
-| `unitConv` | 单位换算 | data | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/unitConv.js) |
+| `unitConv` | 单位换算 | data | migrated | `unit_convert` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/unitConv.js) |
 | `gifTiming` | GIF 帧时序隐写 | image | existing-review | `gif_timing` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/gifTiming.js) |
 | `jpgSizeRecover` | JPEG 宽高修复 | image | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/jpgSizeRecover.js) |
 | `zipRepair` | ZIP 伪加密修复 | archive | existing-review | `zip_repair` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/zipRepair.js) |

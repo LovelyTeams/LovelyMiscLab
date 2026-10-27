@@ -7663,6 +7663,52 @@
           ]
         }
       ]
+    },
+    "unitConv": {
+      "status": "migrated",
+      "batch": 21,
+      "acceptedAt": "2026-10-27",
+      "targetNodes": [
+        "unit_convert"
+      ],
+      "directions": [
+        "run"
+      ],
+      "parameterMapping": {
+        "input": "十进制数值+单位；74 种单位、73 个别名覆盖数据量 SI/IEC、数据速率 bit/Byte、时间、频率、角度、长度、速度、6 组同币种面额。无单位时进行纪元对照；支持正负整数与最多 18 位小数，区分大小写，不接受指数或千分位。",
+        "tsEpoch": "auto/unix_s/unix_ms/filetime/cocoa/chrome_us，默认 auto；仅纯数字时生效。有单位忽略该参数。auto 按绝对整数部分 10^11/10^14/10^17 门槛嗅探。",
+        "output": "text 中文报告；rows 为表格预览的 JSON 数组，可继续接下游；json 保存精确分子/分母、显示精度标记、分组、单位、纪元依据、ISO 和 DOS。所有整数作为字符串保真，所有同币种面额组独立。"
+      },
+      "knownDifferences": [
+        "文本报告改为中文分组和通用换算表，表内数值保留上游 12 位截断/13 位科学表示及角度 15 位有效数字口径；新增完整有理数结果，显示近似不等于计算丢失精度。",
+        "修复上游跨纪元换算先截断整数秒导致毫秒/FILETIME/Chrome/Cocoa 丢失小数的问题；Rust 在所有纪元结果保留完整有理数，只对 ISO 辅助显示截断至毫秒。负小数秒也正确处理。",
+        "DOS 沿用先按半秒向正无穷取整到秒、再按 2 秒保存的上游规则，并明确说明；修正 Date 溢出经 JS 位运算变成伪造 0x00000000 的情况，范围外返回 null。",
+        "ISO 辅助显示使用既有 Chrono 日历范围（略窄于 JS Date 极端年份），超出时 null 并明确提示，完整纪元有理数不受影响；角度浮点溢出明确报错而非 Infinity/NaN。",
+        "保留去首尾空白后 4096 UTF-16 单位及 18 位小数上限，原始输入额外限制 16384 UTF-8 字节；非法纪元参数类型不静默回退，逐行处理可取消。静态系数取固定版本，无在线汇率、外部程序或新增依赖。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_units.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-unit-batch21.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "625 条固定上游对照覆盖全部单位、别名、所有纪元和嗅探门槛；另验每组单位系数与超大整数往返、约分/分母符号、SI/IEC 与 bit/Byte、完整小数秒与负时间、货币同名单位分组、巨大数值与日历范围、错误/资源限制、取消、JSON 结果下游接续和图/独立调用。前端表格元数据、参数撤销与不改画布的独立调用，以及真实 MCP HTTP 小数秒精度通过。",
+      "nodeMappings": [
+        {
+          "nodeId": "unit_convert",
+          "direction": "run",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.address",
+          "params": [
+            {
+              "name": "tsEpoch",
+              "default": "auto"
+            }
+          ]
+        }
+      ]
     }
   }
 }

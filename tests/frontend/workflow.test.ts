@@ -76,6 +76,7 @@ test("foundation migration nodes expose searchable categories and typed previews
     ["diffTool", "diff_tool", "data.text"],
     ["bigCalc", "big_integer_calc", "numeric.math"],
     ["progCalc", "programmer_calc", "numeric.bits"],
+    ["unitConv", "unit_convert", "numeric.address"],
   ];
   for (const [upstream, id, category] of expected) {
     const d = D.getState().byId[id];
@@ -87,10 +88,27 @@ test("foundation migration nodes expose searchable categories and typed previews
     assert.ok(inlineParams(d).length <= 3);
     for (const p of d.params) assert.ok(p.description.length);
     for (const port of d.outputs) {
-      if (port.type === "json") assert.equal(d.presentation.previews[port.name], "json");
+      if (port.type === "json") assert.ok(["json", "table"].includes(d.presentation.previews[port.name]));
       if (port.type === "bytes") assert.equal(d.presentation.previews[port.name], "hex");
     }
   }
+});
+
+test("unit conversion exposes table previews, epoch parameters and JSON continuation", async () => {
+  const source = add("text_input"), converter = add("unit_convert"), next = add("coalesce");
+  connect(source, converter); connect(converter, next, "rows", "a"); assert.equal(g().edges.length, 2);
+  g().setParam(converter, "tsEpoch", "filetime"); g().undo(); assert.equal(node(converter).data.params.tsEpoch, "auto");
+  const d = D.getState().byId.unit_convert; assert.equal(d.presentation.previews.rows, "table");
+  assert.deepEqual(inlineParams(d).map((p) => p.name), ["tsEpoch"]);
+  const input = parseInputs(d.inputs, { text: { text: "1.5" } }); const before = JSON.stringify(g());
+  const rows = [{ group: "epoch", unit: "unix_ms", value: "1500", numerator: "1500", denominator: "1" }];
+  api.runNodeStreamed = async (id, _nodeId, inputs, params, emit) => {
+    assert.equal(id, "unit_convert"); assert.deepEqual(inputs, input); assert.equal(params.tsEpoch, "unix_s");
+    emit({ kind: "jobStarted", job: "units-standalone" }); return { rows: { type: "json", value: rows } };
+  };
+  const result = await executeStandalone(d, input, { tsEpoch: "unix_s" }, () => {});
+  assert.equal(result.status, "success"); assert.deepEqual(result.outputs.rows.value, rows);
+  assert.equal(JSON.stringify(g()), before);
 });
 
 test("programmer calculator exposes width controls and precision-preserving downstream ports", async () => {
