@@ -7492,6 +7492,64 @@
           ]
         }
       ]
+    },
+    "diffTool": {
+      "status": "migrated",
+      "batch": 18,
+      "acceptedAt": "2026-10-27",
+      "targetNodes": [
+        "diff_tool"
+      ],
+      "directions": [
+        "run"
+      ],
+      "parameterMapping": {
+        "textB": "第二段文本，默认空；新增 b 可选输入优先于参数，a 为必填输入，两端支持 Text/Bytes。",
+        "mode": "byte/line，默认 byte；等长逐位置，不等长且乘积≤2000000 用 LCS，超过则共同前后缀+中段删除/插入，空输入单独处理。",
+        "inputEnc": "auto/hex/base64/utf8，默认 auto；auto 根据 A 统一解释 A/B 文本，原始 Bytes 不再解码；A 为 Bytes 时 auto 的文本 B 按 UTF-8。line 忽略编码按 UTF-8 分行，LF/CRLF 兼容。",
+        "context": "默认 0；前后按操作数量扩展，邻接区间合并，与上游一致。新增校验 0–524288 整数。",
+        "output": "text 兼容报告；equal 布尔、json 区间/统计/策略/截断标记；a_bytes 与 b_bytes 保留完整解码输入，可接下游。JSON 区间从 0 开始、右端不含。"
+      },
+      "knownDifferences": [
+        "无效 Hex 明确报错，修复上游 parseInt 无效值被 Uint8Array 转为零的问题；错误模式/编码/负数或小数 context 不静默回退。",
+        "每段文本按 UTF-8 实际字节限制 256 KiB，较上游以 UTF-16 长度判断更严格；Bytes 同样 256 KiB。line 的二进制输入要求合法 UTF-8。",
+        "报告最多 1 MiB，JSON 最多 16384 个连续段，超出显式标记；总统计及完整输入端口保留。新增循环取消与进度；不伪称回退或等长算法为最小编辑距离。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_diff.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-diff-batch18.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "150 条固定上游向量覆盖两模式、四编码、上下文和所有策略；另验全字节/Unicode/CRLF、双输入优先级、结构化区间、2 万差异块报告截断、5 万行回退、错误/资源限制、各策略取消、图与独立调用、前端连线参数撤销及真实 MCP 双字节输入。",
+      "nodeMappings": [
+        {
+          "nodeId": "diff_tool",
+          "direction": "run",
+          "categoryId": "data",
+          "subcategoryId": "data.text",
+          "params": [
+            {
+              "name": "textB",
+              "default": ""
+            },
+            {
+              "name": "mode",
+              "default": "byte"
+            },
+            {
+              "name": "inputEnc",
+              "default": "auto"
+            },
+            {
+              "name": "context",
+              "default": 0
+            }
+          ]
+        }
+      ]
     }
   }
 }

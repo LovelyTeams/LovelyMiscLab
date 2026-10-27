@@ -11005,6 +11005,160 @@
     "cost": "cheap"
   },
   {
+    "id": "diff_tool",
+    "category": "文本与数据",
+    "categoryId": "data",
+    "subcategoryId": "data.text",
+    "legacyCategories": [
+      "data.text"
+    ],
+    "aliases": [
+      "diffTool",
+      "diffTool",
+      "diff",
+      "LCS",
+      "差异对比",
+      "二进制比较",
+      "diff_tool"
+    ],
+    "upstreamIds": [
+      "diffTool"
+    ],
+    "family": "diffTool",
+    "presentation": {
+      "inlineParams": [
+        "mode",
+        "inputEnc",
+        "context"
+      ],
+      "previews": {
+        "a_bytes": "hex",
+        "b_bytes": "hex",
+        "equal": "text",
+        "json": "json",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "a": {
+            "type": "text",
+            "value": "00 ff 41"
+          }
+        },
+        "params": {
+          "textB": "00 fe 41",
+          "inputEnc": "hex",
+          "context": 1
+        }
+      }
+    ],
+    "displayName": "文本与字节差异对比",
+    "description": "对比两段文本或字节，保留等长逐位、不等长 LCS、超过 200 万格回退前后缀策略；每段最多 256 KiB。报告 1 MiB、JSON 16384 个连续段上限，超出明确标记；完整输入从字节端口取得。支持取消。",
+    "color": "#14b8a6",
+    "inputs": [
+      {
+        "name": "a",
+        "label": "输入 A",
+        "type": "any",
+        "required": true
+      },
+      {
+        "name": "b",
+        "label": "输入 B（优先）",
+        "type": "any",
+        "required": false
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "equal",
+        "label": "内容相同",
+        "type": "bool",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "差异区间与统计",
+        "type": "json",
+        "required": true
+      },
+      {
+        "name": "a_bytes",
+        "label": "A 完整字节",
+        "type": "bytes",
+        "required": true
+      },
+      {
+        "name": "b_bytes",
+        "label": "B 完整字节",
+        "type": "bytes",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "textB",
+        "label": "输入 B（无连线时）",
+        "widget": {
+          "kind": "text",
+          "multiline": true
+        },
+        "default": "",
+        "description": "可粘贴第二段文本；b 端口优先。byte 模式 auto 按 A 选择编码并同时用于 B；原始 Bytes 不再解码。"
+      },
+      {
+        "name": "mode",
+        "label": "对比模式",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "byte",
+            "line"
+          ]
+        },
+        "default": "byte",
+        "description": "byte 逐字节；line 按 UTF-8、LF/CRLF 分行，忽略编码参数。等长逐位置，不等长用 LCS 或大输入回退策略。"
+      },
+      {
+        "name": "inputEnc",
+        "label": "字节输入编码",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "auto",
+            "hex",
+            "base64",
+            "utf8"
+          ]
+        },
+        "default": "auto",
+        "description": "auto 优先 Hex，其次标准 Base64，再 UTF-8；以 A 探测结果同时解释 B。A 为 Bytes 时 auto 下的文本 B 按 UTF-8。"
+      },
+      {
+        "name": "context",
+        "label": "上下文数量",
+        "widget": {
+          "kind": "number",
+          "min": 0,
+          "max": 524288,
+          "step": 1
+        },
+        "default": 0,
+        "description": "差异前后的操作数量，与上游一致；相邻区间合并。JSON 区间使用从 0 开始、右端不含的索引。"
+      }
+    ],
+    "cost": "medium"
+  },
+  {
     "id": "split",
     "category": "文本与数据",
     "categoryId": "data",

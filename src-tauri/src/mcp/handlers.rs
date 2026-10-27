@@ -956,6 +956,7 @@ mod tests {
             ("colorInfo", "color_info", "numeric.address"),
             ("primeGen", "prime_generate", "numeric.math"),
             ("primeTest", "prime_test", "numeric.math"),
+            ("diffTool", "diff_tool", "data.text"),
         ] {
             let result = list_nodes_value(&reg, Some(category), Some(query), true, true);
             assert!(

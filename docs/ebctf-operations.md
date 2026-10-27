@@ -2,7 +2,7 @@
 
 由 `pnpm generate:migration` 生成。来源提交：`ea2bc36dae31c97060f7f2cddad8df5518afad7b`。人工验收源：[ebctf-acceptance.json](ebctf-acceptance.json)，生成器不会覆盖它。
 
-总计 820 项：已迁入 154，部分完成 0，待解决 0，现有候选待核验 49，待迁入 617。
+总计 820 项：已迁入 155，部分完成 0，待解决 0，现有候选待核验 49，待迁入 616。
 
 `existing-review` 仅表示名称匹配，不表示算法、参数或文件处理能力等价。验收范围和批次见 [迁移说明](ebctf-migration.md)；机器可读清单见 [JSON](ebctf-migration.json)。
 
@@ -447,7 +447,7 @@
 | `emojicodeIdent` | Emojicode 识别 | esolang | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/esolang2.js) |
 | `pietIdent` | Piet 识别 | esolang | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/esolang2.js) |
 | `malbolgeExec` | Malbolge 执行 | esolang | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/malbolgeExec.js) |
-| `diffTool` | 差异对比 | data | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/difftool.js) |
+| `diffTool` | 差异对比 | data | migrated | `diff_tool` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/difftool.js) |
 | `otp` | 一次一密 OTP | classic | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/classicExt3.js) |
 | `keywordcipher` | 关键字密码 | classic | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/classicExt3.js) |
 | `simplesub` | 简单替换 | classic | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/classicExt3.js) |

@@ -209,6 +209,13 @@ fn server_end_to_end_over_http() {
         "Prime test failed: {prime_resp}"
     );
 
+    let diff = r#"{"jsonrpc":"2.0","id":10,"method":"tools/call","params":{"name":"run_node","arguments":{"descriptorId":"diff_tool","inputs":{"a":{"type":"bytes","value":[0,255]},"b":{"type":"bytes","value":[0,254]}},"params":{"textB":"ignored"}}}}"#;
+    let (diff_resp, _) = post(addr, TOKEN, Some(&sid), diff);
+    assert!(
+        diff_resp.contains("差异块: 1") && diff_resp.contains("0x1"),
+        "Diff typed inputs failed: {diff_resp}"
+    );
+
     // --- tools/call add_node emits a canvas update --------------------------
     let add = r#"{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"add_node","arguments":{"descriptorId":"text_input"}}}"#;
     let (add_resp, _) = post(addr, TOKEN, Some(&sid), add);

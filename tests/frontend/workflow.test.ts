@@ -73,6 +73,7 @@ test("foundation migration nodes expose searchable categories and typed previews
     ["colorInfo", "color_info", "numeric.address"],
     ["primeGen", "prime_generate", "numeric.math"],
     ["primeTest", "prime_test", "numeric.math"],
+    ["diffTool", "diff_tool", "data.text"],
   ];
   for (const [upstream, id, category] of expected) {
     const d = D.getState().byId[id];
@@ -88,6 +89,24 @@ test("foundation migration nodes expose searchable categories and typed previews
       if (port.type === "bytes") assert.equal(d.presentation.previews[port.name], "hex");
     }
   }
+});
+
+test("diff accepts two typed inputs, edits context with undo and runs without changing the canvas", async () => {
+  const a = add("text_input"), b = add("text_input"), diff = add("diff_tool");
+  connect(a, diff, "text", "a"); connect(b, diff, "text", "b"); assert.equal(g().edges.length, 2);
+  g().setParam(diff, "context", 3); g().undo(); assert.equal(node(diff).data.params.context, 0);
+  const d = D.getState().byId.diff_tool;
+  assert.deepEqual(inlineParams(d).map((p) => p.name), ["mode", "inputEnc", "context"]);
+  const inputs = parseInputs(d.inputs, { a: { format: "hex", text: "00 ff" }, b: { enabled: true, format: "hex", text: "00 fe" } });
+  assert.deepEqual(inputs, { a: { type: "bytes", value: [0, 255] }, b: { type: "bytes", value: [0, 254] } });
+  const before = JSON.stringify(g());
+  api.runNodeStreamed = async (id, _nodeId, input, _params, emit) => {
+    assert.equal(id, "diff_tool"); assert.deepEqual(input, inputs);
+    emit({ kind: "jobStarted", job: "diff-standalone" });return { equal: { type: "bool", value: false } };
+  };
+  const result = await executeStandalone(d, inputs, {}, () => {});
+  assert.equal(result.status, "success"); assert.equal(result.outputs.equal.value, false);
+  assert.equal(JSON.stringify(g()), before);
 });
 
 test("prime generator needs no text input and feeds a configured primality node", async () => {

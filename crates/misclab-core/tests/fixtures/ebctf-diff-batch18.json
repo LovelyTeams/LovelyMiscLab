@@ -1,0 +1,1505 @@
+{
+  "revision": "ea2bc36dae31c97060f7f2cddad8df5518afad7b",
+  "vectors": [
+    {
+      "input": "",
+      "params": {
+        "textB": "",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 0 字节 | B = 0 字节 | 策略: 等长逐位\n相同 0 | 仅 A 0 | 仅 B 0 | 差异块计数见下\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "",
+      "params": {
+        "textB": "hello",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 0 字节 | B = 5 字节 | 策略: A 空\n相同 0 | 仅 A 0 | 仅 B 5 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:∅ | B:0x0-0x4 @@\n  + B @0x0 (5B)  68656c6c6f  'hello'\n"
+    },
+    {
+      "input": "hello",
+      "params": {
+        "textB": "",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 5 字节 | B = 0 字节 | 策略: B 空\n相同 0 | 仅 A 5 | 仅 B 0 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x4 | B:∅ @@\n  - A @0x0 (5B)  68656c6c6f  'hello'\n"
+    },
+    {
+      "input": "ABC",
+      "params": {
+        "textB": "ABC",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 3 字节 | B = 3 字节 | 策略: 等长逐位\n相同 3 | 仅 A 0 | 仅 B 0 | 差异块计数见下\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "ABCDE",
+      "params": {
+        "textB": "ABXDE",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 5 字节 | B = 5 字节 | 策略: 等长逐位\n相同 4 | 仅 A 1 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x2-0x2 | B:0x2-0x2 @@\n  - A @0x2 (1B)  43  'C'\n  + B @0x2 (1B)  58  'X'\n"
+    },
+    {
+      "input": "ABC",
+      "params": {
+        "textB": "BCDA",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 3 字节 | B = 4 字节 | 策略: LCS\n相同 2 | 仅 A 1 | 仅 B 2 | 差异块计数见下\n\n差异块: 2\n\n[1] @@ A:0x0-0x0 | B:∅ @@\n  - A @0x0 (1B)  41  'A'\n\n[2] @@ A:∅ | B:0x2-0x3 @@\n  + B @0x2 (2B)  4441  'DA'\n"
+    },
+    {
+      "input": "kitten",
+      "params": {
+        "textB": "sitting",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 6 字节 | B = 7 字节 | 策略: LCS\n相同 4 | 仅 A 2 | 仅 B 3 | 差异块计数见下\n\n差异块: 3\n\n[1] @@ A:0x0-0x0 | B:0x0-0x0 @@\n  - A @0x0 (1B)  6b  'k'\n  + B @0x0 (1B)  73  's'\n\n[2] @@ A:0x4-0x4 | B:0x4-0x4 @@\n  - A @0x4 (1B)  65  'e'\n  + B @0x4 (1B)  69  'i'\n\n[3] @@ A:∅ | B:0x6-0x6 @@\n  + B @0x6 (1B)  67  'g'\n"
+    },
+    {
+      "input": "中文🙂\n你好",
+      "params": {
+        "textB": "中文🙃\n世界",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 17 字节 | B = 17 字节 | 策略: 等长逐位\n相同 11 | 仅 A 6 | 仅 B 6 | 差异块计数见下\n\n差异块: 2\n\n[1] @@ A:0x9-0x9 | B:0x9-0x9 @@\n  - A @0x9 (1B)  82  '·'\n  + B @0x9 (1B)  83  '·'\n\n[2] @@ A:0xC-0x10 | B:0xC-0x10 @@\n  - A @0xC (1B)  bd  '·'\n  + B @0xC (1B)  b8  '·'\n  - A @0xD (1B)  a0  '·'\n  + B @0xD (1B)  96  '·'\n  - A @0xE (1B)  e5  '·'\n  + B @0xE (1B)  e7  '·'\n  - A @0xF (1B)  a5  '·'\n  + B @0xF (1B)  95  '·'\n  - A @0x10 (1B)  bd  '·'\n  + B @0x10 (1B)  8c  '·'\n"
+    },
+    {
+      "input": "a\r\nb\r\n",
+      "params": {
+        "textB": "a\nb\n",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 6 字节 | B = 4 字节 | 策略: LCS\n相同 4 | 仅 A 2 | 仅 B 0 | 差异块计数见下\n\n差异块: 2\n\n[1] @@ A:0x1-0x1 | B:∅ @@\n  - A @0x1 (1B)  0d  '·'\n\n[2] @@ A:0x4-0x4 | B:∅ @@\n  - A @0x4 (1B)  0d  '·'\n"
+    },
+    {
+      "input": "a\rb",
+      "params": {
+        "textB": "a\nb",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 3 字节 | B = 3 字节 | 策略: 等长逐位\n相同 2 | 仅 A 1 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x1-0x1 | B:0x1-0x1 @@\n  - A @0x1 (1B)  0d  '·'\n  + B @0x1 (1B)  0a  '·'\n"
+    },
+    {
+      "input": "a\nb\nc",
+      "params": {
+        "textB": "a\nc",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 5 字节 | B = 3 字节 | 策略: LCS\n相同 3 | 仅 A 2 | 仅 B 0 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x2-0x3 | B:∅ @@\n  - A @0x2 (2B)  620a  'b·'\n"
+    },
+    {
+      "input": "a\nb",
+      "params": {
+        "textB": "x\na\nb\ny",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 3 字节 | B = 7 字节 | 策略: LCS\n相同 3 | 仅 A 0 | 仅 B 4 | 差异块计数见下\n\n差异块: 2\n\n[1] @@ A:∅ | B:0x0-0x1 @@\n  + B @0x0 (2B)  780a  'x·'\n\n[2] @@ A:∅ | B:0x5-0x6 @@\n  + B @0x5 (2B)  0a79  '·y'\n"
+    },
+    {
+      "input": "0\u0000ÿ",
+      "params": {
+        "textB": "0\u0000þ",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 4 字节 | B = 4 字节 | 策略: 等长逐位\n相同 3 | 仅 A 1 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x3-0x3 | B:0x3-0x3 @@\n  - A @0x3 (1B)  bf  '·'\n  + B @0x3 (1B)  be  '·'\n"
+    },
+    {
+      "input": "abababa",
+      "params": {
+        "textB": "babab",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 7 字节 | B = 5 字节 | 策略: LCS\n相同 5 | 仅 A 2 | 仅 B 0 | 差异块计数见下\n\n差异块: 2\n\n[1] @@ A:0x0-0x0 | B:∅ @@\n  - A @0x0 (1B)  61  'a'\n\n[2] @@ A:0x6-0x6 | B:∅ @@\n  - A @0x6 (1B)  61  'a'\n"
+    },
+    {
+      "input": "ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ",
+      "params": {
+        "textB": "ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 240 字节 | B = 240 字节 | 策略: 等长逐位\n相同 160 | 仅 A 80 | 仅 B 80 | 差异块计数见下\n\n差异块: 80\n\n[1] @@ A:0x1-0x1 | B:0x1-0x1 @@\n  - A @0x1 (1B)  62  'b'\n  + B @0x1 (1B)  63  'c'\n\n[2] @@ A:0x4-0x4 | B:0x4-0x4 @@\n  - A @0x4 (1B)  62  'b'\n  + B @0x4 (1B)  63  'c'\n\n[3] @@ A:0x7-0x7 | B:0x7-0x7 @@\n  - A @0x7 (1B)  62  'b'\n  + B @0x7 (1B)  63  'c'\n\n[4] @@ A:0xA-0xA | B:0xA-0xA @@\n  - A @0xA (1B)  62  'b'\n  + B @0xA (1B)  63  'c'\n\n[5] @@ A:0xD-0xD | B:0xD-0xD @@\n  - A @0xD (1B)  62  'b'\n  + B @0xD (1B)  63  'c'\n\n[6] @@ A:0x10-0x10 | B:0x10-0x10 @@\n  - A @0x10 (1B)  62  'b'\n  + B @0x10 (1B)  63  'c'\n\n[7] @@ A:0x13-0x13 | B:0x13-0x13 @@\n  - A @0x13 (1B)  62  'b'\n  + B @0x13 (1B)  63  'c'\n\n[8] @@ A:0x16-0x16 | B:0x16-0x16 @@\n  - A @0x16 (1B)  62  'b'\n  + B @0x16 (1B)  63  'c'\n\n[9] @@ A:0x19-0x19 | B:0x19-0x19 @@\n  - A @0x19 (1B)  62  'b'\n  + B @0x19 (1B)  63  'c'\n\n[10] @@ A:0x1C-0x1C | B:0x1C-0x1C @@\n  - A @0x1C (1B)  62  'b'\n  + B @0x1C (1B)  63  'c'\n\n[11] @@ A:0x1F-0x1F | B:0x1F-0x1F @@\n  - A @0x1F (1B)  62  'b'\n  + B @0x1F (1B)  63  'c'\n\n[12] @@ A:0x22-0x22 | B:0x22-0x22 @@\n  - A @0x22 (1B)  62  'b'\n  + B @0x22 (1B)  63  'c'\n\n[13] @@ A:0x25-0x25 | B:0x25-0x25 @@\n  - A @0x25 (1B)  62  'b'\n  + B @0x25 (1B)  63  'c'\n\n[14] @@ A:0x28-0x28 | B:0x28-0x28 @@\n  - A @0x28 (1B)  62  'b'\n  + B @0x28 (1B)  63  'c'\n\n[15] @@ A:0x2B-0x2B | B:0x2B-0x2B @@\n  - A @0x2B (1B)  62  'b'\n  + B @0x2B (1B)  63  'c'\n\n[16] @@ A:0x2E-0x2E | B:0x2E-0x2E @@\n  - A @0x2E (1B)  62  'b'\n  + B @0x2E (1B)  63  'c'\n\n[17] @@ A:0x31-0x31 | B:0x31-0x31 @@\n  - A @0x31 (1B)  62  'b'\n  + B @0x31 (1B)  63  'c'\n\n[18] @@ A:0x34-0x34 | B:0x34-0x34 @@\n  - A @0x34 (1B)  62  'b'\n  + B @0x34 (1B)  63  'c'\n\n[19] @@ A:0x37-0x37 | B:0x37-0x37 @@\n  - A @0x37 (1B)  62  'b'\n  + B @0x37 (1B)  63  'c'\n\n[20] @@ A:0x3A-0x3A | B:0x3A-0x3A @@\n  - A @0x3A (1B)  62  'b'\n  + B @0x3A (1B)  63  'c'\n\n[21] @@ A:0x3D-0x3D | B:0x3D-0x3D @@\n  - A @0x3D (1B)  62  'b'\n  + B @0x3D (1B)  63  'c'\n\n[22] @@ A:0x40-0x40 | B:0x40-0x40 @@\n  - A @0x40 (1B)  62  'b'\n  + B @0x40 (1B)  63  'c'\n\n[23] @@ A:0x43-0x43 | B:0x43-0x43 @@\n  - A @0x43 (1B)  62  'b'\n  + B @0x43 (1B)  63  'c'\n\n[24] @@ A:0x46-0x46 | B:0x46-0x46 @@\n  - A @0x46 (1B)  62  'b'\n  + B @0x46 (1B)  63  'c'\n\n[25] @@ A:0x49-0x49 | B:0x49-0x49 @@\n  - A @0x49 (1B)  62  'b'\n  + B @0x49 (1B)  63  'c'\n\n[26] @@ A:0x4C-0x4C | B:0x4C-0x4C @@\n  - A @0x4C (1B)  62  'b'\n  + B @0x4C (1B)  63  'c'\n\n[27] @@ A:0x4F-0x4F | B:0x4F-0x4F @@\n  - A @0x4F (1B)  62  'b'\n  + B @0x4F (1B)  63  'c'\n\n[28] @@ A:0x52-0x52 | B:0x52-0x52 @@\n  - A @0x52 (1B)  62  'b'\n  + B @0x52 (1B)  63  'c'\n\n[29] @@ A:0x55-0x55 | B:0x55-0x55 @@\n  - A @0x55 (1B)  62  'b'\n  + B @0x55 (1B)  63  'c'\n\n[30] @@ A:0x58-0x58 | B:0x58-0x58 @@\n  - A @0x58 (1B)  62  'b'\n  + B @0x58 (1B)  63  'c'\n\n[31] @@ A:0x5B-0x5B | B:0x5B-0x5B @@\n  - A @0x5B (1B)  62  'b'\n  + B @0x5B (1B)  63  'c'\n\n[32] @@ A:0x5E-0x5E | B:0x5E-0x5E @@\n  - A @0x5E (1B)  62  'b'\n  + B @0x5E (1B)  63  'c'\n\n[33] @@ A:0x61-0x61 | B:0x61-0x61 @@\n  - A @0x61 (1B)  62  'b'\n  + B @0x61 (1B)  63  'c'\n\n[34] @@ A:0x64-0x64 | B:0x64-0x64 @@\n  - A @0x64 (1B)  62  'b'\n  + B @0x64 (1B)  63  'c'\n\n[35] @@ A:0x67-0x67 | B:0x67-0x67 @@\n  - A @0x67 (1B)  62  'b'\n  + B @0x67 (1B)  63  'c'\n\n[36] @@ A:0x6A-0x6A | B:0x6A-0x6A @@\n  - A @0x6A (1B)  62  'b'\n  + B @0x6A (1B)  63  'c'\n\n[37] @@ A:0x6D-0x6D | B:0x6D-0x6D @@\n  - A @0x6D (1B)  62  'b'\n  + B @0x6D (1B)  63  'c'\n\n[38] @@ A:0x70-0x70 | B:0x70-0x70 @@\n  - A @0x70 (1B)  62  'b'\n  + B @0x70 (1B)  63  'c'\n\n[39] @@ A:0x73-0x73 | B:0x73-0x73 @@\n  - A @0x73 (1B)  62  'b'\n  + B @0x73 (1B)  63  'c'\n\n[40] @@ A:0x76-0x76 | B:0x76-0x76 @@\n  - A @0x76 (1B)  62  'b'\n  + B @0x76 (1B)  63  'c'\n\n[41] @@ A:0x79-0x79 | B:0x79-0x79 @@\n  - A @0x79 (1B)  62  'b'\n  + B @0x79 (1B)  63  'c'\n\n[42] @@ A:0x7C-0x7C | B:0x7C-0x7C @@\n  - A @0x7C (1B)  62  'b'\n  + B @0x7C (1B)  63  'c'\n\n[43] @@ A:0x7F-0x7F | B:0x7F-0x7F @@\n  - A @0x7F (1B)  62  'b'\n  + B @0x7F (1B)  63  'c'\n\n[44] @@ A:0x82-0x82 | B:0x82-0x82 @@\n  - A @0x82 (1B)  62  'b'\n  + B @0x82 (1B)  63  'c'\n\n[45] @@ A:0x85-0x85 | B:0x85-0x85 @@\n  - A @0x85 (1B)  62  'b'\n  + B @0x85 (1B)  63  'c'\n\n[46] @@ A:0x88-0x88 | B:0x88-0x88 @@\n  - A @0x88 (1B)  62  'b'\n  + B @0x88 (1B)  63  'c'\n\n[47] @@ A:0x8B-0x8B | B:0x8B-0x8B @@\n  - A @0x8B (1B)  62  'b'\n  + B @0x8B (1B)  63  'c'\n\n[48] @@ A:0x8E-0x8E | B:0x8E-0x8E @@\n  - A @0x8E (1B)  62  'b'\n  + B @0x8E (1B)  63  'c'\n\n[49] @@ A:0x91-0x91 | B:0x91-0x91 @@\n  - A @0x91 (1B)  62  'b'\n  + B @0x91 (1B)  63  'c'\n\n[50] @@ A:0x94-0x94 | B:0x94-0x94 @@\n  - A @0x94 (1B)  62  'b'\n  + B @0x94 (1B)  63  'c'\n\n[51] @@ A:0x97-0x97 | B:0x97-0x97 @@\n  - A @0x97 (1B)  62  'b'\n  + B @0x97 (1B)  63  'c'\n\n[52] @@ A:0x9A-0x9A | B:0x9A-0x9A @@\n  - A @0x9A (1B)  62  'b'\n  + B @0x9A (1B)  63  'c'\n\n[53] @@ A:0x9D-0x9D | B:0x9D-0x9D @@\n  - A @0x9D (1B)  62  'b'\n  + B @0x9D (1B)  63  'c'\n\n[54] @@ A:0xA0-0xA0 | B:0xA0-0xA0 @@\n  - A @0xA0 (1B)  62  'b'\n  + B @0xA0 (1B)  63  'c'\n\n[55] @@ A:0xA3-0xA3 | B:0xA3-0xA3 @@\n  - A @0xA3 (1B)  62  'b'\n  + B @0xA3 (1B)  63  'c'\n\n[56] @@ A:0xA6-0xA6 | B:0xA6-0xA6 @@\n  - A @0xA6 (1B)  62  'b'\n  + B @0xA6 (1B)  63  'c'\n\n[57] @@ A:0xA9-0xA9 | B:0xA9-0xA9 @@\n  - A @0xA9 (1B)  62  'b'\n  + B @0xA9 (1B)  63  'c'\n\n[58] @@ A:0xAC-0xAC | B:0xAC-0xAC @@\n  - A @0xAC (1B)  62  'b'\n  + B @0xAC (1B)  63  'c'\n\n[59] @@ A:0xAF-0xAF | B:0xAF-0xAF @@\n  - A @0xAF (1B)  62  'b'\n  + B @0xAF (1B)  63  'c'\n\n[60] @@ A:0xB2-0xB2 | B:0xB2-0xB2 @@\n  - A @0xB2 (1B)  62  'b'\n  + B @0xB2 (1B)  63  'c'\n\n[61] @@ A:0xB5-0xB5 | B:0xB5-0xB5 @@\n  - A @0xB5 (1B)  62  'b'\n  + B @0xB5 (1B)  63  'c'\n\n[62] @@ A:0xB8-0xB8 | B:0xB8-0xB8 @@\n  - A @0xB8 (1B)  62  'b'\n  + B @0xB8 (1B)  63  'c'\n\n[63] @@ A:0xBB-0xBB | B:0xBB-0xBB @@\n  - A @0xBB (1B)  62  'b'\n  + B @0xBB (1B)  63  'c'\n\n[64] @@ A:0xBE-0xBE | B:0xBE-0xBE @@\n  - A @0xBE (1B)  62  'b'\n  + B @0xBE (1B)  63  'c'\n\n[65] @@ A:0xC1-0xC1 | B:0xC1-0xC1 @@\n  - A @0xC1 (1B)  62  'b'\n  + B @0xC1 (1B)  63  'c'\n\n[66] @@ A:0xC4-0xC4 | B:0xC4-0xC4 @@\n  - A @0xC4 (1B)  62  'b'\n  + B @0xC4 (1B)  63  'c'\n\n[67] @@ A:0xC7-0xC7 | B:0xC7-0xC7 @@\n  - A @0xC7 (1B)  62  'b'\n  + B @0xC7 (1B)  63  'c'\n\n[68] @@ A:0xCA-0xCA | B:0xCA-0xCA @@\n  - A @0xCA (1B)  62  'b'\n  + B @0xCA (1B)  63  'c'\n\n[69] @@ A:0xCD-0xCD | B:0xCD-0xCD @@\n  - A @0xCD (1B)  62  'b'\n  + B @0xCD (1B)  63  'c'\n\n[70] @@ A:0xD0-0xD0 | B:0xD0-0xD0 @@\n  - A @0xD0 (1B)  62  'b'\n  + B @0xD0 (1B)  63  'c'\n\n[71] @@ A:0xD3-0xD3 | B:0xD3-0xD3 @@\n  - A @0xD3 (1B)  62  'b'\n  + B @0xD3 (1B)  63  'c'\n\n[72] @@ A:0xD6-0xD6 | B:0xD6-0xD6 @@\n  - A @0xD6 (1B)  62  'b'\n  + B @0xD6 (1B)  63  'c'\n\n[73] @@ A:0xD9-0xD9 | B:0xD9-0xD9 @@\n  - A @0xD9 (1B)  62  'b'\n  + B @0xD9 (1B)  63  'c'\n\n[74] @@ A:0xDC-0xDC | B:0xDC-0xDC @@\n  - A @0xDC (1B)  62  'b'\n  + B @0xDC (1B)  63  'c'\n\n[75] @@ A:0xDF-0xDF | B:0xDF-0xDF @@\n  - A @0xDF (1B)  62  'b'\n  + B @0xDF (1B)  63  'c'\n\n[76] @@ A:0xE2-0xE2 | B:0xE2-0xE2 @@\n  - A @0xE2 (1B)  62  'b'\n  + B @0xE2 (1B)  63  'c'\n\n[77] @@ A:0xE5-0xE5 | B:0xE5-0xE5 @@\n  - A @0xE5 (1B)  62  'b'\n  + B @0xE5 (1B)  63  'c'\n\n[78] @@ A:0xE8-0xE8 | B:0xE8-0xE8 @@\n  - A @0xE8 (1B)  62  'b'\n  + B @0xE8 (1B)  63  'c'\n\n[79] @@ A:0xEB-0xEB | B:0xEB-0xEB @@\n  - A @0xEB (1B)  62  'b'\n  + B @0xEB (1B)  63  'c'\n\n[80] @@ A:0xEE-0xEE | B:0xEE-0xEE @@\n  - A @0xEE (1B)  62  'b'\n  + B @0xEE (1B)  63  'c'\n"
+    },
+    {
+      "input": "",
+      "params": {
+        "textB": "",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 0 字节 | B = 0 字节 | 策略: 等长逐位\n相同 0 | 仅 A 0 | 仅 B 0 | 差异块计数见下\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "",
+      "params": {
+        "textB": "hello",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 0 字节 | B = 5 字节 | 策略: A 空\n相同 0 | 仅 A 0 | 仅 B 5 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:∅ | B:0x0-0x4 @@\n  + B @0x0 (5B)  68656c6c6f  'hello'\n"
+    },
+    {
+      "input": "hello",
+      "params": {
+        "textB": "",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 5 字节 | B = 0 字节 | 策略: B 空\n相同 0 | 仅 A 5 | 仅 B 0 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x4 | B:∅ @@\n  - A @0x0 (5B)  68656c6c6f  'hello'\n"
+    },
+    {
+      "input": "ABC",
+      "params": {
+        "textB": "ABC",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 3 字节 | B = 3 字节 | 策略: 等长逐位\n相同 3 | 仅 A 0 | 仅 B 0 | 差异块计数见下\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "ABCDE",
+      "params": {
+        "textB": "ABXDE",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 5 字节 | B = 5 字节 | 策略: 等长逐位\n相同 4 | 仅 A 1 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x1-0x3 | B:0x1-0x3 @@\n  = @0x1 (1B)  42  'B'\n  - A @0x2 (1B)  43  'C'\n  + B @0x2 (1B)  58  'X'\n  = @0x3 (1B)  44  'D'\n"
+    },
+    {
+      "input": "ABC",
+      "params": {
+        "textB": "BCDA",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 3 字节 | B = 4 字节 | 策略: LCS\n相同 2 | 仅 A 1 | 仅 B 2 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x2 | B:0x0-0x3 @@\n  - A @0x0 (1B)  41  'A'\n  = @0x1 (2B)  4243  'BC'\n  + B @0x2 (2B)  4441  'DA'\n"
+    },
+    {
+      "input": "kitten",
+      "params": {
+        "textB": "sitting",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 6 字节 | B = 7 字节 | 策略: LCS\n相同 4 | 仅 A 2 | 仅 B 3 | 差异块计数见下\n\n差异块: 2\n\n[1] @@ A:0x0-0x1 | B:0x0-0x1 @@\n  - A @0x0 (1B)  6b  'k'\n  + B @0x0 (1B)  73  's'\n  = @0x1 (1B)  69  'i'\n\n[2] @@ A:0x3-0x5 | B:0x3-0x6 @@\n  = @0x3 (1B)  74  't'\n  - A @0x4 (1B)  65  'e'\n  + B @0x4 (1B)  69  'i'\n  = @0x5 (1B)  6e  'n'\n  + B @0x6 (1B)  67  'g'\n"
+    },
+    {
+      "input": "中文🙂\n你好",
+      "params": {
+        "textB": "中文🙃\n世界",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 17 字节 | B = 17 字节 | 策略: 等长逐位\n相同 11 | 仅 A 6 | 仅 B 6 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x8-0x10 | B:0x8-0x10 @@\n  = @0x8 (1B)  99  '·'\n  - A @0x9 (1B)  82  '·'\n  + B @0x9 (1B)  83  '·'\n  = @0xA (2B)  0ae4  '··'\n  - A @0xC (1B)  bd  '·'\n  + B @0xC (1B)  b8  '·'\n  - A @0xD (1B)  a0  '·'\n  + B @0xD (1B)  96  '·'\n  - A @0xE (1B)  e5  '·'\n  + B @0xE (1B)  e7  '·'\n  - A @0xF (1B)  a5  '·'\n  + B @0xF (1B)  95  '·'\n  - A @0x10 (1B)  bd  '·'\n  + B @0x10 (1B)  8c  '·'\n"
+    },
+    {
+      "input": "a\r\nb\r\n",
+      "params": {
+        "textB": "a\nb\n",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 6 字节 | B = 4 字节 | 策略: LCS\n相同 4 | 仅 A 2 | 仅 B 0 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x5 | B:0x0-0x3 @@\n  = @0x0 (1B)  61  'a'\n  - A @0x1 (1B)  0d  '·'\n  = @0x2 (2B)  0a62  '·b'\n  - A @0x4 (1B)  0d  '·'\n  = @0x5 (1B)  0a  '·'\n"
+    },
+    {
+      "input": "a\rb",
+      "params": {
+        "textB": "a\nb",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 3 字节 | B = 3 字节 | 策略: 等长逐位\n相同 2 | 仅 A 1 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x2 | B:0x0-0x2 @@\n  = @0x0 (1B)  61  'a'\n  - A @0x1 (1B)  0d  '·'\n  + B @0x1 (1B)  0a  '·'\n  = @0x2 (1B)  62  'b'\n"
+    },
+    {
+      "input": "a\nb\nc",
+      "params": {
+        "textB": "a\nc",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 5 字节 | B = 3 字节 | 策略: LCS\n相同 3 | 仅 A 2 | 仅 B 0 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x1-0x4 | B:0x1-0x2 @@\n  = @0x1 (1B)  0a  '·'\n  - A @0x2 (2B)  620a  'b·'\n  = @0x4 (1B)  63  'c'\n"
+    },
+    {
+      "input": "a\nb",
+      "params": {
+        "textB": "x\na\nb\ny",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 3 字节 | B = 7 字节 | 策略: LCS\n相同 3 | 仅 A 0 | 仅 B 4 | 差异块计数见下\n\n差异块: 2\n\n[1] @@ A:0x0-0x0 | B:0x0-0x2 @@\n  + B @0x0 (2B)  780a  'x·'\n  = @0x0 (1B)  61  'a'\n\n[2] @@ A:0x2-0x2 | B:0x4-0x6 @@\n  = @0x2 (1B)  62  'b'\n  + B @0x5 (2B)  0a79  '·y'\n"
+    },
+    {
+      "input": "0\u0000ÿ",
+      "params": {
+        "textB": "0\u0000þ",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 4 字节 | B = 4 字节 | 策略: 等长逐位\n相同 3 | 仅 A 1 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x2-0x3 | B:0x2-0x3 @@\n  = @0x2 (1B)  c3  '·'\n  - A @0x3 (1B)  bf  '·'\n  + B @0x3 (1B)  be  '·'\n"
+    },
+    {
+      "input": "abababa",
+      "params": {
+        "textB": "babab",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 7 字节 | B = 5 字节 | 策略: LCS\n相同 5 | 仅 A 2 | 仅 B 0 | 差异块计数见下\n\n差异块: 2\n\n[1] @@ A:0x0-0x1 | B:0x0-0x0 @@\n  - A @0x0 (1B)  61  'a'\n  = @0x1 (1B)  62  'b'\n\n[2] @@ A:0x5-0x6 | B:0x4-0x4 @@\n  = @0x5 (1B)  62  'b'\n  - A @0x6 (1B)  61  'a'\n"
+    },
+    {
+      "input": "ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ",
+      "params": {
+        "textB": "ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 240 字节 | B = 240 字节 | 策略: 等长逐位\n相同 160 | 仅 A 80 | 仅 B 80 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0xEF | B:0x0-0xEF @@\n  = @0x0 (1B)  61  'a'\n  - A @0x1 (1B)  62  'b'\n  + B @0x1 (1B)  63  'c'\n  = @0x2 (2B)  2061  ' a'\n  - A @0x4 (1B)  62  'b'\n  + B @0x4 (1B)  63  'c'\n  = @0x5 (2B)  2061  ' a'\n  - A @0x7 (1B)  62  'b'\n  + B @0x7 (1B)  63  'c'\n  = @0x8 (2B)  2061  ' a'\n  - A @0xA (1B)  62  'b'\n  + B @0xA (1B)  63  'c'\n  = @0xB (2B)  2061  ' a'\n  - A @0xD (1B)  62  'b'\n  + B @0xD (1B)  63  'c'\n  = @0xE (2B)  2061  ' a'\n  - A @0x10 (1B)  62  'b'\n  + B @0x10 (1B)  63  'c'\n  = @0x11 (2B)  2061  ' a'\n  - A @0x13 (1B)  62  'b'\n  + B @0x13 (1B)  63  'c'\n  = @0x14 (2B)  2061  ' a'\n  - A @0x16 (1B)  62  'b'\n  + B @0x16 (1B)  63  'c'\n  = @0x17 (2B)  2061  ' a'\n  - A @0x19 (1B)  62  'b'\n  + B @0x19 (1B)  63  'c'\n  = @0x1A (2B)  2061  ' a'\n  - A @0x1C (1B)  62  'b'\n  + B @0x1C (1B)  63  'c'\n  = @0x1D (2B)  2061  ' a'\n  - A @0x1F (1B)  62  'b'\n  + B @0x1F (1B)  63  'c'\n  = @0x20 (2B)  2061  ' a'\n  - A @0x22 (1B)  62  'b'\n  + B @0x22 (1B)  63  'c'\n  = @0x23 (2B)  2061  ' a'\n  - A @0x25 (1B)  62  'b'\n  + B @0x25 (1B)  63  'c'\n  = @0x26 (2B)  2061  ' a'\n  - A @0x28 (1B)  62  'b'\n  + B @0x28 (1B)  63  'c'\n  = @0x29 (2B)  2061  ' a'\n  - A @0x2B (1B)  62  'b'\n  + B @0x2B (1B)  63  'c'\n  = @0x2C (2B)  2061  ' a'\n  - A @0x2E (1B)  62  'b'\n  + B @0x2E (1B)  63  'c'\n  = @0x2F (2B)  2061  ' a'\n  - A @0x31 (1B)  62  'b'\n  + B @0x31 (1B)  63  'c'\n  = @0x32 (2B)  2061  ' a'\n  - A @0x34 (1B)  62  'b'\n  + B @0x34 (1B)  63  'c'\n  = @0x35 (2B)  2061  ' a'\n  - A @0x37 (1B)  62  'b'\n  + B @0x37 (1B)  63  'c'\n  = @0x38 (2B)  2061  ' a'\n  - A @0x3A (1B)  62  'b'\n  + B @0x3A (1B)  63  'c'\n  = @0x3B (2B)  2061  ' a'\n  - A @0x3D (1B)  62  'b'\n  + B @0x3D (1B)  63  'c'\n  = @0x3E (2B)  2061  ' a'\n  - A @0x40 (1B)  62  'b'\n  + B @0x40 (1B)  63  'c'\n  = @0x41 (2B)  2061  ' a'\n  - A @0x43 (1B)  62  'b'\n  + B @0x43 (1B)  63  'c'\n  = @0x44 (2B)  2061  ' a'\n  - A @0x46 (1B)  62  'b'\n  + B @0x46 (1B)  63  'c'\n  = @0x47 (2B)  2061  ' a'\n  - A @0x49 (1B)  62  'b'\n  + B @0x49 (1B)  63  'c'\n  = @0x4A (2B)  2061  ' a'\n  - A @0x4C (1B)  62  'b'\n  + B @0x4C (1B)  63  'c'\n  = @0x4D (2B)  2061  ' a'\n  - A @0x4F (1B)  62  'b'\n  + B @0x4F (1B)  63  'c'\n  = @0x50 (2B)  2061  ' a'\n  - A @0x52 (1B)  62  'b'\n  + B @0x52 (1B)  63  'c'\n  = @0x53 (2B)  2061  ' a'\n  - A @0x55 (1B)  62  'b'\n  + B @0x55 (1B)  63  'c'\n  = @0x56 (2B)  2061  ' a'\n  - A @0x58 (1B)  62  'b'\n  + B @0x58 (1B)  63  'c'\n  = @0x59 (2B)  2061  ' a'\n  - A @0x5B (1B)  62  'b'\n  + B @0x5B (1B)  63  'c'\n  = @0x5C (2B)  2061  ' a'\n  - A @0x5E (1B)  62  'b'\n  + B @0x5E (1B)  63  'c'\n  = @0x5F (2B)  2061  ' a'\n  - A @0x61 (1B)  62  'b'\n  + B @0x61 (1B)  63  'c'\n  = @0x62 (2B)  2061  ' a'\n  - A @0x64 (1B)  62  'b'\n  + B @0x64 (1B)  63  'c'\n  = @0x65 (2B)  2061  ' a'\n  - A @0x67 (1B)  62  'b'\n  + B @0x67 (1B)  63  'c'\n  = @0x68 (2B)  2061  ' a'\n  - A @0x6A (1B)  62  'b'\n  + B @0x6A (1B)  63  'c'\n  = @0x6B (2B)  2061  ' a'\n  - A @0x6D (1B)  62  'b'\n  + B @0x6D (1B)  63  'c'\n  = @0x6E (2B)  2061  ' a'\n  - A @0x70 (1B)  62  'b'\n  + B @0x70 (1B)  63  'c'\n  = @0x71 (2B)  2061  ' a'\n  - A @0x73 (1B)  62  'b'\n  + B @0x73 (1B)  63  'c'\n  = @0x74 (2B)  2061  ' a'\n  - A @0x76 (1B)  62  'b'\n  + B @0x76 (1B)  63  'c'\n  = @0x77 (2B)  2061  ' a'\n  - A @0x79 (1B)  62  'b'\n  + B @0x79 (1B)  63  'c'\n  = @0x7A (2B)  2061  ' a'\n  - A @0x7C (1B)  62  'b'\n  + B @0x7C (1B)  63  'c'\n  = @0x7D (2B)  2061  ' a'\n  - A @0x7F (1B)  62  'b'\n  + B @0x7F (1B)  63  'c'\n  = @0x80 (2B)  2061  ' a'\n  - A @0x82 (1B)  62  'b'\n  + B @0x82 (1B)  63  'c'\n  = @0x83 (2B)  2061  ' a'\n  - A @0x85 (1B)  62  'b'\n  + B @0x85 (1B)  63  'c'\n  = @0x86 (2B)  2061  ' a'\n  - A @0x88 (1B)  62  'b'\n  + B @0x88 (1B)  63  'c'\n  = @0x89 (2B)  2061  ' a'\n  - A @0x8B (1B)  62  'b'\n  + B @0x8B (1B)  63  'c'\n  = @0x8C (2B)  2061  ' a'\n  - A @0x8E (1B)  62  'b'\n  + B @0x8E (1B)  63  'c'\n  = @0x8F (2B)  2061  ' a'\n  - A @0x91 (1B)  62  'b'\n  + B @0x91 (1B)  63  'c'\n  = @0x92 (2B)  2061  ' a'\n  - A @0x94 (1B)  62  'b'\n  + B @0x94 (1B)  63  'c'\n  = @0x95 (2B)  2061  ' a'\n  - A @0x97 (1B)  62  'b'\n  + B @0x97 (1B)  63  'c'\n  = @0x98 (2B)  2061  ' a'\n  - A @0x9A (1B)  62  'b'\n  + B @0x9A (1B)  63  'c'\n  = @0x9B (2B)  2061  ' a'\n  - A @0x9D (1B)  62  'b'\n  + B @0x9D (1B)  63  'c'\n  = @0x9E (2B)  2061  ' a'\n  - A @0xA0 (1B)  62  'b'\n  + B @0xA0 (1B)  63  'c'\n  = @0xA1 (2B)  2061  ' a'\n  - A @0xA3 (1B)  62  'b'\n  + B @0xA3 (1B)  63  'c'\n  = @0xA4 (2B)  2061  ' a'\n  - A @0xA6 (1B)  62  'b'\n  + B @0xA6 (1B)  63  'c'\n  = @0xA7 (2B)  2061  ' a'\n  - A @0xA9 (1B)  62  'b'\n  + B @0xA9 (1B)  63  'c'\n  = @0xAA (2B)  2061  ' a'\n  - A @0xAC (1B)  62  'b'\n  + B @0xAC (1B)  63  'c'\n  = @0xAD (2B)  2061  ' a'\n  - A @0xAF (1B)  62  'b'\n  + B @0xAF (1B)  63  'c'\n  = @0xB0 (2B)  2061  ' a'\n  - A @0xB2 (1B)  62  'b'\n  + B @0xB2 (1B)  63  'c'\n  = @0xB3 (2B)  2061  ' a'\n  - A @0xB5 (1B)  62  'b'\n  + B @0xB5 (1B)  63  'c'\n  = @0xB6 (2B)  2061  ' a'\n  - A @0xB8 (1B)  62  'b'\n  + B @0xB8 (1B)  63  'c'\n  = @0xB9 (2B)  2061  ' a'\n  - A @0xBB (1B)  62  'b'\n  + B @0xBB (1B)  63  'c'\n  = @0xBC (2B)  2061  ' a'\n  - A @0xBE (1B)  62  'b'\n  + B @0xBE (1B)  63  'c'\n  = @0xBF (2B)  2061  ' a'\n  - A @0xC1 (1B)  62  'b'\n  + B @0xC1 (1B)  63  'c'\n  = @0xC2 (2B)  2061  ' a'\n  - A @0xC4 (1B)  62  'b'\n  + B @0xC4 (1B)  63  'c'\n  = @0xC5 (2B)  2061  ' a'\n  - A @0xC7 (1B)  62  'b'\n  + B @0xC7 (1B)  63  'c'\n  = @0xC8 (2B)  2061  ' a'\n  - A @0xCA (1B)  62  'b'\n  + B @0xCA (1B)  63  'c'\n  = @0xCB (2B)  2061  ' a'\n  - A @0xCD (1B)  62  'b'\n  + B @0xCD (1B)  63  'c'\n  = @0xCE (2B)  2061  ' a'\n  - A @0xD0 (1B)  62  'b'\n  + B @0xD0 (1B)  63  'c'\n  = @0xD1 (2B)  2061  ' a'\n  - A @0xD3 (1B)  62  'b'\n  + B @0xD3 (1B)  63  'c'\n  = @0xD4 (2B)  2061  ' a'\n  - A @0xD6 (1B)  62  'b'\n  + B @0xD6 (1B)  63  'c'\n  = @0xD7 (2B)  2061  ' a'\n  - A @0xD9 (1B)  62  'b'\n  + B @0xD9 (1B)  63  'c'\n  = @0xDA (2B)  2061  ' a'\n  - A @0xDC (1B)  62  'b'\n  + B @0xDC (1B)  63  'c'\n  = @0xDD (2B)  2061  ' a'\n  - A @0xDF (1B)  62  'b'\n  + B @0xDF (1B)  63  'c'\n  = @0xE0 (2B)  2061  ' a'\n  - A @0xE2 (1B)  62  'b'\n  + B @0xE2 (1B)  63  'c'\n  = @0xE3 (2B)  2061  ' a'\n  - A @0xE5 (1B)  62  'b'\n  + B @0xE5 (1B)  63  'c'\n  = @0xE6 (2B)  2061  ' a'\n  - A @0xE8 (1B)  62  'b'\n  + B @0xE8 (1B)  63  'c'\n  = @0xE9 (2B)  2061  ' a'\n  - A @0xEB (1B)  62  'b'\n  + B @0xEB (1B)  63  'c'\n  = @0xEC (2B)  2061  ' a'\n  - A @0xEE (1B)  62  'b'\n  + B @0xEE (1B)  63  'c'\n  = @0xEF (1B)  20  ' '\n"
+    },
+    {
+      "input": "",
+      "params": {
+        "textB": "",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 0 字节 | B = 0 字节 | 策略: 等长逐位\n相同 0 | 仅 A 0 | 仅 B 0 | 差异块计数见下\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "",
+      "params": {
+        "textB": "hello",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 0 字节 | B = 5 字节 | 策略: A 空\n相同 0 | 仅 A 0 | 仅 B 5 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:∅ | B:0x0-0x4 @@\n  + B @0x0 (5B)  68656c6c6f  'hello'\n"
+    },
+    {
+      "input": "hello",
+      "params": {
+        "textB": "",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 5 字节 | B = 0 字节 | 策略: B 空\n相同 0 | 仅 A 5 | 仅 B 0 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x4 | B:∅ @@\n  - A @0x0 (5B)  68656c6c6f  'hello'\n"
+    },
+    {
+      "input": "ABC",
+      "params": {
+        "textB": "ABC",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 3 字节 | B = 3 字节 | 策略: 等长逐位\n相同 3 | 仅 A 0 | 仅 B 0 | 差异块计数见下\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "ABCDE",
+      "params": {
+        "textB": "ABXDE",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 5 字节 | B = 5 字节 | 策略: 等长逐位\n相同 4 | 仅 A 1 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x4 | B:0x0-0x4 @@\n  = @0x0 (2B)  4142  'AB'\n  - A @0x2 (1B)  43  'C'\n  + B @0x2 (1B)  58  'X'\n  = @0x3 (2B)  4445  'DE'\n"
+    },
+    {
+      "input": "ABC",
+      "params": {
+        "textB": "BCDA",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 3 字节 | B = 4 字节 | 策略: LCS\n相同 2 | 仅 A 1 | 仅 B 2 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x2 | B:0x0-0x3 @@\n  - A @0x0 (1B)  41  'A'\n  = @0x1 (2B)  4243  'BC'\n  + B @0x2 (2B)  4441  'DA'\n"
+    },
+    {
+      "input": "kitten",
+      "params": {
+        "textB": "sitting",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 6 字节 | B = 7 字节 | 策略: LCS\n相同 4 | 仅 A 2 | 仅 B 3 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x5 | B:0x0-0x6 @@\n  - A @0x0 (1B)  6b  'k'\n  + B @0x0 (1B)  73  's'\n  = @0x1 (3B)  697474  'itt'\n  - A @0x4 (1B)  65  'e'\n  + B @0x4 (1B)  69  'i'\n  = @0x5 (1B)  6e  'n'\n  + B @0x6 (1B)  67  'g'\n"
+    },
+    {
+      "input": "中文🙂\n你好",
+      "params": {
+        "textB": "中文🙃\n世界",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 17 字节 | B = 17 字节 | 策略: 等长逐位\n相同 11 | 仅 A 6 | 仅 B 6 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x6-0x10 | B:0x6-0x10 @@\n  = @0x6 (3B)  f09f99  '···'\n  - A @0x9 (1B)  82  '·'\n  + B @0x9 (1B)  83  '·'\n  = @0xA (2B)  0ae4  '··'\n  - A @0xC (1B)  bd  '·'\n  + B @0xC (1B)  b8  '·'\n  - A @0xD (1B)  a0  '·'\n  + B @0xD (1B)  96  '·'\n  - A @0xE (1B)  e5  '·'\n  + B @0xE (1B)  e7  '·'\n  - A @0xF (1B)  a5  '·'\n  + B @0xF (1B)  95  '·'\n  - A @0x10 (1B)  bd  '·'\n  + B @0x10 (1B)  8c  '·'\n"
+    },
+    {
+      "input": "a\r\nb\r\n",
+      "params": {
+        "textB": "a\nb\n",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 6 字节 | B = 4 字节 | 策略: LCS\n相同 4 | 仅 A 2 | 仅 B 0 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x5 | B:0x0-0x3 @@\n  = @0x0 (1B)  61  'a'\n  - A @0x1 (1B)  0d  '·'\n  = @0x2 (2B)  0a62  '·b'\n  - A @0x4 (1B)  0d  '·'\n  = @0x5 (1B)  0a  '·'\n"
+    },
+    {
+      "input": "a\rb",
+      "params": {
+        "textB": "a\nb",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 3 字节 | B = 3 字节 | 策略: 等长逐位\n相同 2 | 仅 A 1 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x2 | B:0x0-0x2 @@\n  = @0x0 (1B)  61  'a'\n  - A @0x1 (1B)  0d  '·'\n  + B @0x1 (1B)  0a  '·'\n  = @0x2 (1B)  62  'b'\n"
+    },
+    {
+      "input": "a\nb\nc",
+      "params": {
+        "textB": "a\nc",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 5 字节 | B = 3 字节 | 策略: LCS\n相同 3 | 仅 A 2 | 仅 B 0 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x4 | B:0x0-0x2 @@\n  = @0x0 (2B)  610a  'a·'\n  - A @0x2 (2B)  620a  'b·'\n  = @0x4 (1B)  63  'c'\n"
+    },
+    {
+      "input": "a\nb",
+      "params": {
+        "textB": "x\na\nb\ny",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 3 字节 | B = 7 字节 | 策略: LCS\n相同 3 | 仅 A 0 | 仅 B 4 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x2 | B:0x0-0x6 @@\n  + B @0x0 (2B)  780a  'x·'\n  = @0x0 (3B)  610a62  'a·b'\n  + B @0x5 (2B)  0a79  '·y'\n"
+    },
+    {
+      "input": "0\u0000ÿ",
+      "params": {
+        "textB": "0\u0000þ",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 4 字节 | B = 4 字节 | 策略: 等长逐位\n相同 3 | 仅 A 1 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x3 | B:0x0-0x3 @@\n  = @0x0 (3B)  3000c3  '0··'\n  - A @0x3 (1B)  bf  '·'\n  + B @0x3 (1B)  be  '·'\n"
+    },
+    {
+      "input": "abababa",
+      "params": {
+        "textB": "babab",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 7 字节 | B = 5 字节 | 策略: LCS\n相同 5 | 仅 A 2 | 仅 B 0 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x6 | B:0x0-0x4 @@\n  - A @0x0 (1B)  61  'a'\n  = @0x1 (5B)  6261626162  'babab'\n  - A @0x6 (1B)  61  'a'\n"
+    },
+    {
+      "input": "ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ",
+      "params": {
+        "textB": "ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 240 字节 | B = 240 字节 | 策略: 等长逐位\n相同 160 | 仅 A 80 | 仅 B 80 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0xEF | B:0x0-0xEF @@\n  = @0x0 (1B)  61  'a'\n  - A @0x1 (1B)  62  'b'\n  + B @0x1 (1B)  63  'c'\n  = @0x2 (2B)  2061  ' a'\n  - A @0x4 (1B)  62  'b'\n  + B @0x4 (1B)  63  'c'\n  = @0x5 (2B)  2061  ' a'\n  - A @0x7 (1B)  62  'b'\n  + B @0x7 (1B)  63  'c'\n  = @0x8 (2B)  2061  ' a'\n  - A @0xA (1B)  62  'b'\n  + B @0xA (1B)  63  'c'\n  = @0xB (2B)  2061  ' a'\n  - A @0xD (1B)  62  'b'\n  + B @0xD (1B)  63  'c'\n  = @0xE (2B)  2061  ' a'\n  - A @0x10 (1B)  62  'b'\n  + B @0x10 (1B)  63  'c'\n  = @0x11 (2B)  2061  ' a'\n  - A @0x13 (1B)  62  'b'\n  + B @0x13 (1B)  63  'c'\n  = @0x14 (2B)  2061  ' a'\n  - A @0x16 (1B)  62  'b'\n  + B @0x16 (1B)  63  'c'\n  = @0x17 (2B)  2061  ' a'\n  - A @0x19 (1B)  62  'b'\n  + B @0x19 (1B)  63  'c'\n  = @0x1A (2B)  2061  ' a'\n  - A @0x1C (1B)  62  'b'\n  + B @0x1C (1B)  63  'c'\n  = @0x1D (2B)  2061  ' a'\n  - A @0x1F (1B)  62  'b'\n  + B @0x1F (1B)  63  'c'\n  = @0x20 (2B)  2061  ' a'\n  - A @0x22 (1B)  62  'b'\n  + B @0x22 (1B)  63  'c'\n  = @0x23 (2B)  2061  ' a'\n  - A @0x25 (1B)  62  'b'\n  + B @0x25 (1B)  63  'c'\n  = @0x26 (2B)  2061  ' a'\n  - A @0x28 (1B)  62  'b'\n  + B @0x28 (1B)  63  'c'\n  = @0x29 (2B)  2061  ' a'\n  - A @0x2B (1B)  62  'b'\n  + B @0x2B (1B)  63  'c'\n  = @0x2C (2B)  2061  ' a'\n  - A @0x2E (1B)  62  'b'\n  + B @0x2E (1B)  63  'c'\n  = @0x2F (2B)  2061  ' a'\n  - A @0x31 (1B)  62  'b'\n  + B @0x31 (1B)  63  'c'\n  = @0x32 (2B)  2061  ' a'\n  - A @0x34 (1B)  62  'b'\n  + B @0x34 (1B)  63  'c'\n  = @0x35 (2B)  2061  ' a'\n  - A @0x37 (1B)  62  'b'\n  + B @0x37 (1B)  63  'c'\n  = @0x38 (2B)  2061  ' a'\n  - A @0x3A (1B)  62  'b'\n  + B @0x3A (1B)  63  'c'\n  = @0x3B (2B)  2061  ' a'\n  - A @0x3D (1B)  62  'b'\n  + B @0x3D (1B)  63  'c'\n  = @0x3E (2B)  2061  ' a'\n  - A @0x40 (1B)  62  'b'\n  + B @0x40 (1B)  63  'c'\n  = @0x41 (2B)  2061  ' a'\n  - A @0x43 (1B)  62  'b'\n  + B @0x43 (1B)  63  'c'\n  = @0x44 (2B)  2061  ' a'\n  - A @0x46 (1B)  62  'b'\n  + B @0x46 (1B)  63  'c'\n  = @0x47 (2B)  2061  ' a'\n  - A @0x49 (1B)  62  'b'\n  + B @0x49 (1B)  63  'c'\n  = @0x4A (2B)  2061  ' a'\n  - A @0x4C (1B)  62  'b'\n  + B @0x4C (1B)  63  'c'\n  = @0x4D (2B)  2061  ' a'\n  - A @0x4F (1B)  62  'b'\n  + B @0x4F (1B)  63  'c'\n  = @0x50 (2B)  2061  ' a'\n  - A @0x52 (1B)  62  'b'\n  + B @0x52 (1B)  63  'c'\n  = @0x53 (2B)  2061  ' a'\n  - A @0x55 (1B)  62  'b'\n  + B @0x55 (1B)  63  'c'\n  = @0x56 (2B)  2061  ' a'\n  - A @0x58 (1B)  62  'b'\n  + B @0x58 (1B)  63  'c'\n  = @0x59 (2B)  2061  ' a'\n  - A @0x5B (1B)  62  'b'\n  + B @0x5B (1B)  63  'c'\n  = @0x5C (2B)  2061  ' a'\n  - A @0x5E (1B)  62  'b'\n  + B @0x5E (1B)  63  'c'\n  = @0x5F (2B)  2061  ' a'\n  - A @0x61 (1B)  62  'b'\n  + B @0x61 (1B)  63  'c'\n  = @0x62 (2B)  2061  ' a'\n  - A @0x64 (1B)  62  'b'\n  + B @0x64 (1B)  63  'c'\n  = @0x65 (2B)  2061  ' a'\n  - A @0x67 (1B)  62  'b'\n  + B @0x67 (1B)  63  'c'\n  = @0x68 (2B)  2061  ' a'\n  - A @0x6A (1B)  62  'b'\n  + B @0x6A (1B)  63  'c'\n  = @0x6B (2B)  2061  ' a'\n  - A @0x6D (1B)  62  'b'\n  + B @0x6D (1B)  63  'c'\n  = @0x6E (2B)  2061  ' a'\n  - A @0x70 (1B)  62  'b'\n  + B @0x70 (1B)  63  'c'\n  = @0x71 (2B)  2061  ' a'\n  - A @0x73 (1B)  62  'b'\n  + B @0x73 (1B)  63  'c'\n  = @0x74 (2B)  2061  ' a'\n  - A @0x76 (1B)  62  'b'\n  + B @0x76 (1B)  63  'c'\n  = @0x77 (2B)  2061  ' a'\n  - A @0x79 (1B)  62  'b'\n  + B @0x79 (1B)  63  'c'\n  = @0x7A (2B)  2061  ' a'\n  - A @0x7C (1B)  62  'b'\n  + B @0x7C (1B)  63  'c'\n  = @0x7D (2B)  2061  ' a'\n  - A @0x7F (1B)  62  'b'\n  + B @0x7F (1B)  63  'c'\n  = @0x80 (2B)  2061  ' a'\n  - A @0x82 (1B)  62  'b'\n  + B @0x82 (1B)  63  'c'\n  = @0x83 (2B)  2061  ' a'\n  - A @0x85 (1B)  62  'b'\n  + B @0x85 (1B)  63  'c'\n  = @0x86 (2B)  2061  ' a'\n  - A @0x88 (1B)  62  'b'\n  + B @0x88 (1B)  63  'c'\n  = @0x89 (2B)  2061  ' a'\n  - A @0x8B (1B)  62  'b'\n  + B @0x8B (1B)  63  'c'\n  = @0x8C (2B)  2061  ' a'\n  - A @0x8E (1B)  62  'b'\n  + B @0x8E (1B)  63  'c'\n  = @0x8F (2B)  2061  ' a'\n  - A @0x91 (1B)  62  'b'\n  + B @0x91 (1B)  63  'c'\n  = @0x92 (2B)  2061  ' a'\n  - A @0x94 (1B)  62  'b'\n  + B @0x94 (1B)  63  'c'\n  = @0x95 (2B)  2061  ' a'\n  - A @0x97 (1B)  62  'b'\n  + B @0x97 (1B)  63  'c'\n  = @0x98 (2B)  2061  ' a'\n  - A @0x9A (1B)  62  'b'\n  + B @0x9A (1B)  63  'c'\n  = @0x9B (2B)  2061  ' a'\n  - A @0x9D (1B)  62  'b'\n  + B @0x9D (1B)  63  'c'\n  = @0x9E (2B)  2061  ' a'\n  - A @0xA0 (1B)  62  'b'\n  + B @0xA0 (1B)  63  'c'\n  = @0xA1 (2B)  2061  ' a'\n  - A @0xA3 (1B)  62  'b'\n  + B @0xA3 (1B)  63  'c'\n  = @0xA4 (2B)  2061  ' a'\n  - A @0xA6 (1B)  62  'b'\n  + B @0xA6 (1B)  63  'c'\n  = @0xA7 (2B)  2061  ' a'\n  - A @0xA9 (1B)  62  'b'\n  + B @0xA9 (1B)  63  'c'\n  = @0xAA (2B)  2061  ' a'\n  - A @0xAC (1B)  62  'b'\n  + B @0xAC (1B)  63  'c'\n  = @0xAD (2B)  2061  ' a'\n  - A @0xAF (1B)  62  'b'\n  + B @0xAF (1B)  63  'c'\n  = @0xB0 (2B)  2061  ' a'\n  - A @0xB2 (1B)  62  'b'\n  + B @0xB2 (1B)  63  'c'\n  = @0xB3 (2B)  2061  ' a'\n  - A @0xB5 (1B)  62  'b'\n  + B @0xB5 (1B)  63  'c'\n  = @0xB6 (2B)  2061  ' a'\n  - A @0xB8 (1B)  62  'b'\n  + B @0xB8 (1B)  63  'c'\n  = @0xB9 (2B)  2061  ' a'\n  - A @0xBB (1B)  62  'b'\n  + B @0xBB (1B)  63  'c'\n  = @0xBC (2B)  2061  ' a'\n  - A @0xBE (1B)  62  'b'\n  + B @0xBE (1B)  63  'c'\n  = @0xBF (2B)  2061  ' a'\n  - A @0xC1 (1B)  62  'b'\n  + B @0xC1 (1B)  63  'c'\n  = @0xC2 (2B)  2061  ' a'\n  - A @0xC4 (1B)  62  'b'\n  + B @0xC4 (1B)  63  'c'\n  = @0xC5 (2B)  2061  ' a'\n  - A @0xC7 (1B)  62  'b'\n  + B @0xC7 (1B)  63  'c'\n  = @0xC8 (2B)  2061  ' a'\n  - A @0xCA (1B)  62  'b'\n  + B @0xCA (1B)  63  'c'\n  = @0xCB (2B)  2061  ' a'\n  - A @0xCD (1B)  62  'b'\n  + B @0xCD (1B)  63  'c'\n  = @0xCE (2B)  2061  ' a'\n  - A @0xD0 (1B)  62  'b'\n  + B @0xD0 (1B)  63  'c'\n  = @0xD1 (2B)  2061  ' a'\n  - A @0xD3 (1B)  62  'b'\n  + B @0xD3 (1B)  63  'c'\n  = @0xD4 (2B)  2061  ' a'\n  - A @0xD6 (1B)  62  'b'\n  + B @0xD6 (1B)  63  'c'\n  = @0xD7 (2B)  2061  ' a'\n  - A @0xD9 (1B)  62  'b'\n  + B @0xD9 (1B)  63  'c'\n  = @0xDA (2B)  2061  ' a'\n  - A @0xDC (1B)  62  'b'\n  + B @0xDC (1B)  63  'c'\n  = @0xDD (2B)  2061  ' a'\n  - A @0xDF (1B)  62  'b'\n  + B @0xDF (1B)  63  'c'\n  = @0xE0 (2B)  2061  ' a'\n  - A @0xE2 (1B)  62  'b'\n  + B @0xE2 (1B)  63  'c'\n  = @0xE3 (2B)  2061  ' a'\n  - A @0xE5 (1B)  62  'b'\n  + B @0xE5 (1B)  63  'c'\n  = @0xE6 (2B)  2061  ' a'\n  - A @0xE8 (1B)  62  'b'\n  + B @0xE8 (1B)  63  'c'\n  = @0xE9 (2B)  2061  ' a'\n  - A @0xEB (1B)  62  'b'\n  + B @0xEB (1B)  63  'c'\n  = @0xEC (2B)  2061  ' a'\n  - A @0xEE (1B)  62  'b'\n  + B @0xEE (1B)  63  'c'\n  = @0xEF (1B)  20  ' '\n"
+    },
+    {
+      "input": "",
+      "params": {
+        "textB": "",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 0 字节 | B = 0 字节 | 策略: 等长逐位\n相同 0 | 仅 A 0 | 仅 B 0 | 差异块计数见下\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "",
+      "params": {
+        "textB": "hello",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 0 字节 | B = 5 字节 | 策略: A 空\n相同 0 | 仅 A 0 | 仅 B 5 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:∅ | B:0x0-0x4 @@\n  + B @0x0 (5B)  68656c6c6f  'hello'\n"
+    },
+    {
+      "input": "hello",
+      "params": {
+        "textB": "",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 5 字节 | B = 0 字节 | 策略: B 空\n相同 0 | 仅 A 5 | 仅 B 0 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x4 | B:∅ @@\n  - A @0x0 (5B)  68656c6c6f  'hello'\n"
+    },
+    {
+      "input": "ABC",
+      "params": {
+        "textB": "ABC",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 3 字节 | B = 3 字节 | 策略: 等长逐位\n相同 3 | 仅 A 0 | 仅 B 0 | 差异块计数见下\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "ABCDE",
+      "params": {
+        "textB": "ABXDE",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 5 字节 | B = 5 字节 | 策略: 等长逐位\n相同 4 | 仅 A 1 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x4 | B:0x0-0x4 @@\n  = @0x0 (2B)  4142  'AB'\n  - A @0x2 (1B)  43  'C'\n  + B @0x2 (1B)  58  'X'\n  = @0x3 (2B)  4445  'DE'\n"
+    },
+    {
+      "input": "ABC",
+      "params": {
+        "textB": "BCDA",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 3 字节 | B = 4 字节 | 策略: LCS\n相同 2 | 仅 A 1 | 仅 B 2 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x2 | B:0x0-0x3 @@\n  - A @0x0 (1B)  41  'A'\n  = @0x1 (2B)  4243  'BC'\n  + B @0x2 (2B)  4441  'DA'\n"
+    },
+    {
+      "input": "kitten",
+      "params": {
+        "textB": "sitting",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 6 字节 | B = 7 字节 | 策略: LCS\n相同 4 | 仅 A 2 | 仅 B 3 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x5 | B:0x0-0x6 @@\n  - A @0x0 (1B)  6b  'k'\n  + B @0x0 (1B)  73  's'\n  = @0x1 (3B)  697474  'itt'\n  - A @0x4 (1B)  65  'e'\n  + B @0x4 (1B)  69  'i'\n  = @0x5 (1B)  6e  'n'\n  + B @0x6 (1B)  67  'g'\n"
+    },
+    {
+      "input": "中文🙂\n你好",
+      "params": {
+        "textB": "中文🙃\n世界",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 17 字节 | B = 17 字节 | 策略: 等长逐位\n相同 11 | 仅 A 6 | 仅 B 6 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x10 | B:0x0-0x10 @@\n  = @0x0 (9B)  e4b8ade69687f09f99  '·········'\n  - A @0x9 (1B)  82  '·'\n  + B @0x9 (1B)  83  '·'\n  = @0xA (2B)  0ae4  '··'\n  - A @0xC (1B)  bd  '·'\n  + B @0xC (1B)  b8  '·'\n  - A @0xD (1B)  a0  '·'\n  + B @0xD (1B)  96  '·'\n  - A @0xE (1B)  e5  '·'\n  + B @0xE (1B)  e7  '·'\n  - A @0xF (1B)  a5  '·'\n  + B @0xF (1B)  95  '·'\n  - A @0x10 (1B)  bd  '·'\n  + B @0x10 (1B)  8c  '·'\n"
+    },
+    {
+      "input": "a\r\nb\r\n",
+      "params": {
+        "textB": "a\nb\n",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 6 字节 | B = 4 字节 | 策略: LCS\n相同 4 | 仅 A 2 | 仅 B 0 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x5 | B:0x0-0x3 @@\n  = @0x0 (1B)  61  'a'\n  - A @0x1 (1B)  0d  '·'\n  = @0x2 (2B)  0a62  '·b'\n  - A @0x4 (1B)  0d  '·'\n  = @0x5 (1B)  0a  '·'\n"
+    },
+    {
+      "input": "a\rb",
+      "params": {
+        "textB": "a\nb",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 3 字节 | B = 3 字节 | 策略: 等长逐位\n相同 2 | 仅 A 1 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x2 | B:0x0-0x2 @@\n  = @0x0 (1B)  61  'a'\n  - A @0x1 (1B)  0d  '·'\n  + B @0x1 (1B)  0a  '·'\n  = @0x2 (1B)  62  'b'\n"
+    },
+    {
+      "input": "a\nb\nc",
+      "params": {
+        "textB": "a\nc",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 5 字节 | B = 3 字节 | 策略: LCS\n相同 3 | 仅 A 2 | 仅 B 0 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x4 | B:0x0-0x2 @@\n  = @0x0 (2B)  610a  'a·'\n  - A @0x2 (2B)  620a  'b·'\n  = @0x4 (1B)  63  'c'\n"
+    },
+    {
+      "input": "a\nb",
+      "params": {
+        "textB": "x\na\nb\ny",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 3 字节 | B = 7 字节 | 策略: LCS\n相同 3 | 仅 A 0 | 仅 B 4 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x2 | B:0x0-0x6 @@\n  + B @0x0 (2B)  780a  'x·'\n  = @0x0 (3B)  610a62  'a·b'\n  + B @0x5 (2B)  0a79  '·y'\n"
+    },
+    {
+      "input": "0\u0000ÿ",
+      "params": {
+        "textB": "0\u0000þ",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 4 字节 | B = 4 字节 | 策略: 等长逐位\n相同 3 | 仅 A 1 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x3 | B:0x0-0x3 @@\n  = @0x0 (3B)  3000c3  '0··'\n  - A @0x3 (1B)  bf  '·'\n  + B @0x3 (1B)  be  '·'\n"
+    },
+    {
+      "input": "abababa",
+      "params": {
+        "textB": "babab",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 7 字节 | B = 5 字节 | 策略: LCS\n相同 5 | 仅 A 2 | 仅 B 0 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x6 | B:0x0-0x4 @@\n  - A @0x0 (1B)  61  'a'\n  = @0x1 (5B)  6261626162  'babab'\n  - A @0x6 (1B)  61  'a'\n"
+    },
+    {
+      "input": "ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ",
+      "params": {
+        "textB": "ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 240 字节 | B = 240 字节 | 策略: 等长逐位\n相同 160 | 仅 A 80 | 仅 B 80 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0xEF | B:0x0-0xEF @@\n  = @0x0 (1B)  61  'a'\n  - A @0x1 (1B)  62  'b'\n  + B @0x1 (1B)  63  'c'\n  = @0x2 (2B)  2061  ' a'\n  - A @0x4 (1B)  62  'b'\n  + B @0x4 (1B)  63  'c'\n  = @0x5 (2B)  2061  ' a'\n  - A @0x7 (1B)  62  'b'\n  + B @0x7 (1B)  63  'c'\n  = @0x8 (2B)  2061  ' a'\n  - A @0xA (1B)  62  'b'\n  + B @0xA (1B)  63  'c'\n  = @0xB (2B)  2061  ' a'\n  - A @0xD (1B)  62  'b'\n  + B @0xD (1B)  63  'c'\n  = @0xE (2B)  2061  ' a'\n  - A @0x10 (1B)  62  'b'\n  + B @0x10 (1B)  63  'c'\n  = @0x11 (2B)  2061  ' a'\n  - A @0x13 (1B)  62  'b'\n  + B @0x13 (1B)  63  'c'\n  = @0x14 (2B)  2061  ' a'\n  - A @0x16 (1B)  62  'b'\n  + B @0x16 (1B)  63  'c'\n  = @0x17 (2B)  2061  ' a'\n  - A @0x19 (1B)  62  'b'\n  + B @0x19 (1B)  63  'c'\n  = @0x1A (2B)  2061  ' a'\n  - A @0x1C (1B)  62  'b'\n  + B @0x1C (1B)  63  'c'\n  = @0x1D (2B)  2061  ' a'\n  - A @0x1F (1B)  62  'b'\n  + B @0x1F (1B)  63  'c'\n  = @0x20 (2B)  2061  ' a'\n  - A @0x22 (1B)  62  'b'\n  + B @0x22 (1B)  63  'c'\n  = @0x23 (2B)  2061  ' a'\n  - A @0x25 (1B)  62  'b'\n  + B @0x25 (1B)  63  'c'\n  = @0x26 (2B)  2061  ' a'\n  - A @0x28 (1B)  62  'b'\n  + B @0x28 (1B)  63  'c'\n  = @0x29 (2B)  2061  ' a'\n  - A @0x2B (1B)  62  'b'\n  + B @0x2B (1B)  63  'c'\n  = @0x2C (2B)  2061  ' a'\n  - A @0x2E (1B)  62  'b'\n  + B @0x2E (1B)  63  'c'\n  = @0x2F (2B)  2061  ' a'\n  - A @0x31 (1B)  62  'b'\n  + B @0x31 (1B)  63  'c'\n  = @0x32 (2B)  2061  ' a'\n  - A @0x34 (1B)  62  'b'\n  + B @0x34 (1B)  63  'c'\n  = @0x35 (2B)  2061  ' a'\n  - A @0x37 (1B)  62  'b'\n  + B @0x37 (1B)  63  'c'\n  = @0x38 (2B)  2061  ' a'\n  - A @0x3A (1B)  62  'b'\n  + B @0x3A (1B)  63  'c'\n  = @0x3B (2B)  2061  ' a'\n  - A @0x3D (1B)  62  'b'\n  + B @0x3D (1B)  63  'c'\n  = @0x3E (2B)  2061  ' a'\n  - A @0x40 (1B)  62  'b'\n  + B @0x40 (1B)  63  'c'\n  = @0x41 (2B)  2061  ' a'\n  - A @0x43 (1B)  62  'b'\n  + B @0x43 (1B)  63  'c'\n  = @0x44 (2B)  2061  ' a'\n  - A @0x46 (1B)  62  'b'\n  + B @0x46 (1B)  63  'c'\n  = @0x47 (2B)  2061  ' a'\n  - A @0x49 (1B)  62  'b'\n  + B @0x49 (1B)  63  'c'\n  = @0x4A (2B)  2061  ' a'\n  - A @0x4C (1B)  62  'b'\n  + B @0x4C (1B)  63  'c'\n  = @0x4D (2B)  2061  ' a'\n  - A @0x4F (1B)  62  'b'\n  + B @0x4F (1B)  63  'c'\n  = @0x50 (2B)  2061  ' a'\n  - A @0x52 (1B)  62  'b'\n  + B @0x52 (1B)  63  'c'\n  = @0x53 (2B)  2061  ' a'\n  - A @0x55 (1B)  62  'b'\n  + B @0x55 (1B)  63  'c'\n  = @0x56 (2B)  2061  ' a'\n  - A @0x58 (1B)  62  'b'\n  + B @0x58 (1B)  63  'c'\n  = @0x59 (2B)  2061  ' a'\n  - A @0x5B (1B)  62  'b'\n  + B @0x5B (1B)  63  'c'\n  = @0x5C (2B)  2061  ' a'\n  - A @0x5E (1B)  62  'b'\n  + B @0x5E (1B)  63  'c'\n  = @0x5F (2B)  2061  ' a'\n  - A @0x61 (1B)  62  'b'\n  + B @0x61 (1B)  63  'c'\n  = @0x62 (2B)  2061  ' a'\n  - A @0x64 (1B)  62  'b'\n  + B @0x64 (1B)  63  'c'\n  = @0x65 (2B)  2061  ' a'\n  - A @0x67 (1B)  62  'b'\n  + B @0x67 (1B)  63  'c'\n  = @0x68 (2B)  2061  ' a'\n  - A @0x6A (1B)  62  'b'\n  + B @0x6A (1B)  63  'c'\n  = @0x6B (2B)  2061  ' a'\n  - A @0x6D (1B)  62  'b'\n  + B @0x6D (1B)  63  'c'\n  = @0x6E (2B)  2061  ' a'\n  - A @0x70 (1B)  62  'b'\n  + B @0x70 (1B)  63  'c'\n  = @0x71 (2B)  2061  ' a'\n  - A @0x73 (1B)  62  'b'\n  + B @0x73 (1B)  63  'c'\n  = @0x74 (2B)  2061  ' a'\n  - A @0x76 (1B)  62  'b'\n  + B @0x76 (1B)  63  'c'\n  = @0x77 (2B)  2061  ' a'\n  - A @0x79 (1B)  62  'b'\n  + B @0x79 (1B)  63  'c'\n  = @0x7A (2B)  2061  ' a'\n  - A @0x7C (1B)  62  'b'\n  + B @0x7C (1B)  63  'c'\n  = @0x7D (2B)  2061  ' a'\n  - A @0x7F (1B)  62  'b'\n  + B @0x7F (1B)  63  'c'\n  = @0x80 (2B)  2061  ' a'\n  - A @0x82 (1B)  62  'b'\n  + B @0x82 (1B)  63  'c'\n  = @0x83 (2B)  2061  ' a'\n  - A @0x85 (1B)  62  'b'\n  + B @0x85 (1B)  63  'c'\n  = @0x86 (2B)  2061  ' a'\n  - A @0x88 (1B)  62  'b'\n  + B @0x88 (1B)  63  'c'\n  = @0x89 (2B)  2061  ' a'\n  - A @0x8B (1B)  62  'b'\n  + B @0x8B (1B)  63  'c'\n  = @0x8C (2B)  2061  ' a'\n  - A @0x8E (1B)  62  'b'\n  + B @0x8E (1B)  63  'c'\n  = @0x8F (2B)  2061  ' a'\n  - A @0x91 (1B)  62  'b'\n  + B @0x91 (1B)  63  'c'\n  = @0x92 (2B)  2061  ' a'\n  - A @0x94 (1B)  62  'b'\n  + B @0x94 (1B)  63  'c'\n  = @0x95 (2B)  2061  ' a'\n  - A @0x97 (1B)  62  'b'\n  + B @0x97 (1B)  63  'c'\n  = @0x98 (2B)  2061  ' a'\n  - A @0x9A (1B)  62  'b'\n  + B @0x9A (1B)  63  'c'\n  = @0x9B (2B)  2061  ' a'\n  - A @0x9D (1B)  62  'b'\n  + B @0x9D (1B)  63  'c'\n  = @0x9E (2B)  2061  ' a'\n  - A @0xA0 (1B)  62  'b'\n  + B @0xA0 (1B)  63  'c'\n  = @0xA1 (2B)  2061  ' a'\n  - A @0xA3 (1B)  62  'b'\n  + B @0xA3 (1B)  63  'c'\n  = @0xA4 (2B)  2061  ' a'\n  - A @0xA6 (1B)  62  'b'\n  + B @0xA6 (1B)  63  'c'\n  = @0xA7 (2B)  2061  ' a'\n  - A @0xA9 (1B)  62  'b'\n  + B @0xA9 (1B)  63  'c'\n  = @0xAA (2B)  2061  ' a'\n  - A @0xAC (1B)  62  'b'\n  + B @0xAC (1B)  63  'c'\n  = @0xAD (2B)  2061  ' a'\n  - A @0xAF (1B)  62  'b'\n  + B @0xAF (1B)  63  'c'\n  = @0xB0 (2B)  2061  ' a'\n  - A @0xB2 (1B)  62  'b'\n  + B @0xB2 (1B)  63  'c'\n  = @0xB3 (2B)  2061  ' a'\n  - A @0xB5 (1B)  62  'b'\n  + B @0xB5 (1B)  63  'c'\n  = @0xB6 (2B)  2061  ' a'\n  - A @0xB8 (1B)  62  'b'\n  + B @0xB8 (1B)  63  'c'\n  = @0xB9 (2B)  2061  ' a'\n  - A @0xBB (1B)  62  'b'\n  + B @0xBB (1B)  63  'c'\n  = @0xBC (2B)  2061  ' a'\n  - A @0xBE (1B)  62  'b'\n  + B @0xBE (1B)  63  'c'\n  = @0xBF (2B)  2061  ' a'\n  - A @0xC1 (1B)  62  'b'\n  + B @0xC1 (1B)  63  'c'\n  = @0xC2 (2B)  2061  ' a'\n  - A @0xC4 (1B)  62  'b'\n  + B @0xC4 (1B)  63  'c'\n  = @0xC5 (2B)  2061  ' a'\n  - A @0xC7 (1B)  62  'b'\n  + B @0xC7 (1B)  63  'c'\n  = @0xC8 (2B)  2061  ' a'\n  - A @0xCA (1B)  62  'b'\n  + B @0xCA (1B)  63  'c'\n  = @0xCB (2B)  2061  ' a'\n  - A @0xCD (1B)  62  'b'\n  + B @0xCD (1B)  63  'c'\n  = @0xCE (2B)  2061  ' a'\n  - A @0xD0 (1B)  62  'b'\n  + B @0xD0 (1B)  63  'c'\n  = @0xD1 (2B)  2061  ' a'\n  - A @0xD3 (1B)  62  'b'\n  + B @0xD3 (1B)  63  'c'\n  = @0xD4 (2B)  2061  ' a'\n  - A @0xD6 (1B)  62  'b'\n  + B @0xD6 (1B)  63  'c'\n  = @0xD7 (2B)  2061  ' a'\n  - A @0xD9 (1B)  62  'b'\n  + B @0xD9 (1B)  63  'c'\n  = @0xDA (2B)  2061  ' a'\n  - A @0xDC (1B)  62  'b'\n  + B @0xDC (1B)  63  'c'\n  = @0xDD (2B)  2061  ' a'\n  - A @0xDF (1B)  62  'b'\n  + B @0xDF (1B)  63  'c'\n  = @0xE0 (2B)  2061  ' a'\n  - A @0xE2 (1B)  62  'b'\n  + B @0xE2 (1B)  63  'c'\n  = @0xE3 (2B)  2061  ' a'\n  - A @0xE5 (1B)  62  'b'\n  + B @0xE5 (1B)  63  'c'\n  = @0xE6 (2B)  2061  ' a'\n  - A @0xE8 (1B)  62  'b'\n  + B @0xE8 (1B)  63  'c'\n  = @0xE9 (2B)  2061  ' a'\n  - A @0xEB (1B)  62  'b'\n  + B @0xEB (1B)  63  'c'\n  = @0xEC (2B)  2061  ' a'\n  - A @0xEE (1B)  62  'b'\n  + B @0xEE (1B)  63  'c'\n  = @0xEF (1B)  20  ' '\n"
+    },
+    {
+      "input": "",
+      "params": {
+        "textB": "",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · line 模式\nA = 0 行 | B = 0 行 | 策略: 等长逐位\n相同 0 | 仅 A 0 | 仅 B 0\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "",
+      "params": {
+        "textB": "hello",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · line 模式\nA = 0 行 | B = 1 行 | 策略: A 空\n相同 0 | 仅 A 0 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:∅ | B:L1-L1 @@\n  + B L1: hello\n"
+    },
+    {
+      "input": "hello",
+      "params": {
+        "textB": "",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 0 行 | 策略: B 空\n相同 0 | 仅 A 1 | 仅 B 0\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:∅ @@\n  - A L1: hello\n"
+    },
+    {
+      "input": "ABC",
+      "params": {
+        "textB": "ABC",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 1 | 仅 A 0 | 仅 B 0\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "ABCDE",
+      "params": {
+        "textB": "ABXDE",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: ABCDE\n  + B L1: ABXDE\n"
+    },
+    {
+      "input": "ABC",
+      "params": {
+        "textB": "BCDA",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: ABC\n  + B L1: BCDA\n"
+    },
+    {
+      "input": "kitten",
+      "params": {
+        "textB": "sitting",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: kitten\n  + B L1: sitting\n"
+    },
+    {
+      "input": "中文🙂\n你好",
+      "params": {
+        "textB": "中文🙃\n世界",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · line 模式\nA = 2 行 | B = 2 行 | 策略: 等长逐位\n相同 0 | 仅 A 2 | 仅 B 2\n\n差异块: 1\n\n[1] @@ A:L1-L2 | B:L1-L2 @@\n  - A L1: 中文🙂\n  + B L1: 中文🙃\n  - A L2: 你好\n  + B L2: 世界\n"
+    },
+    {
+      "input": "a\r\nb\r\n",
+      "params": {
+        "textB": "a\nb\n",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · line 模式\nA = 3 行 | B = 3 行 | 策略: 等长逐位\n相同 3 | 仅 A 0 | 仅 B 0\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "a\rb",
+      "params": {
+        "textB": "a\nb",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 2 行 | 策略: LCS\n相同 0 | 仅 A 1 | 仅 B 2\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L2 @@\n  - A L1: a\rb\n  + B L1: a\n  + B L2: b\n"
+    },
+    {
+      "input": "a\nb\nc",
+      "params": {
+        "textB": "a\nc",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · line 模式\nA = 3 行 | B = 2 行 | 策略: LCS\n相同 2 | 仅 A 1 | 仅 B 0\n\n差异块: 1\n\n[1] @@ A:L2-L2 | B:∅ @@\n  - A L2: b\n"
+    },
+    {
+      "input": "a\nb",
+      "params": {
+        "textB": "x\na\nb\ny",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · line 模式\nA = 2 行 | B = 4 行 | 策略: LCS\n相同 2 | 仅 A 0 | 仅 B 2\n\n差异块: 2\n\n[1] @@ A:∅ | B:L1-L1 @@\n  + B L1: x\n\n[2] @@ A:∅ | B:L4-L4 @@\n  + B L4: y\n"
+    },
+    {
+      "input": "0\u0000ÿ",
+      "params": {
+        "textB": "0\u0000þ",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: 0\u0000ÿ\n  + B L1: 0\u0000þ\n"
+    },
+    {
+      "input": "abababa",
+      "params": {
+        "textB": "babab",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: abababa\n  + B L1: babab\n"
+    },
+    {
+      "input": "ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ",
+      "params": {
+        "textB": "ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab \n  + B L1: ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac \n"
+    },
+    {
+      "input": "",
+      "params": {
+        "textB": "",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · line 模式\nA = 0 行 | B = 0 行 | 策略: 等长逐位\n相同 0 | 仅 A 0 | 仅 B 0\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "",
+      "params": {
+        "textB": "hello",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · line 模式\nA = 0 行 | B = 1 行 | 策略: A 空\n相同 0 | 仅 A 0 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:∅ | B:L1-L1 @@\n  + B L1: hello\n"
+    },
+    {
+      "input": "hello",
+      "params": {
+        "textB": "",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 0 行 | 策略: B 空\n相同 0 | 仅 A 1 | 仅 B 0\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:∅ @@\n  - A L1: hello\n"
+    },
+    {
+      "input": "ABC",
+      "params": {
+        "textB": "ABC",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 1 | 仅 A 0 | 仅 B 0\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "ABCDE",
+      "params": {
+        "textB": "ABXDE",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: ABCDE\n  + B L1: ABXDE\n"
+    },
+    {
+      "input": "ABC",
+      "params": {
+        "textB": "BCDA",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: ABC\n  + B L1: BCDA\n"
+    },
+    {
+      "input": "kitten",
+      "params": {
+        "textB": "sitting",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: kitten\n  + B L1: sitting\n"
+    },
+    {
+      "input": "中文🙂\n你好",
+      "params": {
+        "textB": "中文🙃\n世界",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · line 模式\nA = 2 行 | B = 2 行 | 策略: 等长逐位\n相同 0 | 仅 A 2 | 仅 B 2\n\n差异块: 1\n\n[1] @@ A:L1-L2 | B:L1-L2 @@\n  - A L1: 中文🙂\n  + B L1: 中文🙃\n  - A L2: 你好\n  + B L2: 世界\n"
+    },
+    {
+      "input": "a\r\nb\r\n",
+      "params": {
+        "textB": "a\nb\n",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · line 模式\nA = 3 行 | B = 3 行 | 策略: 等长逐位\n相同 3 | 仅 A 0 | 仅 B 0\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "a\rb",
+      "params": {
+        "textB": "a\nb",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 2 行 | 策略: LCS\n相同 0 | 仅 A 1 | 仅 B 2\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L2 @@\n  - A L1: a\rb\n  + B L1: a\n  + B L2: b\n"
+    },
+    {
+      "input": "a\nb\nc",
+      "params": {
+        "textB": "a\nc",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · line 模式\nA = 3 行 | B = 2 行 | 策略: LCS\n相同 2 | 仅 A 1 | 仅 B 0\n\n差异块: 1\n\n[1] @@ A:L1-L3 | B:L1-L2 @@\n  = A L1: a\n  - A L2: b\n  = A L3: c\n"
+    },
+    {
+      "input": "a\nb",
+      "params": {
+        "textB": "x\na\nb\ny",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · line 模式\nA = 2 行 | B = 4 行 | 策略: LCS\n相同 2 | 仅 A 0 | 仅 B 2\n\n差异块: 1\n\n[1] @@ A:L1-L2 | B:L1-L4 @@\n  + B L1: x\n  = A L1: a\n    …至 L2: b\n  + B L4: y\n"
+    },
+    {
+      "input": "0\u0000ÿ",
+      "params": {
+        "textB": "0\u0000þ",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: 0\u0000ÿ\n  + B L1: 0\u0000þ\n"
+    },
+    {
+      "input": "abababa",
+      "params": {
+        "textB": "babab",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: abababa\n  + B L1: babab\n"
+    },
+    {
+      "input": "ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ",
+      "params": {
+        "textB": "ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab \n  + B L1: ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac \n"
+    },
+    {
+      "input": "",
+      "params": {
+        "textB": "",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · line 模式\nA = 0 行 | B = 0 行 | 策略: 等长逐位\n相同 0 | 仅 A 0 | 仅 B 0\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "",
+      "params": {
+        "textB": "hello",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · line 模式\nA = 0 行 | B = 1 行 | 策略: A 空\n相同 0 | 仅 A 0 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:∅ | B:L1-L1 @@\n  + B L1: hello\n"
+    },
+    {
+      "input": "hello",
+      "params": {
+        "textB": "",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 0 行 | 策略: B 空\n相同 0 | 仅 A 1 | 仅 B 0\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:∅ @@\n  - A L1: hello\n"
+    },
+    {
+      "input": "ABC",
+      "params": {
+        "textB": "ABC",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 1 | 仅 A 0 | 仅 B 0\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "ABCDE",
+      "params": {
+        "textB": "ABXDE",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: ABCDE\n  + B L1: ABXDE\n"
+    },
+    {
+      "input": "ABC",
+      "params": {
+        "textB": "BCDA",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: ABC\n  + B L1: BCDA\n"
+    },
+    {
+      "input": "kitten",
+      "params": {
+        "textB": "sitting",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: kitten\n  + B L1: sitting\n"
+    },
+    {
+      "input": "中文🙂\n你好",
+      "params": {
+        "textB": "中文🙃\n世界",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · line 模式\nA = 2 行 | B = 2 行 | 策略: 等长逐位\n相同 0 | 仅 A 2 | 仅 B 2\n\n差异块: 1\n\n[1] @@ A:L1-L2 | B:L1-L2 @@\n  - A L1: 中文🙂\n  + B L1: 中文🙃\n  - A L2: 你好\n  + B L2: 世界\n"
+    },
+    {
+      "input": "a\r\nb\r\n",
+      "params": {
+        "textB": "a\nb\n",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · line 模式\nA = 3 行 | B = 3 行 | 策略: 等长逐位\n相同 3 | 仅 A 0 | 仅 B 0\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "a\rb",
+      "params": {
+        "textB": "a\nb",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 2 行 | 策略: LCS\n相同 0 | 仅 A 1 | 仅 B 2\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L2 @@\n  - A L1: a\rb\n  + B L1: a\n  + B L2: b\n"
+    },
+    {
+      "input": "a\nb\nc",
+      "params": {
+        "textB": "a\nc",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · line 模式\nA = 3 行 | B = 2 行 | 策略: LCS\n相同 2 | 仅 A 1 | 仅 B 0\n\n差异块: 1\n\n[1] @@ A:L1-L3 | B:L1-L2 @@\n  = A L1: a\n  - A L2: b\n  = A L3: c\n"
+    },
+    {
+      "input": "a\nb",
+      "params": {
+        "textB": "x\na\nb\ny",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · line 模式\nA = 2 行 | B = 4 行 | 策略: LCS\n相同 2 | 仅 A 0 | 仅 B 2\n\n差异块: 1\n\n[1] @@ A:L1-L2 | B:L1-L4 @@\n  + B L1: x\n  = A L1: a\n    …至 L2: b\n  + B L4: y\n"
+    },
+    {
+      "input": "0\u0000ÿ",
+      "params": {
+        "textB": "0\u0000þ",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: 0\u0000ÿ\n  + B L1: 0\u0000þ\n"
+    },
+    {
+      "input": "abababa",
+      "params": {
+        "textB": "babab",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: abababa\n  + B L1: babab\n"
+    },
+    {
+      "input": "ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ",
+      "params": {
+        "textB": "ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 3
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab \n  + B L1: ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac \n"
+    },
+    {
+      "input": "",
+      "params": {
+        "textB": "",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · line 模式\nA = 0 行 | B = 0 行 | 策略: 等长逐位\n相同 0 | 仅 A 0 | 仅 B 0\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "",
+      "params": {
+        "textB": "hello",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · line 模式\nA = 0 行 | B = 1 行 | 策略: A 空\n相同 0 | 仅 A 0 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:∅ | B:L1-L1 @@\n  + B L1: hello\n"
+    },
+    {
+      "input": "hello",
+      "params": {
+        "textB": "",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 0 行 | 策略: B 空\n相同 0 | 仅 A 1 | 仅 B 0\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:∅ @@\n  - A L1: hello\n"
+    },
+    {
+      "input": "ABC",
+      "params": {
+        "textB": "ABC",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 1 | 仅 A 0 | 仅 B 0\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "ABCDE",
+      "params": {
+        "textB": "ABXDE",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: ABCDE\n  + B L1: ABXDE\n"
+    },
+    {
+      "input": "ABC",
+      "params": {
+        "textB": "BCDA",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: ABC\n  + B L1: BCDA\n"
+    },
+    {
+      "input": "kitten",
+      "params": {
+        "textB": "sitting",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: kitten\n  + B L1: sitting\n"
+    },
+    {
+      "input": "中文🙂\n你好",
+      "params": {
+        "textB": "中文🙃\n世界",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · line 模式\nA = 2 行 | B = 2 行 | 策略: 等长逐位\n相同 0 | 仅 A 2 | 仅 B 2\n\n差异块: 1\n\n[1] @@ A:L1-L2 | B:L1-L2 @@\n  - A L1: 中文🙂\n  + B L1: 中文🙃\n  - A L2: 你好\n  + B L2: 世界\n"
+    },
+    {
+      "input": "a\r\nb\r\n",
+      "params": {
+        "textB": "a\nb\n",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · line 模式\nA = 3 行 | B = 3 行 | 策略: 等长逐位\n相同 3 | 仅 A 0 | 仅 B 0\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "a\rb",
+      "params": {
+        "textB": "a\nb",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 2 行 | 策略: LCS\n相同 0 | 仅 A 1 | 仅 B 2\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L2 @@\n  - A L1: a\rb\n  + B L1: a\n  + B L2: b\n"
+    },
+    {
+      "input": "a\nb\nc",
+      "params": {
+        "textB": "a\nc",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · line 模式\nA = 3 行 | B = 2 行 | 策略: LCS\n相同 2 | 仅 A 1 | 仅 B 0\n\n差异块: 1\n\n[1] @@ A:L1-L3 | B:L1-L2 @@\n  = A L1: a\n  - A L2: b\n  = A L3: c\n"
+    },
+    {
+      "input": "a\nb",
+      "params": {
+        "textB": "x\na\nb\ny",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · line 模式\nA = 2 行 | B = 4 行 | 策略: LCS\n相同 2 | 仅 A 0 | 仅 B 2\n\n差异块: 1\n\n[1] @@ A:L1-L2 | B:L1-L4 @@\n  + B L1: x\n  = A L1: a\n    …至 L2: b\n  + B L4: y\n"
+    },
+    {
+      "input": "0\u0000ÿ",
+      "params": {
+        "textB": "0\u0000þ",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: 0\u0000ÿ\n  + B L1: 0\u0000þ\n"
+    },
+    {
+      "input": "abababa",
+      "params": {
+        "textB": "babab",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: abababa\n  + B L1: babab\n"
+    },
+    {
+      "input": "ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ",
+      "params": {
+        "textB": "ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 20
+      },
+      "text": "差异对比 · line 模式\nA = 1 行 | B = 1 行 | 策略: 等长逐位\n相同 0 | 仅 A 1 | 仅 B 1\n\n差异块: 1\n\n[1] @@ A:L1-L1 | B:L1-L1 @@\n  - A L1: ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab \n  + B L1: ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac \n"
+    },
+    {
+      "input": "",
+      "params": {
+        "textB": "",
+        "mode": "byte",
+        "inputEnc": "auto",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式\nA = 0 字节 | B = 0 字节 | 策略: 等长逐位\n相同 0 | 仅 A 0 | 仅 B 0 | 差异块计数见下\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "00ff41",
+      "params": {
+        "textB": "00ff42",
+        "mode": "byte",
+        "inputEnc": "auto",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式\nA = 3 字节 | B = 3 字节 | 策略: 等长逐位\n相同 2 | 仅 A 1 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x1-0x2 | B:0x1-0x2 @@\n  = @0x1 (1B)  ff  '·'\n  - A @0x2 (1B)  41  'A'\n  + B @0x2 (1B)  42  'B'\n"
+    },
+    {
+      "input": "00 ff 41",
+      "params": {
+        "textB": "00 ff 41 42",
+        "mode": "byte",
+        "inputEnc": "auto",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式\nA = 3 字节 | B = 4 字节 | 策略: LCS\n相同 3 | 仅 A 0 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x2-0x2 | B:0x2-0x3 @@\n  = @0x2 (1B)  41  'A'\n  + B @0x3 (1B)  42  'B'\n"
+    },
+    {
+      "input": "SGVsbG8=",
+      "params": {
+        "textB": "SGVsbG8h",
+        "mode": "byte",
+        "inputEnc": "auto",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式\nA = 5 字节 | B = 6 字节 | 策略: LCS\n相同 5 | 仅 A 0 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x4-0x4 | B:0x4-0x5 @@\n  = @0x4 (1B)  6f  'o'\n  + B @0x5 (1B)  21  '!'\n"
+    },
+    {
+      "input": "YWJj",
+      "params": {
+        "textB": "YWJk",
+        "mode": "byte",
+        "inputEnc": "auto",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式\nA = 3 字节 | B = 3 字节 | 策略: 等长逐位\n相同 2 | 仅 A 1 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x1-0x2 | B:0x1-0x2 @@\n  = @0x1 (1B)  62  'b'\n  - A @0x2 (1B)  63  'c'\n  + B @0x2 (1B)  64  'd'\n"
+    },
+    {
+      "input": "YWJj",
+      "params": {
+        "textB": "中文",
+        "mode": "byte",
+        "inputEnc": "auto",
+        "context": 1
+      },
+      "error": "B 解码失败（base64）: Invalid character"
+    },
+    {
+      "input": "Hello",
+      "params": {
+        "textB": "World",
+        "mode": "byte",
+        "inputEnc": "auto",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式\nA = 5 字节 | B = 5 字节 | 策略: 等长逐位\n相同 1 | 仅 A 4 | 仅 B 4 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x4 | B:0x0-0x4 @@\n  - A @0x0 (1B)  48  'H'\n  + B @0x0 (1B)  57  'W'\n  - A @0x1 (1B)  65  'e'\n  + B @0x1 (1B)  6f  'o'\n  - A @0x2 (1B)  6c  'l'\n  + B @0x2 (1B)  72  'r'\n  = @0x3 (1B)  6c  'l'\n  - A @0x4 (1B)  6f  'o'\n  + B @0x4 (1B)  64  'd'\n"
+    },
+    {
+      "input": "abc",
+      "params": {
+        "textB": "ab",
+        "mode": "byte",
+        "inputEnc": "auto",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式\nA = 3 字节 | B = 2 字节 | 策略: LCS\n相同 2 | 仅 A 1 | 仅 B 0 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x1-0x2 | B:0x1-0x1 @@\n  = @0x1 (1B)  62  'b'\n  - A @0x2 (1B)  63  'c'\n"
+    },
+    {
+      "input": "",
+      "params": {
+        "textB": "",
+        "mode": "byte",
+        "inputEnc": "hex",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: hex）\nA = 0 字节 | B = 0 字节 | 策略: 等长逐位\n相同 0 | 仅 A 0 | 仅 B 0 | 差异块计数见下\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "00ff41",
+      "params": {
+        "textB": "00ff42",
+        "mode": "byte",
+        "inputEnc": "hex",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: hex）\nA = 3 字节 | B = 3 字节 | 策略: 等长逐位\n相同 2 | 仅 A 1 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x1-0x2 | B:0x1-0x2 @@\n  = @0x1 (1B)  ff  '·'\n  - A @0x2 (1B)  41  'A'\n  + B @0x2 (1B)  42  'B'\n"
+    },
+    {
+      "input": "00 ff 41",
+      "params": {
+        "textB": "00 ff 41 42",
+        "mode": "byte",
+        "inputEnc": "hex",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: hex）\nA = 3 字节 | B = 4 字节 | 策略: LCS\n相同 3 | 仅 A 0 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x2-0x2 | B:0x2-0x3 @@\n  = @0x2 (1B)  41  'A'\n  + B @0x3 (1B)  42  'B'\n"
+    },
+    {
+      "input": "abc",
+      "params": {
+        "textB": "ab",
+        "mode": "byte",
+        "inputEnc": "hex",
+        "context": 1
+      },
+      "error": "A 解码失败（hex）: Hex 长度不是偶数"
+    },
+    {
+      "input": "",
+      "params": {
+        "textB": "",
+        "mode": "byte",
+        "inputEnc": "base64",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: base64）\nA = 0 字节 | B = 0 字节 | 策略: 等长逐位\n相同 0 | 仅 A 0 | 仅 B 0 | 差异块计数见下\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "00ff41",
+      "params": {
+        "textB": "00ff42",
+        "mode": "byte",
+        "inputEnc": "base64",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: base64）\nA = 4 字节 | B = 4 字节 | 策略: 等长逐位\n相同 4 | 仅 A 0 | 仅 B 0 | 差异块计数见下\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "00 ff 41",
+      "params": {
+        "textB": "00 ff 41 42",
+        "mode": "byte",
+        "inputEnc": "base64",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: base64）\nA = 4 字节 | B = 6 字节 | 策略: LCS\n相同 4 | 仅 A 0 | 仅 B 2 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x3-0x3 | B:0x3-0x5 @@\n  = @0x3 (1B)  e3  '·'\n  + B @0x4 (2B)  5e36  '^6'\n"
+    },
+    {
+      "input": "SGVsbG8=",
+      "params": {
+        "textB": "SGVsbG8h",
+        "mode": "byte",
+        "inputEnc": "base64",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: base64）\nA = 5 字节 | B = 6 字节 | 策略: LCS\n相同 5 | 仅 A 0 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x4-0x4 | B:0x4-0x5 @@\n  = @0x4 (1B)  6f  'o'\n  + B @0x5 (1B)  21  '!'\n"
+    },
+    {
+      "input": "YWJj",
+      "params": {
+        "textB": "YWJk",
+        "mode": "byte",
+        "inputEnc": "base64",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: base64）\nA = 3 字节 | B = 3 字节 | 策略: 等长逐位\n相同 2 | 仅 A 1 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x1-0x2 | B:0x1-0x2 @@\n  = @0x1 (1B)  62  'b'\n  - A @0x2 (1B)  63  'c'\n  + B @0x2 (1B)  64  'd'\n"
+    },
+    {
+      "input": "YWJj",
+      "params": {
+        "textB": "中文",
+        "mode": "byte",
+        "inputEnc": "base64",
+        "context": 1
+      },
+      "error": "B 解码失败（base64）: Invalid character"
+    },
+    {
+      "input": "Hello",
+      "params": {
+        "textB": "World",
+        "mode": "byte",
+        "inputEnc": "base64",
+        "context": 1
+      },
+      "error": "A 解码失败（base64）: The string to be decoded is not correctly encoded."
+    },
+    {
+      "input": "abc",
+      "params": {
+        "textB": "ab",
+        "mode": "byte",
+        "inputEnc": "base64",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: base64）\nA = 2 字节 | B = 1 字节 | 策略: LCS\n相同 1 | 仅 A 1 | 仅 B 0 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x1 | B:0x0-0x0 @@\n  = @0x0 (1B)  69  'i'\n  - A @0x1 (1B)  b7  '·'\n"
+    },
+    {
+      "input": "",
+      "params": {
+        "textB": "",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 0 字节 | B = 0 字节 | 策略: 等长逐位\n相同 0 | 仅 A 0 | 仅 B 0 | 差异块计数见下\n\n✓ 两段输入完全一致，无差异。"
+    },
+    {
+      "input": "00ff41",
+      "params": {
+        "textB": "00ff42",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 6 字节 | B = 6 字节 | 策略: 等长逐位\n相同 5 | 仅 A 1 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x4-0x5 | B:0x4-0x5 @@\n  = @0x4 (1B)  34  '4'\n  - A @0x5 (1B)  31  '1'\n  + B @0x5 (1B)  32  '2'\n"
+    },
+    {
+      "input": "00 ff 41",
+      "params": {
+        "textB": "00 ff 41 42",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 8 字节 | B = 11 字节 | 策略: LCS\n相同 8 | 仅 A 0 | 仅 B 3 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x7-0x7 | B:0x7-0xA @@\n  = @0x7 (1B)  31  '1'\n  + B @0x8 (3B)  203432  ' 42'\n"
+    },
+    {
+      "input": "SGVsbG8=",
+      "params": {
+        "textB": "SGVsbG8h",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 8 字节 | B = 8 字节 | 策略: 等长逐位\n相同 7 | 仅 A 1 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x6-0x7 | B:0x6-0x7 @@\n  = @0x6 (1B)  38  '8'\n  - A @0x7 (1B)  3d  '='\n  + B @0x7 (1B)  68  'h'\n"
+    },
+    {
+      "input": "YWJj",
+      "params": {
+        "textB": "YWJk",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 4 字节 | B = 4 字节 | 策略: 等长逐位\n相同 3 | 仅 A 1 | 仅 B 1 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x2-0x3 | B:0x2-0x3 @@\n  = @0x2 (1B)  4a  'J'\n  - A @0x3 (1B)  6a  'j'\n  + B @0x3 (1B)  6b  'k'\n"
+    },
+    {
+      "input": "YWJj",
+      "params": {
+        "textB": "中文",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 4 字节 | B = 6 字节 | 策略: LCS\n相同 0 | 仅 A 4 | 仅 B 6 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x3 | B:0x0-0x5 @@\n  - A @0x0 (4B)  59574a6a  'YWJj'\n  + B @0x0 (6B)  e4b8ade69687  '······'\n"
+    },
+    {
+      "input": "Hello",
+      "params": {
+        "textB": "World",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 5 字节 | B = 5 字节 | 策略: 等长逐位\n相同 1 | 仅 A 4 | 仅 B 4 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x0-0x4 | B:0x0-0x4 @@\n  - A @0x0 (1B)  48  'H'\n  + B @0x0 (1B)  57  'W'\n  - A @0x1 (1B)  65  'e'\n  + B @0x1 (1B)  6f  'o'\n  - A @0x2 (1B)  6c  'l'\n  + B @0x2 (1B)  72  'r'\n  = @0x3 (1B)  6c  'l'\n  - A @0x4 (1B)  6f  'o'\n  + B @0x4 (1B)  64  'd'\n"
+    },
+    {
+      "input": "abc",
+      "params": {
+        "textB": "ab",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 1
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 3 字节 | B = 2 字节 | 策略: LCS\n相同 2 | 仅 A 1 | 仅 B 0 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x1-0x2 | B:0x1-0x1 @@\n  = @0x1 (1B)  62  'b'\n  - A @0x2 (1B)  63  'c'\n"
+    },
+    {
+      "input": "prefixaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasuffix",
+      "params": {
+        "textB": "prefixbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbsuffix",
+        "mode": "byte",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · byte 模式（编码: utf8）\nA = 1512 字节 | B = 1513 字节 | 策略: 朴素（输入过大）\n相同 12 | 仅 A 1500 | 仅 B 1501 | 差异块计数见下\n\n差异块: 1\n\n[1] @@ A:0x6-0x5E1 | B:0x6-0x5E2 @@\n  - A @0x6 (1500B)  61616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161…(1500B)  'aaaaaaaaaaaaaaaa…'\n  + B @0x6 (1501B)  62626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262…(1501B)  'bbbbbbbbbbbbbbbb…'\n"
+    },
+    {
+      "input": "same\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\ntail",
+      "params": {
+        "textB": "same\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\nb\ntail",
+        "mode": "line",
+        "inputEnc": "utf8",
+        "context": 0
+      },
+      "text": "差异对比 · line 模式\nA = 1502 行 | B = 1503 行 | 策略: 朴素（输入过大）\n相同 2 | 仅 A 1500 | 仅 B 1501\n\n差异块: 1\n\n[1] @@ A:L2-L1501 | B:L2-L1502 @@\n  - A L2: a\n  - A L3: a\n  - A L4: a\n  - A L5: a\n  - A L6: a\n  - A L7: a\n  - A L8: a\n  - A L9: a\n  - A L10: a\n  - A L11: a\n  - A L12: a\n  - A L13: a\n  - A L14: a\n  - A L15: a\n  - A L16: a\n  - A L17: a\n  - A L18: a\n  - A L19: a\n  - A L20: a\n  - A L21: a\n  - A L22: a\n  - A L23: a\n  - A L24: a\n  - A L25: a\n  - A L26: a\n  - A L27: a\n  - A L28: a\n  - A L29: a\n  - A L30: a\n  - A L31: a\n  - A L32: a\n  - A L33: a\n  - A L34: a\n  - A L35: a\n  - A L36: a\n  - A L37: a\n  - A L38: a\n  - A L39: a\n  - A L40: a\n  - A L41: a\n  - A L42: a\n  - A L43: a\n  - A L44: a\n  - A L45: a\n  - A L46: a\n  - A L47: a\n  - A L48: a\n  - A L49: a\n  - A L50: a\n  - A L51: a\n  - A L52: a\n  - A L53: a\n  - A L54: a\n  - A L55: a\n  - A L56: a\n  - A L57: a\n  - A L58: a\n  - A L59: a\n  - A L60: a\n  - A L61: a\n  - A L62: a\n  - A L63: a\n  - A L64: a\n  - A L65: a\n  - A L66: a\n  - A L67: a\n  - A L68: a\n  - A L69: a\n  - A L70: a\n  - A L71: a\n  - A L72: a\n  - A L73: a\n  - A L74: a\n  - A L75: a\n  - A L76: a\n  - A L77: a\n  - A L78: a\n  - A L79: a\n  - A L80: a\n  - A L81: a\n  - A L82: a\n  - A L83: a\n  - A L84: a\n  - A L85: a\n  - A L86: a\n  - A L87: a\n  - A L88: a\n  - A L89: a\n  - A L90: a\n  - A L91: a\n  - A L92: a\n  - A L93: a\n  - A L94: a\n  - A L95: a\n  - A L96: a\n  - A L97: a\n  - A L98: a\n  - A L99: a\n  - A L100: a\n  - A L101: a\n  - A L102: a\n  - A L103: a\n  - A L104: a\n  - A L105: a\n  - A L106: a\n  - A L107: a\n  - A L108: a\n  - A L109: a\n  - A L110: a\n  - A L111: a\n  - A L112: a\n  - A L113: a\n  - A L114: a\n  - A L115: a\n  - A L116: a\n  - A L117: a\n  - A L118: a\n  - A L119: a\n  - A L120: a\n  - A L121: a\n  - A L122: a\n  - A L123: a\n  - A L124: a\n  - A L125: a\n  - A L126: a\n  - A L127: a\n  - A L128: a\n  - A L129: a\n  - A L130: a\n  - A L131: a\n  - A L132: a\n  - A L133: a\n  - A L134: a\n  - A L135: a\n  - A L136: a\n  - A L137: a\n  - A L138: a\n  - A L139: a\n  - A L140: a\n  - A L141: a\n  - A L142: a\n  - A L143: a\n  - A L144: a\n  - A L145: a\n  - A L146: a\n  - A L147: a\n  - A L148: a\n  - A L149: a\n  - A L150: a\n  - A L151: a\n  - A L152: a\n  - A L153: a\n  - A L154: a\n  - A L155: a\n  - A L156: a\n  - A L157: a\n  - A L158: a\n  - A L159: a\n  - A L160: a\n  - A L161: a\n  - A L162: a\n  - A L163: a\n  - A L164: a\n  - A L165: a\n  - A L166: a\n  - A L167: a\n  - A L168: a\n  - A L169: a\n  - A L170: a\n  - A L171: a\n  - A L172: a\n  - A L173: a\n  - A L174: a\n  - A L175: a\n  - A L176: a\n  - A L177: a\n  - A L178: a\n  - A L179: a\n  - A L180: a\n  - A L181: a\n  - A L182: a\n  - A L183: a\n  - A L184: a\n  - A L185: a\n  - A L186: a\n  - A L187: a\n  - A L188: a\n  - A L189: a\n  - A L190: a\n  - A L191: a\n  - A L192: a\n  - A L193: a\n  - A L194: a\n  - A L195: a\n  - A L196: a\n  - A L197: a\n  - A L198: a\n  - A L199: a\n  - A L200: a\n  - A L201: a\n  - A L202: a\n  - A L203: a\n  - A L204: a\n  - A L205: a\n  - A L206: a\n  - A L207: a\n  - A L208: a\n  - A L209: a\n  - A L210: a\n  - A L211: a\n  - A L212: a\n  - A L213: a\n  - A L214: a\n  - A L215: a\n  - A L216: a\n  - A L217: a\n  - A L218: a\n  - A L219: a\n  - A L220: a\n  - A L221: a\n  - A L222: a\n  - A L223: a\n  - A L224: a\n  - A L225: a\n  - A L226: a\n  - A L227: a\n  - A L228: a\n  - A L229: a\n  - A L230: a\n  - A L231: a\n  - A L232: a\n  - A L233: a\n  - A L234: a\n  - A L235: a\n  - A L236: a\n  - A L237: a\n  - A L238: a\n  - A L239: a\n  - A L240: a\n  - A L241: a\n  - A L242: a\n  - A L243: a\n  - A L244: a\n  - A L245: a\n  - A L246: a\n  - A L247: a\n  - A L248: a\n  - A L249: a\n  - A L250: a\n  - A L251: a\n  - A L252: a\n  - A L253: a\n  - A L254: a\n  - A L255: a\n  - A L256: a\n  - A L257: a\n  - A L258: a\n  - A L259: a\n  - A L260: a\n  - A L261: a\n  - A L262: a\n  - A L263: a\n  - A L264: a\n  - A L265: a\n  - A L266: a\n  - A L267: a\n  - A L268: a\n  - A L269: a\n  - A L270: a\n  - A L271: a\n  - A L272: a\n  - A L273: a\n  - A L274: a\n  - A L275: a\n  - A L276: a\n  - A L277: a\n  - A L278: a\n  - A L279: a\n  - A L280: a\n  - A L281: a\n  - A L282: a\n  - A L283: a\n  - A L284: a\n  - A L285: a\n  - A L286: a\n  - A L287: a\n  - A L288: a\n  - A L289: a\n  - A L290: a\n  - A L291: a\n  - A L292: a\n  - A L293: a\n  - A L294: a\n  - A L295: a\n  - A L296: a\n  - A L297: a\n  - A L298: a\n  - A L299: a\n  - A L300: a\n  - A L301: a\n  - A L302: a\n  - A L303: a\n  - A L304: a\n  - A L305: a\n  - A L306: a\n  - A L307: a\n  - A L308: a\n  - A L309: a\n  - A L310: a\n  - A L311: a\n  - A L312: a\n  - A L313: a\n  - A L314: a\n  - A L315: a\n  - A L316: a\n  - A L317: a\n  - A L318: a\n  - A L319: a\n  - A L320: a\n  - A L321: a\n  - A L322: a\n  - A L323: a\n  - A L324: a\n  - A L325: a\n  - A L326: a\n  - A L327: a\n  - A L328: a\n  - A L329: a\n  - A L330: a\n  - A L331: a\n  - A L332: a\n  - A L333: a\n  - A L334: a\n  - A L335: a\n  - A L336: a\n  - A L337: a\n  - A L338: a\n  - A L339: a\n  - A L340: a\n  - A L341: a\n  - A L342: a\n  - A L343: a\n  - A L344: a\n  - A L345: a\n  - A L346: a\n  - A L347: a\n  - A L348: a\n  - A L349: a\n  - A L350: a\n  - A L351: a\n  - A L352: a\n  - A L353: a\n  - A L354: a\n  - A L355: a\n  - A L356: a\n  - A L357: a\n  - A L358: a\n  - A L359: a\n  - A L360: a\n  - A L361: a\n  - A L362: a\n  - A L363: a\n  - A L364: a\n  - A L365: a\n  - A L366: a\n  - A L367: a\n  - A L368: a\n  - A L369: a\n  - A L370: a\n  - A L371: a\n  - A L372: a\n  - A L373: a\n  - A L374: a\n  - A L375: a\n  - A L376: a\n  - A L377: a\n  - A L378: a\n  - A L379: a\n  - A L380: a\n  - A L381: a\n  - A L382: a\n  - A L383: a\n  - A L384: a\n  - A L385: a\n  - A L386: a\n  - A L387: a\n  - A L388: a\n  - A L389: a\n  - A L390: a\n  - A L391: a\n  - A L392: a\n  - A L393: a\n  - A L394: a\n  - A L395: a\n  - A L396: a\n  - A L397: a\n  - A L398: a\n  - A L399: a\n  - A L400: a\n  - A L401: a\n  - A L402: a\n  - A L403: a\n  - A L404: a\n  - A L405: a\n  - A L406: a\n  - A L407: a\n  - A L408: a\n  - A L409: a\n  - A L410: a\n  - A L411: a\n  - A L412: a\n  - A L413: a\n  - A L414: a\n  - A L415: a\n  - A L416: a\n  - A L417: a\n  - A L418: a\n  - A L419: a\n  - A L420: a\n  - A L421: a\n  - A L422: a\n  - A L423: a\n  - A L424: a\n  - A L425: a\n  - A L426: a\n  - A L427: a\n  - A L428: a\n  - A L429: a\n  - A L430: a\n  - A L431: a\n  - A L432: a\n  - A L433: a\n  - A L434: a\n  - A L435: a\n  - A L436: a\n  - A L437: a\n  - A L438: a\n  - A L439: a\n  - A L440: a\n  - A L441: a\n  - A L442: a\n  - A L443: a\n  - A L444: a\n  - A L445: a\n  - A L446: a\n  - A L447: a\n  - A L448: a\n  - A L449: a\n  - A L450: a\n  - A L451: a\n  - A L452: a\n  - A L453: a\n  - A L454: a\n  - A L455: a\n  - A L456: a\n  - A L457: a\n  - A L458: a\n  - A L459: a\n  - A L460: a\n  - A L461: a\n  - A L462: a\n  - A L463: a\n  - A L464: a\n  - A L465: a\n  - A L466: a\n  - A L467: a\n  - A L468: a\n  - A L469: a\n  - A L470: a\n  - A L471: a\n  - A L472: a\n  - A L473: a\n  - A L474: a\n  - A L475: a\n  - A L476: a\n  - A L477: a\n  - A L478: a\n  - A L479: a\n  - A L480: a\n  - A L481: a\n  - A L482: a\n  - A L483: a\n  - A L484: a\n  - A L485: a\n  - A L486: a\n  - A L487: a\n  - A L488: a\n  - A L489: a\n  - A L490: a\n  - A L491: a\n  - A L492: a\n  - A L493: a\n  - A L494: a\n  - A L495: a\n  - A L496: a\n  - A L497: a\n  - A L498: a\n  - A L499: a\n  - A L500: a\n  - A L501: a\n  - A L502: a\n  - A L503: a\n  - A L504: a\n  - A L505: a\n  - A L506: a\n  - A L507: a\n  - A L508: a\n  - A L509: a\n  - A L510: a\n  - A L511: a\n  - A L512: a\n  - A L513: a\n  - A L514: a\n  - A L515: a\n  - A L516: a\n  - A L517: a\n  - A L518: a\n  - A L519: a\n  - A L520: a\n  - A L521: a\n  - A L522: a\n  - A L523: a\n  - A L524: a\n  - A L525: a\n  - A L526: a\n  - A L527: a\n  - A L528: a\n  - A L529: a\n  - A L530: a\n  - A L531: a\n  - A L532: a\n  - A L533: a\n  - A L534: a\n  - A L535: a\n  - A L536: a\n  - A L537: a\n  - A L538: a\n  - A L539: a\n  - A L540: a\n  - A L541: a\n  - A L542: a\n  - A L543: a\n  - A L544: a\n  - A L545: a\n  - A L546: a\n  - A L547: a\n  - A L548: a\n  - A L549: a\n  - A L550: a\n  - A L551: a\n  - A L552: a\n  - A L553: a\n  - A L554: a\n  - A L555: a\n  - A L556: a\n  - A L557: a\n  - A L558: a\n  - A L559: a\n  - A L560: a\n  - A L561: a\n  - A L562: a\n  - A L563: a\n  - A L564: a\n  - A L565: a\n  - A L566: a\n  - A L567: a\n  - A L568: a\n  - A L569: a\n  - A L570: a\n  - A L571: a\n  - A L572: a\n  - A L573: a\n  - A L574: a\n  - A L575: a\n  - A L576: a\n  - A L577: a\n  - A L578: a\n  - A L579: a\n  - A L580: a\n  - A L581: a\n  - A L582: a\n  - A L583: a\n  - A L584: a\n  - A L585: a\n  - A L586: a\n  - A L587: a\n  - A L588: a\n  - A L589: a\n  - A L590: a\n  - A L591: a\n  - A L592: a\n  - A L593: a\n  - A L594: a\n  - A L595: a\n  - A L596: a\n  - A L597: a\n  - A L598: a\n  - A L599: a\n  - A L600: a\n  - A L601: a\n  - A L602: a\n  - A L603: a\n  - A L604: a\n  - A L605: a\n  - A L606: a\n  - A L607: a\n  - A L608: a\n  - A L609: a\n  - A L610: a\n  - A L611: a\n  - A L612: a\n  - A L613: a\n  - A L614: a\n  - A L615: a\n  - A L616: a\n  - A L617: a\n  - A L618: a\n  - A L619: a\n  - A L620: a\n  - A L621: a\n  - A L622: a\n  - A L623: a\n  - A L624: a\n  - A L625: a\n  - A L626: a\n  - A L627: a\n  - A L628: a\n  - A L629: a\n  - A L630: a\n  - A L631: a\n  - A L632: a\n  - A L633: a\n  - A L634: a\n  - A L635: a\n  - A L636: a\n  - A L637: a\n  - A L638: a\n  - A L639: a\n  - A L640: a\n  - A L641: a\n  - A L642: a\n  - A L643: a\n  - A L644: a\n  - A L645: a\n  - A L646: a\n  - A L647: a\n  - A L648: a\n  - A L649: a\n  - A L650: a\n  - A L651: a\n  - A L652: a\n  - A L653: a\n  - A L654: a\n  - A L655: a\n  - A L656: a\n  - A L657: a\n  - A L658: a\n  - A L659: a\n  - A L660: a\n  - A L661: a\n  - A L662: a\n  - A L663: a\n  - A L664: a\n  - A L665: a\n  - A L666: a\n  - A L667: a\n  - A L668: a\n  - A L669: a\n  - A L670: a\n  - A L671: a\n  - A L672: a\n  - A L673: a\n  - A L674: a\n  - A L675: a\n  - A L676: a\n  - A L677: a\n  - A L678: a\n  - A L679: a\n  - A L680: a\n  - A L681: a\n  - A L682: a\n  - A L683: a\n  - A L684: a\n  - A L685: a\n  - A L686: a\n  - A L687: a\n  - A L688: a\n  - A L689: a\n  - A L690: a\n  - A L691: a\n  - A L692: a\n  - A L693: a\n  - A L694: a\n  - A L695: a\n  - A L696: a\n  - A L697: a\n  - A L698: a\n  - A L699: a\n  - A L700: a\n  - A L701: a\n  - A L702: a\n  - A L703: a\n  - A L704: a\n  - A L705: a\n  - A L706: a\n  - A L707: a\n  - A L708: a\n  - A L709: a\n  - A L710: a\n  - A L711: a\n  - A L712: a\n  - A L713: a\n  - A L714: a\n  - A L715: a\n  - A L716: a\n  - A L717: a\n  - A L718: a\n  - A L719: a\n  - A L720: a\n  - A L721: a\n  - A L722: a\n  - A L723: a\n  - A L724: a\n  - A L725: a\n  - A L726: a\n  - A L727: a\n  - A L728: a\n  - A L729: a\n  - A L730: a\n  - A L731: a\n  - A L732: a\n  - A L733: a\n  - A L734: a\n  - A L735: a\n  - A L736: a\n  - A L737: a\n  - A L738: a\n  - A L739: a\n  - A L740: a\n  - A L741: a\n  - A L742: a\n  - A L743: a\n  - A L744: a\n  - A L745: a\n  - A L746: a\n  - A L747: a\n  - A L748: a\n  - A L749: a\n  - A L750: a\n  - A L751: a\n  - A L752: a\n  - A L753: a\n  - A L754: a\n  - A L755: a\n  - A L756: a\n  - A L757: a\n  - A L758: a\n  - A L759: a\n  - A L760: a\n  - A L761: a\n  - A L762: a\n  - A L763: a\n  - A L764: a\n  - A L765: a\n  - A L766: a\n  - A L767: a\n  - A L768: a\n  - A L769: a\n  - A L770: a\n  - A L771: a\n  - A L772: a\n  - A L773: a\n  - A L774: a\n  - A L775: a\n  - A L776: a\n  - A L777: a\n  - A L778: a\n  - A L779: a\n  - A L780: a\n  - A L781: a\n  - A L782: a\n  - A L783: a\n  - A L784: a\n  - A L785: a\n  - A L786: a\n  - A L787: a\n  - A L788: a\n  - A L789: a\n  - A L790: a\n  - A L791: a\n  - A L792: a\n  - A L793: a\n  - A L794: a\n  - A L795: a\n  - A L796: a\n  - A L797: a\n  - A L798: a\n  - A L799: a\n  - A L800: a\n  - A L801: a\n  - A L802: a\n  - A L803: a\n  - A L804: a\n  - A L805: a\n  - A L806: a\n  - A L807: a\n  - A L808: a\n  - A L809: a\n  - A L810: a\n  - A L811: a\n  - A L812: a\n  - A L813: a\n  - A L814: a\n  - A L815: a\n  - A L816: a\n  - A L817: a\n  - A L818: a\n  - A L819: a\n  - A L820: a\n  - A L821: a\n  - A L822: a\n  - A L823: a\n  - A L824: a\n  - A L825: a\n  - A L826: a\n  - A L827: a\n  - A L828: a\n  - A L829: a\n  - A L830: a\n  - A L831: a\n  - A L832: a\n  - A L833: a\n  - A L834: a\n  - A L835: a\n  - A L836: a\n  - A L837: a\n  - A L838: a\n  - A L839: a\n  - A L840: a\n  - A L841: a\n  - A L842: a\n  - A L843: a\n  - A L844: a\n  - A L845: a\n  - A L846: a\n  - A L847: a\n  - A L848: a\n  - A L849: a\n  - A L850: a\n  - A L851: a\n  - A L852: a\n  - A L853: a\n  - A L854: a\n  - A L855: a\n  - A L856: a\n  - A L857: a\n  - A L858: a\n  - A L859: a\n  - A L860: a\n  - A L861: a\n  - A L862: a\n  - A L863: a\n  - A L864: a\n  - A L865: a\n  - A L866: a\n  - A L867: a\n  - A L868: a\n  - A L869: a\n  - A L870: a\n  - A L871: a\n  - A L872: a\n  - A L873: a\n  - A L874: a\n  - A L875: a\n  - A L876: a\n  - A L877: a\n  - A L878: a\n  - A L879: a\n  - A L880: a\n  - A L881: a\n  - A L882: a\n  - A L883: a\n  - A L884: a\n  - A L885: a\n  - A L886: a\n  - A L887: a\n  - A L888: a\n  - A L889: a\n  - A L890: a\n  - A L891: a\n  - A L892: a\n  - A L893: a\n  - A L894: a\n  - A L895: a\n  - A L896: a\n  - A L897: a\n  - A L898: a\n  - A L899: a\n  - A L900: a\n  - A L901: a\n  - A L902: a\n  - A L903: a\n  - A L904: a\n  - A L905: a\n  - A L906: a\n  - A L907: a\n  - A L908: a\n  - A L909: a\n  - A L910: a\n  - A L911: a\n  - A L912: a\n  - A L913: a\n  - A L914: a\n  - A L915: a\n  - A L916: a\n  - A L917: a\n  - A L918: a\n  - A L919: a\n  - A L920: a\n  - A L921: a\n  - A L922: a\n  - A L923: a\n  - A L924: a\n  - A L925: a\n  - A L926: a\n  - A L927: a\n  - A L928: a\n  - A L929: a\n  - A L930: a\n  - A L931: a\n  - A L932: a\n  - A L933: a\n  - A L934: a\n  - A L935: a\n  - A L936: a\n  - A L937: a\n  - A L938: a\n  - A L939: a\n  - A L940: a\n  - A L941: a\n  - A L942: a\n  - A L943: a\n  - A L944: a\n  - A L945: a\n  - A L946: a\n  - A L947: a\n  - A L948: a\n  - A L949: a\n  - A L950: a\n  - A L951: a\n  - A L952: a\n  - A L953: a\n  - A L954: a\n  - A L955: a\n  - A L956: a\n  - A L957: a\n  - A L958: a\n  - A L959: a\n  - A L960: a\n  - A L961: a\n  - A L962: a\n  - A L963: a\n  - A L964: a\n  - A L965: a\n  - A L966: a\n  - A L967: a\n  - A L968: a\n  - A L969: a\n  - A L970: a\n  - A L971: a\n  - A L972: a\n  - A L973: a\n  - A L974: a\n  - A L975: a\n  - A L976: a\n  - A L977: a\n  - A L978: a\n  - A L979: a\n  - A L980: a\n  - A L981: a\n  - A L982: a\n  - A L983: a\n  - A L984: a\n  - A L985: a\n  - A L986: a\n  - A L987: a\n  - A L988: a\n  - A L989: a\n  - A L990: a\n  - A L991: a\n  - A L992: a\n  - A L993: a\n  - A L994: a\n  - A L995: a\n  - A L996: a\n  - A L997: a\n  - A L998: a\n  - A L999: a\n  - A L1000: a\n  - A L1001: a\n  - A L1002: a\n  - A L1003: a\n  - A L1004: a\n  - A L1005: a\n  - A L1006: a\n  - A L1007: a\n  - A L1008: a\n  - A L1009: a\n  - A L1010: a\n  - A L1011: a\n  - A L1012: a\n  - A L1013: a\n  - A L1014: a\n  - A L1015: a\n  - A L1016: a\n  - A L1017: a\n  - A L1018: a\n  - A L1019: a\n  - A L1020: a\n  - A L1021: a\n  - A L1022: a\n  - A L1023: a\n  - A L1024: a\n  - A L1025: a\n  - A L1026: a\n  - A L1027: a\n  - A L1028: a\n  - A L1029: a\n  - A L1030: a\n  - A L1031: a\n  - A L1032: a\n  - A L1033: a\n  - A L1034: a\n  - A L1035: a\n  - A L1036: a\n  - A L1037: a\n  - A L1038: a\n  - A L1039: a\n  - A L1040: a\n  - A L1041: a\n  - A L1042: a\n  - A L1043: a\n  - A L1044: a\n  - A L1045: a\n  - A L1046: a\n  - A L1047: a\n  - A L1048: a\n  - A L1049: a\n  - A L1050: a\n  - A L1051: a\n  - A L1052: a\n  - A L1053: a\n  - A L1054: a\n  - A L1055: a\n  - A L1056: a\n  - A L1057: a\n  - A L1058: a\n  - A L1059: a\n  - A L1060: a\n  - A L1061: a\n  - A L1062: a\n  - A L1063: a\n  - A L1064: a\n  - A L1065: a\n  - A L1066: a\n  - A L1067: a\n  - A L1068: a\n  - A L1069: a\n  - A L1070: a\n  - A L1071: a\n  - A L1072: a\n  - A L1073: a\n  - A L1074: a\n  - A L1075: a\n  - A L1076: a\n  - A L1077: a\n  - A L1078: a\n  - A L1079: a\n  - A L1080: a\n  - A L1081: a\n  - A L1082: a\n  - A L1083: a\n  - A L1084: a\n  - A L1085: a\n  - A L1086: a\n  - A L1087: a\n  - A L1088: a\n  - A L1089: a\n  - A L1090: a\n  - A L1091: a\n  - A L1092: a\n  - A L1093: a\n  - A L1094: a\n  - A L1095: a\n  - A L1096: a\n  - A L1097: a\n  - A L1098: a\n  - A L1099: a\n  - A L1100: a\n  - A L1101: a\n  - A L1102: a\n  - A L1103: a\n  - A L1104: a\n  - A L1105: a\n  - A L1106: a\n  - A L1107: a\n  - A L1108: a\n  - A L1109: a\n  - A L1110: a\n  - A L1111: a\n  - A L1112: a\n  - A L1113: a\n  - A L1114: a\n  - A L1115: a\n  - A L1116: a\n  - A L1117: a\n  - A L1118: a\n  - A L1119: a\n  - A L1120: a\n  - A L1121: a\n  - A L1122: a\n  - A L1123: a\n  - A L1124: a\n  - A L1125: a\n  - A L1126: a\n  - A L1127: a\n  - A L1128: a\n  - A L1129: a\n  - A L1130: a\n  - A L1131: a\n  - A L1132: a\n  - A L1133: a\n  - A L1134: a\n  - A L1135: a\n  - A L1136: a\n  - A L1137: a\n  - A L1138: a\n  - A L1139: a\n  - A L1140: a\n  - A L1141: a\n  - A L1142: a\n  - A L1143: a\n  - A L1144: a\n  - A L1145: a\n  - A L1146: a\n  - A L1147: a\n  - A L1148: a\n  - A L1149: a\n  - A L1150: a\n  - A L1151: a\n  - A L1152: a\n  - A L1153: a\n  - A L1154: a\n  - A L1155: a\n  - A L1156: a\n  - A L1157: a\n  - A L1158: a\n  - A L1159: a\n  - A L1160: a\n  - A L1161: a\n  - A L1162: a\n  - A L1163: a\n  - A L1164: a\n  - A L1165: a\n  - A L1166: a\n  - A L1167: a\n  - A L1168: a\n  - A L1169: a\n  - A L1170: a\n  - A L1171: a\n  - A L1172: a\n  - A L1173: a\n  - A L1174: a\n  - A L1175: a\n  - A L1176: a\n  - A L1177: a\n  - A L1178: a\n  - A L1179: a\n  - A L1180: a\n  - A L1181: a\n  - A L1182: a\n  - A L1183: a\n  - A L1184: a\n  - A L1185: a\n  - A L1186: a\n  - A L1187: a\n  - A L1188: a\n  - A L1189: a\n  - A L1190: a\n  - A L1191: a\n  - A L1192: a\n  - A L1193: a\n  - A L1194: a\n  - A L1195: a\n  - A L1196: a\n  - A L1197: a\n  - A L1198: a\n  - A L1199: a\n  - A L1200: a\n  - A L1201: a\n  - A L1202: a\n  - A L1203: a\n  - A L1204: a\n  - A L1205: a\n  - A L1206: a\n  - A L1207: a\n  - A L1208: a\n  - A L1209: a\n  - A L1210: a\n  - A L1211: a\n  - A L1212: a\n  - A L1213: a\n  - A L1214: a\n  - A L1215: a\n  - A L1216: a\n  - A L1217: a\n  - A L1218: a\n  - A L1219: a\n  - A L1220: a\n  - A L1221: a\n  - A L1222: a\n  - A L1223: a\n  - A L1224: a\n  - A L1225: a\n  - A L1226: a\n  - A L1227: a\n  - A L1228: a\n  - A L1229: a\n  - A L1230: a\n  - A L1231: a\n  - A L1232: a\n  - A L1233: a\n  - A L1234: a\n  - A L1235: a\n  - A L1236: a\n  - A L1237: a\n  - A L1238: a\n  - A L1239: a\n  - A L1240: a\n  - A L1241: a\n  - A L1242: a\n  - A L1243: a\n  - A L1244: a\n  - A L1245: a\n  - A L1246: a\n  - A L1247: a\n  - A L1248: a\n  - A L1249: a\n  - A L1250: a\n  - A L1251: a\n  - A L1252: a\n  - A L1253: a\n  - A L1254: a\n  - A L1255: a\n  - A L1256: a\n  - A L1257: a\n  - A L1258: a\n  - A L1259: a\n  - A L1260: a\n  - A L1261: a\n  - A L1262: a\n  - A L1263: a\n  - A L1264: a\n  - A L1265: a\n  - A L1266: a\n  - A L1267: a\n  - A L1268: a\n  - A L1269: a\n  - A L1270: a\n  - A L1271: a\n  - A L1272: a\n  - A L1273: a\n  - A L1274: a\n  - A L1275: a\n  - A L1276: a\n  - A L1277: a\n  - A L1278: a\n  - A L1279: a\n  - A L1280: a\n  - A L1281: a\n  - A L1282: a\n  - A L1283: a\n  - A L1284: a\n  - A L1285: a\n  - A L1286: a\n  - A L1287: a\n  - A L1288: a\n  - A L1289: a\n  - A L1290: a\n  - A L1291: a\n  - A L1292: a\n  - A L1293: a\n  - A L1294: a\n  - A L1295: a\n  - A L1296: a\n  - A L1297: a\n  - A L1298: a\n  - A L1299: a\n  - A L1300: a\n  - A L1301: a\n  - A L1302: a\n  - A L1303: a\n  - A L1304: a\n  - A L1305: a\n  - A L1306: a\n  - A L1307: a\n  - A L1308: a\n  - A L1309: a\n  - A L1310: a\n  - A L1311: a\n  - A L1312: a\n  - A L1313: a\n  - A L1314: a\n  - A L1315: a\n  - A L1316: a\n  - A L1317: a\n  - A L1318: a\n  - A L1319: a\n  - A L1320: a\n  - A L1321: a\n  - A L1322: a\n  - A L1323: a\n  - A L1324: a\n  - A L1325: a\n  - A L1326: a\n  - A L1327: a\n  - A L1328: a\n  - A L1329: a\n  - A L1330: a\n  - A L1331: a\n  - A L1332: a\n  - A L1333: a\n  - A L1334: a\n  - A L1335: a\n  - A L1336: a\n  - A L1337: a\n  - A L1338: a\n  - A L1339: a\n  - A L1340: a\n  - A L1341: a\n  - A L1342: a\n  - A L1343: a\n  - A L1344: a\n  - A L1345: a\n  - A L1346: a\n  - A L1347: a\n  - A L1348: a\n  - A L1349: a\n  - A L1350: a\n  - A L1351: a\n  - A L1352: a\n  - A L1353: a\n  - A L1354: a\n  - A L1355: a\n  - A L1356: a\n  - A L1357: a\n  - A L1358: a\n  - A L1359: a\n  - A L1360: a\n  - A L1361: a\n  - A L1362: a\n  - A L1363: a\n  - A L1364: a\n  - A L1365: a\n  - A L1366: a\n  - A L1367: a\n  - A L1368: a\n  - A L1369: a\n  - A L1370: a\n  - A L1371: a\n  - A L1372: a\n  - A L1373: a\n  - A L1374: a\n  - A L1375: a\n  - A L1376: a\n  - A L1377: a\n  - A L1378: a\n  - A L1379: a\n  - A L1380: a\n  - A L1381: a\n  - A L1382: a\n  - A L1383: a\n  - A L1384: a\n  - A L1385: a\n  - A L1386: a\n  - A L1387: a\n  - A L1388: a\n  - A L1389: a\n  - A L1390: a\n  - A L1391: a\n  - A L1392: a\n  - A L1393: a\n  - A L1394: a\n  - A L1395: a\n  - A L1396: a\n  - A L1397: a\n  - A L1398: a\n  - A L1399: a\n  - A L1400: a\n  - A L1401: a\n  - A L1402: a\n  - A L1403: a\n  - A L1404: a\n  - A L1405: a\n  - A L1406: a\n  - A L1407: a\n  - A L1408: a\n  - A L1409: a\n  - A L1410: a\n  - A L1411: a\n  - A L1412: a\n  - A L1413: a\n  - A L1414: a\n  - A L1415: a\n  - A L1416: a\n  - A L1417: a\n  - A L1418: a\n  - A L1419: a\n  - A L1420: a\n  - A L1421: a\n  - A L1422: a\n  - A L1423: a\n  - A L1424: a\n  - A L1425: a\n  - A L1426: a\n  - A L1427: a\n  - A L1428: a\n  - A L1429: a\n  - A L1430: a\n  - A L1431: a\n  - A L1432: a\n  - A L1433: a\n  - A L1434: a\n  - A L1435: a\n  - A L1436: a\n  - A L1437: a\n  - A L1438: a\n  - A L1439: a\n  - A L1440: a\n  - A L1441: a\n  - A L1442: a\n  - A L1443: a\n  - A L1444: a\n  - A L1445: a\n  - A L1446: a\n  - A L1447: a\n  - A L1448: a\n  - A L1449: a\n  - A L1450: a\n  - A L1451: a\n  - A L1452: a\n  - A L1453: a\n  - A L1454: a\n  - A L1455: a\n  - A L1456: a\n  - A L1457: a\n  - A L1458: a\n  - A L1459: a\n  - A L1460: a\n  - A L1461: a\n  - A L1462: a\n  - A L1463: a\n  - A L1464: a\n  - A L1465: a\n  - A L1466: a\n  - A L1467: a\n  - A L1468: a\n  - A L1469: a\n  - A L1470: a\n  - A L1471: a\n  - A L1472: a\n  - A L1473: a\n  - A L1474: a\n  - A L1475: a\n  - A L1476: a\n  - A L1477: a\n  - A L1478: a\n  - A L1479: a\n  - A L1480: a\n  - A L1481: a\n  - A L1482: a\n  - A L1483: a\n  - A L1484: a\n  - A L1485: a\n  - A L1486: a\n  - A L1487: a\n  - A L1488: a\n  - A L1489: a\n  - A L1490: a\n  - A L1491: a\n  - A L1492: a\n  - A L1493: a\n  - A L1494: a\n  - A L1495: a\n  - A L1496: a\n  - A L1497: a\n  - A L1498: a\n  - A L1499: a\n  - A L1500: a\n  - A L1501: a\n  + B L2: b\n  + B L3: b\n  + B L4: b\n  + B L5: b\n  + B L6: b\n  + B L7: b\n  + B L8: b\n  + B L9: b\n  + B L10: b\n  + B L11: b\n  + B L12: b\n  + B L13: b\n  + B L14: b\n  + B L15: b\n  + B L16: b\n  + B L17: b\n  + B L18: b\n  + B L19: b\n  + B L20: b\n  + B L21: b\n  + B L22: b\n  + B L23: b\n  + B L24: b\n  + B L25: b\n  + B L26: b\n  + B L27: b\n  + B L28: b\n  + B L29: b\n  + B L30: b\n  + B L31: b\n  + B L32: b\n  + B L33: b\n  + B L34: b\n  + B L35: b\n  + B L36: b\n  + B L37: b\n  + B L38: b\n  + B L39: b\n  + B L40: b\n  + B L41: b\n  + B L42: b\n  + B L43: b\n  + B L44: b\n  + B L45: b\n  + B L46: b\n  + B L47: b\n  + B L48: b\n  + B L49: b\n  + B L50: b\n  + B L51: b\n  + B L52: b\n  + B L53: b\n  + B L54: b\n  + B L55: b\n  + B L56: b\n  + B L57: b\n  + B L58: b\n  + B L59: b\n  + B L60: b\n  + B L61: b\n  + B L62: b\n  + B L63: b\n  + B L64: b\n  + B L65: b\n  + B L66: b\n  + B L67: b\n  + B L68: b\n  + B L69: b\n  + B L70: b\n  + B L71: b\n  + B L72: b\n  + B L73: b\n  + B L74: b\n  + B L75: b\n  + B L76: b\n  + B L77: b\n  + B L78: b\n  + B L79: b\n  + B L80: b\n  + B L81: b\n  + B L82: b\n  + B L83: b\n  + B L84: b\n  + B L85: b\n  + B L86: b\n  + B L87: b\n  + B L88: b\n  + B L89: b\n  + B L90: b\n  + B L91: b\n  + B L92: b\n  + B L93: b\n  + B L94: b\n  + B L95: b\n  + B L96: b\n  + B L97: b\n  + B L98: b\n  + B L99: b\n  + B L100: b\n  + B L101: b\n  + B L102: b\n  + B L103: b\n  + B L104: b\n  + B L105: b\n  + B L106: b\n  + B L107: b\n  + B L108: b\n  + B L109: b\n  + B L110: b\n  + B L111: b\n  + B L112: b\n  + B L113: b\n  + B L114: b\n  + B L115: b\n  + B L116: b\n  + B L117: b\n  + B L118: b\n  + B L119: b\n  + B L120: b\n  + B L121: b\n  + B L122: b\n  + B L123: b\n  + B L124: b\n  + B L125: b\n  + B L126: b\n  + B L127: b\n  + B L128: b\n  + B L129: b\n  + B L130: b\n  + B L131: b\n  + B L132: b\n  + B L133: b\n  + B L134: b\n  + B L135: b\n  + B L136: b\n  + B L137: b\n  + B L138: b\n  + B L139: b\n  + B L140: b\n  + B L141: b\n  + B L142: b\n  + B L143: b\n  + B L144: b\n  + B L145: b\n  + B L146: b\n  + B L147: b\n  + B L148: b\n  + B L149: b\n  + B L150: b\n  + B L151: b\n  + B L152: b\n  + B L153: b\n  + B L154: b\n  + B L155: b\n  + B L156: b\n  + B L157: b\n  + B L158: b\n  + B L159: b\n  + B L160: b\n  + B L161: b\n  + B L162: b\n  + B L163: b\n  + B L164: b\n  + B L165: b\n  + B L166: b\n  + B L167: b\n  + B L168: b\n  + B L169: b\n  + B L170: b\n  + B L171: b\n  + B L172: b\n  + B L173: b\n  + B L174: b\n  + B L175: b\n  + B L176: b\n  + B L177: b\n  + B L178: b\n  + B L179: b\n  + B L180: b\n  + B L181: b\n  + B L182: b\n  + B L183: b\n  + B L184: b\n  + B L185: b\n  + B L186: b\n  + B L187: b\n  + B L188: b\n  + B L189: b\n  + B L190: b\n  + B L191: b\n  + B L192: b\n  + B L193: b\n  + B L194: b\n  + B L195: b\n  + B L196: b\n  + B L197: b\n  + B L198: b\n  + B L199: b\n  + B L200: b\n  + B L201: b\n  + B L202: b\n  + B L203: b\n  + B L204: b\n  + B L205: b\n  + B L206: b\n  + B L207: b\n  + B L208: b\n  + B L209: b\n  + B L210: b\n  + B L211: b\n  + B L212: b\n  + B L213: b\n  + B L214: b\n  + B L215: b\n  + B L216: b\n  + B L217: b\n  + B L218: b\n  + B L219: b\n  + B L220: b\n  + B L221: b\n  + B L222: b\n  + B L223: b\n  + B L224: b\n  + B L225: b\n  + B L226: b\n  + B L227: b\n  + B L228: b\n  + B L229: b\n  + B L230: b\n  + B L231: b\n  + B L232: b\n  + B L233: b\n  + B L234: b\n  + B L235: b\n  + B L236: b\n  + B L237: b\n  + B L238: b\n  + B L239: b\n  + B L240: b\n  + B L241: b\n  + B L242: b\n  + B L243: b\n  + B L244: b\n  + B L245: b\n  + B L246: b\n  + B L247: b\n  + B L248: b\n  + B L249: b\n  + B L250: b\n  + B L251: b\n  + B L252: b\n  + B L253: b\n  + B L254: b\n  + B L255: b\n  + B L256: b\n  + B L257: b\n  + B L258: b\n  + B L259: b\n  + B L260: b\n  + B L261: b\n  + B L262: b\n  + B L263: b\n  + B L264: b\n  + B L265: b\n  + B L266: b\n  + B L267: b\n  + B L268: b\n  + B L269: b\n  + B L270: b\n  + B L271: b\n  + B L272: b\n  + B L273: b\n  + B L274: b\n  + B L275: b\n  + B L276: b\n  + B L277: b\n  + B L278: b\n  + B L279: b\n  + B L280: b\n  + B L281: b\n  + B L282: b\n  + B L283: b\n  + B L284: b\n  + B L285: b\n  + B L286: b\n  + B L287: b\n  + B L288: b\n  + B L289: b\n  + B L290: b\n  + B L291: b\n  + B L292: b\n  + B L293: b\n  + B L294: b\n  + B L295: b\n  + B L296: b\n  + B L297: b\n  + B L298: b\n  + B L299: b\n  + B L300: b\n  + B L301: b\n  + B L302: b\n  + B L303: b\n  + B L304: b\n  + B L305: b\n  + B L306: b\n  + B L307: b\n  + B L308: b\n  + B L309: b\n  + B L310: b\n  + B L311: b\n  + B L312: b\n  + B L313: b\n  + B L314: b\n  + B L315: b\n  + B L316: b\n  + B L317: b\n  + B L318: b\n  + B L319: b\n  + B L320: b\n  + B L321: b\n  + B L322: b\n  + B L323: b\n  + B L324: b\n  + B L325: b\n  + B L326: b\n  + B L327: b\n  + B L328: b\n  + B L329: b\n  + B L330: b\n  + B L331: b\n  + B L332: b\n  + B L333: b\n  + B L334: b\n  + B L335: b\n  + B L336: b\n  + B L337: b\n  + B L338: b\n  + B L339: b\n  + B L340: b\n  + B L341: b\n  + B L342: b\n  + B L343: b\n  + B L344: b\n  + B L345: b\n  + B L346: b\n  + B L347: b\n  + B L348: b\n  + B L349: b\n  + B L350: b\n  + B L351: b\n  + B L352: b\n  + B L353: b\n  + B L354: b\n  + B L355: b\n  + B L356: b\n  + B L357: b\n  + B L358: b\n  + B L359: b\n  + B L360: b\n  + B L361: b\n  + B L362: b\n  + B L363: b\n  + B L364: b\n  + B L365: b\n  + B L366: b\n  + B L367: b\n  + B L368: b\n  + B L369: b\n  + B L370: b\n  + B L371: b\n  + B L372: b\n  + B L373: b\n  + B L374: b\n  + B L375: b\n  + B L376: b\n  + B L377: b\n  + B L378: b\n  + B L379: b\n  + B L380: b\n  + B L381: b\n  + B L382: b\n  + B L383: b\n  + B L384: b\n  + B L385: b\n  + B L386: b\n  + B L387: b\n  + B L388: b\n  + B L389: b\n  + B L390: b\n  + B L391: b\n  + B L392: b\n  + B L393: b\n  + B L394: b\n  + B L395: b\n  + B L396: b\n  + B L397: b\n  + B L398: b\n  + B L399: b\n  + B L400: b\n  + B L401: b\n  + B L402: b\n  + B L403: b\n  + B L404: b\n  + B L405: b\n  + B L406: b\n  + B L407: b\n  + B L408: b\n  + B L409: b\n  + B L410: b\n  + B L411: b\n  + B L412: b\n  + B L413: b\n  + B L414: b\n  + B L415: b\n  + B L416: b\n  + B L417: b\n  + B L418: b\n  + B L419: b\n  + B L420: b\n  + B L421: b\n  + B L422: b\n  + B L423: b\n  + B L424: b\n  + B L425: b\n  + B L426: b\n  + B L427: b\n  + B L428: b\n  + B L429: b\n  + B L430: b\n  + B L431: b\n  + B L432: b\n  + B L433: b\n  + B L434: b\n  + B L435: b\n  + B L436: b\n  + B L437: b\n  + B L438: b\n  + B L439: b\n  + B L440: b\n  + B L441: b\n  + B L442: b\n  + B L443: b\n  + B L444: b\n  + B L445: b\n  + B L446: b\n  + B L447: b\n  + B L448: b\n  + B L449: b\n  + B L450: b\n  + B L451: b\n  + B L452: b\n  + B L453: b\n  + B L454: b\n  + B L455: b\n  + B L456: b\n  + B L457: b\n  + B L458: b\n  + B L459: b\n  + B L460: b\n  + B L461: b\n  + B L462: b\n  + B L463: b\n  + B L464: b\n  + B L465: b\n  + B L466: b\n  + B L467: b\n  + B L468: b\n  + B L469: b\n  + B L470: b\n  + B L471: b\n  + B L472: b\n  + B L473: b\n  + B L474: b\n  + B L475: b\n  + B L476: b\n  + B L477: b\n  + B L478: b\n  + B L479: b\n  + B L480: b\n  + B L481: b\n  + B L482: b\n  + B L483: b\n  + B L484: b\n  + B L485: b\n  + B L486: b\n  + B L487: b\n  + B L488: b\n  + B L489: b\n  + B L490: b\n  + B L491: b\n  + B L492: b\n  + B L493: b\n  + B L494: b\n  + B L495: b\n  + B L496: b\n  + B L497: b\n  + B L498: b\n  + B L499: b\n  + B L500: b\n  + B L501: b\n  + B L502: b\n  + B L503: b\n  + B L504: b\n  + B L505: b\n  + B L506: b\n  + B L507: b\n  + B L508: b\n  + B L509: b\n  + B L510: b\n  + B L511: b\n  + B L512: b\n  + B L513: b\n  + B L514: b\n  + B L515: b\n  + B L516: b\n  + B L517: b\n  + B L518: b\n  + B L519: b\n  + B L520: b\n  + B L521: b\n  + B L522: b\n  + B L523: b\n  + B L524: b\n  + B L525: b\n  + B L526: b\n  + B L527: b\n  + B L528: b\n  + B L529: b\n  + B L530: b\n  + B L531: b\n  + B L532: b\n  + B L533: b\n  + B L534: b\n  + B L535: b\n  + B L536: b\n  + B L537: b\n  + B L538: b\n  + B L539: b\n  + B L540: b\n  + B L541: b\n  + B L542: b\n  + B L543: b\n  + B L544: b\n  + B L545: b\n  + B L546: b\n  + B L547: b\n  + B L548: b\n  + B L549: b\n  + B L550: b\n  + B L551: b\n  + B L552: b\n  + B L553: b\n  + B L554: b\n  + B L555: b\n  + B L556: b\n  + B L557: b\n  + B L558: b\n  + B L559: b\n  + B L560: b\n  + B L561: b\n  + B L562: b\n  + B L563: b\n  + B L564: b\n  + B L565: b\n  + B L566: b\n  + B L567: b\n  + B L568: b\n  + B L569: b\n  + B L570: b\n  + B L571: b\n  + B L572: b\n  + B L573: b\n  + B L574: b\n  + B L575: b\n  + B L576: b\n  + B L577: b\n  + B L578: b\n  + B L579: b\n  + B L580: b\n  + B L581: b\n  + B L582: b\n  + B L583: b\n  + B L584: b\n  + B L585: b\n  + B L586: b\n  + B L587: b\n  + B L588: b\n  + B L589: b\n  + B L590: b\n  + B L591: b\n  + B L592: b\n  + B L593: b\n  + B L594: b\n  + B L595: b\n  + B L596: b\n  + B L597: b\n  + B L598: b\n  + B L599: b\n  + B L600: b\n  + B L601: b\n  + B L602: b\n  + B L603: b\n  + B L604: b\n  + B L605: b\n  + B L606: b\n  + B L607: b\n  + B L608: b\n  + B L609: b\n  + B L610: b\n  + B L611: b\n  + B L612: b\n  + B L613: b\n  + B L614: b\n  + B L615: b\n  + B L616: b\n  + B L617: b\n  + B L618: b\n  + B L619: b\n  + B L620: b\n  + B L621: b\n  + B L622: b\n  + B L623: b\n  + B L624: b\n  + B L625: b\n  + B L626: b\n  + B L627: b\n  + B L628: b\n  + B L629: b\n  + B L630: b\n  + B L631: b\n  + B L632: b\n  + B L633: b\n  + B L634: b\n  + B L635: b\n  + B L636: b\n  + B L637: b\n  + B L638: b\n  + B L639: b\n  + B L640: b\n  + B L641: b\n  + B L642: b\n  + B L643: b\n  + B L644: b\n  + B L645: b\n  + B L646: b\n  + B L647: b\n  + B L648: b\n  + B L649: b\n  + B L650: b\n  + B L651: b\n  + B L652: b\n  + B L653: b\n  + B L654: b\n  + B L655: b\n  + B L656: b\n  + B L657: b\n  + B L658: b\n  + B L659: b\n  + B L660: b\n  + B L661: b\n  + B L662: b\n  + B L663: b\n  + B L664: b\n  + B L665: b\n  + B L666: b\n  + B L667: b\n  + B L668: b\n  + B L669: b\n  + B L670: b\n  + B L671: b\n  + B L672: b\n  + B L673: b\n  + B L674: b\n  + B L675: b\n  + B L676: b\n  + B L677: b\n  + B L678: b\n  + B L679: b\n  + B L680: b\n  + B L681: b\n  + B L682: b\n  + B L683: b\n  + B L684: b\n  + B L685: b\n  + B L686: b\n  + B L687: b\n  + B L688: b\n  + B L689: b\n  + B L690: b\n  + B L691: b\n  + B L692: b\n  + B L693: b\n  + B L694: b\n  + B L695: b\n  + B L696: b\n  + B L697: b\n  + B L698: b\n  + B L699: b\n  + B L700: b\n  + B L701: b\n  + B L702: b\n  + B L703: b\n  + B L704: b\n  + B L705: b\n  + B L706: b\n  + B L707: b\n  + B L708: b\n  + B L709: b\n  + B L710: b\n  + B L711: b\n  + B L712: b\n  + B L713: b\n  + B L714: b\n  + B L715: b\n  + B L716: b\n  + B L717: b\n  + B L718: b\n  + B L719: b\n  + B L720: b\n  + B L721: b\n  + B L722: b\n  + B L723: b\n  + B L724: b\n  + B L725: b\n  + B L726: b\n  + B L727: b\n  + B L728: b\n  + B L729: b\n  + B L730: b\n  + B L731: b\n  + B L732: b\n  + B L733: b\n  + B L734: b\n  + B L735: b\n  + B L736: b\n  + B L737: b\n  + B L738: b\n  + B L739: b\n  + B L740: b\n  + B L741: b\n  + B L742: b\n  + B L743: b\n  + B L744: b\n  + B L745: b\n  + B L746: b\n  + B L747: b\n  + B L748: b\n  + B L749: b\n  + B L750: b\n  + B L751: b\n  + B L752: b\n  + B L753: b\n  + B L754: b\n  + B L755: b\n  + B L756: b\n  + B L757: b\n  + B L758: b\n  + B L759: b\n  + B L760: b\n  + B L761: b\n  + B L762: b\n  + B L763: b\n  + B L764: b\n  + B L765: b\n  + B L766: b\n  + B L767: b\n  + B L768: b\n  + B L769: b\n  + B L770: b\n  + B L771: b\n  + B L772: b\n  + B L773: b\n  + B L774: b\n  + B L775: b\n  + B L776: b\n  + B L777: b\n  + B L778: b\n  + B L779: b\n  + B L780: b\n  + B L781: b\n  + B L782: b\n  + B L783: b\n  + B L784: b\n  + B L785: b\n  + B L786: b\n  + B L787: b\n  + B L788: b\n  + B L789: b\n  + B L790: b\n  + B L791: b\n  + B L792: b\n  + B L793: b\n  + B L794: b\n  + B L795: b\n  + B L796: b\n  + B L797: b\n  + B L798: b\n  + B L799: b\n  + B L800: b\n  + B L801: b\n  + B L802: b\n  + B L803: b\n  + B L804: b\n  + B L805: b\n  + B L806: b\n  + B L807: b\n  + B L808: b\n  + B L809: b\n  + B L810: b\n  + B L811: b\n  + B L812: b\n  + B L813: b\n  + B L814: b\n  + B L815: b\n  + B L816: b\n  + B L817: b\n  + B L818: b\n  + B L819: b\n  + B L820: b\n  + B L821: b\n  + B L822: b\n  + B L823: b\n  + B L824: b\n  + B L825: b\n  + B L826: b\n  + B L827: b\n  + B L828: b\n  + B L829: b\n  + B L830: b\n  + B L831: b\n  + B L832: b\n  + B L833: b\n  + B L834: b\n  + B L835: b\n  + B L836: b\n  + B L837: b\n  + B L838: b\n  + B L839: b\n  + B L840: b\n  + B L841: b\n  + B L842: b\n  + B L843: b\n  + B L844: b\n  + B L845: b\n  + B L846: b\n  + B L847: b\n  + B L848: b\n  + B L849: b\n  + B L850: b\n  + B L851: b\n  + B L852: b\n  + B L853: b\n  + B L854: b\n  + B L855: b\n  + B L856: b\n  + B L857: b\n  + B L858: b\n  + B L859: b\n  + B L860: b\n  + B L861: b\n  + B L862: b\n  + B L863: b\n  + B L864: b\n  + B L865: b\n  + B L866: b\n  + B L867: b\n  + B L868: b\n  + B L869: b\n  + B L870: b\n  + B L871: b\n  + B L872: b\n  + B L873: b\n  + B L874: b\n  + B L875: b\n  + B L876: b\n  + B L877: b\n  + B L878: b\n  + B L879: b\n  + B L880: b\n  + B L881: b\n  + B L882: b\n  + B L883: b\n  + B L884: b\n  + B L885: b\n  + B L886: b\n  + B L887: b\n  + B L888: b\n  + B L889: b\n  + B L890: b\n  + B L891: b\n  + B L892: b\n  + B L893: b\n  + B L894: b\n  + B L895: b\n  + B L896: b\n  + B L897: b\n  + B L898: b\n  + B L899: b\n  + B L900: b\n  + B L901: b\n  + B L902: b\n  + B L903: b\n  + B L904: b\n  + B L905: b\n  + B L906: b\n  + B L907: b\n  + B L908: b\n  + B L909: b\n  + B L910: b\n  + B L911: b\n  + B L912: b\n  + B L913: b\n  + B L914: b\n  + B L915: b\n  + B L916: b\n  + B L917: b\n  + B L918: b\n  + B L919: b\n  + B L920: b\n  + B L921: b\n  + B L922: b\n  + B L923: b\n  + B L924: b\n  + B L925: b\n  + B L926: b\n  + B L927: b\n  + B L928: b\n  + B L929: b\n  + B L930: b\n  + B L931: b\n  + B L932: b\n  + B L933: b\n  + B L934: b\n  + B L935: b\n  + B L936: b\n  + B L937: b\n  + B L938: b\n  + B L939: b\n  + B L940: b\n  + B L941: b\n  + B L942: b\n  + B L943: b\n  + B L944: b\n  + B L945: b\n  + B L946: b\n  + B L947: b\n  + B L948: b\n  + B L949: b\n  + B L950: b\n  + B L951: b\n  + B L952: b\n  + B L953: b\n  + B L954: b\n  + B L955: b\n  + B L956: b\n  + B L957: b\n  + B L958: b\n  + B L959: b\n  + B L960: b\n  + B L961: b\n  + B L962: b\n  + B L963: b\n  + B L964: b\n  + B L965: b\n  + B L966: b\n  + B L967: b\n  + B L968: b\n  + B L969: b\n  + B L970: b\n  + B L971: b\n  + B L972: b\n  + B L973: b\n  + B L974: b\n  + B L975: b\n  + B L976: b\n  + B L977: b\n  + B L978: b\n  + B L979: b\n  + B L980: b\n  + B L981: b\n  + B L982: b\n  + B L983: b\n  + B L984: b\n  + B L985: b\n  + B L986: b\n  + B L987: b\n  + B L988: b\n  + B L989: b\n  + B L990: b\n  + B L991: b\n  + B L992: b\n  + B L993: b\n  + B L994: b\n  + B L995: b\n  + B L996: b\n  + B L997: b\n  + B L998: b\n  + B L999: b\n  + B L1000: b\n  + B L1001: b\n  + B L1002: b\n  + B L1003: b\n  + B L1004: b\n  + B L1005: b\n  + B L1006: b\n  + B L1007: b\n  + B L1008: b\n  + B L1009: b\n  + B L1010: b\n  + B L1011: b\n  + B L1012: b\n  + B L1013: b\n  + B L1014: b\n  + B L1015: b\n  + B L1016: b\n  + B L1017: b\n  + B L1018: b\n  + B L1019: b\n  + B L1020: b\n  + B L1021: b\n  + B L1022: b\n  + B L1023: b\n  + B L1024: b\n  + B L1025: b\n  + B L1026: b\n  + B L1027: b\n  + B L1028: b\n  + B L1029: b\n  + B L1030: b\n  + B L1031: b\n  + B L1032: b\n  + B L1033: b\n  + B L1034: b\n  + B L1035: b\n  + B L1036: b\n  + B L1037: b\n  + B L1038: b\n  + B L1039: b\n  + B L1040: b\n  + B L1041: b\n  + B L1042: b\n  + B L1043: b\n  + B L1044: b\n  + B L1045: b\n  + B L1046: b\n  + B L1047: b\n  + B L1048: b\n  + B L1049: b\n  + B L1050: b\n  + B L1051: b\n  + B L1052: b\n  + B L1053: b\n  + B L1054: b\n  + B L1055: b\n  + B L1056: b\n  + B L1057: b\n  + B L1058: b\n  + B L1059: b\n  + B L1060: b\n  + B L1061: b\n  + B L1062: b\n  + B L1063: b\n  + B L1064: b\n  + B L1065: b\n  + B L1066: b\n  + B L1067: b\n  + B L1068: b\n  + B L1069: b\n  + B L1070: b\n  + B L1071: b\n  + B L1072: b\n  + B L1073: b\n  + B L1074: b\n  + B L1075: b\n  + B L1076: b\n  + B L1077: b\n  + B L1078: b\n  + B L1079: b\n  + B L1080: b\n  + B L1081: b\n  + B L1082: b\n  + B L1083: b\n  + B L1084: b\n  + B L1085: b\n  + B L1086: b\n  + B L1087: b\n  + B L1088: b\n  + B L1089: b\n  + B L1090: b\n  + B L1091: b\n  + B L1092: b\n  + B L1093: b\n  + B L1094: b\n  + B L1095: b\n  + B L1096: b\n  + B L1097: b\n  + B L1098: b\n  + B L1099: b\n  + B L1100: b\n  + B L1101: b\n  + B L1102: b\n  + B L1103: b\n  + B L1104: b\n  + B L1105: b\n  + B L1106: b\n  + B L1107: b\n  + B L1108: b\n  + B L1109: b\n  + B L1110: b\n  + B L1111: b\n  + B L1112: b\n  + B L1113: b\n  + B L1114: b\n  + B L1115: b\n  + B L1116: b\n  + B L1117: b\n  + B L1118: b\n  + B L1119: b\n  + B L1120: b\n  + B L1121: b\n  + B L1122: b\n  + B L1123: b\n  + B L1124: b\n  + B L1125: b\n  + B L1126: b\n  + B L1127: b\n  + B L1128: b\n  + B L1129: b\n  + B L1130: b\n  + B L1131: b\n  + B L1132: b\n  + B L1133: b\n  + B L1134: b\n  + B L1135: b\n  + B L1136: b\n  + B L1137: b\n  + B L1138: b\n  + B L1139: b\n  + B L1140: b\n  + B L1141: b\n  + B L1142: b\n  + B L1143: b\n  + B L1144: b\n  + B L1145: b\n  + B L1146: b\n  + B L1147: b\n  + B L1148: b\n  + B L1149: b\n  + B L1150: b\n  + B L1151: b\n  + B L1152: b\n  + B L1153: b\n  + B L1154: b\n  + B L1155: b\n  + B L1156: b\n  + B L1157: b\n  + B L1158: b\n  + B L1159: b\n  + B L1160: b\n  + B L1161: b\n  + B L1162: b\n  + B L1163: b\n  + B L1164: b\n  + B L1165: b\n  + B L1166: b\n  + B L1167: b\n  + B L1168: b\n  + B L1169: b\n  + B L1170: b\n  + B L1171: b\n  + B L1172: b\n  + B L1173: b\n  + B L1174: b\n  + B L1175: b\n  + B L1176: b\n  + B L1177: b\n  + B L1178: b\n  + B L1179: b\n  + B L1180: b\n  + B L1181: b\n  + B L1182: b\n  + B L1183: b\n  + B L1184: b\n  + B L1185: b\n  + B L1186: b\n  + B L1187: b\n  + B L1188: b\n  + B L1189: b\n  + B L1190: b\n  + B L1191: b\n  + B L1192: b\n  + B L1193: b\n  + B L1194: b\n  + B L1195: b\n  + B L1196: b\n  + B L1197: b\n  + B L1198: b\n  + B L1199: b\n  + B L1200: b\n  + B L1201: b\n  + B L1202: b\n  + B L1203: b\n  + B L1204: b\n  + B L1205: b\n  + B L1206: b\n  + B L1207: b\n  + B L1208: b\n  + B L1209: b\n  + B L1210: b\n  + B L1211: b\n  + B L1212: b\n  + B L1213: b\n  + B L1214: b\n  + B L1215: b\n  + B L1216: b\n  + B L1217: b\n  + B L1218: b\n  + B L1219: b\n  + B L1220: b\n  + B L1221: b\n  + B L1222: b\n  + B L1223: b\n  + B L1224: b\n  + B L1225: b\n  + B L1226: b\n  + B L1227: b\n  + B L1228: b\n  + B L1229: b\n  + B L1230: b\n  + B L1231: b\n  + B L1232: b\n  + B L1233: b\n  + B L1234: b\n  + B L1235: b\n  + B L1236: b\n  + B L1237: b\n  + B L1238: b\n  + B L1239: b\n  + B L1240: b\n  + B L1241: b\n  + B L1242: b\n  + B L1243: b\n  + B L1244: b\n  + B L1245: b\n  + B L1246: b\n  + B L1247: b\n  + B L1248: b\n  + B L1249: b\n  + B L1250: b\n  + B L1251: b\n  + B L1252: b\n  + B L1253: b\n  + B L1254: b\n  + B L1255: b\n  + B L1256: b\n  + B L1257: b\n  + B L1258: b\n  + B L1259: b\n  + B L1260: b\n  + B L1261: b\n  + B L1262: b\n  + B L1263: b\n  + B L1264: b\n  + B L1265: b\n  + B L1266: b\n  + B L1267: b\n  + B L1268: b\n  + B L1269: b\n  + B L1270: b\n  + B L1271: b\n  + B L1272: b\n  + B L1273: b\n  + B L1274: b\n  + B L1275: b\n  + B L1276: b\n  + B L1277: b\n  + B L1278: b\n  + B L1279: b\n  + B L1280: b\n  + B L1281: b\n  + B L1282: b\n  + B L1283: b\n  + B L1284: b\n  + B L1285: b\n  + B L1286: b\n  + B L1287: b\n  + B L1288: b\n  + B L1289: b\n  + B L1290: b\n  + B L1291: b\n  + B L1292: b\n  + B L1293: b\n  + B L1294: b\n  + B L1295: b\n  + B L1296: b\n  + B L1297: b\n  + B L1298: b\n  + B L1299: b\n  + B L1300: b\n  + B L1301: b\n  + B L1302: b\n  + B L1303: b\n  + B L1304: b\n  + B L1305: b\n  + B L1306: b\n  + B L1307: b\n  + B L1308: b\n  + B L1309: b\n  + B L1310: b\n  + B L1311: b\n  + B L1312: b\n  + B L1313: b\n  + B L1314: b\n  + B L1315: b\n  + B L1316: b\n  + B L1317: b\n  + B L1318: b\n  + B L1319: b\n  + B L1320: b\n  + B L1321: b\n  + B L1322: b\n  + B L1323: b\n  + B L1324: b\n  + B L1325: b\n  + B L1326: b\n  + B L1327: b\n  + B L1328: b\n  + B L1329: b\n  + B L1330: b\n  + B L1331: b\n  + B L1332: b\n  + B L1333: b\n  + B L1334: b\n  + B L1335: b\n  + B L1336: b\n  + B L1337: b\n  + B L1338: b\n  + B L1339: b\n  + B L1340: b\n  + B L1341: b\n  + B L1342: b\n  + B L1343: b\n  + B L1344: b\n  + B L1345: b\n  + B L1346: b\n  + B L1347: b\n  + B L1348: b\n  + B L1349: b\n  + B L1350: b\n  + B L1351: b\n  + B L1352: b\n  + B L1353: b\n  + B L1354: b\n  + B L1355: b\n  + B L1356: b\n  + B L1357: b\n  + B L1358: b\n  + B L1359: b\n  + B L1360: b\n  + B L1361: b\n  + B L1362: b\n  + B L1363: b\n  + B L1364: b\n  + B L1365: b\n  + B L1366: b\n  + B L1367: b\n  + B L1368: b\n  + B L1369: b\n  + B L1370: b\n  + B L1371: b\n  + B L1372: b\n  + B L1373: b\n  + B L1374: b\n  + B L1375: b\n  + B L1376: b\n  + B L1377: b\n  + B L1378: b\n  + B L1379: b\n  + B L1380: b\n  + B L1381: b\n  + B L1382: b\n  + B L1383: b\n  + B L1384: b\n  + B L1385: b\n  + B L1386: b\n  + B L1387: b\n  + B L1388: b\n  + B L1389: b\n  + B L1390: b\n  + B L1391: b\n  + B L1392: b\n  + B L1393: b\n  + B L1394: b\n  + B L1395: b\n  + B L1396: b\n  + B L1397: b\n  + B L1398: b\n  + B L1399: b\n  + B L1400: b\n  + B L1401: b\n  + B L1402: b\n  + B L1403: b\n  + B L1404: b\n  + B L1405: b\n  + B L1406: b\n  + B L1407: b\n  + B L1408: b\n  + B L1409: b\n  + B L1410: b\n  + B L1411: b\n  + B L1412: b\n  + B L1413: b\n  + B L1414: b\n  + B L1415: b\n  + B L1416: b\n  + B L1417: b\n  + B L1418: b\n  + B L1419: b\n  + B L1420: b\n  + B L1421: b\n  + B L1422: b\n  + B L1423: b\n  + B L1424: b\n  + B L1425: b\n  + B L1426: b\n  + B L1427: b\n  + B L1428: b\n  + B L1429: b\n  + B L1430: b\n  + B L1431: b\n  + B L1432: b\n  + B L1433: b\n  + B L1434: b\n  + B L1435: b\n  + B L1436: b\n  + B L1437: b\n  + B L1438: b\n  + B L1439: b\n  + B L1440: b\n  + B L1441: b\n  + B L1442: b\n  + B L1443: b\n  + B L1444: b\n  + B L1445: b\n  + B L1446: b\n  + B L1447: b\n  + B L1448: b\n  + B L1449: b\n  + B L1450: b\n  + B L1451: b\n  + B L1452: b\n  + B L1453: b\n  + B L1454: b\n  + B L1455: b\n  + B L1456: b\n  + B L1457: b\n  + B L1458: b\n  + B L1459: b\n  + B L1460: b\n  + B L1461: b\n  + B L1462: b\n  + B L1463: b\n  + B L1464: b\n  + B L1465: b\n  + B L1466: b\n  + B L1467: b\n  + B L1468: b\n  + B L1469: b\n  + B L1470: b\n  + B L1471: b\n  + B L1472: b\n  + B L1473: b\n  + B L1474: b\n  + B L1475: b\n  + B L1476: b\n  + B L1477: b\n  + B L1478: b\n  + B L1479: b\n  + B L1480: b\n  + B L1481: b\n  + B L1482: b\n  + B L1483: b\n  + B L1484: b\n  + B L1485: b\n  + B L1486: b\n  + B L1487: b\n  + B L1488: b\n  + B L1489: b\n  + B L1490: b\n  + B L1491: b\n  + B L1492: b\n  + B L1493: b\n  + B L1494: b\n  + B L1495: b\n  + B L1496: b\n  + B L1497: b\n  + B L1498: b\n  + B L1499: b\n  + B L1500: b\n  + B L1501: b\n  + B L1502: b\n"
+    }
+  ]
+}

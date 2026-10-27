@@ -39,3 +39,5 @@
 第十六批参考 color.js；css_named_colors.json 保留固定上游的 W3C CSS Color Module Level 3 / HTML4 147 命名色及表顺序。颜色运行实现全部为 Rust，复用已有 ECMAScript 数字格式化逻辑，没有新增依赖。capture-upstream-color-vectors.mjs 仅用于维护固定参考向量和静态色表；与完整 CSS 解析的差异及严格数值校验记录在验收源。
 
 第十七批参考 primeGen.js；修正固定上游静态目录中 primeGen/primeTest 错指 jwtsign.js 的来源映射。Miller–Rabin 模幂/固定基、奇数候选递增和系统随机均在 Rust 实现，复用 num-bigint/num-integer/num-traits/getrandom，无新依赖。确定性界引用 Sorenson/Webster 的 [Strong Pseudoprimes to Twelve Prime Bases, Theorem 1.1](https://arxiv.org/abs/1509.00864)，不沿用上游错误的 FIPS 表引用和固定基随机误判界文案。capture-upstream-prime-vectors.mjs 仅用于维护对照数据及跨实现候选检验。
+
+第十八批参考 difftool.js；纯 Rust 重写逐位置、经典 LCS 回溯、共同前后缀回退和报告聚合，保留固定上游的策略选择及上下文口径。新增原始字节双输入、区间 JSON、有界报告、严格 Hex 校验和取消，无新依赖。capture-upstream-diff-vectors.mjs 仅用于维护固定参考向量。
