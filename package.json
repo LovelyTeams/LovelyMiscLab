@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "node scripts/check-tauri-versions.mjs && tsc && vite build",
     "check:utf8": "node scripts/check-utf8.mjs",
     "generate:catalog": "node scripts/generate-catalog.mjs",
     "check:catalog": "node scripts/generate-catalog.mjs --check",
@@ -17,7 +17,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.101.2",
     "@tauri-apps/api": "^2",
-    "@tauri-apps/plugin-clipboard-manager": "^2.5.0",
+    "@tauri-apps/plugin-clipboard-manager": "~2.3.3",
     "@tauri-apps/plugin-dialog": "^2.7.1",
     "@tauri-apps/plugin-opener": "^2",
     "@xyflow/react": "^12.11.1",
