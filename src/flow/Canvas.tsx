@@ -13,6 +13,7 @@ import {
 import { Hand, MousePointer2, Trash2 } from "lucide-react";
 
 import type { NodeDescriptor } from "@/lib/types";
+import { hasTextSelection, isTextContextTarget } from "@/lib/textInteraction";
 import { AgentPanel } from "@/app/AgentPanel";
 import { useAgentStore } from "@/store/agent";
 import { useGraphStore } from "@/store/graph";
@@ -191,6 +192,7 @@ export function Canvas() {
   return (
     <div className="relative flex h-full w-full outline-none" tabIndex={0} data-testid="canvas-surface"
       onPointerDownCapture={(e) => {
+        if (e.button !== 0 || isTextContextTarget(e.target)) return;
         const graph = useGraphStore.getState();
         selectionBeforePointer.current = {
           nodes: new Set(graph.nodes.filter((n) => n.selected).map((n) => n.id)),
@@ -201,10 +203,18 @@ export function Canvas() {
         flowStore.setState({ multiSelectionActive: e.ctrlKey || e.metaKey || e.shiftKey });
         appendBoxSelection.current = tool === "select" && (e.ctrlKey || e.metaKey || e.shiftKey) &&
           (e.target as HTMLElement).classList.contains("react-flow__pane");
-        if ((e.target as HTMLElement).classList.contains("react-flow__pane")) e.currentTarget.focus({ preventScroll: true });
+        if ((e.target as HTMLElement).classList.contains("react-flow__pane")) {
+          document.getSelection()?.removeAllRanges();
+          (e.target as Element).closest<HTMLElement>('[data-canvas-commands]')?.focus({ preventScroll: true });
+        }
       }}
       onDoubleClick={onDoubleClick}>
-      <div className="relative min-h-0 min-w-0 flex-1">
+      <div className="relative min-h-0 min-w-0 flex-1 outline-none" tabIndex={0} data-canvas-commands
+        onContextMenu={(e) => {
+          if (e.target !== e.currentTarget || hasTextSelection()) return;
+          e.preventDefault();
+          setMenu({ x: e.clientX, y: e.clientY, kind: 'pane', flow: rf.screenToFlowPosition({ x: e.clientX, y: e.clientY }) });
+        }}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -227,6 +237,7 @@ export function Canvas() {
           appendBoxSelection.current = false;
         }}
         onSelectionContextMenu={(e, selected) => {
+          if (isTextContextTarget(e.target) || hasTextSelection()) return;
           e.preventDefault();
           setMenu({ x: e.clientX, y: e.clientY, kind: "node", id: selected[0]?.id });
         }}
@@ -250,6 +261,7 @@ export function Canvas() {
         onPaneClick={closeMenu}
         onMoveStart={closeMenu}
         onPaneContextMenu={(e) => {
+          if (isTextContextTarget(e.target) || hasTextSelection()) return;
           e.preventDefault();
           setMenu({
             x: e.clientX,
@@ -259,11 +271,13 @@ export function Canvas() {
           });
         }}
         onNodeContextMenu={(e, node) => {
+          if (isTextContextTarget(e.target) || hasTextSelection()) return;
           e.preventDefault();
           if (!node.selected) useGraphStore.getState().selectNode(node.id);
           setMenu({ x: e.clientX, y: e.clientY, kind: "node", id: node.id });
         }}
         onEdgeContextMenu={(e, edge) => {
+          if (isTextContextTarget(e.target) || hasTextSelection()) return;
           e.preventDefault();
           if (!edge.selected) useGraphStore.getState().selectEdge(edge.id);
           setMenu({ x: e.clientX, y: e.clientY, kind: "edge", id: edge.id });

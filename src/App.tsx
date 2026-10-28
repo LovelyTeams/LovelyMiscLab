@@ -15,6 +15,7 @@ import { CreateModuleDialog } from "@/app/CreateModuleDialog";
 import { CreateScriptNodeDialog } from "@/app/CreateScriptNodeDialog";
 import { ImageViewerModal } from "@/flow/ImageViewerModal";
 import { KeyboardShortcuts } from "@/app/KeyboardShortcuts";
+import { GlobalContextMenu } from "@/app/GlobalContextMenu";
 import { LeftRail } from "@/app/LeftRail";
 import { LiveRunner } from "@/app/LiveRunner";
 import { TitleBar } from "@/app/TitleBar";
@@ -67,20 +68,6 @@ function App() {
   // and modify the live canvas.
   useEffect(() => startCanvasSync(), []);
 
-  // Suppress the native webview context menu (except in text fields) so our
-  // canvas right-click menu is the only one shown.
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      const t = e.target as HTMLElement | null;
-      if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) {
-        return;
-      }
-      e.preventDefault();
-    };
-    document.addEventListener("contextmenu", handler);
-    return () => document.removeEventListener("contextmenu", handler);
-  }, []);
-
   // Drive the custom palette→canvas drag from global pointer events.
   useEffect(() => {
     const move = (e: PointerEvent) => {
@@ -123,6 +110,7 @@ function App() {
         <DragGhost />
         <LiveRunner />
         <KeyboardShortcuts />
+        <GlobalContextMenu />
         <AiGenerateDialog />
         <HelpDialog />
         <CommandPalette />

@@ -141,6 +141,9 @@ describe("canvas editing and Windows shortcuts", () => {
       assert.equal(canvasShortcut(event(key, { metaKey: true })), action);
     }
     assert.equal(canvasShortcut(event("Z", { ctrlKey: true, shiftKey: true })), "redo");
+    assert.equal(canvasShortcut(event("Insert", { ctrlKey: true })), "copy");
+    assert.equal(canvasShortcut(event("Insert", { shiftKey: true })), "paste");
+    assert.equal(canvasShortcut(event("Delete", { shiftKey: true })), "cut");
     for (const [key, action] of Object.entries({ Delete: "delete", Backspace: "delete", Escape: "deselect", F2: "rename", Home: "fit", ArrowRight: "right" })) assert.equal(canvasShortcut(event(key)), action);
     assert.equal(canvasShortcut(event("Delete", { isComposing: true })), null);
     assert.equal(canvasShortcut(event("a", { ctrlKey: true, altKey: true })), null);

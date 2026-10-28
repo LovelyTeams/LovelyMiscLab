@@ -4,6 +4,7 @@ import { Check, Copy, Loader2, RefreshCw, Server, ShieldAlert } from "lucide-rea
 import { Button } from "@/components/ui/button";
 import { api, type McpSettings, type McpStatus } from "@/lib/bindings";
 import { inTauri } from "@/lib/devMocks";
+import { writeClipboardText } from "@/lib/clipboard";
 
 type ClientId = "claude-code" | "cursor" | "codex" | "other";
 
@@ -35,6 +36,7 @@ export function McpPanel() {
   const [available, setAvailable] = useState(true);
   const [busy, setBusy] = useState(false);
   const [copied, setCopied] = useState<string | null>(null);
+  const [copyError, setCopyError] = useState('');
   const [client, setClient] = useState<ClientId>("claude-code");
 
   const refresh = async () => {
@@ -98,13 +100,16 @@ export function McpPanel() {
   };
   const regen = () => void persist({ ...cfg, token: crypto.randomUUID().replace(/-/g, "") });
   const copy = (label: string, text: string) => {
-    void navigator.clipboard.writeText(text);
-    setCopied(label);
-    setTimeout(() => setCopied(null), 1200);
+    setCopyError('');
+    void writeClipboardText(text).then(() => {
+      setCopied(label);
+      setTimeout(() => setCopied(null), 1200);
+    }).catch((e: unknown) => setCopyError(e instanceof Error ? e.message : '复制失败'));
   };
 
   return (
     <section>
+      {copyError && <p role="status" className="mb-2 text-xs text-destructive">{copyError}</p>}
       <div className="mb-2 flex items-center gap-2">
         <Server className="h-4 w-4 text-muted-foreground" />
         <h2 className="text-sm font-semibold">MCP 服务（供 AI 调用）</h2>

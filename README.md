@@ -9,7 +9,7 @@
 面向 CTF Misc、编码解密、隐写分析与文件取证的桌面工作台。<br />
 手动搭图，也可以让 AI 根据真实结果查找模块、修改配置、继续拼接。
 
-![Version](https://img.shields.io/badge/version-0.3.1-8b5cf6)
+![Version](https://img.shields.io/badge/version-0.3.2-8b5cf6)
 ![Nodes](https://img.shields.io/badge/源码内置节点-529-0ea5e9)
 ![Rust](https://img.shields.io/badge/引擎-Rust-f97316?logo=rust&logoColor=white)
 ![Tauri](https://img.shields.io/badge/桌面-Tauri%202-24c8db?logo=tauri&logoColor=white)
@@ -21,11 +21,11 @@
 
 ---
 
-> **v0.3.1 · 2026-10-27**
+> **v0.3.2 · 2026-10-28**
 >
-> 当前源码包含 **529 个内置节点、18 个一级分类、48 个二级分组**。自主解题一键启动，规划直接展示在画布；AI 网络重试与真实模块检索支持持续解题。
+> 包含 **529 个内置节点、18 个一级分类、48 个二级分组**。新增全局右键菜单，修复文字复制与画布快捷键冲突；自主解题一键启动，规划直接展示在画布，支持 AI 网络重试与真实模块检索。
 >
-> EBCTFCodeBox 的 **820 项操作已验收 163 项**。稳定版 [v0.3.1 Release](https://github.com/LovelyTeams/LovelyMiscLab/releases/tag/v0.3.1) 提供 Windows、Linux、macOS 下载，包含 489 个节点、135 项已验收操作；发布后的第 14–23 批增量已进入源码。
+> EBCTFCodeBox 的 **820 项操作已验收 163 项**。[v0.3.2 Release](https://github.com/LovelyTeams/LovelyMiscLab/releases/tag/v0.3.2) 提供 Windows、Linux、macOS 下载，包含第 14–23 批迁移成果，相比 v0.3.1 新增 40 个节点、验收 28 项操作。
 
 ## 这是什么
 
@@ -164,6 +164,8 @@ flowchart LR
 
 拖动端口建立连线，连接时校验类型；右键节点、连线或选区可打开操作菜单。普通处理节点展示最多 3 个常用参数，长密钥、多行配置及高级参数在侧栏编辑。
 
+全局右键菜单按当前位置提供操作：输入框可剪切、复制、粘贴、删除选区和全选，结果区域可复制选中文字或当前文本。`Shift+F10` 或菜单键也能打开菜单，用方向键选择、Enter 执行、Esc 关闭；行内重命名与文字选区会保留。
+
 | 快捷键 | 操作 |
 |---|---|
 | `Ctrl+A` / `Esc` | 全选节点与连线 / 取消选择 |
@@ -177,7 +179,7 @@ flowchart LR
 | `Ctrl+N` / `Ctrl+O` / `Ctrl+S` / `Ctrl+Shift+S` | 新建 / 打开 / 保存 / 另存为流程 |
 | `Ctrl+K` | 打开命令面板 |
 
-macOS 上可使用对应的 `Cmd` 组合键。文本框内保留正常文字编辑行为，弹窗或菜单打开时不会操作底层画布。一次拖动、连续编辑同一参数或长按方向键按一次撤销记录处理。
+macOS 上可使用对应的 `Cmd` 组合键。节点快捷键只在画布内生效；文本框和已选中的结果文字优先使用文字编辑与复制行为，弹窗或菜单打开时不会操作底层画布。也支持 Windows 的 `Ctrl+Insert` 复制、`Shift+Insert` 粘贴和 `Shift+Delete` 剪切。一次拖动、连续编辑同一参数或长按方向键按一次撤销记录处理。
 
 ## 节点分类
 
@@ -231,7 +233,7 @@ macOS 上可使用对应的 `Cmd` 组合键。文本框内保留正常文字编�
 
 迁移基线固定为 [EBCTFCodeBox · ea2bc36](https://github.com/Henglie/EBCTFCodeBox/tree/ea2bc36dae31c97060f7f2cddad8df5518afad7b)，共 **820 项操作**。内置算法按实际功能用 Rust 实现，保留来源、参数映射、测试与兼容差异。
 
-**v0.3.1 已发布，迁移已恢复。第 23 批新增 3 项操作、3 个节点，仍按每批最多 20 项验收。** 截至 2026-10-28 的源码进度：
+**v0.3.2 收录至第 23 批的全部已验收成果，仍按每批最多 20 项推进。** 截至 2026-10-28 的发布进度：
 
 | 状态 | 数量 | 含义 |
 |---|---:|---|

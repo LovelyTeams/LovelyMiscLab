@@ -3,6 +3,7 @@ import { save } from "@tauri-apps/plugin-dialog";
 import type { ArtifactMetadata, PortValue } from "@/lib/types";
 import { api } from "@/lib/bindings";
 import { inTauri } from "@/lib/devMocks";
+import { writeClipboardText } from "@/lib/clipboard";
 import { useImageViewer } from "@/store/imageViewer";
 
 export function valueText(v: PortValue): string {
@@ -85,8 +86,8 @@ export function OutputValue({ value, compact = false, previewKind }: { value: Po
   const [tree, setTree] = useState(previewKind !== "table");
   useEffect(() => { setLimit(20000); setNotice(""); }, [value]);
   const copy = async () => {
-    try { await navigator.clipboard.writeText(valueText(value)); setNotice("已复制"); }
-    catch { setNotice("复制失败"); }
+    try { await writeClipboardText(valueText(value)); setNotice("已复制"); }
+    catch (e) { setNotice(e instanceof Error ? e.message : "复制失败"); }
   };
   const download = () => {
     const bytes = value.type === "bytes" ? new Uint8Array(value.value) : valueText(value);
@@ -112,7 +113,7 @@ export function OutputValue({ value, compact = false, previewKind }: { value: Po
     body = <><pre className={preClass}>{text.slice(0, compact ? 240 : limit) || "（空）"}</pre>{!compact && text.length > limit && <button className={buttonClass} onClick={() => setLimit(limit + 20000)}>继续显示（共 {text.length} 字符）</button>}</>;
   }
   return <div className={"nodrag nowheel nopan min-w-0 space-y-1 " + (compact ? "max-h-36 overflow-hidden" : "")}>
-    {body}
+    <div data-text-region className="select-text">{body}</div>
     {!compact && !["artifact", "image", "none"].includes(value.type) && <div className="flex items-center gap-2"><button className={buttonClass} onClick={() => void copy()}>复制</button><button className={buttonClass} onClick={download}>导出</button><span className="text-[10px] text-muted-foreground">{notice}</span></div>}
   </div>;
 }

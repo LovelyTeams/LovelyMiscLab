@@ -6,8 +6,9 @@ import { useCommandPaletteStore } from "@/store/commandPalette";
 import { useViewStore } from "@/store/view";
 import { useGraphStore } from "@/store/graph";
 import { useAgentStore } from "@/store/agent";
-import { canvasOverlaySelector, canvasShortcut, isEditingTarget } from "@/flow/canvasShortcuts";
+import { canvasOverlaySelector, canvasShortcut, canvasOwnsKeyboard } from "@/flow/canvasShortcuts";
 import { copySelection, cutSelection, duplicateSelection, pasteSelection } from "@/flow/graphClipboard";
+import { hasTextSelection, isEditingTarget } from '@/lib/textInteraction';
 
 export function KeyboardShortcuts() {
   const rf = useReactFlow();
@@ -29,7 +30,9 @@ export function KeyboardShortcuts() {
         else newFlow();
         return;
       }
-      if (isEditingTarget(e.target) || useViewStore.getState().view !== "canvas") return;
+      // Also stop React Flow's own arrow-key movement when a preview is selected.
+      if (!isEditingTarget(e.target) && hasTextSelection() && canvasShortcut(e)) { e.stopPropagation(); return; }
+      if (!canvasOwnsKeyboard(e.target) || useViewStore.getState().view !== "canvas") return;
       const action = canvasShortcut(e);
       if (!action) return;
       e.preventDefault(); e.stopPropagation();

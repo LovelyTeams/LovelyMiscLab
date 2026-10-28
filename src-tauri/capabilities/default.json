@@ -7,6 +7,8 @@
     "core:default",
     "opener:default",
     "dialog:default",
+    "clipboard-manager:allow-read-text",
+    "clipboard-manager:allow-write-text",
     "fs:default",
     "shell:default",
     "store:default",

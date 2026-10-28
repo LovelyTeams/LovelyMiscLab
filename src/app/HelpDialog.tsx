@@ -218,7 +218,7 @@ function ShortcutDoc() {
   return (
     <div className="min-h-0 flex-1 overflow-y-auto p-5">
       <div className="mb-4 text-lg font-semibold">快捷键</div>
-      <p className="mb-3 text-xs text-muted-foreground">输入框内保留文字编辑快捷键。弹窗和菜单打开时，画布快捷键暂停。macOS 可使用 Command 代替 Ctrl。</p>
+      <p className="mb-3 text-xs text-muted-foreground">输入框、选中的结果文字及侧栏保留文字编辑快捷键；节点快捷键只在画布内生效。右键可打开当前区域的操作菜单，也可使用 Shift+F10 或菜单键，方向键选择、Enter 执行、Esc 关闭。弹窗和菜单打开时，画布快捷键暂停。macOS 可使用 Command 代替 Ctrl。</p>
       <div className="divide-y divide-border overflow-hidden rounded-md border border-border">
         {rows.map(([key, desc]) => (
           <div key={key} className="grid grid-cols-[220px_1fr] px-3 py-2 text-sm">
