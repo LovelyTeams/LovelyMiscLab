@@ -77,6 +77,10 @@ test("foundation migration nodes expose searchable categories and typed previews
     ["bigCalc", "big_integer_calc", "numeric.math"],
     ["progCalc", "programmer_calc", "numeric.bits"],
     ["unitConv", "unit_convert", "numeric.address"],
+    ["mimeMultipart", "mime_multipart_encode", "encoding.transport"],
+    ["mimeMultipart", "mime_multipart_decode", "data.structure"],
+    ["binhex", "binhex_encode", "encoding.transport"],
+    ["binhex", "binhex_decode", "encoding.transport"],
   ];
   for (const [upstream, id, category] of expected) {
     const d = D.getState().byId[id];
@@ -92,6 +96,29 @@ test("foundation migration nodes expose searchable categories and typed previews
       if (port.type === "bytes") assert.equal(d.presentation.previews[port.name], "hex");
     }
   }
+});
+
+test("mail nodes preserve attachment ports, part controls and independent invocation", async () => {
+  const mime = add("mime_multipart_encode"), parse = add("mime_multipart_decode"), bin = add("binhex_encode"), decode = add("binhex_decode");
+  connect(mime, parse, "bytes", "data"); connect(parse, bin, "bytes", "data"); connect(bin, decode);
+  assert.equal(g().edges.length, 3);
+  g().setParam(parse, "part", 2); g().undo(); assert.equal(node(parse).data.params.part, 1); g().redo();
+  assert.equal(node(parse).data.params.part, 2);
+  const enc = D.getState().byId.binhex_encode, dec = D.getState().byId.mime_multipart_decode;
+  assert.equal(dec.presentation.previews.parts, "table");
+  assert.deepEqual(inlineParams(enc).map((p) => p.name), ["filename", "textEncoding"]);
+  const inputs = parseInputs(enc.inputs, { data: { format: "hex", text: "00 ff 90" } });
+  assert.deepEqual(inputs, { data: { type: "bytes", value: [0, 255, 144] } });
+  const bothForks = parseInputs(enc.inputs, { data: { format: "hex", text: "00 ff 90" }, resource: { enabled: true, format: "hex", text: "80 90" } });
+  assert.deepEqual(bothForks.resource, { type: "bytes", value: [128, 144] });
+  const before = JSON.stringify(g());
+  api.runNodeStreamed = async (id, _nodeId, input, params, emit) => {
+    assert.equal(id, "binhex_encode"); assert.deepEqual(input, bothForks); assert.equal(params.filename, "test.bin");
+    emit({ kind: "jobStarted", job: "mail-standalone" }); return { text: { type: "text", value: "hqx-result" } };
+  };
+  const result = await executeStandalone(enc, bothForks, { filename: "test.bin" }, () => {});
+  assert.equal(result.status, "success"); assert.equal(result.outputs.text.value, "hqx-result");
+  assert.equal(JSON.stringify(g()), before);
 });
 
 test("unit conversion exposes table previews, epoch parameters and JSON continuation", async () => {

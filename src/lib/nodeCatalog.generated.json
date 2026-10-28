@@ -4810,6 +4810,240 @@
     "cost": "cheap"
   },
   {
+    "id": "binhex_encode",
+    "category": "编码解码",
+    "categoryId": "encoding",
+    "subcategoryId": "encoding.transport",
+    "legacyCategories": [
+      "encoding.transport"
+    ],
+    "aliases": [
+      "binhex",
+      "HQX 编码",
+      "Mac BinHex"
+    ],
+    "upstreamIds": [
+      "binhex"
+    ],
+    "family": "binhex",
+    "presentation": {
+      "inlineParams": [
+        "filename",
+        "textEncoding"
+      ],
+      "previews": {
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "data": {
+            "type": "text",
+            "value": "Hello, 中文!"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "BinHex 4.0 编码",
+    "description": "封装 BinHex 4.0 的文件头、数据叉、资源叉与三处 CRC。可取消，输出 HQX 文本。",
+    "color": "#22c55e",
+    "inputs": [
+      {
+        "name": "data",
+        "label": "数据叉：文本或字节",
+        "type": "any",
+        "required": true
+      },
+      {
+        "name": "resource",
+        "label": "资源叉（可选）",
+        "type": "bytes",
+        "required": false
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "filename",
+        "label": "文件名",
+        "widget": {
+          "kind": "text",
+          "multiline": false
+        },
+        "default": "file.txt",
+        "description": "1–63 个 UTF-8 字节；空值使用 file.txt，过长或含控制字符报错，不截断多字节字符。"
+      },
+      {
+        "name": "textEncoding",
+        "label": "文本字节编码",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "auto",
+            "UTF-8",
+            "Latin-1"
+          ]
+        },
+        "default": "auto",
+        "description": "auto 与上游一致：全为 Latin-1 字符时逐字符取字节，否则整串 UTF-8。Bytes 输入始终原样保留。"
+      },
+      {
+        "name": "fileType",
+        "label": "文件类型 FourCC",
+        "widget": {
+          "kind": "text",
+          "multiline": false
+        },
+        "default": "TEXT",
+        "description": "4 个可打印 ASCII 字符，例如 TEXT 或 BINA。"
+      },
+      {
+        "name": "creator",
+        "label": "创建者 FourCC",
+        "widget": {
+          "kind": "text",
+          "multiline": false
+        },
+        "default": "CTFB",
+        "description": "4 个可打印 ASCII 字符；默认 CTFB 对应上游。"
+      },
+      {
+        "name": "flags",
+        "label": "Finder 标志",
+        "widget": {
+          "kind": "number",
+          "min": 0,
+          "max": 65535,
+          "step": 1
+        },
+        "default": 0,
+        "description": "保存 16 位 Finder 标志原值；默认 0。两叉总大小不超过 16 MiB。"
+      }
+    ],
+    "cost": "cheap"
+  },
+  {
+    "id": "binhex_decode",
+    "category": "编码解码",
+    "categoryId": "encoding",
+    "subcategoryId": "encoding.transport",
+    "legacyCategories": [
+      "encoding.transport"
+    ],
+    "aliases": [
+      "binhex",
+      "HQX 解码",
+      "Mac BinHex"
+    ],
+    "upstreamIds": [
+      "binhex"
+    ],
+    "family": "binhex",
+    "presentation": {
+      "inlineParams": [
+        "strictCrc",
+        "nameEncoding"
+      ],
+      "previews": {
+        "bytes": "hex",
+        "decoded": "text",
+        "json": "json",
+        "resource": "hex",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "(This file must be converted with BinHex 4.0)\n\n:#'CTE'8ZG(Kd!&4&@&4$9%C#!*!&\"3#3\"%5h5'9XE'r,eJ!!:"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "BinHex 4.0 解码",
+    "description": "解析 HQX/RLE90，校验头、数据和资源三处 CRC；报告有界预览，完整字节可接文件产物存储或后续节点。编码文本最多 64 MiB，解压后两叉合计最多 16 MiB。",
+    "color": "#22c55e",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "decoded",
+        "label": "数据叉文本",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "bytes",
+        "label": "完整数据叉",
+        "type": "bytes",
+        "required": true
+      },
+      {
+        "name": "resource",
+        "label": "完整资源叉",
+        "type": "bytes",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "文件头与 CRC",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "strictCrc",
+        "label": "CRC 不匹配时报错",
+        "widget": {
+          "kind": "toggle"
+        },
+        "default": false,
+        "description": "默认保留上游取证行为：报告三处 CRC 的结果并输出受损内容；开启后任一不匹配即报错。结构残缺始终报错。"
+      },
+      {
+        "name": "nameEncoding",
+        "label": "文件名字符集",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "UTF-8",
+            "MacRoman"
+          ]
+        },
+        "default": "UTF-8",
+        "description": "上游用 UTF-8；早期 Mac 文件名可选择 MacRoman。原始文件名字节保存在 JSON nameHex。"
+      }
+    ],
+    "cost": "cheap"
+  },
+  {
     "id": "bubblebabble_encode",
     "category": "编码解码",
     "categoryId": "encoding",
@@ -5816,6 +6050,120 @@
         },
         "default": true,
         "description": "关闭后文本预览使用替换符，utf16le保留所有原始码元，validUnicode显示完整性；非法百分号语法原样透传。"
+      }
+    ],
+    "cost": "cheap"
+  },
+  {
+    "id": "mime_multipart_encode",
+    "category": "编码解码",
+    "categoryId": "encoding",
+    "subcategoryId": "encoding.transport",
+    "legacyCategories": [
+      "encoding.transport"
+    ],
+    "aliases": [
+      "mimeMultipart",
+      "多段邮件编码",
+      "multipart/mixed",
+      "mime_multipart"
+    ],
+    "upstreamIds": [
+      "mimeMultipart"
+    ],
+    "family": "mimeMultipart",
+    "presentation": {
+      "inlineParams": [
+        "boundary",
+        "encoding"
+      ],
+      "previews": {
+        "bytes": "hex",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "data": {
+            "type": "text",
+            "value": "Hello | 中文"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "MIME multipart 编码",
+    "description": "将 | 分隔文本封装为 MIME multipart；字符串列表保留空段、空白与 | 本身，Bytes 封装单个二进制附件。最多 256 段、16 MiB 输入。",
+    "color": "#22c55e",
+    "inputs": [
+      {
+        "name": "data",
+        "label": "文本、列表或附件字节",
+        "type": "any",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "bytes",
+        "label": "完整消息字节",
+        "type": "bytes",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "boundary",
+        "label": "分隔符（留空自动）",
+        "widget": {
+          "kind": "text",
+          "multiline": false
+        },
+        "default": "",
+        "description": "1–70 个合法 ASCII 字符；自动使用 ----ctf-partN 并避开正文行冲突。手工指定的冲突值会报错。"
+      },
+      {
+        "name": "encoding",
+        "label": "正文传输编码",
+        "widget": {
+          "kind": "select",
+          "options": [
+            "auto",
+            "raw",
+            "base64",
+            "quoted-printable"
+          ]
+        },
+        "default": "auto",
+        "description": "auto：文本/列表直接保存，Bytes 使用 Base64；raw 需要 UTF-8。QP 逐字节保留 CR/LF。"
+      },
+      {
+        "name": "contentType",
+        "label": "内容类型（留空自动）",
+        "widget": {
+          "kind": "text",
+          "multiline": false
+        },
+        "default": "",
+        "description": "文本默认 text/plain; charset=utf-8，字节默认 application/octet-stream；统一用于各 part，不能包含换行。"
+      },
+      {
+        "name": "filename",
+        "label": "单个附件文件名",
+        "widget": {
+          "kind": "text",
+          "multiline": false
+        },
+        "default": "",
+        "description": "仅用于单段输入；填写后添加 Content-Disposition: attachment。最多 4096 字节，不允许控制字符。"
       }
     ],
     "cost": "cheap"
@@ -12990,6 +13338,119 @@
       }
     ],
     "params": [],
+    "cost": "cheap"
+  },
+  {
+    "id": "mime_multipart_decode",
+    "category": "文本与数据",
+    "categoryId": "data",
+    "subcategoryId": "data.structure",
+    "legacyCategories": [
+      "data.structure"
+    ],
+    "aliases": [
+      "mimeMultipart",
+      "多段邮件解析",
+      "附件提取",
+      "multipart/mixed",
+      "mime_multipart"
+    ],
+    "upstreamIds": [
+      "mimeMultipart"
+    ],
+    "family": "mimeMultipart",
+    "presentation": {
+      "inlineParams": [
+        "part",
+        "boundary"
+      ],
+      "previews": {
+        "bytes": "hex",
+        "decoded": "text",
+        "json": "json",
+        "parts": "table",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "data": {
+            "type": "text",
+            "value": "Content-Type: multipart/mixed; boundary=demo\r\n\r\n--demo\r\nContent-Type: text/plain\r\nContent-Transfer-Encoding: base64\r\n\r\nSGVsbG8=\r\n--demo--"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "MIME multipart 解析",
+    "description": "按独立分隔行解析 multipart，解码传输编码，表格预览每段并选择完整字节供下游处理。最多 64 MiB 消息、256 段、16 MiB 解码总量；缺失结束边界会明确提示。文本使用 UTF-8，其他字符集请连接字符解码节点。",
+    "color": "#14b8a6",
+    "inputs": [
+      {
+        "name": "data",
+        "label": "完整消息或消息体",
+        "type": "any",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "decoded",
+        "label": "所选段 UTF-8 文本",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "bytes",
+        "label": "所选段完整字节",
+        "type": "bytes",
+        "required": true
+      },
+      {
+        "name": "parts",
+        "label": "分段目录",
+        "type": "json",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "边界、完整性与分段信息",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "boundary",
+        "label": "覆盖分隔符（可选）",
+        "widget": {
+          "kind": "text",
+          "multiline": false
+        },
+        "default": "",
+        "description": "默认从 Content-Type（含折叠头）读取；分析没有顶层头字段的原始消息体时需填写。"
+      },
+      {
+        "name": "part",
+        "label": "输出第几段",
+        "widget": {
+          "kind": "number",
+          "min": 1,
+          "max": 256,
+          "step": 1
+        },
+        "default": 1,
+        "description": "从 1 开始；bytes/decoded 输出这一段，parts 列出全部段。解码 Base64 与 QP，不递归解嵌套 MIME，可继续连本节点。"
+      }
+    ],
     "cost": "cheap"
   },
   {

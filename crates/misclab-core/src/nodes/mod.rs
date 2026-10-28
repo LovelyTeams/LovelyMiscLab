@@ -12,6 +12,7 @@ mod base91;
 mod base_custom;
 mod bech32_codec;
 mod big_integer_calc;
+mod binhex_codec;
 mod bson_inspect;
 mod byte_inspection;
 mod byte_text_codecs;
@@ -35,6 +36,7 @@ mod huffman_codec;
 mod identifier_parse;
 mod java_serial;
 mod js_escape_codec;
+mod mail_support;
 #[cfg(test)]
 mod migrated_codec_tests;
 #[cfg(test)]
@@ -61,6 +63,7 @@ mod migration_serial_tests;
 mod migration_text_tests;
 #[cfg(test)]
 mod migration_unicode_base_tests;
+mod mime_multipart;
 mod modhex;
 mod network_codecs;
 mod numeral_systems;
@@ -319,6 +322,8 @@ pub fn register_builtins(reg: &mut NodeRegistry) {
     big_integer_calc::register(reg);
     programmer_calc::register(reg);
     unit_convert::register(reg);
+    binhex_codec::register(reg);
+    mime_multipart::register(reg);
     numeral_systems::register(reg);
     numeric_bytes::register(reg);
     numeric_reports::register(reg);

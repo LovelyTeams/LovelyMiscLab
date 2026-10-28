@@ -960,6 +960,14 @@ mod tests {
             ("bigCalc", "big_integer_calc", "numeric.math"),
             ("progCalc", "programmer_calc", "numeric.bits"),
             ("unitConv", "unit_convert", "numeric.address"),
+            (
+                "mimeMultipart",
+                "mime_multipart_encode",
+                "encoding.transport",
+            ),
+            ("mimeMultipart", "mime_multipart_decode", "data.structure"),
+            ("binhex", "binhex_encode", "encoding.transport"),
+            ("binhex", "binhex_decode", "encoding.transport"),
         ] {
             let result = list_nodes_value(&reg, Some(category), Some(query), true, true);
             assert!(

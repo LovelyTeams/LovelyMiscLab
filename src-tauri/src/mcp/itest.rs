@@ -238,6 +238,20 @@ fn server_end_to_end_over_http() {
         "Unit subsecond conversion failed: {units_resp}"
     );
 
+    let mime = serde_json::json!({"jsonrpc":"2.0","id":14,"method":"tools/call","params":{"name":"run_node","arguments":{"descriptorId":"mime_multipart_decode","inputs":{"data":"--x\r\nContent-Transfer-Encoding: base64\r\n\r\nAP+A\r\n--x--"},"params":{"boundary":"x","part":1}}}}).to_string();
+    let (mime_resp, _) = post(addr, TOKEN, Some(&sid), &mime);
+    assert!(
+        mime_resp.contains("00ff80") && mime_resp.contains("base64"),
+        "MIME attachment bytes failed: {mime_resp}"
+    );
+
+    let binhex = serde_json::json!({"jsonrpc":"2.0","id":15,"method":"tools/call","params":{"name":"run_node","arguments":{"descriptorId":"binhex_decode","inputs":{"text":"(This file must be converted with BinHex 4.0)\n\n:#'CTE'8ZG(Kd!&4&@&4$9%C#!*!&\"3#3\"%5h5'9XE'r,eJ!!:"},"params":{"strictCrc":true}}}}).to_string();
+    let (binhex_resp, _) = post(addr, TOKEN, Some(&sid), &binhex);
+    assert!(
+        binhex_resp.contains("48656c6c6f") && binhex_resp.contains("✓ 匹配"),
+        "BinHex CRC/fork extraction failed: {binhex_resp}"
+    );
+
     // --- tools/call add_node emits a canvas update --------------------------
     let add = r#"{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"add_node","arguments":{"descriptorId":"text_input"}}}"#;
     let (add_resp, _) = post(addr, TOKEN, Some(&sid), add);

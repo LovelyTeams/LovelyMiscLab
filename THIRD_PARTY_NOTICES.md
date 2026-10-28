@@ -47,3 +47,5 @@
 第二十批参考 progCalc.js；以纯 Rust 词法/Pratt 表达式解析和既有 num-bigint 实现固定宽度整数语义，复用可取消模幂；新增结构化结果、精确十进制/大端字节输出和解析资源边界。capture-upstream-programmer-vectors.mjs 仅用于维护固定上游测试向量，异常 UTF-16 诊断以转义文本保存；无 JavaScript 运行时算法依赖。
 
 第二十一批参考 unitConv.js 的固定单位系数、别名、纪元和数值显示规则；unit_definitions.json 为静态数据快照，附固定提交。全部有理数运算、binary64 有效数字舍入、纪元、日历和报告以 Rust 实现，复用既有 num-bigint/num-integer/chrono/ryu-js，无新增依赖。capture-upstream-unit-vectors.mjs 仅在维护时读取固定参考生成静态系数与测试向量；未引入上游快速换算视图中未注册为 unitConv 的额外分类，其非操作 UI 扩展不计入本次 820 项验收。
+
+第二十二批参考固定上游 `mimeMultipart.js` 和 `binhex.js` 的参数、码表、报告与合法输入输出，采用纯 Rust 实现 MIME framing、QP、HQX、RLE90 和 CRC-16/XMODEM，复用已有 base64/encoding_rs，无新增依赖。标准核对：[RFC 2046 §5.1](https://www.rfc-editor.org/rfc/rfc2046.html#section-5.1)、[RFC 1741 Appendix A](https://www.rfc-editor.org/rfc/rfc1741.html#appendix-A)。`capture-upstream-mail-vectors.mjs` 仅为维护时生成静态对照向量，不进入运行时。已记录上游对残缺数据宽松处理、文件名截断、CRLF/QP Unicode 损失等兼容差异。

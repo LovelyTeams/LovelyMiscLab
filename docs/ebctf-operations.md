@@ -2,7 +2,7 @@
 
 由 `pnpm generate:migration` 生成。来源提交：`ea2bc36dae31c97060f7f2cddad8df5518afad7b`。人工验收源：[ebctf-acceptance.json](ebctf-acceptance.json)，生成器不会覆盖它。
 
-总计 820 项：已迁入 158，部分完成 0，待解决 0，现有候选待核验 49，待迁入 613。
+总计 820 项：已迁入 160，部分完成 0，待解决 0，现有候选待核验 49，待迁入 611。
 
 `existing-review` 仅表示名称匹配，不表示算法、参数或文件处理能力等价。验收范围和批次见 [迁移说明](ebctf-migration.md)；机器可读清单见 [JSON](ebctf-migration.json)。
 
@@ -732,7 +732,7 @@
 | `csrParse` | CSR 证书请求解析（PKCS#10） | asym | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/csrlparse.js) |
 | `crlParse` | X.509 CRL 吊销列表解析 | asym | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/csrlparse.js) |
 | `des2Mitm` | 2DES 中间相遇 | block | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/des2Mitm.js) |
-| `mimeMultipart` | MIME multipart 解析 | text | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/mimeMultipart.js) |
+| `mimeMultipart` | MIME multipart 解析 | text | migrated | `mime_multipart_encode`, `mime_multipart_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/mimeMultipart.js) |
 | `randu` | RANDU 弱 LCG | analysis | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/lcgMore.js) |
 | `truncLcgRecover` | 截断 LCG 种子恢复 | analysis | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/lcgMore.js) |
 | `babaiCvp` | Babai 最近平面（CVP） | analysis | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/latticeMore.js) |
@@ -750,7 +750,7 @@
 | `lfsrRecover` | LFSR 序列恢复 | analysis | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/lfsrRecover.js) |
 | `xorshiftRecover` | xorshift 状态恢复 | analysis | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/xorshiftRecover.js) |
 | `yenc` | yEnc 编 / 解码 | text | migrated | `yenc_encode`, `yenc_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/yenc.js) |
-| `binhex` | BinHex 4.0 编 / 解码 | text | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/binhex.js) |
+| `binhex` | BinHex 4.0 编 / 解码 | text | migrated | `binhex_encode`, `binhex_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/binhex.js) |
 | `a51` | A5/1 流密码 | stream | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/a51.js) |
 | `a52` | A5/2 流密码 | stream | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/a52.js) |
 | `e0` | E0 流密码 | stream | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/e0.js) |

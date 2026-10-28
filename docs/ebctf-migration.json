@@ -4,11 +4,11 @@
   "license": "Apache-2.0",
   "total": 820,
   "counts": {
-    "migrated": 158,
+    "migrated": 160,
     "partial": 0,
     "blocked": 0,
     "existing-review": 49,
-    "pending": 613
+    "pending": 611
   },
   "operations": [
     {
@@ -17729,12 +17729,86 @@
       "familyLabel": "",
       "sourceFile": "src/core/mimeMultipart.js",
       "sourceUrl": "https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/mimeMultipart.js",
-      "status": "pending",
-      "targetNodes": [],
-      "batch": null,
-      "validation": [],
-      "note": "待用 Rust 实现或核验现有节点组合。",
-      "categories": []
+      "status": "migrated",
+      "targetNodes": [
+        "mime_multipart_encode",
+        "mime_multipart_decode"
+      ],
+      "batch": 22,
+      "validation": [
+        "crates/misclab-core/tests/migration_mail.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-mail-batch22.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "固定上游编码/解码、所有声明参数、Base64/QP/quoted_printable/raw、Unicode、空输入和二进制样例；另测全部字节、精确 CR/LF、空列表段、boundary 冲突与前后说明、嵌套接续、折叠头和引号、残缺与未知编码提示、资源边界、取消、图/独立调用一致，以及 MCP HTTP 完整附件。",
+      "acceptedAt": "2026-10-28",
+      "directions": [
+        "encode",
+        "decode"
+      ],
+      "parameterMapping": {
+        "input": "编码 data: Any，Text 按 | 拆分并去空段，与上游一致；StringList 保留空段、空白与 |；Bytes 为单个附件。解析 data 接受完整 Text/Bytes 消息。",
+        "boundary": "编码保留原参数，默认 ----ctf-partN 并自动避开正文冲突；手工指定 1–70 字节合法 MIME boundary。解析默认从 Content-Type 读取，新增可覆盖 boundary 以处理无顶层头字段的消息体。",
+        "encoding": "新增 auto/raw/base64/quoted-printable；auto 为文本原样、字节 Base64。QP 编码 CR/LF 以保真，传输行最多 76 字符；解析兼容 quoted_printable 别名和无填充 Base64。",
+        "contentType": "新增统一 part 内容类型，默认文本 text/plain; charset=utf-8、字节 application/octet-stream；filename 为单段附件名，不允许头字段换行注入。",
+        "part": "新增从 1 开始的选择序号，默认 1；decoded/bytes 为所选段的完整文本/字节，parts 为目录表格，json 为边界、完整性和警告。text 保留上游合法消息的有界中文报告。"
+      },
+      "knownDifferences": [
+        "修复上游按字符串拆行损失 CRLF、QP 非 ASCII 截低字节的问题：bytes 始终完整；text 报告对小型合法输入保留上游换行口径。Unicode 预览不切断代理对。",
+        "分隔符仅在独立行首匹配，支持折叠头、带分号/转义引号的参数及前后说明；嵌套消息不隐式递归，可把选中 bytes 接另一个解析节点。",
+        "拒绝无效/重复 Content 头、重复参数、非法 Base64、冲突或非法 boundary，不复制上游宽松吞错；缺少结束分隔符时保留内容并报告 closed=false。未知传输编码按原样输出并提示。",
+        "空消息编码报错；空段可用列表，只有结束分隔符的消息明确输出零段。filename 优先 Content-Disposition，修正上游依赖头字段顺序的覆盖行为。",
+        "单次最多 256 段、64 KiB/组头字段、64 MiB 消息和 16 MiB 解码总量；循环可取消。文本预览使用 UTF-8，其他字符集通过后续节点显式转换。未添加 RFC 2231/RFC 2047 解码（上游亦无）。"
+      ],
+      "nodeMappings": [
+        {
+          "nodeId": "mime_multipart_encode",
+          "direction": "encode",
+          "categoryId": "encoding",
+          "subcategoryId": "encoding.transport",
+          "params": [
+            {
+              "name": "boundary",
+              "default": ""
+            },
+            {
+              "name": "encoding",
+              "default": "auto"
+            },
+            {
+              "name": "contentType",
+              "default": ""
+            },
+            {
+              "name": "filename",
+              "default": ""
+            }
+          ]
+        },
+        {
+          "nodeId": "mime_multipart_decode",
+          "direction": "decode",
+          "categoryId": "data",
+          "subcategoryId": "data.structure",
+          "params": [
+            {
+              "name": "boundary",
+              "default": ""
+            },
+            {
+              "name": "part",
+              "default": 1
+            }
+          ]
+        }
+      ],
+      "categories": [
+        "encoding.transport",
+        "data.structure"
+      ]
     },
     {
       "id": "randu",
@@ -18047,12 +18121,90 @@
       "familyLabel": "",
       "sourceFile": "src/core/binhex.js",
       "sourceUrl": "https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/binhex.js",
-      "status": "pending",
-      "targetNodes": [],
-      "batch": null,
-      "validation": [],
-      "note": "待用 Rust 实现或核验现有节点组合。",
-      "categories": []
+      "status": "migrated",
+      "targetNodes": [
+        "binhex_encode",
+        "binhex_decode"
+      ],
+      "batch": 22,
+      "validation": [
+        "crates/misclab-core/tests/migration_mail.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-mail-batch22.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "294 条邮件格式联合上游向量覆盖 Latin-1/UTF-8、全字节、RLE 标记及跨 255 长度、文件名、两叉和三处 CRC 损坏；另验 CRC-16/XMODEM 123456789=31c3、完整资源叉、四节点二进制接续、严格 CRC、结构/长度/膨胀边界、取消和 MCP HTTP。",
+      "acceptedAt": "2026-10-28",
+      "directions": [
+        "encode",
+        "decode"
+      ],
+      "parameterMapping": {
+        "input": "编码 data: Any，Text 默认全 Latin-1 字符时逐字符取字节，否则 UTF-8，与固定上游一致；Bytes 始终原样。解码 text 接 HQX。",
+        "filename": "默认 file.txt，首尾空白去除，空值回退；要求 1–63 UTF-8 字节且无控制字符。",
+        "textEncoding": "新增 auto/UTF-8/Latin-1；auto 兼容上游文本字节口径，显式 Latin-1 拒绝无法表示的字符。",
+        "resource": "新增可选资源叉 Bytes 输入；fileType/creator/flags 高级参数默认 TEXT/CTFB/0，保留上游编码输出。",
+        "strictCrc": "解码默认 false，与上游一样报告三处 CRC 并保留受损字节；true 时任一 CRC 不匹配报错。结构错误始终报错。",
+        "nameEncoding": "新增 UTF-8/MacRoman 文件名解释；默认上游 UTF-8，nameHex 记录原始字节。",
+        "output": "text 为报告及有界内容预览；decoded 为完整 UTF-8 文本，bytes/resource 为完整两叉，json 包含文件头、长度、三处 CRC 和警告；可接产物存储节点。"
+      },
+      "knownDifferences": [
+        "不复制上游静默忽略非法 HQX 字符/非零尾位、RLE 残缺标记、资源叉缺失和多余尾部数据的行为；会明确报错，并限制两叉合计 16 MiB、编码文本 64 MiB。",
+        "文件名超过 63 UTF-8 字节时报错，不按字节截断而产生半个 Unicode 字符。对非法 UTF-8 内容提供明确提示并保留原始 Bytes；MacRoman 文件名可显式选择。",
+        "有效小型文件报告和默认编码逐字匹配固定上游；报告的文本预览最多 4096 UTF-16 单位、十六进制各叉最多 2048 字节，不截断完整输出端口。",
+        "新增资源叉和高级头字段设置；没有写文件、运行外部程序或新增依赖。CRC/RLE/HQX 循环支持取消，拒绝解压膨胀。"
+      ],
+      "nodeMappings": [
+        {
+          "nodeId": "binhex_encode",
+          "direction": "encode",
+          "categoryId": "encoding",
+          "subcategoryId": "encoding.transport",
+          "params": [
+            {
+              "name": "filename",
+              "default": "file.txt"
+            },
+            {
+              "name": "textEncoding",
+              "default": "auto"
+            },
+            {
+              "name": "fileType",
+              "default": "TEXT"
+            },
+            {
+              "name": "creator",
+              "default": "CTFB"
+            },
+            {
+              "name": "flags",
+              "default": 0
+            }
+          ]
+        },
+        {
+          "nodeId": "binhex_decode",
+          "direction": "decode",
+          "categoryId": "encoding",
+          "subcategoryId": "encoding.transport",
+          "params": [
+            {
+              "name": "strictCrc",
+              "default": false
+            },
+            {
+              "name": "nameEncoding",
+              "default": "UTF-8"
+            }
+          ]
+        }
+      ],
+      "categories": [
+        "encoding.transport"
+      ]
     },
     {
       "id": "a51",
