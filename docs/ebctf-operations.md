@@ -2,7 +2,7 @@
 
 由 `pnpm generate:migration` 生成。来源提交：`ea2bc36dae31c97060f7f2cddad8df5518afad7b`。人工验收源：[ebctf-acceptance.json](ebctf-acceptance.json)，生成器不会覆盖它。
 
-总计 820 项：已迁入 160，部分完成 0，待解决 0，现有候选待核验 49，待迁入 611。
+总计 820 项：已迁入 163，部分完成 0，待解决 0，现有候选待核验 49，待迁入 608。
 
 `existing-review` 仅表示名称匹配，不表示算法、参数或文件处理能力等价。验收范围和批次见 [迁移说明](ebctf-migration.md)；机器可读清单见 [JSON](ebctf-migration.json)。
 
@@ -376,9 +376,9 @@
 | `pemParse` | PEM/DER 结构解析 | data | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/eccdetect.js) |
 | `asn1Parse` | ASN.1 TLV 解析 | data | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/eccdetect.js) |
 | `ecCurveIdent` | 椭圆曲线参数识别 | analysis | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/eccdetect.js) |
-| `sshPubkeyParse` | SSH 公钥解析 | data | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/eccdetect.js) |
-| `btcAddressIdent` | 比特币地址识别 | data | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/eccdetect.js) |
-| `ethAddressIdent` | 以太坊地址识别 | data | pending | — | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/eccdetect.js) |
+| `sshPubkeyParse` | SSH 公钥解析 | data | migrated | `ssh_public_key_parse` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/eccdetect.js) |
+| `btcAddressIdent` | 比特币地址识别 | data | migrated | `bitcoin_address_inspect` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/eccdetect.js) |
+| `ethAddressIdent` | 以太坊地址识别 | data | migrated | `ethereum_address_inspect` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/eccdetect.js) |
 | `gbCharset` | GBK / GB2312 / GB18030 | text | migrated | `gb_charset_encode`, `gb_charset_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/charset.js) |
 | `gb2312QuWei` | GB2312 区位码 | text | migrated | `gb2312_quwei_encode`, `gb2312_quwei_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/charset.js) |
 | `big5` | Big5 繁体中文 | text | migrated | `big5_encode`, `big5_decode` | [源码](https://github.com/Henglie/EBCTFCodeBox/blob/ea2bc36dae31c97060f7f2cddad8df5518afad7b/src/core/charset.js) |

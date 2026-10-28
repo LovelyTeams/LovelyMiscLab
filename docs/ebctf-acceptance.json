@@ -7870,6 +7870,145 @@
           ]
         }
       ]
+    },
+    "sshPubkeyParse": {
+      "status": "migrated",
+      "batch": 23,
+      "acceptedAt": "2026-10-28",
+      "targetNodes": [
+        "ssh_public_key_parse"
+      ],
+      "directions": [
+        "run"
+      ],
+      "parameterMapping": {
+        "input": "data: Any。Text 为 type base64 comment 或单个 Base64（支持 URL-safe 字母与省略 padding）；Bytes 为原始 SSH 公钥 blob，显式字节保真。",
+        "line": "新增默认 1 的公钥行选择，跳过空行和 # 注释；Bytes 直接解析。没有 from/command 等 authorized_keys 选项解析。",
+        "formats": "ssh-rsa 的 e/n/modulusBits；ssh-dss 的 p/q/g/y；ssh-ed25519 的 32 字节公钥；ecdsa-sha2-* 的 curve/SEC1 点；sk-ssh-ed25519@openssh.com 的公钥/application；未知类型保留剩余 raw Hex。",
+        "output": "text 中文有界报告、fingerprint 为 OpenSSH SHA256:Base64 无填充、keyType、完整 blob bytes、Ed25519/EC 的可选 publicKey Bytes，以及保留大整数十进制字符串的 json 字段。"
+      },
+      "knownDifferences": [
+        "修复上游外部类型与 blob 内部类型不一致仍继续展示的问题，明确拒绝类型冲突、已知类型的多余尾字节和字段长度越界。",
+        "mpint 按有符号 SSH 编码解释；公钥数值不允许负数，高位为 1 需要前导 00。Ed25519 必须 32 字节；NIST ECDSA 校验 curve 名一致、SEC1 前缀与坐标长度，支持压缩/非压缩点。",
+        "支持含 @ 的 OpenSSH 安全密钥文本前缀，以及 URL-safe Base64 中的 -；上游包装正则遗漏这些字符，静态向量保留其原始错误并用同一 blob 的标准 Base64 取得对照结果。",
+        "已知格式只验证 wire 结构，不验证密钥数学有效性、签名或可信身份；未知类型保留 raw 并在 JSON 提示。未知 ECDSA 曲线保留点，不宣称已验证坐标。",
+        "最大 512 KiB 文本、256 KiB blob、8192 字节/个 mpint；文字报告截短长注释和字段，完整内容在 JSON/Bytes。保留空输入/残缺报错，处理可取消，无外部程序。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_key_address.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-key-address-batch23.json",
+        "crates/misclab-core/tests/fixtures/bip350-segwit.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "联合 300 条上游对照覆盖 RSA 数值位宽、DSA、Ed25519、三种 NIST 曲线和点压缩、原始 blob 与文本、指纹、未知类型；另测 OpenSSH 安全密钥、Unicode 注释、多行选择、负 mpint、内外类型冲突、长度/残缺/尾部/资源边界、取消和 MCP typed Bytes。",
+      "nodeMappings": [
+        {
+          "nodeId": "ssh_public_key_parse",
+          "direction": "run",
+          "categoryId": "data",
+          "subcategoryId": "data.structure",
+          "params": [
+            {
+              "name": "line",
+              "default": 1
+            }
+          ]
+        }
+      ]
+    },
+    "btcAddressIdent": {
+      "status": "migrated",
+      "batch": 23,
+      "acceptedAt": "2026-10-28",
+      "targetNodes": [
+        "bitcoin_address_inspect"
+      ],
+      "directions": [
+        "run"
+      ],
+      "parameterMapping": {
+        "input": "text 为比特币地址，去首尾空白；支持 Base58Check P2PKH/P2SH 主网和测试网版本，以及 bc/tb/bcrt 的 Bech32 v0、Bech32m v1–16。",
+        "requireValid": "新增默认 false；保留上游 Base58 校验损坏时展示报告供取证的行为。开启后版本、20 字节哈希和校验和均须有效；非法 SegWit 结构/校验始终报错。",
+        "output": "text 中文报告；address 为规范大小写；bytes 是完整哈希/witness program；valid 独立标记地址有效性；json 分开记录 checksumValid、网络、类型、长度和版本。只有有效地址输出 script Bytes，可接下游。"
+      },
+      "knownDifferences": [
+        "补齐上游遗漏的 BIP-350 约束：witness 版本 0–16、程序 2–40 字节、v0 限 20/32 字节；v0 使用 Bech32，v1–16 使用 Bech32m。",
+        "修复上游将高 witness 版本显示为 Bech32、任意 v1 都标注 Taproot 的报告问题。仅 v1/32 字节识别 P2TR；其他有效高版本/长度显示未知用途，不误判不合法地址。",
+        "Base58 校验和通过不等于有效比特币地址；未知版本或哈希长度非 20 字节标记 valid=false，不生成 scriptPubKey。校验失败保留完整 bytes，但不会生成可供下游使用的锁定脚本。",
+        "原始输入最多 4096 UTF-8 字节、去空白后地址最多 90 字符；报告、字节和字段均离线计算，可取消。网络识别依据编码版本/HRP，不查询余额、交易或在线服务。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_key_address.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-key-address-batch23.json",
+        "crates/misclab-core/tests/fixtures/bip350-segwit.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "固定上游 Base58 合法/损坏样例覆盖 4 个版本、前导零和全字节取值；bc/tb/bcrt、v0/v1/v2/v16 与多种程序长度；全部 BIP-350 8 条有效与 15 条无效 witness 标准向量核对 scriptPubKey；补测严格参数、未知版本、非 20 字节、取消、图接续和 MCP v16。",
+      "nodeMappings": [
+        {
+          "nodeId": "bitcoin_address_inspect",
+          "direction": "run",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.address",
+          "params": [
+            {
+              "name": "requireValid",
+              "default": false
+            }
+          ]
+        }
+      ]
+    },
+    "ethAddressIdent": {
+      "status": "migrated",
+      "batch": 23,
+      "acceptedAt": "2026-10-28",
+      "targetNodes": [
+        "ethereum_address_inspect"
+      ],
+      "directions": [
+        "run"
+      ],
+      "parameterMapping": {
+        "input": "text 为 40 位 Hex，可有 0x/0X 或省略前缀；使用 Keccak-256（不是 SHA3-256）计算 EIP-55。",
+        "requireChecksum": "新增默认 false；默认接受纯大小写输入并提示无校验信息，混合大小写错误标记 valid=false。开启后必须匹配标准 EIP-55 大小写，省略 0x 前缀不影响校验。",
+        "output": "text 报告，address 为带 0x 的 EIP-55 规范地址；bytes 为完整 20 字节；valid 表示输入是否可接受；json 保留 mixedCase、checksumMatches、原始/规范地址，区分未提供校验大小写和校验错误。"
+      },
+      "knownDifferences": [
+        "修复上游省略 0x 时，把大小写完全正确的混合地址判为不匹配的问题；校验比较统一排除可选前缀。",
+        "格式错误明确报错；非严格模式可检查混合大小写错误的原始字节，严格模式则报错。全部整数/字节按原样保存，不使用浮点。",
+        "输入最多 4096 UTF-8 字节，支持取消；只做地址格式/校验和识别，不推断链、账户状态或余额，不新增在线依赖。"
+      ],
+      "validation": [
+        "crates/misclab-core/tests/migration_key_address.rs",
+        "crates/misclab-core/tests/fixtures/ebctf-key-address-batch23.json",
+        "crates/misclab-core/tests/fixtures/bip350-segwit.json",
+        "crates/misclab-core/src/nodes/migration_base_tests.rs",
+        "tests/frontend/workflow.test.ts",
+        "src-tauri/src/mcp/handlers.rs",
+        "src-tauri/src/mcp/itest.rs"
+      ],
+      "note": "EIP-55 发布的 8 条标准地址及大写/小写/错误大小写变体、64 个固定派生地址与上游 Keccak 结果对照；补测无前缀/0X、严格校验、格式和资源边界、Unicode/空输入、完整字节、取消、图/独立调用及 MCP。",
+      "nodeMappings": [
+        {
+          "nodeId": "ethereum_address_inspect",
+          "direction": "run",
+          "categoryId": "numeric",
+          "subcategoryId": "numeric.address",
+          "params": [
+            {
+              "name": "requireChecksum",
+              "default": false
+            }
+          ]
+        }
+      ]
     }
   }
 }

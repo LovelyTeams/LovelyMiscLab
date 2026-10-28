@@ -252,6 +252,26 @@ fn server_end_to_end_over_http() {
         "BinHex CRC/fork extraction failed: {binhex_resp}"
     );
 
+    let witness = serde_json::json!({"jsonrpc":"2.0","id":16,"method":"tools/call","params":{"name":"run_node","arguments":{"descriptorId":"bitcoin_address_inspect","inputs":{"text":"BC1SW50QGDZ25J"},"params":{"requireValid":true}}}}).to_string();
+    let (witness_resp, _) = post(addr, TOKEN, Some(&sid), &witness);
+    assert!(
+        witness_resp.contains("6002751e") && witness_resp.contains("Bech32m"),
+        "Witness v16 script failed: {witness_resp}"
+    );
+    let eth = serde_json::json!({"jsonrpc":"2.0","id":17,"method":"tools/call","params":{"name":"run_node","arguments":{"descriptorId":"ethereum_address_inspect","inputs":{"text":"5aAeb6053F3E94C9b9A09f33669435E7Ef1BeAed"},"params":{"requireChecksum":true}}}}).to_string();
+    let (eth_resp, _) = post(addr, TOKEN, Some(&sid), &eth);
+    assert!(
+        eth_resp.contains("0x5aAeb6053F3E94C9b9A09f33669435E7Ef1BeAed")
+            && eth_resp.contains("校验通过"),
+        "Prefixless EIP-55 failed: {eth_resp}"
+    );
+    let ssh = serde_json::json!({"jsonrpc":"2.0","id":18,"method":"tools/call","params":{"name":"run_node","arguments":{"descriptorId":"ssh_public_key_parse","inputs":{"data":{"type":"bytes","value":[0,0,0,7,115,115,104,45,114,115,97,0,0,0,3,1,0,1,0,0,0,2,0,128]}},"params":{}}}}).to_string();
+    let (ssh_resp, _) = post(addr, TOKEN, Some(&sid), &ssh);
+    assert!(
+        ssh_resp.contains("n: 128") && ssh_resp.contains("SHA256:"),
+        "SSH typed blob parse failed: {ssh_resp}"
+    );
+
     // --- tools/call add_node emits a canvas update --------------------------
     let add = r#"{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"add_node","arguments":{"descriptorId":"text_input"}}}"#;
     let (add_resp, _) = post(addr, TOKEN, Some(&sid), add);

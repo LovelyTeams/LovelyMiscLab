@@ -13531,6 +13531,115 @@
     "cost": "cheap"
   },
   {
+    "id": "ssh_public_key_parse",
+    "category": "文本与数据",
+    "categoryId": "data",
+    "subcategoryId": "data.structure",
+    "legacyCategories": [
+      "data.structure"
+    ],
+    "aliases": [
+      "sshPubkeyParse",
+      "OpenSSH",
+      "authorized_keys",
+      "SSH fingerprint",
+      "ssh_public_key_parse"
+    ],
+    "upstreamIds": [
+      "sshPubkeyParse"
+    ],
+    "family": "sshPubkeyParse",
+    "presentation": {
+      "inlineParams": [
+        "line"
+      ],
+      "previews": {
+        "bytes": "hex",
+        "fingerprint": "text",
+        "json": "json",
+        "keyType": "text",
+        "publicKey": "hex",
+        "text": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "data": {
+            "type": "text",
+            "value": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB demo"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "SSH 公钥解析",
+    "description": "解析 RSA、DSA、Ed25519、ECDSA 和 OpenSSH 安全密钥字段，输出 SHA256 指纹与完整 blob。校验字段结构、长度和类型一致性，不验证签名、密钥数学有效性或可信身份；不读取远程主机。最多 256 KiB blob，单个 mpint 最多 8192 字节。",
+    "color": "#14b8a6",
+    "inputs": [
+      {
+        "name": "data",
+        "label": "公钥文本或原始 blob",
+        "type": "any",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "fingerprint",
+        "label": "OpenSSH SHA256 指纹",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "keyType",
+        "label": "密钥类型",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "bytes",
+        "label": "完整公钥 blob",
+        "type": "bytes",
+        "required": true
+      },
+      {
+        "name": "publicKey",
+        "label": "Ed25519/EC 公钥字节",
+        "type": "bytes",
+        "required": false
+      },
+      {
+        "name": "json",
+        "label": "完整字段",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "line",
+        "label": "第几个公钥行",
+        "widget": {
+          "kind": "number",
+          "min": 1,
+          "max": 10000,
+          "step": 1
+        },
+        "default": 1,
+        "description": "文本中跳过空行和 # 注释后，从 1 开始选择公钥。每行使用 type base64 comment 或单个 Base64；Bytes 输入直接解析，不使用行选择。"
+      }
+    ],
+    "cost": "cheap"
+  },
+  {
     "id": "url_query_parse",
     "category": "文本与数据",
     "categoryId": "data",
@@ -23508,6 +23617,105 @@
     "cost": "cheap"
   },
   {
+    "id": "ethereum_address_inspect",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.address",
+    "legacyCategories": [
+      "numeric.address"
+    ],
+    "aliases": [
+      "ethAddressIdent",
+      "Ethereum",
+      "EIP-55",
+      "ERC-55",
+      "ethereum_address_inspect"
+    ],
+    "upstreamIds": [
+      "ethAddressIdent"
+    ],
+    "family": "ethAddressIdent",
+    "presentation": {
+      "inlineParams": [
+        "requireChecksum"
+      ],
+      "previews": {
+        "address": "text",
+        "bytes": "hex",
+        "json": "json",
+        "text": "text",
+        "valid": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "0x52908400098527886E0F7030069857D2E4169EE7"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "以太坊地址识别",
+    "description": "离线分析 20 字节 Ethereum 地址，计算 Keccak-256 EIP-55 大小写并输出规范地址和完整字节；不推断链、账户状态或余额。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "address",
+        "label": "规范地址",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "bytes",
+        "label": "哈希或 witness 字节",
+        "type": "bytes",
+        "required": true
+      },
+      {
+        "name": "valid",
+        "label": "输入地址有效",
+        "type": "bool",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "结构与校验信息",
+        "type": "json",
+        "required": true
+      }
+    ],
+    "params": [
+      {
+        "name": "requireChecksum",
+        "label": "必须匹配 EIP-55",
+        "widget": {
+          "kind": "toggle"
+        },
+        "default": false,
+        "description": "默认报告错误大小写但保留字节供分析；开启后输入必须精确匹配 EIP-55 大小写，可省略 0x 前缀。"
+      }
+    ],
+    "cost": "cheap"
+  },
+  {
     "id": "unit_convert",
     "category": "进制与数值",
     "categoryId": "numeric",
@@ -23823,6 +24031,113 @@
         },
         "default": false,
         "description": "编码省略 0x/0b/八进制前导标记；hex 改为小写。"
+      }
+    ],
+    "cost": "cheap"
+  },
+  {
+    "id": "bitcoin_address_inspect",
+    "category": "进制与数值",
+    "categoryId": "numeric",
+    "subcategoryId": "numeric.address",
+    "legacyCategories": [
+      "numeric.address"
+    ],
+    "aliases": [
+      "btcAddressIdent",
+      "Bitcoin",
+      "SegWit",
+      "Taproot",
+      "Bech32m",
+      "bitcoin_address_inspect"
+    ],
+    "upstreamIds": [
+      "btcAddressIdent"
+    ],
+    "family": "btcAddressIdent",
+    "presentation": {
+      "inlineParams": [
+        "requireValid"
+      ],
+      "previews": {
+        "address": "text",
+        "bytes": "hex",
+        "json": "json",
+        "script": "hex",
+        "text": "text",
+        "valid": "text"
+      }
+    },
+    "examples": [
+      {
+        "label": "入门样例",
+        "inputs": {
+          "text": {
+            "type": "text",
+            "value": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+          }
+        },
+        "params": {}
+      }
+    ],
+    "displayName": "比特币地址识别",
+    "description": "离线识别 P2PKH/P2SH/P2WPKH/P2WSH/P2TR、主网/测试网/regtest 与未知 witness 用途，按 BIP-173/350 校验；有效地址另输出 scriptPubKey。",
+    "color": "#06b6d4",
+    "inputs": [
+      {
+        "name": "text",
+        "label": "输入",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "text",
+        "label": "输出",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "address",
+        "label": "规范地址",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "bytes",
+        "label": "哈希或 witness 字节",
+        "type": "bytes",
+        "required": true
+      },
+      {
+        "name": "valid",
+        "label": "输入地址有效",
+        "type": "bool",
+        "required": true
+      },
+      {
+        "name": "json",
+        "label": "结构与校验信息",
+        "type": "json",
+        "required": true
+      },
+      {
+        "name": "script",
+        "label": "有效地址的 scriptPubKey",
+        "type": "bytes",
+        "required": false
+      }
+    ],
+    "params": [
+      {
+        "name": "requireValid",
+        "label": "无效地址时报错",
+        "widget": {
+          "kind": "toggle"
+        },
+        "default": false,
+        "description": "默认报告 Base58Check 损坏或未知版本；开启后校验、网络版本与 20 字节长度都须有效。非法 SegWit 结构/校验始终报错。"
       }
     ],
     "cost": "cheap"

@@ -81,6 +81,9 @@ test("foundation migration nodes expose searchable categories and typed previews
     ["mimeMultipart", "mime_multipart_decode", "data.structure"],
     ["binhex", "binhex_encode", "encoding.transport"],
     ["binhex", "binhex_decode", "encoding.transport"],
+    ["sshPubkeyParse", "ssh_public_key_parse", "data.structure"],
+    ["btcAddressIdent", "bitcoin_address_inspect", "numeric.address"],
+    ["ethAddressIdent", "ethereum_address_inspect", "numeric.address"],
   ];
   for (const [upstream, id, category] of expected) {
     const d = D.getState().byId[id];
@@ -96,6 +99,26 @@ test("foundation migration nodes expose searchable categories and typed previews
       if (port.type === "bytes") assert.equal(d.presentation.previews[port.name], "hex");
     }
   }
+});
+
+test("key and address inspectors connect typed results and keep validation choices undoable", async () => {
+  const ssh = add("ssh_public_key_parse"), btc = add("bitcoin_address_inspect"), eth = add("ethereum_address_inspect"), stats = add("hex_stats"), out = add("text_output");
+  connect(btc, stats, "script", "data"); connect(ssh, out, "fingerprint", "text");
+  assert.equal(g().edges.length, 2);
+  g().setParam(eth, "requireChecksum", true); g().undo(); assert.equal(node(eth).data.params.requireChecksum, false); g().redo();
+  assert.equal(node(eth).data.params.requireChecksum, true);
+  const d = D.getState().byId.ethereum_address_inspect;
+  assert.deepEqual(inlineParams(d).map((p) => p.name), ["requireChecksum"]);
+  assert.deepEqual(parseInputs(D.getState().byId.ssh_public_key_parse.inputs, { data: { format: "hex", text: "00 00 00 0b" } }), { data: { type: "bytes", value: [0, 0, 0, 11] } });
+  const address = "0x52908400098527886E0F7030069857D2E4169EE7";
+  const inputs = parseInputs(d.inputs, { text: { text: address } }); const before = JSON.stringify(g());
+  api.runNodeStreamed = async (id, _nodeId, input, params, emit) => {
+    assert.equal(id, d.id); assert.deepEqual(input, inputs); assert.equal(params.requireChecksum, true);
+    emit({ kind: "jobStarted", job: "address-standalone" }); return { address: { type: "text", value: address }, valid: { type: "bool", value: true } };
+  };
+  const result = await executeStandalone(d, inputs, { requireChecksum: true }, () => {});
+  assert.equal(result.status, "success"); assert.equal(result.outputs.valid.value, true); assert.equal(result.outputs.address.value, address);
+  assert.equal(JSON.stringify(g()), before);
 });
 
 test("mail nodes preserve attachment ports, part controls and independent invocation", async () => {

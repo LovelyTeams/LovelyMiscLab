@@ -5,8 +5,8 @@ use super::{
     prelude::*,
 };
 use serde_json::{json, Value};
-const TABLE: &[u8] = b"qpzry9x8gf2tvdw0s3jn54khce6mua7l";
-fn polymod(values: impl IntoIterator<Item = u8>) -> u32 {
+pub(super) const TABLE: &[u8] = b"qpzry9x8gf2tvdw0s3jn54khce6mua7l";
+pub(super) fn polymod(values: impl IntoIterator<Item = u8>) -> u32 {
     let mut chk = 1u32;
     for v in values {
         let top = chk >> 25;
@@ -28,14 +28,14 @@ fn polymod(values: impl IntoIterator<Item = u8>) -> u32 {
     }
     chk
 }
-fn hrp_expanded(s: &str) -> Vec<u8> {
+pub(super) fn hrp_expanded(s: &str) -> Vec<u8> {
     s.bytes()
         .map(|b| b >> 5)
         .chain([0])
         .chain(s.bytes().map(|b| b & 31))
         .collect()
 }
-fn bits(data: &[u8], from: u32, to: u32, pad: bool) -> Result<Vec<u8>, CoreError> {
+pub(super) fn bits(data: &[u8], from: u32, to: u32, pad: bool) -> Result<Vec<u8>, CoreError> {
     let (mut acc, mut n) = (0u32, 0u32);
     let mut out = Vec::new();
     let mask = (1 << to) - 1;

@@ -968,6 +968,17 @@ mod tests {
             ("mimeMultipart", "mime_multipart_decode", "data.structure"),
             ("binhex", "binhex_encode", "encoding.transport"),
             ("binhex", "binhex_decode", "encoding.transport"),
+            ("sshPubkeyParse", "ssh_public_key_parse", "data.structure"),
+            (
+                "btcAddressIdent",
+                "bitcoin_address_inspect",
+                "numeric.address",
+            ),
+            (
+                "ethAddressIdent",
+                "ethereum_address_inspect",
+                "numeric.address",
+            ),
         ] {
             let result = list_nodes_value(&reg, Some(category), Some(query), true, true);
             assert!(
